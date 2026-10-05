@@ -1,0 +1,124 @@
+{
+  "completed_cases": [
+    "block_coarse",
+    "block_medium"
+  ],
+  "failed_case": "block_fine",
+  "failed_reason": "native0xC0000005 access violation,80-byte FRD has no valid fields",
+  "changes_percent_relative_coarse": {
+    "max_von_mises_MPa": 9.905278245870996,
+    "max_displacement_mm": 1.025329815985132,
+    "stress_p99_MPa": -1.0490371534313203,
+    "stress_p999_MPa": -1.6115131941604632
+  },
+  "interpretation": "overall displacement differs about1%; local peak rises about9.9% and is not sufficiently established as mesh-converged",
+  "provisional_review_criteria": {
+    "displacement_change_percent": 2,
+    "peak_stress_change_percent": 5,
+    "status": "engineering screening assumptions, not a normative acceptance specification"
+  },
+  "peak_stress_converged": false,
+  "full_assembly_strength_verified": false,
+  "boundary": "local nominal block only;7MPa uniformly on classified hole surfaces, whole bottom fixedXYZ, no valve/plug preload, contact or thread helix",
+  "current_model_geometry": "BL-01 from coreV2 including independentR-temperature bore; unchanged during chuckV3 refinement",
+  "coarse": {
+    "case": "block_coarse",
+    "fields": [
+      "DISP",
+      "STRESS",
+      "FORC",
+      "ERROR"
+    ],
+    "max_von_mises_MPa": 120.35912248811897,
+    "stress_p99_MPa": 16.74725218019471,
+    "stress_p999_MPa": 24.849000645813387,
+    "max_stress_node": 50443,
+    "max_stress_position_mm": [
+      201.9989550186063,
+      44.9,
+      21.03018342021599
+    ],
+    "max_displacement_mm": 0.0020926891480604567,
+    "yield_lower_bound_MPa": 355,
+    "peak_yield_margin": 2.949506382742556,
+    "proof_10_5MPa_peak_linear_scaled_MPa": 180.53868373217847,
+    "assumptions": "nominal hole stress at7MPa, fixed bottom, elastic45steel, no valve preload/thread helix or assembly contacts",
+    "mesh_convergence": "pending second mesh; sharp corners may create nonconvergent local peaks",
+    "files": {
+      "block.brep": {
+        "bytes": 360875,
+        "sha256": "ca065949444f831ddcf850c1b531fc4e3fc51ce4c8fd7037ca9aae54c65eb534"
+      },
+      "block_coarse.msh": {
+        "bytes": 21077461,
+        "sha256": "d7ac728bfd32a57badde19c1cbdcf8104ad743ea870535b5f37aa031d12103f2"
+      },
+      "block_coarse.inp": {
+        "bytes": 16819346,
+        "sha256": "c96e7940cc494f8d704fd2e4a71b152342c230dbd236ca5c4e3b2117174c5cad"
+      },
+      "block_coarse.frd": {
+        "bytes": 62107237,
+        "sha256": "9755cbff06422108ed5aec2c91f1222f8eaca7221f2c361443b72b1c776efad8"
+      },
+      "block_coarse.sta": {
+        "bytes": 173,
+        "sha256": "253efd59462bae0a6fce7b06552a063c82349747e482366b56da923c68b7ca9d"
+      },
+      "block_coarse.dat": {
+        "bytes": 214,
+        "sha256": "dfac1b2c811edb2e509e7423f82d87b3b197c6959820614501d72afbc6b7dc3e"
+      }
+    }
+  },
+  "medium": {
+    "case": "block_medium",
+    "fields": [
+      "DISP",
+      "STRESS",
+      "FORC",
+      "ERROR"
+    ],
+    "max_von_mises_MPa": 132.28102846485584,
+    "stress_p99_MPa": 16.57156728264563,
+    "stress_p999_MPa": 24.448555721789084,
+    "max_stress_node": 66855,
+    "max_stress_position_mm": [
+      201.9989550186063,
+      44.9,
+      21.03018342021599
+    ],
+    "max_displacement_mm": 0.0021141461138514056,
+    "yield_lower_bound_MPa": 355,
+    "peak_yield_margin": 2.6836803744258435,
+    "proof_10_5MPa_peak_linear_scaled_MPa": 198.42154269728377,
+    "assumptions": "nominal hole stress at7MPa, fixed bottom, elastic45steel, no valve preload/thread helix or assembly contacts",
+    "mesh_convergence": "pending second mesh; sharp corners may create nonconvergent local peaks",
+    "files": {
+      "block.brep": {
+        "bytes": 360875,
+        "sha256": "ca065949444f831ddcf850c1b531fc4e3fc51ce4c8fd7037ca9aae54c65eb534"
+      },
+      "block_medium.msh": {
+        "bytes": 31404448,
+        "sha256": "8725aa045bfdce6b352125b106af110b42b4d7948559fe3d1fd1075562d78124"
+      },
+      "block_medium.inp": {
+        "bytes": 25303306,
+        "sha256": "3d45b10bc139010fd21865d7d755ca47a7645730375843054688099e8bc54b25"
+      },
+      "block_medium.frd": {
+        "bytes": 91548531,
+        "sha256": "1ad7ad3b12b8ce5e105e1b44dd26fd053a483d805d5f59a670927b047f41366b"
+      },
+      "block_medium.sta": {
+        "bytes": 173,
+        "sha256": "253efd59462bae0a6fce7b06552a063c82349747e482366b56da923c68b7ca9d"
+      },
+      "block_medium.dat": {
+        "bytes": 214,
+        "sha256": "dc4c9dc9e9ead91bbac0f1311d9d766b5ccd6672ec75b37086fb538941b5afe8"
+      }
+    }
+  }
+}

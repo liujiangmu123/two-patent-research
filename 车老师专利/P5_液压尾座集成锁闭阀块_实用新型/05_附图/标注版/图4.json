@@ -1,0 +1,134 @@
+{
+ "fig": 4,
+ "title": "集成锁闭阀块后视图",
+ "scale": 0.42033,
+ "size_mm": [
+  156.0,
+  75.5
+ ],
+ "size_clean_mm": [
+  156.0,
+  52.6
+ ],
+ "labels": [
+  "2",
+  "41",
+  "42",
+  "43",
+  "44",
+  "45",
+  "51",
+  "52",
+  "53",
+  "54",
+  "55",
+  "74"
+ ],
+ "missing": [],
+ "crossings": 0,
+ "min_leader_pass_mm": 8.85,
+ "all_anchors_ok": true,
+ "anchors": [
+  {
+   "num": "2",
+   "name": "阀块本体",
+   "side": "B",
+   "anchor_part": "P00_2",
+   "ok": true,
+   "inside_mm": 5.4
+  },
+  {
+   "num": "41",
+   "name": "第一锁闭座阀",
+   "side": "T",
+   "anchor_part": "P03_41c",
+   "ok": true,
+   "inside_mm": 3.83
+  },
+  {
+   "num": "42",
+   "name": "第二锁闭座阀",
+   "side": "T",
+   "anchor_part": "P07_42c",
+   "ok": true,
+   "inside_mm": 3.83
+  },
+  {
+   "num": "43",
+   "name": "泄放座阀",
+   "side": "T",
+   "anchor_part": "P11_43c",
+   "ok": true,
+   "inside_mm": 3.83
+  },
+  {
+   "num": "44",
+   "name": "预压座阀",
+   "side": "T",
+   "anchor_part": "P15_44c",
+   "ok": true,
+   "inside_mm": 3.83
+  },
+  {
+   "num": "45",
+   "name": "安全溢流阀",
+   "side": "T",
+   "anchor_part": "P17_45",
+   "ok": true,
+   "inside_mm": 2.0
+  },
+  {
+   "num": "51",
+   "name": "第一外接油口",
+   "side": "B",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "52",
+   "name": "第二外接油口",
+   "side": "B",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "53",
+   "name": "泄油口",
+   "side": "B",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "54",
+   "name": "预压油口",
+   "side": "B",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "55",
+   "name": "安全阀回油口",
+   "side": "B",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "74",
+   "name": "油温传感器",
+   "side": "B",
+   "anchor_part": "P23_74",
+   "ok": true,
+   "inside_mm": 2.6
+  }
+ ],
+ "n_items": 29,
+ "dropped_small": 0,
+ "n_lines": 143,
+ "n_hatch": 0,
+ "t_s": 10.3
+}

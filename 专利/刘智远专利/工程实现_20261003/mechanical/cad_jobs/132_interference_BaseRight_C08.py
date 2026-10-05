@@ -1,0 +1,5 @@
+import FreeCAD as App
+import Part
+doc=App.getDocument('LZT_CAL_01')
+a=doc.getObject('BaseRight'); b=doc.getObject('C08')
+print('BaseRight','C08',a.Shape.common(b.Shape).Volume)

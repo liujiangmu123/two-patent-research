@@ -1,0 +1,479 @@
+M-A352AD10
+M-A352 Brief sheet Rev 20220401
+SEIKO EPSON CORPORATION 
+High Accuracy Three Axis Accelerometer
+ GENERAL DESCRIPTION 
+The M-A352 is a three axis digital output accelerometer featuring ultra-low noise, high stability, and low power 
+consumption using fine processing technology of Quarts. Incorporating both high accuracy and durability, the 
+versatile M-A352 is well suited to a wide-range of challenging applications such as SHM, seismic observation, 
+condition monitoring for industrial equipment, and pose detection for industrial machinery (i.e. construction 
+machinery/attachments, agricultural machinery/ implements, robots). 
+ FEATURES 
+•
+Ultra-low noise：0.2µG/√Hz typ.
+•
+Improved shock resistance: 1,000G
+•
+Selectable output format: Acceleration / Tilt Angle
+•
+Selectable interface: SPI / UART
+•
+Programmable low-pass digital filters
+•
+Low jitter external trigger function for synchronous sampling
+•
+Solid Metallic Case (Size : 48mm x 24mm x 16mm, Weight: 25g)
+ SPECIFICATION 
+TA=-30°C to +85℃, VCC=3.15V~3.45V, ≤±1G, unless otherwise noted. 
+Parameter 
+Test Conditions / Comments 
+Min 
+Typ 
+Max 
+Unit 
+SPECIFICATIONS 
+Output Range 
+f = DC ~ 460Hz 
+±15 
+G 
+Scale Factor 
+2-24G/LSB
+0.06 
+µG/LSB 
+Sensitivity Error 
+25°C, ≤ 1G 
+±500 
+×10-6 (ppm) 
+Nonlinearity 
+≤ 1G, Best fit straight line, RT 
+±0.03 
+% of FS 
+Misalignment 
+25°C 
+±0.1 
+Deg 
+Initial Error 
+25°C 
+±2 
+mG 
+Bias Repeatability 
+TA=25°C and VCC=3.3V  
+for one year after shipment 
+3 
+mG 
+Bias Temperature Error 
+25°C 
+±2 
+mG 
+Noise Density 
+25°C, Avg, f = 0.5Hz ~ 6Hz 
+0.2 
+0.7 
+µG/√Hz, rms 
+Cantilever 
+Resonance frequency 
+25°C, VCC3.3V 
+850 
+Hz 
+VRC 
+at 50Hz, 25°C, VCC3.3V 
+±50 
+µG/G2 
+Power Supply Current 
+Standard noise floor condition, 
+200Sps, Average 
+13.2 
+18.0 
+mA 
+Reduced noise floor condition, 
+200Sps, Average 
+16.2 
+20.0 
+mA 
+Sleep mode 
+1.3 
+2.0 
+mA 
+FUNCTION 
+Built-in LPF Cut off 
+-6dB at 25℃, selectable
+9 
+460 
+Hz 
+User LPF 
+4, 64, 128, 512 
+Tap 
+Output Data Rate 
+50 
+1,000 
+Sps 
+Ext.Trigger Input Cycle 
+1 
+20 
+ms 
+Ext.Trigger Jitter 
+ADC's completion to Ext.Trigger input 
+0 
+5 
+µs 
+RECOMMENDED OPERATING CONDITION 
+VCC to GND 
+3.15 
+3.3 
+3.45 
+V 
+Operating temperature 
+range 
+No condensation 
+-30
+85 
+°C 
+ABSOLUTE MAXIMUM RATINGS 
+Acceleration/Shock 
+Half-sine 0.2msec 
+1,000 
+G 
+ MTBF 
+JIS-C5003, 60% reliability leve 
+87,600 
+Hour 
+Storage Temperature Range No condensation 
+-40
+85 
+℃ 
+Note) This accelerometer is referenced to the standard gravity acceleration value. (9.80665m/s2) 
+
+ 
+ 
+ M-A352AD10 
+M-A352 Brief sheet Rev 20220401 
+ 
+ 
+SEIKO EPSON CORPORATION 
+16
+2
+48
+42
+3
+2
+32 .95
+40 .06
+8 .43
+5 .38
+24
+(2 .15 )
+19 .7
+2 .15
+9 .85
+14 .65
+2 .15
+19 .7
+24
+(2 .15 )
+6 .73
+12 .05
+18 .21
+32 .95
+40 .06
+B 1
+B 2
+( z )
+( y )
+( x )
+A 1
+A 2
+A 3
+( c )
+* S im p l f i e d
+( z )
+( y )
+( x )
+( a )
+(d )
+( f )
+(e )
+( g )
+( g )
+( g )
+3-φ2 .5
+( b )
+ 
+ OUTLINE DIMENTIONS 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Header Part Number 
+ 
+ 
+                                                                                                 
+ 
+                                                         Recommended socket parts at the host side 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+*1) This product is calibrated based on the surfaces A1, A2, A3, and B1, B2.  
+*2) In order to demonstrate the performance of the product properly, please fix surfaces A1, A2, A3 to rugged parts with M2 screw.  
+*3) When high connection reliability is required, please tighten this product together with the board on which the connector is mounted. 
+ 
+ 
+(a) 
+Directions of the detection axes 
+(b) 
+Connector Position 
+(c) 
+Matrix Code ( DataMatrix ) 
+Including Product Name & S/N 
+& Date & Factory Code 
+(d) 
+Product Name 
+(e) 
+Serial Number 
+(f) 
+Date & Factory Code 
+(g) 
+Frame Ground 
+(x) 
+X Axis Sensor Position 
+(y) 
+Y Axis Sensor Position 
+(z) 
+Z Axis Sensor Position 
+Maker 
+Parts Number 
+RoHS Compliant 
+Samtec 
+FTMH-110-02-L-DV-ES 
+Yes 
+Maker 
+Parts Number 
+RoHS Compliant 
+Samtec 
+CLM-110-02-H-D 
+Yes 
+Samtec 
+CLM-110-02-L-D 
+Yes 
+
+ 
+ 
+ M-A352AD10 
+M-A352 Brief sheet Rev 20220401 
+ 
+ 
+SEIKO EPSON CORPORATION 
+ 
+■PIN LAYOUT AND FUNCTION 
+ 
+ 
+Pin No. 
+Mnemonic 
+Type*1 
+Description 
+1 
+SCLK 
+I 
+SPI Serial Clock *2 
+2 
+SDO 
+O 
+SPI Data Output *2 
+5 
+SDI 
+I 
+SPI Data Input *2 
+6 
+/CS 
+I 
+SPI Chip Select *2 
+7 
+SOUT 
+O 
+UART Data Output *2 
+9 
+SIN 
+I 
+UART Data Input *2 
+13 
+DRDY 
+O 
+Data Ready 
+14 
+EXT 
+I 
+External Trigger Input 
+ (Sleep Wakeup Input) 
+16 
+/RST 
+I 
+Reset 
+10,11,12 
+VCC 
+S 
+Power Supply 3.3V 
+3,4,8,15 
+GND 
+S 
+Ground *3 
+17,18,19,20 
+NC 
+N/A 
+Do Not Connect 
+ 
+*1 Pin Type I: Input, O: Output, I/O: Input/Output, S: Supply, N/A: Not Applicable 
+*2 Connect only one of the serial interfaces (SPI or UART) at a time. This product malfunctions when both SPI 
+and UART are connected at the same time. 
+*3 Please connect (g) Frame Ground to any GND pin (No.3, 4, 8, 15). 
+ 
+ 
+■EVALUTION TOOLS 
+Evaluation tools can be provided for the M-A352. For details, contact our representatives. 
+Product Model Number  Product Name  
+Comments 
+X2H000021000200 
+M-G32EV041 
+USB Evaluation Board for M-A352AD10 
+*Works with Logger Software. 
+X2H000021000300 
+M-G32EV051 
+Relay board for M-A352AD10 
+*Combination with M-G32EV041 is possible. 
+ 
+ 
+ 
+
+ 
+ 
+ M-A352AD10 
+M-A352 Brief sheet Rev 20220401 
+ 
+ 
+SEIKO EPSON CORPORATION 
+ 
+ Noise Density Data 
+ 
+Power Spectrum Density (Reduced noise floor condition) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Modified; APR. 2022 
+JR Shinjuku Miraina Tower, 4-1-6 Shinjuku, Shinjuku-ku, Tokyo, 160-8801, 
+Japan 
+Phone: +81-3-6682-4322   FAX: +81-3-6682-5016 
+MD SALES & MARKETING DEPT. 
+Notice of the Document  
+NOTICE：PLEASE READ CAREFULLY BELOW BEFORE THE USE OF THIS DOCUMENT  ©Seiko Epson Corporation 2022 
+The content of this document is subject to change without notice. 
+1. 
+This document may not be copied, reproduced, or used for any other purposes, in whole or in part, without the consent of Seiko Epson Corporation(“Epson”). 
+2. 
+Before purchasing or using Epson products, please contact with our sales representative for the latest information and be always sure to check the latest information published on Epson’s 
+official web sites and sources. 
+3. 
+Information provided in this document such as application circuits, programs, usage, etc., are for reference purpose only. Please use the application circuits, programs, usage, etc. in the 
+design of your equipment or systems at your own responsibility. Epson makes no guarantees against any infringements or damages to any third parties’ intellectual property rights or any 
+other rights resulting from the information. This document does not grant you any licenses, intellectual property rights or any other rights with respect to Epson products owned by Epson 
+or any third parties. 
+4. 
+Epson is committed to constantly improving quality and reliability, but semiconductor products in general are subject to malfunction and failure. In using Epson products, you shall be 
+responsible for safe design in your products; your hardware, software and systems are designed enough to prevent any harm or damages to life, health or property even if any malfunction 
+or failure might be caused by Epson products. In designing of your products with using Epson products, please be sure to check and comply with the latest information regarding Epson 
+products (this document, specifications, data sheets, manuals, Epson’s web site, etc.). When using the information included in the above materials such as product data, chart, technical 
+contents, programs, algorithms and application circuit examples, you shall evaluate your products both in stand-alone basis and within your overall systems. You shall be solely 
+responsible for deciding whether or not to adopt and use Epson products. 
+5. 
+Epson has prepared this document and programs provided in this document carefully to be accurate and dependable, but Epson does not guarantee that the information and the programs 
+are always accurate and complete. Epson assumes no responsibility for any damages which you incurred by due to misinformation in this document and the programs. 
+6. 
+No dismantling, analysis, reverse engineering, modification, alteration, adaptation, reproduction, etc., of Epson products is allowed. 
+7. 
+Epson products have been designed, developed and manufactured to be used in general electronic applications (office equipment, communications equipment, measuring instruments, 
+home electronics, etc.) and applications individually listed in this document (“General Purpose”). Epson products are NOT intended for any use beyond the General Purpose that requires 
+particular/higher quality or reliability in order to refrain from causing any malfunction or failure leading to harm to life, health or serious property damage or severe impact on society, 
+including, but not limited to listed below. Therefore, you are advised to use Epson products only for the General Purpose. Should you desire to buy and use Epson products for the 
+particular purpose other than the General Purpose, Epson makes no warranty and disclaims with respect to Epson products, whether express or implied, including without limitation any 
+implied warranty of merchantability or fitness for any particular purpose. 
+【Particular purpose】 
+Space equipment (artificial satellites, rockets, etc.) 
+Transportation vehicles and their control equipment (automobiles, aircraft, trains, ships, etc.) 
+Medical equipment (other than applications individually listed in this document) / Relay equipment to be placed on sea floor 
+Power station control equipment / Disaster or crime prevention equipment / Traffic control equipment / Financial equipment 
+Other applications requiring similar levels of reliability as the above 
+8. 
+Epson products listed in this document and our associated technologies shall not be used in any equipment or systems that laws and regulations in Japan or any other countries prohibit to 
+manufacture, use or sell. Furthermore, Epson products and our associated technologies shall not be used for developing military weapons of mass destruction, military purpose use, or 
+any other military applications. If exporting Epson products or our associated technologies, you shall comply with the Foreign Exchange and Foreign Trade Control Act in Japan, Export 
+Administration Regulations in the U.S.A (EAR) and other export-related laws and regulations in Japan and any other countries and follow the required procedures as provided by the 
+relevant laws and regulations. 
+9. 
+Epson assumes no responsibility for any damages (whether direct or indirect) caused by or in relation with your non-compliance with the terms and conditions in this document. 
+10. 
+Epson assumes no responsibility for any damages (whether direct or indirect) incurred by any third party that you assign, transfer, loan, etc., Epson products. 
+11. 
+For more details or other concerns about this document, please contact our sales representative. 
+12. 
+Company names and product names listed in this document are trademarks or registered trademarks of their respective companies. 
+2022.08 
+© Seiko Epson Corporation 2022, All rights reserved. 
+ 

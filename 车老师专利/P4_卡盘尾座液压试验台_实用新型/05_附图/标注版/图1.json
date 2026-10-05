@@ -1,0 +1,161 @@
+{
+ "fig": 7,
+ "title": "试验台轴测图",
+ "scale": 0.06878,
+ "size_mm": [
+  154.1,
+  130.8
+ ],
+ "size_clean_mm": [
+  138.0,
+  130.8
+ ],
+ "labels": [
+  "41",
+  "42",
+  "43",
+  "46",
+  "51",
+  "54",
+  "26",
+  "55",
+  "57",
+  "58",
+  "59",
+  "60",
+  "75",
+  "27",
+  "28"
+ ],
+ "missing": [],
+ "crossings": 0,
+ "min_leader_pass_mm": 2.4,
+ "all_anchors_ok": true,
+ "anchors": [
+  {
+   "num": "41",
+   "name": "机架",
+   "side": "L",
+   "anchor_part": "P_41",
+   "ok": true,
+   "inside_mm": 2.7
+  },
+  {
+   "num": "42",
+   "name": "台面板",
+   "side": "L",
+   "anchor_part": "P_42",
+   "ok": true,
+   "inside_mm": 4.37
+  },
+  {
+   "num": "43",
+   "name": "模拟床身",
+   "side": "L",
+   "anchor_part": "P_43",
+   "ok": true,
+   "inside_mm": 1.9
+  },
+  {
+   "num": "46",
+   "name": "模拟卡盘",
+   "side": "L",
+   "anchor_part": "P_46",
+   "ok": true,
+   "inside_mm": 3.1
+  },
+  {
+   "num": "51",
+   "name": "工件模拟滑块",
+   "side": "R",
+   "anchor_part": "P_51",
+   "ok": true,
+   "inside_mm": 1.8
+  },
+  {
+   "num": "54",
+   "name": "尾座体",
+   "side": "R",
+   "anchor_part": "P_54",
+   "ok": true,
+   "inside_mm": 2.39
+  },
+  {
+   "num": "26",
+   "name": "尾座液压缸",
+   "side": "R",
+   "anchor_part": "P_70",
+   "ok": true,
+   "inside_mm": 1.5
+  },
+  {
+   "num": "55",
+   "name": "锁闭阀块",
+   "side": "R",
+   "anchor_part": "P_55",
+   "ok": true,
+   "inside_mm": 1.2
+  },
+  {
+   "num": "57",
+   "name": "安全防护罩",
+   "side": "R",
+   "anchor_part": "P_57",
+   "ok": true,
+   "inside_mm": 2.3
+  },
+  {
+   "num": "58",
+   "name": "防护前门",
+   "side": "L",
+   "anchor_part": "P_58",
+   "ok": true,
+   "inside_mm": 1.4
+  },
+  {
+   "num": "59",
+   "name": "门联锁开关",
+   "side": "R",
+   "anchor_part": "P_59",
+   "ok": true,
+   "inside_mm": 2.0
+  },
+  {
+   "num": "60",
+   "name": "阀板",
+   "side": "R",
+   "anchor_part": "P_60",
+   "ok": true,
+   "inside_mm": 4.3
+  },
+  {
+   "num": "75",
+   "name": "液压站",
+   "side": "L",
+   "anchor_part": "P_1",
+   "ok": true,
+   "inside_mm": 2.8
+  },
+  {
+   "num": "27",
+   "name": "电控柜（内装控制器）",
+   "side": "L",
+   "anchor_part": "P_27",
+   "ok": true,
+   "inside_mm": 3.05
+  },
+  {
+   "num": "28",
+   "name": "触摸屏/数控系统接口",
+   "side": "L",
+   "anchor_part": "P_28",
+   "ok": true,
+   "inside_mm": 3.45
+  }
+ ],
+ "n_items": 81,
+ "dropped_small": 1,
+ "n_lines": 650,
+ "n_hatch": 0,
+ "t_s": 4.3
+}

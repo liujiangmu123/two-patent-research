@@ -1,0 +1,341 @@
+High-Sensitivity Vibration Monitoring of La Marota 
+Viaduct Using a Novel 128-Channel Laser Radar 
+System 
+Stephen Adrian O’Brien1, Nicola Tarque2, Jose Luis Rubio1, Gregory Pandraud1, 
+Eduardo Margallo1, José Luis Martínez3 and José Maria Goicolea2 
+1 Ommatidia LiDAR, Madrid, Spain 
+2 Department of Continuum Mechanics and Structures, E.T.S.I Caminos, Canales y Puertos, 
+Universidad Politécnica de Madrid, Spain 
+3INES Ingenieros Consultores, Madrid, Spain 
+stephen.obrien@ommatidia-lidar.com 
+Abstract: In this study, we employed a novel system combining massively 
+parallel FMCW Laser Radar and Laser Doppler Vibrometry to monitor and 
+analyze the structural vibrations of La Marota Viaduct, as part of a multi-year 
+structural health monitoring project for high-speed railway infrastructure 
+near Almodóvar del Río in southern Spain. The system features 128 parallel 
+channels capable of non-contact velocity and displacement measurements 
+with 40kHz sampling rate, allowing the real-time capture of dynamic 
+structural behavior across a wide range of frequencies from a single 
+installation point. The optical measurements were in good agreement with 
+the numerical models and the accelerometer and strain gauge results. The 
+exceptional sensitivity of the interferometry-based technique, particularly in 
+low-frequency domains below 2 Hz, combined with the large number of 
+measurement points offers the potential for superior model performance 
+compared to traditional accelerometer setups. The high resolution and rapid 
+acquisition capabilities of the system facilitated detailed analysis of the 
+bridge's vibrational modes, providing insights into structural health and 
+potential areas of concern. 
+Keywords: Laser RADAR, vibrometry,  SHM, bridge monitoring. 
+1 
+Q1 Laser Radar 
+1.1 
+Ommatidia Laser Radar ’s solution 
+The system, with 128 simultaneous measurement channels, employs Frequency 
+Modulated Continuous Wave (FMCW) Laser Radar [1] and Laser Doppler 
+Vibrometry (LDV) [2] techniques for ranging and velocity measurement, 
+respectively.  
+In the FMCW approach, a continuous-wave laser undergoes frequency 
+modulation, and the ranging information is extracted through coherent detection by 
+analyzing the beating signal generated from the interference between the local 
+oscillator and the return signal. The use of interference based coherent detection 
+makes the system also sensitive to the Doppler-shift effect of the reflected light, 
+
+2 
+enabling the use of the LDV approach to extract the velocity or vibration 
+information via coherent detection of the  scattered light and the reference beam. 
+This approach to optical offers a number of advantages: 
+● 
+Enhanced Signal-to-Noise Ratio (SNR) through coherent detection. 
+● 
+Continuous-wave laser operation, eliminating the need for high peak 
+power conditions. 
+● 
+Intrinsic Doppler velocity measurement, enabling simultaneous distance 
+and velocity determination. 
+● 
+Full complex signal acquisition, which allows for advanced signal 
+processing. 
+A key enabling innovation in this system is the integration of Ommatidia 
+LiDAR's Lightfield concept, leveraging the full complex return signal to implement 
+a beam-forming network in the receiver. This enables lens-less lateral resolution, 
+enhancing spatial imaging capabilities, and allowing the parallel detection of the 
+aforementioned 128 simultaneous channels. More details on the Lightfield concept 
+combined with FMCW can be found in [3]. The full description of the instrument 
+placement and location is given in the following section. 
+ 
+Fig. 1. Q1S system used in this work, as installed in the configuration of bridge monitoring. 
+1.2 
+System architecture 
+The two main components of the system are a light field sensor that receives the 
+light reflected from the scene, and a tunable light source (DFB laser), which acts as 
+the emitter. Additionally, the light is collected and emitted through dedicated optics. 
+On the Optical Scanning Plane (OSP), 128 optical channels are collected 
+simultaneously using the beamforming network of the Photonic Integrated Circuit 
+(PIC) Receiver, while illuminating the scene with a line of light matching the 
+angular field of view of the receiver. The proposed imager processes the electrical 
+outputs to resolve the relative phase and power of the incident wave at each pixel. 
+The photons are then converted into electrical signals and read out. Algorithms 
+allow the generation of point clouds. The FMCW concept is applied here, building 
+on the advantages of this technique (heterodyne gain, coherence gating, coherent 
+detection) while eliminating the need for scanning and the use of collimated beams. 
+
+3 
+ 
+Fig.2. Overall system architecture with a zoom in of the PIC receiver at the core of 
+the Laser Radar. 
+The PIC Receiver consists of an integrated Photonic Integrated Circuit, based on 
+Silicon Nitride [4] technology. 128 optical channels collecting the return radiation 
+are mixed in phase and in quadrature with the local oscillator coming from the 
+illumination path. The beating signal is detected by external detectors, and the 
+analog signal is read out by dedicated electronics. The latter is further interfaced 
+with an FPGA, which processes the data stream to provide the 4D point clouds and 
+Doppler-based instantaneous velocity measurements (Fig.2). 
+2 
+Implementation at the La Marota Viaduct 
+Ommatidia LiDAR has successfully installed four units of its Q1 system on a high-
+speed train bridge, with each unit covering a separate span of the structure as shown 
+in Figure 4. The La Marota Viaduct carries the Córdoba-Málaga high-speed rail line 
+across the shallow valley of the Arroyo de La Marota in Spain.  
+ 
+Fig. 3. Position of the four Q1s Laser Radar and LDV systems installed under the La Marota 
+Viaduct.   
+The bridge is a continuous concrete box girder, 14 m wide, that accommodates two 
+tracks. It has a total length of 380 m. With a depth-to-span ratio of 1:14, it is a typical 
+stiff high-speed railway viaduct (Fig.3). The viaduct is supported by two abutments 
+and eight intermediate rectangular piers measuring 5.5 x 2 meters, with heights 
+varying from 10 to 15 meters. This configuration results in seven central spans of 
+
+4 
+45 meters each and two end spans of 33 meters. All supports, using pot-type 
+constrained elastomeric bearings, accommodate longitudinal movement and 
+bending about both vertical and transverse axes. One abutment is fixed 
+longitudinally, while the other allows free movement. The viaduct’s cross-section 
+is a single-cell box girder with cantilevered top slabs. Five distinct cross-sectional 
+types are incorporated along the viaduct’s length, all maintaining a consistent deck 
+width of 14 meters, sufficient to carry two standard-gauge railway tracks on ballast 
+(Fig.4). 
+   
+Fig. 4. Views (outside and inside) and plan view of the La Marota viaduct (left). The 
+nomenclature for the end abutments, internal piers and spans are shown in the plan view 
+(right). 
+Each span of the bridge is monitored by 128 speed signals (the optical channels 
+described in section 1.2), uniformly spaced at 0.49° across a 62° Field of View 
+(FoV). This specific FoV has been chosen to collect information over the full span. 
+The LiDAR is also positioned at an angle providing a large density of points at key 
+locations such as at the interface between the supporting pillar and the bridge deck. 
+To enhance sensitivity, a retroreflective paint was applied, ensuring precise and 
+accurate data collection. A careful alignment of the 128 laser beams onto the painted 
+line is done for all units, ensuring optimal operating conditions (Fig.5).  
+Each of the Q1 systems are powered through a single Power over Ethernet cable. 
+Similarly data connection is done using this cable Fig.5. 
+
+5 
+ 
+ 
+Fig. 5 Top left: Laser Points distribution under the bridge offering a full coverage of the 
+bridge Top right: A painted line improves the reflection of the light and the overall system 
+performances. Bottom: Power and data collection for the Q1S units. 
+3 
+A 3D beam numerical model 
+A finite element (FE) model of the La Marota Viaduct was previously [5] developed 
+to analyse its dynamic behaviour. While a detailed 3D shell element model was 
+initially considered for its accuracy in representing geometry, boundary conditions, 
+and local deformations, its high computational cost led to adopting a simplified 3D 
+beam element model for this study. 
+This beam FE model was implemented in Abaqus, using 3D beam-column 
+elements. The nine-span hyperstatic structure (seven 45m spans and two 33m spans) 
+was modelled, with each span incorporating five distinct caisson cross-sections. 
+These sections were defined as general sections, combining their respective 
+geometries and calibrated mechanical properties. Non-structural mass was also 
+included, accounting for dead loads such as ballast, rails, sleepers, and guard walls. 
+Boundary conditions (BCs) were applied, reflecting design specifications and 
+validated through field observations. At all supports (two abutments and eight 
+piers), transverse (Z-axis) and vertical (Y-axis) displacements, as well as rotation 
+about the longitudinal axis (X-axis), were constrained. At the fixed abutment (E-1, 
+Figure 7a), longitudinal displacement and Y-rotation were also restricted, but at the 
+initial centroid of the beam section to accurately replicate the connection detail. The 
+partial longitudinal constraint at abutment E-1, provided by pot-type elastomeric 
+bearings, was modelled using a spring element. Multi-point constraints (MPCs) 
+were used to connect the BCs at the shifted longitudinal axis to the original centroid 
+
+6 
+axis. Similarly, the partial rotational constraint provided by the elastomeric pot 
+bearings at the piers and right abutment was simulated using rotational spring 
+elements (Fig. 6 b).  
+  
+  
+a) 
+  
+ 
+ 
+ 
+ b) 
+Fig. 6 a) Internal view of the fixed abutment E-1, b) View of an elastomeric pot. 
+Fig. 7 a) shows the 3D beam finite element model of the La Marota viaduct 
+constructed in Abaqus. Fig. 7 b) shows the viaduct's deformation under a simulated 
+railway load and below the history deflection at the central point of the 7th span. The 
+calibrated eigenvalues of the digital twin model were compared with the 
+experimental ones obtained through an OMA, and the results are shown in Table 1 
+for the first five frequencies.  
+ 
+a) 
+ 
+b) 
+Fig. 7. a) 3D beam beam finite element model in Abaqus, b) example of the deformation 
+under the pass of a train. 
+Table 1. Calibrated eigenvalues vs experimental ones. 
+(Hz) 
+f1 
+f2 
+f3 
+f4 
+f5 
+Experimental 
+3.08 
+3.87 
+4.50 
+5.74 
+6.08 
+FEM 
+3.03 
+3.67 
+4.69 
+5.72 
+6.97 
+Variation % 
+1.42 
+5.02 
+-4.13 
+0.40 
+14.66 
+
+7 
+4 
+Laser Doppler Vibrometry Measurements 
+The flexural modes of interest range from 3.0 to 9 Hz. The trains operate at speeds 
+of up to 300 km/h. A complementary monitoring system features accelerometers at 
+the center of each span  (PBC 393A03) and strain gauges on the track rails, allowing 
+for the measurement of train velocities and axle loads. Peak accelerations during 
+train passages can reach up to 2 m/s². 
+4.1 
+Comparison with accelerometers 
+The comparison is made at mid-span of the 7th span, with the accelerometer placed 
+under the South track (Málaga -> Córdoba direction).  
+The LDV data was obtained with the Q1S system installed at the 6th pillar and 
+pointing towards the 7th span. The data was acquired while a train was passing over 
+the track, under which both the accelerometer and the Q1S LDV measuring points 
+are located. 
+In Fig. 8 (left) we show a plot of the acceleration reading obtained directly from 
+the A03 vs. the derived velocity measurement from the Q1S by the point located at 
+the same position . On the right-top side we show a detail of the signal tails after 
+the train has exited the span, and on the right-bottom side we show the frequency 
+spectrum of the central part of the signal. 
+ 
+Fig. 8. Left) Comparison of A03 acceleration and Q1S velocity derivative measurements. 
+Right top) Detail on the signal tails Right bottom) Frequency spectrum of the central part of 
+the signal 
+4.2 
+Numerical vs Experimental VVI comparison 
+This section details the multichannel laser vibrometry measurements and their 
+interpretation using the velocity vibration index (VVI). These experimental VVI 
+
+8 
+measurements are then compared with corresponding results from the numerical 
+model (digital twin). The VVI, a measure of the spatial extent of vibration, is 
+calculated using vibration velocity data acquired over the central 25 meters of spans 
+4, 5, 6, and 7 of the La Marota Viaduct (see Fig. 3). 
+Specifically, VVIs were calculated from measurements taken by 31 channels, 
+ranging from channel 70 (at 10.01 m) to channel 100 (at 16.97 m), see Fig. 9. The 
+following expression defines the VVI: 
+𝑉𝑉𝐼= 1
+𝑁
+1
+𝐿∑∑(𝑙𝑖𝑣𝑖
+2)𝑗
+𝑘
+𝑖=1
+𝑁
+𝑗=1
+ 
+with N the time records in the episode of duration T, 𝑙𝑖 the length of the tributary 
+board of each point, 𝐿 the  total length of the area under analysis and 𝛼𝑖 the  angle 
+of each ray with the vertical. 
+ 
+Fig. 9. Central area of laser incidence on a span of the structure. 
+One case study is analysed to validate the VVI under real train loads. The train 
+travelled in the Córdoba-Madrid direction. Measurements recorded by lasers LA-
+P5 and LA-P6 on spans 6 and 7, (respectively Fig. 10 and 11), were compared with 
+results from the digital twin model (filtered up to 10 Hz). The first case involved a 
+double-composition S112 train passing at 260 km/h. As shown in Table 2, the error 
+between the numerical and experimental VVI values is less than 5%, which is 
+considered acceptable given the high sensitivity of the VVI calculation. 
+Table 2. Comparison of the experimental and numerical VVI for one case studies (Train 
+S112 double at 260 km/h). 
+ Span 
+6 
+7 
+Experimental 
+1.92E-06 
+1.94E-06 
+Numerical 
+1.99E-06 
+2.03E-06 
+Difference 
+3% 
+5% 
+ 
+A comparison of the velocity time-history plots of the experimental and numerical 
+measures for the case study is shown in the figure below: 
+
+9 
+ 
+Fig. 10. Pillar 5 (6th Span) Train S112 double, vel. 260 km/h: a,c) Experimental, all channels 
+(a) and channel 70 (c) velocity time-history; b,d) FEM, all channels (b) and channel 70 
+(d) velocity time-history. 
+ 
+Fig. 11. Pillar 6 (7th Span) Train S112 double, vel. 260 km/h: a,c) Experimental, all channels 
+(a) and channel 70 (c) velocity time-history; b,d) FEM, all channels (b) and channel 70 (d) 
+velocity time-history. 
+4.3 
+Numerical vs Experimental relative displacement comparison 
+Finally we have also analysed the relative displacement values at mid-span obtained 
+by integrating the LDV data, and compared it with the numerical results. Since the 
+Q1S velocity information provides good information even at very low frequencies, 
+the velocity information can be integrated with high accuracy. Fig. 12 shows an 
+example of this comparison, showing the excellent agreement between both of 
+them. 
+
+10 
+ 
+Fig. 12. Relative displacement at the middle of the 7th span obtained from the velocity 
+information measured by the Q1S (left) and simulated with the digital twin model (right). 
+5 
+Conclusions 
+In conclusion, the study demonstrates that the novel 128-channel Laser Radar 
+system, leveraging both FMCW and LDV techniques, provides highly sensitive, 
+real-time monitoring of structural vibrations in the La Marota Viaduct. The system’s 
+ability to capture sub-millimeter displacements and accurately resolve low-
+frequency vibrational modes significantly enhances the detection and analysis of 
+dynamic structural behaviors, offering a promising alternative to traditional 
+accelerometer-based methods. 
+The strong agreement between optical measurements and both numerical 
+predictions and accelerometer measurements validates the system’s effectiveness, 
+underscoring its potential to advance structural health monitoring and predictive 
+maintenance strategies for critical infrastructure. 
+References 
+1. Martin A et al., Photonic Integrated Circuit-Based FMCW Coherent LiDAR, in Journal 
+of Lightwave Technology 36(19): 4640-4645. 
+2. Rothberg SJ et al., An international review of laser Doppler vibrometry: Making light 
+work of vibration measurement, in Optics and Lasers in Engineering 99, 11-22. 
+3. Guivernau JL, Gonzalo IB, Margallo-Balbás E, and  Pandraud G, (2021) High-
+Performance Akinetic Parallel Light Field Sensor for 3D Imaging. In: Conference on 
+Lasers and Electro-Optics, J. Kang, S. Tomasulo, I. Ilev, D. Müller, N. Litchinitser, S. 
+Polyakov, V. Podolskiy, J. Nunn, C. Dorrer, T. Fortier, Q. Gan, and C. Saraceno, eds., 
+OSA Technical Digest, paper ATu4K.7. 
+4. Shaw M, Guo  J, Vawter G, Habermehl S and Sullivan, C, (2005). Fabrication techniques 
+for low-loss silicon nitride waveguides. Proceedings of SPIE - The International Society 
+for Optical Engineering. 5720.  
+5. Tarque, N, Goicolea JM, Cuevas RG, and Martínez JL. (2024) Finite element model 
+updating for the dynamic response of continuous deck railway viaducts leading to 
+efficient digital twins in XII International Conference on Structural Dynamics, Journal 
+of Physics: Conference Series, vol. 2647, p. 102009. 

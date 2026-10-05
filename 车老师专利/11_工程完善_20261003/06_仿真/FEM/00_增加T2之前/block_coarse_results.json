@@ -1,0 +1,50 @@
+{
+  "case": "block_coarse",
+  "fields": [
+    "DISP",
+    "STRESS",
+    "FORC",
+    "ERROR"
+  ],
+  "max_von_mises_MPa": 110.15108963568721,
+  "stress_p99_MPa": 16.911300927775454,
+  "stress_p999_MPa": 25.124611050773584,
+  "max_stress_node": 48346,
+  "max_stress_position_mm": [
+    196.0010449813937,
+    44.9,
+    21.03018342021598
+  ],
+  "max_displacement_mm": 0.0020907338861390276,
+  "yield_lower_bound_MPa": 355,
+  "peak_yield_margin": 3.2228460124554736,
+  "proof_10_5MPa_peak_linear_scaled_MPa": 165.22663445353083,
+  "assumptions": "nominal hole stress at7MPa, fixed bottom, elastic45steel, no valve preload/thread helix or assembly contacts",
+  "mesh_convergence": "pending second mesh; sharp corners may create nonconvergent local peaks",
+  "files": {
+    "block.brep": {
+      "bytes": 340529,
+      "sha256": "c9be3f0e41b27541baad9dba27463125041dbdcfa10d67fc6ecdb32eafe5840b"
+    },
+    "block_coarse.msh": {
+      "bytes": 20376232,
+      "sha256": "5ac4e0b8d61ca52487daeedc2e5103ca1c96518aada5e20fabe4cc3dcc5be952"
+    },
+    "block_coarse.inp": {
+      "bytes": 16257642,
+      "sha256": "d2be30362018a07e1664af92afb5be09832d82efc2676b314d2f98f181b17dd1"
+    },
+    "block_coarse.frd": {
+      "bytes": 60151813,
+      "sha256": "80eb61f17d7c77ff2e23a726b18e2aea7f1e051958fe81aa19b60298e2602122"
+    },
+    "block_coarse.sta": {
+      "bytes": 173,
+      "sha256": "253efd59462bae0a6fce7b06552a063c82349747e482366b56da923c68b7ca9d"
+    },
+    "block_coarse.dat": {
+      "bytes": 214,
+      "sha256": "7f038a3da95903a7ad19492e1de65f05af49fcca72b78a406a105207c2050b28"
+    }
+  }
+}

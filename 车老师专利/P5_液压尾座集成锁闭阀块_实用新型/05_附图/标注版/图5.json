@@ -1,0 +1,116 @@
+{
+ "fig": 5,
+ "title": "沿泄放阀孔轴线的横向剖视图",
+ "scale": 0.84375,
+ "size_mm": [
+  154.1,
+  178.5
+ ],
+ "size_clean_mm": [
+  138.0,
+  178.5
+ ],
+ "labels": [
+  "2",
+  "11",
+  "16",
+  "43",
+  "71",
+  "76",
+  "33",
+  "53",
+  "61",
+  "25"
+ ],
+ "missing": [],
+ "crossings": 0,
+ "min_leader_pass_mm": 5.0,
+ "all_anchors_ok": true,
+ "anchors": [
+  {
+   "num": "2",
+   "name": "阀块本体",
+   "side": "R",
+   "anchor_part": "P00_2",
+   "ok": true,
+   "inside_mm": 7.1
+  },
+  {
+   "num": "11",
+   "name": "缸筒",
+   "side": "R",
+   "anchor_part": "P36_11",
+   "ok": true,
+   "inside_mm": 5.1
+  },
+  {
+   "num": "16",
+   "name": "无杆腔",
+   "side": "R",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "43",
+   "name": "泄放座阀",
+   "side": "R",
+   "anchor_part": "P11_43c",
+   "ok": true,
+   "inside_mm": 7.7
+  },
+  {
+   "num": "71",
+   "name": "第一压力传感器",
+   "side": "L",
+   "anchor_part": "P20_71",
+   "ok": true,
+   "inside_mm": 4.6
+  },
+  {
+   "num": "76",
+   "name": "阻尼孔螺塞",
+   "side": "R",
+   "anchor_part": "P26_76",
+   "ok": true,
+   "inside_mm": 1.7
+  },
+  {
+   "num": "33",
+   "name": "泄放阀孔",
+   "side": "R",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "53",
+   "name": "泄油口",
+   "side": "R",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "61",
+   "name": "第一测压孔",
+   "side": "L",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "25",
+   "name": "第一锁闭油道",
+   "side": "R",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  }
+ ],
+ "n_items": 13,
+ "dropped_small": 0,
+ "n_lines": 122,
+ "n_hatch": 182,
+ "t_s": 4.6
+}

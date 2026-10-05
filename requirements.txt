@@ -1,0 +1,38 @@
+
+# VAWES-15 车载高空风能专利设计项目依赖
+pymupdf>=1.27
+
+# TC1 再生硒鼓专利：演示动画 GIF 合成（09/P10）
+pillow>=12
+
+# VAWES-15 性能仿真（08_优化分析/仿真脚本）
+numpy>=2.5
+matplotlib>=3.11
+
+# VAWES-15 结构/传动链分析（08_优化分析/结构分析，雨流计数与数值积分）
+scipy>=1.17
+
+# VAWES-15 科普动画（10_动画/脚本，MP4/GIF 渲染导出）
+imageio>=2.37
+imageio-ffmpeg>=0.6
+
+# 冻土论文系列 P07 双重约束预测：CMIP6 zarr 惰性点位抽取（ESGF/GCS 匿名数据面）
+xarray>=2026.7
+zarr>=3.3
+gcsfs>=2026.7
+
+# 论文PPT成果流水线（文生图幻灯片合成与 PPTX 构建）
+python-pptx>=1.0
+
+# 专利文档与论文 Word/PDF 导出支持
+python-docx>=1.2.0
+pywin32>=312
+
+
+# 三项发明专利（PTM 延伸）：算法单元测试
+pytest>=8
+# 专利1 调研：文献下载 HTTPS 证书链（本机 Python 缺 CA 链）
+certifi==2026.07.22
+
+# 车老师专利：Blender MCP（项目虚拟环境，固定版本）
+mcp-for-blender==2.1.3

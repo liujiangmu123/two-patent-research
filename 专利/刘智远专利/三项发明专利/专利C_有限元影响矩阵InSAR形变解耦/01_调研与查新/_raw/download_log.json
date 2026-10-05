@@ -1,0 +1,160 @@
+{
+ "L01": {
+  "ok": true,
+  "file": "EGU26-11441_Ma2026_UHV塔_复成一号_CR_PS仿真.pdf",
+  "url": "https://meetingorganizer.copernicus.org/EGU26/EGU26-11441.html?pdf",
+  "bytes": 283787,
+  "pages": 2
+ },
+ "L02": {
+  "ok": false,
+  "file": "RS2022_14_6261_Okgye矿区PSInSAR_塔热胀季节振荡.pdf",
+  "url": "https://www.mdpi.com/2072-4292/14/24/6261/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L03": {
+  "ok": false,
+  "file": "GeoHazards2025_6_83_采空区特高压塔差异沉降.pdf",
+  "url": "https://www.mdpi.com/2624-795X/6/4/83/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L04": {
+  "ok": false,
+  "file": "RS2017_9_648_Garthwaite_角反射器设计.pdf",
+  "url": "https://www.mdpi.com/2072-4292/9/7/648/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L05": {
+  "ok": false,
+  "file": "RS2018_10_86_Garthwaite_角反射器设计_勘误.pdf",
+  "url": "https://www.mdpi.com/2072-4292/10/1/86/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L06": {
+  "ok": true,
+  "file": "Fringe2023_NGET_输电资产角反射器.pdf",
+  "url": "https://fringe2023.esa.int/iframe-agenda/files/presentation-170.pdf",
+  "bytes": 3414575,
+  "pages": 27
+ },
+ "L07": {
+  "ok": true,
+  "file": "WhiteRose_角反射器阵列_关键基础设施.pdf",
+  "url": "https://eprints.whiterose.ac.uk/id/eprint/191734/1/Novel_Corner-Reflector_Array_Application_in_Essential_Infrastructure_Monitoring.pdf",
+  "bytes": 26241141,
+  "pages": 18
+ },
+ "L08": {
+  "ok": true,
+  "file": "HNU_钢桁拱桥PSI_温度场修正.pdf",
+  "url": "https://hnutest.hnu.edu.cn/pdf/Longtermdeformation.pdf",
+  "bytes": 6598419,
+  "pages": 13
+ },
+ "L09": {
+  "ok": true,
+  "file": "ISPRS_Annals2026_铁路桥InSAR_FEM_热效应.pdf",
+  "url": "https://isprs-annals.copernicus.org/articles/XI-3-2026/455/2026/isprs-annals-XI-3-2026-455-2026.pdf",
+  "bytes": 1625791,
+  "pages": 5
+ },
+ "L10": {
+  "ok": false,
+  "file": "RS2018_10_1714_两座桥Sentinel1热膨胀.pdf",
+  "url": "https://www.mdpi.com/2072-4292/10/11/1714/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L11": {
+  "ok": true,
+  "file": "IGARSS2014_Goel_热膨胀监测.pdf",
+  "url": "https://elib.dlr.de/97418/1/IGARSS_2014_Goel.pdf",
+  "bytes": 1065331,
+  "pages": 4
+ },
+ "L12": {
+  "ok": false,
+  "file": "RS2019_11_1258_桥梁XC波段挠度与热膨胀.pdf",
+  "url": "https://www.mdpi.com/2072-4292/11/11/1258/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L13": {
+  "ok": false,
+  "file": "Sensors2024_24_7604_复成一号时序InSAR能力.pdf",
+  "url": "https://www.mdpi.com/1424-8220/24/23/7604/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L14": {
+  "ok": false,
+  "file": "RS2026_18_304_复成一号滑坡时序.pdf",
+  "url": "https://www.mdpi.com/2072-4292/18/2/304/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L15": {
+  "ok": false,
+  "file": "RS2026_18_1214_电子角反射器ECR业务化PSI.pdf",
+  "url": "https://www.mdpi.com/2072-4292/18/8/1214/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L16": {
+  "ok": false,
+  "file": "JGS2024_紧凑有源应答器CAT野外测试.pdf",
+  "url": "https://www.degruyterbrill.com/document/doi/10.1515/jogs-2022-0164/pdf?licenseType=open-access",
+  "err": "not a PDF (Content-Type=text/html; charset=UTF-8, 0 B)"
+ },
+ "L17": {
+  "ok": false,
+  "file": "RS2021_13_926_GECORIS角反射器时序工具.pdf",
+  "url": "https://www.mdpi.com/2072-4292/13/5/926/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L18": {
+  "ok": false,
+  "file": "RS2023_15_5242_桥梁InSAR结构解释.pdf",
+  "url": "https://www.mdpi.com/2072-4292/15/21/5242/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L19": {
+  "ok": true,
+  "file": "Tonelli2024_桥梁InSAR贝叶斯融合.pdf",
+  "url": "https://iris.unitn.it/retrieve/91533c6c-bc91-4534-b258-352a6e177753/TonelliEtAl.2024_354_manuscript.pdf",
+  "bytes": 4898894,
+  "pages": 8
+ },
+ "L20": {
+  "ok": false,
+  "file": "RS2023_15_4805_盐湖区塔基沉降预测.pdf",
+  "url": "https://www.mdpi.com/2072-4292/15/19/4805/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L21": {
+  "ok": false,
+  "file": "AppliedSci2025_15_11091_采动区输电塔稳定.pdf",
+  "url": "https://www.mdpi.com/2076-3417/15/20/11091/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L22": {
+  "ok": false,
+  "file": "RS2026_18_180_陆探一号图像质量.pdf",
+  "url": "https://www.mdpi.com/2072-4292/18/1/180/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L23": {
+  "ok": false,
+  "file": "ISPRS2024_陆探一号冻土走廊.pdf",
+  "url": "https://d-nb.info/1329608399/34",
+  "err": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1082)>"
+ },
+ "L24": {
+  "ok": false,
+  "file": "RS2024_16_3457_复成一号矿区沉降.pdf",
+  "url": "https://www.mdpi.com/2072-4292/16/18/3457/pdf",
+  "err": "HTTP Error 403: Forbidden"
+ },
+ "L25": {
+  "ok": true,
+  "file": "SCIS2025_复成一号三维成像.pdf",
+  "url": "http://scis.scichina.com/en/2025/177301.pdf",
+  "bytes": 671649,
+  "pages": 2
+ }
+}

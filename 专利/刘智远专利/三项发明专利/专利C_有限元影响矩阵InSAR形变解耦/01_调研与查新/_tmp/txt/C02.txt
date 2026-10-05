@@ -1,0 +1,369 @@
+InSAR analysis and Corner Reflector 
+Experiments for Infrastructure Stability 
+Monitoring Using Sentinel-1 Imagery
+Zahra Sadeghi1, Stephan Hobbs2, Mushfiqul Alam2, Michael Seller2, 
+James Deas3, Sean Coleman3 and Lucy Kennedy1
+1 Spottitt Ltd., 
+2 School of Aerospace, Transport & Manufacturing, Cranfield University
+3 National Grid Electricity Transmission
+FRINGE 2023
+University of Leeds, UK | 11 - 15 September 2023.
+
+2
+Introduction
+With regards to asset motion National Grid Energy 
+Transmission (NGET) spends over £6 million per year to 
+monitor 1% of their assets most at risk from asset motion issues.
+Introduction
+
+3
+Introduction
+• Q1:Could a synthetic Corner Reflector (CR) be sized, designed, and installed on 
+assets such as towers such that the asset itself becomes a radar reflector?
+• Q2:Could the team find the NGET assets that can be selected as natural radar 
+reflectors in the selected NGET sites?  
+• Q3:Could more than one synthetic radar reflector be installed on a single asset to 
+get multiple asset motion readings from a single asset? For example, to measure the 
+asset motion of each tower leg or each corner of a substation.
+Research questions
+
+4
+Q1CR design for NGET assets
+Assuming:
+•
+sub-cm uncertainty in displacement
+•
+SCR (Signal to Clutter Ratio) equals to 10 dB for a typical 
+UK rural landscape away from woodland
+The CR’s were sized to 70 cm inner leg.
+Special adaptations for installation on an electricity tower 
+included:
+•
+Mounting for ease of installation to tower and alignment to 
+Sentinel 1 descending tracks
+•
+Debris net
+•
+Drainage holes
+•
+Chain between CR and tower to prevent falling
+
+5
+Q1CR installation on NGET assets
+NGET Deeside test site
+First test CR installed on tower 1 on 2nd 
+Nov 2022 with a 100% clear view to 
+descending Sentinel 1 track (154).
+Second test CR installed on tower 2 on 
+7th Dec 2022 with a 0% clear (fully 
+obstructed by the body and arms of the 
+tower) view to descending Sentinel 1 
+track (154).
+
+6
+Q1CR installation on NGET assets
+
+7
+Q1 SAR Processing 
+Sentinel-1 images track 154, 3 images before installation  and 6 images after the installation, 1 image after 
+CR removal
+All co-registered w.r.t the first image after the CR installation 
+Georeferenced the images using a high-resolution LiDAR DEM and finally manually corrected using a 
+visible feature in the SAR image
+
+8
+Q1 Experimental results
+CR on tower 1 showed a more than 1.5 times jump in the amplitude time series after installation
+As anticipated due to the obstruction caused by the tower body, there was no amplitude increase post installation 
+for CR on the tower 2 
+Image after installation 
+Image before installation 
+CR installation
+CR removal
+
+9
+Q1 InSAR processing
+Conventional PSInSAR analysis using SARPROZ [*] and 13 Sentinel-1 images between 20230303 and 20230725 
+from track 154 descending (after CR1 installation) and 15 Sentinel-1 images between 20220507 and 20221022 
+from track 154 descending (before CR1 installation) 
+Before CR installation 
+After CR installation 
+[*] Perissin, D., Wang, Z., Wang, T., "The SARPROZ InSAR tool for urban subsidence/manmade structure stability monitoring in China", Proc. of ISRSE 2011, Sidney, Australia, 10-15 April 2011. 
+
+10
+Q1 Experimental results
+
+11
+We used SARPROZ to apply PSInSAR analysis using Sentinle-1 images in three NGET test sites.
+11
+East Thames
+West Midland
+Lincolnshire
+Q2InSAR analysis outcome across NGET assets
+
+12
+Q2 InSAR analysis outcome across NGET assets
+Some towers can be natural radar reflectors because of their 
+orientation relative to the Sentinel-1 satellites.
+
+13
+Q3 CR Installation 
+Objective
+To define the minimum distance 
+required between two CR’s in both the 
+along track and across track directions 
+and still get two resolvable CR signals. 
+Cranfield test site
+3 CRs installed on the Cranfield 
+University site in an open grassy area 
+SW of the runway. 
+The 3 CRs were mounted in an L shaped 
+formation each with a 100% clear view 
+to the Sentinel 1 satellite, descending 
+track (81).
+
+14
+Q3 SAR processing
+Sentinel-1 images descending track (81), 3 images before installation  and ), 1 image after each 
+layout installation
+All co-registered w.r.t the first image after the first layout installation
+Georeferenced the images using a high-resolution LiDAR DEM and finally manually corrected using 
+a visible feature in the SAR image
+
+15
+Q3 Experimental results
+Cranfield CR’s captured 16th Dec 2022 (I1)
+Date
+Along-
+track (N-S)
+Across-
+track (E-W)
+Comment
+16 Dec 2022(I1)
+60 m
+20 m
+3 distinct signals
+28 Dec 2022(I2)
+9 Jan 2023
+30 m
+10 m
+21 Jan 2023 (I3)
+5 m, 10 m
+First layout 
+Cranfield CR’s captured before first layout
+
+16
+16
+CR installation
+CR installation
+CR installation
+Q3 Experimental results
+First layout 
+Amplitude time series of the three distinct signal
+Date
+Along-track 
+(N-S)
+Across-
+track (E-W)
+Comment
+16 Dec 2022(I1)
+60 m
+20 m
+3 distinct signals
+28 Dec 2022
+9 Jan 2023(I2)
+30 m
+10 m
+21 Jan 2023 (I3)
+5 m, 10 m
+
+17
+Q3 Experimental results
+Cranfield CR’s captured 9h Jan 2023 (I2)
+Second layout 
+Cranfield CR’s captured before first layout
+Date3
+Along-track 
+(N-S)
+Across-
+track (E-W)
+Comment
+16 Dec 2022(I1)
+60 m
+20 m
+3 distinct signals
+28 Dec 2022
+9 Jan 2023(I2)
+30 m
+10 m
+2 distinct signals in along-track, signals in 
+across-track starts overlapping 
+21 Jan 2023 (I3)
+5 m, 10 m
+
+18
+Q3 Experimental results
+Second layout 
+Amplitude time series of the two distinct signals in along-track direction
+Central CR in three layouts
+Date3
+Along-track 
+(N-S)
+Across-
+track (E-W)
+Comment
+16 Dec 2022(I1)
+60 m
+20 m
+3 distinct signals
+28 Dec 2022(I2)
+9 Jan 2023
+30 m
+10 m
+2 distinct signals in along-track, signals in 
+across-track starts overlapping 
+21 Jan 2023 (I3)
+5 m, 10 m
+
+19
+19
+Q3 Experimental results
+4.8
+I1           I2       I3
+4.2
+I1           I2       I3
+3.8
+I1           I2       I3
+2.8
+Amplitude time series of the bright pixels in the overlapping area
+I1           I2       I3
+4.8
+Second layout 
+
+20
+Cranfield CR’s captured 21th Jan 2023 (I3)
+Date
+Along-
+track (N-S)
+Across-track 
+(E-W)
+Comment
+16 Dec 2022(I1)
+60 m
+20 m
+3 distinct signals
+28 Dec 2022(I2)
+9 Jan 2023
+30 m
+10 m
+2 distinct signals in along-track , signals in 
+across-track starts overlapping 
+21 Jan 2023(I3)
+5 m, 10 m
+2 signals start to overlap, and 2 signals are 
+overlapping
+Third layout – all 3 in across track 
+Cranfield CR’s captured before first layout
+Q3 Experimental results
+
+21
+Third layout – all 3 in across track 
+Q3 Experimental results
+I1           I2       I3
+4.2
+I1           I2       I3
+3.2
+I1           I2       I3
+4.7
+I1           I2       I3
+7.2
+Amplitude time series of the bright pixels in the area starts to overlap
+
+22
+Third layout – all 3 in across track 
+Q3 Experimental results
+Amplitude time series of the bright pixels in the overlapping area
+Central CR in three layouts
+I1           I2       I3
+8.1
+10
+
+23
+A RGB colour composite analysis using I1, 20221216 as red, I2, 20230109 as green, and I3, 
+20230121 as blue.
+Q3 Experimental results
+
+24
+Conclusions:
+•
+Synthetic corner reflectors can be designed, installed and used for monitoring the displacement of NGET 
+assets.
+•
+Some NGET assets e.g. towers can be natural radar reflectors because of their orientation relative to the 
+Sentinel-1 satellites.
+•
+Design of a larger corner reflector (1-meter inner leg) or an array of small corner reflectors and installation on 
+the NGET towers would improve signal strength.
+•
+As long as the spacing is more than approximately 30 m (along-track) or 10 m (across-track) then the coroner 
+reflectors should be visible as distinct targets. 
+•
+This translates to 1-2 corner reflectors per tower but multiple corner reflectors per sub-station.
+•
+ It is recommended to investigate how practical could be installation of 2 corner reflectors on an electricity 
+tower with regards to the size of the towers to still have two distinct signals for future study.  
+
+25
+  
+Thanks
+25
+
+26
+Vegetation monitoring
+Better plan VM activities and 
+validate tree-cutting works 
+done by third parties
+3rd party work & change 
+detection
+Monitor human activities and 
+changes around your assets
+Climate conditions 
+monitoring
+Trends related to climate 
+conditions around the assets
+Biodiversity monitoring
+Divide your land into 17 habitats 
+and understand their evolution 
+over time
+Gas leak monitoring
+Methane emissions monitoring 
+and risk detection of gas leaks
+Land and asset motion 
+monitoring
+Tracking land and asset 
+movements at mm / year 
+resolution 
+PV site selection
+Select anywhere the perfect 
+sites for rooftop or ground solar 
+installations
+Wind site selection
+Select anywhere the perfect 
+sites for onshore wind farm 
+installations
+Flood monitoring
+Near real time flood footprint 
+and depth mapping for your 
+assets
+We protect 
+infrastructure 
+assets 
+Worldwide
+Spottitt helps companies 
+anywhere in the world get the 
+geospatial information they 
+need to increase the 
+reliability, safety and 
+performance of their assets
+
+27

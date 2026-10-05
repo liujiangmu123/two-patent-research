@@ -1,0 +1,9 @@
+﻿rig_serial,date,operator,test,measurement,unit,uncertainty,acceptance_basis,result,evidence_file
+,,,mass,,kg,,measured>=7 and actual assembly configuration recorded,NOT_TESTED,
+,,,center_of_gravity_offset,,mm,,"total planar offset<=50, both x/y verified",NOT_TESTED,
+,,,reference_coordinate_repeatability,,mm,,match declared metrology uncertainty; target value not yet established,NOT_TESTED,
+,,,clamp_slip,,mm,,no slip beyond calibration budget under actual specimen load,NOT_TESTED,
+,,,support_lateral_pull,,N,,load path and overturning checked at declared wind force with controlled test,NOT_TESTED,
+,,,temperature,,K,,difference<=3 for unchanged control coordinates,NOT_TESTED,
+,,,wind,,m/s,,<=5 for calibration,NOT_TESTED,
+,,,foot_settlement,,mm,,before/after control geometry within validated budget,NOT_TESTED,

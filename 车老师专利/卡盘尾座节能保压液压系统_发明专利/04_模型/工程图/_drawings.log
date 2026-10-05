@@ -1,0 +1,33 @@
+dim skip DistanceX Vector (0.0, 0.0, 0.0) Vector (240.0, 0.0, 0.0) 13.462911971412423 120.49597155572403
+dim skip DistanceY Vector (240.0, 0.0, 0.0) Vector (240.0, 0.0, 75.0) 120.49597155572403 126.02479913155983
+dim skip DistanceX Vector (0.0, 0.0, 75.0) Vector (45.475, 0.0, 75.0) 40.56754393909003 37.66531058215238
+dim skip DistanceX Vector (0.0, 0.0, 75.0) Vector (85.475, 0.0, 75.0) 40.56754393909003 37.50000838333239
+dim skip DistanceX Vector (0.0, 0.0, 75.0) Vector (135.475, 0.0, 75.0) 40.56754393909003 40.959438732116446
+dim skip DistanceX Vector (0.0, 0.0, 75.0) Vector (175.475, 0.0, 75.0) 40.56754393909003 67.52574043392639
+dim skip DistanceY Vector (240.0, 0.0, 75.0) Vector (240.0, 90.0, 75.0) 120.18018414967587 128.51459061133875
+dia miss Vector (185.0, 45.0, 75.0) 9.525
+dia miss Vector (30.0, 12.0, 75.0) 7.0
+dim skip DistanceX Vector (30.0, 12.0, 75.0) Vector (210.0, 12.0, 75.0) 4.2862242598068825 90.16314470031534
+dim skip DistanceY Vector (30.0, 12.0, 75.0) Vector (30.0, 78.0, 75.0) 4.2862242598068825 33.037730888334316
+exported DWG-55_锁闭阀块
+dim err 'NoneType' object is not subscriptable
+dim err 'NoneType' object is not subscriptable
+dim err 'NoneType' object is not subscriptable
+exported DWG-00_试验台总装图
+dim skip DistanceX Vector (0.0, 0.0, 0.0) Vector (50.0, 0.0, 0.0) 2.23606797749979 45.53398759475623
+dim skip DistanceY Vector (50.0, 0.0, 0.0) Vector (50.0, 0.0, 158.0) 45.53398759475623 82.86132994346639
+dim skip DistanceY Vector (0.0, 0.0, 158.0) Vector (0.0, 200.0, 158.0) 46.208765402249085 100.12492197250393
+dim skip DistanceX Vector (0.0, 0.0, 158.0) Vector (30.0, 0.0, 158.0) 46.208765402249085 49.04334817281638
+dim skip DistanceX Vector (0.0, 200.0, 158.0) Vector (50.0, 200.0, 158.0) 100.12492197250393 103.07764064044152
+dia miss Vector (27.0, 10.0, 78.0) 8.5
+exported DWG-63_楔块
+dim skip DistanceX Vector (0.0, 0.0, 0.0) Vector (68.0, 0.0, 0.0) 82.00609733428362 86.00581375697809
+dim skip DistanceY Vector (68.0, 0.0, 0.0) Vector (68.0, 0.0, 158.0) 86.00581375697809 86.00581375697809
+dim skip DistanceY Vector (68.0, 0.0, 158.0) Vector (68.0, 120.0, 158.0) 68.96375859826666 68.96375859826666
+exported DWG-64_从动楔座
+dim skip DistanceX Vector (0.0, 0.0, 0.0) Vector (130.0, 0.0, 0.0) 50.987841687994646 65.23227728663166
+dim skip DistanceY Vector (130.0, 0.0, 0.0) Vector (130.0, 0.0, 175.0) 65.23227728663166 109.0011467829582
+dim skip DistanceX Vector (0.0, 0.0, 0.0) Vector (0.0, 150.0, 0.0) 31.32491021535417 115.2443057161611
+dim skip DistanceY Vector (0.0, 0.0, 0.0) Vector (0.0, 0.0, 115.0) 50.987841687994646 37.16517186829626
+exported DWG-51_工件模拟滑块
+ALL_DONE

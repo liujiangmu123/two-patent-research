@@ -1,0 +1,319 @@
+{
+ "说明": "5 种合成塔变体（标准/高低腿/缺材/遮挡/组合）平均；220 kV，定位误差 σ=0.5 m，安全壳半径 6.10 m；数值来自 脚本/run_all.py 真实运行",
+ "平均指标": {
+  "none": {
+   "coverage": 0.8626288659793815,
+   "n_low": 106.4,
+   "n_low_main": 6.2,
+   "node_rmse": 0.06934557521317113,
+   "tip_err_pct": 5.993108565494682,
+   "f_err_max": 15.428748407053831,
+   "weighted_deficit": 0.3761395112595858,
+   "path_m": 0.0,
+   "time_s": 0.0
+  },
+  "uniform": {
+   "coverage": 0.904639175257732,
+   "n_low": 71.4,
+   "n_low_main": 1.4,
+   "node_rmse": 0.07080767703925013,
+   "tip_err_pct": 3.383774958570453,
+   "f_err_max": 17.003152740602644,
+   "weighted_deficit": 0.17220479879070627,
+   "path_m": 552.0077734985805,
+   "time_s": 138.00194337464512
+  },
+  "geo_nbv": {
+   "coverage": 0.9930412371134022,
+   "n_low": 3.6,
+   "n_low_main": 0.6,
+   "node_rmse": 0.04863206890291262,
+   "tip_err_pct": 3.1700372851524046,
+   "f_err_max": 2.52019328523064,
+   "weighted_deficit": 0.03282079435458575,
+   "path_m": 197.1002681576895,
+   "time_s": 81.27506703942238
+  },
+  "proposed": {
+   "coverage": 0.9945876288659793,
+   "n_low": 3.4,
+   "n_low_main": 0.0,
+   "node_rmse": 0.05087427297018084,
+   "tip_err_pct": 3.1239218612826383,
+   "f_err_max": 1.497455252364198,
+   "weighted_deficit": 0.019185491323171856,
+   "path_m": 220.67917776336898,
+   "time_s": 87.16979444084225
+  },
+  "proposed_fixed4": {
+   "coverage": 0.9974226804123711,
+   "n_low": 0.0,
+   "n_low_main": 0.0,
+   "node_rmse": 0.04579776442894125,
+   "tip_err_pct": 3.866656406009482,
+   "f_err_max": 15.408412479766435,
+   "weighted_deficit": 0.005263420363907208,
+   "path_m": 446.8540693754182,
+   "time_s": 204.51351734385457
+  }
+ },
+ "安全壳违规次数": {
+  "none": {
+   "standard": 0,
+   "highlow": 0,
+   "missing": 0,
+   "occluded": 0,
+   "combined": 0
+  },
+  "uniform": {
+   "standard": 0,
+   "highlow": 0,
+   "missing": 0,
+   "occluded": 0,
+   "combined": 0
+  },
+  "geo_nbv": {
+   "standard": 0,
+   "highlow": 0,
+   "missing": 0,
+   "occluded": 0,
+   "combined": 0
+  },
+  "proposed": {
+   "standard": 0,
+   "highlow": 0,
+   "missing": 0,
+   "occluded": 0,
+   "combined": 0
+  },
+  "proposed_fixed4": {
+   "standard": 0,
+   "highlow": 0,
+   "missing": 0,
+   "occluded": 0,
+   "combined": 0
+  }
+ },
+ "不避壳等距全高度环绕违规区段": 17,
+ "缺材识别(检出/总数)": {
+  "none": {
+   "missing": "4/8",
+   "combined": "5/8"
+  },
+  "uniform": {
+   "missing": "1/8",
+   "combined": "2/8"
+  },
+  "geo_nbv": {
+   "missing": "3/8",
+   "combined": "4/8"
+  },
+  "proposed": {
+   "missing": "6/8",
+   "combined": "6/8"
+  },
+  "proposed_fixed4": {
+   "missing": "2/8",
+   "combined": "4/8"
+  }
+ },
+ "停止判据": {
+  "standard": {
+   "自适应停止": {
+    "time_s": 86.02658444795574,
+    "deficit": 0.016470372080118634,
+    "reason": "缺口达标"
+   },
+   "固定4轮": {
+    "time_s": 208.59548592861967,
+    "deficit": 0.0020440061080911854
+   }
+  },
+  "highlow": {
+   "自适应停止": {
+    "time_s": 87.55494929522905,
+    "deficit": 0.021273276117612313,
+    "reason": "缺口达标"
+   },
+   "固定4轮": {
+    "time_s": 189.17013877564304,
+    "deficit": 0.0055218622764518725
+   }
+  },
+  "missing": {
+   "自适应停止": {
+    "time_s": 87.53951639896479,
+    "deficit": 0.017890330776281573,
+    "reason": "缺口达标"
+   },
+   "固定4轮": {
+    "time_s": 216.24393729306837,
+    "deficit": 0.00240731454276863
+   }
+  },
+  "occluded": {
+   "自适应停止": {
+    "time_s": 87.5638199182132,
+    "deficit": 0.01887636085773823,
+    "reason": "缺口达标"
+   },
+   "固定4轮": {
+    "time_s": 197.4385610860638,
+    "deficit": 0.007702155544401763
+   }
+  },
+  "combined": {
+   "自适应停止": {
+    "time_s": 87.1641021438485,
+    "deficit": 0.021417116784108518,
+    "reason": "缺口达标"
+   },
+   "固定4轮": {
+    "time_s": 211.119463635878,
+    "deficit": 0.008641763347822585
+   }
+  }
+ },
+ "500kV_σ1.5m_组合塔": {
+  "coverage": 0.9922680412371134,
+  "n_low": 2,
+  "n_low_main": 0,
+  "node_rmse": 0.06635317262265607,
+  "node_rmse_observed": 0.06576534812709506,
+  "tip_err_pct": 6.449659626130715,
+  "f_err_pct": [
+   0.9171275774566938,
+   2.049652835761723,
+   35.05663688110328
+  ],
+  "weighted_deficit": 0.009993229830949716,
+  "path_m": 314.98245719127783,
+  "time_s": 142.74561429781946,
+  "n_views": 16,
+  "rounds": 2,
+  "violations": 0,
+  "stop_reason": "缺口达标",
+  "missing_detected": 4,
+  "missing_total": 8,
+  "false_missing": 0,
+  "sym_counts": {
+   "一致": 716,
+   "冲突": 60,
+   "不可判": 0
+  },
+  "min_live_dist": 11.904665493275441,
+  "shell_radius": 11.1,
+  "n_candidates": 756
+ },
+ "安全壳半径表": [
+  {
+   "kv": 110,
+   "sigma": 0.05,
+   "d_min": 1.5,
+   "radius": 3.25
+  },
+  {
+   "kv": 110,
+   "sigma": 0.5,
+   "d_min": 1.5,
+   "radius": 4.6
+  },
+  {
+   "kv": 110,
+   "sigma": 1.5,
+   "d_min": 1.5,
+   "radius": 7.6
+  },
+  {
+   "kv": 220,
+   "sigma": 0.05,
+   "d_min": 3.0,
+   "radius": 4.75
+  },
+  {
+   "kv": 220,
+   "sigma": 0.5,
+   "d_min": 3.0,
+   "radius": 6.1
+  },
+  {
+   "kv": 220,
+   "sigma": 1.5,
+   "d_min": 3.0,
+   "radius": 9.1
+  },
+  {
+   "kv": 330,
+   "sigma": 0.05,
+   "d_min": 4.0,
+   "radius": 5.75
+  },
+  {
+   "kv": 330,
+   "sigma": 0.5,
+   "d_min": 4.0,
+   "radius": 7.1
+  },
+  {
+   "kv": 330,
+   "sigma": 1.5,
+   "d_min": 4.0,
+   "radius": 10.1
+  },
+  {
+   "kv": 500,
+   "sigma": 0.05,
+   "d_min": 5.0,
+   "radius": 6.75
+  },
+  {
+   "kv": 500,
+   "sigma": 0.5,
+   "d_min": 5.0,
+   "radius": 8.1
+  },
+  {
+   "kv": 500,
+   "sigma": 1.5,
+   "d_min": 5.0,
+   "radius": 11.1
+  },
+  {
+   "kv": 750,
+   "sigma": 0.05,
+   "d_min": 8.0,
+   "radius": 9.75
+  },
+  {
+   "kv": 750,
+   "sigma": 0.5,
+   "d_min": 8.0,
+   "radius": 11.1
+  },
+  {
+   "kv": 750,
+   "sigma": 1.5,
+   "d_min": 8.0,
+   "radius": 14.1
+  },
+  {
+   "kv": 1000,
+   "sigma": 0.05,
+   "d_min": 9.5,
+   "radius": 11.25
+  },
+  {
+   "kv": 1000,
+   "sigma": 0.5,
+   "d_min": 9.5,
+   "radius": 12.6
+  },
+  {
+   "kv": 1000,
+   "sigma": 1.5,
+   "d_min": 9.5,
+   "radius": 15.6
+  }
+ ],
+ "总运行时间_s": 294.32412791252136
+}

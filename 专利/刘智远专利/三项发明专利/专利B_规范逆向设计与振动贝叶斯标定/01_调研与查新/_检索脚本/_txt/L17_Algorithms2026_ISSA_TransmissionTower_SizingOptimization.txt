@@ -1,0 +1,1789 @@
+Academic Editor: Chenliang Liu
+Received: 27 May 2026
+Revised: 20 June 2026
+Accepted: 23 June 2026
+Published: 26 June 2026
+Copyright: © 2026 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license.
+algorithms
+Article
+Improved Sparrow Search Algorithm Applied to Structural
+Optimization of Transmission Tower
+Lan Jiang 1,2,*
+, Yesen Wang 1,2, Yingchun Zhang 3, Zijun Xiang 1,2
+and Xinhong Han 1,2
+1
+College of Electrical Engineering and New Energy, China Three Gorges University, Yichang 443002, China;
+wys@ctgu.edu.cn (Y.W.)
+2
+Hubei Transmission Line Engineering Technology Research Center, Yichang 443002, China
+3
+State Grid Xin Yuan Group Co., Ltd., Hubei Branch, Wuhan 430074, China
+*
+Correspondence: jl@ctgu.edu.cn
+Abstract
+To balance the requirements of structural safety and economic efficiency in transmission
+tower design, this study proposes a structural optimization method based on an Improved
+Sparrow Search Algorithm (ISSA). Specifically, the methodology integrates Circle chaotic
+mapping to initialize the sparrow population distribution, followed by the introduction of a
+firefly perturbation strategy. This strategy updates the sparrow positions derived from the
+basic algorithm, thereby enhancing the algorithm’s ability to escape local optima. Based on
+these enhancements, a mathematical model for structural optimization is established with
+the primary objective of minimizing the total weight of the tower. The penalty function
+method is employed to handle constraints, while the finite element method is utilized
+for internal force analysis. To verify the effectiveness of the proposed approach, a typical
+cat-head transmission tower is selected as a case study. The optimization results obtained
+from the ISSA are compared with those produced by the Daoheng software, demonstrating
+a weight reduction of 3.79%. These findings indicate that the ISSA effectively improves
+the optimization performance and provides an efficient solution for the preliminary sizing
+design of transmission towers.
+Keywords: Improved Sparrow Search Algorithm; transmission tower; finite element
+analysis; structure optimization
+1. Introduction
+Currently, China is undergoing a critical phase in the accelerated development of
+a new type of energy system. Consequently, the construction scale of high-voltage and
+ultra-high-voltage long-distance power transmission projects is expanding annually. As
+the most critical supporting structures in power transmission lines, transmission towers
+primarily withstand various loads from transmission lines and the external environment.
+Therefore, these structures are characterized by stringent safety requirements and represent
+a significant portion of the total project expenditure. In light of the “dual carbon” strategy
+related to carbon peaking and carbon neutrality, optimizing the structure of transmission
+towers to reduce steel consumption while ensuring structural safety is of significant impor-
+tance. This approach not only enhances the economic efficiency of engineering projects but
+also contributes substantially to the reduction of carbon emissions.
+Structural optimization is generally categorized into size optimization, shape opti-
+mization, and topology optimization [1–3]. The core components of this process involve the
+Algorithms 2026, 19, 513
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+2 of 23
+establishment of a rigorous mathematical model and the selection of a suitable optimization
+algorithm. A mathematical model typically comprises three fundamental elements: design
+variables, objective functions, and constraints. The available optimization methodologies
+are generally categorized into three classes, namely analytical methods, numerical methods,
+and intelligent optimization algorithms [4]. Analytical methods involve complex solution
+procedures and are generally unsuitable for large-scale and complex structural optimization
+problems in practical engineering. Numerical methods for structural topology and sizing
+optimization problems are primarily classified into two categories, namely mathemati-
+cal programming methods and optimality criteria methods. Mathematical programming
+methods are rooted in mathematical optimization theory and function by converting the
+optimization problem into an extremum problem of a mathematical model, which is subse-
+quently solved using iterative algorithms. Although characterized by high computational
+accuracy and theoretical rigor, mathematical programming methods often entail a sig-
+nificant computational burden when applied to complex structures, which hinders their
+direct implementation in large-scale engineering. In contrast, optimality criteria meth-
+ods are developed by constructing heuristic iterative rules grounded in physical intuition
+or mathematical optimality conditions. While these methods exhibit superior computa-
+tional efficiency, they are predominantly limited to addressing optimization problems with
+simple constraints.
+Intelligent optimization algorithms have undergone rapid development in recent years.
+These algorithms are inspired by natural phenomena or biological behaviors, including
+genetic evolution, the collective interactions of ant colonies, and the foraging strategies
+of whales [5–7]. Characterized by strong robustness and high flexibility in diverse ap-
+plications, these meta-heuristic approaches are frequently employed to address complex
+structural optimization challenges. Numerous scholars have conducted extensive research
+on the structural optimization of transmission towers, with their research efforts primarily
+focusing on the following two dimensions: The first dimension involves enhancing the
+performance of meta-heuristic algorithms and ensuring their suitability for practical engi-
+neering. Given that the structural optimization of transmission towers is characterized by
+high dimensionality and nonlinearity, researchers frequently integrate biological behav-
+ioral patterns observed in nature to augment the efficiency of the optimization process.
+Scholars such as Tort et al. [8] and Couceiro et al. [9] enhanced the simulated annealing
+algorithm and integrated it into professional design software to facilitate the rapid iterative
+calculation of transmission tower structures. Cheng and Shi [10] proposed an improved
+fruit fly optimization algorithm to address cross-sectional size optimization problems,
+which significantly enhances search accuracy within complex constraint environments.
+Baykaso˘glu et al. [11] introduced a weighted superposition attraction algorithm based
+on swarm intelligence to optimize complex truss structures, successfully achieving the
+minimization of total structural weight. The second dimension focuses on the refinement of
+mechanical analysis models and the formulation of effective constraint-handling strategies.
+Since the optimization of transmission towers necessitates the consideration of multiple
+intricate constraints including structural strength, stability, and stiffness, the fidelity of
+the mechanical model is of paramount importance because it directly influences the pre-
+cision and feasibility of the final optimization results. Jahangiri et al. [12] implemented
+a Prize-Penalty Strategy to manage constraints such as stress and deflection during the
+optimization of truss structures, which yielded satisfactory results. Furthermore, the super-
+vised classification machine learning method introduced by Rosso et al. [13] demonstrates
+excellent adaptability to both nonlinear and discontinuous boundaries.
+In response to the increasing complexity and expanding scale of practical engineering
+structures, a growing number of researchers have shifted their focus toward intelligent
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+3 of 23
+optimization algorithms. Specifically, the Sparrow Search Algorithm (SSA) [14] is a swarm
+intelligence optimization method developed by simulating the natural behaviors of spar-
+row populations, such as foraging, competition, and anti-predation. The algorithm is
+characterized by high convergence accuracy and a streamlined parameter configuration,
+offering significant advantages in addressing optimization problems that are non-linear,
+multimodal, and high-dimensional [15]. Due to the challenges of non-uniform population
+distribution and the susceptibility of the SSA to premature convergence toward local op-
+tima, this study improves the original algorithm by incorporating Circle chaotic mapping
+and a firefly perturbation strategy. Building upon these considerations, this study proposes
+an Improved Sparrow Search Algorithm (ISSA). In conjunction with the finite element
+analysis of transmission tower structures, the enhanced algorithm is applied to structural
+optimization with the primary objective of minimizing the total weight of the tower. The
+results demonstrate that the improved algorithm can be effectively applied to the structural
+optimization design of transmission towers.
+Although Circle chaotic mapping and firefly perturbation are both existing strategies,
+the focus of this study lies in developing a stage-wise collaborative improvement frame-
+work for engineering-constrained optimization problems, tailored to the characteristics
+of transmission tower structural optimization. Based on the basic SSA, Circle chaotic
+mapping is introduced to alleviate the problem of uneven initial population distribution,
+while the firefly perturbation strategy is employed to enhance the local search capability
+of SSA during the optimization process and improve its ability to escape local optima.
+These two strategies address the limitations of SSA at different optimization stages. Based
+on this mechanism, the proposed ISSA is further integrated with finite element analysis,
+discrete section selection, and stress, slenderness ratio, and displacement constraints of
+transmission towers, and is applied to the preliminary sizing optimization of primary
+load-carrying members.
+2. Internal Force Analysis of Transmission Towers
+The structural optimization of transmission towers is an iterative procedure that
+begins with the analysis of internal forces, followed by the selection of member cross-
+sections. This sequence is performed repeatedly until a global optimal solution is identified.
+Consequently, internal force analysis represents a pivotal stage in the overall optimization
+design. For the internal force calculations of the transmission tower structures [16,17],
+the finite element method is employed alongside the robust computational capabilities of
+MATLAB R2022a to carry out the structural simulations.
+2.1. Finite Element Analysis
+Finite element analysis is fundamentally categorized into three primary stages, which
+include discretization, local element analysis, and global structural analysis. For trans-
+mission tower structures, discretization involves representing the individual structural
+members as discrete elements, while the junctions where these members intersect and their
+connections to the supports are abstracted as nodes. Local element analysis involves the
+derivation of the mechanical relationship between nodal forces and nodal displacements
+for each individual member to formulate the element stiffness matrix. Global structural
+analysis involves aggregating the individual stiffness matrices of all members into a com-
+prehensive global stiffness matrix by utilizing coordinate transformation matrices based
+on the actual tower configuration. This process subsequently enables the establishment of
+the global equilibrium equations for the entire system. Prior to the solution of the global
+equilibrium equations, boundary conditions such as prescribed displacements must be
+incorporated. This procedure facilitates the determination of critical mechanical parameters
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+4 of 23
+including unknown nodal displacements, element stresses, and strains. In transmission
+line engineering design, transmission towers are commonly analyzed using spatial truss
+models, in which primary and bracing members are idealized as two-force elements, and
+joints are assumed to be pinned. The forces acting on members are equivalently transferred
+to the nodes. This modeling approach has been widely adopted in current engineering
+design codes and related engineering software, as it ensures computational efficiency while
+meeting the accuracy requirements of preliminary design [18–20]. Therefore, in this study,
+the above truss model is employed in the optimization process to facilitate comparison
+with commonly used engineering analysis methods. It should be noted that this model
+does not consider bending effects or semi-rigid joint behavior, and their influence will be
+further investigated in future work.
+2.1.1. Formulation of the Element Stiffness Matrix Equation
+Transmission towers belong to spatial truss structures. In structural mechanics, the
+element local stiffness matrix is transformed into the element stiffness matrix in the global
+coordinate system through a coordinate transformation matrix. The specific procedure is
+as follows:
+(1)
+Element stiffness matrix equation in the local coordinate system
+The element stiffness matrix in the local coordinate system is shown as follows:
+{AM}i = [SM]i{DM}i
+(1)
+where {AM}i is the nodal force vector of member i in the local coordinate system; [SM]i is
+the element stiffness matrix of member element i in the local coordinate system; and {DM}i
+is the nodal displacement vector of member i in the local coordinate system.
+The element stiffness matrix in the local coordinate system, denoted as [SM]i, is
+expressed as:
+[SM]i = EA
+l
+
+
+
+
+
+
+
+
+
+
+1
+0
+0
+−1
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+−1
+0
+0
+1
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+
+
+
+
+
+
+
+
+
+
+(2)
+where E is the elastic modulus of the material; A is the cross-sectional area of the member;
+and l is the length of the member.
+(2)
+Element stiffness matrix equation in the global coordinate system
+The element stiffness matrix in the global coordinate system is shown as follows:
+{AS}i = [SMD]i{DS}i
+(3)
+where {AS}i is the nodal force vector of member i in the global coordinate system; [SMD]i
+is the element stiffness matrix of member element i in the global coordinate system; and
+{DS}i is the nodal displacement vector of member i in the global coordinate system.
+Since {AM}i and {AS}i, as well as {DM}i and {DS}i, are defined in different coor-
+dinate systems, their relationships need to be established using the element coordinate
+transformation matrix.
+The element stiffness matrix in the global coordinate system, denoted as [SMD]i, is
+expressed as:
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+5 of 23
+[SMD] = EA
+l
+
+
+C2
+x
+CyCx
+CzCx
+−C2
+x
+−CyCx
+−CzCx
+CxCy
+C2
+y
+CzCy
+−CxCy
+−C2
+y
+−CzCy
+CxCz
+CyCz
+C2
+z
+−CxCz
+−CyCz
+−C2
+z
+−C2
+x
+−CyCx
+−CzCx
+C2
+x
+CyCx
+CzCx
+−CxCy
+−C2
+y
+−CzCy
+CxCy
+C2
+y
+CzCy
+−CxCz
+−CyCz
+−C2
+z
+CxCz
+CyCz
+C2
+z
+
+
+(4)
+where Cx, Cy, and Cz are the direction cosines of the member axis with respect to the x-, y-,
+and z-directions of the global coordinate system, respectively, and can be calculated from
+the coordinates of the two end nodes of the member.
+2.1.2. Global Nodal Displacements and Global Nodal Forces
+(1)
+Global nodal displacements of the structure
+During the discretization of the transmission tower, the nodes are considered as hinged.
+Since each node has three independent linear displacements in the x, y and z directions
+of the global coordinate system, a tower with a total of n nodes will have 3n independent
+linear displacements. The global nodal displacement vector can be expressed as follows:
+{DJ} = {(DJ)1
+(DJ)2
+(DJ)3
+· · ·
+(DJ)3k−2
+(DJ)3k−1
+(DJ)3k
+· · · }T
+(5)
+where (DJ)1, (DJ)2 and (DJ)3 are the linear displacements of node 1 in the x, y and z
+directions; (DJ)3k−2, (DJ)3k−1 and (DJ)3k are the linear displacements of node k in the x, y
+and z directions.
+(2)
+Global nodal forces of the structure
+The global nodal forces of the structure are the sum of the total support reactions
+and the combined nodal loads. Among them, the support reactions are the reaction forces
+generated at the supports in the direction of the constraints under the action of loads,
+represented by the vector {RJ}. The combined nodal loads are represented by the vector
+{AC}. Thus, the global nodal force vector of the structure {AJ} is expressed as follows:
+{AJ} = {RJ} + {AC}
+(6)
+2.1.3. Formulation and Solution of the Global Nodal Stiffness Matrix Equation
+According to the numbering of the degree of freedom at the ends of each member, the
+global element stiffness matrices [SMD] are assembled into the overall stiffness matrix [SJ],
+thereby establishing the global equilibrium equation of the transmission tower structure:
+[SJ]{DJ} = {AJ}
+(7)
+In the equation above, the global nodal stiffness matrix [SJ] is singular, which makes
+the corresponding system of equations unsolvable without additional constraints. There-
+fore, known displacement boundary conditions, such as the displacements at the connection
+points between the transmission tower legs and the foundation, must be introduced to
+solve the global nodal stiffness matrix equation.
+2.1.4. Final Member-End Forces
+The final member end forces of the structure can be calculated using the follow-
+ing equation:
+{AM}i = {AML}i + [SM]i[RT]i{DJ}i
+(8)
+where {AML}i is the vector of fixed-end forces generated by the loads acting on the member.
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+6 of 23
+2.2. Internal Force Calculation Process
+Following the aforementioned analytical procedure, an internal force analysis program
+for the transmission tower was developed in MATLAB, the primary workflow of which is
+illustrated in Figure 1.
+Start
+Read node and element data
+Input loads, load cases, and parameters
+Formulate element stiffness matrices
+Assemble global stiffness matrix
+Apply boundary conditions
+Solve global stiffness equations
+Calculate nodal displacements and 
+element internal forces
+Output results
+End
+Figure 1. Flow chart of finite element analysis.
+2.3. Verification of the MATLAB-Based Finite Element Program
+2.3.1. Introduction to the Spatial Structure
+To verify the correctness of the MATLAB finite element analysis program in calculating
+the internal forces of transmission tower structures, a typical three-dimensional lattice tower
+structure was selected as a verification example. The calculation results obtained from the
+MATLAB program were compared with those obtained from ANSYS (version 19.2) finite
+element analysis. The tower structure is shown in Figure 2. Since the structure is symmetric
+about its central axis, the center of the bottom plane was taken as the coordinate origin
+to establish a three-dimensional Cartesian coordinate system. The nodal coordinates are
+listed in Table 1.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+16
+15
+0
+X
+Y
+Z
+Figure 2. Schematic diagram of a three-dimensional lattice tower structure (numbers indicate
+node labels).
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+7 of 23
+Table 1. Node coordinates.
+Node
+X Direction (m)
+Y Direction (m)
+Z Direction (m)
+1
+1.50
+1.50
+10.00
+5
+1.95
+1.95
+7.00
+9
+2.40
+2.40
+4.00
+13
+3.00
+3.00
+0.00
+The three-dimensional lattice tower is entirely constructed using Q235 steel, and the
+member cross-section is L45 × 5. The elastic modulus of the material is E = 2.06 × 1011 Pa.
+The finite element analysis of the tower structure is carried out using ANSYS, in which the
+members are modeled with LINK180 elements. The applied loads are shown in Table 2.
+Table 2. Applied loads.
+Node
+X Direction (kN)
+Y Direction (kN)
+Z Direction (kN)
+1
+11
+40
+−20
+2
+11
+40
+−20
+3
+12
+50
+−20
+4
+12
+50
+−20
+2.3.2. Result Verification
+Under the same nodal coordinates, member connectivity, material parameters, section
+parameters, loads, and boundary conditions, the spatial tower was analyzed using both the
+MATLAB program and ANSYS software. The results show that the calculated axial forces
+of the members obtained by the two methods are basically consistent. The comparison
+results of selected member forces are shown in Table 3. The selected members cover the
+upper, middle, and lower parts of the tower, which can reasonably reflect the reliability of
+the program in calculating member internal forces of spatial tower structures.
+Table 3. Comparison of Internal Force Calculation Results.
+Member
+Location
+ANSYS Result (N)
+MATLAB Result (N)
+Relative Error (%)
+1–5
+Upper main leg
+−51,640
+−51,640.5
+9.68 × 10−4
+5–9
+Middle main leg
+−124,900
+−124,902.9
+2.32 × 10−3
+9–13
+Lower main leg
+−160,000
+−159,997.2
+−1.75 × 10−3
+1–4
+Top horizontal
+−1090
+−1090.0
+0
+5–8
+Upper-middle horizontal
+7874.2
+7874.2
+0
+9–12
+Middle horizontal
+12,842
+12,842.3
+2.34 × 10−3
+1–8
+Upper diagonal
+45,678
+45,678.4
+8.76 × 10−4
+5–12
+Middle diagonal
+32,393
+32,392.6
+−1.23 × 10−3
+9–16
+Lower diagonal
+19,486
+19,485.7
+−1.54 × 10−3
+2–4
+Top diaphragm diagonal
+−312.38
+−312.4
+6.40 × 10−3
+6–8
+Upper-middle diaphragm diagonal
+3700.5
+3700.5
+0
+10–12
+Lower-middle diaphragm diagonal
+3652.1
+3652.1
+0
+As shown in the table, the axial forces of the selected typical members calculated by
+the MATLAB program agree well with the ANSYS results, and the maximum absolute
+relative error is only 0.0064%. Therefore, the MATLAB space truss finite element program
+established in this study has high reliability in calculating member axial forces and can be
+used for the subsequent optimization analysis of transmission tower structures.
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+8 of 23
+3. Sparrow Search Algorithm and Its Improvements
+3.1. Sparrow Search Algorithm
+In the SSA, the sparrow population is divided into producers, scroungers, and spar-
+rows that perceive danger [21,22]. Suppose there are N sparrows in a D-dimensional space;
+the position of the i-th sparrow can be represented as Xi = [xi1, . . . , xid, . . . , xiD], and the
+fitness value is Fx = [ f (xi1), . . . , f (xid), . . . , f (xiD)], where i ∈[1, N], d ∈[1, D], and both
+are integers.
+In the SSA, producers are individuals with better fitness values in the population and
+are responsible for searching for promising solution positions in the search space. The
+position update formula is defined as follows:
+xt+1
+id
+=
+
+
+
+
+
+xt
+id · exp
+
+−
+i
+α · itermax
+
+,
+R2 < ST
+xt
+id + Q · L,
+R2 ≥ST
+(9)
+where t denotes the current iteration number; itermax represents the maximum number
+of iterations; α ∈(0, 1] is a random number; Q is a random number following a normal
+distribution; L represents a 1 × d matrix in which all elements are 1; R2 ∈[0, 1] is the
+warning value; and ST ∈[0.5, 1] denotes the safety value.
+When R2 < ST, the environment is safe, and producers conduct a global search.
+Otherwise, it indicates that the current environment is hazardous, prompting producers to
+issue an alarm. At this point, all sparrows migrate to other areas.
+Individuals other than producers are defined as scroungers, constituting the majority
+of the population. Their role involves performing a refined local search based on the
+findings of the producers. The position update formula is expressed as follows:
+xt+1
+id
+=
+
+
+
+
+
+
+
+Q · exp
+ 
+xworst −xt
+id
+i2
+!
+,
+i > N
+2
+xt+1
+p
++
+xt
+id −xt+1
+p
+ · A+ · L,
+i ≤N
+2
+(10)
+where xworst denotes the global worst position of the population; xp represents the optimal
+position of the producers; A is a 1 × d matrix with elements randomly assigned values of 1
+or −1, where A+ = AT(AAT)−1.
+When i > N/2, the follower is in a starving state and will randomly migrate to other
+locations for foraging. Otherwise, the individual moves toward the producers currently
+occupying the optimal position to forage.
+Furthermore, 10% to 20% of the population consists of sparrows that perceive danger,
+which monitor environmental risks via random walks and issue alarms. The position
+update formula is defined as follows:
+xt+1
+id
+=
+
+
+
+
+
+
+
+xt
+best + β ·
+xt
+id −xt
+best
+,
+fi > fg
+xt
+id + K ·
+ xt
+id −xt
+worst
+
+( fi −fw) + ε
+!
+,
+fi = fg
+(11)
+where xt
+best denotes the optimal position within the population during the t-th iteration;
+β is the step size control parameter, with β ∼N(0, 1); K ∈[−1, 1] represents a random
+number; fi is the fitness value of the i-th sparrow; fw and fg are the worst and best fitness
+values of the population, respectively; and ε is an infinitesimal constant.
+When fi > fg, the individual is at the periphery of the population and faces a risk
+of predation. When fi = fg, the individual is located at the center of the population and
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+9 of 23
+senses danger, leading it to actively move closer to other members of the population to
+reduce the risk of being preyed upon.
+3.2. Circle Chaotic Map
+To address issues such as local optima entrapment and stagnant convergence when
+performing structural optimization with the basic SSA, the Circle chaotic map is introduced.
+As a discrete dynamical system with strong chaotic characteristics, its core advantages
+lie in high coverage and excellent robustness. By leveraging the ergodic properties and
+stochastic patterns of chaotic systems, the diversity and spatial distribution uniformity of
+the initial population are enhanced [23–25], which effectively accelerates the convergence
+rate. The mathematical model is expressed as follows:
+xi+1 = mod
+
+xi + 0.2 −
+0.5
+2π
+
+sin(2πxi), 1
+
+(12)
+where i + 1 denotes the dimensionality of the solution. To provide an intuitive illustration
+of the Circle chaotic map, its distribution plot and histogram are generated to evaluate
+whether the sample points are uniformly distributed. To ensure a sufficient sample size
+and to more accurately demonstrate the distribution characteristics of the chaotic values
+within the interval, 1000 sample points are selected. The distribution plot and histogram
+for the initial solutions generated by the Circle chaotic map are presented in Figure 3.
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+Dimension Index
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Chaotic Value
+(a)
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Chaotic Value
+0
+0.2
+0.4
+0.6
+0.8
+1
+1.2
+1.4
+1.6
+Probability Density
+(b)
+Figure 3. Circle chaotic map results. (a) Distribution plot. (b) Histogram.
+3.3. Firefly Perturbation Strategy
+The Firefly Algorithm [26] is a swarm intelligence optimization algorithm based on
+the behavioral patterns of firefly populations. The core concept of the algorithm involves
+facilitating global search through a mechanism of brightness comparison and distance-
+based attraction among fireflies. Integrating the FA into the traditional SSA enhances the
+capacity to escape local optima and improves search precision. This approach is typically
+applied to address nonlinear problems and combinatorial optimization tasks.
+To address the tendency of the SSA to fall into local optima during structural opti-
+mization, a firefly perturbation mechanism is introduced to enhance the local exploration
+capability. By simulating the mutual attraction between fireflies, directional perturbations
+are applied to individual positions. The fitness values are compared before and after the
+perturbation, and the superior one is selected to update the individual status, thereby
+enhancing population diversity and improving the global optimization capability [27].
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+10 of 23
+Specifically, the attractiveness between fireflies serves as the core regulatory parameter for
+perturbation intensity, and its formula is defined as follows:
+β = β0 · e−γr2
+i,j
+(13)
+where β0 denotes the maximum attractiveness; γ represents the light absorption coefficient;
+and ri,j is the distance between fireflies i and j.
+Between fireflies i and j, if the brightness of j is superior to that of i, firefly i will be
+attracted to j and its position will be updated. The position update is described as follows:
+xi = xi + β · (xj −xi) + α · (rand −0.5)
+(14)
+where xi and xj denote the spatial positions of fireflies i and j, respectively; and α ∈[0, 1]
+represents the step size factor.
+4. Member Cross-Section Optimization Model and Process
+4.1. Member Cross-Section Optimization Model
+The preceding sections primarily discussed the methods employed for the structural
+optimization of transmission towers. However, achieving an optimal design for such struc-
+tures requires not only the selection of appropriate and efficient optimization methods but
+also the establishment of a reliable mathematical model. For the structural optimization of
+transmission towers, a mathematical model is established with the objective of minimizing
+the total weight of the tower, subject to constraints such as member stress, slenderness ratio,
+and nodal displacement.
+Regarding the structural optimization design of transmission towers, the primary
+constraints considered are as follows:
+(1)
+Member stress
+σi =
+
+
+
+
+
+
+
+N+
+i
+Ai
+≤f,
+N+
+i
+is the tensile internal force
+N−
+i
+φiAi
+≤f,
+N−
+i
+is the compressive internal force
+(15)
+where σi denotes the stress of the i-th member; f represents the design value of the steel
+strength; and φi is the stability coefficient of the axially compressed member.
+(2)
+Slenderness ratio
+
+
+
+λi −[λ]C ≤0
+λi −[λ]T ≤0
+(16)
+where λi denotes the slenderness ratio of the i-th member, and [λ]C and [λ]T represent the
+allowable slenderness ratios for members under compression and tension, respectively.
+(3)
+Nodal displacement
+uj −[u] ≤0
+(17)
+where uj denotes the displacement of the j-th node, and [u] represents the allowable displacement.
+In this study, stability constraints based on the slenderness ratio are adopted as
+the criterion for evaluating member stability. This approach is derived from current
+transmission tower design codes and is widely used in the preliminary design stage of
+engineering practice. It should be noted that geometric nonlinear effects, global buckling,
+and second-order effects are typically considered in the detailed design stage, rather than
+in preliminary sizing optimization. Therefore, geometric nonlinear analysis and buckling
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+11 of 23
+analysis are not included in this study, in order to improve computational efficiency and
+ensure comparability with engineering design practices. The above simplifications may not
+fully capture complex stability behavior, and their influence will be further investigated in
+future work.
+With the objective of minimizing the structural weight of the transmission tower, the
+objective function is formulated as follows:
+W =
+n
+∑
+i=1
+ρiliAi
+(18)
+where W denotes the total weight of the transmission tower; Ai ∈S represents the cross-
+sectional area of each member within the tower; S = {S1, S2, . . . , SNS} is the discrete
+set of available member cross-sections; ρi is the material density of the i-th member; li
+is the element length of the i-th member; and n is the total number of members in the
+tower structure.
+Based on the analysis above, the structural optimization of transmission towers ex-
+hibits significant constraint characteristics. These constraints span multiple dimensions,
+including strength, stiffness, stability, and detailing requirements [28], which significantly
+restrict the feasible region and render the search space complex, high-dimensional, and
+non-linear, making the optimization process highly challenging. To address such problems,
+methods such as the penalty function method, feasibility rules, and stochastic ranking
+methods are commonly employed. Among these, the penalty function method has become
+one of the most widely applied constraint handling techniques in tower optimization and
+similar engineering problems due to its straightforward principle, ease of implementation,
+and high adaptability to complex constraints [29,30]. The principle of this method can
+be briefly explained as applying specialized weighted processing to the constraints and
+then integrating them with the objective function to generate a new objective function. By
+introducing penalty functions to handle constraints related to member stress, slenderness
+ratio, and nodal displacement, the problem is effectively transformed into an unconstrained
+optimization task. Based on this approach, the objective function expression is established
+as follows:
+W =
+n
+∑
+i=1
+ρiliAi
+ 
+1 +
+n
+∑
+i=1
+max
+
+0,
+σi
+f −1
+
++
+n
+∑
+i=1
+max
+
+0,
+ λi
+[λ] −1
+
++
+m
+∑
+j=1
+max
+
+0,
+ uj
+[u] −1
+!2
+(19)
+To handle the stress, slenderness ratio, and nodal displacement constraints, a normal-
+ized quadratic penalty function is adopted in this study. Different types of constraints are
+first transformed into dimensionless relative violation terms, so that constraint quantities
+with different physical units can be evaluated in a unified manner. The penalty term is
+constructed based on the square of the accumulated positive constraint violations. For
+a feasible solution, all constraint violation terms are equal to zero, and the penalized
+objective function is identical to the structural weight. For an infeasible solution, the objec-
+tive function increases with the square of the overall violation degree, thereby reducing
+the competitiveness of infeasible individuals in the fitness evaluation. This formulation
+strengthens the penalty effect when multiple constraints are violated simultaneously, while
+avoiding the introduction of additional manually adjusted penalty coefficients. During
+each iteration, the structural responses, including member stresses, slenderness ratios, and
+nodal displacements, are calculated based on the finite element analysis results, and the
+corresponding constraint satisfaction is then checked. In addition, feasible solutions are
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+12 of 23
+preferentially retained when comparing candidate solutions with comparable objective
+values, which helps guide the population toward the feasible region.
+4.2. Optimization Process
+Based on the discussion above, when applying the basic SSA to the structural opti-
+mization of transmission towers, improvements are introduced via the Circle chaotic map
+and the Firefly Algorithm. The main optimization process is illustrated in Figure 4.
+No
+Yes
+End
+t  itermax
+t=t+1
+Start
+Incorporate the firefly perturbation strategy to update 
+individual positions
+Update positions of producers, scroungers, and sparrows 
+that perceive danger based on their respective update 
+formulas
+Evaluate the fitness value of each individual
+Initialize the population distribution through the Circle 
+chaotic map
+Output the optimal result
+Determine the transmission tower model 
+and basic load cases
+Initialize parameters (population size , 
+maximum iterations, etc.)
+Figure 4. Size optimization design process.
+5. Algorithm Verification
+5.1. Structure of the Spatial Truss
+To compare ISSA with other algorithms, a typical 25-bar spatial truss structure is
+selected as the optimization object. This structure exhibits spatial truss characteristics and
+shares similarities with transmission tower structures in terms of force transmission and
+spatial member configuration. The structural configuration is illustrated in Figure 5.
+A 25-member spatial truss structure consisting of 10 nodes is considered. Owing to
+the symmetry of the structure about the central axis, the center of the base is taken as
+the origin of the coordinate system. Partial nodal coordinates are listed in Table 4. The
+material properties are specified as Young’s modulus E = 6.895 × 1010 Pa and density
+ρ = 2768.8 kg/m3.The structural constraints are defined as follows: the allowable stress
+of members is 2.759 × 108 Pa, and the allowable nodal displacements in the x, y, and z
+directions are 0.889 cm. The 25 members are divided into 8 groups, as detailed in Table 5,
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+13 of 23
+and the loading conditions are given in Table 6. Specifically, the top horizontal member 1–2
+has a length of 190.5 cm and forms an angle of 45◦with the x-axis in the horizontal plane.
+The z-axis passes through the midpoint of member 1–2; therefore, the x- and y-coordinates
+of nodes 1 and 2 can be expressed as ±95.25/
+√
+2 cm.
+5
+6
+7
+8
+9
+10
+4
+3
+2
+1
+Z
+Y
+X
+Figure 5. 25-bar spatial truss structure (numbers indicate node labels).
+Table 4. Nodal coordinates of the 25-bar spatial truss structure.
+Node
+X Direction (cm)
+Y Direction (cm)
+Z Direction (cm)
+1
+−95.25/
+√
+2
+−95.25/
+√
+2
+508
+2
+95.25/
+√
+2
+95.25/
+√
+2
+508
+4
+95.25
+95.25
+254.00
+8
+254.00
+254.00
+0.00
+Table 5. Member connectivity and grouping of the structure.
+Group No.
+Members
+Group No.
+Members
+1
+1–2
+5
+3–4, 5–6
+2
+1–4, 2–3, 1–5, 2–6
+6
+3–10, 6–7, 4–9, 5–8
+3
+2–4, 2–5, 1–3, 1–6
+7
+3–8, 4–7, 6–9, 5–10
+4
+3–6, 4–5
+8
+3–7, 4–8, 5–9, 6–10
+Table 6. Loading conditions.
+Node
+Px (kN)
+Py (kN)
+Pz (kN)
+1
+4.45
+−44.5
+−44.5
+2
+0
+−44.5
+−44.5
+3
+2.225
+0
+0
+6
+2.67
+0
+0
+The discrete set of cross-sectional areas available for members is defined as S = {0.6452,
+1.2904, 1.9356, 2.5808, 3.2260, 3.8712, 4.5164, 5.1616, 5.8068, 6.4520, 7.0972, 7.7424, 8.3876,
+9.0328, 9.6780, 10.3232, 10.9684, 11.6136, 12.2588, 12.9040, 13.5492, 14.1944, 14.8396, 15.4848,
+16.1300, 16.7752, 17.4204, 18.0656, 18.7108, 19.3560, 20.0012, 20.6464, 21.2916, 21.9368} cm2.
+Both SSA and ISSA are applied to optimize the cross-sectional design of the structure. The
+algorithm parameters are set as follows: population size N = 50; explorers account for
+20% of the population, while the remaining individuals are followers; warning individuals
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+14 of 23
+account for 20%; the maximum number of iterations is itermax = 200, and ST = 0.8. For
+the firefly perturbation strategy, the parameters are set as β0 = 1, γ = 1, and α = 0.2.
+5.2. Comparison of Results
+Both SSA and ISSA are independently executed 20 times. Their results are compared
+with those of the Big Bang–Big Crunch (BB–BC) algorithm [31] and the Teaching–Learning-
+Based Optimization (TLBO) algorithm [32]. The comparison results are presented in Table 7
+and Figure 6a, where the error bars indicate standard deviations. The convergence curves
+of SSA and ISSA are shown in Figure 6b.
+Table 7. Comparison of optimization results.
+BB–BC
+TLBO
+SSA
+ISSA
+Best value (kg)
+215.76
+215.76
+215.65
+215.61
+Mean value (kg)
+215.91
+215.78
+216.14
+215.63
+Standard deviation (kg)
+0.28
+0.08
+0.72
+0.04
+BB-BC
+TLBO
+SSA
+ISSA
+215.0
+215.2
+215.4
+215.6
+215.8
+216.0
+216.2
+216.4
+216.6
+216.8
+217.0
+Weight (kg)
+Algorithm
+ Mean
+ Best
+(a)
+20
+40
+60
+80
+100
+120
+140
+160
+180
+200
+Iteration
+220
+230
+240
+250
+260
+270
+280
+Best score obtained so far
+Objective space
+SSA
+ISSA
+20
+40
+60
+216
+217
+218
+(b)
+Figure 6. Comparison of algorithms. (a) Comparison of optimization results. (b) Comparison of
+convergence curves.
+As shown in Table 7 and Figure 6a, ISSA achieves the lowest optimal and average struc-
+tural weights compared to the other algorithms, and its standard deviation is significantly
+smaller than those of the other three methods. In particular, compared with SSA, although
+the optimal values are similar, ISSA obtains lower average values and smaller standard
+deviations due to the introduction of Circle chaotic mapping and firefly perturbation strate-
+gies. Furthermore, as illustrated in Figure 6b, ISSA converges to a stable solution within
+fewer iterations, indicating a faster convergence speed and stronger stability. These results
+demonstrate that ISSA is effective for the optimization design of spatial truss structures
+and can improve the overall optimization performance.
+6. Engineering Application
+6.1. Overview of the Transmission Tower
+The 220 kV cat-head transmission tower model 2A5-ZM1-1 is selected as the object
+for structural optimization design. This tower is a single-circuit spatial truss system with
+a nominal height of 18 m and a base width of 4.605 m. It is designed for altitudes below
+1000 m and Category B ground roughness. The environmental parameters include a design
+wind speed of 29 m/s and an ice thickness of 10 mm. The conductor and ground wire are
+2× LGJ-300/40 and JLB-150, respectively. The structural members consist of angle steel
+made of Q235 and Q345 steel, with an elastic modulus of E = 2 × 1011 Pa and a mass
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+15 of 23
+density of ρ = 7850 kg/m3. The meteorological and design conditions for this transmission
+tower are presented in Table 8 and Table 9, respectively.
+Table 8. Meteorological conditions of the tower.
+Condition
+Temperature
+(◦C)
+Wind Speed
+(m/s)
+Ice Thickness
+(mm)
+Basic wind speed
+−5
+29
+0
+Icing
+−5
+10
+10
+Maximum temperature
+40
+0
+0
+Minimum temperature
+−40
+0
+0
+Broken conductor
+−5
+0
+10
+Installation condition
+−15
+10
+0
+Uneven icing
+−5
+10
+10
+Annual average temperature
+5
+0
+0
+Table 9. Design conditions of iron tower.
+Design
+Condition
+Horizontal
+Span (m)
+Vertical Span
+(m)
+Ruling Span
+(m)
+Angle Degree
+(◦)
+Value
+350
+450
+400
+0
+In modeling the transmission tower structure, the members are idealized as bar ele-
+ments, and the connections between members are assumed to be ideal pinned joints. Under
+the loading conditions considered in this study, the structural behavior is dominated by
+axial forces, while torsional effects are relatively weak. Horizontal diaphragms mainly pro-
+vide torsional stiffness, and their contribution to the overall stiffness is limited. Moreover,
+their inclusion in the finite element model may introduce redundant constraints and lead
+to numerical singularities; therefore, they are simplified in this study. Auxiliary members
+primarily serve to provide lateral support for main and bracing members, and their effects
+are usually accounted for indirectly through effective length or stability coefficients. In
+engineering analysis, they are generally not explicitly included in the global structural
+calculation, and thus are not explicitly modeled in this study. These simplifications may
+have some influence on local stiffness and stability; however, their impact on the overall
+optimization trends for the preliminary sizing of primary load-carrying members is lim-
+ited. The resulting simplified model contains 570 members and 171 nodes; the detailed
+dimensions are illustrated in Figure 7.
+The structural optimization of the transmission tower is conducted with a typical high
+wind load condition as the primary scenario. In this case, the wind speed is v = 29 m/s,
+the temperature is t = −5◦C, and there is no ice coverage. The loads primarily consist of
+wind load and tower self-weight. Specifically, the formula for calculating the magnitude of
+the wind load on the conductors and ground wires of the transmission tower is as follows:
+Wx = βc · αL · W0 · µZ · µSC · d · LP · B · sin2 θ
+(20)
+where Wx denotes the characteristic wind load perpendicular to the conductor and ground
+wire (kN); βc represents the gust factor for the conductor and ground wire; αL is the span
+reduction factor; W0 denotes the reference wind pressure (kN/m2); µZ represents the
+height variation factor of wind pressure; µSC is the shape coefficient for the conductor and
+ground wire, where values of 1.0 and 1.1 are adopted for the conductor and ground wire,
+respectively; d is the outer diameter of the conductor and ground wire (m); LP denotes the
+horizontal span of the tower; B is the enlargement coefficient for wind load under icing
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+16 of 23
+conditions; and θ is the angle between the wind direction and the conductor or ground
+wire (◦).
+2800
+4605
+1450
+1900
+2000
+5000
+3000
+1200
+4100
+18000
+5600
+25500
+3100
+3400
+2200
+2200
+900
+3000
+3000
+900
+4700
+4700
+2200
+300
+800800
+1250
+900
+1900
+300
+Figure 7. Transmission tower model (mm).
+The transmission tower is segmented to calculate the wind load for each section, and
+the calculated values are then applied to the primary nodes on the windward side. For
+example, the tower body can be divided into an upper segment and a lower segment with
+heights of 7.7 m and 4.2 m, respectively. The primary calculation formula is as follows:
+Ws = W0 · µZ · µs · βz · B · As
+(21)
+where Ws denotes the characteristic wind load on the transmission tower (kN); µs represents
+the shape coefficient of the members; βz is the wind vibration coefficient of the tower at
+height z; and As is the projected area of the members on the windward side (m2).
+6.2. Structural Optimization Analysis of the Transmission Tower
+Under identical conditions, the ISSA and Daoheng software(V7.0) are respectively
+employed to optimize the member sizing for the transmission tower, and the results of both
+methods are compared.
+1.
+Size Optimization of Transmission Towers Based on the ISSA
+The ISSA is applied to the optimal design of transmission towers, with the minimum
+tower weight taken as the objective function. Here, the tower weight only includes the
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+17 of 23
+weight of angle steel. The parameters involved in the constraints are set according to the
+Standard for Design of Steel Structures GB 50017-2017 [33], as follows:
+(1)
+Slenderness ratio constraint of members
+Regarding the specification of the allowable slenderness ratio [λ] for transmission
+tower members, the maximum allowable slenderness ratios for compressed main members,
+other compressed members, and tension members are 150, 200, and 400, respectively.
+(2)
+Member stress constraint
+In the member stress constraints, the selection of the stability coefficient φ for axially
+compressed members must be determined based on the slenderness ratio λ of the members.
+The primary formulas are as follows:
+When λn = λ
+π
+r
+fy
+E ≤0.215:
+φ = 1 −α1λ2
+n
+(22)
+When λn > 0.215:
+φ =
+1
+2λ2n
+
+(α2 + α3λn + λ2
+n) −
+q
+(α2 + α3λn + λ2n)2 −4λ2n
+
+(23)
+where fy is the yield strength of the steel, which is taken as 235 N/mm2 for Q235 steel and
+345 N/mm2 for Q345 steel; E represents the elastic modulus of the material; and α1, α2,
+and α3 are coefficients determined based on different cross-sectional categories. For Class a
+sections, these values are 0.41, 0.986, and 0.152, respectively; and for Class b sections, these
+values are 0.65, 0.965, and 0.3, respectively.
+The design strength f of the structural steel for the transmission tower is presented
+in Table 10.
+Table 10. Design values of steel strength.
+Material
+Thickness or Diameter (mm)
+f (N/mm2)
+Q235 steel
+≤16
+215
+>16–40
+205
+Q345 steel
+≤16
+305
+>16–40
+295
+(3)
+The nodal displacement constraints
+The selected transmission tower is a self-supporting suspension tangent tower, and
+according to the design specifications, its deflection limit is defined as 3h/1000, where h
+represents the height from the tower foundation to the specific calculation point.
+The structural members of the transmission tower are categorized into 17 groups, and
+the selected angle steel specifications are restricted to no less than L40×3. The discrete set S
+of available cross-sections for the members is established as S = {L40×3 (2.36 cm2), L40×4
+(3.09 cm2), L45×4 (3.49 cm2), L50×4 (3.9 cm2), L50×5 (4.8 cm2), L56×4 (4.39 cm2), L56×5
+(5.42 cm2), L63×5 (6.14 cm2), L70×5 (6.88 cm2), L75×5 (7.41 cm2), L75×6 (8.8 cm2), L80×6
+(9.4 cm2), L80×7 (10.86 cm2), L90×7 (12.3 cm2), L90×8 (13.94 cm2), L100×7 (13.80 cm2),
+L100×8 (15.64 cm2), L110×8 (17.24 cm2), L110×10 (21.26 cm2), L125×12 (28.91 cm2),
+L140×12 (32.51 cm2), L160×10 (31.50 cm2)}, encompassing a total of 22 types of angle
+steel profiles.
+In summary, the structural optimization of the transmission tower is performed under
+high wind load conditions using the ISSA, with specific parameter values set as follows:
+in the SSA, the population size is N = 100, where producers and sparrows that perceive
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+18 of 23
+danger each account for 20% of the population, with the remainder as scroungers; the
+maximum number of iterations itermax is 500, and the safety threshold ST is 0.8; and in the
+Firefly Algorithm, the parameters are β0 = 1, γ = 1, and α = 0.2. The selected member
+profiles as well as the optimal tower weight after optimization are presented in Table 11,
+and the convergence curve during the optimization process is illustrated in Figure 8.
+Table 11. The optimized transmission tower bar model.
+Group No.
+Angle Steel Profile
+Material
+1
+L40 × 3
+Q235
+2
+L40 × 4
+3
+L45 × 4
+4
+L50 × 4
+5
+L50 × 5
+6
+L63 × 5
+7
+L56 × 4
+8
+L63 × 5
+9
+L45 × 4
+10
+L56 × 5
+11
+L63 × 5
+Q345
+12
+L70 × 5
+13
+L75 × 5
+14
+L75 × 6
+15
+L100 × 7
+16
+L160 × 10
+17
+L140 × 12
+Optimal weight (kg)
+3872.52
+50
+100
+150
+200
+250
+300
+350
+400
+450
+500
+Iteration
+4000
+11,000
+10,000
+9000
+8000
+7000
+6000
+5000
+Best score obtained so far
+Objective space
+ISSA
+Figure 8. Convergence curve of transmission tower cross-section optimization.
+As shown in the table, the final weight of the transmission tower obtained by applying
+the ISSA to the structural optimization design is 3872.52 kg. When the optimal value is
+achieved, the regions with higher stress values among the tower members occur in the
+main members at the bottom of the upper cross-arm, the outer main members below the
+upper curved arm of the tower head, and the diagonal members in the middle of the tower
+body; the stress values are 198 N/mm2, 143 N/mm2, and 200 N/mm2, respectively, all
+of which remain below the corresponding allowable stresses. Furthermore, the higher
+slenderness ratios among the tower members appear in the main members of the lower
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+19 of 23
+cross-arm, the side diagonal members of the second tower body segment, the diagonal
+members in the middle of the tower body, and the diagonal members of the tower legs; the
+values are 140, 189, 187, and 173, respectively, which are all within the allowable maximum
+slenderness ratios. This indicates that the ISSA optimization is performed effectively while
+ensuring the structural stability of the tower.
+2.
+Material Selection Optimization of the Transmission Tower Based on Daoheng Software
+Under identical conditions, the material selection for the transmission tower is op-
+timized using Daoheng software through fully stressed analysis. The procedure first
+requires defining the hanging points for the conductors and ground wires of the tower.
+Subsequently, load calculations are performed within the system, which involves selecting
+parameters such as the terrain category and surface roughness, tower type and voltage
+level, meteorological conditions, conductor and ground wire specifications, horizontal span,
+representative span, and relevant load cases. Finally, the calculated loads are imported into
+the fully stressed module to obtain the material selection results; the principal workflow is
+illustrated in Figure 9.
+Start
+Add conductor and ground wire hanging 
+points in the fully stressed analysis system
+Load calculation system
+Input parameters including meteorological 
+zone, conductor types, and representative span
+Configure load combinations
+Output load calculation results
+Member categorization and material 
+processing
+Optimization calculation
+Output results
+End
+Figure 9. Fully stressed analysis process.
+Ultimately, the total weight of the transmission tower obtained through material
+selection optimization using Daoheng software is 4025.2 kg. Specifically, the main members
+and diagonal members weigh 1690.3 kg and 2334.8 kg, respectively; meanwhile, Q235 steel
+and Q345 steel account for 65% and 35% of the total material composition, respectively.
+3.
+Comparative Analysis of Optimization Results
+Based on the optimization results from the ISSA and Daoheng software, the optimal
+tower weights achieved by the two methods are 3872.52 kg and 4025.2 kg, respectively.
+A comparison of the specific member profiles selected after the optimization process is
+provided in Table 12. By synthesizing the data from Tables 11 and 12, the comparative
+analysis indicates that the ISSA selected lighter sections for specific members, leading
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+20 of 23
+to a total weight reduction of 152.68 kg, which corresponds to a weight reduction of
+approximately 3.79%. Consequently, applying the ISSA to transmission tower optimization
+holds significant practical engineering importance.Although the weight reduction ratio
+of a single transmission tower is not very significant, transmission lines are generally
+characterized by large-scale and repetitive construction, and a large number of towers of
+the same type are often used. Therefore, the weight reduction of a single tower can lead to
+cumulative material savings in engineering applications. Reducing the tower weight can
+not only decrease steel consumption, but may also reduce costs associated with galvanizing,
+transportation, lifting, and installation. In addition, a lighter tower can reduce the vertical
+load transferred to the foundation to some extent, thereby providing certain favorable
+conditions for foundation design and construction. It should be noted that the actual
+economic benefits still depend on factors such as steel price, fabrication cost, transportation
+distance, and construction conditions.
+Table 12. Comparison of optimized material selections for selected members using the two methods.
+Member
+Daoheng Software
+ISSA
+Top ear diagonal members
+L40 × 3
+L40 × 3
+Upper cross-arm main members
+L40 × 4
+L40 × 4
+Upper cross-arm front diagonals
+L40 × 3
+L40 × 3
+· · ·
+· · ·
+· · ·
+Outer main members of the upper
+curved arm
+L45 × 5
+L45 × 4
+Members at the left and right
+conductor hanging points
+L70 × 5
+L70 × 5
+Diagonal members of the lower
+curved arm
+L40 × 3
+L40 × 4
+Diagonal members at the intersection
+of the lower curved arm
+L70 × 5
+L63 × 5
+· · ·
+· · ·
+· · ·
+Internal diagonal members of the
+upper horizontal diaphragm
+L40 × 3
+L40 × 3
+Front and back diagonal members of
+the upper horizontal diaphragm
+L56 × 5
+L56 × 4
+· · ·
+· · ·
+· · ·
+Main members of the uppermost
+segment of the tower body
+L110 × 7
+L100 × 7
+Front and back diagonal members of
+the second tower body segment
+L45 × 4
+L45 × 4
+· · ·
+· · ·
+· · ·
+Main members of the fifth segment of
+the tower body
+L140 × 12
+L140 × 12
+Main members of the lowermost
+segment of the tower body
+L140 × 12
+L160 × 10
+· · ·
+· · ·
+· · ·
+Diagonal members of the lower
+horizontal diaphragm
+L56 × 4
+L56 × 4
+Diagonal members at the tower legs
+L160 × 10
+L160 × 10
+Main members of the tower legs
+L140 × 12
+L140 × 12
+Note: “· · · ” indicates omitted values.
+Although this study uses only a 220 kV cat-head transmission tower as the engineering
+example, the proposed ISSA-based optimization framework is not limited to this tower type.
+Since the framework consists of finite element analysis, discrete member section selection,
+and constraint evaluation based on stress, slenderness ratio, and nodal displacement, it can
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+21 of 23
+be extended to other lattice transmission towers if the corresponding geometry, load cases,
+member grouping, section database, and design constraints are properly defined. However,
+further case studies and detailed design verification are still required for tower structures
+with complex auxiliary members, semi-rigid joints, or significant bending effects.
+7. Conclusions
+To address the limitations of the SSA in the discrete section optimization of trans-
+mission towers, this study introduces Circle chaotic mapping and a firefly perturbation
+strategy to improve the algorithm. By integrating the improved algorithm with the finite
+element analysis method, an optimization model for the primary load-carrying members
+of transmission towers is established. It should be noted that the structural modeling
+approach and associated simplifications adopted in this study are mainly intended for the
+preliminary sizing optimization of primary members, and the results are primarily used to
+evaluate the performance of different optimization algorithms. For practical engineering
+applications, further verification is still required at the detailed design stage by employing
+refined finite element models, multiple loading conditions, and nonlinear analysis methods
+to ensure structural safety and reliability. The main conclusions are as follows:
+(1)
+To address the deficiencies of SSA at different stages in the discrete section opti-
+mization of transmission towers, Circle chaotic mapping and the firefly perturbation
+strategy are introduced, thereby enhancing both the global exploration and local
+exploitation capabilities of SSA in transmission tower optimization problems.
+(2)
+A 220 kV cat-head transmission tower is taken as an engineering example. By combin-
+ing a MATLAB-based finite element analysis program with ISSA, preliminary sizing
+optimization of the primary load-carrying members is performed. The results show
+that, under the constraints of member strength, stability, and nodal displacement,
+ISSA can obtain a lighter structural scheme, demonstrating its effectiveness for the
+preliminary sizing optimization of primary members in the studied tower type.
+(3)
+Compared with the design results obtained from Daoheng software, the ISSA-
+optimized scheme achieves a weight reduction of 152.68 kg, corresponding to a
+reduction ratio of approximately 3.79%. Although the reduction ratio for a single
+tower is moderate, considering the repetitive construction characteristics of transmis-
+sion lines, this result indicates certain practical value in terms of material savings and
+engineering applications.
+(4)
+This study is conducted based on a single tower type and a typical controlling load
+case, and some structural components are simplified in the model. Therefore, the
+applicability of the proposed method to other tower types, complex load combinations,
+and refined engineering models still requires further investigation in future work.
+Author Contributions: Conceptualization and methodology, L.J. and Y.W.; formal analysis and
+investigation, L.J. and Y.W.; resources and software, L.J. and Y.Z.; data curation, L.J., Y.W. and Z.X.;
+writing—original draft preparation, Y.W.; writing—review and editing, L.J., Y.W., Z.X. and X.H.;
+visualization, L.J. and Y.W.; project administration and funding acquisition, L.J. All authors have read
+and agreed to the published version of the manuscript.
+Funding: This research was funded by the Science and Technology Project of State Grid Corporation
+of China under grant number 5200-202156071A-0-0-00.
+Data Availability Statement: The raw data supporting the conclusions of this article will be made
+available by the authors upon request.
+Conflicts of Interest: Author Yingchun Zhang is affiliated with State Grid Xin Yuan Group Co., Ltd.
+Hubei Branch. She participated in providing resources and technical support in the study. The role of
+the company was to provide project support and research resources. This study received funding
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+22 of 23
+from State Grid Corporation of China (Grant No. 5200-202156071A-0-0-00). The funder was not
+involved in the study design, data collection, analysis, interpretation of data, the writing of this article
+or the decision to submit it for publication. The remaining authors declare that the research was
+conducted in the absence of any commercial or financial relationships that could be construed as a
+potential conflict of interest.
+References
+1.
+Šilih, S.; Kravanja, Z.; Kravanja, S. The MINLP approach to topology, shape and discrete sizing optimization of trusses. Appl. Sci.
+2022, 12, 1459. [CrossRef]
+2.
+Venkatesh Varma, T.; Sarkar, S.; Mondal, G. Buckling restrained sizing and shape optimization of truss structures. J. Struct. Eng.
+2020, 146, 04020048. [CrossRef]
+3.
+Watson, M.; Leary, M.; Brandt, M. Generative design of truss systems by the integration of topology and shape optimisation. Int.
+J. Adv. Manuf. Technol. 2022, 118, 1165–1182.
+4.
+Tahaye Abadi, M. An analytical solution method for transient response of truss-type space frame structures. J. Braz. Soc. Mech.
+Sci. Eng. 2023, 45, 259. [CrossRef]
+5.
+Khodzhaiev, M.; Reuter, U. Structural optimization of transmission towers using a novel Genetic Algorithm approach with a
+variable length genome. Eng. Struct. 2021, 240, 112306. [CrossRef]
+6.
+Li, Y.; Wang, S.; Han, M. Truss structure optimization based on improved chicken swarm optimization algorithm. Adv. Civ. Eng.
+2019, 2019, 6902428. [CrossRef]
+7.
+Hu, G.; Huang, F.; Chen, K.; Wei, G. MNEARO: A meta swarm intelligence optimization algorithm for engineering applications.
+Comput. Methods Appl. Mech. Eng. 2024, 419, 116664. [CrossRef]
+8.
+Tort, C.; ¸Sahin, S.; Hasançebi, O. Optimum design of steel lattice transmission line towers using simulated annealing and
+PLS-TOWER. Comput. Struct. 2017, 179, 75–94. [CrossRef]
+9.
+Couceiro, I.; París, J.; Martínez, S.; Colominas, I.; Navarrina, F.; Casteleiro, M. Structural optimization of lattice steel transmission
+towers. Eng. Struct. 2016, 117, 274–286. [CrossRef]
+10.
+Cheng, J.; Shi, T. Structural optimization of transmission line tower based on improved fruit fly optimization algorithm. Comput.
+Electr. Eng. 2022, 103, 108320. [CrossRef]
+11.
+Adil, B.; Cengiz, B. Optimal design of truss structures using weighted superposition attraction algorithm. Eng. Comput. 2020,
+36, 965–979.
+12.
+Jahangiri, M.; Najafgholipour, M.A.; Arabi, A.R.; Hadianfard, M.A.; Jahangiri, M. Prize-penalty strategy: An efficient constraint
+handling scheme for the optimal design of truss structures engaging the interactive autodidactic school optimization algorithm.
+Iran. J. Sci. Technol. Trans. Civ. Eng. 2025, 49, 3977–3997.
+13.
+Rosso, M.M.; Cucuzza, R.; Di Trapani, F.; Marano, G.C. Nonpenalty machine learning constraint handling using PSO-SVM for
+structural optimization. Adv. Civ. Eng. 2021, 2021, 6617750. [CrossRef]
+14.
+Xue, J.; Shen, B. A novel swarm intelligence optimization approach: Sparrow search algorithm. Syst. Sci. Control Eng. 2020,
+8, 22–34. [CrossRef]
+15.
+Tsiftsoglou, M.; Marinakis, Y.; Marinaki, M. Optimizing the Permutation Flowshop Scheduling Problem with an Improved
+Sparrow Search Algorithm. Algorithms 2026, 19, 283. [CrossRef]
+16.
+Tian, L.; Guo, L.; Ma, R.; Gai, X.; Wang, W. Full-scale tests and numerical simulations of failure mechanism of power transmission
+towers. Int. J. Struct. Stab. Dyn. 2018, 18, 1850109. [CrossRef]
+17.
+Li, K.; Zhu, R.; Wang, Z.; Zhou, X.; Wang, M.; Xu, S.; Gong, Y. Modeling and modal analysis of the structure of long-span
+transmission tower. J. Comput. Methods Sci. Eng. 2023, 23, 1491–1501. [CrossRef]
+18.
+Yadav, R. Finite element analysis using MATLAB. Int. J. Res. Appl. Sci. Eng. Technol. 2022, 10, 764–769. [CrossRef]
+19.
+Shukla, V.K.; Selvaraj, M.; Kumar, K.V. Failure analysis of a cruciform-leg transmission line tower. Int. J. Steel Struct. 2021,
+21, 539–548. [CrossRef]
+20.
+Li, R.; Qi, L.; Dong, Y.R.; Wang, H. Nonlinear performance of steel tube tower in ultra-high voltage transmission lines under
+wind loads. Buildings 2024, 14, 140. [CrossRef]
+21.
+Xue, J.; Shen, B. A survey on sparrow search algorithms and their applications. Int. J. Syst. Sci. 2024, 55, 814–832.
+22.
+Yue, Y.; Cao, L.; Lu, D.; Hu, Z.; Xu, M.; Wang, S.; Li, B.; Ding, H. Review and empirical analysis of sparrow search algorithm.
+Artif. Intell. Rev. 2023, 56, 10867–10919. [CrossRef]
+23.
+Xue, Z.; Yu, J.; Zhao, A.; Zong, Y.; Yang, S.; Wang, M. Optimal chiller loading by improved sparrow search algorithm for saving
+energy consumption. J. Build. Eng. 2023, 67, 105980. [CrossRef]
+24.
+Feng, J.; Zhang, J.; Zhu, X.; Lian, W. A novel chaos optimization algorithm. Multimed. Tools Appl. 2017, 76, 17405–17436.
+https://doi.org/10.3390/a19070513
+
+Algorithms 2026, 19, 513
+23 of 23
+25.
+Li, Y.; Li, J. CSSA: An Enhanced Sparrow Search Algorithm with Hybrid Strategies for Engineering Optimization. Algorithms
+2026, 19, 51. [CrossRef]
+26.
+Yang, X.S. Nature-Inspired Metaheuristic Algorithms; Luniver Press: Frome, UK, 2010.
+27.
+Zhang, J.; Zhu, X.; Li, J. Intelligent path planning with an improved sparrow search algorithm for workshop UAV inspection.
+Sensors 2024, 24, 1104. [CrossRef] [PubMed]
+28.
+Chen, M.; Liu, R.; Fang, Z.; Zhan, W.; Cai, Z.; Zhang, C. Study on wind stability analysis and reinforcement measures of
+high-voltage transmission tower. J. Phys. Conf. Ser. 2025, 3098, 012015. [CrossRef]
+29.
+Antczak, T. Vector exponential penalty function method for nondifferentiable multiobjective programming problems. Bull.
+Malays. Math. Sci. Soc. 2018, 41, 657–686. [CrossRef]
+30.
+Lian, S.; Duan, Y. Smoothing of the lower-order exact penalty function for inequality constrained optimization. J. Inequalities
+Appl. 2016, 2016, 185. [CrossRef]
+31.
+Camp, C.V. Design of space trusses using big bang–big crunch optimization. J. Struct. Eng. 2007, 133, 999–1008. [CrossRef]
+32.
+Camp, C.V.; Farshchin, M. Design of space trusses using modified teaching–learning based optimization. Eng. Struct. 2014,
+62, 87–97. [CrossRef]
+33.
+GB 50017-2017; Standard for Design of Steel Structures. China Architecture & Building Press: Beijing, China, 2017.
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+https://doi.org/10.3390/a19070513

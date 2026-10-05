@@ -1,0 +1,429 @@
+﻿no,name,group,material,basis,thread,notes,moving,valid,solids,volume_mm3
+FR-L1,60x60x4方管立柱,Frame,Q235B,nominal custom design,,,fixed,True,1,707840.0000000008
+FR-F1,M24可调机脚_底垫,Frame,steel,nominal standard adjustable foot,,,fixed,True,1,53721.23437638546
+FR-L2,60x60x4方管立柱,Frame,Q235B,nominal custom design,,,fixed,True,1,707840.0000000008
+FR-F2,M24可调机脚_底垫,Frame,steel,nominal standard adjustable foot,,,fixed,True,1,53721.23437638547
+FR-L3,60x60x4方管立柱,Frame,Q235B,nominal custom design,,,fixed,True,1,707840.0000000008
+FR-F3,M24可调机脚_底垫,Frame,steel,nominal standard adjustable foot,,,fixed,True,1,53721.234376385466
+FR-L4,60x60x4方管立柱,Frame,Q235B,nominal custom design,,,fixed,True,1,707840.0000000008
+FR-F4,M24可调机脚_底垫,Frame,steel,nominal standard adjustable foot,,,fixed,True,1,53721.23437638547
+FR-L5,60x60x4方管立柱,Frame,Q235B,nominal custom design,,,fixed,True,1,707840.0000000008
+FR-F5,M24可调机脚_底垫,Frame,steel,nominal standard adjustable foot,,,fixed,True,1,53721.23437638548
+FR-L6,60x60x4方管立柱,Frame,Q235B,nominal custom design,,,fixed,True,1,707840.0000000008
+FR-F6,M24可调机脚_底垫,Frame,steel,nominal standard adjustable foot,,,fixed,True,1,53721.23437638548
+FR-B1,机架横梁_空心方管,Frame,Q235B,nominal custom design,,,fixed,True,1,1612800.0
+FR-B2,机架横梁_空心方管,Frame,Q235B,nominal custom design,,,fixed,True,1,1612800.0
+FR-B3,机架横梁_空心方管,Frame,Q235B,nominal custom design,,,fixed,True,1,609280.0000000002
+FR-B4,机架横梁_空心方管,Frame,Q235B,nominal custom design,,,fixed,True,1,609280.0000000002
+FR-B5,机架横梁_空心方管,Frame,Q235B,nominal custom design,,,fixed,True,1,609280.0000000002
+FR-B6,机架横梁_空心方管,Frame,Q235B,nominal custom design,,,fixed,True,1,660960.0
+FR-B7,机架横梁_空心方管,Frame,Q235B,nominal custom design,,,fixed,True,1,660960.0
+FR-B8,机架横梁_空心方管,Frame,Q235B,nominal custom design,,,fixed,True,1,660960.0
+FR-B9,机架横梁_空心方管,Frame,Q235B,nominal custom design,,,fixed,True,1,660960.0
+FR-S,底层设备搁板,Frame,Q235B,nominal custom design,,,fixed,True,1,9139200.0
+FR-T,台面_厚20_设备安装孔,Frame,Q235B,nominal custom design,,,fixed,True,1,30936870.024087973
+BD-01,模拟床身_台阶安装面,Bed,Q235B,nominal custom design,,Load-bearing bed; fixture tap locations are generated from attached assemblies.,fixed,True,1,20232740.187044624
+BD-S1,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,6137.319193891851
+BD-S2,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,6137.319193891862
+BD-S3,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,6137.319193891856
+BD-S4,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,6137.319193891867
+BD-S5,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,6137.319193891856
+BD-S6,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,6137.319193891867
+BD-S7,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,6137.319193891851
+BD-S8,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,6137.319193891862
+BD-S9,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,6137.319193891851
+BD-S10,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,6137.319193891862
+LD-01,加载底板,Loader,steel,nominal custom design,,,fixed,True,2,679609.1822982518
+LD-02,加载反力挡壁_磨削面,Loader,40Cr hardened,nominal custom design,,,fixed,True,1,1260000.0
+LD-S1,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,5351.921030494411
+LD-S2,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,5351.92103049442
+LD-S3,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,5351.921030494411
+LD-S4,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,5351.921030494418
+WD-01,1比10楔块_两面滚针接触,Loader,40Cr HRC58,nominal custom design,,,wedge_y,True,1,1200000.0
+WD-02,从动楔座,Loader,40Cr HRC58,nominal custom design,,,slider_x,True,1,1320250.2085088189
+ND-BACK1-1,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731117
+ND-BACK1-2,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731117
+ND-BACK1-3,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731117
+ND-BACK1-4,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK1-5,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK1-6,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK1-7,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK2-1,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731117
+ND-BACK2-2,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731117
+ND-BACK2-3,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731117
+ND-BACK2-4,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK2-5,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK2-6,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK2-7,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK3-1,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731117
+ND-BACK3-2,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731117
+ND-BACK3-3,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731117
+ND-BACK3-4,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK3-5,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK3-6,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK3-7,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK4-1,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731117
+ND-BACK4-2,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731117
+ND-BACK4-3,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731117
+ND-BACK4-4,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK4-5,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK4-6,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-BACK4-7,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT1-1,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.0575041173112
+ND-FRONT1-2,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.0575041173112
+ND-FRONT1-3,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.0575041173112
+ND-FRONT1-4,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT1-5,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT1-6,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT1-7,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT2-1,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.0575041173112
+ND-FRONT2-2,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.0575041173112
+ND-FRONT2-3,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.0575041173112
+ND-FRONT2-4,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT2-5,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT2-6,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT2-7,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT3-1,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.0575041173112
+ND-FRONT3-2,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.0575041173112
+ND-FRONT3-3,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.0575041173112
+ND-FRONT3-4,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT3-5,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT3-6,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT3-7,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT4-1,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.0575041173112
+ND-FRONT4-2,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.0575041173112
+ND-FRONT4-3,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.0575041173112
+ND-FRONT4-4,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT4-5,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT4-6,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+ND-FRONT4-7,楔面滚针_3x30,Loader,GCr15,nominal rolling contact geometry,,,needle_cage,True,1,212.05750411731154
+SC-01,滚珠丝杠_16_导程5_有效行程20,Loader,steel,nominal C5 ball-screw envelope,,No claimed helix/race contact rating before procurement.,fixed,True,1,50705.30542893928
+SC-02,滚珠丝杠螺母_法兰,Loader,steel,nominal catalogue-independent nut,,,wedge_y,True,1,19306.93527217702
+SC-03,螺母与楔块连接桥,Loader,steel,nominal custom design,,,wedge_y,True,1,7040.0
+SC-SPF,丝杠支撑座,Loader,steel,nominal support housing,,,fixed,True,1,23527.43519689201
+SC-BRF,丝杠支撑轴承总成,Loader,steel,nominal integrated bearing envelope; supplier details pending,,,fixed,True,1,14766.063524920297
+SC-SPR,丝杠支撑座,Loader,steel,nominal support housing,,,fixed,True,1,23527.43519689201
+SC-BRR,丝杠支撑轴承总成,Loader,steel,nominal integrated bearing envelope; supplier details pending,,,fixed,True,1,14766.063524920297
+SV-CP,伺服联轴器,Loader,steel,nominal flexible coupling envelope,,,fixed,True,1,20620.47170036731
+SV-01,750W带抱闸伺服电机,Loader,steel,nominal servo envelope; 2.39 Nm rated assumption,,,fixed,True,1,391696.4600329385
+SV-02,伺服电机支架,Loader,steel,nominal custom design,,,fixed,True,1,119433.62938564082
+LR-1,滑块直线导轨_20,Loader,steel,nominal preloaded linear rail envelope,,,fixed,True,1,73652.78783710224
+LR-S1-1,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,619.9027435994614
+LR-S1-2,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,619.9027435994616
+LR-S1-3,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,619.9027435994616
+LR-S1-4,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,619.9027435994616
+LC-1-1,导轨预紧滑块,Loader,steel,nominal guide carriage envelope,,,slider_x,True,1,28592.131010131376
+LC-1-2,导轨预紧滑块,Loader,steel,nominal guide carriage envelope,,,slider_x,True,1,28592.131010131376
+LR-2,滑块直线导轨_20,Loader,steel,nominal preloaded linear rail envelope,,,fixed,True,1,73652.7878371023
+LR-S2-1,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,619.9027435994591
+LR-S2-2,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,619.9027435994592
+LR-S2-3,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,619.9027435994591
+LR-S2-4,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,619.9027435994591
+LC-2-1,导轨预紧滑块,Loader,steel,nominal guide carriage envelope,,,slider_x,True,1,28592.131010131376
+LC-2-2,导轨预紧滑块,Loader,steel,nominal guide carriage envelope,,,slider_x,True,1,28592.131010131376
+FS-L,加载端20kN轴向测力传感器,Sensors,steel,nominal force cell envelope and assumed axial stiffness,,,slider_x,True,1,76904.428703551
+WS-01,工件模拟滑块_60度中心孔,Loader,steel,nominal custom design,,,slider_x,True,1,981004.6893477823
+WS-S111,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,678.8076058542706
+WS-S112,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,678.8076058542706
+WS-S121,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,678.8076058542708
+WS-S122,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,678.8076058542708
+WS-S211,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,678.8076058542681
+WS-S212,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,678.8076058542681
+WS-S221,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,678.8076058542681
+WS-S222,内六角螺钉_M5,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,678.8076058542681
+DS-01,滑块独立LVDT_量程正负1mm,Sensors,steel,"nominal sensor envelope, resolution .5 um target",,,fixed,True,1,33464.24494603853
+DS-02,位移传感器支架,Sensors,steel,nominal custom design,,,fixed,True,1,83037.6110196153
+TS-TIP,回转顶尖_60度_轴承支承芯轴,Tailstock,GCr15,nominal custom design,,,piston_x,True,1,78381.39687892474
+TS-QUILL,尾座套筒_轴承台阶与后端连接,Tailstock,steel,nominal custom design,,,piston_x,True,1,1176510.6465583302
+TS-B1-O,轴承外圈,Tailstock,steel,nominal bearing envelope; final catalogue selection required,,,piston_x,True,1,14325.662500369453
+TS-B1-I,轴承内圈,Tailstock,steel,nominal bearing envelope,,,piston_x,True,1,6836.105614211392
+TS-B1-B1,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.00691017302066
+TS-B1-B2,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.00691017302066
+TS-B1-B3,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.00691017302063
+TS-B1-B4,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.0069101730206
+TS-B1-B5,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.0069101730206
+TS-B1-B6,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.00691017302057
+TS-B1-B7,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.0069101730206
+TS-B1-B8,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.0069101730206
+TS-B1-B9,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.0069101730206
+TS-B1-B10,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.0069101730206
+TS-B1-B11,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.00691017302063
+TS-B1-B12,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.00691017302066
+TS-B1-C,轴承保持架,Tailstock,brass,nominal rolling topology,,,fixed,True,12,679.3585373659264
+TS-B2-O,轴承外圈,Tailstock,steel,nominal bearing envelope; final catalogue selection required,,,piston_x,True,1,14325.662500369453
+TS-B2-I,轴承内圈,Tailstock,steel,nominal bearing envelope,,,piston_x,True,1,6836.105614211392
+TS-B2-B1,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.00691017302066
+TS-B2-B2,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.00691017302066
+TS-B2-B3,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.00691017302063
+TS-B2-B4,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.0069101730206
+TS-B2-B5,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.0069101730206
+TS-B2-B6,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.00691017302057
+TS-B2-B7,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.0069101730206
+TS-B2-B8,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.0069101730206
+TS-B2-B9,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.0069101730206
+TS-B2-B10,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.0069101730206
+TS-B2-B11,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.00691017302063
+TS-B2-B12,轴承滚动体,Tailstock,steel,"nominal rolling topology, no rated bearing-life claim",,,piston_x,True,1,172.00691017302066
+TS-B2-C,轴承保持架,Tailstock,brass,nominal rolling topology,,,fixed,True,12,679.3585379088366
+TS-CAP,顶尖前端轴承挡圈,Tailstock,steel,nominal custom design,,,piston_x,True,1,18507.75064082819
+TS-HOUSE,尾座导向体_可更换导向衬套,Tailstock,steel,nominal custom design,,,fixed,True,1,5159689.378046798
+TS-G1,套筒前导向衬套,Tailstock,bronze,nominal custom design,,,fixed,True,1,708.0364443028229
+TS-G2,套筒后导向衬套,Tailstock,bronze,nominal custom design,,,fixed,True,1,708.0364443028229
+TC-CY-01,前端盖_杆封与导向槽,TailHydraulics,45 steel,nominal custom design,,,floating_cylinder,True,1,230547.0177308353
+TC-CY-02,缸筒_63H8_端盖止口70,TailHydraulics,45 steel,nominal custom design,,,floating_cylinder,True,1,828054.2568260363
+TC-CY-03,后端盖_无杆腔油口,TailHydraulics,45 steel,nominal custom design,,,floating_cylinder,True,1,273225.01730301214
+TC-SE-CAP-1,端盖止口O圈_安装压缩状态,TailHydraulics,NBR70,"nominal 66x2.65 ring, installed ellipse",,Installed area approximately preserves stock section; gland needs seal vendor confirmation.,floating_cylinder,True,1,1169.3823121751407
+TC-SE-CAP-2,端盖止口O圈_安装压缩状态,TailHydraulics,NBR70,"nominal 66x2.65 ring, installed ellipse",,Installed area approximately preserves stock section; gland needs seal vendor confirmation.,floating_cylinder,True,1,1169.3823121751275
+TC-GD-01,前端盖青铜导向套,TailHydraulics,CuSn12,nominal custom design,,Nominal clearance .05 radial at rod; final fit to be toleranced.,floating_cylinder,True,1,3081.902393171593
+TC-SE-W,杆端防尘圈,TailHydraulics,PU/NBR,"nominal seal design, final catalogue selection pending",,,floating_cylinder,True,1,1401.691462835646
+TC-SE-R1,杆封_第一道,TailHydraulics,PU/NBR,"nominal seal design, final catalogue selection pending",,,floating_cylinder,True,1,1173.784623780967
+TC-SE-R2,杆封_第二道,TailHydraulics,PU/NBR,"nominal seal design, final catalogue selection pending",,,floating_cylinder,True,1,1173.7846237809674
+TC-CY-04,活塞_密封与导向槽_内沉锁紧螺母,TailHydraulics,45 steel,nominal custom design,,,piston_x,True,1,63715.614501177195
+TC-CY-05,镀铬活塞杆_两端M24连接,TailHydraulics,45 steel hard chrome,nominal custom design,,,piston_x,True,1,194307.27000507966
+TC-CY-06,活塞锁紧螺母_沉入活塞,TailHydraulics,45 steel,nominal custom design,,Recess prevents collision at zero extension; locking method final assembly review.,piston_x,True,1,2289.234649023455
+TC-CY-07,活塞锁紧垫圈,TailHydraulics,45 steel,nominal custom design,,,piston_x,True,1,557.9154393510117
+TC-POS-M,内置位移参考磁环,TailHydraulics,magnet composite,optional nominal magnetostrictive ring; catalogue pending,,,piston_x,True,1,290.810948757501
+TC-POS-01,内置位移参考探杆_校准与开阀后重置,TailHydraulics,stainless,optional nominal magnetostrictive sensor envelope; catalogue and accuracy pending,,Reference option for bench calibration/rebasing; sensor accuracy is unverified. Blind rod bore provides full 140 mm clearance.,floating_cylinder,True,1,27409.42758533802
+TC-GD-P1,活塞分口导向带,TailHydraulics,PTFE composite,nominal custom design,,,piston_x,True,1,827.2673963573525
+TC-GD-P2,活塞分口导向带,TailHydraulics,PTFE composite,nominal custom design,,,piston_x,True,1,827.2673963573488
+TC-SE-P1,活塞组合密封_PTFE外环,TailHydraulics,PTFE,nominal custom design,,,piston_x,True,1,1903.8082896680899
+TC-SE-P2,活塞组合密封_NBR励磁圈,TailHydraulics,NBR70,nominal custom design,,,piston_x,True,1,1021.843767296235
+TC-TR-1,油缸端盖拉杆,TailHydraulics,10.9 steel,nominal custom design,,,floating_cylinder,True,1,22305.307840487538
+TC-TW-F1,拉杆平垫圈,TailHydraulics,hardened steel,nominal custom design,,,floating_cylinder,True,1,455.13823568882174
+TC-TW-R1,拉杆平垫圈,TailHydraulics,hardened steel,nominal custom design,,,floating_cylinder,True,1,455.13823568882174
+TC-TN-F1,拉杆六角螺母,TailHydraulics,class 10 steel,nominal custom design,,,floating_cylinder,True,1,1373.9322028316635
+TC-TN-R1,拉杆六角螺母,TailHydraulics,class 10 steel,nominal custom design,,,floating_cylinder,True,1,1373.9322028316635
+TC-TR-2,油缸端盖拉杆,TailHydraulics,10.9 steel,nominal custom design,,,floating_cylinder,True,1,22305.307840487538
+TC-TW-F2,拉杆平垫圈,TailHydraulics,hardened steel,nominal custom design,,,floating_cylinder,True,1,455.13823568882174
+TC-TW-R2,拉杆平垫圈,TailHydraulics,hardened steel,nominal custom design,,,floating_cylinder,True,1,455.13823568882174
+TC-TN-F2,拉杆六角螺母,TailHydraulics,class 10 steel,nominal custom design,,,floating_cylinder,True,1,1373.9322028316633
+TC-TN-R2,拉杆六角螺母,TailHydraulics,class 10 steel,nominal custom design,,,floating_cylinder,True,1,1373.932202831662
+TC-TR-3,油缸端盖拉杆,TailHydraulics,10.9 steel,nominal custom design,,,floating_cylinder,True,1,22305.307840487523
+TC-TW-F3,拉杆平垫圈,TailHydraulics,hardened steel,nominal custom design,,,floating_cylinder,True,1,455.1382356888215
+TC-TW-R3,拉杆平垫圈,TailHydraulics,hardened steel,nominal custom design,,,floating_cylinder,True,1,455.1382356888215
+TC-TN-F3,拉杆六角螺母,TailHydraulics,class 10 steel,nominal custom design,,,floating_cylinder,True,1,1373.932202831665
+TC-TN-R3,拉杆六角螺母,TailHydraulics,class 10 steel,nominal custom design,,,floating_cylinder,True,1,1373.9322028316665
+TC-TR-4,油缸端盖拉杆,TailHydraulics,10.9 steel,nominal custom design,,,floating_cylinder,True,1,22305.307840487523
+TC-TW-F4,拉杆平垫圈,TailHydraulics,hardened steel,nominal custom design,,,floating_cylinder,True,1,455.1382356888215
+TC-TW-R4,拉杆平垫圈,TailHydraulics,hardened steel,nominal custom design,,,floating_cylinder,True,1,455.1382356888215
+TC-TN-F4,拉杆六角螺母,TailHydraulics,class 10 steel,nominal custom design,,,floating_cylinder,True,1,1373.932202831665
+TC-TN-R4,拉杆六角螺母,TailHydraulics,class 10 steel,nominal custom design,,,floating_cylinder,True,1,1373.9322028316665
+TC-BL-01,集成阀块_厂家M22阀孔_双腔独立热泄压,TailHydraulics,45 steel,nominal custom design,,M22x1.5 per Wandfluh 3-395.4; 180 degree bottom permitted. M20 relief cavities nominal pending procurement.,floating_cylinder,True,1,1261971.2453354297
+TC-V2-BD1,V2_厂家座阀与紧固帽,TailHydraulics,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,floating_cylinder,True,1,6522.397688728665
+TC-V2-BD2,V2_厂家座阀与紧固帽,TailHydraulics,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,floating_cylinder,True,1,39368.049325741944
+TC-V2-CL1,V2_厂家线圈组件_1,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,10913.78056003356
+TC-V2-CL2,V2_厂家线圈组件_2,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,87.90400212686049
+TC-V2-CL3,V2_厂家线圈组件_3,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,10081.307763366141
+TC-V2-CL4,V2_厂家线圈组件_4,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,261.71287760412247
+TC-V2-CL5,V2_厂家线圈组件_5,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,1149.6556214050636
+TC-V2-CL6,V2_厂家线圈组件_6,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,25877.801342443723
+TC-V2-HB1,V2_厂家封闭插头_1,TailHydraulics,45 steel,official Wandfluh HB0.STEP,,,floating_cylinder,True,1,546.2995319246675
+TC-V2-HB2,V2_厂家封闭插头_2,TailHydraulics,45 steel,official Wandfluh HB0.STEP,,,floating_cylinder,True,1,26.54017473752593
+TC-V2-SE1,V2_安装密封包络_18.72x2.62,TailHydraulics,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,floating_cylinder,True,1,161.9864590867506
+TC-V2-SE2,V2_安装密封包络_18.77x1.78,TailHydraulics,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,floating_cylinder,True,1,137.92669741362369
+TC-V2-SE3,V2_安装密封包络_15.60x1.78,TailHydraulics,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,floating_cylinder,True,1,137.1053860665261
+TC-V2-BR,V2_厂家尺寸挡圈_16.1x19x1.4,TailHydraulics,PTFE,manufacturer spare part dimensions; installed position provisional,,,floating_cylinder,True,1,111.92395067311315
+TC-V4-BD1,V4_厂家座阀与紧固帽,TailHydraulics,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,floating_cylinder,True,1,6522.397688728668
+TC-V4-BD2,V4_厂家座阀与紧固帽,TailHydraulics,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,floating_cylinder,True,1,39368.04932574196
+TC-V4-CL1,V4_厂家线圈组件_1,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,10913.78056003356
+TC-V4-CL2,V4_厂家线圈组件_2,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,87.9040021268605
+TC-V4-CL3,V4_厂家线圈组件_3,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,10081.307763366141
+TC-V4-CL4,V4_厂家线圈组件_4,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,261.71287760412247
+TC-V4-CL5,V4_厂家线圈组件_5,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,1149.6556214050636
+TC-V4-CL6,V4_厂家线圈组件_6,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,25877.801342443723
+TC-V4-HB1,V4_厂家封闭插头_1,TailHydraulics,45 steel,official Wandfluh HB0.STEP,,,floating_cylinder,True,1,546.2995319246675
+TC-V4-HB2,V4_厂家封闭插头_2,TailHydraulics,45 steel,official Wandfluh HB0.STEP,,,floating_cylinder,True,1,26.54017473752593
+TC-V4-SE1,V4_安装密封包络_18.72x2.62,TailHydraulics,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,floating_cylinder,True,1,161.98645909008593
+TC-V4-SE2,V4_安装密封包络_18.77x1.78,TailHydraulics,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,floating_cylinder,True,1,137.926694368827
+TC-V4-SE3,V4_安装密封包络_15.60x1.78,TailHydraulics,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,floating_cylinder,True,1,137.1053860665261
+TC-V4-BR,V4_厂家尺寸挡圈_16.1x19x1.4,TailHydraulics,PTFE,manufacturer spare part dimensions; installed position provisional,,,floating_cylinder,True,1,111.92395067311318
+TC-V3-BD1,V3_厂家座阀与紧固帽,TailHydraulics,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,floating_cylinder,True,1,6522.397688728668
+TC-V3-BD2,V3_厂家座阀与紧固帽,TailHydraulics,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,floating_cylinder,True,1,39368.049325741944
+TC-V3-CL1,V3_厂家线圈组件_1,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,10913.780560033561
+TC-V3-CL2,V3_厂家线圈组件_2,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,87.90400212686049
+TC-V3-CL3,V3_厂家线圈组件_3,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,10081.307763366141
+TC-V3-CL4,V3_厂家线圈组件_4,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,261.71287760412247
+TC-V3-CL5,V3_厂家线圈组件_5,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,1149.6556214050636
+TC-V3-CL6,V3_厂家线圈组件_6,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,25877.801342443723
+TC-V3-HB1,V3_厂家封闭插头_1,TailHydraulics,45 steel,official Wandfluh HB0.STEP,,,floating_cylinder,True,1,546.2995319246675
+TC-V3-HB2,V3_厂家封闭插头_2,TailHydraulics,45 steel,official Wandfluh HB0.STEP,,,floating_cylinder,True,1,26.54017473752593
+TC-V3-SE1,V3_安装密封包络_18.72x2.62,TailHydraulics,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,floating_cylinder,True,1,161.98645908660785
+TC-V3-SE2,V3_安装密封包络_18.77x1.78,TailHydraulics,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,floating_cylinder,True,1,137.92669707150395
+TC-V3-SE3,V3_安装密封包络_15.60x1.78,TailHydraulics,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,floating_cylinder,True,1,137.1053860665261
+TC-V3-BR,V3_厂家尺寸挡圈_16.1x19x1.4,TailHydraulics,PTFE,manufacturer spare part dimensions; installed position provisional,,,floating_cylinder,True,1,111.92395067311318
+TC-V1-BD1,V1_厂家座阀与紧固帽,TailHydraulics,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,floating_cylinder,True,1,6522.397688728668
+TC-V1-BD2,V1_厂家座阀与紧固帽,TailHydraulics,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,floating_cylinder,True,1,39368.049325741944
+TC-V1-CL1,V1_厂家线圈组件_1,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,10913.78056003356
+TC-V1-CL2,V1_厂家线圈组件_2,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,87.9040021268605
+TC-V1-CL3,V1_厂家线圈组件_3,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,10081.307763366141
+TC-V1-CL4,V1_厂家线圈组件_4,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,261.71287760412247
+TC-V1-CL5,V1_厂家线圈组件_5,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,1149.6556214050636
+TC-V1-CL6,V1_厂家线圈组件_6,TailHydraulics,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,floating_cylinder,True,1,25877.801342443723
+TC-V1-HB1,V1_厂家封闭插头_1,TailHydraulics,45 steel,official Wandfluh HB0.STEP,,,floating_cylinder,True,1,546.2995319246675
+TC-V1-HB2,V1_厂家封闭插头_2,TailHydraulics,45 steel,official Wandfluh HB0.STEP,,,floating_cylinder,True,1,26.54017473752593
+TC-V1-SE1,V1_安装密封包络_18.72x2.62,TailHydraulics,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,floating_cylinder,True,1,161.98645908995175
+TC-V1-SE2,V1_安装密封包络_18.77x1.78,TailHydraulics,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,floating_cylinder,True,1,137.92669649130377
+TC-V1-SE3,V1_安装密封包络_15.60x1.78,TailHydraulics,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,floating_cylinder,True,1,137.1053860665261
+TC-V1-BR,V1_厂家尺寸挡圈_16.1x19x1.4,TailHydraulics,PTFE,manufacturer spare part dimensions; installed position provisional,,,floating_cylinder,True,1,111.92395067311318
+TC-RV-R,有杆腔7MPa机械溢流阀_设计包络,TailHydraulics,45 steel,"project nominal M20 design envelope, supplier pending",,,floating_cylinder,True,1,19138.48208191426
+TC-RV-C,无杆腔7MPa机械溢流阀_设计包络,TailHydraulics,45 steel,"project nominal M20 design envelope, supplier pending",,,floating_cylinder,True,1,19138.482081914284
+TC-PS-C,无杆腔压力传感器,TailHydraulics,stainless,nominal G1/4 sensor envelope,,,floating_cylinder,True,1,30829.528864039865
+TC-PS-R,有杆腔压力传感器,TailHydraulics,stainless,nominal G1/4 sensor envelope,,,floating_cylinder,True,1,30829.52886403989
+TC-TW-01,封闭端油温套管,TailHydraulics,304 stainless,nominal custom design,,,floating_cylinder,True,1,3664.3825541388296
+TC-PT-01,Pt100油温探杆,TailHydraulics,stainless,nominal diameter 3 probe envelope,,,floating_cylinder,True,1,3852.4565312808295
+TC-TW-R,有杆腔独立封闭测温套管,TailHydraulics,304 stainless,nominal custom design,,Independent cavity temperature; closed tip 1mm. Sensor time constant requires bench identification.,floating_cylinder,True,1,1981.1634601380076
+TC-PT-R,有杆腔独立Pt100温度探杆,TailHydraulics,stainless,"nominal diameter2 Pt100 probe, catalogue pending",,,floating_cylinder,True,1,2916.654619592766
+TC-TP-R,测压排气接头_R,TailHydraulics,45 steel,nominal M16x2 test fitting envelope,,,floating_cylinder,True,1,10182.117480212199
+TC-TP-C,测压排气接头_C,TailHydraulics,45 steel,nominal M16x2 test fitting envelope,,,floating_cylinder,True,1,10182.117480212204
+TC-OR-01,可换阻尼螺塞_真实孔径0.1,TailHydraulics,304 stainless,nominal custom design,,Actual 0.1 mm through hole; z16..20; shoulder/thread sealing must be specified for procurement/manufacturing.,floating_cylinder,True,1,180.46263227915196
+TC-SE-FR,阀块对接端面O圈_R,TailHydraulics,NBR70,15x2.65 nominal installed compressed,,,floating_cylinder,True,1,284.2267798006508
+TC-SE-FC,阀块对接端面O圈_C,TailHydraulics,NBR70,15x2.65 nominal installed compressed,,,floating_cylinder,True,1,284.2267798006499
+TC-BS-1,阀块连接内六角螺钉,TailHydraulics,8.8 steel,nominal custom design,,,floating_cylinder,True,1,4455.734430788948
+TC-BS-2,阀块连接内六角螺钉,TailHydraulics,8.8 steel,nominal custom design,,,floating_cylinder,True,1,4455.734430788955
+TC-BS-3,阀块连接内六角螺钉,TailHydraulics,8.8 steel,nominal custom design,,,floating_cylinder,True,1,4455.734430788954
+TC-BS-4,阀块连接内六角螺钉,TailHydraulics,8.8 steel,nominal custom design,,,floating_cylinder,True,1,4455.7344307889625
+TC-DP-1,端盖阀块定位销,TailHydraulics,hardened steel,nominal custom design,,Nominal interference/dowel fit represented by equal envelopes.,floating_cylinder,True,1,438.25217517577727
+TC-DP-2,端盖阀块定位销,TailHydraulics,hardened steel,nominal custom design,,Nominal interference/dowel fit represented by equal envelopes.,floating_cylinder,True,1,438.2521751757767
+TC-PF-B,外接油口适配接头_B,TailHydraulics,45 steel,nominal BSPP straight adapter envelope,,,floating_cylinder,True,1,9029.912238607409
+TC-PF-PP,外接油口适配接头_PP,TailHydraulics,45 steel,nominal BSPP straight adapter envelope,,,floating_cylinder,True,1,6314.7805518542355
+TC-PF-RT,外接油口适配接头_RT,TailHydraulics,45 steel,nominal BSPP straight adapter envelope,,,floating_cylinder,True,1,6608.519464964886
+TC-PF-T,外接油口适配接头_T,TailHydraulics,45 steel,nominal BSPP straight adapter envelope,,,floating_cylinder,True,1,6608.519464964885
+TC-PF-A,外接油口适配接头_A,TailHydraulics,45 steel,nominal BSPP straight adapter envelope,,,floating_cylinder,True,1,9029.912238607405
+TC-PF-CT,无杆腔热溢流独立回油接头,TailHydraulics,45 steel,nominal G1/8 adapter,,,floating_cylinder,True,1,2075.4675952139123
+TS-LINK,套筒活塞杆螺纹连接套,Tailstock,steel,nominal custom design,,M24x1.5 nominal thread envelope; axial gap zero at quill rear face.,piston_x,True,1,71985.66866619319
+FC-LR1,浮动缸座导轨,FloatingFixture,steel,nominal low-friction rail,,,fixed,True,1,63999.999999999985
+FC-LC11,浮动缸座滑块,FloatingFixture,steel,nominal linear carriage,,,floating_cylinder,True,1,22553.099999999973
+FC-LC12,浮动缸座滑块,FloatingFixture,steel,nominal linear carriage,,,floating_cylinder,True,1,22553.099999999973
+FC-LR2,浮动缸座导轨,FloatingFixture,steel,nominal low-friction rail,,,fixed,True,1,63999.999999999985
+FC-LC21,浮动缸座滑块,FloatingFixture,steel,nominal linear carriage,,,floating_cylinder,True,1,22553.099999999973
+FC-LC22,浮动缸座滑块,FloatingFixture,steel,nominal linear carriage,,,floating_cylinder,True,1,22553.099999999973
+FC-SLED,油缸浮动安装座,FloatingFixture,steel,nominal custom design,,Top 1025 equals cylinder bottom1035 minus10 thermal jacket; mounting interface to jacket/support review.,floating_cylinder,True,1,1488990.2592298042
+FS-R,浮动缸座环形轴向反力传感器_20kN,Sensors,steel,nominal annular reaction-cell envelope; catalogue pending,,45 mm clear centre admits optional axial position-reference probe.,fixed,True,1,107077.10152715839
+FC-STOP,反力传感器后支座,FloatingFixture,steel,nominal custom design,,45.2 mm bore clears position probe; annular 55 mm rear sensor face seats at x1655 after translation.,fixed,True,1,214744.80163502967
+TJ-01,温控U形夹套_真实内水道,Thermal,6061-T6,nominal custom design,,Drilled channel closures listed individually; coolant 4 L/min assumption.,floating_cylinder,True,1,526543.4969727155
+TJ-PLL1,夹套工艺孔封堵螺塞,Thermal,steel,nominal threaded hydraulic plug,,,floating_cylinder,True,1,164.03826040719193
+TJ-PLL2,夹套工艺孔封堵螺塞,Thermal,steel,nominal threaded hydraulic plug,,,floating_cylinder,True,1,164.03826040719193
+TJ-PLL3,夹套工艺孔封堵螺塞,Thermal,steel,nominal threaded hydraulic plug,,,floating_cylinder,True,1,164.03826040719193
+TJ-PLL4,夹套工艺孔封堵螺塞,Thermal,steel,nominal threaded hydraulic plug,,,floating_cylinder,True,1,164.03826040719193
+TJ-PLL5,夹套工艺孔封堵螺塞,Thermal,steel,nominal threaded hydraulic plug,,,floating_cylinder,True,1,164.03826040719193
+TJ-PLL6,夹套工艺孔封堵螺塞,Thermal,steel,nominal threaded hydraulic plug,,,floating_cylinder,True,1,164.03826040719193
+TJ-PLR1,夹套工艺孔封堵螺塞,Thermal,steel,nominal threaded hydraulic plug,,,floating_cylinder,True,1,164.03826040719176
+TJ-PLR2,夹套工艺孔封堵螺塞,Thermal,steel,nominal threaded hydraulic plug,,,floating_cylinder,True,1,164.03826040719176
+TJ-PLR3,夹套工艺孔封堵螺塞,Thermal,steel,nominal threaded hydraulic plug,,,floating_cylinder,True,1,164.03826040719176
+TJ-PLR4,夹套工艺孔封堵螺塞,Thermal,steel,nominal threaded hydraulic plug,,,floating_cylinder,True,1,164.03826040719176
+TJ-PLR5,夹套工艺孔封堵螺塞,Thermal,steel,nominal threaded hydraulic plug,,,floating_cylinder,True,1,164.03826040719176
+TJ-PLR6,夹套工艺孔封堵螺塞,Thermal,steel,nominal threaded hydraulic plug,,,floating_cylinder,True,1,164.03826040719176
+HP-TANK,液压站油箱_空腔与壁厚6,Power,Q235B,nominal custom design,,,fixed,True,1,2950175.9999999935
+HP-COVER,油箱检修顶盖,Power,steel,nominal custom design,,,fixed,True,1,1033599.9999999998
+HP-PUMP,5.8Lmin齿轮泵_1.1kW电机接口,Power,steel,nominal pump envelope,,,fixed,True,1,421815.043202072
+HP-MOTOR,1.1kW泵电机,Power,steel,nominal motor envelope,,,fixed,True,1,2053645.8586009515
+HP-COUP,泵电机联轴器与护罩,Power,steel,nominal drive coupling,,,fixed,True,1,145074.19343342894
+HP-ACC,蓄能器_5至6MPa供压,Power,steel,nominal rated vessel external envelope; no fabricated bladder internals,,,fixed,True,1,2158801.940581991
+HP-FILTER,回油过滤器_10um名义,Power,steel,nominal filter housing; micron rating not geometric pores,,,fixed,True,1,577267.6500971244
+CH-CYL,卡盘试验缸筒_100H8,Chuck,steel,custom nominal nonrotating test design 100/25/20,,"70 mm chamber, piston plus stops50 mm yields20 mm stroke; not a rotary-cylinder catalogue substitute.",fixed,True,1,417046.42476404476
+CH-PIS,卡盘试验活塞_49宽_密封导向槽,Chuck,steel,custom nominal100/25/20 test actuator,,,chuck_rod_x,True,1,350226.72037158045
+CH-ROD,卡盘试验拉杆_M20活塞_M24加载端,Chuck,steel,custom nominal rod; nominal threaded envelopes,,,chuck_rod_x,True,1,154767.02778736578
+CH-SUP,卡盘缸安装座,Chuck,steel,nominal custom design,,,fixed,True,1,773609.1822982517
+CH-FS,50kN穿心夹紧测力传感器,Sensors,steel,nominal annular force-cell envelope,,,fixed,True,1,83742.29377408953
+CH-DS1,碟簧_50x25.4x3,Chuck,50CrVA,nominal A series disc spring; force curve requires supplier validation,,,fixed,True,1,4370.3637881883615
+CH-DS2,碟簧_50x25.4x3,Chuck,50CrVA,nominal A series disc spring; force curve requires supplier validation,,,fixed,True,1,4370.363788188362
+CH-DS3,碟簧_50x25.4x3,Chuck,50CrVA,nominal A series disc spring; force curve requires supplier validation,,,fixed,True,1,4370.3637881883615
+CH-DS4,碟簧_50x25.4x3,Chuck,50CrVA,nominal A series disc spring; force curve requires supplier validation,,,fixed,True,1,4370.363788188362
+CH-DS5,碟簧_50x25.4x3,Chuck,50CrVA,nominal A series disc spring; force curve requires supplier validation,,,fixed,True,1,4370.3637881883615
+CH-DS6,碟簧_50x25.4x3,Chuck,50CrVA,nominal A series disc spring; force curve requires supplier validation,,,fixed,True,1,4370.363788188362
+CH-DS7,碟簧_50x25.4x3,Chuck,50CrVA,nominal A series disc spring; force curve requires supplier validation,,,fixed,True,1,4370.3637881883615
+CH-DS8,碟簧_50x25.4x3,Chuck,50CrVA,nominal A series disc spring; force curve requires supplier validation,,,fixed,True,1,4370.363788188362
+CH-DS9,碟簧_50x25.4x3,Chuck,50CrVA,nominal A series disc spring; force curve requires supplier validation,,,fixed,True,1,4370.3637881883615
+CH-DS10,碟簧_50x25.4x3,Chuck,50CrVA,nominal A series disc spring; force curve requires supplier validation,,,fixed,True,1,4370.363788188362
+CH-DS11,碟簧_50x25.4x3,Chuck,50CrVA,nominal A series disc spring; force curve requires supplier validation,,,fixed,True,1,4370.3637881883615
+CH-DS12,碟簧_50x25.4x3,Chuck,50CrVA,nominal A series disc spring; force curve requires supplier validation,,,fixed,True,1,4370.363788188362
+CH-SPINDLE,卡盘主轴模拟座,Chuck,steel,nominal custom design,,,fixed,True,1,5936288.5009852
+CH-J1,卡盘径向滑动卡爪,Chuck,steel,nominal non-rotating chuck jaw,,,fixed,True,1,30999.999999999993
+CH-J2,卡盘径向滑动卡爪,Chuck,steel,nominal non-rotating chuck jaw,,,fixed,True,1,31000.000000000025
+CH-J3,卡盘径向滑动卡爪,Chuck,steel,nominal non-rotating chuck jaw,,,fixed,True,1,31000.000000000036
+CH-BODY,模拟三爪卡盘_导向槽,Chuck,steel,nominal chuck fixture body,,,fixed,True,1,1284254.8819848567
+NV-01,回转泄漏模拟针阀,Chuck,steel,nominal 0..1 L/min leakage valve envelope,,,fixed,True,1,47775.44181763474
+EC-BOX,电控柜_门窗与壁厚6,Controls,steel sheet,nominal custom design,,,fixed,True,1,2670888.000000001
+EC-HMI,控制触摸屏,Controls,steel,nominal HMI envelope,,,fixed,True,1,277200.0
+ESTOP-1,急停蘑菇按钮,Controls,polymer,nominal safety switch envelope,,,fixed,True,1,15356.10489074691
+ESTOP-2,急停蘑菇按钮,Controls,polymer,nominal safety switch envelope,,,fixed,True,1,15356.104890746908
+GD-P1,防护罩30方管立柱,Guard,aluminium,nominal custom design,,,fixed,True,1,103039.99999999996
+GD-P2,防护罩30方管立柱,Guard,aluminium,nominal custom design,,,fixed,True,1,103039.99999999996
+GD-P3,防护罩30方管立柱,Guard,aluminium,nominal custom design,,,fixed,True,1,103039.99999999996
+GD-P4,防护罩30方管立柱,Guard,aluminium,nominal custom design,,,fixed,True,1,103039.99999999996
+GD-T1,防护罩顶部横梁,Guard,aluminium,nominal custom design,,,fixed,True,1,358400.00000000023
+GD-T2,防护罩顶部横梁,Guard,aluminium,nominal custom design,,,fixed,True,1,358400.00000000023
+GD-T3,防护罩顶部横梁,Guard,aluminium,nominal custom design,,,fixed,True,1,92960.00000000006
+GD-T4,防护罩顶部横梁,Guard,aluminium,nominal custom design,,,fixed,True,1,92960.00000000006
+GD-BACK,聚碳酸酯防护板_6,Guard,PC,nominal custom design,,Protective effectiveness untested; guarding needs machine risk assessment.,fixed,True,1,3973200.0
+GD-LEFT,聚碳酸酯防护板_6,Guard,PC,nominal custom design,,Protective effectiveness untested; guarding needs machine risk assessment.,fixed,True,1,1070700.0
+GD-RIGHT,聚碳酸酯防护板_6,Guard,PC,nominal custom design,,Protective effectiveness untested; guarding needs machine risk assessment.,fixed,True,1,1070700.0
+GD-TOP,聚碳酸酯防护板_6,Guard,PC,nominal custom design,,Protective effectiveness untested; guarding needs machine risk assessment.,fixed,True,1,3834600.0
+GD-DOOR1,左侧滑动透明门,Guard,PC,nominal custom design,,,door_x,True,1,2296200.0
+GD-DOOR2,右侧滑动透明门,Guard,PC,nominal custom design,,,door_x,True,1,1674420.0
+GD-RAIL1,防护门滑轨,Guard,aluminium,nominal custom design,,,fixed,True,1,480000.0
+GD-RAIL2,防护门滑轨,Guard,aluminium,nominal custom design,,,fixed,True,1,319999.99999999994
+GD-H1,门把手,Guard,polymer,nominal custom design,,,fixed,True,1,10976.400219591245
+GD-H2,门把手,Guard,polymer,nominal custom design,,,fixed,True,1,10976.400219591405
+GD-LOCK,安全门联锁开关,Controls,steel,nominal interlock envelope; circuit validation required,,,fixed,True,1,40500.0
+CH-SE-C172,卡盘试验缸端盖静密封圈,Chuck,NBR70,"nominal installed ring, catalogue compression review pending",,,fixed,True,1,1857.2542605134493
+CH-SE-C247,卡盘试验缸端盖静密封圈,Chuck,NBR70,"nominal installed ring, catalogue compression review pending",,,fixed,True,1,1857.2542605134493
+CH-PFC,卡盘试验缸G1/4油口_C,Chuck,steel,"nominal BSPP adapter, bonded sealing review pending",,,fixed,True,1,5742.579807696066
+CH-PFR,卡盘试验缸G1/4油口_R,Chuck,steel,"nominal BSPP adapter, bonded sealing review pending",,,fixed,True,1,5742.579807696069
+CH-CF,卡盘试验缸前端盖_可拆止口,Chuck,steel,nominal custom design,,,fixed,True,1,542880.5884685537
+CH-CR,卡盘试验缸杆端盖_杆封导向槽,Chuck,steel,nominal custom design,,,fixed,True,1,842911.2211174781
+CH-PN,卡盘活塞锁紧螺母_M20x1.5,Chuck,steel,nominal standard fastener,,,chuck_rod_x,True,1,3256.8451863291
+CH-GPA,卡盘活塞分口导向带,Chuck,PTFE composite,nominal custom design,,,chuck_rod_x,True,1,2039.3368916986328
+CH-GPB,卡盘活塞分口导向带,Chuck,PTFE composite,nominal custom design,,,chuck_rod_x,True,1,2039.3368916986365
+CH-SP,卡盘活塞组合密封外环,Chuck,PTFE,"nominal seal profile, supplier pending",,,chuck_rod_x,True,1,3383.5612613619596
+CH-EP,卡盘活塞密封励磁圈,Chuck,NBR70,nominal custom design,,,chuck_rod_x,True,1,1663.7490200970217
+CH-GR,卡盘杆端青铜导向套,Chuck,CuSn12,nominal custom design,,,fixed,True,1,2052.716639855554
+CH-SR1,卡盘杆端密封_R1,Chuck,PU/NBR,"nominal U cup open to chamber, catalogue pending",,,fixed,True,1,881.7500246848854
+CH-SR2,卡盘杆端密封_R2,Chuck,PU/NBR,"nominal U cup open to chamber, catalogue pending",,,fixed,True,1,881.7500246848854
+CH-SW,卡盘杆端密封_W,Chuck,PU/NBR,"nominal U cup open to chamber, catalogue pending",,,fixed,True,1,1041.822024366912
+CH-TR1,卡盘端盖M8拉杆,Fasteners,steel,nominal 10.9 tie rod,,,fixed,True,1,9253.875320414067
+CH-TWF1,卡盘拉杆平垫圈,Fasteners,steel,nominal hardened washer,,,fixed,True,1,288.63382504856304
+CH-TNF1,卡盘拉杆M8螺母,Fasteners,steel,nominal class10 nut,,,fixed,True,1,624.6032700838666
+CH-TWR1,卡盘拉杆平垫圈,Fasteners,steel,nominal hardened washer,,,fixed,True,1,288.63382504856304
+CH-TNR1,卡盘拉杆M8螺母,Fasteners,steel,nominal class10 nut,,,fixed,True,1,624.6032700838665
+CH-TR2,卡盘端盖M8拉杆,Fasteners,steel,nominal 10.9 tie rod,,,fixed,True,1,9253.875320414067
+CH-TWF2,卡盘拉杆平垫圈,Fasteners,steel,nominal hardened washer,,,fixed,True,1,288.63382504856304
+CH-TNF2,卡盘拉杆M8螺母,Fasteners,steel,nominal class10 nut,,,fixed,True,1,624.6032700838666
+CH-TWR2,卡盘拉杆平垫圈,Fasteners,steel,nominal hardened washer,,,fixed,True,1,288.63382504856304
+CH-TNR2,卡盘拉杆M8螺母,Fasteners,steel,nominal class10 nut,,,fixed,True,1,624.6032700838665
+CH-TR3,卡盘端盖M8拉杆,Fasteners,steel,nominal 10.9 tie rod,,,fixed,True,1,9253.875320414094
+CH-TWF3,卡盘拉杆平垫圈,Fasteners,steel,nominal hardened washer,,,fixed,True,1,288.6338250485629
+CH-TNF3,卡盘拉杆M8螺母,Fasteners,steel,nominal class10 nut,,,fixed,True,1,624.6032700838658
+CH-TWR3,卡盘拉杆平垫圈,Fasteners,steel,nominal hardened washer,,,fixed,True,1,288.6338250485629
+CH-TNR3,卡盘拉杆M8螺母,Fasteners,steel,nominal class10 nut,,,fixed,True,1,624.6032700838656
+CH-TR4,卡盘端盖M8拉杆,Fasteners,steel,nominal 10.9 tie rod,,,fixed,True,1,9253.875320414094
+CH-TWF4,卡盘拉杆平垫圈,Fasteners,steel,nominal hardened washer,,,fixed,True,1,288.6338250485629
+CH-TNF4,卡盘拉杆M8螺母,Fasteners,steel,nominal class10 nut,,,fixed,True,1,624.6032700838658
+CH-TWR4,卡盘拉杆平垫圈,Fasteners,steel,nominal hardened washer,,,fixed,True,1,288.6338250485629
+CH-TNR4,卡盘拉杆M8螺母,Fasteners,steel,nominal class10 nut,,,fixed,True,1,624.6032700838656
+CH-RXN,卡盘测力传感器反力隔套,Chuck,steel,nominal custom design,,,fixed,True,1,16748.4587548179
+CH-WF,碟簧组前反力垫圈,Chuck,steel,nominal custom design,,,fixed,True,1,5827.151717584497
+CH-WR,碟簧组后压紧垫圈,Chuck,steel,nominal custom design,,,chuck_rod_x,True,1,5983.603031733266
+CH-NUT,卡盘碟簧组加载螺母_M24x1.5,Chuck,steel,nominal standard thread envelope,,,chuck_rod_x,True,1,9379.714136627837
+FS-R-S1,M6x42环形反力传感器安装螺钉,Fasteners,steel,nominal standard thread envelope,,12 mm rear-cap engagement; head clearance to sensor rear stub .2 mm.,floating_cylinder,True,1,1556.863886205364
+FS-R-S2,M6x42环形反力传感器安装螺钉,Fasteners,steel,nominal standard thread envelope,,12 mm rear-cap engagement; head clearance to sensor rear stub .2 mm.,floating_cylinder,True,1,1556.8638862053626
+FS-R-S3,M6x42环形反力传感器安装螺钉,Fasteners,steel,nominal standard thread envelope,,12 mm rear-cap engagement; head clearance to sensor rear stub .2 mm.,floating_cylinder,True,1,1556.863886205364
+FS-R-S4,M6x42环形反力传感器安装螺钉,Fasteners,steel,nominal standard thread envelope,,12 mm rear-cap engagement; head clearance to sensor rear stub .2 mm.,floating_cylinder,True,1,1556.863886205364
+TS-HOUSE-S1,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,5351.921030494405
+TS-HOUSE-S2,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,5351.9210304944145
+TS-HOUSE-S3,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,5351.921030494405
+TS-HOUSE-S4,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,5351.921030494415
+CH-SUP-S1,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,5351.921030494409
+CH-SUP-S2,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,5351.921030494418
+CH-SUP-S3,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,5351.921030494407
+CH-SUP-S4,内六角螺钉_M10,Fasteners,steel,nominal standard fastener envelope,,Thread pitch and engagement specified in part list.,fixed,True,1,5351.921030494416
+FC-FOOT1,端盖底面支撑垫块,FloatingFixture,steel,nominal custom design,,,floating_cylinder,True,1,16727.654975296136
+FC-W11,端盖安装平垫圈,Fasteners,steel,nominal washer,,,floating_cylinder,True,1,436.93270626126866
+FC-S11,M8x95油缸安装螺钉,Fasteners,steel,nominal standard thread envelope,,"17 mm cap engagement through 65 mm sled,10 mm spacer,3 mm washer.",floating_cylinder,True,1,5712.371492224864
+FC-W12,端盖安装平垫圈,Fasteners,steel,nominal washer,,,floating_cylinder,True,1,436.9327062612688
+FC-S12,M8x95油缸安装螺钉,Fasteners,steel,nominal standard thread envelope,,"17 mm cap engagement through 65 mm sled,10 mm spacer,3 mm washer.",floating_cylinder,True,1,5712.3714922248755
+FC-FOOT2,端盖底面支撑垫块,FloatingFixture,steel,nominal custom design,,,floating_cylinder,True,1,14927.654975296136
+FC-W21,端盖安装平垫圈,Fasteners,steel,nominal washer,,,floating_cylinder,True,1,436.93270626126866
+FC-S21,M8x95油缸安装螺钉,Fasteners,steel,nominal standard thread envelope,,"17 mm cap engagement through 65 mm sled,10 mm spacer,3 mm washer.",floating_cylinder,True,1,5712.371492224864
+FC-W22,端盖安装平垫圈,Fasteners,steel,nominal washer,,,floating_cylinder,True,1,436.93270626126883
+FC-S22,M8x95油缸安装螺钉,Fasteners,steel,nominal standard thread envelope,,"17 mm cap engagement through 65 mm sled,10 mm spacer,3 mm washer.",floating_cylinder,True,1,5712.3714922248755

@@ -1,0 +1,143 @@
+{
+ "fig": 7,
+ "title": "图1 的局部放大图",
+ "scale": 1.53409,
+ "size_mm": [
+  154.1,
+  138.0
+ ],
+ "size_clean_mm": [
+  138.0,
+  138.0
+ ],
+ "labels": [
+  "2",
+  "13",
+  "18",
+  "21",
+  "23",
+  "25",
+  "27",
+  "31",
+  "36",
+  "41",
+  "63",
+  "73",
+  "74"
+ ],
+ "missing": [],
+ "crossings": 0,
+ "min_leader_pass_mm": 2.51,
+ "all_anchors_ok": true,
+ "anchors": [
+  {
+   "num": "2",
+   "name": "阀块本体",
+   "side": "L",
+   "anchor_part": "P00_2",
+   "ok": true,
+   "inside_mm": 11.2
+  },
+  {
+   "num": "13",
+   "name": "后端盖",
+   "side": "R",
+   "anchor_part": "P37_13",
+   "ok": true,
+   "inside_mm": 11.6
+  },
+  {
+   "num": "18",
+   "name": "第一缸体油道",
+   "side": "R",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "21",
+   "name": "第一对接油口",
+   "side": "L",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "23",
+   "name": "第一主孔道",
+   "side": "L",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "25",
+   "name": "第一锁闭油道",
+   "side": "L",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "27",
+   "name": "端面密封圈",
+   "side": "R",
+   "anchor_part": "P27_27",
+   "ok": true,
+   "inside_mm": 0.9
+  },
+  {
+   "num": "31",
+   "name": "第一锁闭阀孔",
+   "side": "L",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "36",
+   "name": "密封槽",
+   "side": "L",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "41",
+   "name": "第一锁闭座阀",
+   "side": "R",
+   "anchor_part": "P01_41",
+   "ok": true,
+   "inside_mm": 5.9
+  },
+  {
+   "num": "63",
+   "name": "套管安装孔",
+   "side": "R",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "73",
+   "name": "油温传感器套管",
+   "side": "R",
+   "anchor_part": "P22_73",
+   "ok": true,
+   "inside_mm": 2.4
+  },
+  {
+   "num": "74",
+   "name": "油温传感器",
+   "side": "R",
+   "anchor_part": "P23_74",
+   "ok": true,
+   "inside_mm": 3.9
+  }
+ ],
+ "n_items": 36,
+ "dropped_small": 0,
+ "n_lines": 114,
+ "n_hatch": 491,
+ "t_s": 12.3
+}

@@ -1,0 +1,29 @@
+{
+  "stage": "chuck_stroke_check",
+  "status": "done",
+  "started": 1791016328.2269256,
+  "poses": [
+    {
+      "extension_mm": 0,
+      "collisions": []
+    },
+    {
+      "extension_mm": 5,
+      "collisions": []
+    },
+    {
+      "extension_mm": 10,
+      "collisions": []
+    },
+    {
+      "extension_mm": 15,
+      "collisions": []
+    },
+    {
+      "extension_mm": 20,
+      "collisions": []
+    }
+  ],
+  "scope": "standalone nonrotating actuator internal travel; disc-spring deformation and chuck linkage are excluded",
+  "elapsed_s": 0.41
+}

@@ -1,0 +1,16 @@
+item_id,tier,item,quantity,reference_or_requirement,selection_status,cost_basis,unit_cost_rmb_low,unit_cost_rmb_high,source,notes
+B01,B1/B2,现成无人机及原图采集能力,1,用户已有机型待明确,not_frozen,已有资产或另询价,,,用户资产待提供,本工程不改装机体
+B02,B1,地面工作站,1,16GB显存;64GB RAM;2TB NVMe建议,planning_requirement,整机工程估算非供应商报价,15000,30000,工程建议2026-10-03,已有设备优先;性能待数据实测
+B03,B2,地面工作站,1,32GB以上显存;128GB RAM;4TB NVMe建议,planning_requirement,整机工程估算非供应商报价,35000,80000,工程建议2026-10-03,不承诺实时计算
+B04,B1/B2,LiDAR数据/委托扫描,1,有效点时戳及位姿;原始射线能力另审计,not_frozen,按场地与数据询价,,,实际供应商待定,未回波方向不可得则禁用负证据
+B05,B1/B2,地面超声测厚仪与探头,1,可校准适配实际钢厚及涂层;优先保存波形,reference_candidate,正式报价待探头和选配明确,,,https://ims.evidentscientific.com/zh/products/thickness-gauges/45mg,参考45MG;不得以显示位数当准确度
+B06,B1/B2,参考角钢与校准块量具,1,可追溯尺寸;同肢宽异厚试件,planning_requirement,工程套件估算非报价,1000,4000,工程建议2026-10-03,实际数量及材料记录
+B07,B1/B2,几何标定靶及支架,1,与mechanical模块设计配套,planning_requirement,首件加工估算非报价,1500,6000,本工程mechanical设计待制造,未制造未标定
+B08,B1/B2,独立数据备份与UPS,1,容量按任务;断电安全;本地加密,planning_requirement,工程估算非报价,2000,6000,工程建议2026-10-03,现场任务量大时另扩容
+P01,OPTIONAL_P1,LiDAR头,1,Livox Avia作为接口参考,not_procurement_frozen,供应商正式报价待询,,,https://www.livoxtech.com/avia/specs,非首版必需
+P02,OPTIONAL_P1,全局快门相机,2,Basler acA2440-35uc作为接口参考,not_procurement_frozen,镜头线材选定后询价,,,https://www.baslerweb.com/en-us/shop/aca2440-35uc/,USB3及输出信号能力现场核验
+P03,OPTIONAL_P1,C接口镜头,2,焦距与光学预算后定;锁焦距,not_frozen,待工作距离和分辨率明确,,,工程建议2026-10-03,质量与温漂纳入外参稳定性
+P04,OPTIONAL_P1,GNSS/INS与双天线,1,SBG Ellipse-D作为接口参考,not_procurement_frozen,代次天线和软件另询价,,,https://www.sbg-systems.com/ins/ellipse-d/,PPK软件未纳入开源清单
+P05,OPTIONAL_P1,同步捕获板,1,PPS和双相机曝光双边沿及时钟状态,custom_design_candidate,仅原理规格未投板,,,本工程SYNC_DATA_PROTOCOL.md,电平转换隔离及器件峰值待验证
+P06,OPTIONAL_P1,记录计算与NVMe单元,1,原始包无损落盘;不要求机载优化,not_frozen,待数据吞吐与接口明确,,,工程建议2026-10-03,首版计算在地面
+P07,OPTIONAL_P1,供电转换保险丝线束及外壳,1,基于实际供电及浪涌设计,not_frozen,待电气接口冻结,,,本工程POWER_EMI_STORAGE.md,禁止仅依据该BOM进行飞行安装

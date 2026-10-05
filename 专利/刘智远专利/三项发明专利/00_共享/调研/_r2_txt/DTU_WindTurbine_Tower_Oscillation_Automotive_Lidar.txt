@@ -1,0 +1,314 @@
+ 
+ 
+General rights 
+Copyright and moral rights for the publications made accessible in the public portal are retained by the authors and/or other copyright 
+owners and it is a condition of accessing publications that users recognise and abide by the legal requirements associated with these rights. 
+ 
+ Users may download and print one copy of any publication from the public portal for the purpose of private study or research. 
+ You may not further distribute the material or use it for any profit-making activity or commercial gain 
+ You may freely distribute the URL identifying the publication in the public portal 
+ 
+If you believe that this document breaches copyright please contact us providing details, and we will remove access to the work immediately 
+and investigate your claim. 
+  
+ 
+   
+ 
+ 
+Downloaded from orbit.dtu.dk on: Oct 01, 2026
+Blade Deflection and Tower Oscillation Sensing of Full-scale Wind Turbines with
+Automotive Lidars
+Jin, Liqin; Mann, Jakob
+Published in:
+31st International Laser Radar Conference (ILRC 31) Held Together with the 22nd Coherent Laser Radar
+Conference (CLRC 22)
+Link to article, DOI:
+10.1051/epjconf/202636201031
+Publication date:
+2026
+Document Version
+Publisher's PDF, also known as Version of record
+Link back to DTU Orbit
+Citation (APA):
+Jin, L., & Mann, J. (2026). Blade Deflection and Tower Oscillation Sensing of Full-scale Wind Turbines with
+Automotive Lidars. In 31st International Laser Radar Conference (ILRC 31) Held Together with the 22nd
+Coherent Laser Radar Conference (CLRC 22) Article 01031 https://doi.org/10.1051/epjconf/202636201031
+
+ 
+Blade Deflection and Tower Oscillation Sensing of Full-scale 
+Wind Turbines with Automotive Lidars 
+ 
+Liqin Jin, Jakob Mann 
+Department of Wind and Energy Systems, Technical University of Denmark  
+Frederiksborgvej 399, 4000 Roskilde, Denmark 
+liqn@dtu.dk 
+ 
+Abstract: Testing of full-scale wind turbine blades and tower by the traditional sensors, 
+such as strain gages and accelerometers, is expensive, arduous, and time-consuming. In 
+this study, we investigate a novel technique to accelerate prototype wind turbine testing 
+under different atmospheric conditions by applying automotive lidars. A proof-of-
+concept field measurement was conducted, scanning the DTU V52 wind turbine with a 
+frequency-modulated-continuous-wave (FMCW) automotive lidar at the Risø campus 
+of the Technical University of Denmark (DTU). It was observed that the upper part of 
+the tower was displaced by about 7 cm after the wind turbine had been stopped. The 
+obtained power spectral density diagram shown that the dominant frequency related to 
+the tower’s oscillation is about 1.25 Hz. These results show that automotive lidars may 
+have a great potential to be integrated into the wind energy industry to provide accurate 
+measurements of blade deflection and tower oscillation, which will speed up the testing 
+process and reduce the time-to-market of new turbine models. 
+ 
+1. 
+Introduction 
+As modern wind turbine rotors reach an 
+enormous diameter of 260 m, they are more 
+prone to failure and damage [1]. Currently, 
+strain gauges or optical fibers embedded in 
+wind turbine towers and blades are primarily 
+used for the structural health monitoring, 
+dynamic 
+load 
+response, 
+and 
+damage 
+identification. As reported in [2], a typical 50-
+meter utility-scale blade requires about 200 
+strain gauges, while the installation of those 
+gauges takes at least three weeks and is very 
+labor-intensive.  To perform accurate testing, 
+high-sensitivity sensors are needed, which can 
+cost $300 to $1400 each. In light of these 
+realities, it is imperative to move beyond the 
+classical methods of using embedded sensors. 
+Contrary to the in situ methods mentioned 
+above, there are alternative techniques such as 
+photogrammetry 
+with 
+multiple 
+cameras 
+observing markers on the turbines or using a 
+scanning laser Doppler vibrometer (SLDV). 
+Photogrammetry has been implemented in the 
+digital image correlation (DIC) system that 
+measures dynamic response at many discrete 
+points of the structure in three dimensions. 
+However, the separation between cameras, the 
+distance required to cover the interest field of 
+view, and the susceptibility to outdoor 
+conditions may limit the application of this 
+approach for large full-scale structures [2]. 
+High performance lidars have been widely used 
+in 
+a 
+variety 
+of 
+applications, 
+including 
+atmospheric 
+studies 
+[3], 
+wind 
+energy 
+meteorology [4], space-based research [5], and 
+autonomous vehicles [6]. The latest advances in 
+automotive lidar enable them to map the 
+surroundings of a car in real-time, with camera-
+level resolution up to 1000 lines and 30 times 
+per second. There are several mature products 
+available in the market now, such as the first 4D 
+lidar Aeries™ II (shown in Figure 1) from Aeva 
+Inc. [7] and 3D lidar Avia or Tele-15 from 
+Livox [8]. The automotive 4D lidars measure 
+3D positions by thousands of points with a 
+precision of a few centimeters at distances up to 
+500 m. Additionally, the velocity (minimum 
+precision of about 3 cm/s) is detected 
+instantaneously for every pixel. Apart from 
+these, the 4D lidars are also capable of detecting 
+small objects, even low-reflectivity objects like 
+tire fragments, and can resist interference from 
+sunlight and light from other lidar sensors. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+, 01031 (2026)
+EPJ Web of Conferences
+https://doi.org/10.1051/epjconf/202636201031
+362
+ILRC31/CLRC22-2024
+  
+ 
+© The Authors, published by EDP Sciences. This is an open access article distributed under the terms of the Creative Commons Attribution License 4.0
+ (http ://creativecommons.org/licenses/by/4.0/). 
+s
+
+ 
+ 
+ 
+Figure 1. Picture of the 4D automotive lidar 
+from Aeva Inc. with a very compact size due to 
+the lidar-on-chip design Ó [7]. 
+Being aware of the capability of automotive 
+lidar measurements, we did a trial field 
+experiment with the 4D Aeva lidar, by placing 
+it about 70 m west of the DTU V52 wind turbine 
+and scanning the whole structure, as depicted in 
+Figure 2. The frame rate of the lidar was set to 
+be 10 Hz and the measurement period lasted for 
+154 seconds after the wind turbine was turned 
+off. The maximum horizontal field of view 
+(FoV) of the lidar was 120° with 80 nominal 
+lines per frame, while the narrow FoV was 
+about 35°. The lidar output includes instant 
+velocity, reflectivity, position (x, y, z), and point 
+confidence, which can be used to calculate the 
+blade deflection and the tower displacement. 
+ 
+Figure 2. Experiment setup at DTU Risø 
+campus. The Aeva lidar was mounted on a car 
+that was parked about 70 m from the DTU V52 
+wind turbine with the rotor diameter of 52 m. 
+2. 
+Preliminary results 
+Figure 3 shows the point clouds of the scanned 
+wind turbine (with the rotor diameter D of 52 m 
+and the hub height of 44 m), after correcting the 
+data coordinate with the elevation angle of the 
+lidar. 
+Figure 3. A snapshot of the scanned point 
+clouds of DTU V52 wind turbine at the Risø 
+campus. 
+This study primarily focused on the oscillation 
+behavior of the tower by fitting a frustum with 
+gradually decreasing diameter so that the mean 
+displacement of the upper 12 m could be 
+determined based on the lidar data measured. 
+As can be seen in Figure 4, the maximum mean 
+displacement along the x-axis, which is the 
+propagation direction of the laser beam, was 
+approximately 7 cm. In addition, Figure 4 also 
+depicts the tower’s oscillation behavior, which 
+was dominated by a frequency of around 1.25 
+Hz in the power spectral density (PSD) diagram 
+in Figure 5. The results indicate that the light 
+automotive lidars could be a viable alternative 
+to the traditional embedded sensors, as they can 
+be mounted on the turbine spinner to capture the 
+real-time deformation throughout the three 
+blades as well as placed on the ground to 
+measure the oscillation of the turbine tower 
+under environmental conditions. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+, 01031 (2026)
+EPJ Web of Conferences
+https://doi.org/10.1051/epjconf/202636201031
+362
+ILRC31/CLRC22-2024
+2
+
+ 
+ 
+Figure 4. Mean displacement of the upper 12-
+meter tower in one minute after the wind turbine 
+was stopped. 
+ 
+Figure 5. Power spectral density (PSD) diagram 
+for the tower’s oscillation. 
+3. 
+Discussions and conclusions 
+This abstract presents a preliminary study to 
+apply 
+automotive 
+lidars 
+to 
+measure 
+displacements of DTU V52 wind turbine tower 
+during downtime. The mean displacement of 
+the upper 12 m tower was about 7 cm, with an 
+oscillation frequency of 1.25 Hz. Despite the 
+lack of benchmark studies and blade deflection 
+analysis, the promising results indicate that 
+automotive lidars may be a technical alternative 
+to strain gauges to test prototype turbines, for 
+example, measuring blade deflection and 
+turbine tower oscillation. It is necessary, 
+however, to conduct further investigations, for 
+example, comparing blade deflection with high-
+resolution cameras at DTU Large Scale Facility 
+and installing the lidars on the turbine spinner 
+to observe the deflection during operation. 
+4. 
+References 
+[1]  Tavner, P., Spinato, F., van Bussel, G., & 
+Koutoulakos, E. (2008). Reliability of Different 
+Wind Turbine Concepts with Relevance to Offshore 
+Application. In European Wind Energy Conference 
+(p. 9). 
+[2]   Poozesh, P., Baqersad, J., Niezrecki, C., 
+Avitabile, P., Harvey, E. and Yarala, R., 2017. 
+Large-area photogrammetry based testing of wind 
+turbine blades. Mechanical Systems and Signal 
+Processing, 86, pp.98-115. 
+[3]  W. L. Eberhard, R. E. Cupp, and K. R. Healy, 
+Doppler Lidar Measurement of Profiles of 
+Turbulence and Momentum Flux, Journal of 
+Atmospheric and Oceanic Technology, vol. 6, no. 5. 
+pp. 809–819, 1989. 
+[4]  Jin, L., Mann, J., Angelou, N. and Sjöholm, M., 
+2023. Suppression of precipitation bias in wind 
+velocities from continuous-wave Doppler lidars. 
+Atmospheric Measurement Techniques, 16(24), 
+pp.6007-6023. 
+[5]  Witschas, B., Lemmerz, C., Geiß, A., Lux, O., 
+Marksteiner, U., Rahm, S., Reitebuch, O. and 
+Weiler, F., 2020. First validation of Aeolus wind 
+observations by airborne Doppler wind lidar 
+measurements. 
+Atmospheric 
+Measurement 
+Techniques, 13(5), pp.2381-2396. 
+[6]  Liu, Z., Zhang, F. and Hong, X., 2021. Low-cost 
+retina-like robotic lidars based on incommensurable 
+scanning. 
+IEEE/ASME 
+Transactions 
+on 
+Mechatronics, 27(1), pp.58-68. 
+[7]  Available 
+online: 
+https://www.aeva.com/ 
+(access on 14 March 2024). 
+[8]  Available online: https://www.livoxtech.com/ 
+(access on 14 March 2024). 
+5. 
+Acknowledgements 
+The authors would like to thank Jakub Zimny 
+from Aeva Inc., for conducting the field 
+experiment and his fruitful discussions. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+, 01031 (2026)
+EPJ Web of Conferences
+https://doi.org/10.1051/epjconf/202636201031
+362
+ILRC31/CLRC22-2024
+3

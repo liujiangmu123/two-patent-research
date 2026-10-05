@@ -1,0 +1,1458 @@
+Academic Editor: Theodore E.
+Matikas
+Received: 11 March 2026
+Revised: 31 March 2026
+Accepted: 4 April 2026
+Published: 8 April 2026
+Copyright: © 2026 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license.
+Article
+Digital Twin Framework for Struvctural Health Monitoring of
+Transmission Towers: Integrating BIM, IoT and FEM for
+Wind–Flood Multi-Hazard Simulation
+Xiaoqing Qi 1, Huaichao Wang 1, Xiaoyu Xiong 1, Anqi Zhou 1, Qing Sun 2,* and Qiang Zhang 2
+1
+Beijing Electric Power Economic and Technological Research Institute Co., Ltd., Beijing 100055, China;
+18516856628@163.com (X.Q.); 13810207873@163.com (H.W.); 13911906136@163.com (X.X.);
+zhou_anqi2013@163.com (A.Z.)
+2
+Department of Civil Engineering, Xi’an Jiaotong University, Xi’an 710049, China; 18700436028@163.com
+*
+Correspondence: sunq@mail.xjtu.edu.cn
+Abstract
+Transmission towers, as critical infrastructure in power systems, are frequently threatened
+by multiple hazards such as strong winds and flood scour. Traditional structural health
+monitoring methods face limitations in data feedback timeliness and mechanical interpre-
+tation, making real-time condition awareness and early warning under disaster scenarios
+challenging. To address these issues, this paper proposes a digital twin framework for
+transmission tower structures, integrating Building Information Modeling (BIM), Internet
+of Things (IoT) technology, and the Finite Element Method (FEM) for structural health
+monitoring and visual warning under wind loads and flood scour effects. The framework
+achieves cross-platform collaboration through the FEM Open Application Programming
+Interface (OAPI) and Python scripts. In the physical domain, fluctuating wind loads are
+simulated based on the Davenport spectrum, flood scour depth is modeled using the HEC-
+18 formulation, and foundation constraint degradation is represented through nonlinear
+spring stiffness reduction. In the FEM domain, dynamic time-history analyses are con-
+ducted to obtain structural responses. In the BIM domain, a three-level warning mechanism
+based on stress change rate (∆R) is established to achieve intuitive rendering and dynamic
+feedback of structural damage. A 44.4 m high latticed angle steel tower is employed as
+the case study for validation. Results demonstrate that the simulated wind spectrum
+closely matches the theoretical target spectrum, confirming the validity of the load input. A
+critical scour evolution threshold of 40% is identified, beyond which the first two natural
+frequencies exhibit nonlinear decay with a maximum reduction of 80.9%. Non-uniform
+scour induces significant load transfer, with axial forces at leeside nodes increasing from
+27 kN to 54 kN. During the 0–60 s wind loading process, BIM visualization accurately
+captures the full stress evolution from the tower base to the upper structure, showing
+excellent agreement with FEM results. The proposed framework establishes a closed-loop
+interaction mechanism of “physical sensing–digital simulation–visual warning”, effectively
+enhancing the timeliness and interpretability of structural health monitoring for trans-
+mission towers under multiple hazards, providing an innovative approach for intelligent
+disaster prevention in power infrastructure.
+Keywords: digital twin; transmission tower; structural health monitoring; Building
+Information Modeling (BIM); Internet of Things (IoT); Finite Element Method (FEM)
+Appl. Sci. 2026, 16, 3620
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+2 of 25
+1. Introduction
+Transmission towers serve as lifelines ensuring the normal operation of national
+power systems, and their safety and stability directly affect urban functioning. Angle
+steel towers, as a common type of transmission tower, are constructed from angle steel
+sections, with main members, bracing members, and auxiliary members forming a spatial
+truss structure connected by bolts. Due to their ability to fully utilize material compressive
+performance and their relatively small slenderness ratios, such latticed structures are widely
+used in urban and mountainous transmission lines, particularly suitable for voltage levels
+of 110–500 kV. Angle steel towers often exceed 30 m in height, classifying them as typical
+high-rise structures [1]. In recent years, wind and flood disasters have frequently occurred
+in urban and mountainous areas. Wind load, as the primary controlling load, often leads to
+the collapse or severe deformation of angle steel towers [2–7]; meanwhile, tower foundation
+failures caused by flood scour are also common, as documented in references [8–10]. Once
+a transmission tower is damaged, power grid system failures can easily trigger blackouts,
+not only seriously threatening people’s lives and property but also hindering national
+industrial development. Thus, transmission towers face the dual threat of strong winds
+and floods.
+With the increasing frequency of disasters, higher requirements have been placed on
+the wind and flood resistance of transmission tower structures, making structural health
+monitoring an increasingly effective approach. Due to the high cost, destructive nature,
+and irreversibility of physical experiments, structures can typically only be equipped
+with physical sensors to measure mechanical response parameters such as strain and
+displacement. However, in actual post-disaster scenarios, only post-event analysis is
+usually possible, while pre-disaster prevention and real-time monitoring have long been
+difficult to achieve. To optimize monitoring schemes before actual deployment, Internet
+of Things (IoT) technology has gained widespread attention and application in scientific
+research [11–15]. By deploying virtual sensors in structures, the functions of physical
+sensors can be simulated, outputting mechanical parameters at terminals. Compared to
+physical sensors, virtual sensors have extremely low costs, enabling large-scale virtual
+deployment and data feedback, offering significant advantages for pre-disaster monitoring.
+Additionally, Building Information Modeling (BIM) technology is also regarded as a reliable
+tool for structural health monitoring.
+In the interaction process between the IoT and BIM, traditional workflows typically
+use BIM as a visualization interface and sensor feedback platform, while the IoT converts
+physical parameters into output parameters, packages them for upload to cloud servers,
+and then relies on manual judgment to determine whether structural damage has occurred.
+Although this approach has improved work efficiency to some extent, several non-negligible
+issues remain. First, traditional IoT systems typically serve only as passive data acquisition
+and transmission terminals, lacking the ability to autonomously interpret the mechanical
+mechanisms behind abnormal data [16–19]. This disconnects the monitoring data from
+the physical relationships with specific disaster scenarios (such as flood scour and strong
+winds), making fault diagnosis heavily dependent on manual post-event analysis and
+unable to achieve real-time traceability of disaster causes. Second, current monitoring
+systems are isolated from traditional structural mechanics analysis programs, making it
+difficult to achieve dynamic interaction with professional structural analysis software such
+as SAP2000, Abaqus, and Ansys, thus preventing real-time simulation.
+Therefore, existing structural health monitoring technologies urgently need upgrading.
+By achieving dynamic interaction between FEM and IoT/BIM, the limitations of tradi-
+tional monitoring approaches—namely, the disconnection between data and mechanical
+analysis—can be effectively overcome. The deep integration of IoT monitoring technology
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+3 of 25
+with structural simulation, by constructing a digital twin system with dynamic perception
+and real-time feedback capabilities, demonstrates broad application prospects. Applying
+this technology to transmission tower structures in national power systems not only en-
+ables real-time health monitoring under disaster scenarios but also allows for the separate
+simulation of mechanical effects of wind loads and flood scour in finite element programs,
+coordinated with IoT technology for terminal visual feedback through BIM models. This
+novel power grid monitoring framework provides a feasible pathway for achieving gen-
+uine “digital twins” in power infrastructure, effectively promoting the intelligent and
+high-quality development of power grids.
+To fulfill the above objectives, this paper proposes a digital twin framework for
+transmission tower systems, aiming to enable real-time monitoring and visual warning of
+structural health under wind and flood disasters. The framework seamlessly integrates
+Building Information Modeling (BIM), Internet of Things (IoT) technology, and the Finite
+Element Method (FEM) through the Open Application Programming Interface (OAPI) and
+Python (version 3.13) scripts. Operating as a near real-time, simulation-driven system, the
+framework accounts for computational latency; in this workflow, virtual sensor outputs
+automatically trigger FEM re-analysis. The total latency is approximately 3–5 min per
+cycle, with synchronization maintained through a timestamp-matching script to ensure
+data consistency between hazard inputs and structural responses. In the physical domain,
+fluctuating wind loads described by the Davenport spectrum and flood scour effects
+simulated using the HEC-18 model are represented. In the FEM domain, dynamic time-
+history analyses are conducted to obtain structural responses. In the BIM domain, a
+three-level warning mechanism based on stress change rates is established to provide
+intuitive rendering and dynamic feedback of structural damage. Through validation on
+a 44.4-m-high angle steel tower, the framework effectively simulates structural behavior
+under wind and flood actions and achieves closed-loop interaction from “physical sensing”
+to “digital response”, providing a novel technical pathway for early damage identification
+and health monitoring of transmission towers in multi-hazard environments.
+Compared to traditional FEM–IoT approaches that primarily output isolated numerical
+data, the proposed framework seamlessly maps real-time mechanical responses onto 3D
+BIM. This integration transforms abstract structural analyses into a spatially aware digital
+twin, enabling intuitive and multi-dimensional safety assessments under complex hazard
+scenarios [20,21].
+2. Methodology
+To enhance the accuracy and rapid response efficiency of the proposed digital twin
+framework, mechanical models accurately simulating wind loads and flood scour effects
+are established through FEM programs, employing wind load models, flood scour models,
+and soil–structure interaction (SSI) models recommended by international standards.
+2.1. Wind Load Model
+The wind load standard established in this paper follows international general stan-
+dards [22,23], with the specific formula shown in Equation (1), which can be used as the
+basis for static wind load calculations for the high-rise transmission tower structure.
+Wx = W0µzµsβzBAs
+(1)
+where Wx is the characteristic value of wind load (kN/m2); W0 is the basic wind pressure
+(kN/m2); µz is the wind pressure height variation coefficient; µs is the wind load shape
+coefficient; βz is the wind-induced vibration coefficient at height z, which equivalently
+simplifies the original complex random vibration wind load theory into a static load; B is
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+4 of 25
+the ice accretion increase coefficient; and As is the projected area of the component on the
+windward side.
+To reflect the random characteristics of the wind field in the FEM framework, the
+Davenport function spectrum [24] is introduced. By inputting the Davenport function
+spectrum through the Open Application Programming Interface (OAPI), the average wind
+speed can be transformed into a fluctuating wind speed time-history curve conforming
+to the actual wind field. This converts static wind speed calculations into dynamic wind
+load time-history functions, enabling dynamic analysis in FEM, which better aligns with
+the actual working conditions of high-rise structures subjected to wind loads. The specific
+expressions are shown in Equations (2) and (3).
+Sz(n).dn = 4.0KV1
+2.
+X
+(1 + X2)4/3 .dx
+(2)
+X = 1200n
+V1
+(3)
+where Sz(n) is the power spectral density function of the along-wind fluctuating wind
+speed; V1 is the mean wind speed at a height of 10 m (in m/s); n is the frequency of wind
+fluctuation (in Hz); X is the dimensionless frequency, used to normalize the spectral shape;
+and K is the ground roughness coefficient.
+2.2. Flood Scour Mechanism and Simplified Foundation Stiffness Model
+The transmission tower investigated in this study is located in a mountainous region
+prone to river scour. The foundation soil characteristics can be assumed as ideal non-
+cohesive sand. Therefore, the CSU (Colorado State University) formula from HEC-18 [25]
+is adopted, as shown in Equation (4), which can be applied to simulate specific flood scour
+scenarios for mountainous transmission towers.
+ys
+y1
+= 2.0k1k2k3
+ a
+y1
+0.65
+(Fr1)0.43
+(4)
+where ys = scour depth (m); y1 = flow depth directly upstream of the pier (m);
+k1 = correction factor for pier nose shape; k2 = correction factor for angle of attack of flow;
+k3 = correction factor for bed condition; a = pier width (m); and Fr1 = Froude number
+directly upstream of the pier = V1/(gy1)1/2.
+In this study, “a” in Equation (4) represents the diameter of a single-leg foundation of
+the transmission tower. The values of k1 to k3 are selected according to the definitions in
+HEC-18. Specifically, k1 is taken as 1.0 for circular tower foundations and 1.1 for square
+foundations. Regarding k2, for circular foundations where the issue of flow attack angle
+is not considered, k2 = 1.0. For the coefficient k3, when simulating mountain flood scour,
+k3 = 1.1 can be adopted for flatbed riverbed conditions. Consequently, Equation (4) can be
+modified to Equation (5), which serves as the functional input for the flood scour model
+within the FEM framework of the digital twin proposed in this paper.
+ys
+y1
+= 2.2
+ a
+y1
+0.65
+(Fr1)0.43
+(5)
+For mountainous transmission tower structures, the soil–structure interaction (SSI)
+model can refer to the p-y curves for sand formula recommended by API specifications [26],
+as shown in Equation (6). Reference [27] demonstrates that the chosen Winkler spring model
+is reliable, idealizing the soil as a series of discrete p-y springs, allowing the simulation
+of scour by simply reducing or removing spring elements within the scour depth. Refer-
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+5 of 25
+ences [28,29] prove that scour can reduce the natural frequency of foundations. According
+to Equation (7), it can be concluded that flood scour reduces the structural foundation
+stiffness. Therefore, conducting flood scour research on transmission tower foundations
+through spring stiffness reduction has been proven reasonable and reliable. Furthermore,
+the parameters of this flood scour model can be introduced into FEM programs for flood
+scour simulation through the OAPI interface via functions, greatly improving computa-
+tional efficiency compared to solid element models.
+p = APutanh( kz
+APu
+y)
+(6)
+where p = soil resistance per unit length (spring force per unit length); y = lateral deflection
+(m); k = initial modulus of subgrade reaction, which increases linearly with depth z;
+z = depth below the soil surface (m); Pu = correction factor for bed condition, (kN); and
+A = factor to account for cyclic or static loading, evaluated as A = 0.9 for cyclic loading.
+k = mω2
+(7)
+where k = stiffness of the structure foundation; m = mass of the structure; and ω = natural
+frequency of the transmission tower foundation structure.
+The above wind load model and flood scour model respectively describe the load
+characteristics and boundary evolution laws of transmission towers under two typical
+types of disasters. In the digital twin framework constructed in this paper, these two
+types of models drive the finite element analysis separately through the OAPI interface,
+achieving parallel simulation of wind-induced vibration and foundation scour, providing
+the mechanical basis for the subsequent structural response analysis.
+3. Digital Twin System Framework
+3.1. Overview of Digital Twin Architecture
+To clearly present the workflow of the digital twin framework in this paper, its working
+flowchart is shown in Figure 1. The main structure of the digital twin framework consists
+of three parts: Physical Entity Domain (Part 1), FEM Simulation Domain (Part 2), and
+Data and Control Center (Part 3). These three parts work together through the FEM
+Open Application Programming Interface (OAPI) and Python code programs. Each part
+works independently while being interconnected. Specifically, the FEM program from
+CSI (USA) is used to establish the finite element model of the transmission tower and
+complete structural calculations. Subsequently, the validated model data are imported
+into Revit 2025 BIM software to automatically generate a three-dimensional solid model,
+thereby using the BIM model as the visual window for terminal monitoring. The OAPI
+program acts as a “connector” in this process, ensuring efficient collaborative work among
+different application programs. Additionally, FEM calculation results can be mapped to
+the BIM program through the OAPI to establish a visual warning mechanism, achieving
+real-time monitoring effects. The system can automatically identify and capture abnormal
+data based on set thresholds and highlight risky structural components through rendering,
+achieving visual warning effects. The Python program acts as a binding agent in this
+process, enabling API call transmission work. It can achieve automated workflows through
+code language, including opening the FEM, setting analysis cases, extracting calculation
+results, and outputting them to data processing programs such as Excel, reducing the
+cumbersome processes of traditional finite element operations, improving data operation
+and processing efficiency, and achieving real-time interaction between the physical tower
+and the finite element model.
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+6 of 25
+Figure 1. Flowchart of the proposed OAPI-based simulation methodology.
+As shown in Figure 1, the digital twin framework proposed in this paper consists
+of three core domains: the Physical Entity Domain is responsible for environmental load
+generation and input; the Finite Element Simulation Domain undertakes the calculation
+and analysis of structural responses; the Data and Control Center Domain achieves cross-
+platform data transmission and command interaction. The three domains achieve closed-
+loop through the OAPI and Python scripts, forming a complete “sensing–calculation–
+feedback” digital twin chain.
+To contextualize the proposed digital twin (DT) framework, Table 1 presents a compar-
+ison with existing structural analysis methods. While traditional Finite Element Methods
+(FEMs) and rigorous model updating serve as essential analytical foundations, the proposed
+framework builds upon these techniques by achieving a highly automated integration of
+physical modeling, continuous data orchestration, and BIM-based intuitive visualization
+for multi-hazard tracking.
+Table 1. Comparison of the proposed digital twin framework with existing methods.
+Feature/
+Methodology
+Finite Element
+Modeling (FEM)
+Modal Analysis
+Model Updating
+Proposed DT
+Framework
+Data Interaction
+Predominantly static
+Driven by real-world
+data
+Periodic/offline
+integration
+Near real-time loop
+Physical
+Interpretation
+Design-based
+Global dynamics
+Calibrated
+parameters
+Dynamically
+mapped
+Automation Level
+Manual setup
+Semi-automated/
+signal processing
+Often involves
+iterative tuning
+Highly automated
+via OAPI
+Visualization
+Numerical stress
+contours
+Frequency
+plots/mode shapes
+Matrix/numerical
+outputs
+Spatiotemporally
+synchronized
+3D BIM
+Primary Focus
+Initial design &
+prediction
+Dynamic
+characteristic
+extraction
+Baseline structural
+calibration
+Dynamic tracking &
+intuitive warning
+3.2. Physical Entity Domain: Simulation Environment and Load Generation (Part 1)
+3.2.1. Fluctuating Wind Load Input
+This study generates wind loads through numerical simulation. The mathematical
+model employs the Davenport function wind spectrum model introduced in Section 2.1 to
+generate random wind fields. For the high-rise transmission tower structure discussed in
+this study, turbulence characteristics at different heights, especially special locations such
+as the tower base and tower top, can be considered. Rewriting the differential expressions
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+7 of 25
+of Equations (2) and (3) yields the Davenport wind spectrum model function expressions
+input into the OAPI, as shown in Equations (8)–(10):
+dX
+dn = X
+n
+(8)
+Sz(n) = 4.0KV1
+2
+X2
+n(1 + X2)4/3
+(9)
+P(t) = 1
+2CP0Pa(Ut)2
+(10)
+where CP0 is a quasi-steady pressure coefficient, and P(t) is the instantaneous wind pressure.
+Expanding Ut into its mean and fluctuating components, we obtain Equation (11):
+P(t) = 1
+2CP0Pa
+ U + u′
+t
+2
+(11)
+where u′
+t is the fluctuating wind speed.
+F(t) = 1
+2CDPa
+ U + u′
+t
+2A
+(12)
+where CD is the drag coefficient for the overall structure, A is the projected area of structure
+to the wind direction, and P(t) denotes the time-history of wind pressure.
+The instantaneous wind pressure P(t), derived from Equation (11), is transformed
+into concentrated nodal forces F(t) based on the spatial distribution characteristics and the
+effective wind-exposed areas of the structure. These forces are subsequently applied to the
+discrete nodes of the finite element model to perform dynamic analysis.
+For practical engineering applications, current standards often neglect the higher-order
+nonlinear terms of fluctuating wind speeds to simplify aerodynamic load calculations [30].
+While this approach improves design efficiency to some extent, it also reduces design
+accuracy to a degree. To accurately capture the nonlinear aerodynamic characteristics
+of structures under extreme conditions, retaining the fluctuating wind speed is more
+conducive to improving calculation accuracy for high-rise structures—especially transmis-
+sion tower structures—under extreme wind load environments. This study adopts the
+quasi-steady theoretical formula proposed in reference [31], as shown in Equation (11).
+Wind pressure in the free wind field acting on the structure follows the quasi-steady
+assumption, converting the free wind field’s wind pressure into structural nodal loads
+through power spectral functions [32]. As shown in Equation (12), it defines the transfor-
+mation of the instantaneous wind pressure P(t).
+Figure 2 presents the entire process of the automated wind load simulation and time-
+history analysis based on the FEM OAPI. This is an automated process driven by OAPI
+programs and Python scripts, realizing the mapping process from environmental wind
+field input to structural dynamic response for the transmission tower structure.
+ 
+Figure 2. Automated wind load simulation and time-history analysis process based on FEM OAPI.
+Step 1 extracts geometric parameters through the Frame Obj and Point Obj modules
+in the FEM OAPI program. In Step 2, the program groups by tower height, discretizing
+the structure along the tower height’s direction, and applies nodal wind loads at different
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+8 of 25
+heights. By implementing Equation (12) into the program, the structural stress conditions
+under extreme wind load conditions can be reflected. Finally, through Step 5, the Set Load
+Distributed module is driven for analysis and calculation.
+3.2.2. Implementation of Flood Scour in OAPI and Python
+To simulate the effects of mountainous flood scour on transmission tower foundations
+in the OAPI program, we adopt the simplified treatment of pile–soil interaction derived
+in Section 2 through Equations (5) and (6) in the Python program. Specifically, equivalent
+spring elements are used for the simulation at foundation nodes. Unlike the wind load
+application process, the flood scour model is mainly implemented by setting boundary
+conditions through the Set Multi Linear Points module in the OAPI program. Equation (5)
+can be used in the program to calculate scour depth, while Equation (6) calculates and
+updates the soil’s support capacity for the tower foundation. By updating the spring link
+properties in the FEM OAPI program, an effect similar to a stiffness reduction caused by
+reduced soil around the foundation after scour is achieved, implemented in the program
+through the flowchart in Figure 3.
+ 
+Figure 3. Flowchart of real-time scour-induced stress state assessment for transmission tower
+foundation based on OAPI.
+3.3. IoT-OAPI-Based Finite Element Simulation Domain (Part 2)
+In this study, the transmission tower is modeled using finite element (FE) software
+(SAP2000 V24). Virtual sensors are implemented by targeting specific node IDs to extract
+structural responses, such as nodal forces and accelerations, via a Python-based Open
+Application Programming Interface (OAPI). This approach effectively simulates the data
+output of physical sensors. Consequently, it establishes a direct linkage between the
+dynamic monitoring data and simulated disaster scenarios (e.g., flood-induced scour and
+strong winds), enabling an interactive evaluation of the tower’s mechanical behavior under
+dynamic monitoring conditions.
+In the visual warning interface, as shown in Figure 4, when simulating flood scour
+conditions, once the scour depth exceeds the set critical threshold, the boundary stiffness
+immediately degrades, thereby triggering internal force redistribution in the transmission
+tower foundation to simulate scour effects. The Python program automatically monitors
+the above mechanical responses through the OAPI interface. When monitoring those
+components, if stress ratios exceed safety limits, the system immediately identifies them as
+risky components, adds a red rendering display, and sends trigger instructions to the BIM.
+The corresponding digital elements in the BIM environment then automatically update to
+rendered bright-colored materials, providing intuitive structural health warnings. When
+simulating extreme wind load conditions, the transmission tower structure in FEM needs
+to be monitored according to control stress ratios and deflection limits. Through load data
+transmitted from the physical entity domain output and calculated by the FEM program,
+overall structural stress nephograms can be generated. When stress ratios are less than set
+limits or nodal displacements exceed code-specified limits, the same mapping mechanism
+as in flood conditions is triggered—corresponding components update to rendered material
+colors, providing warnings at the BIM visualization terminal. When wind loads and flood
+scour act simultaneously, the system makes judgments according to the envelope design,
+issuing warnings as soon as design requirements are not met.
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+9 of 25
+ 
+Figure 4. Early-warning mechanism at the BIM visualization terminal.
+3.4. Data Control Center Domain (Part 3)
+Serving as the core “connector” and “transporter” within the digital twin architecture,
+the Data and Control Center (Part 3) seamlessly bridges virtual sensor data streams with
+finite element (FE) simulation results. By leveraging a Python-based framework alongside
+the lightweight MQTT protocol, the center establishes a stable, asynchronous transmission
+topology tailored for real-time data delivery. Furthermore, the integration of advanced
+control logic and verification algorithms enables real-time compliance screening of incom-
+ing data via the FEM–Python–BIM visualization interface. Ultimately, this automated
+closed-loop system efficiently manages complex data routing while significantly reducing
+manual labor costs.
+4. Finite Element Analysis
+Addressing the pain point of feedback lag in traditional structural monitoring for
+disaster prevention and control, this paper proposes a digital twin interactive monitor-
+ing framework for transmission towers, aiming to achieve real-time synchronization of
+structural mechanical behavior and dynamic response. To validate this method, this study
+selected a widely used angle steel tower in power grids as a typical analysis object. Such
+high-rise structures are extremely sensitive to wind-induced vibrations, and the mechanical
+boundaries of their discrete members are very clear, highly compatible with the design
+method proposed in this paper. Through this model, research work was conducted, deeply
+integrating IoT sensing technology with three-dimensional information models and the fi-
+nite element analysis software FEM. With the help of customized application programming
+interfaces, the cross-domain barrier from “physical-end IoT real-time data acquisition” to
+“virtual-end structural force deduction” was broken through, providing a new approach
+for early damage monitoring of transmission tower systems.
+This study selected a lattice transmission tower as the research case, as shown in
+Figure 5. Specifically, the structure was divided into three main parts: the tower head, the
+tower body, and the foundation. In the head and body, all structural elements were made of
+L-shaped equal-leg angle steel. This included the main, diagonal, and auxiliary members.
+Furthermore, these steel members featured 20 different cross-sectional sizes, ranging from
+L40 × 3 to L140 × 10.
+This study focused on a 44.4 m high latticed angle steel transmission tower. Specifically,
+the basic modeling parameters of this structure are detailed in Table 2. The primary material
+used was standard structural steel. In addition, the input material density was amplified
+to an equivalent mass density. This adjustment accounted for the weight of auxiliary
+components, such as gusset plates, bolted connections, climbing ladders, and anti-corrosion
+galvanized layers.
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+10 of 25
+Figure 5. Transmission tower model.
+Table 2. Structural Parameters of the Transmission Tower Model.
+Parameters
+Symbol
+Value
+Total height
+H
+44.4 m
+Structural form
+/
+Lattice transmission tower
+Elastic modulus
+E
+206 GPa
+Poisson’s ratio
+γ
+0.3
+Base mass density
+p0
+7850 kg/m3
+4.1. Simulation of Random Wind-Induced Vibration Effects on High-Rise Transmission Towers
+Under Complex Meteorological Environments
+4.1.1. Fluctuating Wind Speed Simulation and Power Spectral Density Verification
+This paper used the Davenport function from Section 3.2.1 as the theoretical basis for
+the frequency domain characteristics of wind loads. To meet the input requirements for time-
+history analysis, this paper simulated the time history of fluctuating wind speed at target
+nodes based on the harmonic superposition method. Input dynamic wind load parameters
+are shown in Table 3. The extracted wind speed time-history data underwent a fast Fourier
+transform using the Welch method [33,34] to obtain the auto-power spectrum (simulation)
+function curve, which was compared and verified with the Davenport theoretical target
+spectrum (theoretical), as shown in Figure 6. Results indicated that the simulated power
+spectrum curve closely matched the target power spectrum curve, proving that the power
+spectrum time-history function generated in this paper satisfied the random characteristics
+of natural wind in terms of energy distribution, providing a reliable load input boundary
+for subsequent OAPI structural time-history calculations.
+As shown in Figure 7, the simulated wind speed fluctuates dramatically around the
+average wind speed of 36.1 m/s (red dashed line in the figure) at the height of the target
+node (Node 361), reflecting the randomness and fluctuating characteristics of natural wind.
+Figure 8 shows the dynamic wind load time-history curve generated by this fluctuating
+wind speed acting on the structural target node 361. The simulated spectrum closely
+matches the target Davenport spectrum in the main energy frequency band (0.1 Hz to
+10 Hz), reflecting the high correlation between the fluctuation trend of dynamic wind force
+and the time-history characteristics of wind speed. To rigorously quantify the agreement
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+11 of 25
+between the simulated and theoretical spectra, the Coefficient of Determination (R2) was
+employed as a standard statistical metric [35,36]. The calculated R2 value of 0.96 indicated a
+minimal error, demonstrating that the simulated stochastic wind field was highly accurate
+and perfectly suitable for the subsequent structural dynamic analysis.
+Table 3. Basic parameters of the transmission tower model.
+Parameters
+Symbol
+Value
+Unit
+Basic wind speed (10 m height)
+V10
+26
+m/s
+Target simulation height
+z
+44.4
+m
+Ground roughness exponent
+α
+0.22
+Surface drag coefficient
+K
+0.005
+Simulation duration
+T
+600
+s
+Air density
+ϱ
+1.225
+kg/m3
+10−2
+10−1
+100
+101
+10−1
+100
+101
+102
+Power Spectral Density (m^2/s)
+Time (s)
+ Simulation
+ Theoretical (Davenport)
+Figure 6. Comparison between simulated PSD and Davenport Spectrum.
+0
+100
+200
+300
+400
+500
+600
+20
+25
+30
+35
+40
+45
+50
+Wind Speed (m/s)
+Time (s)
+Wind Speed
+Mean Wind Speed (36.1 m/s)
+50m/s
+ 
+Figure 7. Time history of simulated wind speed and the corresponding dynamic wind force acting on
+target node 361 (duration: 600 s).
+0
+100
+200
+300
+400
+500
+600
+0
+1
+2
+3
+4
+5
+Wind Force (kN)
+Time (s)
+Dynamic Wind Force Acting on Target Node 361
+Figure 8. Dynamic wind force acting on target node 361.
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+12 of 25
+From Figure 8, it can be seen that the 600 s generated time-history curve reflects the
+dynamic response of wind-induced vibration under actual environmental conditions, with
+actual wind speeds reaching 50 m/s—38.5% higher than traditional wind speeds. There-
+fore, it can be concluded that traditional static algorithms significantly underestimate the
+destructive power of transient gusts, and the dynamic wind load time-history analysis con-
+ducted in this paper can accurately capture this dynamic amplification effect. On the other
+hand, the traditional manual extraction mode is not only time-consuming and laborious but
+also prone to human operational errors. This study, based on the automated co-simulation
+of Python and FEM OAPI programs, achieves seamless data flow from environmental
+excitation to physical model to response output. After receiving the Davenport fluctuating
+wind sequence, the system can autonomously drive the solver to perform a nonlinear
+time-history integration and capture continuous high-frequency time-history responses
+(such as 6000-step displacement waveforms) of key nodes at high throughput. All processes
+are automatically completed through programs, reflecting the core essence of digital twin
+technology: real-time evolution and efficient data-driven operation.
+4.1.2. Structural Dynamic Response Time-History Analysis
+To verify the data interaction process of the digital twin framework, this paper used
+the wind force time-history curve generated in Section 4.1.1 as environmental excitation.
+These load data were published in real time as a continuous data stream relying on the
+MQTT protocol. Simultaneously, the FEM automatically read the above time-series data
+through the OAPI interface, thereby dynamically driving the structure to conduct a wind-
+induced vibration time-history analysis and subsequent flood scour analysis. Furthermore,
+for accurate comparison, “virtual sensors” were set at typical nodes at the tower base.
+These nodes strictly corresponded spatially to the IoT monitoring sensors of the on-site
+physical structure, and their main function was to synchronously extract and calculate
+the dynamic displacement responses and stress data of the tower in real time within the
+numerical model.
+The wind-induced time-history curves generated in Section 4.1.1 were applied to the
+FEM model to conduct the dynamic time-history response analysis. To ensure the real-time
+computational efficiency of the proposed digital twin framework within its closed-loop in-
+teraction, geometric nonlinearities (P-∆and large displacement effects) were not considered
+in this analysis. Existing studies [37] have also demonstrated that the influence of geometric
+nonlinearity on the dynamic characteristics of transmission towers is negligible in such
+cases. Consequently, obtaining the dynamic response solution without superimposing
+geometric nonlinearity effectively satisfied the low-latency requirements of the digital twin
+system while maintaining the requisite accuracy for stress and displacement calculations.
+The wind force time-history curve from Section 4.1.1 was applied to the FEM model.
+This step facilitated a dynamic time-history analysis of the wind load. Specifically, it
+investigated the tower’s displacement patterns under wind-induced vibration. For this
+analysis, three representative nodes were selected: the tower base (Node 80), the body
+(Node 400), and the top (Node 361). Subsequently, their displacement responses were
+extracted and plotted as time-history curves, as illustrated in Figure 9.
+In the figure, the horizontal displacements of each node increase with the height of
+the input tower section, growing from 8.9 mm to 90 mm. The tower top structure swings
+significantly, with the tower top node displacement reaching 90.24 mm, still meeting the
+deflection limit requirement of 3/1000 for self-supporting towers specified in the code [38].
+The curves are highly correlated with the wind speed time history, exhibiting fluctuation
+characteristics consistent with the wind spectrum function features. Node 80, located near
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+13 of 25
+the tower base, shows very small lateral displacement due to the strong constraint of its
+foundation, with the structure’s bottom tending to be stable.
+0
+100
+200
+300
+400
+500
+600
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+Lateral Displacement(mm)
+Simulation Time（t/s）
+ Base Section  （Node 80）[Umax=8.9mm]
+ Tower Middle（Node 400）[Umax=51.02mm]
+ Tower Top   （Node 361）[Umax=90.24mm]
+Figure 9. Multiscale dynamic response under design wind load.
+Figures 10 and 11 show the first three natural frequencies and mode shapes of the
+transmission tower structure. The first mode is primarily an X-direction translation, the
+second mode is primarily a Y-direction translation, and the third mode is torsion about the
+Z-axis. The frequency deviation between the first and second modes is extremely small,
+indicating that the structure’s stiffness distribution in the two translational directions (X
+and Y) is very uniform. The third-mode frequency increases by 58.5% compared to the first
+two, showing a stepwise jump in frequency distribution, indicating that the structure’s
+torsional stiffness is greater than its translational stiffness.
+Figure 10. The first three natural frequencies.
+Figure 12 shows the power spectral density (PSD) curve of the along-wind displace-
+ment response of the transmission tower model, with the first three natural frequencies
+of the structure added as reference lines. It can be clearly seen from the figure that the
+PSD curve has a very significant narrow-band energy peak around 2.2 Hz. Comparing
+this peak with the modal analysis results reveals that it accurately corresponds to the
+first (2.202 Hz) and second (2.215 Hz) natural frequencies of the structure. This frequency
+domain characteristic strongly proves that the fluctuating wind load excites the resonance
+of the structure’s low-order modes, resulting in significant wind-induced resonant am-
+plification effects. Meanwhile, this phenomenon does not occur at the third frequency,
+indicating that higher modes contribute little to the displacement response of this model.
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+14 of 25
+Therefore, the dynamic response of this structure is mainly controlled by the first and
+second low-order modes.
+ 
+ 
+ 
+(a) The first mode 
+(b) The second mode 
+(c) The third mode 
+Figure 11. The first three formations.
+0
+1
+2
+3
+4
+5
+6
+10−10
+10−8
+10−6
+10−4
+10−2
+100
+3.585
+2.215
+2.202
+Amplitude (Log Scale)
+Frequency (Hz)
+ Power Spectral Density (PSD)
+Mode 3 Natural Frequency
+Mode 1 Natural Frequency
+Mode 2 Natural Frequency
+ 
+Figure 12. Frequency-domain correlation analysis.
+4.2. Foundation Stiffness Attenuation and Nonlinear Evolution of Boundary Conditions Induced
+by Flood Scour
+When conducting numerical modeling in the Python environment, the determination
+of foundation stiffness must consider the effects of scour on the structure. The classical
+API specification p-y curve model (as shown in Equation (6)) reveals that the lateral soil
+resistance of the foundation is positively correlated with soil depth z. When flood scour
+occurs, the surface soil is directly stripped away under flood loads, which not only causes
+a loss of rigid constraint at the tower foundation but also leads to a sharp decrease in the
+effective confining pressure of the underlying soil at the foundation burial depth. Due to
+the reduction in calculated depth z, the soil undergoes accelerated softening, exhibiting
+significant nonlinear attenuation characteristics.
+Reference [39] indicates that when scour exceeds a critical depth, it triggers abrupt
+changes in soil–structure interaction boundaries, leading to nonlinear accelerated decline
+in structural natural frequencies. Reference [40] shows that severe scour can lead to almost
+complete loss of lateral foundation constraints, subsequently causing rigid body rotation.
+The above literature collectively demonstrates that traditional linear stiffness reduction
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+15 of 25
+methods cannot truly simulate the cliff-like abrupt changes in boundary conditions during
+the later stages of scour.
+Given the high sensitivity of high-rise transmission towers to overturning stiffness,
+this study nonlinearly mapped the degree of scour to an exponential reduction in equivalent
+spring stiffness, as shown in Equation (13), thereby realistically reproducing the evolution
+of the foundation from “elastic fixity” to a “near-hinged state” in the finite element environ-
+ment. Through this approach, this study simulated the entire process of the transmission
+tower from local instability to eventual collapse, aiming to reveal the nonlinear dynamic
+evolution laws of high-rise structures under extreme scour conditions. The resulting flood
+scour parameter table is shown in Table 4.
+K = K0·10−αSc
+(13)
+where K = Equivalent Foundation Stiffness, representing the translational and rotational
+spring values under scouring in FEM. K0 = initial reference stiffness, representing the
+foundation stiffness under unscoured conditions. Initial value: K0 = 107 kN/m. α = decay
+rate factor. Sc = equivalent scour level, a dimensionless scalar ranging from zero to one
+(denoted as “level” in the code). Sc = 0: no scour occurred. Sc = 1: ultimate scour state.
+Table 4. Stiffness parameter settings for foundation scour simulation.
+Sc
+Value
+K0 (kN/m)
+Physical State Description
+0%
+107 × 100
+107
+Initial healthy state, foundation fully fixed
+20%
+107 × 10−1
+106
+Soil loosening, stiffness degraded by one
+order of magnitude
+40%
+107 × 10−2
+105
+Severe scour, constraint capacity
+significantly reduced
+60%
+107 × 10−3
+104
+Critical state, frequency begins to exhibit
+cliff-like drop
+80%
+107 × 10−4
+103
+Failure mutation, foundation approaches
+“hinged” state, structure on the verge
+of collapse
+The nonlinear mapping in Equation (13) is grounded in the stress-dependency theory
+of soil stiffness. According to [41], the removal of overburden soil layers during scour leads
+to a catastrophic reduction in effective confining pressure, causing a nonlinear degradation
+of the soil’s reaction modulus.
+In the FEM model, the initial reference stiffness K0 was set to 107 kN/m. This value
+was determined based on the standard parameters for elastic fixity provided in [42]. It
+ensured sufficient overturning resistance in the un-scoured state. The dimensionless scalar
+Sc (ranging from zero to one) defines the evolution from the pristine to the ultimate scour
+state. The decay coefficient α captures the geotechnical sensitivity of the site, simulating
+the transition from a rigid constraint to a near-hinged condition. To align with the API
+p-y framework, foundation degradation was modeled by attenuating both translational
+(U1, U2, U3) and rotational (R1, R2, R3) stiffness. Using nodal springs in FEM instead
+of solid elements ensured soil–structure interaction (SSI) fidelity while maintaining high
+computational efficiency.
+In natural rivers or floods, scour never occurs uniformly; the scour experienced by
+foundations often exhibits certain randomness and non-uniformity. To determine the
+influence patterns of different scour distribution modes on transmission tower stability in
+the simulation, we designed two comparative working conditions—uniform scour and non-
+uniform scour—based on the above exponential degradation model. Under uniform scour
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+16 of 25
+conditions, the stiffness of the four support nodes of the transmission tower foundation
+underwent exponential reduction synchronously with scour depth, aiming to simulate
+the idealized extreme state of overall riverbed down-cutting. Under non-uniform scour
+conditions, the upstream tower foundation nodes (45 and 47) were set to maintain rapid
+degradation with α = 5, while the downstream tower foundation nodes (49 and 51) adopted
+a slower decay rate factor α = 3, simulating situations with weaker local circulation.
+From Figure 13a, it can be seen that when the scour degree is less than 40%, the first
+and second natural frequencies decrease relatively gently. When the scour degree exceeds
+40%, the first and second natural frequencies of the tower show a nonlinear rapid decline
+trend, with a maximum reduction rate reaching 80.9%, greatly weakening the foundation
+fixity capacity. Under non-uniform scour, as shown in Figure 13b, although the frequencies
+at the upstream tower foundation still decrease rapidly, the natural frequency degradation
+at the downstream tower foundation is relatively slower, and the maximum reduction rate
+improves, ultimately decreasing to 73.8%.
+0
+20
+40
+60
+80
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0
+Natural Frequency (Hz)
+Equivalent Scour Severity (%)
+ Mode1(Hz)
+ Mode2(Hz)
+ Mode3(Hz)
+Total Drop: 80.9%
+ 
+0
+20
+40
+60
+80
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+4.0
+Natural Frequency (Hz)
+Equivalent Scour Severity (%)
+ Mode1(Hz)
+ Mode2(Hz)
+ Mode3(Hz)
+Total Drop: 73.8%
+(a) Uniform scour 
+(b) Non-uniform scour 
+Figure 13. Comparison of modal frequency evolution of transmission tower under uniform and
+non-uniform scour conditions.
+Overall, the first and second-order frequencies are greatly reduced under both uniform
+and non-uniform scour conditions, which is the result of the order-of-magnitude reduction
+in foundation spring stiffness. The first and second modes represent the bending moment
+effects of the structure in the horizontal direction, and the form of fixity between founda-
+tions greatly influences them. When stiffness attenuates, the first and second modes are
+greatly affected. The third mode represents the torsional effect of the structure, reflecting
+the spatial stiffness distribution characteristics. Uniform scour and non-uniform scour
+almost simultaneously reduce the foundation stiffness, but the spatial stiffness distribution
+changes little, mostly in a state of simultaneous reduction. Therefore, the natural frequen-
+cies of the third mode under both working conditions in Figure 13 show a relatively stable
+distribution trend.
+Figure 14 shows the redistribution of axial forces and bending moments in the structure
+induced by non-uniform scour. Observation reveals that the changes in axial force in
+Figure 14a and bending moment in Figure 14b occur synchronously. In the initial stage of
+scour, the axial forces at the four nodes 45, 47, 49, and 51 are basically the same at 27 kN,
+and the structure is in equilibrium. However, as scour intensifies, the stiffness of upstream
+nodes 45 and 47 decreases significantly, causing them to be unable to support the upper
+load. Since gravity must find new support points to achieve equilibrium, the load begins
+to transfer to downstream nodes 49 and 51. When scour reaches 80%, the axial forces at
+upstream nodes 45 and 47 almost disappear due to the sharp drop in foundation stiffness
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+17 of 25
+caused by scour, while the axial forces at downstream nodes 49 and 51 increase from
+approximately 27 kN to 54 kN. This doubling phenomenon indicates that the downstream
+foundation bears the entire weight of the tower, imposing significant compressive stress on
+that side of the foundation.
+0
+20
+40
+60
+80
+0
+10
+20
+30
+40
+50
+60
+Axial Force (kN)
+Equivalent Scour Severity (%)
+ Windward Node45
+ Windward Node47
+ Leeward Node49
+ Leeward Node51
+ 
+0
+20
+40
+60
+80
+0
+30
+60
+90
+120
+150
+180
+Bending Moment (kNꞏm)
+Equivalent Scour Severity (%)
+ Windward Node45
+ Windward Node47
+ Leeward Node49
+ Leeward Node51
+ 
+(a) Axial force 
+(b) Bending moment 
+Figure 14. Internal force extraction of transmission tower under non-uniform scour conditions.
+Furthermore, changes in base bending moments also reflect that the structure is in a
+dangerous state under scour. For upstream nodes 45 and 47, as the soil at the upstream
+foundation is gradually scoured, they cannot generate reaction forces to resist rotation, so
+the bending moment values are rapidly released and tend toward zero. This indicates that
+the upstream supports have lost their constraint capacity on the tower legs, changing from
+fixed to hinged. For downstream nodes 49 and 51, under non-uniform scour conditions,
+they need to anchor the tower body attempting to tilt. This strong constraint causes the
+bending moment values at nodes 49 and 51 to soar to 183 kN·m. This bending moment
+indicates that downstream nodes must not only resist compression but also bending, which
+can easily lead to “stiffness eccentricity”, causing the shearing of tower footing connection
+bolts or buckling of main members.
+Further observation of Figure 13 reveals that when the equivalent scour severity (i.e.,
+stiffness degradation) exceeds 40%, the natural frequency curves of the structure exhibit a
+distinct inflection point, followed by a sharp nonlinear decline. This evolutionary feature
+is highly consistent with established geotechnical dynamics. Reference [29] demonstrates
+that the natural frequency of a pile affected by scour does not decay linearly with scour
+depth; instead, it undergoes a sharp, nonlinear drop only after the scour reaches a critical
+threshold. Based on that reference and the curve mutation observed in Figure 13, this study
+identified 40% as the critical evolutionary threshold for the dynamic degradation of the
+transmission tower foundation under scour.
+Figure 15 shows that non-uniform scour induces significant internal force transforma-
+tion effects. On the one hand, at the axial force level, upstream and downstream nodes
+exhibit highly symmetrical force transfer. As scour increases from 20% to 80%, the load
+contribution rates show a “scissors difference” evolution (from 25% shifting to 24.3% and
+25.7% respectively), reflecting the dangerous migration of several tons of gravity load to
+the safe side. On the other hand, at the bending moment level, redistribution is even more
+pronounced: the contribution rate of upstream foundations plummets below 10% in the
+early stage of scour (20%) due to the loss of rotational constraint, almost losing their role as
+fixed supports. When scour reaches 80% depth, the two downstream supports together
+bear nearly 100% of the bending moment load of the entire tower. Under this condition,
+the downstream foundation is more prone to failure and overall collapse. Due to the loss of
+stiffness at upstream supports (nodes 45, 47) causing an internal force release, the load is
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+18 of 25
+forced to concentrate on downstream supports (nodes 49, 51), inducing additional bending
+moments up to 183 kN·m. This significant “axial force–bending moment” coupling effect
+can easily lead to the shearing of anchor bolts or instability of main members at downstream
+transmission tower foundations. Therefore, disaster prevention monitoring should focus
+on identifying the risk of force imbalance caused by local non-uniform scour, rather than
+only focusing on overall foundation settlement.
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+24.2
+24.4
+24.6
+24.8
+25.0
+25.2
+25.4
+25.6
+25.8
+26.0
+Contribution Percentage (%))
+Equivalent Scour Severity (%)
+ Windward Node45
+ Windward Node47
+ Leeward Node49
+ Leeward Node51
+0
+10
+20
+30
+40
+50
+60
+70
+80
+0
+10
+20
+30
+40
+50
+Contribution Percentage (%))
+Equivalent Scour Severity (%)
+ Windward Node45
+ Windward Node47
+ Leeward Node49
+ Leeward Node51
+(a) Axial force 
+(b) Bending moment 
+Figure 15. Evolution of internal force contribution rates under non-uniform scour conditions.
+In summary, transmission towers are highly sensitive to foundation scour patterns.
+Under uniform scour conditions considering only gravity loads, the internal forces at each
+node remain stable with symmetric stiffness degradation, with risks mainly manifested
+as reduced overall bearing capacity while internal forces remain constant. Sections 4.1
+and 4.2 respectively reveal the dynamic response characteristics under wind loads and
+the stiffness degradation laws induced by flood scour. Based on the above single-hazard
+analyses, Section 4.3 further demonstrates how to integrate and present structural response
+data from the two types of hazards through the BIM platform, achieving visual warning of
+structural health status under multi-hazard scenarios.
+4.3. FEM–BIM Result Mapping and Dynamic Visual Warning of Structural Risks Based on OAPI
+This study constructed an automated analysis pipeline across FEM–BIM platforms.
+First, FEM raw data were preprocessed in the Python environment. The Pandas library
+in the built-in Spyder program was used to extract stress ratios of each component and
+convert them into lightweight JSON format data. Subsequently, the Revit API was called in
+the Revit Python Shell plugin environment. External JSON databases were read through
+the interface to achieve precise alignment of component IDs between the FEM model and
+the BIM physical model, as shown in Figure 16.
+A three-level visual mapping system was constructed by introducing the stress change
+rate (∆R). A red zone represented areas with large stress changes under foundation dis-
+placement; a dark green transition zone depicted areas with significant internal force
+redistribution, reflecting the dynamic conduction process of stress changes from the tower
+bottom upward; a light gray stable zone used high transparency to hide information of
+components less affected by stress changes. The specific judgment criteria were carried out
+according to Table 5.
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+19 of 25
+ 
+(a) FEM Model 
+(b) BIM Model 
+Figure 16. Bidirectional information conversion interaction between structural calculation model
+(FEM) and Building Information Model (BIM).
+Table 5. Key mechanical parameter settings for foundation scour simulation.
+Sensitivity Level
+Criterion (∆R)
+Visual Mapping Scheme
+Mechanical State
+Description
+Highly Sensitive Mutation Zone
+∆R > 50%
+Red
+Stress outbreak point; local
+stiffness severely disturbed
+Sub-Stable Transition Zone
+20% < ∆R < 50%
+Dark green
+Stress redistribution path;
+internal forces
+continuously increasing
+Static Stable Zone
+0% < ∆R < 20%
+Light gray
+Structural steady-state
+zone; minimally
+affected region
+In the initial stage of scour, most components of the tower body are in a gray hidden
+state representing stability, as shown in Figure 17a. This indicates that the additional
+internal forces generated by slight foundation displacements are still concentrated at the
+bottom support nodes and have not yet been transmitted on a large scale to the upper
+structure. In the late stage of scour, the structure exhibits color characteristics of increased
+stress change rates at multiple points. As shown in Figure 17b, the red sensitive zone not
+only locks onto the bottom failure points but also forms a connecting upward trend in the
+middle section of the tower body. This indicates that the geometric nonlinear effects caused
+by uneven settlement have led to the reorganization of the stiffness distribution throughout
+the tower, with the structure gradually transitioning from local disturbance to transmission
+to the upper structure.
+During the entire 0–60 s wind loading process, the structural dynamic response
+exhibits significant stage-by-stage evolution laws with the increase in wind-load time
+history. Initially, in the low-wind-speed stage, the overall structure is in the static stable
+zone, with indicator ∆R < 20%. At this time, wind load disturbance to components is
+minimal, with only the tower leg’s main members bearing the overall bending moment
+caused by wind load on the entire tower. The overall mechanical performance remains
+stable, mostly appearing gray and dark green in the BIM mapping model, as shown in
+Figure 18a. Subsequently, as the load intensity continues to rise, stress begins to spread
+along specific paths, entering the sub-steady transition zone (20% < ∆R < 50%). From
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+20 of 25
+a mechanical logic perspective, this stage constitutes a stress redistribution path, with
+internal force conduction becoming increasingly active, playing a key role in load transfer
+and energy dissipation. At this time, the stress distribution on main members gradually
+spreads to the upper structure, as shown in Figure 18b. Finally, at the 60 s moment reaching
+the load peak, the red range in the tower leg area further expands, i.e., the stress burst
+point with ∆R > 50% becomes the weakest link in the overall structural wind resistance, as
+shown in Figure 19a. In summary, the BIM mapping results accurately capture the entire
+process of structural stress evolution, and the FEM stress nephogram at the 60 s moment
+highly agrees with the damage indicator ∆R, as shown in Figure 19b, achieving closed-loop
+completion of the digital twin process.
+ 
+(a) Initial scour stage 
+(b) Late scour stage 
+Figure 17. BIM model mapping response under foundation scour.
+ 
+(a) 0–20 s 
+(b) 20–40 s 
+Figure 18. BIM model mapping response under flood scour.
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+21 of 25
+ 
+(a) 40–60 s (BIM) 
+(b) 40–60 s (FEM) 
+Figure 19. Comparative mapping response of BIM and FEM models under foundation scour.
+5. Conclusions and Future Work
+5.1. Conclusions
+The digital twin framework proposed in this paper integrates IoT, BIM, and FEM.
+Through low-level calls of the OAPI interface in the Python environment, real-time data
+from the physical environment can directly drive the mechanical evolution analysis in the
+virtual space. This virtual–real interaction mechanism effectively enhances the timeliness
+of simulation deduction, providing innovative ideas for dynamic identification of early
+damage in transmission towers. Specific conclusions are as follows:
+(1) The Davenport fluctuating wind spectrum was generated based on the harmonic
+superposition method, completely retaining the square term of wind load. Verified by the
+Welch method, the simulated power spectrum agreed well with the theoretical target spec-
+trum. Results showed that this method accurately reproduced the random characteristics
+of natural wind. Meanwhile, it effectively overcame the limitations of traditional linear
+assumptions, providing reliable load boundary conditions for the OAPI-driven digital
+twin framework.
+(2) A digital twin closed-loop mechanism driven by IoT data was successfully con-
+structed. This study used the IoT monitoring network as the core information source,
+relying on MQTT and OAPI interfaces to efficiently convert real-time environmental data
+into dynamic inputs for the finite element analysis, driving structural wind-induced vi-
+bration and scour analysis. Simultaneously, by interconnecting model nodes with on-site
+IoT devices, a “virtual sensor” mapping was established. This framework ensured eh
+synchronous analysis and calculation of stress and displacement responses, completing the
+data closed-loop mechanism from physical to digital ends.
+(3) Through nonlinear exponential spring stiffness reduction, the entire process of
+dynamic degradation of transmission towers under flood scour was realistically repro-
+duced. Results indicated that the structural natural vibration characteristics had a 40%
+scour evolution threshold. Structural frequencies exhibited significant stage-sensitive char-
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+22 of 25
+acteristics to the degree of scour. After exceeding that threshold, the first and second
+frequencies showed a rapid nonlinear decay (maximum reduction of 80.9%), with the
+foundation rapidly degrading from a fixed end to a near-hinged state. Additionally, scour
+induced significant load transfer effects. When scour reached 80%, the bearing capacity of
+the upstream foundation basically failed; simultaneously, axial forces at downstream nodes
+surged, doubling from 27 kN to 54 kN.
+(4) During the entire 0–60 s loading process, the structural dynamic response exhibited
+significant stage characteristics. In the initial stage of wind loading, the stress change rate
+was small (0% < ∆R < 20%), the structure maintained stability, and the tower legs mainly
+bore the bending moment caused by wind load. In the middle stage of wind loading, the
+stress change rate further expanded (20% < ∆R < 50%), with stress spreading upward and
+redistributing. At the peak moment of the wind-load time history reaching 60 s, the local
+stress change rate of the tower legs reached its peak, with ∆R > 50%, and the tower bottom
+became a stress concentration area, developing into a weak link in wind resistance. Finally,
+the FEM mechanical response highly agreed with the damage indicator ∆R, accurately
+mapping the evolution process of structural internal forces and successfully achieving
+closed-loop validation of the digital twin framework.
+Practically, the strong structural asymmetry observed in this study suggests that future
+design and safety assessment frameworks should explicitly incorporate non-uniform scour
+as a critical load case. Accounting for this spatial variability helps to ensure that localized
+extreme internal forces and differential settlements are adequately addressed. Furthermore,
+structural health monitoring and maintenance strategies can be optimized by targeting
+these critical regions of structural degradation.
+5.2. Future Work
+(1) The current work primarily focused on validating the feasibility of the proposed
+digital twin framework. Consequently, the analyses were conducted for wind load and
+flood scour as separate, single-hazard scenarios. A comprehensive analysis of wind–flood
+joint actions will be the focus of subsequent research.
+(2) The current framework demonstrates the integrated feasibility of automated multi-
+hazard tracking under idealized conditions, but it does not yet account for complex uncer-
+tainty propagation across the independent models (e.g., wind, scour, and SSI). Following the
+profound insights into probabilistic paradigms [43] and uncertainty quantification [44,45]
+established by recent pioneering works, future research will focus on quantifying and
+propagating these multi-source uncertainties through the digital twin framework. This
+will facilitate a crucial transition from deterministic visualization to robust probabilistic
+reliability assessment, thereby further perfecting the fidelity of the digital twin system.
+(3) Future research will extend this framework to thermo-mechanical hazards, as
+emerging risks of electric fires with thermal runaway and structural degradation are
+increasingly critical trends in infrastructure resilience [46,47].
+(4) While the current digital twin framework demonstrates strong numerical consis-
+tency through PSD matching and validation using virtual sensors, future research will
+focus on its real-world implementation. We plan to integrate physical IoT hardware (e.g.,
+anemometers, sonar profilers, and strain gauges) to rigorously validate the dynamic twin-
+ning accuracy under complex, real-world scour scenarios using field-measured data and
+scaled laboratory experiments. Furthermore, to ensure practical scalability, future work
+will explicitly evaluate the cost-benefit of different sensor deployment schemes (e.g., sparse
+vs. dense networks) to optimize hardware and maintenance costs while maintaining high
+monitoring reliability.
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+23 of 25
+Author Contributions: Conceptualization, X.Q. and Q.S.; methodology, H.W. and X.X.; software,
+A.Z.; validation, Q.Z.; formal analysis, X.Q.; investigation, A.Z.; resources, Q.S., H.W. and X.X.; data
+curation, Q.Z.; writing—original draft preparation, X.Q.; writing—review and editing, X.Q., H.W.,
+X.X., A.Z., Q.Z. and Q.S.; visualization, Q.Z.; supervision, Q.S.; project administration, Q.S., H.W.,
+X.X. and A.Z.; funding acquisition, X.Q., Q.S. All authors have read and agreed to the published
+version of the manuscript.
+Funding: This research was funded by the project “Research and Application of Complete Sets of
+Technologies for Emergency Fabricated Transmission Poles and Foundations in Complex Scenarios”,
+grant number SGBJJJ00SDJS2500110, and the National Natural Science Foundation of China, grant
+number 51978570.
+Data Availability Statement: The data presented in this study are available within the article.
+Acknowledgments: The authors would like to express their gratitude to Beijing Electric Power
+Economic and Technological Research Institute Co., Ltd., Beijing 100055, China, for its invaluable
+support and collaboration in this research. This work was carried out as part of a joint effort,
+combining academic and industrial expertise to achieve the presented results. The authors also
+acknowledge the contributions of all team members involved in this project. Furthermore, the
+authors thank the technical staff of the Institute for their important contribution in carrying out the
+simulation analysis and data processing reported in this study, as well as all the researchers for their
+invaluable support. Special thanks also go to the colleagues who offered important support during
+the preliminary analysis that led to this research.
+Conflicts of Interest: Authors Xiaoqing Qi, Huaichao Wang, Xiaoyu Xiong, and Angi Zhou were
+employed by the company Beijing Electric Power Economic and Technological Research Institute
+Co., Ltd, Beijing 100055, China. The remaining authors Qing Sun and Qiang Zhang declare that the
+research was conducted in the absence of any commercial or financial relationships that could be
+construed as a potential conflict of interest.
+References
+1.
+GB 50135-2019; Standard for Design of High-Rising Structures. China Architecture & Building Press: Beijing, China, 2019.
+(In Chinese)
+2.
+Jiang, W.; Guo, Y.; Zheng, Z.; Zhang, Q.; Dai, T.; An, L.; Fu, X. High accuracy wind-induced response prediction of transmission
+tower based on graph neural hybrid network. J. Wind Eng. Ind. Aerodyn. 2025, 267, 106241. [CrossRef]
+3.
+Jin, Q.; Liu, J.; Rong, K.; Zhang, R.; Tian, L.; Meng, X. Enhancing the wind-resistant performance of transmission towers with
+cross-shield non-destructive continuous strengthening measure. Thin-Walled Struct. 2025, 216, 113703. [CrossRef]
+4.
+Zhang, X.; Xie, Q. Cumulative damage risk assessment for transmission tower-line system considering copula-based joint
+distribution of wind speed and direction. Reliab. Eng. Syst. Saf. 2026, 265, 111595. [CrossRef]
+5.
+Dikshit, S.; Alipour, A. Characterizing probability of failure of transmission tower systems under multiple climatic hazards: Wind
+and ice. Eng. Struct. 2025, 342, 120720. [CrossRef]
+6.
+Li, J.-X.; Yang, T.; Zhang, C.; Sun, L.; Qu, C.-X. Typhoon fragility analysis of transmission tower-line system considering
+wind-induced fatigue. Eng. Struct. 2025, 338, 120572. [CrossRef]
+7.
+Guo, X.; Li, H.-N.; Zhang, H. Multi-hazard failure analysis and performance evaluation of transmission towers utilizing
+data-driven probabilistic models subject to combined wind and earthquake. Structures 2025, 77, 109196. [CrossRef]
+8.
+Asaridis, P.; Molinari, D.; Di Maio, F.; Ballio, F.; Zio, E. A probabilistic modeling and simulation framework for power grid flood
+risk assessment. Int. J. Disaster Risk Reduct. 2025, 120, 105353. [CrossRef]
+9.
+Shukla, A.; Kutanoglu, E.; Hasenbein, J.J. Co-optimization of short- and long-term decisions for the transmission grid’s resilience
+to flooding. Sustain. Energy Grids Netw. 2025, 44, 101973. [CrossRef]
+10.
+Feeney, C.J.; Godfrey, S.; Cooper, J.R.; Plater, A.J.; Dodds, D. Forecasting riverine erosion hazards to electricity transmission
+towers under increasing flow magnitudes. Clim. Risk Manag. 2022, 36, 100439. [CrossRef]
+11.
+Li, X.; Chen, X.; Li, G. Fairness-aware task offloading and load balancing with delay constraints for Power Internet of Things. Ad
+Hoc Netw. 2024, 153, 103333. [CrossRef]
+12.
+Xu, J.; Zhang, Q.; Teng, Y.; Pan, W. Integrating IoT and BIM for tracking and visualising embodied carbon of prefabricated
+buildings. Build. Environ. 2023, 242, 110492. [CrossRef]
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+24 of 25
+13.
+Yu, D.; Tao, Q.; Liu, Q.; Jin, Y.; Sun, Y.; Fu, P. Lifecycle management of urban renewal enabled by Internet of Things: Development,
+application, and challenges. Results Eng. 2025, 27, 105706. [CrossRef]
+14.
+Jia, Y.; Zhang, J.-W.; Ye, Z.; Fu, L.; Zhang, B.; Belhora, F. Low frequency vibration monitoring of wind turbine tower based on
+optical fiber sensor and its potential for internet of things. Sens. Actuators A: Phys. 2024, 379, 115891. [CrossRef]
+15.
+Wang, L.; Sun, X.; Wang, D.; Cui, P.; Wang, J.; Li, Q. High-precision, programmable soft wireless robotics for cooling tower
+cleaning based on Internet of Things technology. Chem. Eng. J. 2024, 495, 153268. [CrossRef]
+16.
+Rahita, A.C.; Zaki, A.; Nugroho, G.; Yadi, S. Internet of Things (IoT) in Structural Health Monitoring: A Decade of Research
+Trends. Instrum. Mes. Metrol. 2024, 23, 105–114. [CrossRef]
+17.
+Nilnoree, S.; Taparugssanagorn, A.; Kaemarungsi, K.; Mizutani, T. Enhancing Wireless Sensor Network in Structural Health
+Monitoring through TCP/IP Socket Programming-Based Mimic Broadcasting: Experimental Validation. Appl. Sci. 2024, 14, 3494.
+[CrossRef]
+18.
+Sun, Z.; Jayasinghe, S.; Sidiq, A.; Shahrivar, F.; Mahmoodian, M.; Setunge, S. Approach Towards the Development of Digital Twin
+for Structural Health Monitoring of Civil Infrastructure: A Comprehensive Review. Sensors 2025, 25, 59. [CrossRef]
+19.
+Han, Y.; Chen, M.; Li, N.; Ji, M.; Wang, X. Digital Twin in Construction Safety Management: Recent Advances, Challenges, and
+Future Directions from 4M1E Perspective. Saf. Sci. 2025, 192, 107006. [CrossRef]
+20.
+Scianna, A.; Gaglio, G.F.; La Guardia, M. Structure Monitoring with BIM and IoT: The Case Study of a Bridge Beam Model. ISPRS
+Int. J. Geo-Inf. 2022, 11, 173. [CrossRef]
+21.
+Armijo, A.; Zamora-Sánchez, D. Integration of Railway Bridge Structural Health Monitoring into the Internet of Things with a
+Digital Twin: A Case Study. Sensors 2024, 24, 2115. [CrossRef]
+22.
+GB 50545-2010; Code for Design of 110kV–750kV Overhead Transmission Line. China Planning Press: Beijing, China, 2010.
+(In Chinese)
+23.
+GB 50009-2012; Load Code for the Design of Building Structures. China Architecture & Building Press: Beijing, China, 2012.
+(In Chinese)
+24.
+Davenport, A.G. The application of statistical concepts to the wind loading of structures. Proc. Inst. Civ. Eng. 1961, 19, 449–472.
+[CrossRef]
+25.
+Arneson, L.A.; Zevenbergen, L.W.; Lagasse, P.F.; Clopper, P.E. Evaluating Scour at Bridges, 5th ed.; Hydraulic Engineering Circular
+No. 18 (HEC-18), FHWA-HIF-12-003; Federal Highway Administration: Washington, DC, USA, 2012.
+26.
+American Petroleum Institute. Geotechnical and Foundation Design Considerations; API Recommended Practice 2GEO; API:
+Washington, DC, USA, 2014.
+27.
+Dutta, S.C.; Roy, R. A critical review on idealization and modeling for interaction among soil-foundation-structure system.
+Comput. Struct. 2002, 80, 1579–1594. [CrossRef]
+28.
+Tseng, W.-C.; Kuo, Y.-S.; Lu, K.-C.; Chen, J.-W.; Chung, C.-F.; Chen, R.-C. Effect of Scour on the Natural Frequency Responses of
+the Meteorological Mast in the Taiwan Strait. Energies 2018, 11, 823. [CrossRef]
+29.
+Prendergast, L.J.; Hester, D.; Gavin, K.; O’sullivan, J. An investigation of the changes in the natural frequency of a pile affected by
+scour. J. Sound Vib. 2013, 332, 6685–6702. [CrossRef]
+30.
+Binh, L.V.; Ishihara, T.; Phuc, P.V.; Fujino, Y. A peak factor for non-Gaussian response analysis of wind turbine tower. J. Wind Eng.
+Ind. Aerodyn. 2008, 96, 22172227. [CrossRef]
+31.
+Holmes, J.D. Wind Loading of Structures, 3rd ed.; CRC Press: Boca Raton, FL, USA, 2015.
+32.
+Li, J.; Gao, F.; Wang, L.; Ren, Y.; Liu, C.; Yang, A.; Yan, Z.; Jiang, T.; Li, C. Collapse Mechanism of Transmission Tower Subjected to
+Strong Wind Load and Dynamic Response of Tower-Line System. Energies 2022, 15, 3925. [CrossRef]
+33.
+Lv, H.; Liu, D.; Shao, L.; Liu, Y.; Zhu, Z.; Dong, S.; Zhong, Y. Wind-Induced Vibration Analysis of a Pentagonal Three–Four Strut
+Hybrid Open-Type Cable Dome. Buildings 2024, 14, 461. [CrossRef]
+34.
+Welch, P. The use of fast Fourier transform for the estimation of power spectra: A method based on time averaging over short,
+modified periodograms. IEEE Trans. Audio Electroacoust. 1967, 15, 70–73. [CrossRef]
+35.
+Branco, N.W.; Cavalca, M.S.M.; Stefenon, S.F.; Leithardt, V.R.Q. Wavelet LSTM for Fault Forecasting in Electrical Power Grids.
+Sensors 2022, 22, 8323. [CrossRef]
+36.
+Jung, C. High Spatial Resolution Simulation of Annual Wind Energy Yield Using Near-Surface Wind Speed Time Series. Energies
+2016, 9, 344. [CrossRef]
+37.
+Nezamolmolki, D.; Shooshtari, A. The effect of nonlinear behavior of bolted connections on dynamic analysis of steel transmission
+towers. Int. J. Steel Struct. 2021, 21, 634–649. [CrossRef]
+38.
+DL/T 5219-2014; Technical Code for Design of Tower Foundation of Overhead Transmission Line. China Electric Power Press:
+Beijing, China, 2014. (In Chinese)
+39.
+Foti, S.; Sabia, D. Influence of foundation scour on the dynamic response of an existing bridge. J. Bridge Eng. 2011, 16, 295–304.
+[CrossRef]
+https://doi.org/10.3390/app16083620
+
+Appl. Sci. 2026, 16, 3620
+25 of 25
+40.
+Ju, S.H. Determination of scoured bridge natural frequencies with soil–structure interaction. Soil Dyn. Earthq. Eng. 2013, 55,
+247–254. [CrossRef]
+41.
+Lin, Y.; Lin, C. Scour effects on lateral behavior of pile groups in sands. Ocean Eng. 2020, 208, 107420. [CrossRef]
+42.
+GB 50007-2011; Code for Design of Building Foundations. Ministry of Housing and Urban-Rural Development of the People’s
+Republic of China (MOHURD); China Architecture & Building Press: Beijing, China, 2011. (In Chinese)
+43.
+Monchetti, S.; Viscardi, C.; Betti, M.; Bartoli, G. Bayesian-based model updating using natural frequency data for historic masonry
+towers. Probab. Eng. Mech. 2022, 70, 103337. [CrossRef]
+44.
+Kuok, S.C.; Yuen, K.V. Multi- resolution broad learning for model updating using incomplete modal data. Struct. Control Health
+Monit. 2020, 27, e2571. [CrossRef]
+45.
+Mehrkash, M.; Santini-Bell, E. Modal-based uncertainty quantification for deterministically estimated structural parameters in
+low-fidelity model updating of complex connections. Probab. Eng. Mech. 2024, 77, 103671. [CrossRef]
+46.
+Bolina, F.L.; Fachinelli, E.G.; Rodrigues, J.P.C. Analysis of building structures subjected to electric vehicle fires. J. Build. Eng. 2025,
+107, 112769. [CrossRef]
+47.
+Bolina, F.L.; Silva, D.B.; Pachla, E.C.; Oliveira, C.I.D.; Marangon, E. Electric Vehicle Fire Scenarios as an Emerging Challenge for
+the Fire Resistance Design of Reinforced Concrete Beams. Sustainability 2026, 18, 1566. [CrossRef]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+https://doi.org/10.3390/app16083620

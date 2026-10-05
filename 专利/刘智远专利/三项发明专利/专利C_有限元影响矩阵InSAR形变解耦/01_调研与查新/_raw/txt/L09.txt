@@ -1,0 +1,388 @@
+Deformation Monitoring and Analysis of Railway Bridges Integrating Time-Series InSAR and 
+Finite-Element Modeling 
+Xiaoqiong Qin 1,2, Qingbo Ma 1,2, Chisheng Wang 3 *, Linfu Xie 3, Xiangsheng Chen 1,2 
+1 State Key Laboratory of Intelligent Geotechnics and Tunnelling, Shenzhen University, Shenzhen, 518060, China 
+2 School of Civil and Traffic Engineering & Underground Polis Academy, Shenzhen University, Shenzhen, 518060, China 
+3 Smart City Research Institute & School of Architecture and Urban Planning, Shenzhen University, 518060, China 
+Keywords: Railway Bridge, InSAR, FEM, Deformation, Thermal Effects. 
+Abstract 
+Interferometric Synthetic Aperture Radar (InSAR) is widely employed for measuring millimetre-level deformation of bridges and other 
+structures. However, retrieving multi-dimensional displacements of a bridge and integrating these measurements with structural stress 
+for coupled analysis remains a major challenge. To address this issue, we propose an integrated framework and demonstrate its appli-
+cation to the Hutiaohe extra-large bridge in Guizhou Province. First, a two-dimensional E-PS-InSAR time-series method is developed 
+to derive the bi-directional deformation of the bridge. Next, structural temperatures are obtained via the ANUSPLIN interpolation 
+scheme, enabling accurate isolation of the thermal response. Finally, the finite-element model (FEM) of the bridge is established to 
+interpret the observed deformation and thermal signatures within the structural context. The results indicate that, compared to conven-
+tional InSAR approaches, the proposed framework provides a richer set of insights of multi-dimensional deformation, structural be-
+havior, and thermal effects. 
+1. Introduction
+By the end of 2023, China’s high-speed railway network has 
+been extended to 45,000 km, with more than half of this length 
+constructed on bridge structures. On certain corridors, such as 
+the Beijing–Shanghai line, the proportion of bridges exceeded 
+85% (Su et al., 2022). Given this expanding inventory and in-
+creasing proportion, large-area and high-precision operational 
+monitoring of railway bridges became a critical issue for infra-
+structure authorities. Benefiting from all-day, all-weather, high-
+resolution and millimetre-level accuracy, Space-borne Interfer-
+ometric Synthetic Aperture Radar (InSAR) developed rapidly 
+and has been extensively applied to deformation monitoring of 
+urban structures (Liao et al., 2020; Qin et al., 2021; Cai et al., 
+2022; Xiao et al., 2022; Shi et al., 2019). Nevertheless, a review 
+of the current literature indicates that most studies merely esti-
+mate displacements without further investigating the structural 
+response (Selvakumaran et al., 2020; Schlögl et al., 2021; Alani 
+et al., 2020; Xiong et al., 2021). 
+From the perspective of bridge monitoring, some studies have 
+combined InSAR data with finite element model (FEM) simula-
+tion to analyze the correlation between surface deformation and 
+internal structural stress of long-span railway bridges (Zhang et 
+al., 2023; Wang et al., 2024). However, most of these studies are 
+carried out in regions with relatively stable geological conditions, 
+and their adaptability to complex geological environments still 
+needs to be further verified. 
+This study focused on railway bridges, utilizing E-PS-InSAR to 
+retrieve the structural three-dimensional displacements. Then, a 
+high-fidelity finite-element model was constructed to investigate 
+the deformation mechanism of the bridge. Through the integra-
+tion of the deformation measurements obtained from InSAR and 
+the insights derived from the finite-element model, the study un-
+ravelled the complex coupling between deformation mecha-
+nisms and structural responses, with particular attention paid to 
+*  Corresponding author
+thermal effects. The findings of this research offer a robust foun-
+dation for comprehending the deformation behavior and identi-
+fying potential instability factors in high-speed railway bridges 
+and similar structural types.  
+2. Study Area and Datasets
+2.1 Study Area 
+The Hutiaohe Extra-Large Bridge, located at Liupanshui Munic-
+ipality, Guizhou Province, is a simply-supported multi-track rail-
+way bridge (Fig 1). Situated on the Yunnan–Guizhou Plateau, 
+the bridge lies within a subtropical monsoon climatic zone that 
+is characterised by rugged topography and frequent weather 
+fluctuations. Large diurnal temperature differences and an an-
+nual temperature amplitude of approximately 30 °C make the 
+area an ideal natural laboratory for investigating the deformation 
+behaviour of railway bridges in mountainous regions. 
+The bridge is 1,108.4 m long and comprises 89 piers arranged at 
+33 pier positions as shown in Fig. 2(a). Among these positions, 
+23 are three-bearing and 10 are two-bearing configurations. For 
+analytical convenience, the pier positions were numbered from 
+west to east as #1 to #33. The central span at each position is 
+32.6 m. A high-speed railway station—Pu’anxian Station—is 
+constructed on the deck between Pier #2 and Pier #16. 
+ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, Volume XI-3-2026 
+XXV ISPRS Congress 2026 “From Imagery to Understanding”, Commission III, 4–11 July 2026, Toronto, Canada
+This contribution has been peer-reviewed. The double-blind peer-review was conducted on the basis of the full paper. 
+https://doi.org/10.5194/isprs-annals-XI-3-2026-455-2026 | © Author(s) 2026. CC BY 4.0 License.
+455
+
+ 
+ 
+ 
+Fig 1. Bridge Location and Image Coverage 
+ 
+Fig 2. Bridge overview: (a) schematic of the bridge; (b) satel-
+lite incidence angle 
+ 
+2.2 Datasets 
+This study collected C-band Sentinel-1 images covering the tar-
+get bridge, consisting of 32 descending scenes acquired from 
+December 2017 to January 2020 and 32 ascending scenes from 
+December 2017 to January 2020. The spatial coverage is shown 
+in Fig. 1, and the look angle is illustrated in Fig. 2(b). The Spa-
+tial-temporal baseline distribution is provided in Fig 3. 
+ 
+To characterize the thermal response of the bridge, this study 
+employed the NOAA Global Station Daily Meteorological Indi-
+cators dataset spanning 1929–2024. The archive comprises 12 
+variables—including mean temperature, mean dew-point, mean 
+sea-level pressure and mean visibility—and is distributed by the 
+National Centers for Environmental Information of the U.S. Na-
+tional Oceanic and Atmospheric Administration.  
+ 
+Fig 3. Spatial-temporal baselines of the SAR images. 
+ 
+3. Methodology 
+This study proposed an integrated framework that jointly ex-
+ploits ascending- and descending-track TS-InSAR together with 
+finite-element (FEM) analysis. The framework consists of three 
+core components: (i) a 2-D deformation time-series eatimation 
+based on E-PS-InSAR, (ii) high-precision extraction of bridge-
+specific thermal effects via the ANUSPLIN interpolation 
+scheme, and (iii) deformation interpretation supported by a FEM 
+of the bridge. The overall research workflow is illustrated in Fig. 
+4. 
+ 
+Fig 4. Research Roadmap 
+ 
+4. Experimental Results and Analysis 
+4.1 The LOS Deformation 
+Fig. 5 presents the LOS deformation rates of the Hutiaohe Bridge, 
+where the 5(a) and 5(b) are derived from the ascending and de-
+scending data of the Sentinel-1, respectively. The measurement 
+points (MPs) of the bridge, derived from both ascending and de-
+scending data, are evenly distributed. Moreover, the deformation 
+of the bridge is small, ranging between -3 mm/a and 3 mm/a. As 
+a high-speed railway simply-supported bridge, it has higher con-
+struction standards, smaller span, and lower deck height than 
+regular road bridges, enhancing structural stability and minimiz-
+ing deformation. 
+ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, Volume XI-3-2026 
+XXV ISPRS Congress 2026 “From Imagery to Understanding”, Commission III, 4–11 July 2026, Toronto, Canada
+This contribution has been peer-reviewed. The double-blind peer-review was conducted on the basis of the full paper. 
+https://doi.org/10.5194/isprs-annals-XI-3-2026-455-2026 | © Author(s) 2026. CC BY 4.0 License.
+456
+
+ 
+ 
+ 
+Fig 5. LOS deformation rates of Hutiaohe bridge: (a) The As-
+cending Sentinel-1; (b) The Descending Sentinel-1 
+ 
+The MPs on the bridge deck can be categorized into three sec-
+tions: #1, #2, and #3. From ascending data, the LOS deformation 
+rates of the target bridge range from -3 mm/a to 0.5 mm/a. The 
+maximum subsidence is at section #2, and the maximum uplift 
+is at #3. From descending data, the LOS deformation rates are 
+between -1.8 mm/a and 3 mm/a. The maximum uplift is at #2, 
+and the maximum subsidence is at #3. The ascending and de-
+scending results show opposite trends. This may be due to the 
+opposite look angles of the satellites in ascending and descend-
+ing tracks. The deformation time-series were further processed 
+through temporal interpolation, resampling, STL decomposition 
+and outlier cleaning to eliminate unreasonable values by means 
+of the 3-sigma rule. The procedure removed outliers, filled data 
+gaps and produced smoothly interpolated series, providing a ro-
+bust basis for subsequent time-series analyses. 
+ 
+4.2 Thermal Effects 
+Based on daily meteorological indicator data from Chinese ob-
+servational stations spanning 1942–2024, this study selected an 
+interpolation domain of approximately 150,000 km² and gener-
+ated day-by-day temperature fields for the bridge by means of 
+the ANUSPLIN trivariate spline model. The interpolated result 
+is displayed in Fig. 6: the green curve denotes the in-situ meas-
+ured ambient air temperature, the blue curve gives the refined 
+ambient temperature at the bridge location, and the red curve 
+represents the derived structural temperature of the bridge.  
+ 
+Fig 6. Temperature Interpolation Results 
+ 
+Fig 7. Three representative time-series curves: (a) positive cor-
+relation; (b) negative correlation; (c) no correlation; (d) & (e) 
+schematic diagrams 
+ 
+Three MPs with representative deformation histories were se-
+lected for detailed analysis (Fig. 7a–c). P1 and P2 are located on 
+the high-speed railway platform, whereas P3 lies on the bare 
+concrete deck. The displacement series of P1 is positively corre-
+lated with the structural temperature of the bridge, while P2 ex-
+hibits a strong negative correlation. Both platform points are un-
+derlain by a concrete-filled steel-tube primary frame that is ther-
+mally stable, but are covered by a thin steel roof that is highly 
+sensitive to temperature. Consequently, the temperature change 
+induces a wavy, non-uniform deformation of the roof sheet, as 
+sketched in Fig. 7e. P3, founded on concrete pavement, is almost 
+immune to thermal variations; its deformation trace is therefore 
+flat, with a total range of less than 2 mm. 
+ 
+The longitudinal thermal-deformation rate along the bridge is 
+shown in Fig. 8. Rates vary between −0.09 mm/°C and +0.11 
+mm/°C. Piers #3 and #32 are equipped with fixed pot bearings 
+(restrained in the horizontal plane and stiff in the vertical direc-
+tion), while pier #12 carries a unidirectional movable bearing 
+(free to translate transversely). These three piers provide high 
+ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, Volume XI-3-2026 
+XXV ISPRS Congress 2026 “From Imagery to Understanding”, Commission III, 4–11 July 2026, Toronto, Canada
+This contribution has been peer-reviewed. The double-blind peer-review was conducted on the basis of the full paper. 
+https://doi.org/10.5194/isprs-annals-XI-3-2026-455-2026 | © Author(s) 2026. CC BY 4.0 License.
+457
+
+ 
+ 
+longitudinal stiffness, so the deck may be regarded as moment-
+connected to them. Consistently, the longitudinal thermal-defor-
+mation rates at piers #3, #12 and #32 are virtually zero (red boxes 
+in Fig. 8). Deck segments on either side of a fixed pier deform 
+in opposite directions: west of the fixed support the deck ex-
+pands westward, whereas east of the support it expands eastward, 
+as indicated by the red and blue arrows. 
+ 
+Fig 8. Longitudinal Thermal Deformation Rate along the 
+Bridge 
+ 
+4.3 Two-Dimensional Deformation 
+Vertical and longitudinal cumulative deformations of the Hu-
+tiaohe Bridge were presented in Fig. 9. During the two-year 
+monitoring period, the largest vertical settlement of the bridge is 
+about 4.3 mm, occurred at pier #17—approximately the bridge 
+mid-span. This magnitude is considered normal: the bridge was 
+opened on 28 December 2016 and was still in the slow post-con-
+struction settlement phase, subsiding at ≤ 0.5 mm per month. 
+Settlements at piers #3 and #32 were noticeably smaller (Fig. 9b), 
+presumably because these piers are equipped with fixed pot bear-
+ings that provide additional vertical restraint.  
+ 
+Longitudinal deformation is illustrated in Figs 9(c) and 9(e); pos-
+itive values denote eastward displacement and negative values 
+westward. The maximum eastward cumulative movement, 
++2.48 mm, occurred at pier #7, whereas the largest westward 
+movement, –2.54 mm, was observed at pier #24. According to 
+the Chinese Code for Design of High-Speed Railway (TB 
+10621-2014), the permissible vertical deflection for ballast-less 
+bridges is 10 mm when the span is < 50 m, and L/5 000 or 20 
+mm (whichever is smaller) when the span exceeds 50 m. All ver-
+tical deformations recorded during the monitoring period lie 
+within these limits, indicating that the bridge is in a satisfactory 
+structural condition. 
+ 
+Fig 9. 2-D deformation inversion ensemble: (a) co-located 
+point distribution; (b)& (c) cumulative vertical and longitudinal 
+deformation along the bridge longitudinal section; (d) cumula-
+tive vertical settlement; (e) cumulative longitudinal settlement 
+ 
+4.4 FEM 
+The FEM was employed to simulate the longitudinal defor-
+mation of the bridge when the structural temperature rose from 
+0.4 °C to 33.9 °C. The results are displayed in Fig. 10: panel (a) 
+shows the thermal-deformation rate derived from the InSAR 
+time-series, whereas panel (b) gives the deformation predicted 
+by the FEM under the same 0.4–33.9 °C temperature increment.  
+The temperature increase produced systematic thermal move-
+ments around piers #3, #12 and #32 (Fig. 10b). West of each 
+fixed pier the deck displaced westward, while east of each pier 
+it displaced eastward—exactly matching the directions retrieved 
+from InSAR. The largest positive displacement (+0.0034 m) oc-
+curred at pier #18, and the largest negative displacement 
+(−0.0034 m) at pier #24; these equal-and-opposite values repro-
+duce the antisymmetric pattern seen in the InSAR-derived ther-
+mal-deformation-rate map. 
+ 
+Assuming a uniform temperature rise of 33.5℃ (0.4~33.9℃), 
+the longitudinal thermal-deformation rates yield maximum ab-
+solute displacements of ≈ 0.0030 m at pier #18 and ≈ 
+0.0037 m at pier #24, in full agreement with both the magnitude 
+and direction of the FEM predictions (±0.0034 m). The close 
+match between the InSAR observations and the finite-element 
+simulations validates the reliability of both data sets. 
+ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, Volume XI-3-2026 
+XXV ISPRS Congress 2026 “From Imagery to Understanding”, Commission III, 4–11 July 2026, Toronto, Canada
+This contribution has been peer-reviewed. The double-blind peer-review was conducted on the basis of the full paper. 
+https://doi.org/10.5194/isprs-annals-XI-3-2026-455-2026 | © Author(s) 2026. CC BY 4.0 License.
+458
+
+ 
+ 
+ 
+Fig 10. Longitudinal thermal deformation rate of The Bridge: 
+(a) InSAR results; (b) FEM results 
+ 
+5. Conclusions 
+Based on 64 ascending and descending Sentinel-1 images 
+(2017–2020) and the NOAA global daily meteorological dataset 
+(1929–2024), this study conducted a comprehensive investiga-
+tion of the Hutiaohe railway bridge in Guizhou by integrating E-
+PS-InSAR, ANUSPLIN interpolation and FEM.  
+ 
+The bridge exhibits very small deformation rates (≤ 3 mm a⁻¹) 
+and remains globally stable, attributable to the high-grade mate-
+rials and simply-supported girder configuration adopted for rail-
+way bridges. The estimated thermal deformation rate ranges 
+from −0.09 mm/°C to +0.11 mm/°C, and different parts of the 
+bridge display distinct thermally induced deformation patterns. 
+The spatial pattern of longitudinal deformations closely matches 
+the temperature-effect distribution, indicating that temperature 
+variation is the primary driver of longitudinal displacement. The 
+InSAR derived thermal-deformation rate agree perfectly with the 
+FEM prediction under the same temperature increment, and the 
+spatial patterns are highly consistent.  
+ 
+Overall, the proposed framework demonstrates strong potential 
+for precise deformation monitoring and condition assessment of 
+railway bridges, offering an effective tool for bridge-health di-
+agnostics.  
+ 
+ACKNOWLEDGEMENTS 
+This work was supported by the National Key Research and De-
+velopment Program of China (Grant No. 2023YFC3807500), the 
+Shenzhen Science and Technology Program (Grant No. 
+KCXFZ20230731092803006) and the National Natural Science 
+Foundation of China (Grant No. 42474021). 
+ 
+REFERENCES 
+Alani, A. M., Tosti, F., Bianchini Ciampoli, L., et al. 2020. An 
+integrated investigative approach in health monitoring of ma-
+sonry arch bridges using GPR and InSAR technologies. NDT & 
+E International, 115: 102288. 
+ 
+Cai, J., Liu, G., Jia, H., Zhang, B., Wu, R., Fu, Y., ... & Zhang, 
+R. 2022. A new algorithm for landslide dynamic monitoring with 
+high temporal resolution by Kalman filter integration of multi-
+platform time-series InSAR processing. International Journal of 
+Applied Earth Observation and Geoinformation, 110, 102812. 
+ 
+Liao, M., Wang, R., Yang, M., Wang, N., Qin, X. 2020. Tech-
+niques and applications of spaceborne time-series InSAR in ur-
+ban dynamic monitoring. Journal of Radars, 9(3): 409–424.  
+ 
+Qin, X., Li, Q., Ding, X., Xie, L., Wang, C., Liao, M., ... & Xiong, 
+S. 2021. A structure knowledge-synthetic aperture radar interfer-
+ometry integration method for high-precision deformation mon-
+itoring and risk identification of sea-crossing bridges. Interna-
+tional Journal of Applied Earth Observation and Geoinfor-
+mation, 103, 102476. 
+ 
+Schlögl, M., Widhalm, B., Avian, M. 2021. Comprehensive 
+time-series analysis of bridge deformation using differential sat-
+ellite radar interferometry based on Sentinel-1. ISPRS Journal of 
+Photogrammetry 
+and 
+Remote 
+Sensing, 
+172: 
+132–146. 
+doi:10.1016/j.isprsjprs. 2020.12.001. 
+ 
+Selvakumaran, S., et al. 2020. Combined InSAR and terrestrial 
+structural monitoring of bridges. IEEE Transactions on Geosci-
+ence and Remote Sensing, 58(10): 7141–7153.  
+ 
+Shi, M., Chen, B., Gong, H., et al. 2019. Monitoring differential 
+subsidence along the Beijing–Tianjin intercity railway with 
+multiband SAR data. International Journal of Environmental 
+Research and Public Health, 16(22): 4453. 
+ 
+Su, Y., Yuan, L., Dong, L., et al. 2022. Development of non-con-
+tact detection technology for railway bridges. Railway Engineer-
+ing, 62(01): 11–17. 
+ 
+Wang, L., Zhang, Q., & Li, M. (2024). Correlation Analysis Be-
+tween Surface Deformation and Internal Structural Stress of 
+Railway Bridges Based on InSAR and FEM Data Fusion. Re-
+mote Sensing, 16(3), 589. https://doi.org/10.3390/rs16030589 
+ 
+Xiao, B., Zhao, J., Li, D., et al. 2022. The monitoring and anal-
+ysis of land subsidence in Kunming (China) supported by time 
+series InSAR. Sustainability, 14(19): 12387. 
+ 
+Xiong, S., Wang, C., Qin, X., et al. 2021. Time-series analysis 
+on persistent scatter-interferometric synthetic aperture radar 
+(PS-InSAR) derived displacements of the Hong Kong–Zhuhai–
+Macao Bridge (HZMB) from Sentinel-1A observations. Remote 
+Sensing, 13(4): 546. doi:10.3390/rs13040546. 
+ 
+Zhang, H., Liu, J., & Chen, F. 2023. Integration of InSAR Data 
+and Finite Element Model Simulation for Structural Health 
+Monitoring of Long-Span Railway Bridges. Journal of Bridge 
+Engineering, 
+28(7), 
+04023056. 
+doi.org/10.1061/(ASCE)BE.1943-5592.0002189 
+ 
+ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, Volume XI-3-2026 
+XXV ISPRS Congress 2026 “From Imagery to Understanding”, Commission III, 4–11 July 2026, Toronto, Canada
+This contribution has been peer-reviewed. The double-blind peer-review was conducted on the basis of the full paper. 
+https://doi.org/10.5194/isprs-annals-XI-3-2026-455-2026 | © Author(s) 2026. CC BY 4.0 License.
+459

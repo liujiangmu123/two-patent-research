@@ -1,0 +1,369 @@
+ 
+ 
+ 
+ 
+ 
+ 
+Towards laser Doppler vibrometry from  
+unmanned aerial vehicles 
+Dr Ben J Halkon1 & Prof. Steve J Rothberg2 
+1Centre for Audio, Acoustics & Vibration, Faculty of Engineering and IT,  
+University of Technology Sydney, Ultimo, NSW 2007, Australia 
+2Wolfson School: Mechanical, Electrical and Manufacturing Engineering,  
+Loughborough University, Loughborough, Leics., LE11 3TU, U.K. 
+ 
+Benjamin.Halkon@uts.edu.au 
+Abstract. Laser Doppler vibrometers are technically well suited to general application but they 
+offer special benefits in a variety of challenging measurement scenarios which are now well 
+documented and accepted. An interesting and potentially powerful example of such a challenging 
+measurement scenario is one where the laser vibrometer is mounted on/in an unmanned aerial 
+vehicle in order that autonomous measurement campaigns can be undertaken in remote and/or 
+harsh environments. One important challenge to overcome in such a scenario is the measurement 
+sensitivity to vibration of the instrument itself or indeed of any steering optics used to point the 
+probe laser beam toward the target of interest. In this paper, recently reported means by which 
+this measurement sensitivity can be rectified by simultaneously obtained correction 
+measurements will be developed. Specifically, this development is intended to lead towards laser 
+Doppler vibrometry from unmanned aerial vehicles (UAVs) with correction of instrument 
+motion being presented herein for the first time from a single, rather than a pair of, uniaxial 
+accelerometers.  
+1.  Introduction  
+Laser Doppler vibrometers (LDVs) measure target surface vibration velocity and are technically well-
+suited to general application with benefits over traditional contacting transducers in a range of 
+challenging measurement scenarios [1]. Until quite recently [2]-[4], however, little attention had been 
+given to i) a quite fundamental aspect of operation which is that the measurement is of velocity relative 
+to the instrument itself and ii) measurement scenarios in which interpretation of the data must consider 
+instrument or laser beam steering optic motion. Instead, practical application of LDV has typically either 
+involved mounting of the instrument on a stable platform, i.e. on a tripod, or, in the case of significant 
+levels of ambient (“base motion”) vibration, the use of passive or active anti-vibration mounting 
+arrangements [5]. Often such measures will be sufficient to yield high quality outcomes but an 
+alternative, in which the instrument vibration can be fully compensated for across a broad frequency 
+range, would be clearly preferable. Such compensation would be particularly beneficial where the 
+measurement campaign involves the mounting of the instrument onto a platform in which the vibration 
+level might be comparable with that of the target of interest, for example when making measurements 
+from unmanned or other aerial vehicles. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+Previously, comprehensive vector-based mathematical treatments of the velocity measured for both 
+scenarios in which significant levels of i) base motion vibration [2] and ii) steering optic vibration [3] 
+have been presented. Substantial experimental investigations have conclusively verified both scenarios 
+providing practical compensation schemes based on traditional contacting vibration measurement 
+transducers which can be conveniently located on the instrument or steering optic itself. For realistic 
+vibration levels for both target and instrument/steering optic vibration, reductions of at least 37/47 dB, 
+respectively, were demonstrated. Ultimately in both cases, real-world measurements were presented, in 
+accordance with conventional noise and vibration engineering paradigms, showing that the required 
+accelerometer compensation measurements yield a substantially enhanced understanding of the dynamic 
+characteristics of the systems under test.  
+More recently, these earlier contributions have been reviewed in such a way that the practising 
+vibration engineer might readily realise the measurement error reduction benefits [4]. In the case of 
+instrument vibration correction, which is the primary focus of this article, the recommendation up to 
+now, given the need to determine the instrument vibration in the direction of the probe laser beam, was 
+to mount a pair of accelerometers equidistant around the probe laser beam axis. A single compensation 
+accelerometer was shown to be viable in the case of only translational vibration, with angular vibration 
+components present resulting in reduced correction performance. A single correction accelerometer 
+would, of course, be optimal, indeed certain commercially available systems come complete with a 
+mounting location for just such a single “compensation sensor”. In this paper, therefore, a revised 
+scheme for complete correction of LDV measurements, taken in the presence of substantial instrument 
+vibration, based on the use of a single accelerometer is presented for the first time. A further, novel 
+contribution of this paper is to make use of variable capacitance “DC response” accelerometers, rather 
+than the previously utilized traditional general-purpose piezoelectric equivalent, for correction.  
+2.  Accelerometer relative calibration 
+When embarking on a new instrument vibration correction measurement campaign, the first step is to 
+“calibrate” the correction transducer(s). Additionally, where a “true” target vibration reference 
+measurement is required (to prove the principle of the instrument vibration correction technique [4]) and 
+this measurement is to be from a contacting transducer (rather than another, “Fixed LDV” [2]), this also 
+applies to the target transducer. Indeed, the full measurement chain must be calibrated and this initial 
+transducer “accelerometer relative calibration” stage takes two distinct forms: amplitude and phase 
+relative (to the LDV) calibration.  
+Firstly, and consistently with all traditional measurement campaigns, the actual sensitivity of the 
+accelerometer must be determined. In traditional measurement campaigns, this is achieved using an 
+accelerometer calibrator such as the B&K Type 4294. Such devices generate a controlled amplitude 
+single frequency component, e.g. a sinusoid at 159.2 Hz (1000 rad/s), against which the output of the 
+accelerometer(s) can be verified, and the sensitivity(ies) accordingly adjusted. In the case of instrument 
+base motion correction, however, the LDV will be used as the reference vibration (velocity) signal with 
+the vibration being (arbitrarily) generated using a broadband (white) noise signal amplified to drive an 
+electrodynamic shaker on which the accelerometers are mounted. Figure 1 shows the typical 
+experimental arrangement in which the LDV probe laser beam is directly in line with the accelerometer 
+sensitive axis (and, of course, positioned at the optimal stand-off distance).  
+Using a frequency domain integration approach [2],[3] to convert the accelerometer signal into 
+velocity for direct comparison with that of the LDV, the RMS of the difference between the two signals 
+within the frequency range of interest (2.5 – 100 Hz in this case) can be determined. The ratio of these 
+two values for the accelerometer and the LDV can clearly be used to revise the accelerometer sensitivity 
+such that the ratio ultimately becomes 1. Typically, this calculation is performed for a minimum of five 
+averages and for two distinct levels of vibration amplitude. Figure 2 shows typical example 
+accelerometers vs. LDV data after amplitude calibration. The curves may be challenging to differentiate 
+from one another when reproduced in greyscale; that, however, is the very point – that, for each of the 
+
+ 
+ 
+ 
+ 
+ 
+ 
+two vibration levels shown, the (integrated) accelerometer signals are indistinguishable from that of the 
+LDV.  
+ 
+ 
+Figure 1. Typical accelerometer calibration experimental arrangement  
+(with laser beam path highlighted) 
+ 
+ 
+Figure 2. Typical amplitude difference comparisons LDV vs. accelerometers 
+ 
+In addition to amplitude calibration, phase differences between the accelerometer and LDV, mostly 
+attributed to relative time delays between the signal conditioning electronics in each, also need to be 
+accounted for. Broadband calculations are again performed in frequency domain processing. In this case, 
+DC response, variable capacitance 
+accelerometers
+Electrodynamic shaker
+Reference laser Doppler vibrometer
+1.0E‐04
+1.0E‐03
+1.0E‐02
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+Measured velocity (m/s) 
+Frequency (Hz)
+LDV
+Acc1
+Acc2
+Acc3
+0.5 V
+1 V
+
+ 
+ 
+ 
+ 
+ 
+ 
+the absolute unwrapped phase differences between the accelerometer and LDV signals are averaged on 
+a frequency-by-frequency basis for a minimum of five averages. The ratio of the mean of these values 
+to the mean angular frequency of the frequency range of interest (2.5 – 100 Hz) is the effective time 
+delay between the two signals. Figure 3 shows typical phase difference data prior to time delay 
+correction. Again, in greyscale these various signals will be challenging to differentiate from one another 
+but, again, this is indeed the very point – the three similar accelerometers should be expected to have 
+nominally the same characteristics with respect to the LDV. The effect of the finite time delay can be 
+seen in these curves as the underlying upward slope. In essence, the algorithm determines the gradient 
+of the slope from which the time delay is derived ( = slope gradient / 2); clearly some noise immunity 
+is necessary. Taking the mean for two different vibration levels yields values per accelerometer as shown 
+in Table 1 below. These values are then readily incorporated into the subsequent frequency domain data 
+processing when using the accelerometers to correct the measured, vibrating LDV signal. This will be 
+described in the following subsection. 
+ 
+ 
+Figure 3. Typical phase difference comparisons LDV vs. accelerometers 
+ 
+Table 1. Example accelerometer vs. LDV time delays 
+ 
+3.  Instrument vibration correction 
+Sensitivity to instrument vibration (in the direction of the laser beam) was readily confirmed by a 
+straightforward experiment, with an arrangement as set out in figure 4. Here, a “Vibrating LDV” sensor 
+head was mounted on an electrodynamic shaker and excited with a broadband signal. The speaker cone, 
+being relatively lightweight and of small radius of curvature, was fitted with a Dytran 3225F “teardrop” 
+piezoelectric accelerometer to provide the ‘true’ “Vibrating target” measurement. With nominally zero 
+Acc. model
+Acc. s/n
+1V
+0.5V
+Mean
+770F‐10‐U‐120
+10046
+0.137
+0.139
+0.138
+770F‐10‐U‐120
+10047
+0.136
+0.139
+0.138
+770F‐10‐U‐120
+10048
+0.139
+0.143
+0.141
+3225F
+15763
+‐0.044
+‐0.046
+‐0.045
+Time delay (ms)
+
+ 
+ 
+ 
+ 
+ 
+ 
+target vibration, the true accelerometer reference measurement is clearly reflective, as shown in figure 
+5, of the target vibration whereas the LDV measurement is not. The LDV measurement is 100% sensitive 
+to the vibration of the instrument itself as expected and previously shown in significant detail [2],[4]. 
+ 
+ 
+Figure 4. Experimental arrangement (a) schematic, (b) overall setup and (c) correction accelerometers 
+ 
+Making use of the same experimental arrangement but now arranging both instrument and target 
+vibration (of absolute levels representative of those likely to be experienced in a practical real-world 
+measurement scenario), figure 6 clearly shows that the signal measured by the LDV (long dash curve) 
+is substantially different to the true target vibration (short dot curve) as expected. Here the most 
+significant, approximately one order of magnitude, differences are seen to be between c5 and c20 Hz.  
+ 
+ 
+Figure 5. LDV vs. true target vibration velocity: instrument vibration, no target vibration 
+ 
+DC response correction 
+accelerometer pair
+DC response correction 
+accelerometer single
+(a)
+(b)
+Target speaker box 
+with reference “teardrop”
+piezoelectric accelerometer
+Vibrating LDV with 
+three DC response, 
+capacitive accelerometers
+Electrodynamic shaker
+Data acquisition system
+Accelerometer power supply
+Vibrating 
+LDV
+Vibrating 
+target
+(c)
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 6. LDV vs. true target vibration velocity: instrument vibration and target vibration 
+ 
+As set out in significant theoretical and experimental detail previously [2], for complete correction 
+of the erroneous LDV measurement, a simultaneous measurement of the instrument velocity at some 
+point along the laser beam axis is required. This can be straightforwardly shown as: 
+ ܷ
+௖௢௥௥ൌܷ
+௠െܷ
+଴ 
+(1) 
+where Um is the measured velocity, Ucorr the corrected velocity and U0 the required correction 
+measurement. Given that positioning a single transducer forward of the instrument would clearly result 
+in a blocking of the laser beam, the required correction measurement was previously obtained by a pair 
+of accelerometers positioned equidistant about, with their sensitivity axes parallel to, the laser beam 
+axis.  
+Figure 4c shows a practical example of this accelerometer pair positioning strategy where a simple 
+bracket and a pair of mounting blocks are used to provide accelerometer mounting locations. In other 
+commercially available instruments, mounting is often even more straightforward since the laser beam 
+optical axis is typically normal to a flat surface which is the front of the sensor head body. There is such 
+a surface on the Polytec NLV-2500 Compact Laser Vibrometer used in this study but it is not sufficiently 
+expansive for the relatively large footprint Endevco 770F-10-U-120 variable capacitance 
+accelerometers. Figure 4c also shows an alternative instrument vibration compensation sensor 
+arrangement based on a single accelerometer mounted on the laser beam axis but behind the instrument 
+sensor head. This alternative option is presented and compared with the previously proven accelerometer 
+pair here for the first time. 
+Integrating these accelerometer measurements in the frequency domain, incorporating the finite time 
+delays as set out in Table 1 and subtracting the appropriate correction measurement in accordance with 
+equation (1) leads to corrected LDV signals as shown in figure 7. Here, as expected, complete correction 
+of the LDV measurement is shown for both cases of the accelerometer pair (bold solid curve with +) 
+and the single accelerometer (bold solid curve); indeed, they are indistinguishable from one another. 
+The dB reduction in the error is 17.5 dB in both cases. Phase error, as shown in figure 8, is comfortably 
+within 100 mrad between 20 and 100 Hz; below 20 Hz phase error is larger as would be expected. 
+There is a small exception to the excellent agreement between the corrected LDV signal and the true 
+vibration reference measurement and that is in the low frequency region below c10 Hz. Rather than this 
+
+ 
+ 
+ 
+ 
+ 
+ 
+being a problem with the compensation algorithm, this is certainly as a result of the comparatively poor 
+low frequency performance of the target piezoelectric accelerometer in that low frequency range (it is 
+performing quite acceptably with respect to its specification – it is simply not intended to provide as 
+reliable a result as a DC response accelerometer in this low frequency range). When the accelerometer 
+signal is integrated, any error in the measured data below 20 Hz is multiplied by a relatively large number 
+(1/) and the resulting velocity can be seen to “tick up” whereas the corrected LDV measurement is 
+more reliable since both the LDV and the correcting DC response accelerometers have very reliable low 
+frequency performance. Future studies will make use of an additional DC response accelerometer or 
+another LDV for the “true” reference vibration measurement such that a better agreement is achieved. 
+ 
+ 
+Figure 7. Corrected LDV measurement for a pair and a single correction accelerometer 
+ 
+Figure 8. Mean phase difference between corrected LDV and true vibration measurements 
+
+ 
+ 
+ 
+ 
+ 
+ 
+4.  Conclusions 
+This paper has reviewed the practical means by which an erroneous LDV measurement, due to 
+significant levels of instrument vibration, can be corrected by subtracting a simultaneous measurement 
+of the instrument vibration at some point along the axis of the laser beam. The means by which the 
+required correction accelerometers should be calibrated both in terms of amplitude and phase (finite 
+time delay) has been presented with newly obtained measurement data included herein for the first time. 
+A measurement scenario, with typical real-world levels of instrument and target vibration, was 
+presented, again incorporating data presented herein for the first time. Recommendations for the 
+practical application of this, readily deployable by the practising noise and vibration engineer, are 
+included. Novelties in this article include the use of DC response accelerometers to provide the 
+correction measurement and, the use of a single accelerometer, rather than a pair, mounted behind the 
+instrument sensor head. For the vibration levels used, error reduction of 17.5 dB was achieved between 
+uncorrected and corrected measurements with phase agreement within 100 mrad between 20 and 100 
+Hz.  
+In order to achieve better correction at frequencies down to DC, which is important for applications 
+such as seismic measurements and handheld application, correction measurement transducers with 
+excellent low frequency performance should be utilised. Similarly, comparison measurements of the 
+true vibration, for the sake of confirming the validity of the technique, should have equally excellent 
+low frequency performance. In future, a DC response accelerometer or another LDV will be used to 
+determine the true target vibration. The piezoelectric accelerometer used in this study was chosen for its 
+small footprint and light mass which made for easy and reliable attachment to the light speaker cone 
+domed surface. However, it has the problem of relatively unreliable low frequency performance after 
+integration to velocity (for comparison with the LDV measurement) which causes the signal to “tick-
+up” as shown in figures 6 and 7 at frequencies below 5-6 Hz. In order to move “towards LDV from 
+unmanned aerial vehicles”, future research will also investigate the extension of the technique presented 
+herein to the measurement of transient, rather than only stationary, vibration signals where time, rather 
+than frequency, domain processing will clearly need to be developed and deployed. 
+5.  References 
+[1] 
+Rothberg S J et al. 2017 An international review of laser Doppler vibrometry: making light work 
+of vibration measurement Opt. and Lasers in Eng. 99 11–22 
+[2] 
+Halkon B J and Rothberg S J 2017 Taking laser Doppler vibrometry off the tripod: correction of 
+measurements affected by instrument vibration Opt. and Lasers in Eng. 91 16–23 
+[3] 
+Halkon B J and Rothberg S J Restoring high accuracy to laser Doppler vibrometry measurements 
+affected by vibration of beam steering optics J. of Sound and Vib. 405 144-157 
+[4] 
+Halkon B J and Rothberg S J 2018 Taking laser Doppler vibrometry off the tripod. Int. Cong. on 
+Sound and Vib. (Hiroshima) 
+[5] 
+G.M. Revel, P. Castellini, P. Chiariotti, E.P. Tomasini, F. Cenedese and A. Perazzolo 2011 Laser 
+vibrometry vibration measurements on vehicle cabins in running conditions: helicopter mock-
+up application Opt. Eng. 50 101502-1-14 
+[6] 
+Polytec GmbH 2017 RSV-150 Remote Sensing Vibrometer product brochure [Online] available: 
+https://www.polytec.com/fileadmin/d/Vibrometrie/OM_DS_RSV-150_E_42319.pdf 
+(last 
+accessed 2-9-18) 
+Acknowledgements 
+The authors wish to acknowledge the invaluable contributions of Mr Chris Chapman, Scientific 
+Officer, Dynamics & Mechanics of Solids Laboratory and Workshop colleagues in the Faculty of 
+Engineering and IT, University of Technology Sydney. 

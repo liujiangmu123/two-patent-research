@@ -1,0 +1,34 @@
+[
+ {
+  "id": "R2-01",
+  "q": "杆塔 点云 杆件 置信度",
+  "after": "20180101",
+  "cpc": null,
+  "date": "2026-10-01",
+  "error": "HTTP Error 503: Service Unavailable"
+ },
+ {
+  "id": "R2-02",
+  "q": "杆塔 点云 对称 镜像 补全",
+  "after": "20180101",
+  "cpc": null,
+  "date": "2026-10-01",
+  "error": "HTTP Error 503: Service Unavailable"
+ },
+ {
+  "id": "R2-03",
+  "q": "无人机 带电 安全距离 视点 点云 杆塔 航线",
+  "after": "20180101",
+  "cpc": null,
+  "date": "2026-10-01",
+  "error": "HTTP Error 503: Service Unavailable"
+ },
+ {
+  "id": "R2-04",
+  "q": "下一最佳视点 无人机 激光雷达 重建",
+  "after": "20180101",
+  "cpc": null,
+  "date": "2026-10-01",
+  "error": "HTTP Error 503: Service Unavailable"
+ }
+]

@@ -1,0 +1,25 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"result\": {\n    \"stage\": \"core_step_export\",\n    \"status\": \"done\",\n    \"started\": 1791014104.1240995,\n    \"file\": \"H:\\\\Axinjihua\\\\02动画项目\\\\05动画Harness工作台\\\\专利文档资料\\\\车老师专利\\\\11_工程完善_20261003\\\\03_模型\\\\精细尾座阀块油缸_V2.step\",\n    \"bytes\": 7509625,\n    \"elapsed_s\": 1.16\n  },\n  \"stdout\": \"\",\n  \"stderr\": \"\",\n  \"execution_time_ms\": 52.64609993901104,\n  \"error_type\": null,\n  \"error_traceback\": null\n}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "result": {
+      "stage": "core_step_export",
+      "status": "done",
+      "started": 1791014104.1240995,
+      "file": "H:\\Axinjihua\\02动画项目\\05动画Harness工作台\\专利文档资料\\车老师专利\\11_工程完善_20261003\\03_模型\\精细尾座阀块油缸_V2.step",
+      "bytes": 7509625,
+      "elapsed_s": 1.16
+    },
+    "stdout": "",
+    "stderr": "",
+    "execution_time_ms": 52.64609993901104,
+    "error_type": null,
+    "error_traceback": null
+  },
+  "isError": false
+}

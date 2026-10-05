@@ -1,0 +1,77 @@
+{
+  "status": "design_calculation_only_not_physical_validation",
+  "mass_estimate_kg": 10.481901257977006,
+  "frame_estimate_kg": 4.036011257977004,
+  "mass_with_3kg_ballast_estimate_kg": 13.481901257977006,
+  "estimated_y_cg_without_ballast_m": 0.11379875946572446,
+  "estimated_y_cg_with_ballast_m": 0.043972088851283814,
+  "estimated_x_cg_with_ballast_m": 0.00540455671687165,
+  "estimated_planar_cg_with_ballast_m": 0.04430297767928337,
+  "coupon_arm_3kg_design_load": {
+    "force_N": 29.41995,
+    "tip_deflection_m": 6.09340825490456e-05,
+    "root_bending_stress_Pa": 5605935.594512195,
+    "lateral_eccentricity_m": 0.05,
+    "torsion_Nm": 1.4709975000000002,
+    "twist_rad": 0.0007292697989354087,
+    "coupon_edge_torsion_displacement_m": 7.292697989354087e-05,
+    "conservative_bending_plus_torsion_displacement_m": 0.00013386106244258646,
+    "poisson_ratio_assumption": 0.33,
+    "connection_slip_excluded": true
+  },
+  "coupon_masses": [
+    {
+      "id": "C08",
+      "mass_kg": 1.80864
+    },
+    {
+      "id": "C10",
+      "mass_kg": 2.23725
+    }
+  ],
+  "profile_area_m2": 0.0003039999999999998,
+  "profile_second_moment_m4": 7.336533333333327e-08,
+  "wind_at_declared_limit": {
+    "speed_m_s": 5,
+    "force_N": 6.43125,
+    "overturning_moment_Nm": 4.501875,
+    "restoring_moment_Nm": 12.356378999999999,
+    "overturning_factor": 2.7447183673469384,
+    "upright_tip_upper_bound_m": 5.814926448597139e-05,
+    "overturning_requirement_met": true,
+    "deflection_requirement_met": true
+  },
+  "wind_outside_declared_limit": {
+    "speed_m_s": 8,
+    "force_N": 16.464000000000002,
+    "overturning_moment_Nm": 11.5248,
+    "restoring_moment_Nm": 12.356378999999999,
+    "overturning_factor": 1.0721556122448979,
+    "upright_tip_upper_bound_m": 0.00014886211708408677,
+    "overturning_requirement_met": false,
+    "deflection_requirement_met": true
+  },
+  "thermal_scale_change_m": 4.602000000000001e-05,
+  "assumptions": {
+    "aluminum_density_kg_m3": 2700,
+    "aluminum_E_Pa": 69000000000,
+    "aluminum_alpha_per_K": 2.36e-05,
+    "air_density_kg_m3": 1.225,
+    "projected_area_m2": 0.14,
+    "drag_coefficient": 1.5,
+    "gust_factor": 2,
+    "minimum_verified_rig_mass_kg": 7,
+    "center_of_gravity_offset_limit_m": 0.05,
+    "wind_application_height_m": 0.7,
+    "calibration_wind_limit_m_s": 5,
+    "temperature_difference_limit_K": 3,
+    "maximum_support_tip_deflection_m": 0.00015,
+    "minimum_overturning_factor": 2
+  },
+  "cad_executed": false,
+  "limitations": [
+    "Nominal sharp-corner sections, specified densities and ideal cantilever supports.",
+    "No bolt slip, soil settlement, real dynamic gust or physical specimen calibration data.",
+    "Mass, center of gravity, projected area and reference coordinates require physical confirmation."
+  ]
+}

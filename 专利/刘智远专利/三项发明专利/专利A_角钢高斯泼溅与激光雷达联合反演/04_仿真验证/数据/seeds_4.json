@@ -1,0 +1,270 @@
+{
+ "seed4": {
+  "scene": {
+   "preset": "suspension",
+   "seed": 4,
+   "nodes": 278,
+   "members_design": 776,
+   "members_universe": 800,
+   "members_true": 770,
+   "damaged": [
+    64,
+    77,
+    112,
+    286,
+    292,
+    695
+   ],
+   "false_neg": [
+    5,
+    200,
+    259,
+    272,
+    458,
+    635
+   ],
+   "spurious": 24,
+   "asym_nodes": [
+    216,
+    0
+   ],
+   "rotated_members": 91,
+   "gauge_eccentric_members": 596,
+   "H_m": 59.2,
+   "lidar": {
+    "pulses_simulated": 2814864,
+    "tower_returns": 63307,
+    "surface_area_m2": 304.233011923708,
+    "density_pts_m2": 208.08721446663847,
+    "ret_rays_used": 120806,
+    "free_rays_used": 90000,
+    "veg_returns": 57499,
+    "beam_sigma_mrad": 1.308996938995747,
+    "range_sigma_m": 0.02
+   },
+   "camera": {
+    "views": 48,
+    "views_up": 8,
+    "image_px": [
+     5280,
+     3956
+    ],
+    "f_px": 3522.54789572288,
+    "gsd_at_28m_mm": 7.948791848649647,
+    "rays": 455887,
+    "fg_fraction": 0.39230116234944185
+   },
+   "ext_true": {
+    "omega_mrad": [
+     1.3962634015954638,
+     -0.8726646259971648,
+     1.7453292519943295
+    ],
+    "lever_m": [
+     0.02,
+     -0.01,
+     0.015
+    ],
+    "dt_ms": 4.0
+   },
+   "baseline": {
+    "n_points_used": 62604,
+    "n_points": 80207,
+    "cost": 103.68649659566108
+   },
+   "t_build_s": 19.696184635162354
+  },
+  "初始": {
+   "name": "初始（PTM 定位误差）",
+   "RMSEn_m": 0.09576932371463812,
+   "node_err_p95_m": 0.1626248969377147,
+   "RMSEn_main_m": 0.09563462913493964,
+   "RMSEn_diagonal_m": 0.09675447511300617,
+   "RMSEn_auxiliary_m": 0.09734059829536114,
+   "width_MAE_mm": 65.01570680628272,
+   "width_MAE_main_mm": 89.11764705882351,
+   "width_MAE_diagonal_mm": 67.37614678899084,
+   "width_MAE_auxiliary_mm": 40.6008583690987,
+   "width_class_acc": 0.030104712041884817,
+   "width_class_acc_pm1": 0.0824607329842932,
+   "orient_err_deg_median": 1.964494326715567,
+   "orient_err_deg_mean": 14.511795150735265,
+   "orient_correct_rate": 0.8861256544502618,
+   "delta_err_mm": 25.230272321453906,
+   "exist_AUC": 0.8961038961038961,
+   "exist_acc": 0.985,
+   "damaged_removed": 0,
+   "damaged_total": 6,
+   "falseneg_recovered": 0,
+   "falseneg_total": 6,
+   "spurious_rejected": 24,
+   "spurious_total": 24,
+   "NGED_main": 0.0,
+   "NGED_diagonal": 0.009124087591240875,
+   "NGED_auxiliary": 0.015486725663716814,
+   "NGED_all": 0.008547008547008548
+  },
+  "PTM 式基线": {
+   "name": "PTM 式基线",
+   "RMSEn_m": 0.04872073249566866,
+   "node_err_p95_m": 0.07824601196844173,
+   "RMSEn_main_m": 0.05110643747981915,
+   "RMSEn_diagonal_m": 0.04515981708962706,
+   "RMSEn_auxiliary_m": 0.04819655681746678,
+   "width_MAE_mm": 65.01570680628272,
+   "width_MAE_main_mm": 89.11764705882351,
+   "width_MAE_diagonal_mm": 67.37614678899084,
+   "width_MAE_auxiliary_mm": 40.6008583690987,
+   "width_class_acc": 0.030104712041884817,
+   "width_class_acc_pm1": 0.0824607329842932,
+   "orient_err_deg_median": 0.9036325744543299,
+   "orient_err_deg_mean": 13.389529947755207,
+   "orient_correct_rate": 0.887434554973822,
+   "delta_err_mm": 25.230272321453906,
+   "exist_AUC": 0.8961038961038961,
+   "exist_acc": 0.985,
+   "damaged_removed": 0,
+   "damaged_total": 6,
+   "falseneg_recovered": 0,
+   "falseneg_total": 6,
+   "spurious_rejected": 24,
+   "spurious_total": 24,
+   "NGED_main": 0.0,
+   "NGED_diagonal": 0.009124087591240875,
+   "NGED_auxiliary": 0.015486725663716814,
+   "NGED_all": 0.008547008547008548
+  },
+  "本发明": {
+   "name": "本发明",
+   "RMSEn_m": 0.01845534479407056,
+   "node_err_p95_m": 0.02827416800641782,
+   "RMSEn_main_m": 0.01639127859014607,
+   "RMSEn_diagonal_m": 0.017088825917485194,
+   "RMSEn_auxiliary_m": 0.019115212112290392,
+   "width_MAE_mm": 6.525357607282185,
+   "width_MAE_main_mm": 6.813725490196078,
+   "width_MAE_diagonal_mm": 6.606060606060607,
+   "width_MAE_auxiliary_mm": 6.1617021276595745,
+   "width_class_acc": 0.41092327698309494,
+   "width_class_acc_pm1": 0.8478543563068921,
+   "orient_err_deg_median": 4.132299113749336,
+   "orient_err_deg_mean": 14.501571618595127,
+   "orient_correct_rate": 0.8855656697009102,
+   "delta_err_mm": 15.98362021922993,
+   "exist_AUC": 1.0,
+   "exist_acc": 0.99875,
+   "damaged_removed": 6,
+   "damaged_total": 6,
+   "falseneg_recovered": 5,
+   "falseneg_total": 6,
+   "spurious_rejected": 24,
+   "spurious_total": 24,
+   "NGED_main": 0.0,
+   "NGED_diagonal": 0.0,
+   "NGED_auxiliary": 0.0022123893805309734,
+   "NGED_all": 0.0007122507122507123,
+   "ext_est": [
+    0.0013311922837343053,
+    -0.0006267360482134219,
+    0.0015701015835612483,
+    0.025192846486882504,
+    -0.009677353139770316,
+    0.01930698671699998,
+    0.002711013675590773,
+    0.28829241864662686,
+    0.8853632639390523
+   ],
+   "t_s": 1273.8,
+   "topology": {
+    "pruned": [
+     64,
+     77,
+     112,
+     286,
+     292,
+     695,
+     776,
+     777,
+     778,
+     779,
+     780,
+     781,
+     782,
+     783,
+     784,
+     785,
+     786,
+     787,
+     788,
+     789,
+     790,
+     791,
+     792,
+     793,
+     794,
+     795,
+     796,
+     797,
+     798,
+     799
+    ],
+    "restored": [],
+    "nullity_ref": 58,
+    "nullity_final": 57
+   }
+  },
+  "有限元": {
+   "真值": {
+    "tip_disp_m": 0.25227456009482874,
+    "freq_Hz": [
+     1.5112513968639694,
+     1.5298702750382571,
+     2.4774541464645714
+    ],
+    "mass_t": 21.170325421373544,
+    "tip_err_rel": 0.0,
+    "freq_err_rel_max": 0.0
+   },
+   "PTM 式基线": {
+    "tip_disp_m": 0.18340419912081107,
+    "freq_Hz": [
+     1.0317983482853432,
+     1.0447433151648284,
+     2.718627291873032
+    ],
+    "mass_t": 64.53863055174398,
+    "tip_err_rel": 0.27299764569257257,
+    "freq_err_rel_max": 0.31725565288048674
+   },
+   "本发明": {
+    "tip_disp_m": 0.2595754698727661,
+    "freq_Hz": [
+     1.3150711805497672,
+     1.330556660806771,
+     2.593997816713399
+    ],
+    "mass_t": 23.71522485119081,
+    "tip_err_rel": 0.02894033300540876,
+    "freq_err_rel_max": 0.13028138233910191
+   }
+  },
+  "置信度校准": {
+   "spearman_sigma_vs_err": 0.18391612551347067,
+   "coverage95_raw": 0.014388489208633094,
+   "kappa": 16.937055421956558,
+   "coverage95_scaled": 0.9280575539568345,
+   "width_coverage95_raw": 0.2093628088426528,
+   "width_kappa": 9.177789512722583,
+   "width_coverage95_scaled": 0.9427828348504551,
+   "spec_top1_prob_mean": 0.4212063593601647,
+   "spec_true_prob_mean": 0.2967775639143622,
+   "width_err_low_conf_mm": 8.272727272727273,
+   "width_err_high_conf_mm": 7.227272727272726,
+   "exist_ECE": 0.06619825128518105,
+   "kappa_ext": 14.648509587793843,
+   "coverage95_ext": 0.8309352517985612,
+   "width_kappa_ext": 8.036761204284844,
+   "width_coverage95_ext": 0.8998699609882965
+  }
+ }
+}

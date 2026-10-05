@@ -1,0 +1,229 @@
+Title: GPS-synchronization of a seismic accelerometer and a ground-based inter-
+ferometric radar for Structural Health Monitoring
+Authors:
+Andrea Cioncolini
+Lapo Miccinesi
+Alessandra Beni
+Lorenzo Pagnini
+Jingfeng Shan
+Massimiliano Pieraccini
+
+GPS-synchronization of a seismic accelerometer and a ground-based interferomet-
+ric radar for Structural Health Monitoring
+Andrea Cioncolini, Lapo Miccinesi, Alessandra Beni, Lorenzo Pagnini, Jingfeng Shan
+and Massimiliano Pieraccini
+ABSTRACT
+This paper presents a seismic accelerometer with GPS-synchronization based on the
+pulse per second (PPS) signal provided by the GNSS satellite network. This feature is
+essential for a Structural Health Monitoring (SHM) network that includes different sen-
+sors as for example accelerometers, cameras and a ground-based radar. The PPS signal
+is widely used in applications of timing synchronization because of its high accuracy and
+long-term stability. The common time-base between devices allows the internal time of
+the devices to be resynchronized every second, avoiding drift. In this work, we developed
+and tested acquisition board for seismic accelerometer with custom firmware designed
+to provide synchronized data recorded by different acquisition systems. The universal
+time (UTC) synchronized with PPS has been assigned to the data of each devices. The
+developed board has been tested with simultaneous acquisition a seismic accelerometer
+in MEMS (Micro Electro-Mechanical System) technology and a ground-based interfer-
+ometric radar,both GPS synchronized. The two sensors are equipped with high precision
+GNSS receiver u-blox F9, that provide the UTC data and the PPS signal. To validate the
+synchronization system, the accelerometer and the ground-based radar were operated
+simultaneously to detect the oscillations of a moving target (a metallic swinging rod).
+The results of the experiment demonstrate that the sensors are well synchronized and
+the evaluations of the displacement are very similar, with good accuracy for perform-
+ing dynamic structure monitoring. It is worth noting that this comparative analysis has
+highlighted the role of the automatic synchronization.
+INTRODUCTION
+In the field of Structural Health Monitoring (SHM), many heterogeneous sensing
+systems are used, such as accelerometers [1], interferometric radars [2], and imaging
+devices [3]. Combining multiple sensors enables more accurate and reliable structural
+monitoring.This approach offers a clearer state of the building’s or bridge’s condition.
+Accurate time synchronization ensures effective data fusion and reliable correlation with
+external events [4] [5].The time alignment among various sources is particularly crucial
+in dynamic scenarios, such as monitoring the effects of traffic loads on bridges or cap-
+turing transient oscillations caused by seismic activity. Indeed, a common challenge in
+multi-sensor SHM networks is clock drift among devices, which can introduce signif-
+icant temporal mismatches and compromise the integrity of data analysis. To address
+this, the authors in [6] propose to integrate a high-resolution digital accelerometer with
+an intelligent wireless sensor (WSS) platform, called Xnode, to improve data synchro-
+nization in wireless sensor networks (WSSNs). Recently, the use of the Pulse Per Sec-
+Andrea Cioncolini, PhD Student, Email: andrea.cioncolini@unifi.it. ESECH Lab, Department of
+Information Engineering, University of Florence, Via di Santa Marta, 3, 50139 - Florence
+
+ond (PPS) signal provided by Global Navigation Satellite Systems (GNSS) has become
+a widely adopted solution for achieving precise timing synchronization [7] [8]. The
+PPS signal offers high timing accuracy (often within tens of nanoseconds) and long-
+term stability, which makes it ideal for aligning sensor measurements to a universal time
+reference, such as Coordinated Universal Time (UTC) [9]. In this context, the present
+work presents a developed accelerometer system equipped with GNSS-based synchro-
+nization via the PPS signal. The system is designed to provide timestamped data with
+high temporal precision, allowing integration with other PPS synchronized sensors, such
+as an interferometric radar. A dedicated hardware and firmware architecture was de-
+veloped around a Nucleo STM32 microcontroller, which interfaces with a sigma delta
+(Σ∆) Analog to Digital Converter (ADC) for simultaneous triaxial data acquisition. To
+validate the performance of the proposed synchronization method, a controlled experi-
+ment was conducted using the MEMS-based accelerometer and an X-Band radar system
+to detect oscillations of a moving bar. Both systems employ high-precision u-blox F9
+GNSS receivers, ensuring reliable PPS and UTC data. The results confirm the efficacy of
+the developed solution in maintaining precise temporal alignment across heterogeneous
+measurement platforms, laying the foundation for synchronized SHM networks.
+ACCELEROMETER SYSTEM DESIGN
+The developed system can be seen in Figure 1, which comprehend: the Solgeo AMS
+PLUS accelerometer, the AccelBoard which is the acquisition board designed to acquire
+data from the accelerometer and GPS, a Nucleo Board STM32 microcontroller which
+hosts the firmware, the GPS Receiver Ublox Module and its Antenna which provides the
+UTC and the PPS from the GPS, and a computer with the developed MATLAB GUI.
+Figure 1. Developed Accelerometer System.
+GPS-PPS Synchronization Method
+The GPS-PPS synchronization principle is illustrated in Figure 2: the GPS receiver
+provides, every second, a signal called PPS. PPS is an absolute time source that is highly
+stable and precise as it is generated by the atomic clocks inside the GPS satellites. Most
+
+manufacturers (Trimble, UBlox, Leica, etc.) offer GPS receivers with a PPS precision
+ranging from 10 to 100 nanoseconds. The logic unit acquires the UTC time form the
+GPS receiver and coverts it in epoch time (the number of seconds elapsed from January
+1, 1970 at 00:00:00 UTC to the specified date and time). The UTC epoch has been
+updated and synchronized each PPS. The PPS signal is used to reset the internal timer
+which measure the time digits, e.g. µs. The time stamp t is given by:
+t = UTCbase + NPPS + δt.
+(1)
+Where UTCbase is the epoch of first PPS, NPPS is the number of seconds (number of
+PPS events) after the first PPS, and δt is the fine accuracy of time expressed in µs. In
+general, the accuracy of this method is affected by the interrupt latency in capturing
+the PPS signal, which depends on the type of processor used. Furthermore, the time
+resolution is determined by the internal timer’s precision, which is reset at each PPS
+signal to prevent the timer from drifting.
+Figure 2. Typical PPS synchronization principle.
+Implementation on the micro-controller STM32 NUCLEO Board
+The microcontroller (µC) used is a STM32H563, which offers multiple interrupt
+sources managed by the NVIC (Nested Vectored Interrupt Controller), ensuring low in-
+terrupt latency and enables the efficient processing of late-arriving interrupts. Upon
+power up, the µC configures the ADC and then enables monitoring of the PPS using an
+EXTI (External Interrupt/Event Controller). This setup allows the µC to capture each
+PPS from the Ublox Module. Subsequently, the µC acquires the UTC for the first time
+by decoding the UBX-NAV-TIMEUTC message from the U-Blox F9 module and then
+enables the internal timer with resolution of 1µs. This approach prevents the loss of first
+PPS events after acquiring the UTC. Each PPS event triggers an ISR (interrupt Service
+Routine), which updates the epoch time and resets the internal timer. In addition to han-
+dling the PPS interrupt, the µC also must manages the ADC signals through interrupt
+to associate an accurate timestamps with the incoming data. As well as providing the
+channels data and the clock, the ADC also generates a data-ready signal to indicate the
+imminent availability of new data. On the µC, the interface with the ADC is handled
+via the SAI (Serial Audio Interface), which is suitable for low-frequency (up to tens
+
+of kHz) and high-resolution signals. The SAI interface is configured in DMA (Direct
+Memory Access) triggered by the data-ready signal. Using DMA, the µC can mange
+other interrupts also during the ADC data acquisition. In this way, the latency of times-
+tamp is reduced. The timestamp is associated to the data-ready signal, which manages
+an interrupt on the internal timer. The complete algorithm is illustrated in Figure 3.
+Figure 3. Flow Chart.
+Equipment
+The accelerometer used was an AMS-PLUS by Solgeo. It is a triaxial accelerometer
+with 0.7µg/
+√
+Hz of noise density, and a dynamic range larger than 110 dB. This ac-
+celerometer is particular suitable to be used with an interferometric-radar, since it offers
+an accuracy on displacement (by integrating twice the acceleration) similar or batter to
+the radar. Three channels of the accelerometer has been acquired by the AccelBoard
+(Figure 1). This board was designed, based on a high resolution Σ∆ADC. As before
+explained, the AccelBoard has been connected to the µC which associate the PPS-based
+timestamp to each ADC data. In particular we used a STM32H563 µC by STMicroelec-
+tronics, and a GPS receiver ZED-F9P-02B by Ublox.
+EXPERIMENTS AND RESULTS
+To validate the developed system a comparison with other PPS-timestamped instru-
+ments were made. In particular, we used an X-Band Radar, which was developed to
+provide a PPS synchronized timestamps. The radar acquires data at a Pulse Repetition
+Frequency (PRF) of 13.514 kHz, while the accelerometer operates at 1 kHz. Figure 4
+shows a schematic representation of the experimental setup of the controlled scenario,
+which was arranged in a garden at the University of Florence. A corner reflector (CR)
+was placed on a metallic bar, which was bound to the lower end. The CR was located at
+
+15.5 m away from the position of the radar. On the same metallic bar was installed also
+the accelerometer, positioned 40 cm lower than the CR position. After the measurement
+starts, the metal bar, previously held under tension, is released and begins to oscillate.
+Figure 4. Measurement setup.
+The synchronization between the two sensors have been verified by comparing the
+difference between consecutive time stamp. The results is shown in Figure 5. In Figure
+5 the average Pulse Repetition Time (PRT) has been subtracted to spotlight the synchro-
+nization event. The peaks in Figure 5 corresponds to the PPS event. Indeed the δt of
+Equation 1 accumulates latency due to accuracy of internal clock. This cumulative la-
+tency is represented by those peaks, since the δt has been reset each PPS. Moreover,
+there might be an additional delay due to reset operation, which is at maximum of a few
+of µseconds. In Figure 5, it can be observed that both systems are resynchronized simul-
+taneously upon receiving the PPS signal. In fact the peaks related to PPS occurring at
+the same time. The difference in time is related to the different internal clock accuracy
+and resynchronization procedure. The accelerometer takes about 20 µs more than the
+radar each PPS.
+Once the synchronization of the two systems has been analyzed, we proceed with
+the estimation of the displacement. Since the radar measures the displacement of CR,
+the signal of accelerometer has been retrieved by double time-integration. After each
+integration, the resulting signal was digital filtered with a Butterworth band-pass filter
+between 1 Hz and 500 Hz. To compare the displacements measured by both sensors,
+the displacement retrieved by the accelerometer was linear interpolated on the radar’s
+acquisitions time-vector which acquires at about 13 kHz while the accelerometer sys-
+tem at 1 kHz. As illustrated in Figure 6 it is possible to observe the typical damped
+oscillating trend. From the zoomed figure on the right side, we can see also how the
+two trends are in phase, without any shift. After interpolation on a unique time vector,
+the root mean square deviation between the two sensors was calculated, resulting in 3.1
+mm. To obtain this grade of estimation of the displacements, two compensations were
+made. The first compensation concerns the accelerometer coordinate system. During the
+oscillation of the pole, there is an effect of rotation on the accelerometer measurement.
+
+Figure 5. Synchronization Comparison.
+Figure 6. Displacement Comparison: on the left the displacement in whole measurement,
+on the right a zoom corresponding to the black rectangle.
+While the radar measures the displacement along the horizontal plane, the accelerometer
+measures along its coordinate system. We have to rotate this system onto the horizontal
+plane. It is possible to estimate this rotation by using the projection of gravity on the ac-
+celerometer system. The other compensation regards the difference in altitude between
+the accelerometer and the CR.
+CONCLUDING REMARKS
+In this work, a direct comparison is carried out between the accelerometer and the
+radar for structural dynamic monitoring. The sensors were simultaneously tested to com-
+pare the performance of the systems, in terms of accuracy of displacement estimation and
+synchronization, for the dynamic monitoring of civil structures such as buildings and
+bridges. The measurement presented in a controlled scenario, using an oscillating bar,
+
+demonstrates the alignment of the displacements measured by two independent sensors,
+synchronized with the described GPS-PPS synchronization method. The synchroniza-
+tion with the PPS was confirmed, verifying the synchronization events at the same time.
+The results of the displacements demonstrate the great potential of the synchronization
+of multiple sensors for structural dynamic monitoring. This study could be the starting
+point for more advanced analyses and techniques.
+ACKNOWLEDGMENT
+This research activity has been partially funded by Huawei Technologies, Sweden
+AB in the framework of a scientific cooperation with the Department of Information
+Engineering of the University of Florence.
+REFERENCES
+1. Zhu, L., Y. Fu, R. Chow, B. F. Spencer, J. W. Park, and K. Mechitov. “Development of a
+High-Sensitivity Wireless Accelerometer for Structural Health Monitoring,” 18(1):262, ISSN
+1424-8220, doi:10.3390/s18010262, number: 1 Publisher: Multidisciplinary Digital Publish-
+ing Institute.
+2. Beni, A., L. Miccinesi, L. Pagnini, A. Cioncolini, J. Shan, and M. Pieraccini. “Interferomet-
+ric Radars for Bridge Monitoring: Comparison among X-Bands, Ku-Bands, and W-Bands,”
+16(17):3323, ISSN 2072-4292, doi:10.3390/rs16173323, number: 17 Publisher: Multidisci-
+plinary Digital Publishing Institute.
+3. Feng, D. and M. Q. Feng. “Computer vision for SHM of civil infrastructure: From dynamic
+response measurement to damage detection – A review,” 156:105–117, ISSN 0141-0296, doi:
+10.1016/j.engstruct.2017.11.018.
+4. Falletti, E., D. Margaria, G. Marucco, B. Motella, M. Nicola, and M. Pini. “Synchronization
+of Critical Infrastructures Dependent Upon GNSS: Current Vulnerabilities and Protection
+Provided by New Signals,” 13(3):2118–2129, ISSN 1937-9234, doi:10.1109/JSYST.2018.
+2883752.
+5. Margaria, D. and A. Vesco. “Trusted GNSS-Based Time Synchronization for Industry 4.0 Ap-
+plications,” 11(18):8288, ISSN 2076-3417, doi:10.3390/app11188288, number: 18 Publisher:
+Multidisciplinary Digital Publishing Institute.
+6. Veluthedath Shajihan, S. A., R. Chow, K. Mechitov, Y. Fu, T. Hoang, and B. F. Spencer. “De-
+velopment of Synchronized High-Sensitivity Wireless Accelerometer for Structural Health
+Monitoring,” 20(15):4169, ISSN 1424-8220, doi:10.3390/s20154169, number: 15 Publisher:
+Multidisciplinary Digital Publishing Institute.
+7. Le Cam, V., A. Bouche, and D. Pallier. “Wireless sensors synchronization: An accurate and
+deterministic GPS-based algorithm,” vol. 1, pp. 1346–1354, doi:10.12783/shm2017/14006.
+8. Giammarini, M., M. Pieralisi, D. Isidori, E. Concettoni, C. Cristalli, and M. Fioravanti. “Real-
+time synchronization of wireless sensor network by 1-PPS signal,” in Smart Sensors, Ac-
+tuators, and MEMS VII; and Cyber Physical Systems, SPIE, vol. 9517, pp. 300–309, doi:
+10.1117/12.2179479.
+9. Salazar-Lopez, J. R., J. R. Millan-Almaraz, J. R. Gaxiola-Camacho, G. E. Vazquez-Becerra,
+and J. M. Leal-Graciano. “GPS-Based Network Synchronization of Wireless Sensors for Ex-
+tracting Propagation of Disturbance on Structural Systems,” 24(1):199, ISSN 1424-8220, doi:
+10.3390/s24010199, number: 1 Publisher: Multidisciplinary Digital Publishing Institute.

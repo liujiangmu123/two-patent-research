@@ -1,0 +1,129 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"result\": {\n    \"stage\": \"core_interference\",\n    \"status\": \"done\",\n    \"started\": 1791013494.8731873,\n    \"detail\": \"checking PF-CT 121/121\",\n    \"pair_count\": 308,\n    \"collisions\": [\n      {\n        \"a\": \"V2-BD1\",\n        \"b\": \"V2-BD2\",\n        \"volume_mm3\": 227.996655\n      },\n      {\n        \"a\": \"V2-BD2\",\n        \"b\": \"V2-HB1\",\n        \"volume_mm3\": 33.85557\n      },\n      {\n        \"a\": \"V2-CL2\",\n        \"b\": \"V2-CL3\",\n        \"volume_mm3\": 1.052669\n      },\n      {\n        \"a\": \"V2-CL3\",\n        \"b\": \"V2-CL4\",\n        \"volume_mm3\": 11.001386\n      },\n      {\n        \"a\": \"V4-BD1\",\n        \"b\": \"V4-BD2\",\n        \"volume_mm3\": 227.996655\n      },\n      {\n        \"a\": \"V4-BD2\",\n        \"b\": \"V4-HB1\",\n        \"volume_mm3\": 33.85557\n      },\n      {\n        \"a\": \"V4-CL2\",\n        \"b\": \"V4-CL3\",\n        \"volume_mm3\": 1.052669\n      },\n      {\n        \"a\": \"V4-CL3\",\n        \"b\": \"V4-CL4\",\n        \"volume_mm3\": 11.001386\n      },\n      {\n        \"a\": \"V3-BD1\",\n        \"b\": \"V3-BD2\",\n        \"volume_mm3\": 227.996655\n      },\n      {\n        \"a\": \"V3-BD2\",\n        \"b\": \"V3-HB1\",\n        \"volume_mm3\": 33.85557\n      },\n      {\n        \"a\": \"V3-CL2\",\n        \"b\": \"V3-CL3\",\n        \"volume_mm3\": 1.052669\n      },\n      {\n        \"a\": \"V3-CL3\",\n        \"b\": \"V3-CL4\",\n        \"volume_mm3\": 11.001386\n      },\n      {\n        \"a\": \"V1-BD1\",\n        \"b\": \"V1-BD2\",\n        \"volume_mm3\": 227.996655\n      },\n      {\n        \"a\": \"V1-BD2\",\n        \"b\": \"V1-HB1\",\n        \"volume_mm3\": 33.85557\n      },\n      {\n        \"a\": \"V1-CL2\",\n        \"b\": \"V1-CL3\",\n        \"volume_mm3\": 1.052669\n      },\n      {\n        \"a\": \"V1-CL3\",\n        \"b\": \"V1-CL4\",\n        \"volume_mm3\": 11.001386\n      }\n    ],\n    \"poses\": [\n      {\n        \"extension_mm\": 0,\n        \"collisions\": []\n      },\n      {\n        \"extension_mm\": 35,\n        \"collisions\": []\n      },\n      {\n        \"extension_mm\": 70,\n        \"collisions\": []\n      },\n      {\n        \"extension_mm\": 105,\n        \"collisions\": []\n      },\n      {\n        \"extension_mm\": 140,\n        \"collisions\": []\n      }\n    ],\n    \"elapsed_s\": 14.05\n  },\n  \"stdout\": \"\",\n  \"stderr\": \"\",\n  \"execution_time_ms\": 60.62669993843883,\n  \"error_type\": null,\n  \"error_traceback\": null\n}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "result": {
+      "stage": "core_interference",
+      "status": "done",
+      "started": 1791013494.8731873,
+      "detail": "checking PF-CT 121/121",
+      "pair_count": 308,
+      "collisions": [
+        {
+          "a": "V2-BD1",
+          "b": "V2-BD2",
+          "volume_mm3": 227.996655
+        },
+        {
+          "a": "V2-BD2",
+          "b": "V2-HB1",
+          "volume_mm3": 33.85557
+        },
+        {
+          "a": "V2-CL2",
+          "b": "V2-CL3",
+          "volume_mm3": 1.052669
+        },
+        {
+          "a": "V2-CL3",
+          "b": "V2-CL4",
+          "volume_mm3": 11.001386
+        },
+        {
+          "a": "V4-BD1",
+          "b": "V4-BD2",
+          "volume_mm3": 227.996655
+        },
+        {
+          "a": "V4-BD2",
+          "b": "V4-HB1",
+          "volume_mm3": 33.85557
+        },
+        {
+          "a": "V4-CL2",
+          "b": "V4-CL3",
+          "volume_mm3": 1.052669
+        },
+        {
+          "a": "V4-CL3",
+          "b": "V4-CL4",
+          "volume_mm3": 11.001386
+        },
+        {
+          "a": "V3-BD1",
+          "b": "V3-BD2",
+          "volume_mm3": 227.996655
+        },
+        {
+          "a": "V3-BD2",
+          "b": "V3-HB1",
+          "volume_mm3": 33.85557
+        },
+        {
+          "a": "V3-CL2",
+          "b": "V3-CL3",
+          "volume_mm3": 1.052669
+        },
+        {
+          "a": "V3-CL3",
+          "b": "V3-CL4",
+          "volume_mm3": 11.001386
+        },
+        {
+          "a": "V1-BD1",
+          "b": "V1-BD2",
+          "volume_mm3": 227.996655
+        },
+        {
+          "a": "V1-BD2",
+          "b": "V1-HB1",
+          "volume_mm3": 33.85557
+        },
+        {
+          "a": "V1-CL2",
+          "b": "V1-CL3",
+          "volume_mm3": 1.052669
+        },
+        {
+          "a": "V1-CL3",
+          "b": "V1-CL4",
+          "volume_mm3": 11.001386
+        }
+      ],
+      "poses": [
+        {
+          "extension_mm": 0,
+          "collisions": []
+        },
+        {
+          "extension_mm": 35,
+          "collisions": []
+        },
+        {
+          "extension_mm": 70,
+          "collisions": []
+        },
+        {
+          "extension_mm": 105,
+          "collisions": []
+        },
+        {
+          "extension_mm": 140,
+          "collisions": []
+        }
+      ],
+      "elapsed_s": 14.05
+    },
+    "stdout": "",
+    "stderr": "",
+    "execution_time_ms": 60.62669993843883,
+    "error_type": null,
+    "error_traceback": null
+  },
+  "isError": false
+}

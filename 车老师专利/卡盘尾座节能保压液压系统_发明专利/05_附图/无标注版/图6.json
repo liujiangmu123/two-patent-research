@@ -1,0 +1,15 @@
+{
+ "fig": 6,
+ "title": "事件触发推力区间示意图",
+ "size_mm": [
+  150,
+  110
+ ],
+ "labeled": false,
+ "labels": [],
+ "symbols": [],
+ "names": {},
+ "missing": [],
+ "crossings": 0,
+ "note": "示意曲线，非仿真结果；纵轴 F、横轴 t；下方为补压/泄放动作脉冲"
+}

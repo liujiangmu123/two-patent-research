@@ -1,0 +1,37 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"result\": {\n    \"stage\": \"bench_step_roundtrip\",\n    \"status\": \"done\",\n    \"started\": 1791014653.0934546,\n    \"valid\": true,\n    \"imported_solids\": 412,\n    \"expected_solids\": 412,\n    \"relative_volume_difference\": 2.81627461105717e-9,\n    \"box_mm\": [\n      1800.0,\n      872.0,\n      1400.0\n    ],\n    \"expected_box_mm\": [\n      1800.0,\n      872.0,\n      1400.0\n    ],\n    \"elapsed_s\": 11.01\n  },\n  \"stdout\": \"\",\n  \"stderr\": \"\",\n  \"execution_time_ms\": 59.08040003851056,\n  \"error_type\": null,\n  \"error_traceback\": null\n}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "result": {
+      "stage": "bench_step_roundtrip",
+      "status": "done",
+      "started": 1791014653.0934546,
+      "valid": true,
+      "imported_solids": 412,
+      "expected_solids": 412,
+      "relative_volume_difference": 2.81627461105717e-09,
+      "box_mm": [
+        1800.0,
+        872.0,
+        1400.0
+      ],
+      "expected_box_mm": [
+        1800.0,
+        872.0,
+        1400.0
+      ],
+      "elapsed_s": 11.01
+    },
+    "stdout": "",
+    "stderr": "",
+    "execution_time_ms": 59.08040003851056,
+    "error_type": null,
+    "error_traceback": null
+  },
+  "isError": false
+}

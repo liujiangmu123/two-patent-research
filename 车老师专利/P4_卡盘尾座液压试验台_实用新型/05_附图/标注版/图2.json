@@ -1,0 +1,251 @@
+{
+ "fig": 8,
+ "title": "试验台主视图",
+ "scale": 0.075,
+ "size_mm": [
+  154.1,
+  105.0
+ ],
+ "size_clean_mm": [
+  138.0,
+  105.0
+ ],
+ "labels": [
+  "41",
+  "42",
+  "43",
+  "12",
+  "45",
+  "46",
+  "15",
+  "48",
+  "51",
+  "52",
+  "53",
+  "54",
+  "56",
+  "26",
+  "55",
+  "61",
+  "57",
+  "58",
+  "59",
+  "60",
+  "1",
+  "4",
+  "8",
+  "27",
+  "28"
+ ],
+ "missing": [],
+ "crossings": 1,
+ "min_leader_pass_mm": 0.61,
+ "all_anchors_ok": true,
+ "anchors": [
+  {
+   "num": "41",
+   "name": "机架",
+   "side": "L",
+   "anchor_part": "P_41",
+   "ok": true,
+   "inside_mm": 2.3
+  },
+  {
+   "num": "42",
+   "name": "台面板",
+   "side": "L",
+   "anchor_part": "P_42",
+   "ok": true,
+   "inside_mm": 0.8
+  },
+  {
+   "num": "43",
+   "name": "模拟床身",
+   "side": "R",
+   "anchor_part": "P_43",
+   "ok": true,
+   "inside_mm": 1.1
+  },
+  {
+   "num": "12",
+   "name": "卡盘液压缸",
+   "side": "L",
+   "anchor_part": "P_12",
+   "ok": true,
+   "inside_mm": 2.1
+  },
+  {
+   "num": "45",
+   "name": "主轴箱模拟座",
+   "side": "L",
+   "anchor_part": "P_45",
+   "ok": true,
+   "inside_mm": 1.6
+  },
+  {
+   "num": "46",
+   "name": "模拟卡盘",
+   "side": "L",
+   "anchor_part": "P_46",
+   "ok": true,
+   "inside_mm": 2.9
+  },
+  {
+   "num": "15",
+   "name": "回转接头泄漏模拟针阀",
+   "side": "L",
+   "anchor_part": "P_15",
+   "ok": true,
+   "inside_mm": 1.0
+  },
+  {
+   "num": "48",
+   "name": "丝杠—楔块加载座",
+   "side": "L",
+   "anchor_part": "P_48",
+   "ok": true,
+   "inside_mm": 0.9
+  },
+  {
+   "num": "51",
+   "name": "工件模拟滑块",
+   "side": "L",
+   "anchor_part": "P_51",
+   "ok": true,
+   "inside_mm": 2.3
+  },
+  {
+   "num": "52",
+   "name": "顶尖",
+   "side": "R",
+   "anchor_part": "P_52",
+   "ok": true,
+   "inside_mm": 1.6
+  },
+  {
+   "num": "53",
+   "name": "尾座套筒",
+   "side": "R",
+   "anchor_part": "P_53",
+   "ok": true,
+   "inside_mm": 2.3
+  },
+  {
+   "num": "54",
+   "name": "尾座体",
+   "side": "R",
+   "anchor_part": "P_54",
+   "ok": true,
+   "inside_mm": 3.1
+  },
+  {
+   "num": "56",
+   "name": "位移传感器（LVDT）",
+   "side": "R",
+   "anchor_part": "P_56",
+   "ok": true,
+   "inside_mm": 0.8
+  },
+  {
+   "num": "26",
+   "name": "尾座液压缸",
+   "side": "R",
+   "anchor_part": "P_69",
+   "ok": true,
+   "inside_mm": 0.9
+  },
+  {
+   "num": "55",
+   "name": "锁闭阀块",
+   "side": "R",
+   "anchor_part": "P_55",
+   "ok": true,
+   "inside_mm": 1.3
+  },
+  {
+   "num": "61",
+   "name": "温控夹套（油温扰动单元）",
+   "side": "R",
+   "anchor_part": "P_61",
+   "ok": true,
+   "inside_mm": 1.7
+  },
+  {
+   "num": "57",
+   "name": "安全防护罩",
+   "side": "L",
+   "anchor_part": "P_57",
+   "ok": true,
+   "inside_mm": 0.9
+  },
+  {
+   "num": "58",
+   "name": "防护前门",
+   "side": "R",
+   "anchor_part": "P_58",
+   "ok": true,
+   "inside_mm": 0.9
+  },
+  {
+   "num": "59",
+   "name": "门联锁开关",
+   "side": "R",
+   "anchor_part": "P_59",
+   "ok": true,
+   "inside_mm": 1.6
+  },
+  {
+   "num": "60",
+   "name": "阀板",
+   "side": "R",
+   "anchor_part": "P_60",
+   "ok": true,
+   "inside_mm": 5.6
+  },
+  {
+   "num": "1",
+   "name": "油箱",
+   "side": "L",
+   "anchor_part": "P_1",
+   "ok": true,
+   "inside_mm": 4.8
+  },
+  {
+   "num": "4",
+   "name": "电动机",
+   "side": "L",
+   "anchor_part": "P_4",
+   "ok": true,
+   "inside_mm": 2.75
+  },
+  {
+   "num": "8",
+   "name": "蓄能器",
+   "side": "L",
+   "anchor_part": "P_8",
+   "ok": true,
+   "inside_mm": 2.8
+  },
+  {
+   "num": "27",
+   "name": "电控柜（内装控制器）",
+   "side": "L",
+   "anchor_part": "P_27",
+   "ok": true,
+   "inside_mm": 2.8
+  },
+  {
+   "num": "28",
+   "name": "触摸屏/数控系统接口",
+   "side": "L",
+   "anchor_part": "P_28",
+   "ok": true,
+   "inside_mm": 1.9
+  }
+ ],
+ "n_items": 81,
+ "dropped_small": 1,
+ "n_lines": 370,
+ "n_hatch": 0,
+ "t_s": 7.8
+}

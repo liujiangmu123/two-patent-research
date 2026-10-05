@@ -1,0 +1,50 @@
+{
+  "case": "block_medium",
+  "fields": [
+    "DISP",
+    "STRESS",
+    "FORC",
+    "ERROR"
+  ],
+  "max_von_mises_MPa": 132.28102846485584,
+  "stress_p99_MPa": 16.57156728264563,
+  "stress_p999_MPa": 24.448555721789084,
+  "max_stress_node": 66855,
+  "max_stress_position_mm": [
+    201.9989550186063,
+    44.9,
+    21.03018342021599
+  ],
+  "max_displacement_mm": 0.0021141461138514056,
+  "yield_lower_bound_MPa": 355,
+  "peak_yield_margin": 2.6836803744258435,
+  "proof_10_5MPa_peak_linear_scaled_MPa": 198.42154269728377,
+  "assumptions": "nominal hole stress at7MPa, fixed bottom, elastic45steel, no valve preload/thread helix or assembly contacts",
+  "mesh_convergence": "two completed meshes: displacement+1.025%, local peak+9.905%; peak not sufficiently converged; finest solver crashed",
+  "files": {
+    "block.brep": {
+      "bytes": 360875,
+      "sha256": "ca065949444f831ddcf850c1b531fc4e3fc51ce4c8fd7037ca9aae54c65eb534"
+    },
+    "block_medium.msh": {
+      "bytes": 31404448,
+      "sha256": "8725aa045bfdce6b352125b106af110b42b4d7948559fe3d1fd1075562d78124"
+    },
+    "block_medium.inp": {
+      "bytes": 25303306,
+      "sha256": "3d45b10bc139010fd21865d7d755ca47a7645730375843054688099e8bc54b25"
+    },
+    "block_medium.frd": {
+      "bytes": 91548531,
+      "sha256": "1ad7ad3b12b8ce5e105e1b44dd26fd053a483d805d5f59a670927b047f41366b"
+    },
+    "block_medium.sta": {
+      "bytes": 173,
+      "sha256": "253efd59462bae0a6fce7b06552a063c82349747e482366b56da923c68b7ca9d"
+    },
+    "block_medium.dat": {
+      "bytes": 214,
+      "sha256": "dc4c9dc9e9ead91bbac0f1311d9d766b5ccd6672ec75b37086fb538941b5afe8"
+    }
+  }
+}

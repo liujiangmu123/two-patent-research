@@ -1,0 +1,20 @@
+{
+  "stage": "bench_step_roundtrip",
+  "status": "done",
+  "started": 1791016606.842494,
+  "valid": true,
+  "imported_solids": 451,
+  "expected_solids": 451,
+  "relative_volume_difference": 2.142620902313991e-09,
+  "box_mm": [
+    1800.0,
+    872.0,
+    1400.0
+  ],
+  "expected_box_mm": [
+    1800.0,
+    872.0,
+    1400.0
+  ],
+  "elapsed_s": 10.95
+}

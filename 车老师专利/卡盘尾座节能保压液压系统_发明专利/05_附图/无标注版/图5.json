@@ -1,0 +1,14 @@
+{
+ "fig": 5,
+ "title": "控制方法流程图",
+ "size_mm": [
+  150,
+  235
+ ],
+ "labeled": false,
+ "labels": [],
+ "labels_in_figure_body": [],
+ "names": {},
+ "missing": [],
+ "crossings": 0
+}

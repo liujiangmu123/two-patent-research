@@ -1,0 +1,58 @@
+EGU26-11441, updated on 01 Oct 2026
+https://doi.org/10.5194/egusphere-egu26-11441
+EGU General Assembly 2026
+© Author(s) 2026. This work is distributed under
+the Creative Commons Attribution 4.0 License.
+Small deformation monitoring of Ultra-High Voltage transmission
+towers using China’s high-resolution C-band SAR satellites
+Sijie Ma1,2, Tao Li1,2, Yan Liu3, Weijia Ren4, Yunlong Liu5, Zhi Yang6, Yanhao Xu1,2, and Jingyang
+Xiao1,2
+1GNSS Research Center, Wuhan University, Wuhan 430079, China;
+2School of Geodesy and Geomatics, Wuhan University, Wuhan 430079, China;
+3State Key Laboratory of Power Grid Environmental Protection, China Electric Power Research Institute, Wuhan 430070,
+China;
+4Spacety Co., Ltd. , Changsha 410221, China;
+5School of Electrical Engineering, Southwest Jiaotong University, Chengdu 611756, China;
+6Electric Power Satellite Resource Application Center, State Grid Electric Power Engineering Research Institute Co., Ltd.,
+Beijing 100071, China;
+Ultra-high voltage (UHV) transmission towers are critical infrastructures for the stability and
+resilience of power systems. Their structural integrity is constantly challenged by conductor
+tension, thermal expansion, and external loads. Conventional inspection techniques, including
+UAV surveys and in-situ sensors, are costly and spatially constrained. In contrast, spaceborne
+synthetic aperture radar (SAR) provides a cost-effective means for wide-area, millimeter-level
+deformation monitoring.
+This study proposes a tower persistent scatterer (PS) simulation and interferometric elevation-
+phase modeling method that integrates three-dimensional LiDAR-derived tower models with the
+radar range–Doppler equation. Using high-resolution C-band SAR data from China’s Fucheng-1
+satellite, 78 ascending and descending scenes were analyzed over two 500 kV transmission lines in
+Chongqing. Corner reflectors (CRs) were installed at both tower bases and on tower bodies to
+provide accurate geometric calibration parameters and high-confidence CR-PS points for tower
+deformation analysis.
+Results demonstrate that CR-based calibration achieved sub-pixel geometric accuracy and
+millimeter phase precision. The base CRs revealed approximately 8 mm of vertical subsidence
+over nine months. Tower-body CRs exhibited height-dependent small deformations corresponding
+to differential thermal expansion at different structural levels.
+Two types of deformation estimation were performed: (1) Based on one-year short-baseline
+interferometric pairs, tower deformation ranges were empirically derived under various
+temperature intervals, indicating that straight towers exhibited larger deformation amplitudes
+than strain towers, with descending-track results exceeding 6 rad when ΔT > 25 °C. (2) Using the
+proposed differential interferometric approach that removes simulated elevation phases,
+
+continuous deformation patterns consistent with the empirical thresholds were retrieved,
+validating the physical effectiveness of the model.
+In conclusion, this study confirms the feasibility of using China's high-resolution C-band SAR
+satellites for long-term, high-precision monitoring of UHV transmission tower deformation. The
+proposed methodology validates the capability of meter-resolution SAR systems to capture subtle
+structural deformations and provides a methodological foundation for assessing large-scale
+infrastructure
+responses
+to
+geological
+hazards,
+earthquakes,
+and
+typhoons
+in
+complex
+environments.
+Powered by TCPDF (www.tcpdf.org)

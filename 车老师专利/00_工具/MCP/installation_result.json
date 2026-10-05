@@ -1,0 +1,44 @@
+{
+  "recorded_at": "2026-10-03T12:26:39.183775+08:00",
+  "scope": "车老师专利研究与两项本机MCP集成；未修改原有模型、仿真数据和申请文本",
+  "codex_config": "C:\\Users\\Administrator\\.codex\\config.toml",
+  "config_parse": "passed",
+  "freecad": {
+    "existing_server_version": "0.6.1",
+    "existing_bridge_version": "0.6.2",
+    "config_added": true,
+    "mode": "xmlrpc",
+    "endpoint": "127.0.0.1:9875",
+    "connection": "not_connected_connection_refused",
+    "gui_running": false,
+    "required_launcher_exists": false,
+    "server_reinstalled": false,
+    "note": "项目AGENTS要求的Start-FreeCADMCP.ps1不存在；未绕过规则启动GUI或变更版本"
+  },
+  "blender": {
+    "package": "mcp-for-blender",
+    "version": "2.1.3",
+    "config_added": true,
+    "stdio_initialize": "passed",
+    "discovered_tools": 36,
+    "dependency_check": "passed",
+    "telemetry_disabled": true,
+    "local_tool_allowlist": [
+      "get_addon_status",
+      "disable_telemetry",
+      "get_scene_info",
+      "get_object_info",
+      "get_viewport_screenshot",
+      "execute_blender_code",
+      "describe_node_type",
+      "bpy_api_lookup",
+      "export_scene",
+      "search_mentions"
+    ],
+    "connection": "not_connected",
+    "blender_executable": "not_located",
+    "addon_staged": true,
+    "addon_installed_or_enabled": false,
+    "manifest": "Blender/installation_manifest.json"
+  }
+}

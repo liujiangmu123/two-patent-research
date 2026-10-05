@@ -1,0 +1,6166 @@
+ 
+ 
+ 
+ 
+Buildings 2026, 16, 1807 
+https://doi.org/10.3390/buildings16091807 
+Review 
+Recent Advances and Future Prospects of Bayesian Operational 
+Modal Analysis: Identiﬁcation Algorithms, Uncertainty   
+Computation, and Applications 
+Wei Xu, Ziyu Guan and Yichen Zhu * 
+Department of Bridge Engineering, School of Transportation, Southeast University, Nanjing 211189, China; 
+xu_wei@seu.edu.cn (W.X.); 230268528@seu.edu.cn (Z.G.) 
+*  Correspondence: zhuyichen@seu.edu.cn 
+Abstract 
+Bayesian operational modal analysis (OMA) provides a probabilistic framework for iden-
+tifying modal parameters of structures under ambient excitation while quantifying iden-
+tiﬁcation uncertainty. By casting modal identiﬁcation as a Bayesian inference problem, it 
+enables systematic incorporation of modeling assumptions, measurement noise, and data 
+limitations, thereby addressing fundamental shortcomings of conventional OMA meth-
+ods. This paper presents a comprehensive review of Bayesian OMA, covering its theoret-
+ical foundations, representative identiﬁcation algorithms, uncertainty quantiﬁcation and 
+management, and practical applications. Emphasis is placed on frequency domain Bayes-
+ian formulations, fast Bayesian FFT-based identiﬁcation algorithms, treatment of multi-
+setup and asynchronous data, closely spaced modes, and recent advances in both compu-
+tational acceleration and capturing environmental variations. Developments on uncer-
+tainty laws are synthesized to elucidate the fundamental limits of achievable identiﬁcation 
+precision and their implications for uncertainty management and test design. A range of 
+applications  is  reviewed  to  demonstrate  how  Bayesian  OMA  methods  support  robust 
+modal identiﬁcation and long-term structural health monitoring under operational and 
+environmental variations. Finally, key challenges and future research directions are dis-
+cussed  to  facilitate  further  methodological  development  and  engineering  adoption  of 
+Bayesian OMA. 
+Keywords: Bayesian operational modal analysis; fast Bayesian FFT approach;   
+environmental variations; uncertainty laws; structural health monitoring 
+ 
+1. Introduction 
+Large-scale civil engineering structures (bridges, buildings, towers, etc.) may suﬀer 
+from natural disasters such as earthquakes and strong winds during their service life, 
+which seriously threaten the safety and durability of the structures themselves. The struc-
+tural health monitoring (SHM) technology can provide an approach to assess the health 
+condition of a structure in real time [1–3]. Recent years have witnessed substantial ad-
+vances in SHM, including Bayesian and probabilistic inference methods [4–6], techniques 
+for addressing environmental eﬀects and variability [7,8], data-driven and machine-learn-
+ing-assisted  approaches  [9,10],  and  new  eﬀorts  for  damage  detection  and  estimation 
+[11,12]. These developments have further reinforced SHM as a powerful tool for structural 
+Academic Editor: Hassan   
+Karampour 
+Received: 23 March 2026 
+Revised: 28 April 2026 
+Accepted: 28 April 2026 
+Published: 1 May 2026 
+Copyright: © 2026 by the authors. 
+Licensee MDPI, Basel, Switzerland. 
+This article is an open access article 
+distributed under the terms and 
+conditions of the Creative Commons 
+Attribution (CC BY) license. 
+
+Buildings 2026, 16, 1807 
+2  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+performance evaluation and damage assessment. In the applications of SHM, modal prop-
+erties serve as crucial indicators for subsequent assessment, diagnosis, and decision-mak-
+ing. 
+The modal properties of a structure can be identiﬁed from an ambient vibration test, 
+also called operational modal analysis (OMA) [13–15]. Speciﬁcally, modal identiﬁcation 
+focuses on extracting the modal properties, including natural frequencies, damping ratios, 
+and mode shapes, from the measured vibration data of a structure. Modal identiﬁcation 
+is  the  basis  of  structural  system  identiﬁcation,  which  aims at  extracting  the  structural 
+properties. As depicted in Figure 1, these are ‘forward problems’ and ‘reverse problems’ 
+in structural dynamics. Modal identiﬁcation has received a great deal of attention in the 
+engineering ﬁeld, as it allows providing prerequisite information for many practical ap-
+plications, like model/reliability updating [16–20], damage detection [21–24], vibration 
+control [25,26], and optimization of structural design [27–29]. 
+ 
+Figure 1. Forward and backward problems in structural dynamics. 
+The excitation is assumed to be ‘broadband random’ in the ambient vibration test, 
+rather than measured, and is normally referred to as ‘ambient’. Compared with free or 
+forced vibration tests, ambient vibration testing is signiﬁcantly more economical, as it al-
+lows vibration data to be collected while the structure is under ‘operating conditions’ and 
+without substantial intervention [30,31]. As a result, an increasing number of ﬁeld tests 
+have been conducted under ambient excitation, in which the input is not measured di-
+rectly and is instead represented by a stochastic model. This output-only testing condition 
+has motivated the development of appropriate methods for extracting modal information 
+from random response data without measured input information. Various types of meth-
+ods  have  been  proposed  and  applied  successfully,  covering  time  domain  [32–36],  fre-
+quency domain [37–39], and time-frequency domain [40–44]. However, the identiﬁcation 
+eﬀectiveness of conventional OMA is highly dependent on the selection of sample statis-
+tics, which may result in not fully exploiting all the information from the ambient vibra-
+tion data. Meanwhile, four types of uncertainties are faced [14]: statistical errors due to 
+the limited data, measurement errors introduced by the noise, inherent uncertainties due 
+to the unknown broadband excitation, and systematic biases triggered by incompatible 
+model assumptions. Although the ﬁrst two types of problems can be mitigated by increas-
+ing the amount of data and improving the quality of the equipment, the unpredictability 
+of the unknown excitation perpetuates uncertainty in the results, and the modeling error 
+can cause a direct bias in the parameter estimation. Neglecting to quantify these uncer-
+tainties may undermine the reliability and explanatory power of identiﬁcation results. 
+This creates an urgent need to introduce new techniques to improve the situation. 
+Motivated by the above considerations, a Bayesian approach is employed to explic-
+itly address the uncertainty, considering its unique perspective on the system identiﬁca-
+tion [45,46]. Here, modal identiﬁcation is viewed as an inference problem. Given the meas-
+ured data and modeling assumptions, the probability is a measure of the relative ration-
+ality of identiﬁcation results. Thus, the goal of modal identiﬁcation turns out to be the 
+determination of the posterior probability density function (PDF) of modal parameters. In 
+
+Buildings 2026, 16, 1807 
+3  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+recent years, Bayesian approaches in modal and system identiﬁcation have evolved into 
+several representative research lines, including Bayesian time domain approaches [47–49], 
+Bayesian spectral density approaches [50–54], fast Fourier transform (FFT)-based and re-
+lated fast frequency domain methods [55–58], and Bayesian system identiﬁcation formu-
+lations and extensions [59–62]. Compared with non-Bayesian approaches, Bayesian for-
+mulations provide a rigorous and probabilistically coherent framework for quantifying 
+uncertainty in the parameters of interest, since the posterior inference is performed con-
+ditional  on  the  adopted assumptions  regarding  the  system  model,  ambient  excitation, 
+measurement noise, and prior information. It should be noted that the practical advantage 
+of Bayesian OMA may diminish under severe model mismatch or weakly informative 
+data, such as short records, low signal-to-noise ratio (SNR), pronounced non-stationarity, 
+or multiple closely spaced modes with strong modal coupling, and these limits are cur-
+rently understood only partially and mainly under idealized or asymptotic conditions ra-
+ther than through universally accepted quantitative thresholds [14,31,58]. Nevertheless, 
+computational  and  practical  issues  are  equally  signiﬁcant  and  need  to  be  reliably  ad-
+dressed before applying this approach. 
+This paper presents a systematic review of Bayesian OMA, focusing on probabilistic 
+formulations for ambient vibration test and their role in modal identiﬁcation and uncer-
+tainty quantiﬁcation. Speciﬁcally, Section 2 outlines the theoretical foundations of Bayes-
+ian OMA, followed by a review of representative identiﬁcation algorithms in Section 3, 
+with emphasis on frequency domain formulations and recent advances in both computa-
+tional eﬃciency and considering environmental variations. Section 4 synthesizes devel-
+opments on uncertainty laws and their implications for identiﬁcation accuracy and uncer-
+tainty management. Section 5 reviews signiﬁcant applications of Bayesian OMA in SHM 
+and related engineering problems. Sections 6 and 7 summarize the main ﬁndings and dis-
+cuss current challenges and future research directions. 
+2. Bayesian Inference Framework 
+The  Bayesian  approach  explicitly  acknowledges  the  limitations  of  conventional 
+OMA. In this way, Bayes’ theorem is employed to provide a fundamental approach for 
+processing the valuable information of measured data and making inferences about the 
+parameters in a way that is consistent with modeling assumptions and probabilistic logic. 
+An introduction to Bayesian probability knowledge can be found in some previous works 
+[63–67]. Following these, Beck [68] elaborates on the Bayesian perspective with a back-
+ground of structural system identiﬁcation. 
+Note that not all inference problems must be solved by the Bayesian approach. How-
+ever, the Bayesian approach has more advantages than non-Bayesian approaches in deal-
+ing with problems with identifying and quantifying uncertainty; problems with identify-
+ing  results  that  depend  strongly  on  fundamental  assumptions,  and  that  need  to  be 
+screened for quantitative eﬀects. 
+2.1. Bayes’ Theorem 
+Bayes’ theorem is named after the mathematician Thomas Bayes [69]. What is now 
+widely discussed and implemented as Bayesian probability was actually pioneered and 
+popularized by the mathematician Pierre-Simon Laplace [70,71]. According to Bayes’ the-
+orem [72,73], for events A and B, 
+
+
+
+
+
+p
+p
+p
+p
+
+A Β
+Β
+Β A
+A
+ 
+(1) 
+
+Buildings 2026, 16, 1807 
+4  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+Here, the term  
+
+p Β A   denotes the probability of event B occurring conditional on event 
+A occurring, i.e., the posterior probability; the term  
+
+p A B   denotes the probability of 
+event A occurring conditional on event B occurring, i.e., the likelihood function; the term 
+
+p Β   is the prior probability of event B; the term 
+
+p A   is the marginal probability of 
+event A. It is non-trivial when there is no easy way to use information about A to answer 
+a question about B. Since the roles of event A and event B can be swapped via Bayes’ 
+theorem, turning this question into one about A given B. 
+2.2. Bayesian Modal Identiﬁcation Framework 
+For the general problem with n degrees of freedom (DOFs) and damping modeled 
+by a viscous term, the equation of motion is given as 
+
+
+
+
+t
+t
+t
+t
+
+
+
+Mx
+Cx
+Kx
+U
+
+
+ 
+(2) 
+where 
+t
+x
+ , 
+t
+x
+   and 
+t
+x
+   are  the  acceleration,  velocity,  and  displacement  of  the 
+structure, respectively;  M ,  C   and  K   are the  n n
+
+  mass, damping, and stiﬀness ma-
+trix of the structure, respectively; 
+t
+U
+  is the external excitation at time t. 
+The Bayesian approach was introduced into the dynamics of structures by Beck and 
+Katafygiotis earlier, thereby establishing the famous basic theoretical framework of Bayes-
+ian system identiﬁcation [39,74]. Here, a speciﬁc description is presented. Let  θ   be a set 
+of modal parameters identiﬁed from the measured acceleration response datasets  D . In 
+the work of modal identiﬁcation for an assumed structural dynamics model,  θ   primar-
+ily comprise natural frequencies, damping ratios, mode shapes, power spectral density 
+(PSD) matrix of modal forces, and PSD of the prediction error.  D   is usually considered 
+the acceleration time histories of a structure. Using Bayes’ theorem, 
+
+
+
+
+
+p
+p
+p
+p
+
+D θ
+θ
+θ D
+D
+ 
+(3) 
+The description and explanation of each term in Equation (3) are provided in Table 
+1, which highlights that diﬀerent Bayesian OMA formulations primarily diﬀer in how the 
+likelihood function is constructed and evaluated, while sharing a common probabilistic 
+inference structure. 
+Table 1. Uniﬁed Bayesian formulation for OMA. 
+Component 
+Physical Interpretation 
+Role in Bayesian OMA 
+
+p θ  
+One’s knowledge of parameters  θ   prior 
+to the measurement 
+Prior distribution 
+
+p D  
+Normalizing integral independent of the 
+parameters to be inferred 
+Normalizing constant 
+
+
+p D θ  
+A probabilistic description of the probable 
+values of  D   given  θ  
+Marginal likelihood function 
+(MLF) 
+
+
+p θ D  
+An encapsulation of all information about 
+θ   that can be inferred from  D   based on 
+consistent modeling assumptions 
+Posterior probability density 
+function (PDF) 
+It should be speciﬁcally noted here that the posterior PDF  
+
+p θ D . The ‘posterior’ 
+means that it is after considering the information from  D ; ‘posterior PDF’ encapsulates 
+
+Buildings 2026, 16, 1807 
+5  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+all information of  θ , which can be inferred from  D   on a consistent basis with the asso-
+ciated modeling assumptions. Here, instead of inferring a single value of  θ   from the 
+data  D , the Bayesian approach actually aims at obtaining the PDF of  θ . In practical ap-
+plications,  the  probable  values  that  θ   may  take  are  those  with a  high  posterior  PDF 
+value, the identiﬁcation uncertainty about  θ   is associated with the spreading of the pos-
+terior PDF. The two can be quantiﬁed by the mean and covariance matrices, respectively, 
+in terms of ‘descriptive statistics’ associated with the posterior PDF. 
+Furthermore, there are several issues that should be considered when employing a 
+Bayesian approach to address problems associated with system identiﬁcation: 
+(1) Prior distribution: The assignment of the prior needs to be based on available his-
+tory data. If the prior is too subjective or insuﬃcient information, it may cause a bias in 
+the  identiﬁcation  results.  In  Bayesian  OMA  formulations,  a  non-informative  prior  is 
+adopted due to the fact that modal identiﬁcation is a typical globally identiﬁable problem, 
+especially for high SNR scenarios. The posterior is often dominated by the likelihood ra-
+ther than the prior [14]. 
+(2) Modeling assumptions: The formulation of the MLF  
+
+p D θ   needs to be based 
+on modeling assumptions. The physical/logical modeling of the system prediction and its 
+discrepancy with measured data (named prediction error) is involved here. 
+(3) Descriptive posterior statistics: The determination of the mean and covariance 
+matrices of  θ   for the purpose of interpretation and decision-making. This is primarily a 
+computational problem. 
+Bayesian OMA methods have been in service for a long time owing to their numerous 
+strengths. Below is a review of some favorite Bayesian OMA techniques in both the time 
+domain (Section 2.2.1) and frequency domain (Section 2.2.2). 
+2.2.1. Bayesian Time Domain Approaches 
+For addressing the problem of modal identiﬁcation of structures under ambient ex-
+citation, Bayesian time domain approaches provide an available framework for estimating 
+the most probable values (MPVs) of modal parameters and quantifying their associated 
+uncertainties directly from response data, overcoming the limitations of traditional meth-
+ods that only yield point estimates. Initially developed by Yuen and Katafygiotis for sta-
+tionary data [47], this approach was later extended by them to handle the challenges of 
+non-stationary responses, such as those induced by earthquakes or wind gusts [75]. De-
+spite its strengths, the previous Bayesian time domain approaches face the high compu-
+tational burden, convergence diﬃculties, and poor robustness when applied to large-scale 
+civil engineering structures. To address these issues, Yin et al. [49] present a novel Bayes-
+ian  framework  for  time  domain  operational  modal  analysis  (BTOMA).  This  enhanced 
+method incorporates Bayesian regularization, parameterized priors, and a setup parallel-
+ism strategy, improving computational eﬃciency, robustness, and reliability for struc-
+tures with both well-separated and closely spaced modes. 
+Speciﬁcally, the BTOMA framework is constructed upon a probabilistic model of free 
+vibration responses. For the ith channel, the response is given by the following modal 
+superposition principle: 
+
+
+
+
+2
+1
+sin2
+cos2
+t
+j
+j
+N
+π
+f t
+i
+j
+j
+j
+j
+j
+j
+y t
+i e
+A
+πf t
+B
+πf t
+
+
+
+
+
+
+ξ
+ 
+(4) 
+where 
+jf , 
+jξ , and 
+
+j i
+
+  denote the natural frequency, damping ratio, and mode shape 
+component of the jth mode, respectively; 
+j
+A   and 
+jB   are unknown coeﬃcients associ-
+ated with the jth mode, which depend on the initial conditions; 
+t
+N   is the number of 
+
+Buildings 2026, 16, 1807 
+6  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+measured modes; 
+
+
+1 2
+2
+1
+j
+j
+j
+f
+f
+
+ξ
+  is the jth damped natural frequency. By stacking all 
+measurement channels, the measured free vibration response vector at time point m for 
+setup k can be written as 
+
+
+
+
+,
+k
+k
+k
+y
+m
+D
+m
+
+
+
+
+θ
+a
+
+ 
+(5) 
+where 
+
+
+,
+k
+D
+m θ  is the modal information matrix determined by the modal parame-
+ter set 
+
+
+,
+,
+T
+T
+T
+T
+
+θ
+f
+φ
+ξ
+; 
+
+k
+a
+  is the unknown coeﬃcient vector. 
+The likelihood function is constructed under the assumption that the prediction er-
+rors are independently and identically distributed Gaussian. For all setups, the joint like-
+lihood is as follows: 
+
+
+
+2
+1:
+ 1
+,
+exp
+2
+2
+o
+MNN
+M
+β
+β
+p
+β
+π
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+θ
+θ
+E
+
+
+,
+ 
+(6) 
+where  β   is a hyperparameter representing the reciprocal of the variance of the predic-
+tion error;  N   and  M   are the number of time points and target pairs; 
+
+1
+K
+k
+o
+o
+k
+N
+N
+
+
+, 
+with 
+
+k
+o
+N
+  being the number of measurement channels; 
+
+ 1 θ
+E
+  is the measure-of-ﬁt func-
+tion, which is given by 
+
+
+
+
+
+
+2
+ 1
+1:
+1:
+1
+1
+ˆ
+ˆ
+, , ;
+K
+M
+k
+k
+N
+N
+k
+m
+m
+s
+m
+s
+
+
+
+
+
+
+θ
+z
+θ
+z
+E
+G
+
+ 
+(7) 
+where 
+
+1:
+ˆ
+k
+N m
+z
+  and 
+
+
+1:
+ˆ
+k
+N m
+s
+
+z
+  denote the stacked response vectors; s denotes the time 
+step. 
+2.2.2. Bayesian Frequency Domain Approaches 
+Within the Bayesian frequency domain framework for ambient modal identiﬁcation, 
+two major methodological streams have emerged based on the statistical characterization 
+of spectral quantities, namely the Bayesian spectral density approach (BSDA) [50] and the 
+Bayesian FFT approach [56]. Both aim at joint estimation of modal parameters and their 
+uncertainties, yet diﬀer in their computational strategies and scalability. 
+For BSDA, it enables the identiﬁcation of the optimal values of the updated modal 
+parameters and the calculation of their uncertainties based on the statistical properties of 
+an estimator of the spectral density. BSDA faces challenges such as high-dimensional op-
+timization, ill-conditioning when dealing with high SNR measurements, and diﬃculties 
+in handling multiple measurement setups. To address these issues, Yan and Katafygiotis 
+[52–54] propose another two-stage fast BSDA for ambient modal analysis. Focusing on the 
+cases of separated modes and closely spaced modes, they develop a variable separation 
+technique that cleverly decouples the modal parameters to be identiﬁed into spatial vari-
+ables (e.g., mode shape components) and spectrum variables (e.g., natural frequencies, 
+damping ratios, PSD matrix of modal forces, and PSD of the prediction error). In the ﬁrst 
+stage, the spectrum variables are identiﬁed and their uncertainties are computed by a ‘fast 
+Bayesian spectral trace approach (FBSTA)’ using only the sum of the auto-spectral densi-
+ties of all measured DOFs; in the second stage, the spatial variables and their uncertainties 
+are  extracted  by  a  ‘fast  Bayesian  spectral  density  approach  (FBSDA)’  using  the  infor-
+mation of the entire spectral density matrix. 
+Speciﬁcally, in the general BSDA formulation, the likelihood function of the modal 
+parameters  λ    is  derived  from  the  summed  spectral  density  matrix 
+
+
+k
+
+
+sum
+sum
+S
+S
+   (
+
+Buildings 2026, 16, 1807 
+7  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+1
+2
+,
+,
+k
+k
+k
+
+
+) over frequency band 
+1
+2
+,
+k
+f k
+f
+
+
+
+
+. Based on Bayes’ theorem, the poste-
+rior distribution is proportional to the following likelihood function: 
+
+
+
+
+
+
+
+
+2
+1
+1
+0
+exp
+s
+k
+n
+k
+k
+k
+k k
+p
+κ
+tr
+
+
+
+
+
+
+
+sum
+sum
+S
+λ
+C
+λ
+C
+λ S
+ 
+(8) 
+where 
+0
+κ   is a normalizing constant; 
+sn   is the number of DOFs of the Wishart distribu-
+tion; modal parameters  λ   include natural frequency 
+sf , damping ratio 
+sς , PSD of the 
+modal excitation 
+fs
+S , PSD of the prediction error 
+μs
+s , and mode shape 
+s
+ψ ; 
+
+k
+C
+λ   is the 
+covariance matrix. Assuming a non-informative prior, it is convenient to write Equation 
+(8) in terms of the negative logarithm of the likelihood function (NLLF) as 
+
+
+
+
+
+2
+2
+1
+1
+1
+ln
+k
+k
+BSDA
+s
+k
+k
+k
+k k
+k k
+L
+n
+tr
+
+
+
+
+
+
+
+sum
+λ
+C
+λ
+C
+λ S
+ 
+(9) 
+which must be minimized to identify the most probable modal parameters. However, 
+solving this high-dimensional problem directly is computationally prohibitive. 
+For the general Bayesian spectral trace approach (BSTA), the corresponding NLLF is 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2
+2
+1
+1
+2
+2
+2
+1
+ln 2
+2
+2
+k
+k
+k
+s
+k
+BSTA
+s
+k
+k k
+k k
+s
+k
+tr
+n tr
+L
+πn tr
+n tr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sum
+S
+C
+λ
+λ
+C
+λ
+C
+λ
+ 
+(10) 
+where 
+
+  represents the real part of one complex function. 
+The spectrum variables and spatial variables can be decoupled completely after rear-
+ranging Equation (10) [52]. 
+In the ﬁrst stage of the two-stage FBSDA, the spectrum variables are estimated using 
+FBSTA, which exploits the trace statistic of 
+k
+sum
+S
+. For the case of separated modes, the 
+NLLF of FBSTA is given by 
+
+
+
+
+
+
+
+
+
+2
+2
+1
+1
+2
+2
+2
+2
+2
+1
+ln 2
+2
+2
+2
+2
+k
+k
+k
+s
+k
+o
+s
+FBSTA
+s
+k
+s
+k
+o
+s
+k k
+k k
+s
+k
+s
+k
+o
+s
+tr
+n
+Λ
+n s
+L
+πn
+Λ
+s Λ
+n s
+n
+Λ
+s Λ
+n s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sum
+S
+λ
+μ
+μ
+μ
+μ
+μ
+ 
+(11) 
+where 
+
+
+
+
+1
+2
+2
+2
+1
+2
+k
+fs
+sk
+sk
+s
+Λ
+S
+β
+β ς
+
+
+
+
+
+
+
+
+
+
+   with 
+sk
+s
+k
+β
+f
+f
+
+ ; 
+on    denotes  the  number  of 
+measured DOFs. 
+For the case of closely spaced modes, the NLLF of FBSTA is given by 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2
+1
+2
+1
+2
+2
+2
+2
+2
+1
+ln 2
+2
+2
+2
+2
+k
+FBSTA
+s
+k
+k
+o
+k k
+k
+k
+s
+k
+o
+k k
+s
+k
+k
+o
+L
+πn
+tr
+s tr
+n s
+tr
+n
+tr
+n s
+n
+tr
+s tr
+n s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sum
+λ
+Θ
+Θ
+S
+Θ
+Θ
+Θ
+μ
+μ
+μ
+μ
+μ
+ 
+(12)
+where 
+T
+k
+k
+
+Θ
+αΛ α   with  α   being a condensed set of coordinates and 
+k
+Λ   being the 
+theoretical PSD matrix of the modal response; 
+μs   denotes the PSD of the prediction error 
+with 
+m
+n   modes existing within the speciﬁed frequency band. 
+The NLLF of BSTA corresponding to Equation (10) is the foundation of Equations 
+(11) and (12), which are central to the ﬁrst stage of obtaining the spectrum variables. 
+In  the  second  stage  of  the  two-stage  FBSDA,  the  spatial  variables  are  extracted 
+through FBSDA. For the case of separated modes, the NLLF of FBSDA is given by 
+
+Buildings 2026, 16, 1807 
+8  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+
+
+
+
+
+
+
+
+
+
+
+2
+1
+2
+2
+1
+1
+1
+1
+1 ln
+ln
+1
+k
+FBSDA
+s
+f
+o
+s
+s
+s
+k
+k k
+k
+k
+T
+s
+k
+s
+k
+k
+k k
+k k
+L
+n n
+n
+s
+n
+s
+s
+tr
+s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sum
+sum
+s
+s
+λ
+S
+ψ
+S
+ψ
+μ
+μ
+μ
+μ
+Λ
+Λ
+ 
+(13) 
+where 
+2
+1
+1
+fn
+k
+k
+
+
+
+. 
+For the case of closely spaced modes, the NLLF of FBSDA is given by 
+
+
+
+
+
+
+
+2
+2
+1
+1
+2
+1
+1
+1
+1
+1
+1
+ln
+ln
+s
+s
+m
+n
+k
+k
+FBSDA
+s
+f
+o
+m
+s
+k
+j
+j
+k k
+j
+k k
+n
+k
+T
+j
+n
+k
+j
+j
+k k
+L
+n n
+n
+n
+s
+n
+s
+k
+k
+s
+k
+s
+k
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+λ
+E
+Y
+Y
+Y
+B I
+E
+B Y
+μ
+μ
+μ
+μ
+ 
+(14) 
+where 
+min
+,
+m
+m
+o
+n
+n
+n
+
+
+
+
+ ; 
+m
+k
+k
+μ n
+s
+
+
+
+E
+Θ
+I
+ ; 
+
+j k
+Y
+  denotes the FFT of the jth measured 
+response at frequency 
+kf ; 
+
+B   denotes the mode shape basis. 
+The NLLF of BSDA corresponding to Equation (9) is the foundation of Equations (13) 
+and (14), which are central to the second stage of obtaining the spatial variables. 
+For the Bayesian FFT approach, by using the statistical properties of the FFT, this 
+method can not only obtain the optimal values of the updated modal parameters but also 
+calculate their uncertainties from the joint probability distribution. However, the diﬃculty 
+of  computation  seriously  hinders  its  further  development  and  application,  even  for  a 
+moderate number of measured DOFs [56]. In order to address the problems faced in the 
+Bayesian FFT approach, Au [56–58] proposes a fast Bayesian FFT approach for ambient 
+modal identiﬁcation. Focusing on well-separated modes, Au transforms the parameter 
+identiﬁcation problem into an objective function containing only four parameters to be 
+optimized (i.e., natural frequencies, damping ratios, PSD matrix of modal forces, and PSD 
+of the prediction error). This method achieves analytical computation of the posterior co-
+variance matrix, thereby enhancing computational speed and stability. It is worth noting 
+that an associated analysis shows that FBSDA can be considered as a linear superposition 
+of a fast Bayesian FFT approach incorporating multiple sets of measurements. 
+Without  loss  of  generality,  let 
+
+1
+0
+N
+j
+j
+
+
+
+D
+x
+  denote  the  measured  acceleration  re-
+sponse datasets obtained from a structure with n DOFs, modeled as a stationary stochastic 
+process. Its scaled FFT 
+k
+  at frequency 
+kf
+k N t
+
+  (Hz) is given by the following: 
+1
+2
+0
+2
+N
+π jk N
+k
+j
+j
+t N
+e
+
+
+
+
+
+
+x
+i
+
+ 
+(15) 
+where 
+2
+1
+
+i
+; N is the number of data points per channel; 
+t
+  is the sampling interval. 
+Typically, the FFTs  
+
+k
+
+  are obtained for identifying the modal properties within a se-
+lected frequency band, which should cover the resonance band of the modes of interest. 
+Consider the selected frequency band dominated by m contributing modes with nat-
+ural frequencies  
+1
+m
+i
+i
+f
+  (Hz) and damping ratios  
+1
+m
+i
+i
+ζ
+. The scaled FFT 
+k
+  is modeled 
+as within the band 
+1
+m
+k
+i
+ik
+k
+i
+η
+
+
+Φ
+ε
+
+=
++
+ 
+(16) 
+where 
+i
+Φ   is the mode shape of the ith mode in the selected band; 
+kε   is the scaled FFT 
+of prediction error, which is assumed to be independent and identically distributed (i.i.d.) 
+among diﬀerent DOFs with a constant PSD 
+eS   in the resonance band; 
+ik
+η  is the scaled 
+
+Buildings 2026, 16, 1807 
+9  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+FFT of the ith modal acceleration, which satisﬁes the vibration equation of the correspond-
+ing structural system in the frequency domain as 
+2
+2
+ik
+i
+i
+ik
+i
+ik
+ik
+η
+ζ ω η
+ω η
+p
+
+
+
+
+
+ 
+(17) 
+where 
+i
+ω   is the ith angular frequency (
+2
+i
+i
+ω
+πf
+
+, rad/s); 
+ik
+p   is the scaled FFT of the ith 
+modal force, which is modeled as a stationary stochastic process with a constant PSD in 
+the resonance band. It is worth noting that the Gaussian assumption in Bayesian OMA is 
+best viewed as a practically useful approximation for the prediction error or scaled FFTs 
+within a selected resonance band, especially for long data records, rather than as a uni-
+versally exact description of real SHM data [14,56]. When clear non-Gaussian eﬀects are 
+present, the likelihood or error model should be adapted accordingly. 
+Substituting 
+2
+ik
+k
+ik
+k
+ik
+η
+ω η
+ω η
+
+
+i
+
+
+ , 
+ik
+i
+k
+β
+ω ω
+
+  (frequency  ratio) into  Equation (17) 
+and rearranging yields 
+
+
+1
+2
+1
+2
+ik
+ik
+i
+ik
+ik
+η
+β
+ζ β
+p
+
+
+
+i
+
+ 
+(18) 
+Substituting Equation (18) into Equation (16) gives the mean and covariance matrices 
+of 
+k
+: 
+
+
+k
+E
+0
+
+ 
+(19) 
+
+
+T
+T
+k
+k
+k
+e n
+k
+E
+S
+
+
+
+ΦH Φ
+I
+E
+
+ 
+(20) 
+where 
+1
+2
+,
+,
+,
+m
+
+
+
+
+Φ
+Φ Φ
+Φ
+
+; 
+k
+H   is the theoretical PSD matrix of modal acceleration: 
+
+
+
+
+T
+k
+k
+k
+diag
+diag
+
+H
+h
+S
+h
+ 
+(21) 
+where  S   is the PSD matrix of modal forces; 
+k
+h   is the vector of modal frequency re-
+sponse function whose ith entry is given by 
+
+
+1
+2
+1
+2
+ik
+ik
+i
+ik
+h
+β
+ζ β
+
+
+
+i
+ 
+(22) 
+In the context of Bayesian modal identiﬁcation, for suﬃcient data, the prior 
+
+p θ   is 
+slowly varying compared to the MLF  
+
+p D θ . As a result, the posterior PDF  
+
+p θ D   can 
+be considered to be proportional to the MLF: 
+
+
+
+
+
+
+
+
+
+
+
+
+k
+k
+p
+p
+p
+p
+
+
+
+θ
+θ D
+D θ
+θ
+
+
+ 
+(23) 
+For multiple modes, the PDF of  
+
+k
+
+  given modal parameters  θ   can be denoted 
+as 
+
+
+
+
+
+
+
+
+
+
+1
+1
+0,
+det
+exp
+f
+nN
+T
+k
+k
+k
+k
+k
+k
+k
+k
+k
+p
+p
+π
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+D θ
+θ
+E
+E
+E
+
+
+
+
+ 
+(24) 
+where 
+f
+N   denotes the number of FFT points in the selected band;  θ   comprise  
+1
+m
+i
+i
+f
+, 
+
+1
+m
+i
+i
+ζ
+,  S , 
+eS , and  Φ . Without loss of generality, assuming a non-informative prior, the 
+parameters  θ   would be obtained by maximizing the MLF  
+
+p D θ , theoretically equiv-
+alent to minimizing the NLLF 
+
+Buildings 2026, 16, 1807 
+10  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+
+
+
+1
+ln
+ln det
+T
+f
+k
+k
+k
+k
+k
+k
+L
+nN
+π
+
+
+
+
+
+θ
+E
+E
++
+
+ 
+(25) 
+3. Identiﬁcation Algorithms 
+Recognizing the superiority of Bayesian inference in dealing with modal and system 
+identiﬁcation, methods for various scenarios have been continuously reﬁned. Speciﬁcally, 
+Section 3.1 introduces the work in terms of setup data classiﬁcation, Section 3.2 introduces 
+the work in terms of mode problem classiﬁcation, Section 3.3 presents the improved ac-
+celerating algorithm utilizing the Fisher information matrix (FIM), Section 3.4 presents the 
+modal identiﬁcation methods considering the environmental eﬀects, and Section 3.5 sum-
+marizes  the  main  computational  issues  associated  with  these  representative  Bayesian 
+OMA methods. Table 2 highlights that the algorithmic developments in Section 3 extend 
+the fast Bayesian FFT approach to address increasing levels of data, mode, computational, 
+and operational complexity. It also lists the key features and representative studies for the 
+corresponding identiﬁcation algorithms. 
+Table 2. Classiﬁcation of fast Bayesian FFT-based identiﬁcation algorithms in Bayesian OMA. 
+Problem Concern 
+Method Category 
+Key Features 
+Representative Studies 
+Measurement setup 
+Single setup data 
+Fully synchronized data 
+[14] 
+Multi-setup data 
+Global mode shape assembly 
+[14] 
+Asynchronous data 
+Imperfect coherence modeling 
+[76–79] 
+Mode problem 
+Single mode 
+Well-separated modes 
+[56] 
+Multi-mode 
+Closely spaced modes 
+[57,58,80] 
+Multi-setup 
+Global mode shape identiﬁcation 
+[81–85] 
+Computational eﬃciency 
+Accelerating algorithm 
+Newton-type iterations, FIM 
+[86] 
+Operational and environmen-
+tal variations 
+Attention to environmental 
+eﬀects 
+Physics-data fusion model, GP 
+[87–89] 
+3.1. Classiﬁcation for Setup Data 
+This section introduces the corresponding Bayesian formulations for the representa-
+tive data conﬁgurations using a fast Bayesian FFT approach. Speciﬁcally, as shown in Fig-
+ure 2, it covers synchronous data from a single setup, data acquired from multiple setups, 
+and asynchronous data from a single setup [14]. For each conﬁguration, Figure 2 presents 
+a schematic sensor arrangement, the corresponding core formulation, and its main char-
+acteristics. This comparison helps clarify how diﬀerences in measurement conﬁguration 
+inﬂuence the Bayesian modeling and subsequent modal identiﬁcation procedure. 
+
+Buildings 2026, 16, 1807 
+11  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+ 
+ 
+Figure 2. Comparative diagram of diﬀerent data conﬁgurations using a fast Bayesian FFT ap-
+proach. 
+3.1.1. Single Setup Data 
+For the case of single setup data, it assumes that the data at diﬀerent DOFs are meas-
+ured in a synchronous manner during the same time span. 
+Let  
+1
+0
+N
+j
+j
+
+
+x
+  denote ambient vibration data obtained from a structure with n DOFs, 
+modeled as a stationary stochastic process. Its scaled FFT 
+k
+  at frequency 
+kf
+k N t
+
+ 
+(Hz) is given by: 
+1
+2
+0
+2
+N
+π jk N
+k
+j
+j
+t N
+e
+
+
+
+
+
+
+x
+i
+
+ 
+(26) 
+For the modal parameter set  θ , applying Bayes’ theorem yields the posterior PDF 
+of  θ   given  
+
+k
+
+  as 
+
+
+
+
+
+
+
+
+
+
+
+
+1
+k
+k
+k
+p
+p
+p
+p
+
+
+θ
+θ
+θ
+
+
+
+ 
+(27) 
+The MLF is the joint PDF of  
+
+k
+
+  given modal parameter set  θ . Assuming a long 
+data duration,  
+
+k
+
+  are independent at diﬀerent frequencies and follow a (circularly 
+symmetric) complex Gaussian distribution. The MLF is then given by 
+
+
+
+
+
+
+
+
+
+
+1
+1
+exp
+n
+k
+k
+k
+k
+k
+k
+k
+k
+p
+p
+π
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+θ
+θ
+E
+θ
+E
+θ
+
+
+
+
+ 
+(28) 
+where 
+
+
+
+k
+k
+k
+E
+
+
+E
+θ
+θ
+
+  is the theoretical PSD matrix. 
+Suppose the selected band is dominated by m vibration modes, the scaled FFT 
+k
+  is 
+then modeled as within the band 
+1
+m
+k
+i
+ik
+ik
+k
+i
+h p
+
+φ
+ε
+
++
+ 
+(29) 
+where 
+i
+φ   is the partial mode shape of mode i; 
+ik
+h   is the transfer function: 
+
+Buildings 2026, 16, 1807 
+12  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+
+
+q
+f
+2
+0
+acceleration data
+2
+  q
+1   
+velocity data
+1
+2
+2
+displacement data
+k
+ik
+ik
+i
+ik
+π
+β
+ζ β
+
+
+
+
+
+
+
+
+i
+i
+h
+ 
+(30) 
+Consequently, 
+
+1
+1
+m
+m
+T
+T
+k
+ik
+jk
+ij
+i
+j
+e
+n
+k
+e
+n
+i
+j
+h h S
+S
+S
+
+
+
+
+
+
+
+
+E
+θ
+φ φ
+I
+ΦH Φ
+I  
+(31) 
+where  the  partial  mode  shape  matrix 
+1
+2
+,
+,...,
+m
+
+
+
+
+Φ
+φ φ
+φ
+ ;  the  (i,  j)  entry  of 
+k
+H    is 
+ik
+jk
+ij
+h h S
+
+  and 
+ij
+S   is the modal force cross PSD. 
+For convenience in analysis and computation, the posterior PDF of  θ   can be ex-
+pressed as 
+
+
+
+
+
+
+
+
+
+
+
+exp
+k
+k
+p
+p
+L
+
+
+
+θ
+θ
+θ
+
+
+ 
+(32) 
+where 
+
+L θ   is the NLLF: 
+
+
+
+1
+ln
+ln
+f
+k
+k
+k
+k
+k
+k
+L
+nN
+π
+
+
+
+
+
+
+θ
+E
+θ
+E
+θ
++
+
+ 
+(33) 
+3.1.2. Multi-Setup Data 
+For the case of multi-setup data, such a strategy of performing multiple setups aims 
+to identify a mode shape with more DOFs than the available number of synchronous data 
+channels. Each setup covers diﬀerent parts of the structure while sharing some common 
+reference DOFs. 
+Let 
+
+
+1
+i n
+φ
+  be the ‘global mode shape’ of the ith mode covering all DOFs of inter-
+est. Assuming that there are q setups, each one covers a possibly diﬀerent set of DOFs. For 
+setup r (r = 1, 2, …, q), it covers 
+rn   measured DOFs in the setup. Considering that some 
+DOFs are measured in more than one setup, 
+1
+q
+r
+r
+n
+n
+
+
+. In multi-setup problems, it is 
+assumed that the data measured within the same setup are synchronized, while those 
+measured across diﬀerent setups are not. This means that, except for mode shapes, the 
+natural  frequencies,  damping  ratios,  ambient  excitations,  and  sensor  noise  properties 
+across diﬀerent setups need not be the same. 
+Let 
+
+
+
+r
+k
+
+   be  the  scaled  FFTs  of  ambient  vibration  data 
+
+
+
+1
+0
+r
+N
+r
+j
+j
+
+
+x
+   in  setup  r, 
+
+
+
+
+
+
+
+
+
+
+
+1
+2
+,
+,
+,
+q
+k
+k
+k
+
+D
+
+
+
+
+  be the full measured data. Assuming that the prediction 
+errors and modal forces in diﬀerent setups are independent, and given a uniform prior, 
+the posterior PDF  
+
+p θ D   can be expressed as follows: 
+
+
+
+
+
+
+
+1
+q
+r
+k
+r
+p
+p
+
+
+θ D
+θ
+
+ 
+(34) 
+Assuming long data duration for each setup, 
+
+
+
+r
+k
+
+  are i.i.d. complex Gaussian, 
+whose corresponding PDF is given by 
+
+
+
+
+
+
+
+
+
+
+1
+1
+exp
+r
+r
+f
+n N
+r
+r
+r
+r
+r
+k
+k
+k
+k
+k
+k
+k
+p
+π
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+θ
+E
+E
+
+
+
+ 
+(35) 
+where 
+
+Buildings 2026, 16, 1807 
+13  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+
+
+
+r
+r
+r
+r
+T
+k
+r
+k
+r
+e
+n
+S
+
+
+E
+Φ H
+Φ
+I
+ 
+(36) 
+where 
+r
+Φ   denotes the local mode shape matrix; 
+
+r
+k
+H
+  denotes the Hermitian matrix. 
+Accordingly, the NLLF 
+
+L θ   is given by 
+
+
+
+1
+q
+r
+r
+r
+L
+L
+
+
+θ
+θ
+ 
+(37) 
+where 
+
+
+
+
+
+
+
+1
+ln
+ln
+r
+r
+r
+r
+r
+r
+r
+r
+f
+k
+k
+k
+k
+k
+k
+L
+n N
+π
+
+
+
+
+
+
+θ
+E
+E
++
+
+
+ 
+(38) 
+where 
+
+
+
+
+
+
+
+
+1
+1
+,
+,
+,
+,
+m
+m
+r
+r
+r
+r
+r
+i
+i
+e
+r
+i
+i
+f
+ζ
+S
+
+
+
+
+
+
+
+
+θ
+S
+Φ
+  for setup r. 
+3.1.3. Asynchronous Data 
+For the case of asynchronous data, the measured data are not fully synchronized, in 
+contrast to single-setup data. Asynchronous data is intrinsically a non-stationary process, 
+making it generally diﬃcult to model. Zhu and Au [76–79] propose an empirical approach 
+to model this as a stationary process with imperfect coherence in the modal response. 
+Assuming that the whole measurement array comprises 
+gq   groups, synchroniza-
+tion is maintained only within each group of data channels. Let 
+
+
+1
+i n
+φ
+  be the ‘global 
+mode shape’ of the ith mode covering all DOFs of interest; 
+ir
+u
+  be a part of 
+i
+φ   measured 
+by the rth group with 
+rn   DOFs, i.e., 
+1
+2
+,
+,
+,
+g
+T
+i
+i
+i
+iq
+
+
+
+
+φ = u
+u
+u
+
+; 
+
+r
+ik
+ξ
+  be the scaled FFT of 
+the ith modal response for Group r. Accordingly, the scaled FFT 
+k
+  of asynchronous data 
+is modeled within the band 
+
+
+
+
+1
+2
+1
+2
+1
+1
+,
+,
+,
+g
+g
+T
+m
+m
+q
+k
+i
+ik
+i
+ik
+iq
+ik
+k
+i
+ik
+k
+i
+i
+ξ
+ξ
+ξ
+
+
+
+
+
+
+
+
+
+
+
+
+u
+u
+u
+ε
+u ξ
+ε
+
+
++
++
+ 
+(39) 
+Imperfect synchronization between the 
+gq   groups is modeled by 
+
+
+
+
+r
+s
+ik
+jk
+ik
+jk
+ij
+ijrs
+E ξ ξ
+h h S χ
+
+
+θ
+ 
+(40) 
+where 
+ijrs
+χ
+  is a coherence factor. Assuming that 
+ijrs
+χ
+  and 
+ij
+S   are constant within the se-
+lected frequency band, i.e., they do not depend on the frequency index k. 
+Correspondingly, the theoretical PSD matrix 
+
+k
+E
+θ   is given by 
+
+
+
+1
+1
+1
+g
+r
+m
+m
+q
+T
+k
+ik
+jk
+ij
+i
+ij
+j
+er
+n
+r
+i
+j
+h h S
+diag
+S
+
+
+
+
+
+
+
+
+
+
+
+
+
+E
+θ
+u χ u
+I
+ 
+(41) 
+where 
+ij
+χ   is a 
+g
+g
+q
+q
+
+  matrix with the (r, s) entry 
+ijrs
+χ
+; 
+
+
+1
+g
+r
+q
+er
+n
+r
+diag
+S
+
+
+
+
+
+
+
+I
+  is a block-diag-
+onal matrix formed by  
+
+1
+g
+r
+q
+er
+n
+r
+S
+
+I
+. 
+Under a given assumption [14,78],  
+
+k
+
+  are still complex, Gaussian, and independ-
+ent at diﬀerent frequencies for long data. Given a uniform prior, the posterior PDF of  θ  
+is still given by 
+
+Buildings 2026, 16, 1807 
+14  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+
+
+
+
+
+
+
+
+
+
+1
+1
+exp
+f
+nN
+k
+k
+k
+k
+k
+k
+k
+k
+p
+p
+π
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+θ
+θ
+E
+θ
+E
+θ
+
+
+
+
+ 
+(42) 
+Accordingly, the NLLF 
+
+L θ   is given by 
+
+
+
+1
+ln
+ln
+f
+k
+k
+k
+k
+k
+k
+L
+nN
+π
+
+
+
+
+
+
+θ
+E
+θ
+E
+θ
++
+
+ 
+(43) 
+where 
+
+
+
+
+
+
+
+
+
+
+1
+1
+1
+1
+1
+,
+, ,
+,
+,
+g
+m
+m
+m
+q
+m
+i
+i
+er
+i
+ij
+i
+i
+r
+i
+i
+f
+ζ
+
+
+
+
+
+
+θ
+S
+φ
+χ
+S
+. 
+3.2. Classiﬁcation for Mode Problem 
+This section introduces the representative computational scenarios encountered in 
+determining the posterior statistics of modal parameters under Bayesian OMA. These spe-
+ciﬁc issues are compared in Figure 3, including the single-mode, multi-mode, and multi-
+setup cases [14]. For each case, Figure 3 provides a schematic illustration, the correspond-
+ing core expression, the circumstances under which the case typically arises, and the pri-
+mary computational focus. This comparison highlights why diﬀerent inference strategies 
+are required when the identiﬁcation problem involves well-separated modes, multiple 
+(possibly close) modes, or data collected from multiple setups. 
+ 
+Figure 3. Comparative diagram of diﬀerent mode problems using a fast Bayesian FFT approach. 
+ 
+ 
+
+Buildings 2026, 16, 1807 
+15  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+3.2.1. Single-Mode Problem 
+In the single-mode problem, the eﬃcient methods for calculating the posterior MPV 
+and covariance matrix of modal parameters in Bayesian OMA with data collected in a 
+single setup are discussed. It is assumed here that the mode of interest is well-separated 
+from other modes, thus dominating the selected frequency band. A detailed presentation 
+of the algorithm can be found in [56]. 
+Recall the problem context from Section 3.1.1. Assuming a single mode in the selected 
+frequency band, 
+k
+E   of Equation (31) can be given by 
+T
+k
+k
+e n
+SD
+S
+
+
+E
+φφ
+I  
+(44) 
+where 
+
+
+
+
+
+
+f
+2q
+2
+2
+2
+0
+acceleration data
+2
+  q
+1  
+velocity data
+1
+2
+2 displacement data
+k
+k
+k
+k
+π
+D
+β
+ζβ
+
+
+
+
+
+
+
+
+
+ 
+(45) 
+Through ﬂexible processing [56], the determinant and inverse of 
+k
+E   is given by 
+
+
+1
+n
+k
+k
+e
+e
+SD
+S
+S 
+
+
+E
+ 
+(46) 
+
+
+
+
+1
+1
+1
+1 1
+T
+k
+e
+n
+e
+e
+k
+S
+S
+S
+SD
+
+
+
+
+
+
+
+E
+I
+φφ  
+(47) 
+Substituting Equations (46) and (47) into the NLLF 
+
+L θ   yields 
+
+
+
+
+
+
+1
+ln
+ln
+1
+ln
+T
+f
+k
+e
+f
+e
+e
+k
+L
+nN
+π
+SD
+S
+n
+N
+S
+S
+d
+
+
+
+
+
+
+
+
+θ
+φ Aφ
++
+ 
+(48) 
+where 
+
+
+
+
+1
+1
+e
+k
+k
+k
+S SD
+
+
+
+
+A
+D  
+(49) 
+
+
+Re
+      
+k
+k
+k
+k
+k
+k
+d
+
+
+
+
+D
+
+ 
+(50) 
+Only the term 
+T
+φ Aφ , in Equation (48), is related to the mode shape  φ   at this time. 
+Minimizing 
+
+L θ   with respect to  φ   under norm constraint 
+1
+T
+
+φ φ
+, it follows from 
+matrix theory that the MPV of  φ   corresponds to the eigenvector associated with the 
+largest eigenvalue in the matrix  A . The largest eigenvalue of  A   is positive since 
+k
+D   is 
+positive deﬁnite. Then, the MPV of the remaining four parameters  
+
+,  ,  , 
+e
+f
+ζ S S
+  can be 
+obtained by minimizing the following equation: 
+
+
+
+
+
+
+
+1
+ˆ
+,  ,  , 
+ln
+ln
+1
+ln
+e
+f
+k
+e
+f
+e
+e
+k
+L f
+ζ S S
+nN
+π
+SD
+S
+n
+N
+S
+S
+d
+
+
+
+
+
+
+
+
++
+λ  
+(51) 
+where  ˆ
+ˆ
+ˆ
+T
+φ Aφ
+λ =
+  is the largest eigenvalue of  A , and  ˆφ  denotes the MPV of  φ . 
+3.2.2. Multi-Mode Problem 
+In a multi-mode problem, the eﬃcient methods for calculating the posterior MPV 
+and covariance matrix of modal parameters in Bayesian OMA with data collected in a 
+single setup are discussed, and the general case of multiple (possibly close) modes in the 
+selected  frequency  band  is  considered.  Detailed  presentation  of  the  algorithm  can  be 
+found in [57,58]. But such an algorithm may converge slowly or even fail under some 
+
+Buildings 2026, 16, 1807 
+16  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+challenging conditions. It is also cumbersome for computer implementation. To address 
+these issues, Li and Au [80] propose an expectation–maximization (EM) algorithm that 
+treats the modal response as a latent variable. 
+Recall the problem context from Section 3.1.1. Through ﬂexible processing [14,57], 
+k
+E   can be given by 
+T
+k
+k
+e n m
+S
+
+
+
+
+
+
+
+
+
+
+E
+0
+E
+B
+B
+0
+I
+ 
+(52) 
+where 
+T
+k
+k
+e m
+S
+
+
+
+E
+αH α
+I   and the detailed explanation of 
+,
+
+
+
+
+
+
+
+B
+B B
+=
+  can be found in 
+[57]. 
+Accordingly, the determinant and inverse of 
+k
+E   can be given by 
+T
+n m
+k
+k
+e n m
+e
+k
+S
+S
+
+
+
+
+
+
+
+
+E
+B E
+I
+B
+E  
+(53) 
+
+
+1
+1
+1
+1
+T
+k
+e
+n
+e
+m
+e
+k
+S
+S
+S
+
+
+
+
+
+
+
+
+
+
+
+E
+I
+B I
+E
+B  
+(54) 
+Substituting Equations (53) and (54) into the NLLF 
+
+L θ   yields 
+
+
+
+
+
+1
+1
+1
+ln
+ln
+ln
+T
+f
+f
+e
+e
+k
+k
+k
+e
+k
+m
+e
+k
+k
+k
+k
+k
+L
+nN
+π
+n
+m N
+S
+S
+S
+S
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+θ
+E
+B I
+E
+B
++
+
+
+ 
+(55) 
+For the modal parameter set 
+
+
+
+
+
+
+1
+1
+1
+,
+, ,
+,
+m
+m
+m
+i
+i
+e
+i
+i
+i
+i
+f
+ζ
+
+
+
+
+θ
+S
+φ
+S
+, after determining the 
+most probable mode shape basis [14], the remaining parameters for the given 
+
+B   com-
+prise  
+
+
+
+1
+1
+,
+,
+, ,
+m
+m
+i
+i
+e
+i
+i
+f
+ζ
+
+
+α S S
+. The quadratic term of the NLLF in Equation (55) is then 
+regrouped as 
+
+
+
+
+
+1
+1
+1
+1
+sensitive to 
+sensitive to 
+,
+, ,
+ln
+ln
+ln
+f
+e
+e
+k
+k
+k
+k
+k
+k
+k
+k
+f
+k
+k
+k
+k
+m
+m
+e
+i
+i
+i
+i
+S
+f
+ζ
+L
+n
+m N
+S
+S
+nN
+π
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+α S
+θ
+E
+E
+
+
+
+
+
+
+ 
+(56) 
+where 
+T
+k
+k
+
+
+B
+
+. 
+3.2.3. Multi-Setup Problem 
+In a multi-setup problem, the eﬃcient methods for Bayesian OMA using data from 
+multiple setups performed in diﬀerent time periods and possibly covering diﬀerent sets 
+of DOFs are discussed. Here, an algorithm is considered that utilizes data from multiple 
+setups to identify global mode shape, following a Bayesian approach and assuming a sin-
+gle mode within the selected frequency band. More details can be found in [81–85]. 
+Recall the problem context from Section 3.1.2. Considering a single mode in the se-
+lected frequency band, 
+
+r
+k
+E
+  of Equation (36) can be rewritten as through ﬂexible pro-
+cessing [14]: 
+
+
+
+
+r
+r
+r
+r
+r
+T
+k
+k
+r
+r
+e
+n
+S
+D
+S
+
+
+
+E
+υ υ
+I
+ 
+(57) 
+where 
+r
+S
+  is the modal force PSD of Setup r; 
+
+r
+k
+D
+  is the dynamic ampliﬁcation factor; 
+rυ   is the normalized counterpart of the local mode shape 
+rυ   in Setup r, and 
+r
+r
+
+υ
+L φ  
+with 
+r
+L   being a selection matrix and  φ   being the global mode shape. 
+Accordingly, the determinant and inverse of 
+
+r
+k
+E
+  can be given by 
+
+Buildings 2026, 16, 1807 
+17  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+
+
+
+
+
+
+
+
+1
+r
+r
+r
+r
+r
+r
+n
+k
+k
+e
+e
+S
+D
+S
+S
+
+
+
+
+E
+ 
+(58) 
+
+
+
+
+
+
+
+
+
+1
+1
+1
+1
+r
+r
+r
+r
+r
+r
+T
+k
+e
+n
+e
+k
+r
+r
+S
+S
+S
+D
+
+
+
+
+
+
+
+
+
+
+
+
+E
+I
+υ υ
+ 
+(59) 
+Substituting Equations (58) and (59) into the NLLF 
+rL   yields 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1
+ln
+ln
+1
+ln
+r
+r
+r
+r
+r
+r
+r
+r
+r
+T
+r
+r
+f
+k
+e
+r
+f
+e
+e
+r
+r
+k
+L
+n N
+π
+S
+D
+S
+n
+N
+S
+S
+d
+
+
+
+
+
+
+
+
+
+υ A
+υ
++
+ 
+(60) 
+where 
+
+
+
+
+
+
+
+
+
+1
+1
+r
+r
+r
+r
+r
+e
+k
+k
+k
+S
+S
+D
+
+
+
+
+
+A
+D
+ 
+(61) 
+
+
+
+
+
+
+
+
+Re
+      
+r
+r
+r
+r
+r
+r
+k
+k
+k
+k
+k
+k
+d
+
+
+
+
+D
+
+
+
+
+ 
+(62) 
+Substituting 
+r
+r
+r
+
+υ
+L φ
+υ
+  and Equation (60) into the NLLF  L   yields 
+
+
+
+
+
+
+
+
+
+
+
+
+1
+1
+1
+1
+1
+ln
+1
+ln
+ln
+q
+q
+q
+q
+r
+r
+r
+r
+r
+r
+r
+r
+T
+r
+f
+r
+f
+e
+e
+k
+e
+r
+r
+r
+r
+k
+L
+π
+n N
+n
+N
+S
+S
+d
+S
+D
+S
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+φ Aφ  
+(63) 
+where 
+
+
+2
+1
+1
+q
+r
+r
+T
+r
+e
+r
+r
+r
+S
+
+
+
+
+A
+υ
+L A L  
+(64) 
+3.3. Accelerating Algorithm 
+Although the fast Bayesian FFT approach has substantially reduced the computa-
+tional burden of Bayesian OMA, its performance may deteriorate in the presence of very 
+closely spaced modes or highly coherent modal forces, where the NLLF becomes strongly 
+non-convex, and the classical ﬁxed-point updates can require many iterations or even fail 
+to converge. To address this limitation, after understanding the mathematical structure of 
+FIM for modal parameters, Zhu et al. [86] propose an eﬃcient method based on Newton-
+type iterations that enhances computational eﬃciency and convergence robustness within 
+the Bayesian OMA framework. 
+The core of this method lies in the adoption of the Fisher scoring approach using 
+asymptotic FIM. According to Newton’s method [86,90], the parameter update is given by 
+1
+i
+i
+i
+
+
+
+θ
+H g , where 
+i
+H   and 
+ig   denote the Hessian matrix and gradient of NLLF at the 
+current iteration point, respectively. However, directly using the Hessian matrix may en-
+counter numerical instability issues. The key choice in the Fisher scoring approach is to 
+use the FIM 
+iJ   as an expected substitute for the Hessian, thereby ensuring that the up-
+date direction always points to a descending direction. Then, the move is 
+1
+i
+i
+i
+
+
+
+θ
+J g  
+(65) 
+where 
+2
+i
+i
+E
+L
+
+
+
+
+
+
+
+θ
+θ θ
+J
+. 
+Based on an analytical investigation of the eigenvalues and eigenvectors of asymp-
+totic FIM [86,91], the iteration move is decomposed into two characteristic principal direc-
+tions, i.e., Type 1 move (mode shape update) and Type 2 move (global parameter update). 
+Type 1 move updates only the mode shapes and is orthogonal to the subspace spanned 
+by the current mode shape estimates. It accounts for the curvature of the NLLF speciﬁc to 
+
+Buildings 2026, 16, 1807 
+18  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+the mode shape manifold. The update formula for Type 1 move eliminates the need for 
+matrix inversion and is given by 
+
+
+
+1
+1
+Re
+Re
+k
+k
+k
+
+
+
+
+
+
+Φ
+Q
+Z
+H
+
+ 
+(66) 
+where  Φ   is the mode shape matrix; 
+
+
+1
+T
+T
+n
+
+
+
+Q
+I
+Φ Φ Φ
+Φ   with  Φ   being the normal-
+ized  counterpart  of  Φ  ; 
+k
+
+Z    is  the  complex  conjugate  transpose  of 
+k
+Z    with 
+
+
+1
+1
+T
+T
+k
+e
+k
+k
+S
+
+
+
+
+Z
+Φ Φ
+H
+Φ   and 
+k
+H   being a Hermitian matrix. 
+Type 2 move involves updates to all modal parameters. In this step, the mode shape 
+components move within the established subspace. This captures the complex correlation 
+structure intrinsic to close modes. This move is given by 
+
+
+
+2
+2
+2
+2
+1
+1
+c
+n
+T
+i
+i
+i
+i
+L
+
+
+
+
+
+
+θ
+v
+v
+θ
+λ
+ 
+(67) 
+where 
+
+2
+iλ
+   and 
+
+2
+iv
+   are  the  Type  2  eigenvector  and  eigenvalue,  respectively; 
+
+
+
+
+2
+1
+1
+cn
+m
+m m
+
+
+
+
+  with m being the number of modes; 
+L
+
+θ   is the gradient of 
+NLLF with respect to modal parameters  θ . 
+To improve computational eﬃciency and reduce computer coding overheads/bugs, 
+compact expressions for the gradients of the NLLF with respect to the mode shape matrix 
+and modal force PSD matrix are derived. Additionally, to enhance the applicability of the 
+proposed method under low SNR conditions, a hybrid strategy is adopted. This means 
+that the Fisher scoring approach is used to rapidly approach the vicinity of the MPV, fol-
+lowed by the P-EM algorithm [80,92] as a ‘backup’ to reﬁne estimates if the asymptotic 
+assumption holds weakly. Comparative studies using synthetic, laboratory, and ﬁeld data 
+demonstrate that this FIM-based method reduces computational time by an order of mag-
+nitude compared to existing algorithms, while maintaining superior convergence robust-
+ness for closely spaced modes and high modal force coherence. 
+3.4. Modal Identiﬁcation Considering Environmental Eﬀects 
+Existing works have demonstrated that environmental factors such as traﬃc loads, 
+temperature, humidity, and wind speed can inﬂuence the modal properties of structures 
+[93–98].  Commonly,  in  conventional  OMA  methods,  it  is  challenging  to  distinguish 
+changes caused by environmental variations from those resulting from structural damage 
+or performance deterioration. This may cause bias in the identiﬁcation results of modal 
+parameters  obtained  through  OMA  techniques, leading  to  misjudgments  in  structural 
+performance assessment. Among the Bayesian approaches developed to address this is-
+sue, an important and representative research line is the fusion model framework pro-
+posed by Zhu et al. [87–89]. Rather than providing an exhaustive coverage of all possible 
+Bayesian OMA strategies under environmental and operational variations, this section 
+focuses on this major line of work because it oﬀers a coherent probabilistic treatment of 
+modal properties and environmental eﬀects within a uniﬁed framework. Speciﬁcally, the 
+fusion model integrates a structural dynamic model with a data-driven model, thereby 
+explicitly accounting for the inﬂuence of environmental variations on the structure and 
+enabling robust modal identiﬁcation under environmental and operational variations. 
+Initially, Zhu et al. [87] introduce a Bayesian framework to integrate the environmen-
+tal eﬀect into a classic structural dynamic model in the form of a Gaussian process (GP) 
+model. Speciﬁcally, the environmental eﬀect is embedded into the modal equation of mo-
+tion via an additive stiﬀness-correction term: 
+
+Buildings 2026, 16, 1807 
+19  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+2
+2
+k
+k
+k
+i
+k
+k
+η
+ζωη
+ω η
+δ η
+p
+
+
+
+
+
+
+ 
+(68) 
+where 
+k
+η , 
+k
+η  and 
+k
+η   are the modal responses;  ω ,  ζ  , and 
+k
+p   are the angular fre-
+quency, damping ratio, and modal force, respectively; the term 
+iδ   represents an environ-
+ment-dependent  coeﬃcient,  modeled  as  a  GP  with  a  squared-exponential  covariance 
+function: 
+
+
+
+
+2
+2
+2
+,
+2
+,
+,
+,    
+exp
+2
+i
+j
+i j
+f
+n
+ij
+T
+T
+p
+σ
+σ
+l
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+δ ψ T
+m K
+K
+
+ 
+(69) 
+Here,  m   and  K   are mean and covariance functions, respectively;  T   denotes environ-
+mental inputs; 
+
+
+2
+2
+2
+,
+,
+f
+n
+σ
+l σ
+
+ψ
+  is the set of hyperparameters. Using Bayes’ theorem and 
+the Monte Carlo method [87], the MLF with GP prior is given by 
+
+
+
+
+
+
+
+
+
+
+1
+1
+,
+,
+,
+,
+,
+,
+N
+j
+j
+j
+p
+p
+p
+p
+p
+d
+p
+p
+p
+V
+
+
+
+
+
+D θ
+θ
+θ
+D θ
+θ
+D θ
+ψ T
+δ
+δ ψ T
+δ
+δ
+δ ψ T  
+(70) 
+While this method, termed FM-MCI, successfully reduces bias in parameter identiﬁ-
+cation, it relies on Monte Carlo Integration to approximate the intractable integral, which 
+incurs a signiﬁcant computational burden when processing large-scale monitoring da-
+tasets. 
+Subsequently, to address the computational ineﬃciency inherent in FM-MCI, Wu et 
+al. [88] propose an enhanced inference strategy utilizing Taylor approximation and the 
+EM algorithm. The frequency domain response is approximated via a ﬁrst-order Taylor 
+expansion: 
+
+
+
+
+
+
+
+
+
+
+
+2
+2
+2
+1
+1
+2
+1
+2
+1
+2
+,
+jk
+k
+k
+k
+k
+k
+k
+k
+k
+k
+jk
+j
+j
+δ
+p
+p
+β
+ζβ
+β
+ζβ
+β
+ζβ
+δ
+m k
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+i
+i
+i
+
+ 
+(71) 
+where 
+k
+  denotes the FFT of modal acceleration  Y   at frequency 
+kf ; 
+2
+k
+k
+β
+ω ω
+
+  with 
+2
+k
+k
+ω
+πf
+
+ ; 
+2
+jk
+jE
+k
+δ
+ω
+ω
+
+   with  the  environmental  eﬀect  coeﬃcient 
+jE
+ω
+   following  a 
+Gaussian distribution 
+
+
+,
+j
+j
+m k
+
+ ; 
+
+
+1
+d
+N
+E
+jE
+j
+
+ω
+ω
+  with 
+d
+N   being the number of inde-
+pendent datasets. The mean and covariance matrices of the MLF can then be elegantly 
+obtained through the derivation in Section 3.1 of [88]. 
+In the E-step of the EM algorithm, this method (termed FM-TA) computes the ex-
+pected log-likelihood function, which replaces the computationally expensive integral. 
+The objective function to be maximized is decomposed into two parts: 
+
+
+
+
+
+
+
+
+
+
+
+
+E
+E
+,
+,
+log
+,
+log
+,
+t
+E
+E
+Q
+p
+p
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+θ
+θ
+Y θ
+ψ
+ψ
+ω
+ω ψ T
+ 
+(72) 
+Here, the ﬁrst term represents the expected log-likelihood of the measured data, condi-
+tioned on the environmental latent variables 
+E
+ω , while the second term represents the 
+expected  log-likelihood  of 
+E
+ω    governed  by  the  GP.  By  maximizing  this  function 
+
+
+
+
+,
+,
+t
+Q
+
+
+
+
+
+θ
+θ
+ψ
+ψ
+ , FM-TA avoids heavy numerical integration, signiﬁcantly reducing 
+computational time while yielding more concentrated identiﬁcation results than FM-MCI 
+in approximating true values of modal parameters. 
+However, one limitation of the previous model lies in treating the environmental ef-
+fect as a direct input that operates independently of the structural vibration state. It fails 
+
+Buildings 2026, 16, 1807 
+20  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+to account for a potential coupling eﬀect, where the environmental variations and the 
+structural responses jointly aﬀect the modal properties of a structure in an interconnected 
+manner. Finally, further extending the fusion concept, Xu et al. [89] propose a Bayesian 
+modal identiﬁcation framework that speciﬁcally considers the coupling eﬀect of structural 
+responses and environmental variations. 
+Speciﬁcally, an environmental impact term (EIT), denoted as 
+
+
+
+,
+t
+x
+h
+E
+
+, is formu-
+lated as a uniﬁed function of both the structural acceleration and environmental variables. 
+The governing equation of motion is thus generalized to: 
+
+
+
+
+
+
+
+,
+t
+t
+t
+t
+t
+
+
+
+
+Mx
+Cx
+Kx
+x
+U
+h
+E
+
+
+
+ 
+(73) 
+where 
+t
+x
+  and  E   denote the structural acceleration and environmental variables, re-
+spectively. Their frequency domain expressions are 
+k
+η  and 
+k
+E , respectively. 
+The EIT is modeled as a GP whose inputs combine modal acceleration and environ-
+mental data, i.e., 
+,
+ce
+k
+k
+
+
+
+
+x
+η
+E
+
+. Accordingly, 
+
+
+
+
+
+
+
+
+,
+~
+|
+,
+,
+|
+ce
+ce
+ce
+ce
+GP
+
+x
+x
+x
+x
+h
+ψ
+m
+ψ
+K
+ψ
+ 
+(74) 
+Using Bayes’ theorem, the MLF is given by 
+
+
+
+
+
+
+
+
+,
+,
+,
+,
+,
+k
+k
+k
+k
+k
+k
+k
+k
+p
+p
+p
+d
+
+A θ
+A θ
+ψ E
+h
+h ψ η E
+h
+
+ 
+(75) 
+where 
+k
+A   are the FFTs of measured data; 
+
+
+,
+k
+ce
+
+x
+h
+h
+ψ . 
+Here, a Gaussian-type approximation [99] is adopted to analytically derive the MLF 
+without resorting to brute-force numerical integration. The relevant parameters are in-
+ferred using the EM algorithm. The results reveal that the method proposed by Xu et al. 
+[89] can eﬀectively consider the coupling eﬀect of structural responses and environmental 
+variations on the modal properties of the structure, thereby providing robust modal iden-
+tiﬁcation results under diﬀerent environmental and operational conditions. 
+Collectively, these studies represent a signiﬁcant progression from establishing the 
+fusion framework to optimizing its computational calculations and reﬁning its physical 
+interpretability. This provides a practical approach for long-term SHM under actual op-
+erational conditions. 
+3.5. Computational Issues 
+Although the above developments have substantially improved the practicality of 
+Bayesian OMA, computational issues remain central to the implementation of these meth-
+ods.  In  general,  Bayesian  modal  identiﬁcation  requires  the  determination  of  posterior 
+MPVs and the associated posterior covariance matrix through repeated evaluation and 
+optimization of NLLF. The resulting computational burden depends strongly on the num-
+ber of measured DOFs, the number of contributing modes, the measurement conﬁgura-
+tion, and the complexity of the adopted probabilistic model. 
+For well-separated modes, the main computational issue in the original Bayesian FFT 
+formulation lies in the high-dimensional optimization and posterior covariance evalua-
+tion, which become impractical when the number of measured DOFs increases. This mo-
+tivates the development of a fast Bayesian FFT approach, where the mathematical struc-
+ture of NLLF is exploited to reduce the number of parameters requiring numerical opti-
+mization and achieve eﬃcient computation. For multiple (possibly close) modes, the com-
+putational diﬃculty becomes more severe because of stronger modal coupling, increased 
+nonlinearity, and possible convergence problems, which motivate the use of mode shape 
+bases,  EM-based  solvers,  and  FIM-driven  accelerating  strategies.  For  multi-setup  and 
+
+Buildings 2026, 16, 1807 
+21  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+asynchronous data, the likelihood function becomes larger and more complicated because 
+global mode shape consistency, cross-setup bookkeeping, and imperfect synchronization 
+or coherence modeling must be handled simultaneously. Dealing with problems concern-
+ing  environmental  variations,  the  introduction  of  latent  variables,  the  GP  model,  and 
+Monte Carlo Integration or coupling mechanism further increases inference cost, espe-
+cially when the number of environmental variables, monitoring datasets, and structural 
+DOFs becomes large. 
+Overall, the reviewed methods show a clear progression from direct but computa-
+tionally demanding Bayesian formulations toward more structured and scalable inference 
+strategies. Nevertheless, computational scalability remains a major challenge, particularly 
+for large-scale monitoring systems, multiple modes using measured data from multiple 
+setups, and Bayesian OMA under environmental and operational variations. 
+4. Uncertainty Quantiﬁcation and Management 
+In recent years, uncertainty laws have emerged as a theoretical foundation that quan-
+tiﬁes and relates the identiﬁcation uncertainty of modal parameters to the measured data 
+and test conﬁguration in a Bayesian OMA framework [14,100,101]. Unlike error estimates 
+associated with speciﬁc algorithms, uncertainty laws are asymptotic analytical relation-
+ships that describe how uncertainty behaves under conditions such as long data duration 
+and high SNR. They provide guidance for both quantiﬁcation and management of identi-
+ﬁcation uncertainty. 
+This section synthesizes key developments in uncertainty laws with emphasis on 
+Bayesian inference for OMA, organized into the quantiﬁcation (Section 4.1) and manage-
+ment (Section 4.2) of uncertainty. 
+4.1. Uncertainty Quantiﬁcation 
+In Bayesian OMA, the modal parameters  θ   are treated as random variables, and 
+the corresponding identiﬁcation uncertainty is quantiﬁed by the posterior covariance ma-
+trix 
+
+C D   given the measured data  D   [58]. The credibility of uncertainty quantiﬁca-
+tion has not been established through a single universal benchmark, but rather through a 
+combination of theoretical consistency, controlled synthetic data veriﬁcation, appraisal 
+against laboratory/ﬁeld data trends and scatter, and counter-checking of the numerical 
+implementation [14,31,101,102]. Accordingly, the quantiﬁed uncertainties should be inter-
+preted  as  model-consistent  uncertainty measures  conditional  on the  adopted assump-
+tions, rather than universally exact error bars for all practical situations. 
+Under regularity conditions and with suﬃciently long data, the posterior PDF can be 
+approximated by a Gaussian distribution with a covariance matrix 
+
+
+
+
+
+1
+2
+,
+L
+
+θ
+C D
+θ D
+ 
+(76) 
+where 
+
+
+2
+,
+L
+θ
+θ D   denotes the Hessian matrix of NLLF with respect to  θ . 
+In terms of the asymptotic relationship, the posterior covariance matrix 
+
+C D   is 
+equal to the inverse of the FIM  
+J θ   [86,91,102]: 
+
+
+1
+
+C D
+J θ
+
+ 
+(77) 
+The FIM is initially deﬁned in the context of classical statistics (non-Bayesian), indi-
+cating the degree of diﬃculty in estimating parameters. It is later applied in OMA under 
+the Bayesian framework [102]. Given that the scaled FFT data follows a complex Gaussian 
+
+Buildings 2026, 16, 1807 
+22  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+distribution, and based on standard results in multivariate statistics [103], it follows that 
+the entry of FIM with respect to modal parameters x and y is equal to 
+
+
+1
+1
+x
+y
+xy
+k
+k
+k
+k
+k
+J
+tr
+
+
+
+
+
+
+
+E E
+E E
+ 
+(78) 
+where 
+
+x
+k
+E
+  denotes the partial derivative of 
+k
+E   in Equation (44) with respect to param-
+eter x. The long data asymptotic expressions for each modal parameter, i.e.,  f ,  ζ ,  S , 
+eS , and  φ , are summarized in Table 3 (
+f
+N , 
+k
+e
+k
+e
+S SD
+
+, 
+1
+
+φ
+). 
+Table 3. The entry 
+xy
+J   in FIM with respect to modal parameters x and y. 
+y 
+x 
+f ,  ζ  
+S  
+eS  
+φ  
+f ,  ζ  
+
+
+
+
+
+
+
+2
+1
+1
+2
+1
+x
+y
+k
+k
+k
+k
+k
+D
+D
+D
+e
+
+
+
+
+ 
+ 
+ 
+Sym. 
+S  
+
+
+
+
+
+1
+1
+2
+1
+y
+k
+k
+k
+k
+D
+D
+S
+e
+
+
+
+
+
+ 
+
+
+2
+2
+1
+k
+k
+S
+e
+
+
+
+
+ 
+ 
+ 
+eS  
+
+
+
+
+
+1
+1
+2
+1
+y
+k
+k
+k
+D
+S
+e
+
+
+
+
+
+ 
+
+
+1
+2
+2
+1
+k
+k
+k
+D
+S
+e
+
+
+
+
+ 
+
+
+
+
+2
+2
+2
+1
+1
+k
+e
+f
+k
+k
+e
+S
+n
+N
+e
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+φ  
+0 
+0 
+0 
+
+
+
+
+1
+1
+2
+1
+T
+k
+k
+n
+k
+e
+e
+
+
+
+
+
+
+
+
+
+
+
+I
+φφ
+ 
+Up to this point, the computational strategies for determining the posterior covari-
+ance matrix 
+
+C D   have been developed for diﬀerent types of data, such as single-setup 
+data [56], multi-setup data [84], and asynchronous data [77]. 
+4.2. Uncertainty Management 
+Identiﬁcation uncertainty management refers to the use of uncertainty laws to plan, 
+optimize, and control test conﬁgurations such that desired precision levels are achieved 
+[104]. One approach is to derive the closed-form expressions that relate the posterior co-
+eﬃcient of variation (c.o.v. = standard deviation/MPV) of modal parameters to test con-
+ﬁgurations and environmental factors. 
+The foundational work by Au [100] derives the zeroth-order laws for well-separated 
+modes under the assumption of long data duration and small damping. It establishes the 
+asymptotic expression for the posterior c.o.v. of each modal parameter. The detailed re-
+sults of uncertainty laws, including all modal parameters, are shown in Table 4. To ac-
+count for noise measurement, Au et al. [105] extend these to the ﬁrst-order laws by incor-
+porating the modal SNR 
+2
+4
+e
+γ
+S
+S ζ
+
+. Then the posterior c.o.v. 
+2
+xδ   for modal parameter 
+x is derived and summarized in Table 5. Here, 
+e
+ν
+S
+S
+
+, 
+
+
+1
+2
+tan
+1
+b
+κ
+κ κ
+
+
+
+
+, 
+c
+N   is 
+the data length and  κ   is the bandwidth factor. 
+ 
+ 
+
+Buildings 2026, 16, 1807 
+23  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+Table 4. The detailed results of zeroth-order laws. 
+Parameter x 
+Zeroth Order Law 
+2
+x0
+δ
+ 
+Data Length Factor 
+
+x
+B
+κ  
+f  
+
+2
+c
+f
+ζ
+πN B
+κ
+ 
+
+1
+2
+2 tan
+1
+f
+κ
+B
+κ
+κ
+π
+κ
+
+
+
+
+
+
+
+
+
+
+ 
+ζ  
+
+1
+2
+c
+ζ
+πζN B
+κ
+ 
+
+
+
+2
+1
+1
+2
+2 tan
+2 tan
+1
+ζ
+κ
+κ
+B
+κ
+κ
+π
+κ
+κ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+S  
+
+1
+f
+S
+N B
+κ
+ 
+
+
+
+1
+2
+1
+1
+1
+2
+1
+2 tan
+tan
+1
+S
+κ
+B
+κ
+κ
+κ
+κ
+κ
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+eS  
+
+
+1
+1
+f
+n
+N
+
+ 
+ 
+φ  
+
+
+
+1
+c
+n
+νζ
+N B
+κ
+
+φ
+ 
+
+1
+tan
+B
+κ
+κ
+
+
+φ
+ 
+Table 5. The detailed results of the ﬁrst-order laws. 
+Parameter x 
+First Order Law 
+2
+x
+δ  
+First Order Coeﬃcient 
+
+x
+a
+κ  
+f  
+
+
+2
+2
+1
+0 1
+0, 
+x
+x
+x
+f
+δ
+δ
+a γ
+ζ
+N
+
+
+
+
+
+ 
+
+
+
+1
+1
+2
+4
+tan
+tan
+1
+f
+κ
+κ
+a
+κ
+κ
+κ
+κ
+
+
+
+
+
+
+ 
+ζ  
+
+
+
+
+
+
+
+2
+1
+1
+1
+2
+1
+1
+2
+4
+1
+3tan
+3
+tan
+tan
+3
+1
+2tan
+tan
+ζ
+κ
+κ
+κ
+κ
+κ
+a
+κ
+κ
+κ
+κ
+κ
+κ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+S  
+
+
+
+
+
+2
+1
+1
+2
+2
+2
+1
+1
+tan
+2
+8tan
+8
+4
+2
+4
+3
+3
+tan
+2 tan
+S
+κ
+κ
+κ
+a
+κ
+κ
+κ
+b
+κ
+κ
+bκ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+For large structures requiring multiple setups, Zhang et al. [84] establish a founda-
+tional computational framework by deriving analytical Hessian expressions and address-
+ing the singularity arising from the global mode shape norm constraint. They demonstrate 
+that the posterior covariance matrix is evaluated within the non-singular subspace via 
+eigenvalue decomposition as 
+1
+2
+n
+T
+i
+i
+i
+i
+λ
+
+
+θ
+C
+w w  
+(79) 
+where  nθ   denotes the number of modal parameters; 
+iλ   and 
+i
+w   denote the eigenvalue 
+and eigenvector of the Hessian matrix. Building upon this, Xie et al. [106] advance the 
+ﬁeld by deriving the uncertainty laws with multiple setup data under the stated asymp-
+totic conditions, revealing that the posterior covariance matrix of global mode shape fol-
+lows the closed-form expression 
+
+
+,    
+T
+T
+i
+i
+i
+i
+i
+i k
+
+
+
+
+φφ
+C
+J
+J
+L
+I
+ν ν L
+
+ 
+(80) 
+where the superscripted ‘+’ represents a pseudo-inverse; the matrix  J   aggregates local 
+setup information weighted by precision factors 
+ik , thereby enabling the theoretical de-
+composition of uncertainty into local and global components; 
+iν   is the normalized coun-
+terpart of the local mode shape 
+iν ; 
+iL   is a selection matrix. This provides a theoretical 
+
+Buildings 2026, 16, 1807 
+24  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+limit for the achievable precision, which is critical for optimizing sensor deployment strat-
+egies. 
+To advance the uncertainty quantiﬁcation and management of close modes, Au and 
+Brownjohn [91] reveal that the identiﬁcation uncertainty of mode shapes decomposes into 
+two principal directions, i.e., Type 1 (orthogonal to the mode shapes), which is dismissible 
+at high SNR, and Type 2 (within the mode shape subspace), which persists even for noise-
+less data and correlates with all modal parameters. Subsequently, Au et al. [107] further 
+derive the closed-form analytical asymptotic expressions for the remaining uncertainty of 
+modal parameters under a wide-band assumption. Validating these laws, Au et al. [108] 
+demonstrate their applicability to ﬁeld data and proposed empirical correction factors for 
+ﬁnite bandwidth conditions, providing a complete framework for predicting identiﬁca-
+tion precision limits. Furthermore, Zhu and Au [109] extend this framework to the general 
+case with multiple (possibly close) modes and multiple setups, successfully addressing 
+the ‘modal entangling’ phenomenon inherent in close modes. By deriving the analytical 
+expressions for the posterior covariance matrix, the uncertainty can be accurately and ef-
+ﬁciently quantiﬁed without resorting to the ﬁnite diﬀerence method. 
+5. Applications 
+Following the overview of Bayesian OMA theory, identiﬁcation algorithms, and un-
+certainty quantiﬁcation and management, this section reviews representative applications 
+to show how these methodological developments can support practical inference and de-
+cision-making. Rather than presenting isolated case studies, the discussion emphasizes 
+the methodological insights underlying system parameter identiﬁcation, physics-data fu-
+sion mechanism under environmental variations, robustness enhancement for long-term 
+ﬁeld  deployment,  and  ﬁeld  testing  techniques  for  diﬀerent  full-scale  structures  under 
+complex working conditions. 
+Figure 4 presents a methodological roadmap linking the identiﬁcation algorithms re-
+viewed in Section 3 to representative theoretical and practical application scenarios dis-
+cussed in this section. On the methodological side, this roadmap includes computational 
+strategies for diﬀerent measurement conﬁgurations and modal scenarios, accelerating al-
+gorithms, and identiﬁcation methods that account for environmental eﬀects. On the ap-
+plication side, it covers application-oriented theoretical developments, such as Bayesian 
+system identiﬁcation, physics-data fusion models, long-term monitoring and ﬁeld deploy-
+ment, as well as ﬁeld implementations on full-scale structures, including bridges, light-
+houses, and buildings. Figure 4 is intended to show how the reviewed methods can be 
+selected and combined according to the characteristics of practical engineering situations. 
+Speciﬁcally, Section 5.1 describes the developments of these application-oriented the-
+oretical aspects, while Section 5.2 illustrates their practical realization in full-scale struc-
+tures and complex operational conditions. 
+
+Buildings 2026, 16, 1807 
+25  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+ 
+Figure 4. Methodological roadmap linking the reviewed identiﬁcation algorithms to representative 
+application scenarios. 
+5.1. Application in Structural Health Monitoring 
+Bayesian OMA has been widely employed for system identiﬁcation with an empha-
+sis on statistically consistent uncertainty quantiﬁcation. Au [110] ﬁrst clariﬁes the statisti-
+cal meaning of Bayesian posterior covariance by establishing its connection to frequentist 
+trial-to-trial dispersion through second-order expansions of the log-likelihood, thereby 
+providing a rigorous foundation for uncertainty interpretation in Bayesian system identi-
+ﬁcation. To enable practical uncertainty evaluation in constrained and multi-setup prob-
+lems, Au and Xie [111] subsequently developed a constrained-Hessian theory that allows 
+eﬃcient  Gaussian  approximation  of  posterior  uncertainty  around  the  MPVs.  A  major 
+methodological advance has been achieved by Au and Zhang [59,60], who have devel-
+oped a fundamental two-stage formulation for Bayesian system identiﬁcation. Derived 
+rigorously  from  Bayes’  theorem,  the  two-stage  framework  separates  the  identiﬁcation 
+problem into estimation of intermediate parameters, such as modal properties, and sub-
+sequent  inference  of  structural  parameters.  Subsequent  studies  further  strengthen  the 
+two-stage framework by addressing statistical and modeling limitations: Zhang et al. [112] 
+introduce a Gaussian discrepancy model and conduct an identiﬁability analysis to account 
+for the mismatch between the two stages, while Zhu and Au [113] incorporate model error 
+into an equivalent Bayesian formulation and derive an EM algorithm for joint estimation 
+of structural parameters, model error, and uncertainty. To improve numerical robustness 
+and scalability, Zhu et al. [114] introduce Fisher-information-based updates and eigen-
+value sensitivity analysis, and for real-time applications, Yuen et al. [62] propose a self-
+calibrating Bayesian identiﬁcation paradigm with evidence-driven model adaptation. 
+On the other hand, physics-data fusion models have been developed to address a 
+fundamental limitation in many SHM applications, namely that training data are often 
+obtained from OMA and therefore inherit heterogeneous identiﬁcation uncertainty and 
+environmental variability. Zhu and Au [91] introduce Bayesian data-driven formulations 
+that propagate OMA-induced uncertainty into learning and inference, thereby preventing 
+
+Buildings 2026, 16, 1807 
+26  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+modal  estimates  with  large  uncertainty  from  exerting  disproportionate  inﬂuence  on 
+model training. Extending this idea, Zhu et al. [87] and Xu et al. [89] propose a Bayesian 
+physics-data fusion model that integrates structural dynamics with a probabilistic repre-
+sentation of environmental eﬀects, enabling reliable identiﬁcation of modal parameters 
+under varying operational conditions. To improve computational eﬃciency for modal 
+identiﬁcation, Wu et al. [88] reformulate environmental eﬀects as latent variables and 
+combine Taylor approximations with an EM algorithm, achieving faster convergence and 
+enhanced numerical stability. These developments demonstrate how physics-data fusion 
+extends  Bayesian  OMA  beyond  parameter  estimation,  oﬀering a  novel  way to  couple 
+physics-driven models and data-driven models, incorporating environmental variations 
+within a uniﬁed Bayesian framework. 
+From both ﬁeld testing and computational perspectives, the reported results in these 
+studies [87–89] also illustrate the methodological progression within this research line. In 
+the  relevant  example  reported  for  the  fusion  model-based  formulations,  the  FM-TA 
+method from [88] reduces the average computation time from 295.39 s to 87.96 s relative 
+to the FM-MCI method from [87], while maintaining comparable identiﬁcation capability, 
+mainly because the intractable Monte Carlo integration is replaced by the Taylor approx-
+imation and EM algorithm. Reported results from another Bayesian OMA method [89] 
+further suggest that, although identiﬁcation accuracy may remain acceptable under mod-
+erate increases in structural complexity, the computational cost can grow rapidly with the 
+number of DOFs and may become prohibitive for structures with higher dimensionality. 
+Therefore, the available evidence should be interpreted as indicating a clear trend toward 
+improved  computational  tractability,  rather  than  as  a  strict  head-to-head  benchmark 
+across all methods, since the data settings, model assumptions, and implementation envi-
+ronments diﬀer among studies. This further highlights that computational scalability re-
+mains a key issue in Bayesian OMA under environmental and operational variations. 
+Beyond modeling and inference, several methodological developments have focused 
+on enabling robust Bayesian OMA in long-term and ﬁeld-monitoring scenarios. For time-
+varying structures, Yang et al. [115] formulate long-term tracking as a Bayesian model 
+selection problem with evidence-based optimal partitioning, and further introduce quasi 
+time-invariant  models  that  constrain  only  target  parameters  while  allowing  auxiliary 
+terms to vary, thereby improving physical interpretability and reducing spurious detec-
+tions [116]. Reliable Bayesian inference also critically depends on accurate noise charac-
+terization. Zhu et al. [117] demonstrate bias in classical huddle tests and propose a theo-
+retically unbiased multi-sensor calibration method applicable to arbitrary sensor orienta-
+tions, while Ma et al. [118] develop eﬃcient noise-modeling strategies for general covari-
+ance structures in frequency domain Bayesian OMA. In addition, frequency band selec-
+tion, which is often treated heuristically in practice, is placed on a principled footing by 
+Au [119] through Bayesian evidence-based model validation, revealing the trade-oﬀ be-
+tween mode misidentiﬁcation and estimation precision. Together, these studies address 
+temporal variability, data quality, and modeling selection that are essential for translating 
+Bayesian OMA methods into reliable tools for practical SHM. 
+5.2. Field Examples 
+In the application of Bayesian OMA methods for full-scale bridge structures, low fre-
+quency, lightly damped modes, limited data length, and strong environmental variability 
+pose signiﬁcant challenges to reliable modal identiﬁcation. An important methodological 
+milestone has been achieved by Brownjohn et al. [120,121], who derive closed-form Bayes-
+ian uncertainty laws that relate the uncertainty of identiﬁed modal parameters, particu-
+larly damping ratios, to data length, modal SNR, and frequency bandwidth. These results 
+
+Buildings 2026, 16, 1807 
+27  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+provide quantitative guidance for uncertainty-informed test design and are validated us-
+ing ambient vibration measurements from long-span bridges such as Baker Bridge and 
+Jiangyin Yangtze River Bridge. Building on this foundation, Zhu et al. [122] extend Bayes-
+ian uncertainty management to multi-setup testing by integrating uncertainty laws with 
+Bayesian multi-setup inference, and demonstrate a practical workﬂow for consistent un-
+certainty quantiﬁcation using full-scale data from Rainbow Bridge. Bayesian inference is 
+subsequently applied to bridge monitoring under extreme and transient excitations/envi-
+ronmental variations, including the seismic response analysis of long-span bridges [123] 
+and the prediction of the relationship between temperature and modal parameters [124], 
+illustrating its robustness under non-stationary conditions. At the component level, Feng 
+et al. [125] develop a Bayesian time domain approach for identifying stay-cable damping 
+while accounting for ambient excitation and measurement noise, and validate the pro-
+posed method using ﬁeld data from Sutong Yangtze River Highway Bridge. Collectively, 
+these studies demonstrate how Bayesian OMA enables uncertainty-consistent identiﬁca-
+tion and decision support in complex bridge monitoring scenarios. 
+Beyond bridges, Bayesian OMA has proven particularly eﬀective for structures ex-
+hibiting closely spaced modes and strong geometric symmetry, exempliﬁed by oﬀshore 
+rock lighthouses. Brownjohn et al. [126,127] develop uncertainty-aware Bayesian formu-
+lations to resolve paired horizontal modes and quantify directionality of mode shapes in 
+quasi-axisymmetric lighthouse towers, thereby enabling reliable interpretation of modal 
+properties under extreme wave loading. The proposed method is validated through ﬁeld 
+vibration testing of Victorian-era granite lighthouse towers and subsequently extends to 
+long-term monitoring of Wolf Rock lighthouse, where Bayesian OMA is used to track 
+closely spaced modes with quantiﬁed uncertainty and to inversely estimate breaking-
+wave impact forces from measured responses [128]. In addition, Bayesian OMA method-
+ologies  have  been  generalized  to  a  wide  range  of  other  structural  systems,  including 
+multi-storey buildings using roving or asynchronous multi-setup data [129,130], wind-
+excited super-tall buildings through Bayesian estimation of modal force spectra [131], 
+monopole telecoms structures under ambient excitation [132], and rail structures using 
+two-stage Bayesian inference for crack detection with ultrasonic guided wave measure-
+ments [133]. These applications collectively illustrate the versatility of Bayesian OMA as 
+a uniﬁed framework for modal identiﬁcation and uncertainty quantiﬁcation across di-
+verse structural typologies. 
+6. Conclusions 
+This paper has presented a systematic review of Bayesian OMA, encompassing its 
+theoretical basis, identiﬁcation algorithms, uncertainty quantiﬁcation and management, 
+and applications. Unlike conventional OMA techniques that primarily yield point esti-
+mates, Bayesian OMA formulates modal identiﬁcation as a probabilistic inference prob-
+lem, in which modal parameters are treated as random variables, and their associated un-
+certainties are quantiﬁed through posterior probability distributions. This formulation 
+provides  a  coherent  and  transparent  treatment  of  statistical  uncertainty,  modeling  as-
+sumptions, and data limitations inherent in the ambient vibration test. 
+From a methodological standpoint, the Bayesian framework oﬀers a unifying foun-
+dation for both time domain and frequency domain approaches. Among these, frequency 
+domain Bayesian formulations, particularly the fast Bayesian FFT approach, have demon-
+strated strong advantages in computational eﬃciency and robustness for large-scale civil 
+engineering  structures.  The  development  of  variable  separation  strategies,  EM-based 
+solvers, FIM-based acceleration techniques, and constructive eﬀorts considering environ-
+mental eﬀects has substantially reduced computational cost and improved convergence 
+behavior, enabling practical Bayesian inference even for multi-setup data, closely spaced 
+
+Buildings 2026, 16, 1807 
+28  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+modes, and environmental variations. A distinctive feature of Bayesian OMA is the estab-
+lishment of uncertainty laws, which provide asymptotic and analytical relationships be-
+tween identiﬁcation uncertainty, data characteristics, and test conﬁgurations. These laws 
+go beyond algorithm-speciﬁc error estimates by revealing fundamental limits on achiev-
+able  identiﬁcation  precision.  Their  extension  to  scenarios  including  multi-setup  data, 
+asynchronous data, and close modes provides a rigorous theoretical basis for uncertainty 
+quantiﬁcation and management, as well as for uncertainty-informed test planning and 
+sensor deployment. The applications outlined demonstrate that Bayesian OMA has ma-
+tured into a versatile framework capable of addressing most practical problems and chal-
+lenges in SHM. By integrating a physics-driven model with a data-driven model incorpo-
+rating environmental eﬀects, Bayesian OMA enables robust modal identiﬁcation under 
+long-term  operational  and  environmental  variations.  Successful  implementations  on 
+bridges, lighthouses, buildings, and other complex systems highlight its eﬀectiveness in 
+resolving closely spaced modes, tracking time-varying behavior, and supporting higher-
+level inference tasks such as system identiﬁcation and performance assessment. 
+Overall, Bayesian OMA establishes a coherent link between modal identiﬁcation, un-
+certainty quantiﬁcation and management, and engineering decision-making. The devel-
+opments reviewed in this paper illustrate a clear progression from foundational theory to 
+eﬃcient algorithms and ﬁnally to large-scale ﬁeld applications, underscoring the growing 
+role of Bayesian methods in modern structural dynamics and SHM. 
+7. Challenges and Future Directions 
+Despite the signiﬁcant progress reviewed above, several important issues remain 
+open and continue to motivate further development of Bayesian OMA. These issues arise 
+from both theoretical and practical considerations, including computational scalability, 
+modeling realism, uncertainty quantiﬁcation under non-ideal conditions, and broader en-
+gineering deployment. The following discussion highlights representative challenges and 
+outlines several directions for future research. 
+(1)  A  primary  challenge  lies  in  computational  scalability.  Although  fast  Bayesian 
+FFT-based approaches, EM-based solvers, and FIM-driven accelerating algorithms have 
+greatly improved eﬃciency, real-time or near-real-time Bayesian inference for large-scale 
+monitoring systems with dense sensor networks remains demanding. Future research 
+should focus on exploiting sparsity and parallel or distributed Bayesian inference strate-
+gies to further enhance scalability. 
+(2) Another important issue concerns modeling assumptions. Many existing Bayes-
+ian OMA formulations rely on idealized conditions such as stationarity, broadband exci-
+tation, linear structural behavior, and Gaussian noise. In practice, ambient excitation may 
+be partially coherent or non-stationary, and structural responses may exhibit nonlinear or 
+time-varying  characteristics  under  varying  environmental  conditions.  Extending  the 
+Bayesian OMA framework to accommodate these eﬀects while maintaining the traceabil-
+ity and interpretability of modeling analyses remains an open research direction. 
+(3) Uncertainty laws, although well established in asymptotic regimes, require fur-
+ther reﬁnement for ﬁnite data and low SNR conditions that are common in ﬁeld testing. 
+Bridging the gap between asymptotic theory and ﬁnite sample behavior would enhance 
+the reliability of uncertainty quantiﬁcation and management, particularly for damping 
+estimation, low-frequency modes, and short-duration tests. 
+(4) Another promising but still insuﬃciently developed direction is the integration of 
+existing  modal  identiﬁcation  technologies  with  data-driven  or  machine  learning  ap-
+proaches. Recent works based on physics-data fusion models (Sections 3.4 and 5.1) have 
+shown that both identiﬁcation uncertainty and uncertainty propagation introduced by 
+
+Buildings 2026, 16, 1807 
+29  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+data-driven models due to environmental eﬀects should be strictly considered in subse-
+quent modeling and inference. Although the current fusion model framework has demon-
+strated its capability to provide robust modal identiﬁcation under environmental and op-
+erational variations, further work is needed to improve its generalizability, computational 
+eﬃciency, uncertainty quantiﬁcation under environmental eﬀects, and online deployment 
+in long-term monitoring. 
+(5) Finally, broader engineering adoption of Bayesian OMA methods requires further 
+advances in automation and standardization. Issues such as automated frequency band 
+selection, model validation, mode tracking, and uncertainty reporting remain active re-
+search topics. Developing user-friendly tools and practical guidelines that embed Bayes-
+ian OMA principles into routine monitoring workﬂows will be essential for its wider im-
+plementation. 
+In summary, Bayesian OMA has evolved into a rigorous and powerful framework 
+for  modal  identiﬁcation,  uncertainty  quantiﬁcation,  and  management  under  complex 
+working conditions. Continued advances in computation, modeling, uncertainty theory, 
+and practical implementation will further strengthen its role in SHM. 
+Author Contributions: Conceptualization, Y.Z. and W.X.; methodology, Y.Z. and W.X.; validation, 
+Y.Z.; formal analysis, Z.G.; investigation, W.X. and Z.G.; data curation, W.X. and Z.G.; writing—
+original draft preparation, W.X. and Z.G.; writing—review and editing, Y.Z., Z.G. and W.X.; super-
+vision, Y.Z.; funding acquisition, Y.Z. All authors have read and agreed to the published version of 
+the manuscript. 
+Funding: This research was funded by the National Natural Science Foundation of China (Grant 
+number  52208150)  and  the  SEU Innovation  Capability Enhancement  Plan  for  Doctoral Students 
+(Grant number CXJH_SEU 25185). The ﬁnancial support is gratefully acknowledged. 
+Data Availability Statement: The raw data supporting the conclusions of this article will be made 
+available by the corresponding author on request. 
+Conﬂicts of Interest: The authors declare no conﬂicts of interest. The funders had no role in the 
+design of the study; in the collection, analyses, or interpretation of data; in the writing of the manu-
+script; or in the decision to publish the results. 
+References 
+1. 
+Johnson, E.A.; Lam, H.F.; Katafygiotis, L.S.; Beck, J.L. Phase I IASC-ASCE structural health monitoring benchmark problem 
+using simulated data. J. Eng. Mech. 2004, 130, 3–15. 
+2. 
+Brownjohn, J.M.W. Structural health monitoring of civil infrastructure. Philos. Trans. R. Soc. A Math. Phys. Eng. Sci. 2007, 365, 
+589–622. 
+3. 
+Ou, J.; Li, H. Structural health monitoring in mainland china: Review and future trends. Struct. Health Monit. 2010, 9, 219–231. 
+4. 
+Rocchetta, R.; Broggi, M.; Huchet, Q.; Patelli, E. On-line bayesian model updating for structural health monitoring. Mech. Syst. 
+Signal Process. 2018, 103, 174–195. 
+5. 
+Rogers, T.J.; Worden, K.; Fuentes, R.; Dervilis, N.; Tygesen, U.T.; Cross, E.J. A bayesian non-parametric clustering approach for 
+semi-supervised structural health monitoring. Mech. Syst. Signal Process. 2018, 119, 100–119. 
+6. 
+Wang, H.; Zhang, Y.-M.; Mao, J.-X.; Wan, H.-P.; Tao, T.-Y.; Zhu, Q.-X. Modeling and forecasting of temperature-induced strain 
+of a long-span bridge using an improved Bayesian dynamic linear model. Eng. Struct. 2019, 192, 220–232. 
+7. 
+Deraemaeker, A.; Worden, K. A comparison of linear approaches to ﬁlter out environmental eﬀects in structural health moni-
+toring. Mech. Syst. Signal Process. 2018, 105, 1–15. 
+8. 
+Sarmadi, H.; Entezami, A.; Salar, M.; De Michele, C. Bridge health monitoring in environmental variability by new clustering 
+and threshold estimation methods. J. Civ. Struct. Health Monit. 2021, 11, 629–644. 
+9. 
+Sun, L.; Shang, Z.; Xia, Y.; Bhowmick, S.; Nagarajaiah, S. Review of bridge structural health monitoring aided by big data and 
+artiﬁcial intelligence: From condition assessment to damage detection. J. Struct. Eng. 2020, 146, 4020073. 
+
+Buildings 2026, 16, 1807 
+30  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+10. 
+Chen, Z.-W.; Ruan, X.-Z.; Liu, K.-M.; Yan, W.-J.; Liu, J.-T.; Ye, D.-C. Fully automated natural frequency identiﬁcation based on 
+deep-learning-enhanced computer vision and power spectral density transmissibility. Adv. Struct. Eng. 2022, 25, 2722–2737. 
+11. 
+Giagopoulos, D.; Arailopoulos, A.; Dertimanis, V.; Papadimitriou, C.; Chatzi, E.; Grompanopoulos, K. Structural health moni-
+toring and fatigue damage estimation using vibration measurements and ﬁnite element model updating. Struct. Health Monit. 
+2019, 18, 1189–1206. 
+12. 
+Zhu, Y.-C.; Cantero Chinchilla, S.; Meng, H.; Yan, W.-J.; Chronopoulos, D. Damage detection, quantiﬁcation, and localization 
+for resonant metamaterials using physics-based and data-driven methods. Struct. Health Monit. 2023, 22, 3338–3355. 
+13. 
+Ivanović, S.S.; Trifunac, M.D.; Todorovska, M.I. Ambient vibration tests of structures—A review. ISET J. Earthq. Tech. 2000, 37, 
+165–197. 
+14. 
+Au, S.-K. Operational Modal Analysis; Springer: Singapore, 2017; ISBN 978-981-10-4117-4. 
+15. 
+Hasani, H.; Freddi, F. Operational Modal Analysis on Bridges: A Comprehensive Review. Infrastructures 2023, 8, 172. 
+16. 
+Alvin, K.F.; Robertson, A.N.; Reich, G.W.; Park, K.C. Structural system identiﬁcation: From reality to models. Comput. Struct. 
+2003, 81, 1149–1176. 
+17. 
+Yang, T.; Fan, S.-H.; Lin, C.-S. Joint stiﬀness identiﬁcation using FRF measurements. Comput. Struct. 2003, 81, 2549–2556. 
+18. 
+Ren, W.-X.; Peng, X.-L. Baseline ﬁnite element modeling of a large span cable-stayed bridge through ﬁeld ambient vibration 
+tests. Comput. Struct. 2005, 83, 536–550. 
+19. 
+Yuen, K.-V.; Beck, J.L.; Katafygiotis, L.S. Eﬃcient model updating and health monitoring methodology using incomplete modal 
+data without mode matching. Struct. Control Health Monit. 2006, 13, 91–107. 
+20. 
+Goller, B.; Broggi, M.; Calvi, A.; Schuëller, G.I. A stochastic model updating technique for complex aerospace structures. Finite 
+Elem. Anal. Des. 2011, 47, 739–752. 
+21. 
+Teughels, A.; Maeck, J.; De Roeck, G. Damage assessment by FE model updating using damage functions. Comput. Struct. 2002, 
+80, 1869–1879. 
+22. 
+Yuen, K.-V.; Au, S.K.; Beck, J.L. Two-stage structural health monitoring approach for phase I benchmark studies. J. Eng. Mech. 
+2004, 130, 16–33. 
+23. 
+Lam, H.F.; Yin, T. Statistical detection of multiple cracks on thin plates utilizing dynamic response. Eng. Struct. 2010, 32, 3145–
+3152. 
+24. 
+Zhu, H.; Li, L.; He, X.-Q. Damage detection method for shear buildings using the changes in the ﬁrst mode shape slopes. Comput. 
+Struct. 2011, 89, 733–743. 
+25. 
+Jones, C.A.; Reynolds, P.; Pavic, A. Vibration serviceability of stadia structures subjected to dynamic crowd loads: A literature 
+review. J. Sound Vib. 2011, 330, 1531–1566. 
+26. 
+Díaz, I.M.; Pereira, E.; Reynolds, P. Integral resonant control scheme for cancelling human-induced vibrations in light-weight 
+pedestrian structures. Struct. Control Health Monit. 2012, 19, 55–69. 
+27. 
+Júlio, E.N.B.S.; Da Silva Rebelo, C.A.; Dias-da-Costa, D.A.S.G. Structural assessment of the tower of the university of coimbra 
+by modal identiﬁcation. Eng. Struct. 2008, 30, 3468–3477. 
+28. 
+Lepidi, M.; Gattulli, V.; Foti, D. Swinging-bell resonances and their cancellation identiﬁed by dynamical testing in a modern 
+bell tower. Eng. Struct. 2009, 31, 1486–1500. 
+29. 
+Idehara, S.J.; Dias Junior, M. Modal analysis of structures under non-stationary excitation. Eng. Struct. 2015, 99, 56–62. 
+30. 
+Au, S.-K.; Zhang, F.-L. Ambient modal identiﬁcation of a primary–secondary structure by Fast Bayesian FFT method. Mech. 
+Syst. Signal Process. 2012, 28, 280–296. 
+31. 
+Au, S.-K.; Zhang, F.-L.; Ni, Y.-C. Bayesian operational modal analysis: Theory, computation, practice. Comput. Struct. 2013, 126, 
+3–14. 
+32. 
+James, G. The natural excitation technique (NExT) for modal parameter extraction from operating structures. J Anal Exp Modal 
+Anal 1995, 10, 260. 
+33. 
+Juang, J.-N.; Pappa, R.S. An eigensystem realization algorithm for modal parameter identiﬁcation and model reduction. J. Guid. 
+Control Dyn. 1985, 8, 620–627. 
+34. 
+Lardies, J. Modal parameter identiﬁcation based on ARMAV and state–space approaches. Arch. Appl. Mech. 2010, 80, 335–352. 
+35. 
+Reynders, E.; Pintelon, R.; De Roeck, G. Uncertainty bounds on modal parameters obtained from stochastic subspace identiﬁ-
+cation. Mech. Syst. Signal Process. 2008, 22, 948–969. 
+36. 
+He, Y.C.; Li, Z.; Fu, J.Y.; Wu, J.R.; Ng, C.T. Enhancing the performance of stochastic subspace identiﬁcation method via energy-
+oriented categorization of modal components. Eng. Struct. 2021, 233, 111917. 
+
+Buildings 2026, 16, 1807 
+31  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+37. 
+Liu, X.; Luo, Y.; Karney, B.W.; Wang, Z.; Zhai, L. Virtual testing for modal and damping ratio identiﬁcation of submerged 
+structures using the PolyMAX algorithm with two-way ﬂuid–structure Interactions. J. Fluids Struct. 2015, 54, 548–565. 
+38. 
+Brincker, R.; Zhang, L.; Andersen, P. Modal identiﬁcation of output-only systems using frequency domain decomposition. Smart 
+Mater. Struct. 2001, 10, 441–445. 
+39. 
+Beck, J.L.; Katafygiotis, L.S. Updating models and their uncertainties. I: Bayesian statistical framework. J. Eng. Mech. 1998, 124, 
+455–461. 
+40. 
+Nagarajaiah, S.; Basu, B. Output only modal identiﬁcation and structural damage detection using time frequency & wavelet 
+techniques. Earthq. Eng. Eng. Vib. 2009, 8, 583–605. 
+41. 
+He, Y.-C.; Li, Q.-S. Time–frequency analysis of structural dynamic characteristics of tall buildings. Struct. Infrastruct. Eng. 2015, 
+11, 971–989. 
+42. 
+Huang, N.E.; Shen, Z.; Long, S.R.; Wu, M.C.; Shih, H.H.; Zheng, Q.; Yen, N.-C.; Tung, C.C.; Liu, H.H. The empirical mode 
+decomposition and the Hilbert spectrum for nonlinear and non-stationary time series analysis. Proc. R. Soc. Lond. A Math. Phys. 
+Eng. Sci. 1998, 454, 903–995. 
+43. 
+Yang, J.N.; Lei, Y.; Pan, S.; Huang, N. System identiﬁcation of linear structures based on Hilbert–Huang spectral analysis. Part 
+1: Normal modes. Earthq. Eng. Struct. Dyn. 2003, 32, 1443–1467. 
+44. 
+Yang, J.N.; Lei, Y.; Pan, S.; Huang, N. System identiﬁcation of linear structures based on Hilbert–Huang spectral analysis. Part 
+2: Complex modes. Earthq. Eng. Struct. Dyn. 2003, 32, 1533–1554. 
+45. 
+Muto, M.; Beck, J.L. Bayesian Updating and Model Class Selection for Hysteretic Structural Models Using Stochastic Simulation. 
+J. Vib. Control 2008, 14, 7–34. 
+46. 
+Huang, Y.; Shao, C.; Wu, B.; Beck, J.L.; Li, H. State-of-the-art review on Bayesian inference in structural system identiﬁcation 
+and damage assessment. Adv. Struct. Eng. 2019, 22, 1329–1351. 
+47. 
+Yuen, K.-V.; Katafygiotis, L.S. Bayesian time–domain approach for modal updating using ambient data. Probab. Eng. Mech. 2001, 
+16, 219–231. 
+48. 
+Yuen, K.-V. Bayesian Methods for Structural Dynamics and Civil Engineering, 1st ed.; John Wiley & Sons: Hoboken, NJ, USA, 2010; 
+ISBN 978-0-470-82454-2. 
+49. 
+Yin, T.; Yuen, K.-V.; Zhu, H.-P. A novel Bayesian framework for time-domain operational multi-setup modal analysis: Theory 
+and parallelization. Eng. Struct. 2025, 322, 119167. 
+50. 
+Katafygiotis, L.S.; Yuen, K.-V. Bayesian spectral density approach for modal updating using ambient data. Earthq. Eng. Struct. 
+Dyn. 2001, 30, 1103–1123. 
+51. 
+Beck, J.L.; Yuen, K.-V. Model Selection Using Response Measurements: Bayesian Probabilistic Approach. J. Eng. Mech. 2004, 130, 
+192–203. 
+52. 
+Yan, W.-J.; Katafygiotis, L.S. A two-stage fast Bayesian spectral density approach for ambient modal analysis. Part I: Posterior 
+most probable value and uncertainty. Mech. Syst. Signal Process. 2015, 54–55, 139–155. 
+53. 
+Yan, W.-J.; Katafygiotis, L.S. A two-stage fast Bayesian spectral density approach for ambient modal analysis. Part II: Mode 
+shape assembly and case studies. Mech. Syst. Signal Process. 2015, 54–55, 156–171. 
+54. 
+Yan, W.-J.; Katafygiotis, L.S. An analytical investigation into the propagation properties of uncertainty in a two-stage fast Bayes-
+ian spectral density approach for ambient modal analysis. Mech. Syst. Signal Process. 2019, 118, 503–533. 
+55. 
+Yuen, K.-V.; Katafygiotis, L.S. Bayesian Fast Fourier Transform Approach for Modal Updating Using Ambient Data. Adv. Struct. 
+Eng. 2003, 6, 81–95. 
+56. 
+Au, S.-K. Fast Bayesian FFT Method for Ambient Modal Identiﬁcation with Separated Modes. J. Eng. Mech. 2011, 137, 214–226. 
+57. 
+Au, S.-K. Fast Bayesian ambient modal identiﬁcation in the frequency domain, Part I: Posterior most probable value. Mech. Syst. 
+Signal Process. 2012, 26, 60–75. 
+58. 
+Au, S.-K. Fast Bayesian ambient modal identiﬁcation in the frequency domain, Part II: Posterior uncertainty. Mech. Syst. Signal 
+Process. 2012, 26, 76–90. 
+59. 
+Au, S.-K.; Zhang, F.-L. Fundamental two-stage formulation for Bayesian system identiﬁcation, Part I: General theory. Mech. 
+Syst. Signal Process. 2016, 66–67, 31–42. 
+60. 
+Zhang, F.-L.; Au, S.-K. Fundamental two-stage formulation for Bayesian system identiﬁcation, Part II: Application to ambient 
+vibration data. Mech. Syst. Signal Process. 2016, 66–67, 43–61. 
+61. 
+Yuen, K.-V.; Huang, K. Identiﬁability-Enhanced Bayesian Frequency-Domain Substructure Identiﬁcation. Comput.‐Aided Civ. 
+Infrastruct. Eng. 2018, 33, 800–812. 
+
+Buildings 2026, 16, 1807 
+32  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+62. 
+Yuen, K.-V.; Kuok, S.-C.; Dong, L. Self-calibrating Bayesian real-time system identiﬁcation. Comput.‐Aided Civ. Infrastruct. Eng. 
+2019, 34, 806–821. 
+63. 
+Jeﬀreys, H. Theory of Probability, 3rd ed.; Oxford University Press: Oxford, UK, 1961. 
+64. 
+Jaynes, E.T. Probability Theory: The Logic of Science; Cambridge University Press: Cambridge, UK, 2003. 
+65. 
+Box, G.E.P.; Tiao, G.C. Bayesian Inference in Statistical Analysis; John Wiley & Sons: Hoboken, NJ, USA, 2011. 
+66. 
+Garrett, A.J.M. Review: Probability Theory: The Logic of Science, by E. T. Jaynes. Law Probab. Risk 2004, 3, 243–246. 
+67. 
+Robert, C.P.; Chopin, N.; Rousseau, J. Rejoinder: Harold Jeﬀreys’s Theory of Probability Revisited. Stat. Sci. 2009, 24, 191–194. 
+68. 
+Beck, J.L. Bayesian system identiﬁcation based on probability logic. Struct. Control Health Monit. 2010, 17, 825–847. 
+69. 
+Bayes, T. An essay towards solving a problem in the doctrine of chances. Biometrika 1958, 45, 296–315. 
+70. 
+Stigler, S.M. Laplace’s 1774 memoir on inverse probability. Stat. Sci. 1986, 1, 359–363. 
+71. 
+Stigler, S.M. Statistics on the Table: The History of Statistical Concepts and Methods; Harvard University Press: Cambridge, MA, 
+USA, 2002. 
+72. 
+Leonard, T.; Hsu, J.S.J. Bayesian Methods: An Analysis for Statisticians and Interdisciplinary Researchers; Cambridge University 
+Press: Cambridge, UK, 2001. 
+73. 
+Chiachio-Ruano, J.; Chiachio-Ruano, M.; Sankararaman, S. Bayesian Inverse Problems; CRC Press: Boca Raton, FL, USA; London, 
+UK; New York, NY, USA, 2021. 
+74. 
+Katafygiotis, L.S.; Beck, J.L. Updating models and their uncertainties. II: Model identiﬁability. J. Eng. Mech. 1998, 124, 463–467. 
+75. 
+Yuen, K.; Beck, J.L.; Katafygiotis, L.S. Probabilistic approach for modal identiﬁcation using non-stationary noisy response meas-
+urements only. Earthq. Eng. Struct. Dyn. 2002, 31, 1007–1023. 
+76. 
+Zhu, Y.-C.; Au, S.-K. Bayesian operational modal analysis with asynchronous data, part I: Most probable value. Mech. Syst. 
+Signal Process. 2018, 98, 652–666. 
+77. 
+Zhu, Y.-C.; Au, S.-K. Bayesian operational modal analysis with asynchronous data, Part II: Posterior uncertainty. Mech. Syst. 
+Signal Process. 2018, 98, 920–935. 
+78. 
+Zhu, Y.-C.; Au, S.-K. Spectral characteristics of asynchronous data in operational modal analysis. Struct. Control Health Monit. 
+2017, 24, e1981. 
+79. 
+Zhu, Y.-C.; Au, S.-K. Bayesian modal identiﬁcation method based on general coherence model for asynchronous ambient data. 
+Mech. Syst. Signal Process. 2019, 132, 194–210. 
+80. 
+Li, B.; Au, S.-K. An expectation-maximization algorithm for Bayesian operational modal analysis with multiple (possibly close) 
+modes. Mech. Syst. Signal Process. 2019, 132, 490–511. 
+81. 
+Au, S.-K. Assembling mode shapes by least squares. Mech. Syst. Signal Process. 2011, 25, 163–179. 
+82. 
+Au, S.K.; Ni, Y.C.; Zhang, F.L.; Lam, H.F. Full-scale dynamic testing and modal identiﬁcation of a coupled ﬂoor slab system. 
+Eng. Struct. 2012, 37, 167–178. 
+83. 
+Au, S.K.; Zhang, F.L. Fast Bayesian Ambient Modal Identiﬁcation Incorporating Multiple Setups. J. Eng. Mech. 2012, 138, 800–
+815. 
+84. 
+Zhang, F.-L.; Au, S.-K.; Lam, H.-F. Assessing uncertainty in operational modal analysis incorporating multiple setups using a 
+Bayesian approach. Struct. Control Health Monit. 2015, 22, 395–416. 
+85. 
+Zhang, F.L.; Au, S.K. Probabilistic Model for Modal Properties Based on Operational Modal Analysis. ASCE‐ASME J. Risk Un‐
+certain. Eng. Syst. A Civ. Eng. 2016, 2, B4015005. 
+86. 
+Zhu, Z.; Au, S.-K.; Li, B. Accelerating convergence in Bayesian operational modal analysis with Fisher information matrix. Mech. 
+Syst. Signal Process. 2023, 186, 109894. 
+87. 
+Zhu, Y.-C.; Wu, S.-H.; Xiong, W.; Zhang, L.-K. Bayesian operational modal analysis considering environmental eﬀect. Mech. 
+Syst. Signal Process. 2025, 223, 111845. 
+88. 
+Wu, S.-H.; Zhu, Y.-C.; Pan, Z.-H.; Di, H. An eﬃcient expectation-maximization algorithm for Bayesian operational modal anal-
+ysis with physics-data fusion model. Mech. Syst. Signal Process. 2025, 237, 113144. 
+89. 
+Xu, W.; Zhu, Y.-C.; Wu, S.-H.; Song, X.-D. Bayesian operational modal analysis considering the coupling eﬀect of both structural 
+responses and temperature variations. Mech. Syst. Signal Process. 2025, 241, 113580. 
+90. 
+Deuﬂhard, P. Newton Methods for Nonlinear Problems: Aﬃne Invariance and Adaptive Algorithms; Springer Science & Business Me-
+dia: Berlin/Heidelberg, Germany, 2011. 
+91. 
+Au, S.-K.; Brownjohn, J.M.W. Asymptotic identiﬁcation uncertainty of close modes in Bayesian operational modal analysis. 
+Mech. Syst. Signal Process. 2019, 133, 106273. 
+92. 
+Berlinet, A.; Roland, C. Parabolic acceleration of the EM algorithm. Stat. Comput. 2009, 19, 35–47. 
+
+Buildings 2026, 16, 1807 
+33  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+93. 
+Worden, K.; Farrar, C.R.; Manson, G.; Park, G. The fundamental axioms of structural health monitoring. Proc. R. Soc. A Math. 
+Phys. Eng. Sci. 2007, 463, 1639–1664. 
+94. 
+Worden, K.; Cross, E.J. On switching response surface models, with applications to the structural health monitoring of bridges. 
+Mech. Syst. Signal Process. 2018, 98, 139–156. 
+95. 
+Zhu, Y.-C.; Au, S.-K. Bayesian data driven model for uncertain modal properties identiﬁed from operational modal analysis. 
+Mech. Syst. Signal Process. 2020, 136, 106511. 
+96. 
+Zhu, Y.-C.; Xiong, W.; Song, X.-D. Structural performance assessment considering both observed and latent environmental and 
+operational conditions: A Gaussian process and probability principal component analysis method. Struct. Health Monit. 2022, 
+21, 2531–2546. 
+97. 
+Zhu, Y.-C.; Zheng, Y.-W.; Xiong, W.; Li, J.-X.; Cai, C.S.; Jiang, C. Online Bridge Structural Condition Assessment Based on the 
+Gaussian Process: A Representative Data Selection and Performance Warning Strategy. Struct. Control Health Monit. 2024, 2024, 
+5579734. 
+98. 
+Zeng, H.; Zhu, Y.-C. A Dynamic Dimension Reduction Method for Structural Health Monitoring Data Based on Sparse Bayesian 
+Inference. Struct. Control Health Monit. 2025, 2025, 5560897. 
+99. 
+Girard, A. Approximate Methods for Propagation of Uncertainty with Gaussian Process Models. Ph.D. Thesis, University of 
+Glasgow, UK, 2004. 
+100. Au, S.-K. Uncertainty law in ambient modal identiﬁcation—Part I: Theory. Mech. Syst. Signal Process. 2014, 48, 15–33. 
+101. Au, S.-K. Uncertainty law in ambient modal identiﬁcation—Part II: Implication and ﬁeld veriﬁcation. Mech. Syst. Signal Process. 
+2014, 48, 34–48. 
+102. Au, S.-K.; Li, B. Posterior uncertainty, asymptotic law and Cramér-Rao bound. Struct. Control Health Monit. 2018, 25, e2113. 
+103. Tong, Y.L. The Multivariate Normal Distribution; Springer Science & Business Media: Berlin/Heidelberg, Germany, 2012. 
+104. Xie, Y.L. Uncertainty Quantiﬁcation and Management in Operational Modal Analysis with Multiple Setups. Ph.D. Thesis, Uni-
+versity of Liverpool, UK, 2018. 
+105. Au, S.-K.; Brownjohn, J.M.W.; Mottershead, J.E. Quantifying and managing uncertainty in operational modal analysis. Mech. 
+Syst. Signal Process. 2018, 102, 139–157. 
+106. Xie, Y.-L.; Au, S.-K.; Li, B. Asymptotic identiﬁcation uncertainty of well-separated modes in operational modal analysis with 
+multiple setups. Mech. Syst. Signal Process. 2021, 152, 107382. 
+107. Au, S.-K.; Li, B.; Brownjohn, J.M.W. Achievable precision of close modes in operational modal analysis: Wide band theory. 
+Mech. Syst. Signal Process. 2021, 147, 107016. 
+108. Au, S.-K.; Brownjohn, J.M.W.; Li, B.; Raby, A. Understanding and managing identiﬁcation uncertainty of close modes in oper-
+ational modal analysis. Mech. Syst. Signal Process. 2021, 147, 107018. 
+109. Zhu, Z.; Au, S.-K. Uncertainty quantiﬁcation in Bayesian operational modal analysis with multiple modes and multiple setups. 
+Mech. Syst. Signal Process. 2022, 164, 108205. 
+110. Au, S.-K. Connecting Bayesian and frequentist quantiﬁcation of parameter uncertainty in system identiﬁcation. Mech. Syst. Sig‐
+nal Process. 2012, 29, 328–342. 
+111. Au, S.-K.; Xie, Y.-L. Calculation of Hessian under constraints with applications to Bayesian system identiﬁcation. Comput. Meth‐
+ods Appl. Mech. Eng. 2017, 323, 373–388. 
+112. Zhang, F.-L.; Au, S.-K.; Ni, Y.-C. Two-stage Bayesian system identiﬁcation using Gaussian discrepancy model. Struct. Health 
+Monit. 2021, 20, 580–595. 
+113. Zhu, J.-X.; Au, S.-K. Bayesian two-stage structural identiﬁcation with equivalent formulation and EM algorithm. Mech. Syst. 
+Signal Process. 2024, 209, 111025. 
+114. Zhu, J.-X.; Zhu, Z.; Au, S.-K. Accelerating computations in two-stage Bayesian system identiﬁcation with Fisher information 
+matrix and eigenvalue sensitivity. Mech. Syst. Signal Process. 2023, 186, 109843. 
+115. Yang, Y.; Zhu, Z.; Au, S.-K. Bayesian dynamic programming approach for tracking time-varying model properties in SHM. 
+Mech. Syst. Signal Process. 2023, 185, 109735. 
+116. Yang, Y.; Zhu, Z.; Au, S.-K. Tracking time-varying properties using quasi time-invariant models with Bayesian dynamic pro-
+gramming. Mech. Syst. Signal Process. 2025, 223, 111546. 
+117. Zhu, Z.; Au, S.-K.; Wang, X. Instrument noise calibration with arbitrary sensor orientations. Mech. Syst. Signal Process. 2019, 117, 
+879–892. 
+118. Ma, X.; Zhu, Z.; Au, S.-K. Treatment and eﬀect of noise modelling in Bayesian operational modal analysis. Mech. Syst. Signal 
+Process. 2023, 186, 109776. 
+
+Buildings 2026, 16, 1807 
+34  of  34 
+ 
+https://doi.org/10.3390/buildings16091807 
+119. Au, S.-K. Model validity and frequency band selection in operational modal analysis. Mech. Syst. Signal Process. 2016, 81, 339–
+359. 
+120. Brownjohn, J.; Au, S.-K.; Li, B.; Bassitt, J. Optimised ambient vibration testing of long span bridges. Procedia Eng. 2017, 199, 38–
+47. 
+121. Brownjohn, J.M.W.; Au, S.-K.; Zhu, Y.; Sun, Z.; Li, B.; Bassitt, J.; Hudson, E.; Sun, H. Bayesian operational modal analysis of 
+Jiangyin Yangtze River Bridge. Mech. Syst. Signal Process. 2018, 110, 210–230. 
+122. Zhu, Z.; Au, S.-K.; Brownjohn, J.; Koo, K.Y.; Nagayama, T.; Bassitt, J. Uncertainty quantiﬁcation of modal properties of Rainbow 
+Bridge from multiple-setup OMA data. Eng. Struct. 2025, 330, 119901. 
+123. Ni, Y.; Zhang, F.L.; Xia, Y.X.; Au, S.K. Operational modal analysis of a long-span suspension bridge under diﬀerent earthquake 
+events. Earthq. Struct. 2015, 8, 859–887. 
+124. Ni, Y.C.; Alamdari, M.M.; Ye, X.W.; Zhang, F.L. Fast operational modal analysis of a single-tower cable-stayed bridge by a 
+Bayesian method. Measurement 2021, 174, 109048. 
+125. Feng, Z.; Zhang, J.; Xuan, X.; Wang, Y.; Hua, X.; Chen, Z.; Yan, W. Bayesian time domain approach for damping identiﬁcation 
+and uncertainty quantiﬁcation in stay cables using free vibration response. Eng. Struct. 2024, 315, 118477. 
+126. Brownjohn, J.M.W.; Au, S.K.; Wang, X.; Zhu, Z.; Raby, A.; Antonini, A. Bayesian operational modal analysis of oﬀshore rock 
+lighthouses for SHM. In Proceedings of the 9th European Workshop on Structural Health Monitoring, Manchester, UK, 10–13 
+July 2018. 
+127. Brownjohn, J.M.W.; Raby, A.; Au, S.-K.; Zhu, Z.; Wang, X.; Antonini, A.; Pappas, A.; D’Ayala, D. Bayesian operational modal 
+analysis of oﬀshore rock lighthouses: Close modes, alignment, symmetry and uncertainty. Mech. Syst. Signal Process. 2019, 133, 
+106306. 
+128. Brownjohn, J.; Raby, A.; Bassitt, J.; Antonini, A.; Zhu, Z.; Dobson, P. Wolf Rock Lighthouse Long-Term Monitoring. Infrastruc‐
+tures 2024, 9, 77–94. 
+129. Xie, Y.-L.; Zhu, Y.-C.; Au, S.-K. Operational modal analysis of Brodie Tower using a Bayesian approach. In Proceedings of the 
+2nd ECCOMAS Thematic Conference on Uncertainty Quantiﬁcation in Computational Sciences and Engineering, Rhodes Is-
+land, Greece, 15–17 June 2017. 
+130. Zhu, Y.-C.; Xie, Y.-L.; Au, S.-K. Operational modal analysis of an eight-storey building with asynchronous data incorporating 
+multiple setups. Eng. Struct. 2018, 165, 50–62. 
+131. Au, S.-K.; To, P. Full-Scale Validation of Dynamic Wind Load on a Super-Tall Building under Strong Wind. J. Struct. Eng. 2012, 
+138, 1161–1172. 
+132. Jimenez Capilla, J.A.; Au, S.-K.; Brownjohn, J.M.W.; Hudson, E. Ambient vibration testing and operational modal analysis of 
+monopole telecoms structures. J. Civ. Struct. Health Monit. 2021, 11, 1077–1091. 
+133. Zhan, J.-Z.; Yan, W.-J.; Wu, W.; Yuen, K.-V.; Chronopoulos, D. Two-stage Bayesian inference for rail model updating and crack 
+detection with ultrasonic guided wave measurements and advanced wave propagation simulation. J. Sound Vib. 2025, 599, 
+118914. 
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual au-
+thor(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to 
+people or property resulting from any ideas, methods, instructions or products referred to in the content. 

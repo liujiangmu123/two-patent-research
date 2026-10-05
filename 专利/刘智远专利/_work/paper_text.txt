@@ -1,0 +1,1234 @@
+
+===== PAGE 1 =====
+IEEE TRANSACTIONS ON INDUSTRIAL INFORMATICS
+1
+A Novel Power Pylon Truss Modeler for LoD3
+Reconstruction From ULS Data: Bridging the
+Gap Between Visualization and Simulation
+Bingtao Chang
+, Xiaodong Cui
+, Xiaodong Lan, Hao Xiong
+, Chen Zou
+, Yuan Li
+,
+Qian Shi
+, Senior Member, IEEE, and Wuming Zhang
+Abstract—Amid growing global electricity demand and
+increasingly frequent extreme weather events, ensuring the
+reliable operation of power transmission infrastructure is
+paramount. A major bottleneck, however, is the genera-
+tion of high ﬁdelity, truss level [level of detail (LoD3)] py-
+lon models suitable for engineering simulation, because
+existing methods are largely limited to visual approxima-
+tion and perform poorly on sparse uncrewed aerial vehicle
+(UAV) light detection and ranging [UAV borne laser scan-
+ning (ULS)] data. To address this critical gap, we introduce
+the pylon truss modeler (PTM), a novel algorithm that, to
+the best of the authors’ knowledge, enables accurate LoD3
+reconstruction from challenging ULS data for the ﬁrst time.
+PTM has two key innovations: a data enhancement strategy
+that signiﬁcantly improves point cloud density and clarity,
+and a highly efﬁcient “node-ﬁrst” reconstruction strategy.
+This framework simpliﬁes reconstruction by reframing it
+as a “node identiﬁcation then connection” task and fur-
+ther converts 3-D truss node localization into a 1-D sig-
+nal processing problem through dimensionality reduction.
+Experimental validation on an 11 km transmission corri-
+dor demonstrates that PTM can reconstruct complex pylon
+structures with an average point-to-model RMSE (RMSEp)
+of 0.137 m, a node localization RMSE of 0.098 m, and low
+normalized graph edit distances of 0.048 and 0.035 for main
+and diagonal members, respectively. Most importantly, we
+demonstrate the use of these reconstructed models in
+ﬁnite-element deformation analysis to support preliminary
+structural-response assessment of in-service pylons. This
+work not only validates the effectiveness of PTM, but also
+establishes a novel, noncontact paradigm for transforming
+real-world sensing data into mechanically analyzable pylon
+models, thereby bridging the gap between visualization and
+simulation.
+Received 5 June 2026; accepted 8 August 2026. This work was
+supported in part by the National Natural Science Foundation of China
+under Grant 42222106 and Grant 42201476, in part by the Lead-
+ing Talents of Guangdong Pearl River Talent Program under Grant
+2021CX02S024, and in part by the Guangdong S&T programme un-
+der Grant 2024B1212050011. Paper no. TII-26-5186. (Corresponding
+author: Wuming Zhang.)
+Bingtao Chang, Xiaodong Cui, Xiaodong Lan, Hao Xiong, Chen Zou,
+Yuan Li, and Wuming Zhang are with the School of Geospatial Engineer-
+ing and Science, Sun Yat-sen University, Zhuhai 519082, China (e-mail:
+zhangwm25@mail.sysu.edu.cn).
+Qian Shi is with the School of Geography and Planning, Sun Yat-sen
+University, Guangzhou 510006, China.
+This article has supplementary downloadable material available at
+https://doi.org/10.1109/TII.2026.3724516, provided by the authors.
+Digital Object Identiﬁer 10.1109/TII.2026.3724516
+Index
+Terms—Engineering
+simulation,
+power
+pylon
+reconstruction, truss conﬁgurations, UAV light detection
+and ranging (LiDAR) scanning.
+I. INTRODUCTION
+E
+LECTRICAL energy is a cornerstone of modern society,
+and global demand is escalating dramatically due to indus-
+trial growth and the rapid advancement of artiﬁcial intelligence
+[1]. Simultaneously, the transition to clean energy often widens
+the geographical gap between power generation and consump-
+tion, placing severe pressure on transmission grids to maintain
+a stable supply [2]. This critical infrastructure is increasingly
+vulnerable to extreme environmental hazards, yet its key nodes,
+transmission pylons, are typically designed for normal service
+loads rather than extreme conditions. As extreme weather events
+become more frequent [3], there is an urgent need to assess
+pylonperformanceunder extremeloads toprovideearlywarning
+and prevent disasters [4]. High-ﬁdelity pylon models are an
+indispensable foundation for this paradigm. They support ﬁnite
+element simulations that generate such warnings [5] and enable
+evaluation of whether in-service structures remain reliable and
+compliant with design speciﬁcations [6]. Ultimately, model-
+based solutions are essential for developing digital twins of
+transmission corridors, substantially improving interoperability
+and real-time responsiveness [7].
+Despitethesecriticalrequirements,apersistentgapremainsin
+acquiring precise 3-D models of aging transmission infrastruc-
+ture [8]. More than 70% of U.S. transmission pylons that have
+been in service for over 30 years lack as-built, building infor-
+mation modeling -compliant models. Conventional digitization
+workﬂows still rely predominantly on manual computer-aided
+design (CAD) operations. However, this approach is economi-
+cally prohibitive given the spatial characteristics of transmission
+networks, where linear corridors can extend for hundreds of
+kilometers.
+Remote sensing technologies, including visible light imaging,
+infrared imaging, and light detection and ranging (LiDAR), are
+increasingly used in power grid operation and maintenance.
+Visible light and infrared imaging are commonly employed
+to detect faults in power equipment [9], [10], [11]. However,
+these modalities cannot provide precise 3-D information, par-
+ticularly for power pylons with complex structures. LiDAR,
+owing to its capability to capture accurate 3-D coordinates, is
+widely adopted for conductor modeling and clearance-zone in-
+trusion monitoring [12]. Uncrewed aerial vehicle (UAV)-borne
+laser scanning (ULS) further improves operational efﬁciency by
+1941-0050 © 2026 IEEE. All rights reserved, including rights for text and data mining, and training of artiﬁcial intelligence and similar technologies.
+Personal use is permitted, but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html
+for more information.
+This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. 
+Authorized licensed use limited to: KTH Royal Institute of Technology. Downloaded on September 13,2026 at 14:46:06 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 2 =====
+2
+IEEE TRANSACTIONS ON INDUSTRIAL INFORMATICS
+acquiring georeferenced point clouds along extensive transmis-
+sion corridors [13].
+In recent years, many studies have investigated the use of ULS
+point clouds for power grid digitization. For example, numerous
+studies focus on classifying raw point clouds into power line,
+pylon, and insulator classes [14]. These classiﬁed datasets can
+then be used to verify whether transmission components comply
+with speciﬁed standards [15]. However, point cloud data capture
+only the instantaneous state of transmission infrastructure, en-
+abling inspection at only a single moment in time [16]. To predict
+future states and provide risk warnings, a crucial step is vector
+reconstruction of the infrastructure [17]. For instance, Munir
+et al. [18] reconstructed transmission lines as catenaries. Based
+on these catenary models, the dynamic response of transmis-
+sion lines under varying conditions, such as temperature [19],
+wind [20], and ice accretion [21], can be simulated to assess
+risks, such as line breakage or reduced clearance distance.
+However, existing research has largely concentrated on mod-
+eling single span lines while neglecting the pylons that connect
+them [22].
+This oversight reveals a core technical bottleneck: the lack
+of structurally sound pylon models with correctly deﬁned truss
+members prevents meaningful coupled simulation of the entire
+line-pylon system [5]. Research on reconstructing power pylons
+remains relatively limited, largely because of their complex con-
+ﬁgurations and wide variety of types [23]. Most existing studies
+produce only approximate shapes, failing to capture detailed
+truss structures and the semantic attributes of their constituent
+members. This limitation is fundamental: without a one-to-one
+correspondence between model elements and real-world truss
+members, it is impossible to assign the distinct physical proper-
+ties (e.g., cross-sections and material grades) required for simu-
+lation analysis. To date, only one study has reconstructed a pylon
+truss structure [8], but it relied on terrestrial LiDAR (TLS) rather
+than ULS data, which generally provide much higher accuracy
+and point density. However, TLS data acquisition is far less
+efﬁcient than ULS and is therefore impractical for reconstructing
+long distance transmission corridors.
+To reconstruct complex pylon truss conﬁgurations from ULS
+point cloud data for engineering simulation, we propose a novel
+pylon truss modeler (PTM) algorithm. The primary contribu-
+tions of the proposed method are as follows.
+1) To the best of the authors’ knowledge, we propose the
+ﬁrst method for automatically reconstructing structurally
+accurate level of detail (LoD3) pylon models from sparse
+and noisy ULS point clouds. This is achieved through a
+novel data enhancement workﬂow that overcomes inher-
+ent data quality limitations.
+2) We introduce a “node-ﬁrst” reconstruction paradigm that
+signiﬁcantly improves accuracy and reduces topological
+errors. This approach transforms the complex 3-D truss
+node localization problem into a 1-D signal processing
+problem through a dedicated dimensionality reduction
+strategy.
+3) We demonstrate the practical application of these
+automatically reconstructed models in ﬁnite element
+deformation analysis. This establishes a novel, noncon-
+tact workﬂow for preliminary structural-response assess-
+ment of in-service infrastructure under external loads,
+thereby validating the direct utility of our models for
+engineering analysis.
+II. RELATED WORKS
+To effectively evaluate the modeling performance of different
+methods, we adapt the commonly used LoD standards from
+building reconstruction and classify power-pylon models into
+three categories: 1) LoD1, a simple geometric model (e.g.,
+cuboids or prisms) that captures basic information, such as
+position, height, and overall dimensions; 2) LoD2, a reﬁned
+model that distinguishes different pylon types, including varia-
+tions in the number of cross-arms or head types; and 3) LoD3,
+a fully detailed and accurate truss model in which each member
+corresponds one-to-one to the actual components of the real
+pylon.
+Based on these LoD classiﬁcations, existing power-pylon
+reconstruction methods can be grouped into three general cat-
+egories. Because LoD1 carries very limited information, its
+reconstruction is often performed alongside pylon point-cloud
+detection. For example, Awrangjeb[24] derived a pylon’s central
+coordinates directly after extracting pylon points, achieving
+a planar positioning accuracy of up to 0.1 m. However, this
+simpliﬁed model captures only pylon location and omits height
+and size information. By contrast, Shen et al. [25] used rect-
+angular cross-sections to detect and describe pylons, thereby
+incorporating height and size in addition to location. Although
+LoD1 reconstruction is easy to process and store, it satisﬁes
+only the requirements of 2-D mapping and basic power-corridor
+management.
+Most pylon reconstructions intended for visualization fall
+into LoD2. These model-driven approaches [26] often segment
+the pylon into components (e.g., head, body, and pedestal)
+and register predeﬁned templates from a model library [27].
+Theyemployvarioustechniques,includingMarkovchainMonte
+Carlo/simulated annealing for parameter optimization [26],
+[28], random sample consensus (RANSAC) for ﬁtting primary
+frames [29], [30], and machine learning (support vector machine
+(SVM)/deep learning (DL)) for component classiﬁcation and
+matching [30], [31]. Although later studies incorporated more
+detailed libraries containing primary truss structures [23], [27],
+these models remain visual approximations. Their truss layouts
+do not necessarily match the actual as-built conﬁguration, which
+makes them unsuitable for engineering analysis. Moreover, the
+high complexity and diversity of pylon types make comprehen-
+sive library-based approaches difﬁcult to scale [23].
+Using data constraints and truss-construction rules offers a
+promising path toward LoD3 modeling. For instance, Kawasaki
+and Masuda [8] used prior structural knowledge and component-
+joining constraints to reconstruct pylon trusses from TLS data.
+In bridge-truss reconstruction, Lamas et al. [32] applied instance
+segmentation to individual truss members based on point-cloud
+features, while Justo et al. [33] reconstructed each member by
+extending bounding boxes and detecting collisions. Although
+effective for trusses with repetitive patterns and high-accuracy
+TLSdata,thesemethodsareinadequateforreconstructingpower
+pylons from ULS data. The combination of low point density and
+limited ranging accuracy, characteristic of ULS data, together
+with the complex truss geometries of power pylons, poses sub-
+stantial challenges for such data-driven approaches.
+This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. 
+Authorized licensed use limited to: KTH Royal Institute of Technology. Downloaded on September 13,2026 at 14:46:06 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 3 =====
+CHANG et al.: NOVEL POWER PTM FOR LoD3 RECONSTRUCTION FROM ULS DATA: BRIDGING THE GAP BETWEEN VISUALIZATION
+3
+Fig. 1.
+Pipeline of the proposed pylon truss reconstruction method.
+III. METHOD
+In this section, we detail the proposed PTM algorithm and the
+subsequent simulation analysis workﬂow. The process consists
+of the following four major steps.
+1)Dataenhancement:Increasingpointclouddensityandclar-
+ity by leveraging the pylon’s inherent geometric characteristics.
+2) Truss reconstruction: Decomposing the complex truss con-
+ﬁguration into simpler components, then reconstructing them by
+detecting and connecting their intersection nodes.
+3) Topology restoration: Reprojecting the dimensionally re-
+duced single face models into 3-D space according to their
+relative geometric relationships, and correcting reconstruction
+errors through graph optimization.
+4) Simulation analysis: performing simulations under wind
+loads on the reconstructed pylon model.
+Fig. 1 illustrates the overall pipeline of the proposed algo-
+rithm.
+A. Data Enhancement
+Power pylons typically range from 10 to 200 m in height.
+The point density acquired from ULS is approximately 100–500
+points per square meter. This density is insufﬁcient for capturing
+truss components with steel widths of 40–250 mm. Furthermore,
+the near-vertical repetition of pylon structures causes inevitable
+occlusions among lower truss units, further decreasing point
+density. This low-density, low-quality point cloud data presents a
+critical bottleneck for truss reconstruction. Therefore, we detail a
+three-step process to improve the data quality: pylon redirection,
+point-density enhancement, and sharpness enhancement.
+Fig. 2.
+Density enhancement diagram of a pylon point cloud.
+Fig. 3.
+Comparison of pylon points before and after sharpening.
+1) Pylon Redirection: To address the disorganized orienta-
+tion of pylon point clouds, we ﬁrst identify their primary direc-
+tion by principal component analysis (PCA). This direction cor-
+responds to the pylon’s cross-arms, which consistently exhibit
+thehighestpointdensity.Theentirepointcloudisthenreoriented
+by computationally rotating this primary direction with high
+density so that it is parallel to the x axis, which simpliﬁes all
+subsequent processing steps.
+2) Density Enhancement: Power pylons typically exhibit
+highly regular and strictly symmetrical geometric conﬁgura-
+tions, making them well suited for information completion based
+on symmetry. As illustrated in Fig. 2, the pylon contains two
+symmetric axes. To locate these axes, we ﬁrst calculate the
+2-D pylon center (xc, yc) by taking the mean of the x and y
+coordinates. However, because cross-arms on certain pylons
+may not be symmetrical on both sides, we use only the portion
+of the point cloud below the cross-arms to compute (xc, yc).
+We then segment the point cloud into two or four symmetrical
+parts. As shown for the ﬁrst segment in Fig. 2, each part is
+subsequently ﬂipped and translated to create a rough alignment
+among the segments.
+The computed pylon center is often not the true geometric
+center, which can cause the ﬂipping and translation operations
+to align the segments inaccurately. Therefore, we employ the
+iterative closest point (ICP) algorithm [34] to achieve optimal
+registration.
+3) Sharpness Enhancement: Because of ULS ranging er-
+rors, truss points appear relatively scattered (see Fig. 3). Struc-
+tural details between adjacent truss units become blurred, which
+makes it difﬁcult to distinguish individual units. Therefore, we
+employ bilateral ﬁltering [35] to reﬁne and sharpen the pylon
+points. Traditional bilateral ﬁltering typically requires feature
+This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. 
+Authorized licensed use limited to: KTH Royal Institute of Technology. Downloaded on September 13,2026 at 14:46:06 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 4 =====
+4
+IEEE TRANSACTIONS ON INDUSTRIAL INFORMATICS
+Fig. 4.
+Pipeline of component decomposition. (a) Pylon rotation.
+(b) P2P distance. (c) Segments. (d) Connected component labeling.
+values, such as point normals or intensity, to ﬁlter outliers
+effectively. However, for pylon points, it is difﬁcult to compute
+accurate intensity values and normal vectors, so we modify the
+bilateral weight to rely only on point coordinates. Speciﬁcally,
+we deﬁne the feature weight as follows:
+wf (pi, pj) =
+⎡
+⎣
+wx
+f (pi, pj)
+wy
+f (pi, pj)
+wz
+f (pi, pj)
+⎤
+⎦=
+⎡
+⎢⎢⎢⎣
+exp
+
+−(xj −xi)2/2σ2
+f
+
+exp
+
+−(yj −yi)2/2σ2
+f
+
+exp
+
+−(zj −zi)2/2σ2
+f
+
+⎤
+⎥⎥⎥⎦.
+(1)
+The parameter σf governs the feature kernel width. Let pi denote
+the point to be ﬁltered, and let pj denote neighboring points
+located within three times the spatial kernel width (3σs), which
+form the neighborhood Ni.
+As shown in Fig. 3, the sharpened points converge more
+closely to each truss member’s centerline, resulting in a marked
+improvement in clarity compared with the unsharpened points.
+B. Truss Reconstruction
+Power pylons are highly intricate truss structures. Their shafts
+act as vertical load bearing components, and their cross-arms
+servehorizontalloadbearingfunctions.Thisdualroleposescon-
+siderable challenges for reconstruction when using a single set
+of rules. Consequently, decomposing the pylon into components
+is essential for reducing reconstruction complexity, and this
+strategy is also commonly used in model driven reconstruction
+methods [23]. Moreover, the large number of truss members and
+their intricate intersection relationships make direct 3-D recon-
+struction computationally expensive and prone to topological
+errors. Therefore, we ﬁrst reduce the problem dimensionality
+to 2-D space, and then employ a reconstruction strategy that
+identiﬁes intersection nodes before connecting them to form
+truss members.
+1) Component Decomposition: Traditional component de-
+composition methods often identify high density nodes along
+the vertical axis and then segment the structure at these lo-
+cations [23], [27]. However, this approach is prone to over
+segmentation and requires complex parameter tuning. To ad-
+dress these limitations, we propose a simpler and more robust
+decomposition method that leverages differences in component
+symmetry.
+Our method is based on a key observation: the pylon shaft
+is centrally symmetric and realigns with itself after a 90◦rota-
+tion, whereas the cross-arms are not centrally symmetric [see
+Fig. 4(a)]. To exploit this property, the entire point cloud is ﬁrst
+rotated 90◦in the horizontal plane around its 2-D center (xc, yc).
+Subsequently, the ICP algorithm is used to register the rotated
+cloud to the original cloud and ensure precise alignment.
+Fig. 5.
+Dimensionality reduction of pylon shaft. (a) 3-D point cloud.
+(b) 2-D point cloud. (c) Truss unit types.
+After this transformation, we calculate the distance dr from
+each original point to its nearest neighbor in the rotated cloud
+[see Fig. 4(b)]. This distance serves as an effective symmetry
+metric. Points are classiﬁed as belonging to the pylon shaft (Ns)
+if dr is below a threshold Sdth; otherwise, they are classiﬁed
+as cross-arms. Although this initial process separates the shaft
+from the arms, all cross-arms are merged into a single segment
+[see Fig. 4(c)]. To isolate them individually, we perform in-
+stance segmentation by applying a connected component label-
+ing algorithm [36]. In the subsequent reconstruction phase, each
+cross-arm segment and the pylon shaft are treated as independent
+structural units.
+2) Component Reconstruction: This section details the truss
+reconstruction process, using the pylon shaft as a representative
+example. Mathematically, the proposed dimensionality reduc-
+tion is deﬁned as a two stage mapping process that transforms
+node localization from a spatial search in R3 into a linear search
+in R1. First (3-D →2-D), by leveraging the shaft’s central sym-
+metry, we project the entire 3-D point cloud P = {(xi, yi, zi)}
+onto the 2-D xoz plane [see Fig. 5(b)]. The mapping is de-
+ﬁned as f3→2 : (xi, yi, zi) →(xi, zi). This projection removes
+redundant depth information along the y-axis while preserving
+truss proﬁle boundaries required for structural analysis. Second
+(2-D →1-D), within the 2-D domain, the search space is further
+constrained by the reconstructed main members. Let the ﬁtted
+main member be represented by the linear equation L(z) :
+x = kz + b. The search space for diagonal nodes is strictly
+constrained to the region Ω = {(x, z) ∈R2 : |x −L(z)| ≤τ},
+where τ represents the buffer threshold, set to 0.1 m in this
+study, and determined by point cloud thickness. This constraint
+reduces the degrees of freedom from two variables, (x, z), to
+one variable, (z), allowing us to map point density within Ω to a
+1-D signal array S(z) for efﬁcient peak detection. This targeted
+reduction strategy minimizes degrees of freedom in the solution
+domain and substantially streamlines the overall process.
+a) Main
+member
+reconstruction: As
+shown
+in
+Fig. 5(c), main member points cluster along the left and
+right edges of the pylon shaft. To extract these edge points, we
+use a layered detection approach that identiﬁes the minimum
+and maximum x-values within discretized vertical segments
+[see Fig. 6(a)]. On each side of the pylon shaft, the main
+This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. 
+Authorized licensed use limited to: KTH Royal Institute of Technology. Downloaded on September 13,2026 at 14:46:06 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 5 =====
+CHANG et al.: NOVEL POWER PTM FOR LoD3 RECONSTRUCTION FROM ULS DATA: BRIDGING THE GAP BETWEEN VISUALIZATION
+5
+Fig. 6.
+Diagram of main member reconstruction. (a) Edge points cal-
+culation. (b) RANSAC. (c) Intersection detection. (d) Main member.
+members typically form two or three steel segments joined at
+obtuse angles. To capture these multiple segment conﬁgurations
+accurately, we employ the RANSAC [37] algorithm for line
+detection. As depicted in Fig. 6(b), RANSAC ﬁts two lines on
+one side, and their intersection yields the node where the main
+members connect.
+b) Diagonal
+member
+reconstruction: Under
+con-
+straints imposed by the main members, reconstructing diagonal
+members only requires determining node heights, because these
+nodes must attach to the main members. This 1-D approach
+avoids direct RANSAC line ﬁtting in 2-D, which reduces com-
+plexity and prevents disordered truss directions.
+This process iterates through all potential diagonals connect-
+ing the left and right main members and selects the diagonal that
+best matches the point cloud based on inlier counts. Speciﬁcally,
+the steps are as follows.
+1) Generate potential nodes: The left and right main mem-
+bers are uniformly sampled at an interval of Δs = 0.1 m
+to generate possible nodes El and Er, respectively.
+2) Evaluate connections: For each node Ei ∈El, ﬁnd its set
+of possible right-side nodes, Ci. Then, for each segment
+connecting Ei to a node Ej ∈Ci, calculate the number
+of inliers Eij within a buffer distance τ of the candidate
+line segment.
+3) Determine the best match: For each Ei, record the max-
+imum inlier count over all candidate connections in Ci.
+This value is denoted by Ii. In Fig. 7(a), for instance, I0
+and I8 correspond to E0,n and E8,n, respectively.
+4) Peak detection: Form a 1-D sequence of inlier counts,
+Ii. Apply the automatic multiscale-based peak detection
+(AMPD) algorithm [38] to identify peaks in this sequence
+[see Fig. 7(b)]. The use of AMPD is motivated by the re-
+peated modular arrangement of pylon truss panels, which
+produces a quasi-periodic inlier-count signal; this prop-
+erty is further veriﬁed by an autocorrelation analysis in
+the Supplementary Material. The nodes Ei corresponding
+to the detected peaks become the ﬁnal left-side diagonal
+nodes.
+Fig. 7.
+Detection of diagonal-member endpoints on main members:
+(a) Computing the inlier counts for candidate diagonal segments and
+(b) identifying peaks in the 1-D inlier-count sequence using AMPD. The
+detected peaks indicate endpoints attached to the main members rather
+than all member-intersection points.
+Fig. 8.
+Diagram of identifying candidate connections.
+Once nodes on both sides are identiﬁed, diagonal trusses
+can be reconstructed based on point cloud distribution between
+adjacent nodes. Each diagonal node can connect only to its three
+nearest nodes on the opposite side. As shown in Fig. 8, each
+prospective connection is ﬁrst divided into 0.1 m segments. We
+then count how many segments contain at least one point, and
+compute connection probability as the ratio of segments with
+points to the total number of segments. If this ratio exceeds 0.5,
+the connection is considered valid. This strategy reliably avoids
+false negatives, which are missed diagonals caused by point
+cloud sparsity, and false positives, which are spurious diagonals
+caused by noise.
+Reconstruction of auxiliary members follows a similar 1-D
+search method. Under the combined constraints of main and di-
+agonal members, auxiliary nodes are also identiﬁed by detecting
+peaks in the 1-D sequence using AMPD.
+C. Topology Restoration
+1) 3-D Restoration: The reconstructed truss models initially
+exist in 2-D. To restore these models to 3-D space, we leverage
+the shared edge property between adjacent faces (for example,
+the shared edge is line PaPbPc in Fig. 9(b), which connects the
+front and left faces). Speciﬁcally, the projection of the left face
+onto the xoz plane aligns with PaPbPc. Therefore, the distance
+from any node on the left face to the xmin plane equals the
+distance from its horizontal projection on PaPbPc to xmin. Like-
+wise, because of the pylon’s central symmetry, the horizontal
+distance from any node on the front face to the ymin plane equals
+the distance from its horizontal projection on PaPbPc to xmin.
+Based on this principle, the 3-D truss conﬁguration of the front
+face can be recovered using the following formula:
+
+x3d,i
+y3d,i
+z3d,i
+
+=
+
+xi
+ymin + xi,prj,l −xmin
+zi
+
+(2)
+This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. 
+Authorized licensed use limited to: KTH Royal Institute of Technology. Downloaded on September 13,2026 at 14:46:06 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 6 =====
+6
+IEEE TRANSACTIONS ON INDUSTRIAL INFORMATICS
+Fig. 9.
+Schematic diagram of 3-D restoration principle: (a) 2-D recon-
+struction result; (b) the shared line of adjacent faces; and (c) 3-D pylon
+restoration.
+where ymin is the minimum y value in the reoriented point cloud;
+xmin is the minimum x value among truss nodes; xi,prj,l is the x
+value of the current node Pi after horizontal projection onto line
+PaPbPc. Reconstruction of the other three faces can be achieved
+by applying similar transformations.
+Because cross-arms typically lack central symmetry, their
+four faces must be reconstructed individually using a similar
+process. Finally, after the shaft and all cross-arms are fully
+reconstructed, they are assembled based on their spatial re-
+lationships to form the complete pylon truss model. A ﬁnal
+topology check is then performed on the assembled model, and
+any topological errors are corrected using vertex clustering and
+a snapping algorithm.
+2) Graph-Based Reﬁnement: Although the node-ﬁrst recon-
+struction strategy can recover the major truss topology, small
+geometric deviations may still be introduced by point-cloud
+sharpening, endpoint discretization, 3-D restoration, and com-
+ponent assembly. To reduce these deviations while preserving
+the reconstructed topology, a graph-based reﬁnement module
+was introduced. The reconstructed pylon was represented as a
+graph
+G = (V, E)
+(3)
+where V denotes the set of reconstructed truss nodes and E
+denotes the set of reconstructed truss members. During opti-
+mization, the graph topology was ﬁxed; no nodes or edges were
+inserted or deleted. Only the spatial positions of existing nodes
+were reﬁned.
+The optimization objective was to minimize the ﬁtting resid-
+uals between the reconstructed truss members and their cor-
+responding point-cloud observations. Before each optimization
+round, each point was assigned to its nearest truss member. The
+point assignment was kept ﬁxed during one inner optimization to
+avoid nondifferentiability caused by changing correspondences.
+For a truss member eij connecting nodes vi and vj, the objective
+function was deﬁned as
+min
+X
+
+eij∈E
+
+pk∈Pij
+d2 (pk, vivj)
+(4)
+Fig. 10.
+Graph optimization for pylon truss.
+where X denotes the node variables to be optimized, Pij is
+the point set assigned to member eij, and d(pk, vivj) is the
+shortest distance from point pk to the line segment vivj. The
+point-to-segment distance was calculated as
+tk = clip
+
+(pk −vi)⊤(vj −vi)
+∥vj −vi∥2
+, 0, 1
+
+d(pk, vivj) = ∥pk −[vi + tk(vj −vi)]∥
+(5)
+where vi and vj are the 3-D coordinates of the two endpoints
+of member eij. The scalar tk is the normalized projection
+parameter of pk onto the segment direction, and clip(·, 0, 1)
+restricts this projection to the ﬁnite segment: tk = 0 or tk = 1
+selects the nearest endpoint, whereas 0 < tk < 1 indicates that
+the perpendicular projection lies inside the segment.
+To maintain a physically plausible topology, shared inter-
+section nodes were optimized as single variables rather than
+independently for each connected member. Main-member nodes
+were allowed to move in 3-D space, whereas diagonal-member
+nodes were constrained to move along the corresponding main-
+member direction (as depicted in Fig. 10). Speciﬁcally, if a
+diagonal endpoint Di is attached to the main member deﬁned by
+two adjacent main-member nodes Mj and Mk, only its height
+zi is optimized, and its 3-D coordinates are updated by linear
+interpolation along the main member
+Di(zi) = Mj +
+zi −zMj
+zMk −zMj
+(Mk −Mj)
+(6)
+where Mj and Mk are the 3-D coordinates of the two adjacent
+main-member nodes, and zMj and zMk are their correspond-
+ing elevations. This one-degree-of-freedom (1-DoF) constraint
+prevents diagonal endpoints from drifting away from their sup-
+porting main members and preserves the attachment relationship
+between members. Because auxiliary members are usually thin-
+ner and more sparsely observed, the main and diagonal members
+were optimized ﬁrst, and the auxiliary members were reﬁned
+afterward using the same principle.
+The optimization problem was solved using the Ceres Solver.
+Since Ceres adopts an adaptive trust-region strategy, no man-
+ually speciﬁed ﬁxed step size was required. After each inner
+optimization converged, the point-to-member assignments were
+This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. 
+Authorized licensed use limited to: KTH Royal Institute of Technology. Downloaded on September 13,2026 at 14:46:06 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 7 =====
+CHANG et al.: NOVEL POWER PTM FOR LoD3 RECONSTRUCTION FROM ULS DATA: BRIDGING THE GAP BETWEEN VISUALIZATION
+7
+Fig. 11.
+Overview of the study area and four typical pylon point clouds.
+updated according to the reﬁned node positions, and the opti-
+mization was repeated in an outer loop. The outer loop was
+terminated when the relative change in the total cost was less
+than 1%
+|Ct −Ct−1|
+Ct−1
+< 1%
+(7)
+where Ct and Ct−1 denote the total costs of two consecutive
+outer iterations. The maximum number of outer iterations was
+set to 10.
+D. Simulation Analysis
+With the acquisition of a detailed LoD3 truss model enriched
+with component properties, the reconstructed pylon can be fur-
+ther used for structural simulation rather than only geometric
+visualization. This capability provides a direct link between
+ULS-based reconstruction and engineering analysis, allowing
+the reconstructed model to be converted into a mechanically
+analyzable ﬁnite element model for deformation assessment
+under external loads.
+In this study, we demonstrate this capability through a static
+wind-induced deformation analysis. The PTM-generated truss
+model was converted into a line-element ﬁnite element model,
+where each reconstructed truss member was represented by a
+beam element and the reconstructed nodes were used as element
+endpoints. Adjacent or coincident endpoints belonging to the
+same structural joint were merged to ensure model connectivity.
+The material and cross-sectional properties were speciﬁed from
+a predeﬁned structural material and section library according to
+the actual conﬁguration of the reconstructed pylon. All pylon
+members were assigned Q355 low-alloy high-strength struc-
+tural steel, with an elastic modulus of E = 2.06 × 105 MPa,
+Poisson’s ratio of ν = 0.30, density of ρ = 7850 kg/m3, and
+yield strength of fy = 355 MPa. Based on the structural roles
+of different member categories, the main members, diagonal
+members, and auxiliary members were assigned L220 × 22,
+L140 × 12, and L90 × 8 angle-steel sections, respectively.
+The static load case considered in this simulation consisted of
+self-weight, conductor tension, and wind load. The self-weight
+was calculated from the assigned material density and section
+properties. The conductor tension was applied as equivalent
+concentrated forces at the corresponding cross-arm attachment
+points. For the wind-load simulation, the basic wind pressure
+was set to w0 = 0.35 kN/m2. The wind pressure acting on each
+pylon member was calculated according to its projected area and
+orientation, and then converted into equivalent line loads in the
+ﬁnite element model.
+Fixed-support boundary conditions were applied at the pylon-
+foot nodes by constraining all translational and rotational de-
+greesoffreedom.Sincethepresentsimulationwasastaticlinear-
+elastic analysis, damping was not included. The reconstructed
+truss members were discretized into beam elements with a mesh
+resolutionof0.1 m.Inotherwords,themaximumelementlength
+was set to 0.1 m during mesh generation.
+IV. EXPERIMENTS AND ANALYSIS
+A. Experiment Data
+The PTM algorithm was validated on a dataset gathered
+from an 11 km power transmission corridor, using a LiAir X3
+LiDAR-equipped UAV. The dataset contains 30 power pylons
+with varying types and truss structures, speciﬁcally 8 tension
+pylons and 22 suspension pylons. The average point density is
+152.6 pts/m2. Fig. 11 provides point cloud examples of four
+representative pylons, each featuring distinct truss conﬁgura-
+tions. These variations offer a robust test for evaluating the PTM
+algorithm.
+In the study area, mountainous terrain and dense vegetation
+caused signiﬁcant occlusion around the pylon pedestals [as
+depicted in Fig. 11(b) and (d)], resulting in disorganized point
+data in these regions. To resolve this, the pedestal sections were
+cropped out, leaving only the pylon shaft and cross-arms for
+further processing.
+B. Parameter Settings
+The main PTM parameters were set as follows. In bilateral
+ﬁltering, the spatial and feature kernel widths were σs = 0.30 m
+and σf = 0.20 m, and the inlier buffer width for candidate
+member evaluation was τ = 0.10 m; these values were ﬁxed
+for all pylons. The AMPD peak selection scale Ss was chosen
+from {4, 5, 6, 7} according to the 1-D inlier-count sequence:
+Ss = 4 for pylons #2, #3, #5, #6, #10, #11, #20, #21, #25,
+and #30; Ss = 5 for #1, #8, #12, #13, #15, #16, #23, #27, and
+#29; Ss = 6 for #4, #7, #9, #14, #18, #19, #24, and #28; and
+Ss = 7 for #17, #22, and #26. Smaller Ss values preserve local
+peak variations, whereas larger values suppress ﬂuctuations in
+smoother node-spacing patterns.
+C. Experiment Results
+1) Qualitative Assessment: Fig. 12 overlays reconstructed
+truss models on the original point clouds. Red, blue, and
+black lines denote main, diagonal, and auxiliary members, re-
+spectively; Fig. 12(a) and (b) show suspension pylons, while
+Fig. 12(c) and (d) show tension pylons.
+Overall, the reconstructed models closely match the point
+clouds and capture shafts and cross-arms with few missing
+or spurious elements. The magniﬁed regions show accurate
+recovery of member types, node connections, and cross-arm
+structures. Some local failures remain, such as missed auxiliary
+or protruding components near truss borders in Fig. 12(b-I). For
+the more complex tension pylons, PTM remains robust under
+sparse sampling; for example, the missing diagonal member in
+Fig. 12(d-I) is inferred through rotation-based data enhancement
+and node-based reconstruction.
+This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. 
+Authorized licensed use limited to: KTH Royal Institute of Technology. Downloaded on September 13,2026 at 14:46:06 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 8 =====
+8
+IEEE TRANSACTIONS ON INDUSTRIAL INFORMATICS
+Fig. 12.
+Qualitative comparison of reconstruction models of different types of pylons. (a) Pylon #2. (b) Pylon #20. (c) Pylon #16. (d) Pylon #1.
+2) Quantitative Accuracy Assessment:
+a) Ground-truth annotation: For each tested pylon, a
+reference truss graph was manually annotated from multiview
+ULS visualization and cross-sectional inspection. Truss connec-
+tion points were marked as reference nodes, adjacent nodes on
+the same physical member were linked as reference edges, and
+each edge was labeled as main, diagonal, or auxiliary. Thus, both
+reference and reconstructed models were represented as labeled
+graphs, where vertices denote truss nodes and category-speciﬁc
+edges denote structural members, enabling evaluation of geo-
+metric ﬁtting, node localization, and memberwise topology.
+b) Assessment metrics: Four metrics were used to
+evaluate the reconstructed LoD3 models: point-to-model RMSE
+(RMSEp), node localization RMSE (RMSEn), category-wise
+normalized graph edit distance (NGEDc), and the proportion of
+points within 0.2 m of the model (PP0.2)
+RMSEp =
+
+
+
+ 1
+N
+N
+
+i=1
+d2
+i
+RMSEn =
+
+
+
+ 1
+Nm
+Nm
+
+i=1
+ˆpi −pgt
+i
+2
+NGEDc = FP c
+v + FN c
+v + FP c
+e + FN c
+e
+|V c
+gt| + |Ec
+gt|
+PP0.2 = N(di < 0.2)
+N
+.
+(8)
+Here, di is the shortest distance from the ith pylon point to the
+reconstructed truss model, and N is the number of pylon points;
+therefore, RMSEp measures overall geometric ﬁtting accuracy.
+In RMSEn, reconstructed nodes are matched to reference nodes
+using a global one-to-one nearest-neighbor assignment; if mul-
+tiple reconstructed nodes have the same nearest reference node,
+only the closest pair is retained and the remaining unmatched
+nodes are treated as false-positive nodes in the graph-based
+evaluation. Here, Nm is the number of matched node pairs, and
+ˆpi and pgt
+i are the reconstructed and reference node coordinates.
+This metric evaluates structural-node localization accuracy.
+For NGEDc, c ∈{M, D, A} denotes main, diagonal, and
+auxiliary members. FPc
+v and FNc
+v are the false-positive and
+Fig. 13.
+Spatial distribution of point-to-reconstructed-model distances.
+(a) Pylon #2. (b) Pylon #16.
+false-negative node counts, FPc
+e and FNc
+e are the false-positive
+and false-negative edge counts, and |V c
+gt| and |Ec
+gt| are the
+reference node and edge counts in category c. Node matching
+was performed globally, and an edge was counted as correct only
+when both endpoints matched the reference nodes and the same-
+category reference edge existed. Thus, NGEDM, NGEDD, and
+NGEDA measure topological consistency for main, diagonal,
+and auxiliary members, respectively. Finally, PP0.2 is the per-
+centage of input points with di < 0.2 m, reﬂecting local ﬁt-
+ting completeness. Smaller RMSEp, RMSEn, and NGEDc, and
+larger PP0.2, indicate better quality.
+c) Results: The quantitative results in Table I demon-
+strate that the reconstructed models achieved reliable geometric
+and topological accuracy. The average point-to-model RMSE
+was 0.137 m, and 73.5% of the pylon points were located within
+0.2 m of the reconstructed model, indicating good consistency
+between the reconstructed centerline models and the observed
+ULS point clouds. The distance distribution in Fig. 13 further
+conﬁrms that most points exhibit small deviations, while only a
+limited number of points have relatively large offsets.
+This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. 
+Authorized licensed use limited to: KTH Royal Institute of Technology. Downloaded on September 13,2026 at 14:46:06 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 9 =====
+CHANG et al.: NOVEL POWER PTM FOR LoD3 RECONSTRUCTION FROM ULS DATA: BRIDGING THE GAP BETWEEN VISUALIZATION
+9
+TABLE I
+PERFORMANCE ASSESSMENT OF RECONSTRUCTED PYLON MODELS VIA
+PTM
+The points far from the reconstructed model mainly corre-
+spond to two cases: local regions with minor reconstruction
+inaccuracies, as marked by the red circles in Fig. 13, and residual
+noise or nonstructural points in the original ULS data, as marked
+by the blue circles. Since PTM aims to reconstruct the dominant
+truss structure rather than ﬁt all outlier points, these large offsets
+do not necessarily indicate reconstruction failures. Instead, they
+show that the method can maintain a structurally consistent
+model without being overly affected by noisy or weakly sup-
+ported points.
+ThenodelocalizationRMSEwas0.098m,indicatingaccurate
+positioning of reconstructed truss nodes. The category-wise
+NGED values were also low, with average NGEDM, NGEDD,
+and NGEDA values of 0.048, 0.035, and 0.107, respectively.
+Although main members are generally easier to reconstruct,
+NGEDD was slightly lower than NGEDM because diagonal
+members are much more numerous, making their normalized
+graph edit distance less sensitive to a few local errors. The
+auxiliary members showed the highest NGED because they
+are thinner, shorter, and more sensitive to occlusion and point
+sparsity.
+3) Comparison With Representative Pylon Reconstruction
+Methods: To further evaluate LoD3 reconstruction capabil-
+ity, PTM was compared with two representative methods:
+Chen et al.’s [29] abstract-template-based method and Zhou et
+al.’s [28] heuristic reconstruction method. Because their source
+codes were unavailable, we reproduced their main procedures
+from the original descriptions and applied all three methods to
+the 30 pylon point clouds.
+Fig. 14.
+Comparison with representative pylon reconstruction meth-
+ods. (a) Reconstruction result of the proposed PTM. (b) Reproduced
+result of Chen et al.’s [29] abstract-template-based method. (c) Repro-
+duced result of Zhou et al.’s [28] heuristic reconstruction method.
+TABLE II
+COMPARISON WITH REPRESENTATIVE RECONSTRUCTION METHODS
+TABLE III
+COMPARISON OF SIMULATED MAXIMUM DEFORMATION (DEF.) AND DESIGN
+LIMITS (TOL.) (M) FOR EACH PYLON MODEL UNDER CHECKING WIND
+SPEED
+As shown in Fig. 14, PTM reconstructs most main, diagonal,
+and auxiliary members and closely follows the original point
+cloud. In contrast, the reproduced methods mainly recover the
+outer contour and partial main/diagonal shaft structures, and
+their cross-arm results are largely limited to external outlines
+rather than complete internal trusses.
+Table II conﬁrms this difference quantitatively. PTM achieves
+anaverageRMSEp of0.137 m,comparedwith0.570 mforChen
+et al. [29] and 0.501 m for Zhou et al. [28]. These results show
+that PTM provides a more complete truss-level reconstruction
+and a better geometric ﬁt, whereas simpliﬁed model representa-
+tions limit the recovery of ﬁne LoD3 details.
+4) Simulation Analysis Results: According to the electric
+power industry standard, the maximum deformation of a trans-
+mission pylon under the checking wind speed should not exceed
+1% of its total height. As shown in Table III, all 30 simulated
+pylons remained below this threshold and therefore satisﬁed
+the design requirement. On average, the maximum absolute
+deformation of the tension pylons (0.36 m) was lower than that
+This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. 
+Authorized licensed use limited to: KTH Royal Institute of Technology. Downloaded on September 13,2026 at 14:46:06 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 10 =====
+10
+IEEE TRANSACTIONS ON INDUSTRIAL INFORMATICS
+Fig. 15.
+Simulation result of total displacement for the pylon model (#2)
+under wind load condition. Note: The black wireframe represents the
+original model, the colored model shows the deformed shape from the
+simulation, and the colored vectors indicate the magnitude and direction
+of displacement.
+of the suspension pylons (0.50 m). In relative terms, the tension
+pylons exhibited a deformation of 0.67% of their average height,
+compared with 0.76% for the suspension pylons. This difference
+is consistent with the typically lower height, larger steel mem-
+bers, and stronger lateral-load-bearing design of tension pylons,
+which must resist both vertical loads and conductor tension.
+Fig. 15 shows the overall deformation proﬁle of pylon #2, with
+the deformation exaggerated by a factor of six for visualization.
+The maximum total deformation is 0.471 m and occurs at the end
+of the upper cross-arm, as indicated by the red vector arrows.
+The displacement increases nonlinearly with height, showing
+a cantilever-like response that is consistent with structural me-
+chanics under wind load.
+5) Generalization on a Public Dataset: To further evalu-
+ate generalization, PTM was tested on a public ULS pylon
+dataset [39]. Since the current framework is designed for T-
+shaped pylons, 16 O-shaped pylons were excluded, and the
+remaining 189 T-shaped pylons were reconstructed. The average
+RMSEp was 0.229 m, which is slightly higher than that on our
+private dataset but still indicates reasonable truss-level recon-
+struction on external data.
+Representative results are shown in Fig. 16. PTM success-
+fully reconstructed the main and diagonal members and re-
+covered different cross-arm conﬁgurations, including inverted-
+triangular, upright-triangular, and inclined-triangular structures.
+Most auxiliary members were also reconstructed, although a few
+false auxiliary members occurred in noisy regions with small
+member spacing. These results demonstrate the generalization
+ability of PTM for T-shaped pylons with different geometries
+Fig. 16.
+Reconstruction results of PTM on a public pylon point-cloud
+dataset. (a)–(c) Representative T-shaped pylons with different geome-
+tries and cross-arm conﬁgurations.
+Fig. 17.
+Comparison of reconstruction results with and without
+data enhancement. (a) With full data enhancement. (b) With point-
+density enhancement only. (c) With sharpening only. (d) Without data
+enhancement.
+and data qualities, while also indicating its current limita-
+tions for noisy auxiliary-member regions and non-T-shaped
+pylons.
+V. DISCUSSION
+A. Contribution of Data Enhancement
+To quantify each data enhancement step’s contribution to
+reconstruction accuracy, we conducted ablation experiments on
+point-density enhancement and sharpening individually. Fig. 17
+shows that only the complete data enhancement pipeline pro-
+duces a near-perfect pylon model (see Fig. 17). By contrast,
+omitting point-density enhancement [see Fig. 17(c) and (d)]
+introduces severe distortion in the upper portion of the main
+shaft, likely due to sparse point clouds caused by steep vertical
+angles of the main members. In addition, the lack of point-
+density enhancement signiﬁcantly increases missed detections
+of diagonal and auxiliary members. Omitting sharpening [see
+Fig. 17(b)] can also mislead the AMPD algorithm in heav-
+ily populated areas (blue circle), presumably because blurred
+point-cloud boundaries prevent accurate truss-member identi-
+ﬁcation. Moreover, as shown in the red circle, sharpening im-
+proves the detection of auxiliary members with dispersed point
+This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. 
+Authorized licensed use limited to: KTH Royal Institute of Technology. Downloaded on September 13,2026 at 14:46:06 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 11 =====
+CHANG et al.: NOVEL POWER PTM FOR LoD3 RECONSTRUCTION FROM ULS DATA: BRIDGING THE GAP BETWEEN VISUALIZATION
+11
+Fig. 18.
+Comparison of auxiliary member reconstruction results using
+node-based versus RANSAC line ﬁtting approaches. (a) Reconstruction
+derived from node detection. (b) Reconstruction derived from RANSAC
+line ﬁtting.
+distributions. Comparing outcomes across these experiments,
+point-density enhancement exerts a more substantial inﬂuence
+on overall pylon integrity, while the sharpening step primarily
+reﬁnes smaller elements. Collectively, these ﬁndings underscore
+the necessity of data enhancement techniques for reliable pylon
+reconstruction from ULS point cloud data.
+B. Advantages of Reconstructing Nodes Over Lines
+While existing methods have employed RANSAC line ﬁt-
+ting for steel structure reconstruction, including partial diago-
+nal member detection in power pylons, this approach exhibits
+critical limitations when processing densely arranged auxiliary
+members. To compare the performance of PTM against this tra-
+ditional strategy, we reconstructed pylon #2 using both methods.
+The results demonstrate (see Fig. 18) that PTM’s node-based
+method produces a more complete and topologically correct
+reconstruction of auxiliary members, whereas the line-based
+RANSAC result is fragmented and inaccurate. This performance
+gap stems from a fundamental difference in parametric com-
+plexity. The line-based ﬁtting must estimate six parameters for
+each linear element, whereas our node-based approach requires
+only two parameters per component. This threefold increase
+in dimensionality exponentially expands the solution space for
+line-based methods, making them highly susceptible to noise
+and leading to erroneous results in areas with sparse data [red
+circle, Fig. 18(b)].
+C. Implications for Industrial Informatics and Digital
+Twins
+This work represents more than a methodological advance-
+ment; it establishes a foundational data-to-model pipeline for
+industrial informatics. The PTM algorithm addresses a core
+challenge for Digital Twins: the automated generation of high-
+ﬁdelity, simulation-ready models from real-world sensor data.
+This automated pipeline provides the essential geometric and
+semantic foundation for a valid cyber-physical representation,
+moving beyond a mere visual replica. Furthermore, it enables
+a shift from reactive to data-driven predictive maintenance in
+smart grids. Our successful application of these models in ﬁnite
+element deformation analysis serves as a proof-of-concept for a
+novel, noncontact workﬂow, transforming raw LiDAR data into
+actionable structural-response information.
+D. Limitations and Future Work
+The applicability of PTM is mainly limited by its geometric
+and topological assumptions. The symmetry-based data en-
+hancement strategy may introduce misalignment for asymmet-
+ric or damaged pylons, such as unequal-leg pylons on steep
+terrain, which can weaken the 1-D density signal and affect
+peak detection. In addition, the current decomposition strategy
+assumes simply connected sub-components and is less suitable
+for nonstandard topologies, such as O-shaped or wine-glass
+pylons, with closed-loop heads. Future work will explore a
+boundary-ﬁrst reconstruction paradigm, in which continuous
+3-D boundary lines or main members are ﬁrst extracted as
+global constraints for detecting diagonal and auxiliary members.
+Conﬁdence attributes may also be assigned to reconstructed
+members to indicate reliability under asymmetry or damage.
+Data acquisition and simulation settings also impose lim-
+itations. PTM does not yet fully reconstruct pylon pedestals
+because vegetation occlusion often causes sparse lower region
+point clouds; denser ﬂy-around UAV surveys and improved
+classiﬁcation could mitigate this issue. The current simulation
+further demonstrates only static linear-elastic deformation un-
+der a representative wind-load case. Future work will extend
+the framework to coupled pylon-line and dynamic analyses,
+including modal response, wind-induced vibration, conduc-
+tor galloping, seismic response, icing, and high-temperature
+load cases, supported by additional mechanical parameters and
+sensor-based model updating.
+VI. CONCLUSION
+This study introduced the PTM, a novel algorithm designed
+to reconstruct structurally accurate, LoD3 power pylon models
+directly from sparse and noisy ULS data. Addressing the crit-
+ical gap between visualization-oriented models and the high-
+ﬁdelity requirements of engineering analysis, the PTM algo-
+rithm successfully overcomes the inherent limitations of ULS
+data through an innovative pipeline. Key contributions include
+a data enhancement strategy and a “node-ﬁrst” reconstruction
+approach. Validation on a comprehensive dataset from an 11 km
+transmission corridor, encompassing 30 pylons of varying de-
+signs, demonstrated the algorithm’s robustness, achieving an
+average point-to-model RMSE (RMSEp) of 0.137 m, a node
+localization RMSE of 0.098 m, and low normalized graph edit
+distances of 0.048 and 0.035 for main and diagonal members, re-
+spectively. More signiﬁcantly, this research demonstrates the di-
+rect application of reconstructed pylon models in ﬁnite-element
+deformation analysis. By successfully performing ﬁnite element
+analysis on the generated models to assess structural defor-
+mation under wind loads, we have bridged the long-standing
+divide between remote sensing data acquisition and practical
+structural assessment. This work not only validates the utility of
+our models but also establishes a novel, noncontact workﬂow for
+preliminary structural-response assessment of in-service power
+infrastructure, paving the way for the development of digital
+twins for power transmission corridors.
+A free implementation of the proposed method is available
+through the EasyPoint software online.1
+1[Online]. Available: https://easypoint.xyz
+This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. 
+Authorized licensed use limited to: KTH Royal Institute of Technology. Downloaded on September 13,2026 at 14:46:06 UTC from IEEE Xplore.  Restrictions apply. 
+
+===== PAGE 12 =====
+12
+IEEE TRANSACTIONS ON INDUSTRIAL INFORMATICS
+REFERENCES
+[1] K. Bourzac, “Fixing AI’s energy crisis,” Nature, Oct. 17, 2024,
+doi: 10.1038/d41586-024-03408-z.
+[2] Z. Zhuo et al., “Cost increase in the electricity supply to achieve carbon
+neutrality in China,” Nature Commun., vol. 13, no. 1, Jun. 2022, Art. no.
+3172.
+[3] S. Legg, “IPCC, 2021: Climate change 2021-The physical science basis,”
+Interaction, vol. 49, no. 4, pp. 44–45, 2021.
+[4] B. Han, Z. Ming, Y. Zhao, T. Wen, and M. Xie, “Comprehensive risk as-
+sessment of transmission lines affected by multi-meteorological disasters
+based on fuzzy analytic hierarchy process,” Int. J. Elect. Power Energy
+Syst., vol. 133, 2021, Art. no. 107190.
+[5] H. Song and Y. Li, “Dynamic response modeling of mountain transmission
+tower-line coupling system under wind–ice load,” Buildings, vol. 13, no.
+3, Mar. 2023, Art. no. 828.
+[6] S. Mathakari, P. Gardoni, P. Agarwal, A. Raich, and T. Haukaas,
+“Reliability-based optimal design of electrical transmission towers using
+multi-objective genetic algorithms,” Comput.-Aided Civil Infrastructure
+Eng., vol. 22, no. 4, pp. 282–292, 2007.
+[7] H. Pan, Z. Dou, Y. Cai, W. Li, X. Lei, and D. Han, “Digital twin and its
+application in power system,” in Proc. 5th Int. Conf. Power Renewable
+Energy, Sep. 2020, pp. 21–26.
+[8] K. Kawasaki and H. Masuda, “Shape reconstruction of structural members
+of steel tower considering symmetrical relationships,” Comput.-Aided Des.
+Appl., vol. 20, pp. 814–825, Jan. 2023.
+[9] H. Choi, J. P. Yun, B. J. Kim, H. Jang, and S. W. Kim, “Attention-based
+multimodal image feature fusion module for transmission line detection,”
+IEEE Trans. Ind. Informat., vol. 18, no. 11, pp. 7686–7695, Nov. 2022.
+[10] N. Wei, X. Li, J. Jin, P. Chen, and S. Sun, “Detecting insulator strings as
+linkedchainstructureinsmartgridinspection,”IEEETrans.Ind.Informat.,
+vol. 19, no. 8, pp. 9019–9027, Aug. 2023.
+[11] H. Zheng et al., “Arbitrary-oriented detection of insulators in thermal
+imagery via rotation region network,” IEEE Trans. Ind. Informat., vol.
+18, no. 8, pp. 5242–5252, Aug. 2022.
+[12] L. Matikainen et al., “Remote sensing methods for power line corridor
+surveys,” ISPRS J. Photogrammetry Remote Sens., vol. 119, pp. 10–31,
+Sep. 2016.
+[13] Z. Zhou, C. Zhang, C. Xu, F. Xiong, Y. Zhang, and T. Umer, “Energy-
+efﬁcient industrial internet of UAVs for power line inspection in smart
+grid,” IEEE Trans. Ind. Informat., vol. 14, no. 6, pp. 2705–2714, Jun. 2018.
+[14] J. Huang, Y. Shen, J. Wang, and V. Ferreira, “Automatic pylon extraction
+using color-aided classiﬁcation from UAV LiDAR point cloud data,” IEEE
+Trans. Instrum. Meas., vol. 72, 2023, Art. no. 2520611.
+[15] H. Zhang et al., “Multimodal fusion network for power tower semantic
+segmentation and inclination detection,” IEEE Trans. Ind. Informat., vol.
+21, no. 10, pp. 7564–7574, Oct. 2025.
+[16] R. Du, H. Zhang, Z. Huang, H. Zhong, Y. Cao, and Y. Wang, “VSLNet:
+Multimodal data fusion network for tree species classiﬁcation in overhead
+transmission line corridors,” IEEE Trans. Ind. Informat., vol. 21, no. 2,
+pp. 1100–1109, Feb. 2025.
+[17] Y. Xu and U. Stilla, “Toward building and civil infrastructure reconstruc-
+tion from point clouds: A review on data and key techniques,” IEEE J. Sel.
+Topics Appl. Earth Observ. Remote Sens., vol. 14, pp. 2857–2885, 2021.
+[18] N. Munir, M. Awrangjeb, and B. Stantic, “Power line extraction and
+reconstruction methods from laser scanning data: A literature review,”
+Remote Sens., vol. 15, no. 4, Jan. 2023, Art. no. 973.
+[19] N. M. Zainuddin et al., “Review of thermal stress and condition monitoring
+technologies for overhead transmission lines: Issues and challenges,” IEEE
+Access, vol. 8, pp. 120053–120081, 2020.
+[20] J. Sun, M. Huang, S. Liao, and W. Lou, “Precipitation simulation and
+dynamic response of a transmission line subject to wind-driven rain during
+super Typhoon Lekima,” Appl. Sci., vol. 14, no. 11, Jan. 2024, Art. no.
+4818.
+[21] N.Wen,B.Yan,Z.Mou,G.Huang,H.Yang,andX.Lv,“Predictionmodels
+for dynamic response parameters of transmission lines after ice-shedding
+based on machine learning method,” Electric Power Syst. Res., vol. 202,
+Jan. 2022, Art. no. 107580.
+[22] M. Fisc˘a et al., “Modeling and simulation of high voltage power lines under
+transient and persistent faults,” Mathematics, vol. 11, no. 1, Jan. 2023, Art.
+no. 21.
+[23] Y. Qiao, X. Xi, S. Nie, P. Wang, H. Guo, and C. Wang, “Power pylon
+reconstruction from airborne LiDAR data based on component segmenta-
+tion and model matching,” Remote Sens., vol. 14, no. 19, Jan. 2022, Art.
+no. 4905.
+[24] M. Awrangjeb, “Extraction of power line pylons and wires using airborne
+LiDAR data at different height levels,” Remote Sens., vol. 11, no. 15,
+Jan. 2019, Art. no. 1798.
+[25] Y. Shen, J. Huang, D. Chen, J. Wang, J. Li, and V. Ferreira, “An automatic
+framework for pylon detection by a hierarchical coarse-to-ﬁne segmenta-
+tion of powerline corridors from UAV LiDAR point clouds,” Int. J. Appl.
+Earth Observ. Geoinformation, vol. 118, 2023, Art. no. 103263.
+[26] B. Guo, Q. Li, X. Huang, and C. Wang, “An improved method for power-
+line reconstruction from point cloud data,” Remote Sens., vol. 8, no. 1,
+Jan. 2016, Art. no. 36.
+[27] H. Wang, T. Hu, Z. Wang, Z. Kang, P. H. Akwensi, and J. Yang, “Recon-
+struction of power pylons from LiDAR point clouds based on structural
+segmentation and parameter estimation,” IEEE Geosci. Remote Sens. Lett.,
+vol. 19, 2022, Art. no. 6500205.
+[28] R. Zhou, W. Jiang, W. Huang, B. Xu, and S. Jiang, “A heuristic method
+for power pylon reconstruction from airborne LiDAR data,” Remote Sens.,
+vol. 9, no. 11, Nov. 2017, Art. no. 1172.
+[29] S. Chen et al., “Power pylon reconstruction based on abstract template
+structures using airborne LiDAR data,” Remote Sens., vol. 11, no. 13,
+Jan. 2019, Art. no. 1579.
+[30] S. Wu et al., “PylonModeler: A hybrid-driven 3D reconstruction method
+for power transmission pylons from LiDAR point clouds,” ISPRS J.
+Photogrammetry Remote Sens., vol. 220, pp. 100–124, Feb. 2025.
+[31] Q. Li, Z. Chen, and Q. Hu, “A model-driven approach for 3D model-
+ing of pylon from airborne LiDAR data,” Remote Sens., vol. 7, no. 9,
+pp. 11501–11524, Sep. 2015.
+[32] D. Lamas, A. Justo, M. Soilán, M. Cabaleiro, and B. Riveiro, “Instance
+and semantic segmentation of point clouds of large metallic truss bridges,”
+Automat. Construction, vol. 151, Jul. 2023, Art. no. 104865.
+[33] A. Justo, D. Lamas, A. Sánchez-Rodríguez, M. Soilán, and B. Riveiro,
+“Generating IFC-compliant models and structural graphs of truss bridges
+from dense point clouds,” Automat. Construction, vol. 149, May 2023,
+Art. no. 104786.
+[34] J. Zhang, Y. Yao, and B. Deng, “Fast and robust iterative closest point,”
+IEEE Trans. Pattern Anal. Mach. Intell., vol. 44, no. 7, pp. 3450–3466,
+Jul. 2022.
+[35] D. Barash, “Fundamental relationship between bilateral ﬁltering, adaptive
+smoothing, and the nonlinear diffusion equation,” IEEE Trans. Pattern
+Anal. Mach. Intell., vol. 24, no. 6, pp. 844–847, Jun. 2002.
+[36] L. He, X. Ren, Q. Gao, X. Zhao, B. Yao, and Y. Chao, “The connected-
+component labeling problem: A review of state-of-the-art algorithms,”
+Pattern Recognit., vol. 70, pp. 25–43, 2017.
+[37] R. C. Bolles and M. A. Fischler, “A RANSAC-based approach to model
+ﬁtting and its application to ﬁnding cylinders in range data,” in Proc. Int.
+Joint Conf. Artif. Intell., 1981, pp. 637–643.
+[38] F. Scholkmann, J. Boss, and M. Wolf, “An efﬁcient algorithm for automatic
+peak detection in noisy periodic and quasi-periodic signals,” Algorithms,
+vol. 5, no. 4, pp. 588–603, Dec. 2012.
+[39] M. Chen, J. Li, J. Pan, C. Ji, and W. Ma, “Insulator extraction from
+UAV LiDAR point cloud based on multi-type and multi-scale feature
+histogram,” Drones, vol. 8, no. 6, Jun. 2024, Art. no. 241.
+This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. 
+Authorized licensed use limited to: KTH Royal Institute of Technology. Downloaded on September 13,2026 at 14:46:06 UTC from IEEE Xplore.  Restrictions apply. 

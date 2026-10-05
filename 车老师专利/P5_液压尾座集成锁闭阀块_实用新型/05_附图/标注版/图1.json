@@ -1,0 +1,215 @@
+{
+ "fig": 1,
+ "title": "尾座液压缸与集成锁闭阀块装配剖视图",
+ "scale": 0.41463,
+ "size_mm": [
+  156.5,
+  112.2
+ ],
+ "size_clean_mm": [
+  156.5,
+  89.2
+ ],
+ "labels": [
+  "2",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
+  "20",
+  "25",
+  "26",
+  "33",
+  "35",
+  "41",
+  "42",
+  "43",
+  "44",
+  "45",
+  "72",
+  "73",
+  "74"
+ ],
+ "missing": [],
+ "crossings": 0,
+ "min_leader_pass_mm": 4.79,
+ "all_anchors_ok": true,
+ "anchors": [
+  {
+   "num": "2",
+   "name": "阀块本体",
+   "side": "T",
+   "anchor_part": "P00_2",
+   "ok": true,
+   "inside_mm": 3.8
+  },
+  {
+   "num": "11",
+   "name": "缸筒",
+   "side": "B",
+   "anchor_part": "P36_11",
+   "ok": true,
+   "inside_mm": 6.7
+  },
+  {
+   "num": "12",
+   "name": "前端盖",
+   "side": "B",
+   "anchor_part": "P35_12",
+   "ok": true,
+   "inside_mm": 2.5
+  },
+  {
+   "num": "13",
+   "name": "后端盖",
+   "side": "B",
+   "anchor_part": "P37_13",
+   "ok": true,
+   "inside_mm": 3.8
+  },
+  {
+   "num": "14",
+   "name": "活塞",
+   "side": "B",
+   "anchor_part": "P38_14",
+   "ok": true,
+   "inside_mm": 3.19
+  },
+  {
+   "num": "15",
+   "name": "活塞杆",
+   "side": "B",
+   "anchor_part": "P39_15",
+   "ok": true,
+   "inside_mm": 3.5
+  },
+  {
+   "num": "16",
+   "name": "无杆腔",
+   "side": "B",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "17",
+   "name": "有杆腔",
+   "side": "B",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "20",
+   "name": "安装面",
+   "side": "B",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "25",
+   "name": "第一锁闭油道",
+   "side": "T",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "26",
+   "name": "第二锁闭油道",
+   "side": "T",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "33",
+   "name": "泄放阀孔",
+   "side": "T",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "35",
+   "name": "安全阀孔",
+   "side": "T",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "41",
+   "name": "第一锁闭座阀",
+   "side": "T",
+   "anchor_part": "P03_41c",
+   "ok": true,
+   "inside_mm": 3.77
+  },
+  {
+   "num": "42",
+   "name": "第二锁闭座阀",
+   "side": "T",
+   "anchor_part": "P07_42c",
+   "ok": true,
+   "inside_mm": 3.8
+  },
+  {
+   "num": "43",
+   "name": "泄放座阀",
+   "side": "T",
+   "anchor_part": "P11_43c",
+   "ok": true,
+   "inside_mm": 3.8
+  },
+  {
+   "num": "44",
+   "name": "预压座阀",
+   "side": "T",
+   "anchor_part": "P15_44c",
+   "ok": true,
+   "inside_mm": 3.8
+  },
+  {
+   "num": "45",
+   "name": "安全溢流阀",
+   "side": "T",
+   "anchor_part": "P17_45",
+   "ok": true,
+   "inside_mm": 2.1
+  },
+  {
+   "num": "72",
+   "name": "第二压力传感器",
+   "side": "T",
+   "anchor_part": "P21_72",
+   "ok": true,
+   "inside_mm": 2.3
+  },
+  {
+   "num": "73",
+   "name": "油温传感器套管",
+   "side": "T",
+   "anchor_part": "P22_73",
+   "ok": true,
+   "inside_mm": 1.42
+  },
+  {
+   "num": "74",
+   "name": "油温传感器",
+   "side": "B",
+   "anchor_part": "P23_74",
+   "ok": true,
+   "inside_mm": 2.1
+  }
+ ],
+ "n_items": 36,
+ "dropped_small": 0,
+ "n_lines": 463,
+ "n_hatch": 407,
+ "t_s": 26.1
+}

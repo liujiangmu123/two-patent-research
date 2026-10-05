@@ -1,0 +1,10 @@
+{
+  "mesh": "block_medium",
+  "nodes": 261833,
+  "tetra": 172527,
+  "loaded_faces": 20259,
+  "fixed_nodes": 6457,
+  "pressure_MPa": 7.0,
+  "boundary": "all bottom nodes fixed XYZ, local block test only; bolt/contact/valve preload excluded",
+  "geometry": "straight quadratic elements on CAD-derived faceted boundary"
+}

@@ -1,0 +1,340 @@
+  RIEGL
+  RIEGL miniVUX-3UAV 
+ miniVUX-3UAV 
+LiDAR Sensor for Unmanned Laser Scanning
+Unmanned Laser Scanning
+visit our website 
+www.riegl.com
+The RIEGL miniVUX-3UAV is an extremely lightweight airborne 
+laser 
+scanner, 
+designed 
+specifically 
+for 
+integration 
+with 
+UAS/UAV/RPAS. The sister type of the proven RIEGL miniVUX-2UAV 
+and RIEGL miniVUX-1UAV sensor offers a selectable 100 kHz, 200 kHz, 
+and 300 kHz laser pulse repetition rate (PRR). With 300 kHz PRR, 
+the sensor provides up to 100,000 measurements per second at 
+120° FoV and thus a dense point pattern on the ground for UAV-based 
+ applications that require the acquisition of small objects.
+The small and sophisticated design of the stable aluminum housing 
+offers various integration possibilities with platforms that offer restricted 
+space or payload capabilities. The 360° field of view allows 
+complete acquisition of the environment. 
+An easy-to-remove SD card for data storage, and/or the option for 
+streaming the scan data via LAN-TCP/IP interface, in combination with 
+the modest power consumption of the scanner, enable straight-forward 
+integration with most UAS/UAV/RPAS types.  
+The RIEGL miniVUX-3UAV makes use of RIEGL’s unique Waveform-LiDAR 
+technology, allowing echo digitization and online waveform processing. 
+Multi-target resolution is the basis for penetrating even dense foliage. 
+As a further special feature, the wavelength is optimized for the mea-
+surement of snowy and icy terrain.
+In addition to the stand-alone version of the miniVUX-3UAV, RIEGL also 
+offers fully-integrated system solutions.
+Typical applications include 
+	
+• Agriculture & Forestry
+	
+• Glacier and Snowfield Mapping
+	
+• Archeology and Cultural  
+Heritage Documentation
+	
+• Construction-Site Monitoring
+	
+• Landslide Monitoring
+	
+• 100 kHz / 200 kHz / 300 kHz  
+Laser PRR selectable
+	
+• 	measurement rate up to 
+200,000 measurements/sec
+	
+• 	scan speed up to 100 scans/sec
+	
+• very compact & lightweight  
+(1.55 kg / 3.4 lbs)
+	
+• up to 360° field-of-view 
+	
+• robust aluminum housing,  
+ready to be mounted on multi-rotor, 
+rotary-wing, and fixed-wing UAVs
+	
+• 	makes use of RIEGL’s unique echo 
+signal digitization and online  
+waveform processing
+	
+• 	multiple target capability – 
+up to 5 target echoes per laser shot
+	
+• 	mechanical and electrical interface 
+for IMU mounting
+	
+• exceptionally well suited to 
+measure in snowy and icy terrains
+	
+• user-friendly, application- and 
+installation-oriented solutions for 
+integration
+®
+    
+NEW 
+Preliminary Data Sheet
+PRELIMINARY
+
+Maximum Measurement Range vs. Target Reflectance RIEGL miniVUX®-3UAV
+Example:	 miniVUX-3UAV at 100,000 pulses/second, range to target = ~90 m, speed = 4 m/s
+Resulting Point Density ~ 45 pts/m²
+Example:	 miniVUX-3UAV at 200,000 pulses/second, range to target = ~85 m, speed = 4 m/s
+Resulting Point Density ~ 95 pts/m²
+Example:	 miniVUX-3UAV at 200,000 pulses/second, range to target = ~90 m, speed = 4 m/s
+Resulting Point Density ~ 90 pts/m²
+PRR = 200 kHz
+PRR = 200 kHz reduced power
+PRR = 100 kHz
+2
+Preliminary Data Sheet
+Copyright RIEGL Laser Measurement Systems GmbH © 2020– All rights reserved.
+PRELIMINARY
+
+RIEGL miniVUX-SYS System Integration Options
+Please contact sales@riegl.com to get more detailed information. 
+RIEGL miniVUX-3UAV  
+with APX-20 UAV1)
+RIEGL miniVUX-3UAV LiDAR Sensor 
+equipped with APX-15 UAV1)
+RIEGL miniVUX-3UAV LiDAR Sensor 
+equipped with APX-20 UAV1)
+RIEGL miniVUX-3UAV  
+with APX-15 UAV1)
+RIEGL Integration Kit 600
+• higher-grade IMU/GNSS unit  
+partly integrated with LiDAR engine
+• total weight approx. 2.5 kg
+• interfaces for up to 2 cameras
+• suited for integration into all types of UAVs
+ 
+• add-on to the miniVUX-SYS coming  
+with shock-absorbing mounting-kit,  
+power supply module and cabling
+• total weight approx. 0.7 kg  
+(without sensor and camera)
+• suited for integration into mulit-rotor UAVs
+• IMU/GNSS unit integrated with LiDAR engine
+• total weight approx. 2 kg
+• interfaces for up to 2 cameras
+• suited for integration into fixed-wing UAVs
+ 
+Maximum Measurement Range vs. Target Reflectance RIEGL miniVUX®-3UAV
+Example:	 miniVUX-3UAV at 300,000 pulses/second, range to target = ~90 m, speed = 4 m/s
+Resulting Point Density ~ 135 pts/m²
+PRR = 300 kHz
+Besides of the stand-alone miniVUX-3UAV LiDAR engine, RIEGL offers also system solutions, combining the miniVUX-3UAV with 
+IMU/GNSS systems of different performance and of different form factors as well as optional RGB camera systems. Additionally, 
+a special add-on to the miniVUX-SYS allows for straight forward integration with your multi-rotor UAV, e.g. a DJI Matrice M600.
+RIEGL miniVUX®-3UAV Camera Options
+1) See technical details in the corresponding Applanix datasheet
+3
+Preliminary Data Sheet
+Copyright RIEGL Laser Measurement Systems GmbH © 2020– All rights reserved.
+with two Sony Alpha 6000 cameras 
+(oblique mount)
+with two Sony Alpha 6000 cameras 
+(oblique mount)
+with nadir-looking camera 
+e.g. Sony Alpha 6000 camera or
+Sony Alpha 7R III
+with nadir-looking camera 
+e.g. Sony Alpha 6000 camera or
+Sony Alpha 7R III
+1) See technical details in the corresponding Applanix datasheet
+PRELIMINARY
+
+all dimensions in mm
+ Dimensional Drawings RIEGL miniVUX®-3UAV Stand-Alone
+4
+Preliminary Data Sheet
+Copyright RIEGL Laser Measurement Systems GmbH © 2020– All rights reserved.
+PRELIMINARY
+
+Laser Product Classification	
+Class 1 Laser Product according to IEC 60825-1:2014
+	
+Range Measurement Performance
+Measuring Principle	
+time of flight measurement, echo signal digitization, 
+	
+online waveform processing
+Minimum Range	
+3 m
+Accuracy 5) 7)	
+15 mm
+Precision 6) 7)	
+10 mm
+Laser Pulse Repetition Rate 1) 	
+100 kHz / 200 kHz / 300 kHz (selectable)
+Max. Effective Measurement Rate 1)	
+up to 200 000 meas./sec. (@ 200 kHz PRR reduced power & 360° FOV)
+Echo Signal Intensity	
+for each echo signal, high-resolution 16 bit intensity information is provided
+Laser Wavelength	
+near infrared
+Laser Beam Divergence 8)	
+1.6 x 0.5 mrad
+Laser Beam Footprint	
+160 mm x 50 mm @ 100 m
+Scanner Performance
+Scanning Mechanism	
+rotating mirror
+Field of View (selectable)	
+360° @ 100 kHz, 200 kHz reduced power
+	
+180° @ 200 kHz
+	
+120° @ 300 kHz
+Scan Speed (selectable)	
+10 - 100 scans/sec9) @ 100 kHz, 200 kHz reduced power
+  	
+20 - 100 scans/sec9) @ 200 kHz
+	
+30 - 100 scans/sec9) @ 300 kHz
+Angular Step Width   (selectable) 
+0.018° ≤   ≤ 0.36°
+between consecutive laser shots 
+Angle Measurement Resolution	
+0.001°
+Interfaces
+Configuration, Scan Data Output &	
+2 x LAN 10/100/1000 Mbit/sec
+Communication with External Devices	
+WLAN IEEE 802.11 a/b/g/n
+GNSS Interface 10)	
+Serial RS-232 interface for data string with GNSS-time information,
+	
+TTL input for 1PPS synchronization pulse.
+	
+Power Output 10 V DC, max 4.5 W
+General IO & Control 11)	
+2 x TTL input/output, 1 x Remote on/off
+Camera Interface	
+2 x GNSS RS-232 Tx & PPS, Power (USB 2.0), Trigger, Exposure
+Memory Card Slot	
+for SDHC/SDXC memory card 32 GByte (can be upgraded to 64 GByte)
+General Technical Data
+Power Supply Input Voltage / Consumption  	
+11 - 34 V DC / typ. 18 W @ 100 scans/sec
+Main Dimensions (L x W x H) / Weight 	
+       with Cooling Fan  	
+243 x 111 x 85 mm / approx. 1.6 kg 
+       without Cooling Fan   	
+243 x 99 x 85 mm / approx. 1.55 kg 	
+Humidity 	
+max. 80 % non condensing @ 31°C
+Protection Class	
+IP64, dust and splash-proof
+Temperature Range 12)	
+-10°C up to +40°C (operation) / -20°C up to +50°C (storage)
+Laser Pulse Repetition Rate PRR 1)	
+100 kHz 	
+200 kHz	
+200 kHz	
+300 kHz 
+	
+	
+	
+reduced power
+Max. Measuring Range 2) 
+	
+natural targets  ≥ 20 % 	
+170 m	
+150 m	
+170 m	
+170 m    		
+	
+natural targets  ≥ 60 % 	
+290 m 	
+250 m	
+290 m	
+290 m
+	
+natural targets  ≥ 80 % 	
+330 m 	
+280 m	
+330 m	
+330 m    	
+   	 	
+ 	
+ 
+Typ. Operating Flight Altitude AGL 1) 3)	
+  	
+	
+	
+  	
+ 	
+ 	
+	
+natural targets  ≥ 20 % 	
+100 m (330 ft)	
+85 m (280 ft)	
+100 m (330 ft)	
+100 m (330 ft)    	
+	
+natural targets  ≥ 60 % 	
+160 m (525 ft) 	
+140 m (460 ft)	
+160 m (525 ft)	
+160 m (525 ft)
+Max. Number of Targets per Pulse 4)	
+5	
+5	
+5	
+5
+	
+1)	 Rounded values.
+2) 	Typical values for average conditions. Maximum range is specified for flat targets with size in excess of the laser beam diameter, perpendicular angle of incidence,  
+and for atmospheric visibility of 23 km. In bright sunlight, the max. range is shorter than under overcast sky.
+3)	 Flat terrain assumed, scan angle ±45° FOV
+4)	 If more than one target is hit, the total laser transmitter power is split and, accordingly, the achieveable range is reduced.
+7)	 One sigma @ 50 m range under RIEGL test conditions.
+8)	 Measured at 50% peak intensity, 1.6 mrad corresponds to an increase of 160 mm of beam diameter  
+per 100 m distance.
+5)	 Accuracy is the degree of conformity of a measured quantity 
+to its actual (true) value.
+6)	 Precision, also called reproducibility or repeatability, is the 
+degree to which further measurements show the same result.
+10) internally available (not available with standard interface box)
+9) equivalent to revolutions per second
+11) 1x externally available with standard interface box
+The following clause applies for instruments delivered into the United States: 
+Complies with 21 CFR 1040.10 and 1040.11 except for conformance with  
+IEC 60825-1 Ed.3., as described in Laser Notice No. 56, dated May 8, 2019.
+12) Continuous operation at ambient temperature of ≥ 30°C (≥ 86°F) 
+requires a minimum amount of air flow at approx. 3 m/s. 
+For applications where a 3 m/s air flow along the cooling fins cannot 
+be guaranteed, the cooling fan has to be used.
+Technical Data RIEGL miniVUX®-3UAV
+5
+Preliminary Data Sheet
+Copyright RIEGL Laser Measurement Systems GmbH © 2020– All rights reserved.
+PRELIMINARY
+
+www.riegl.com
+Preliminary Data Sheet, RIEGL miniVUX-3UAV, 2020-10-08
+Copyright RIEGL Laser Measurement Systems GmbH © 2020 – All rights reserved.
+Use of this data sheet other than for personal purposes requires RIEGL’s written consent.
+This data sheet is compiled with care. However, errors cannot be fully excluded and alternations might be necessary.
+RIEGL  
+Laser Measurement Systems GmbH
+Riedenburgstraße 48
+3580 Horn, Austria
+Phone: +43 2982 4211
+office@riegl.co.at | www.riegl.com
+RIEGL USA Inc. | info@rieglusa.com | www.rieglusa.com
+RIEGL Japan Ltd. | info@riegl-japan.co.jp | www.riegl-japan.co.jp
+RIEGL China Ltd. | info@riegl.cn | www.riegl.cn
+RIEGL Australia Pty Ltd. | info@riegl.com.au | www.riegl.com
+PRELIMINARY

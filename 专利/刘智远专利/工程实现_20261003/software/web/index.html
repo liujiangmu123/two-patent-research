@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TrussTwin · 角钢桁架工程工作台</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="importmap">{"imports":{"three":"/vendor/three/three.module.js"}}</script>
+</head>
+<body>
+  <header><div class="brand"><span class="brandmark">△</span><div><strong>TrussTwin</strong><span>角钢桁架工程工作台</span></div></div><div class="header-right"><span id="modeBadge" class="badge">工程原型 · 合成演示</span><button id="importButton">导入项目</button><button id="exportButton" class="primary">导出结果</button></div></header>
+  <main>
+    <aside class="leftpanel">
+      <div class="eyebrow">项目与证据</div><h1 id="projectName">载入项目</h1><p id="projectNote" class="muted"></p>
+      <div class="metrics"><div><strong id="memberCount">—</strong><span>杆件</span></div><div><strong id="ambiguousCount">—</strong><span>待核实</span></div><div><strong id="measurementCount">—</strong><span>观测组</span></div></div>
+      <div id="decisionBanner" class="action-card"><strong>计算结论待载入</strong></div>
+      <label class="search"><span>⌕</span><input id="memberSearch" placeholder="查找杆件编号"></label>
+      <div class="section-row"><h2>杆件清单</h2><span id="listCount" class="muted"></span></div><div id="memberList" class="member-list"></div>
+      <div class="bottom-info"><span class="statusdot"></span>本地计算 · 数据不上传<br><span class="muted">长度 m / 力 N / 弹性模量 Pa</span></div>
+    </aside>
+    <section class="center">
+      <div class="viewbar"><div class="segmented"><button class="active" data-view="solid">工程模型</button><button data-view="gaussian">表面高斯</button><button data-view="wire">节点与杆件</button></div><div><button id="resetView">复位视角</button><button id="showLabels" aria-pressed="true">编号</button></div></div>
+      <div id="viewport"><div id="loading">正在载入结构与计算结果…</div><div id="canvasLabels"></div><div class="viewcaption"><strong id="viewTitle">共享节点角钢模型</strong><span id="viewSubtitle">拖动旋转 · 滚轮缩放 · 点击杆件查看依据</span></div><div class="legend"><span><i class="ok"></i>候选判定一致</span><span><i class="unknown"></i>需补测</span><span><i class="fail"></i>演示验算超限</span></div></div>
+      <div class="tasks"><div class="section-row"><div><div class="eyebrow">下一步测量</div><h2>按承载分歧选择有效动作</h2></div><button id="resetDemo">重置远程观测演示</button></div><div id="actionList" class="action-list"></div></div>
+    </section>
+    <aside class="rightpanel"><div class="eyebrow">杆件详情</div><h2 id="selectedId">选择一根杆件</h2><p id="selectedStatus" class="muted"></p><div id="memberDetails"></div>
+      <div class="measurement-block"><h3>回灌测厚记录</h3><p class="muted">仅输入已获得的钢基材厚度及标准差。每次独立测量使用新 ID，同条记录请勿重复输入；演示数据不代表现场测量。</p><form id="thicknessForm"><label>测量记录 ID<input id="measurementId" type="text" value="UI-UT001" required></label><label>厚度 mm<input id="thicknessValue" type="number" min="0.01" step="0.01" value="10" required></label><label>标准差 mm<input id="thicknessSigma" type="number" min="0.001" step="0.001" value="0.15" required></label><button class="primary" type="submit">更新候选与验算</button></form></div>
+      <details><summary>计算范围与结果解释</summary><div id="solverInfo"></div><p>本原型提供标定观测与人工杆件关联条件下的拟合、截面候选比较、轴向桁架计算和演示验算。高斯由工程参数生成，尚未训练真实照片外观；结果不等同于完整规范验算。</p></details>
+      <div class="download-links"><a href="/export/case.json" download="case.json">项目 JSON</a><a href="/export/surface_gaussians.ply" download="surface_gaussians.ply">高斯 PLY</a><a href="/export/gaussian_members.json" download="gaussian_members.json">高斯与杆件映射</a></div>
+    </aside>
+  </main>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <input id="fileInput" type="file" accept=".json,application/json" hidden>
+  <dialog id="importDialog"><div class="dialog-head"><h2>导入标定观测项目</h2><button id="closeDialog">关闭</button></div><p>选择项目 JSON，或粘贴节点、角钢候选、材料、荷载与观测。支持激光点、投影像素、边缘像素和测厚记录。</p><button id="chooseFile">选择 JSON 文件</button><textarea id="jsonInput" spellcheck="false" placeholder="粘贴项目 JSON"></textarea><p id="importError" class="error"></p><button id="runImport" class="primary">导入并计算</button></dialog>
+  <script type="module" src="/app.js"></script>
+</body></html>
+
+

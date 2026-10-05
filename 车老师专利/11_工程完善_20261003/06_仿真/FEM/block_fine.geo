@@ -1,0 +1,10 @@
+SetFactory("OpenCASCADE");
+Merge "block.brep";
+Mesh.CharacteristicLengthMin = 1.25;
+Mesh.CharacteristicLengthMax = 4;
+Mesh.MeshSizeFromCurvature = 18;
+Mesh.ElementOrder = 2;
+Mesh.SecondOrderLinear = 1;
+Mesh.Optimize = 1;
+Mesh.SaveAll = 1;
+Mesh.MshFileVersion = 2.2;

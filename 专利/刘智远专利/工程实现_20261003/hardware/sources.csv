@@ -1,0 +1,10 @@
+source_id,title,url,source_type,checked_on,used_for,qualification
+H01,Livox Avia规格,https://www.livoxtech.com/avia/specs,厂商官方,2026-10-03,接口质量功耗光束预算,指定条件测距精度不能外推辨厚
+H02,Livox SDK通信协议,https://github.com/Livox-SDK/Livox-SDK/wiki/Livox-SDK-Communication-Protocol,厂商官方SDK,2026-10-03,时间类型包首点PPS和回波模式,本包未证明完整no-return方向可恢复
+H03,Basler acA2440-35uc规格,https://www.baslerweb.com/en-us/shop/aca2440-35uc/,厂商官方,2026-10-03,相机像素质量USB及典型功耗,参考型号非冻结采购
+H04,Basler曝光时序,https://docs.baslerweb.com/acquisition-timing-information,厂商官方,2026-10-03,曝光开始延迟不能等同trigger,实际型号ROI模式需核验
+H05,Basler曝光活动输出,https://docs.baslerweb.com/line-source,厂商官方,2026-10-03,ExposureActive双边沿与滚动快门定义,输出可用性及传播延迟需实测
+H06,SBG Ellipse-D规格,https://www.sbg-systems.com/ins/ellipse-d/,厂商官方,2026-10-03,INS接口质量同步与功耗参考,营销6W与电气<1.05W不一致;预算仅工程预留
+H07,SBG Ellipse系列datasheet,https://www.sbg-systems.com/wp-content/uploads/SBG-Ellipse-Series-MK007EN.pdf,厂商官方,2026-10-03,型号功耗及天线排除条件,旧表D<0.9W不含天线;代次需确认
+H08,Evident 45MG规格,https://ims.evidentscientific.com/zh/products/thickness-gauges/45mg,厂商官方,2026-10-03,测厚参考与记录选配,分辨率不是准确度;探头适用性另验证
+H09,Evident超声测厚介绍,https://ims.evidentscientific.com/en/applications/introductory-ultrasonics/introduction-thickness-gauging,厂商官方技术资料,2026-10-03,测厚校准原则参考,实际检验人员与项目规程为现场执行依据

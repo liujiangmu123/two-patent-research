@@ -1,0 +1,414 @@
+ 
+ 
+Kanika Goel(1), Fernando Rodriguez Gonzalez(1), Nico Adam(1), Javier Duro(2), Marc Gaset(2) 
+ 
+(1) Remote Sensing Technology Institute (IMF), German Aerospace Center (DLR), Germany 
+(2) Altamira Information, Spain  
+ 
+ 
+ 
+ABSTRACT 
+Monitoring the deformation of urban infrastructure is crucial 
+for improving safety and reducing economic loss. Ground 
+deformation (caused by construction, groundwater extraction 
+etc.) can be measured with millimeter accuracy using advanced 
+stacking techniques in differential SAR interferometry. 
+However, deformation might also occur due to thermal dilation 
+of complex urban objects such as buildings and bridges, 
+resulting in structural stress and thus, a need for monitoring. 
+High resolution SAR missions e.g. TerraSAR-X provide a 
+unique 
+opportunity 
+to 
+measure 
+such 
+small 
+seasonal 
+displacements. This paper investigates different techniques 
+such as Persistent Scatterer Interferometry (PSI), Distributed 
+Scatterer Interferometry (DSI), Stable Point Network (SPN) 
+and Small Baseline Subset Algorithm (SBAS) for thermal 
+dilation monitoring of complex urban infrastructure using X-
+band SAR data. 
+Index Terms— Distributed Scatterer (DS), Deformation, 
+Differential 
+Interferometric 
+SAR 
+(DInSAR), 
+Persistent 
+Scatterer (PS), TerraSAR-X, Thermal Dilation, Urban Areas. 
+1. INTRODUCTION 
+Differential Interferometric SAR (DInSAR) and multitemporal 
+DInSAR have proven to be very effective in mapping surface 
+displacement [1]. The TerraSAR-X mission provides meter-
+resolution imagery data from space and has provided a 
+significant improvement in the monitoring capabilities of 
+interferometric techniques [2]. Due to reduced wavelength (ca. 
+3.1 cm), the data are more sensitive to small displacements, 
+even those caused by thermal dilation of objects. However, 
+most of the stacking algorithms, such as Persistent Scatterer 
+Interferometry (PSI), estimate the deformation time series 
+assuming a linear subsidence [3]. This is especially not true in 
+the case of man-made structures, such as steel core bridges and 
+specific buildings, which may be very sensitive to thermal 
+dilation effects correlated to the temperature and may undergo 
+large non-linear seasonal deformation. Thus, assumption of a 
+linear model may often lead to ambiguous velocity estimates 
+and decreased performance. Thus, a DInSAR stacking system 
+dealing with non-linear motion has to be adapted accordingly. 
+    The aim of this paper is thermal dilation monitoring of 
+complex urban structures at high resolution by extending 
+standard multitemporal DInSAR techniques based on 
+Persistent Scatterers (PSs) and/or Distributed Scatterers (DSs) 
+[3]-[7]. Focus is on the preservation of single buildings and 
+transportation infrastructure such as bridges, tunnels and 
+railways. The advanced processing system is demonstrated 
+over the urban area of Cologne, Germany using high resolution 
+spotlight TerraSAR-X data.  
+2. METHODOLOGY 
+The coherent stacking methods involve the simultaneous 
+processing of a stack of SAR images of the same area, which 
+are taken at different times, for monitoring deformation time 
+series and residual topography (after compensation of a digital 
+elevation model). 
+    In PSI, long time stable PSs are exploited and differential 
+interferograms with respect to a single master image are 
+formed [3]. It provides a parametric estimation of the 3D 
+location and displacement for PSs based on the assumption of 
+one or two dominant scatterers in the resolution cell. Basically, 
+the differential interferometric phase is composed of phase 
+components due to deformation, residual topography, 
+atmosphere and noise. The deformation phase for a scatterer 
+with respect to a reference pixel is usually assumed to follow a 
+constant velocity model and is given by: 
+ 
+>
+@
+k
+t
+k
+defo
+vB
+O
+S
+I
+4
+ 
+ 
+(1) 
+where O is the signal wavelength, v is the displacement 
+velocity of the scatterer in the line-of-sight (LOS) and 
+k
+tB is 
+the temporal separation (i.e. temporal baseline) for k th 
+interferogram. The unknown deformation parameter to be 
+estimated in this case is v . This model can be extended to 
+include periodic displacement induced by thermal dilation 
+effects associated to temperature. The yearly temperature 
+profile of an area can be approximated by a cosine function 
+and the extended deformation model is given as follows: 
+ 
+
+
+»
+»
+»
+»
+¼
+º
+«
+«
+«
+«
+¬
+ª
+°
+°
+¿
+°°
+¾
+½
+°
+°
+¯
+°°
+®
+­
+¸
+¹
+·
+¨
+©
+§
+
+¸
+¹
+·
+¨
+©
+§
+
+
+ 
+ref
+ref
+k
+t
+k
+t
+k
+defo
+t
+T
+t
+B
+T
+a
+vB
+S
+S
+O
+S
+I
+2
+cos
+2
+cos
+4
+ 
+(2) 
+where a [mm] is the amplitude of seasonal motion of the 
+scatterer in radar’s LOS, T is the period of the seasonal 
+THERMAL DILATION MONITORING OF COMPLEX URBAN 
+INFRASTRUCTURE USING HIGH RESOLUTION SAR DATA 
+954
+978-1-4799-5775-0/14/$31.00 ©2014 IEEE
+IGARSS 2014
+
+ 
+ 
+displacement and is equal to one year for seasonal deformation 
+caused by thermal dilation and 
+ref
+t
+ is the time offset of the 
+master (reference) acquisition. The unknown deformation 
+parameters to be estimated now include v and a . 
+    Additionally, it is also possible to exploit partially coherent 
+DSs 
+via 
+techniques 
+such 
+as 
+Distributed 
+Scatterer 
+Interferometry (DSI), Stable Point Network (SPN) and Small 
+Baseline Subset Algorithm (SBAS). DSs also make up a 
+significant percentage in X-band and considerably increase the 
+measured points, as shown later in the next section.  
+    In DSI, first, an adaptive spatial phase filtering is performed 
+on coherent DSs [4]. The linear and seasonal deformation is 
+then retrieved for each selected DS by adjusting the extended 
+deformation model to the available data, similar to PSI. In 
+cities, differential interferograms with respect to a single 
+master image can be used, since, DSs provide a long time 
+coherent radar return on man-made structures (however, for 
+other applications in non-urban areas, it is better to use small-
+baseline interferograms so as to limit the effects of temporal 
+decorrelation).     
+    The SPN technique [5], [6] also utilizes differential 
+interferograms formed with respect to a single master image 
+and then multilooked. Since the temperature evolution during 
+the year does not follow pure cosine behavior, this algorithm 
+correlates the thermal component with the air temperature 
+history at the acquisition times as follows: 
+ 
+>
+@
+temp
+temp
+k
+t
+k
+defo
+a
+vB
+'
+
+ O
+S
+I
+4
+ 
+(3) 
+where 
+temp
+a
+ [mm/ºC] is the thermal amplitude of the scatterer 
+in radar’s LOS and 
+temp
+'
+ is the normalized temperature 
+difference between the two acquisition times. The unknown 
+deformation parameters to be estimated are v and 
+temp
+a
+. 
+    SBAS, meanwhile, uses unwrapped and multi-looked small-
+baseline differential interferograms and estimates non-linear 
+deformation of the scatterers without any modelling via the 
+Singular Value Decomposition method [7]. Thus, the 
+estimated deformation time series include the thermal dilation 
+component of motion.  
+3. EXPERIMENTAL RESULTS 
+The test site is the city of Cologne in Germany. The data 
+comprises of 50 High Resolution Spotlight TerraSAR-X 
+images from March, 2009 to December, 2010.  
+    Fig. 1 shows the estimated amplitude of seasonal 
+deformation for the test site using PSI. The following different 
+types of urban infrastructure have been highlighted: 
+3.1 Buildings 
+The important buildings which have undergone seasonal 
+motion have been enclosed in white rectangles. Building ‘A’ is 
+the shopping center ‘Koeln Arcaden’, ‘B’ is the international 
+trade fair and exhibition center ‘Koelnmesse’, ‘C’ is the indoor 
+concert arena ‘Lanxess Arena’, ‘D’ is Cologne’s main railway 
+station ‘Koeln Hauptbahnhof’, ‘E’ is the ‘Cologne Cathedral’ 
+and is a World Heritage Site, and ‘F’ is an urban regeneration 
+neighborhood ‘Media Park’ which houses companies, cultural 
+institutions, a hotel and apartments. Using TerraSAR-X data, 
+thermal dilation of these buildings is measurable. 
+3.2 Bridges 
+The bridges over river Rhine have been marked by yellow 
+arrows. Bridge ‘G’ is the ‘Hohenzollernbruecke’, the most 
+heavily used railway bridge in Germany. Bridge ‘H’ is the 
+‘Zoobruecke’ and it further extends to both east and west of 
+the river. It is the world’s most tensioned box girder bridge 
+and also the busiest bridge in Cologne. Bridge ‘I’ is the 
+‘Muelheimerbruecke’. Strong periodic deformation can be 
+seen on the bridges, since, temperatures in Cologne can vary 
+greatly between summer and winter. However, for some parts 
+of the bridges, measurement point density is less. Possible 
+reasons for this include river-bridge multiple bounce, double 
+scatterers and non-linear displacements not related to 
+temperature.  
+3.3 Railways 
+The ‘Line 13’ of the Cologne Stadtbahn, a light rail system, 
+has been enclosed in the red rectangle ‘J’. The northern part of 
+this line is built as an elevated railway and the seasonal motion 
+is evident.  
+    We have zoomed-in on the ‘Zoobruecke’ bridge in Fig. 2. 
+The left image shows the estimated amplitudes of seasonal 
+deformation using PSI. The area enclosing the ‘Zoobruecke’ 
+bridge has also been processed using the DSI algorithm and 
+the results are shown in the image on the right. The results for 
+PSs and DSs match well with each other. More importantly, 
+there is a substantial increase in the measured point density.  
+    Another example illustrating ‘Hohenzollernbruecke’ and 
+‘Duetzer Bruecke’ (not shown previously in Fig. 1) bridges is 
+provided in Fig. 3. It shows the estimated thermal amplitudes 
+for the test area using SPN. Local temperature data has been 
+used instead of a cosine modelling. It is worth mentioning that 
+the use of local registered temperatures instead of a cosine 
+model is sometimes not an optimal solution because it can be 
+difficult to get data from a station near the area of interest for 
+specific SAR acquisition times. Additionally, the real 
+temperature of each structure also depends on the solar 
+irradiation, 
+the 
+materials’s 
+absorbed 
+solar 
+radiation, 
+temperature gradients and surrounding elements which locally 
+affect the temperature suach as rivers or sea. Thus, the 
+registered temperature can differ several degrees from the real 
+temperature of the structure. The unmodeled thermal signal 
+produces 
+a 
+residual 
+in 
+the 
+long-term 
+displacement 
+measurement and a decrease in the model fitting quality.  
+    Note that in all these three methods demonstrated 
+previously, wherein, a deformation model is fitted to the 
+available phase data, it is suggested to have at least two years 
+of acquisitions for measuring thermal dilation as this improves 
+the model fitting.  
+    Lastly, Fig. 4 shows the mean deformation estimated using 
+the SBAS technique. The area near ‘Lanxess Arena’ building 
+and ‘Zoobruecke’ bridge is shown. Deformation time series is 
+visualized for a point on the concert arena building. As can be 
+955
+
+ 
+seen, even non-linear deformation time series can be 
+estimated, which includes the linear as well as seasonal 
+deformation due to thermal dilation. However, SBAS is 
+susceptible to phase unwrapping errors in urban areas due to 
+layover, shadow and sometimes, water bodies dividing the 
+SAR scene into two (as is the case for our test site Cologne). 
+Sparse phase unwrapping should be used which only unwraps 
+the coherent points.  
+4. CONCLUSION 
+The results demonstrate the potential of TerraSAR-X High 
+Resolution Spotlight data to measure the thermal dilation of 
+complex structures such as bridges. Different techniques such 
+as PSI, DSI, SPN and SBAS have been discussed for this 
+purpose. It is now possible to monitor the thermal stress of 
+urban infrastructure for stability analysis. 
+REFERENCES 
+[1] R. Bamler and P. Hartl, “Synthetic aperture radar interferometry- 
+Topical review,” Inverse problems- 14, R1 - R54, IOP Publishing 
+Limited (UK), 1998. 
+[2] N. Adam, M. Eineder, N. Yague-Martinez, and R. Bamler, “High 
+resolution interferometric stacking with TerraSAR-X,” In: Proc. 
+IGARSS, Boston, US, 2008. 
+[3] A. Ferretti, C. Prati, and F. Rocca, “Permanent scatterers in SAR 
+interferometry,” IEEE TGARS, vol. 39, No. 1, pp. 8-20, 2001.  
+[4] K. Goel and N. Adam, “High resolution differential interferometric 
+stacking via adaptive spatial phase filtering,” In: Proc. IGARSS, 
+Vancouver, Canada, 2011. 
+[5] J. Duro, J. Inglada, J. Closa, N. Adam, and A. Arnaud, “High Resolution 
+Differential Interferometry using time series of ERS and ENVISAT SAR 
+data,” In: Proc. FRINGE, Frascati, Italy, 2003. 
+[6] J. Duro, O. Mora, M. Agudo, and A. Arnaud, "First results of Stable 
+Point Network software using TerraSAR-X data," In: Proc. EUSAR, 
+Aachen, Germany, 2010.  
+[7] P. Berardino, G. Fornaro, R. Lanari, and E. Sansosti, “A new algorithm 
+for surface deformation monitoring based on small baseline differential 
+SAR interferograms,” IEEE TGARS, vol. 40, no. 11, pp. 2375–2383, 
+2002. 
+B
+A
+D
+C
+E
+F
+I
+H
+G
+J
+[mm]
+-5
++5
+Fig. 1. Estimates of amplitude of seasonal motion (caused by thermal dilation) for Cologne, Germany, via PSI exploiting 
+TerraSAR-X data from March, 2009 - December, 2010. Different types of urban structures have been highlighted in white 
+(buildings), yellow (bridges) and red (railways). 
+956
+
+ 
+Fig. 2. Estimates of amplitude of seasonal motion (caused by thermal dilation) for ‘Zoobruecke’ bridge in Cologne, Germany, via 
+PSI (left image) and DSI (right image), respectively, exploiting TerraSAR-X data from March, 2009 - December, 2010. It can be 
+observed that DSI provides a high density of measured points as compared to PSI. 
+Fig. 3. Estimates of thermal amplitudes for Hohenzollernbruecke’ (top) and ‘Duetzer Bruecke’ (bottom) bridges in Cologne, 
+Germany, via SPN technique exploiting TerraSAR-X data from March, 2009 - December, 2010. Local temperature data was used 
+for the processing instead of a cosine modelling.  
+ 
+Fig. 4. Mean deformation estimates for area near ‘Lanxess Arena’ building and ‘Zoobruecke’ bridge in Cologne, Germany, via 
+SBAS exploiting TerraSAR-X data from March, 2009 - December, 2010. Non-linear deformation time series is visualized for a 
+point on the concert arena building, which includes linear as well as seasonal deformation due to thermal dilation. 
+ 
+957

@@ -1,0 +1,133 @@
+{
+ "freecad": [
+  "1",
+  "1",
+  "3"
+ ],
+ "files": [
+  "H:\\Axinjihua\\02动画项目\\05动画Harness工作台\\专利文档资料\\专利\\刘智远专利\\三项发明专利\\专利C_有限元影响矩阵InSAR形变解耦\\05_硬件设计\\脚本\\..\\模型\\塔材夹持式双向三面角反射器.FCStd",
+  "H:\\Axinjihua\\02动画项目\\05动画Harness工作台\\专利文档资料\\专利\\刘智远专利\\三项发明专利\\专利C_有限元影响矩阵InSAR形变解耦\\05_硬件设计\\脚本\\..\\模型\\塔材夹持式双向三面角反射器.step"
+ ],
+ "params": {
+  "a_mm": 700.0,
+  "t_mm": 4.0,
+  "angle": "L125x10"
+ },
+ "parts": {
+  "AngleMember": {
+   "num": 1,
+   "label": "角钢主材（非本装置）",
+   "volume_mm3": 2880000.0,
+   "valid": true
+  },
+  "OuterJaw": {
+   "num": 2,
+   "label": "外夹块（L形，贴合角钢背面）",
+   "volume_mm3": 878800.0,
+   "valid": true
+  },
+  "InnerJaw": {
+   "num": 3,
+   "label": "内压板（两肢各一）",
+   "volume_mm3": 592800.0,
+   "valid": true
+  },
+  "ClampBolts": {
+   "num": 4,
+   "label": "夹紧螺栓 M16×4（不在塔材上钻孔）",
+   "volume_mm3": 56297.0,
+   "valid": true
+  },
+  "Pad": {
+   "num": 5,
+   "label": "防滑绝缘垫",
+   "volume_mm3": 120000.0,
+   "valid": true
+  },
+  "Bracket": {
+   "num": 6,
+   "label": "悬臂托架",
+   "volume_mm3": 1260000.0,
+   "valid": true
+  },
+  "AzimuthTable": {
+   "num": 7,
+   "label": "方位转台（刻度盘+锁紧）",
+   "volume_mm3": 603186.0,
+   "valid": true
+  },
+  "RefSphere": {
+   "num": 8,
+   "label": "夹持基准球（相对相位中心偏置已标定）",
+   "volume_mm3": 14137.0,
+   "valid": true
+  },
+  "Crossbeam": {
+   "num": 9,
+   "label": "双向横梁",
+   "volume_mm3": 2250000.0,
+   "valid": true
+  },
+  "CR_升轨": {
+   "num": 10,
+   "label": "三面角反射器（升轨）",
+   "volume_mm3": 3106743.0,
+   "valid": true
+  },
+  "CR_降轨": {
+   "num": 11,
+   "label": "三面角反射器（降轨）",
+   "volume_mm3": 3106743.0,
+   "valid": true
+  },
+  "ElevHinge": {
+   "num": 12,
+   "label": "俯仰铰（弧形槽+锁紧）",
+   "volume_mm3": 201062.0,
+   "valid": true
+  }
+ },
+ "reflectors": [
+  {
+   "tag": "升轨",
+   "apex": [
+    -639.4873734152916,
+    -259.4873734152916,
+    740.0
+   ],
+   "boresight": [
+    -0.6198,
+    0.1093,
+    0.7771
+   ],
+   "az_deg": 170,
+   "el_deg": 51.0,
+   "offset_from_ref_mm": [
+    -602.5,
+    -222.5,
+    -20.0
+   ]
+  },
+  {
+   "tag": "降轨",
+   "apex": [
+    120.51262658470841,
+    -259.4873734152916,
+    740.0
+   ],
+   "boresight": [
+    0.6198,
+    0.1093,
+    0.7771
+   ],
+   "az_deg": 10,
+   "el_deg": 51,
+   "offset_from_ref_mm": [
+    157.5,
+    -222.5,
+    -20.0
+   ]
+  }
+ ],
+ "note": "夹持基准球8中心与两反射器顶点（相位中心）偏置由模型给出，安装后以全站仪/激光扫描复核"
+}

@@ -1,0 +1,194 @@
+SCIENCE CHINA
+Information Sciences
+July 2025, Vol. 68, Iss. 7, 177301:1–177301:2
+https://doi.org/10.1007/s11432-024-4418-8
+c⃝Science China Press 2025
+info.scichina.com
+link.springer.com
+. NEWS & VIEWS .
+First three-dimensional imaging experiment of
+Chinese commercial SAR satellite Fucheng-1
+Hui BI1*, Shuang JIN1, Weihao XU1, Jin XU1, Qi GUO1, Feng YANG2, Daiyin ZHU1,
+Jingjing ZHANG1, Qian GUO1, Weijia REN2 & Wen HONG3
+1Key Laboratory of Radar Imaging and Microwave Photonics, Ministry of Education,
+College of Electronic and Information Engineering, Nanjing University of Aeronautics and Astronautics,
+Nanjing 211106, China
+2Spacety Aerospace Company Limited (Changsha), Changsha 410205, China
+3Aerospace Information Research Institute, Chinese Academy of Sciences, Beijing 100094, China
+Received 13 December 2024/Revised 20 March 2025/Accepted 24 April 2025/Published online 20 June 2025
+Citation
+Bi H, Jin S, Xu W H, et al. First three-dimensional imaging experiment of Chinese commercial SAR satellite
+Fucheng-1. Sci China Inf Sci, 2025, 68(7): 177301, https://doi.org/10.1007/s11432-024-4418-8
+Three-dimensional
+(3D)
+spaceborne
+synthetic
+aperture
+radar (SAR) imaging [1] holds signiﬁcant importance in var-
+ious ﬁelds such as urban mapping [2] and disaster monitor-
+ing [3], as it provides a comprehensive view of the spatial
+scattering structure of objects and landscapes. The increas-
+ing complexity of urban environments and the growing re-
+quirements for precise and detailed spatial data have made
+advanced 3D imaging techniques more essential than ever.
+Due to the high cost, technical complexity, and insuﬃcient
+commercial market demand in the early stage of develop-
+ment, SAR satellites were initially used in the ﬁeld of civil
+remote sensing monitoring. Fucheng-1 is the ﬁrst commer-
+cial SAR satellite of China with interferometric capability,
+which is signiﬁcant for exploring its multi-dimensional imag-
+ing potential. In this study, a data processing framework for
+urban 3D super-resolution tomographic SAR (TomoSAR)
+inversion based on Fucheng-1 is developed, achieving the
+ﬁrst successful 3D reconstruction of large-scale urban areas
+using a Chinese commercial SAR satellite. The reconstruc-
+tion results lay the foundation for further multi-dimensional
+research on this satellite.
+Brief introduction of Fucheng-1 SAR satellite. Fucheng-
+1 is the ﬁrst SAR satellite with interferometric capability,
+independently designed, developed, and tested by Spacety
+Aerospace Company Limited. As the inaugural satellite of
+the Mianyang constellation, Fucheng-1 meets advanced in-
+ternational standards and utilizes an active phased array
+antenna for C-band SAR remote sensing. It features long
+time-series interferometry capabilities, with satellite data of-
+fering advantages of high revisit frequency, high resolution,
+and high coherence, enabling the monitoring of ground sur-
+face deformation at the millimeter level. The acquired infor-
+mation can be globally utilized across various ﬁelds, includ-
+ing urban infrastructure monitoring and geological disaster
+detection.
+Overview of 3D imaging. The 3D imaging process based
+on the Fucheng-1 SAR dataset is introduced below.
+(1) Datasets.
+The dataset used in this study includes
+both ascending and descending orbit data. The ascending
+orbit data consists of 14 scenes collected from January 7,
+2024, to June 20, 2024, with a baseline length of 252 m
+and an elevation resolution of 64.7 m. The descending orbit
+data consists of 15 scenes collected from January 18, 2024,
+to June 20, 2024, with a baseline length of 171 m and an
+elevation resolution of 97.4 m.
+This study focuses on the
+compressive sensing (CS)-TomoSAR 3D reconstruction of
+urban architecture [4]. The densely built near the Univer-
+sity of Magdeburg is selected as the experimental site.
+(2) 3D imaging framework and results. Ascending and
+descending single look complex (SLC) image datasets are
+input separately and preprocessed for 3D imaging. The To-
+moSAR imaging results obtained from the ascending and de-
+scending orbits data using the CS-based method are shown
+in Figures 1(a) and (b). These ﬁgures show the TomoSAR
+results superimposed on the SAR images, with the color rep-
+resenting the height. The 3D point clouds of ascending and
+descending orbits show diﬀerent building facades. Then, the
+whole 3D building structure is demonstrated in the fused 3D
+result (Figure 1(c)). In order to more accurately match the
+true geographic location of the buildings, this study selects
+the footprints downloaded from open street map (OSM) as
+the reference for the actual geographic coordinates of the
+buildings.
+The used OSM data includes the latitude and
+longitude coordinates of buildings and highways. Since the
+highway footprints are clearer than the building ones, we
+chose the highway coordinates as the reference to verify the
+accuracy of the coordinate transformation.
+Figures 1(d)
+and (e) show the SAR images of ascending and descend-
+ing orbit data after a coordinate transformation, where the
+green lines represent the highway footprints.
+It is found
+* Corresponding author (email: bihui@nuaa.edu.cn)
+
+Bi H, et al.
+Sci China Inf Sci
+July 2025, Vol. 68, Iss. 7, 177301:2
+Figure 1
+(Color online) Processing results of the proposed method.
+(a) TomoSAR imaging results of ascending orbit data;
+(b) TomoSAR imaging results of descending orbit data; (c) point cloud after fusion of ascending and descending orbits; (d) SAR
+image of ascending orbit data after coordinate transformation; (e) SAR image of descending orbit data after coordinate trans-
+formation; (f) point cloud and building footprint of the University of Magdeburg area; (g) point cloud after optimization of the
+University of Magdeburg area.
+that the coordinates transformation almost ﬁts the highway
+footprints. Besides, by integrating the building footprint in-
+formation from OSM, this study introduces an additional
+layer of validation to ﬁlter out inaccuracies and outliers in
+the point cloud.
+Utilizing building footprints is a crucial
+step in optimizing the point cloud. These footprints provide
+a reliable reference to correct bias and ensure that points
+accurately represent the physical environment. The match
+between the building footprint and the point cloud is shown
+in Figure 1(f), illustrating the alignment and integration of
+these two data sources, with the green lines representing the
+building footprints. The method ﬁlters points outside the
+footprint while preserving the point cloud inside the foot-
+print.
+Subsequently, Figure 1(g) displays the reﬁned 3D
+point cloud, with the color representing the height.
+The
+point cloud has been adjusted to the building footprint con-
+straints to provide a more clear and accurate representation
+of the target distribution. This process not only improves
+the ﬁdelity of the point clouds but also enhances its utility
+for further applications such as urban planning, navigation,
+and environmental monitoring.
+Conclusion. In this study, the ﬁrst urban 3D point cloud
+from the Fucheng-1 SAR satellite was obtained. The inter-
+ference and tomographic inversion abilities of this satellite
+are successfully veriﬁed.
+In addition, this study also in-
+troduces an advanced Fucheng-1 processing framework for
+deriving 3D point clouds based on TomoSAR technology.
+Although the elevation resolution of the used dataset is up
+to ﬁfty meters, 14 ascending orbit images and 15 descending
+orbit images were utilized to achieve high-precision 3D imag-
+ing of Magdeburg through a super-resolution imaging algo-
+rithm. Based on the current research, the future study aims
+to further explore the application potential of Chinese com-
+mercial SAR satellites, including the development of large-
+area diﬀerential tomography imaging for high-precision de-
+formation monitoring. Besides, the proposed framework will
+also be extended to the vast mountains and forest areas.
+Acknowledgements
+This work was supported in part by
+National Natural Science Foundation of China (Grant Nos.
+62271248, 62401256), Natural Science Foundation of Jiangsu
+Province (Grant Nos.
+BK20230090, BK20241384), and Key
+Laboratory
+of
+Land
+Satellite
+Remote
+Sensing
+Application
+through the Ministry of Natural Resources of China (Grant No.
+KLSMNR-K202303).
+Supporting information
+The supporting information is
+available online at info.scichina.com and link.springer.com. The
+supporting materials are published as submitted, without type-
+setting or editing. The responsibility for scientiﬁc accuracy and
+content remains entirely with the authors.
+References
+1
+Reigber A, Moreira A. First demonstration of airborne SAR
+tomography using multibaseline L-band data. IEEE Trans
+Geosci Remote Sens, 2000, 38: 2142–2152
+2
+Zhu X X, Bamler R. Superresolving SAR tomography
+for multidimensional imaging of urban areas: compressive
+sensing-based TomoSAR inversion.
+IEEE Signal Process
+Mag, 2014, 31: 51–58
+3
+Fornaro G, Reale D, Seraﬁno F. Four-dimensional SAR
+imaging for height estimation and monitoring of single and
+double scatterers. IEEE Trans Geosci Remote Sens, 2009,
+47: 224–237
+4
+Bi H, Jin S, Wang X, et al. High-resolution high dimen-
+sional imaging of urban building based on Gaofen-3 SAR
+data (in Chinese). J Radars, 2022, 11: 40–51

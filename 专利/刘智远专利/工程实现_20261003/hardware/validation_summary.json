@@ -1,0 +1,49 @@
+{
+  "status": "static_document_validation_only",
+  "csv_files": [
+    {
+      "file": "专利\\刘智远专利\\工程实现_20261003\\open_source\\projects.csv",
+      "data_rows": 14,
+      "columns": 10
+    },
+    {
+      "file": "专利\\刘智远专利\\工程实现_20261003\\hardware\\BOM.csv",
+      "data_rows": 15,
+      "columns": 11
+    },
+    {
+      "file": "专利\\刘智远专利\\工程实现_20261003\\hardware\\power_mass_budget.csv",
+      "data_rows": 16,
+      "columns": 10
+    },
+    {
+      "file": "专利\\刘智远专利\\工程实现_20261003\\hardware\\sources.csv",
+      "data_rows": 9,
+      "columns": 7
+    },
+    {
+      "file": "专利\\刘智远专利\\工程实现_20261003\\validation\\field\\templates\\acquisition_log.csv",
+      "data_rows": 0,
+      "columns": 25
+    },
+    {
+      "file": "专利\\刘智远专利\\工程实现_20261003\\validation\\field\\templates\\device_capabilities.csv",
+      "data_rows": 0,
+      "columns": 26
+    },
+    {
+      "file": "专利\\刘智远专利\\工程实现_20261003\\validation\\field\\templates\\member_groundtruth.csv",
+      "data_rows": 0,
+      "columns": 25
+    }
+  ],
+  "errors": [],
+  "optional_payload_budget": {
+    "mass_kg_low": 1.723,
+    "mass_kg_high": 3.113,
+    "load_W_typ": 39.6,
+    "load_W_peak": 77.4,
+    "note": "Mixed official specifications and design estimates; no aircraft; no measured/qualified hardware."
+  },
+  "checked_on": "2026-10-03"
+}

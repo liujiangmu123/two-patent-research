@@ -1,0 +1,45 @@
+{
+ "used": 8,
+ "events": [
+  {
+   "t": "run1",
+   "what": "S01",
+   "status": "HTTP 503"
+  },
+  {
+   "t": "run1",
+   "what": "S01",
+   "status": "ERR timeout WinError 10060"
+  },
+  {
+   "t": "run1",
+   "what": "S02",
+   "status": "HTTP 503"
+  },
+  {
+   "t": "2026-10-01 08:25:29",
+   "what": "S01",
+   "status": "HTTP 503"
+  },
+  {
+   "t": "2026-10-01 08:28 (web_fetch)",
+   "what": "S01",
+   "status": "HTTP 503"
+  },
+  {
+   "t": "2026-10-01 08:29:43",
+   "what": "S01",
+   "status": "HTTP 503"
+  },
+  {
+   "t": "2026-10-01 08:31:14",
+   "what": "S01",
+   "status": "HTTP 503"
+  },
+  {
+   "t": "2026-10-01 08:32:28 (web_fetch)",
+   "what": "detail CN121432427A",
+   "status": "HTTP 503"
+  }
+ ]
+}

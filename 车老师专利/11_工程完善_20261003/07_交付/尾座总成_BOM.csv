@@ -1,0 +1,122 @@
+﻿no,name,group,material,basis,thread,notes,moving,valid,solids,volume_mm3
+CY-01,前端盖_杆封与导向槽,Cylinder,45 steel,nominal custom design,M8x1.25 depth 17; 2 holes,,False,True,1,230547.01773083518
+CY-02,缸筒_63H8_端盖止口70,Cylinder,45 steel,nominal custom design,,,False,True,1,828054.2568260363
+CY-03,后端盖_无杆腔油口,Cylinder,45 steel,nominal custom design,M8x1.25 depth 17; 2 holes,,False,True,1,273225.01730301214
+SE-CAP-1,端盖止口O圈_安装压缩状态,Seals,NBR70,"nominal 66x2.65 ring, installed ellipse",,Installed area approximately preserves stock section; gland needs seal vendor confirmation.,False,True,1,1169.3823121751425
+SE-CAP-2,端盖止口O圈_安装压缩状态,Seals,NBR70,"nominal 66x2.65 ring, installed ellipse",,Installed area approximately preserves stock section; gland needs seal vendor confirmation.,False,True,1,1169.3823121751368
+GD-01,前端盖青铜导向套,Cylinder,CuSn12,nominal custom design,,Nominal clearance .05 radial at rod; final fit to be toleranced.,False,True,1,3081.902393171583
+SE-W,杆端防尘圈,Seals,PU/NBR,"nominal seal design, final catalogue selection pending",,,False,True,1,1401.6914628356292
+SE-R1,杆封_第一道,Seals,PU/NBR,"nominal seal design, final catalogue selection pending",,,False,True,1,1173.784623780956
+SE-R2,杆封_第二道,Seals,PU/NBR,"nominal seal design, final catalogue selection pending",,,False,True,1,1173.7846237809556
+CY-04,活塞_密封与导向槽_内沉锁紧螺母,Cylinder,45 steel,nominal custom design,,,True,True,1,63715.61450117722
+CY-05,镀铬活塞杆_两端M24连接,Cylinder,45 steel hard chrome,nominal custom design,M24x1.5 piston/nose; thread envelopes,,True,True,1,194307.27000507968
+CY-06,活塞锁紧螺母_沉入活塞,Cylinder,45 steel,nominal custom design,M24x1.5,Recess prevents collision at zero extension; locking method final assembly review.,True,True,1,2289.234649023453
+CY-07,活塞锁紧垫圈,Cylinder,45 steel,nominal custom design,,,True,True,1,557.9154393510116
+POS-M,内置位移参考磁环,Sensors,magnet composite,optional nominal magnetostrictive ring; catalogue pending,,,True,True,1,290.8109487574974
+POS-01,内置位移参考探杆_校准与开阀后重置,Sensors,stainless,optional nominal magnetostrictive sensor envelope; catalogue and accuracy pending,M16x1.5; nominal thread envelope,Reference option for bench calibration/rebasing; sensor accuracy is unverified. Blind rod bore provides full 140 mm clearance.,False,True,1,27409.427585338046
+GD-P1,活塞分口导向带,Cylinder,PTFE composite,nominal custom design,,,True,True,1,827.267396357347
+GD-P2,活塞分口导向带,Cylinder,PTFE composite,nominal custom design,,,True,True,1,827.2673963573397
+SE-P1,活塞组合密封_PTFE外环,Seals,PTFE,nominal custom design,,,True,True,1,1903.8082896680717
+SE-P2,活塞组合密封_NBR励磁圈,Seals,NBR70,nominal custom design,,,True,True,1,1021.8437672962342
+TR-1,油缸端盖拉杆,Fasteners,10.9 steel,nominal custom design,M10x1.5 two ends; preload to be calculated,,False,True,1,22305.307840487534
+TW-F1,拉杆平垫圈,Fasteners,hardened steel,nominal custom design,,,False,True,1,455.1382356888213
+TW-R1,拉杆平垫圈,Fasteners,hardened steel,nominal custom design,,,False,True,1,455.1382356888213
+TN-F1,拉杆六角螺母,Fasteners,class 10 steel,nominal custom design,M10x1.5,,False,True,1,1373.9322028316637
+TN-R1,拉杆六角螺母,Fasteners,class 10 steel,nominal custom design,M10x1.5,,False,True,1,1373.9322028316637
+TR-2,油缸端盖拉杆,Fasteners,10.9 steel,nominal custom design,M10x1.5 two ends; preload to be calculated,,False,True,1,22305.307840487538
+TW-F2,拉杆平垫圈,Fasteners,hardened steel,nominal custom design,,,False,True,1,455.1382356888212
+TW-R2,拉杆平垫圈,Fasteners,hardened steel,nominal custom design,,,False,True,1,455.1382356888212
+TN-F2,拉杆六角螺母,Fasteners,class 10 steel,nominal custom design,M10x1.5,,False,True,1,1373.9322028316637
+TN-R2,拉杆六角螺母,Fasteners,class 10 steel,nominal custom design,M10x1.5,,False,True,1,1373.9322028316635
+TR-3,油缸端盖拉杆,Fasteners,10.9 steel,nominal custom design,M10x1.5 two ends; preload to be calculated,,False,True,1,22305.30784048753
+TW-F3,拉杆平垫圈,Fasteners,hardened steel,nominal custom design,,,False,True,1,455.1382356888213
+TW-R3,拉杆平垫圈,Fasteners,hardened steel,nominal custom design,,,False,True,1,455.1382356888213
+TN-F3,拉杆六角螺母,Fasteners,class 10 steel,nominal custom design,M10x1.5,,False,True,1,1373.9322028316637
+TN-R3,拉杆六角螺母,Fasteners,class 10 steel,nominal custom design,M10x1.5,,False,True,1,1373.9322028316635
+TR-4,油缸端盖拉杆,Fasteners,10.9 steel,nominal custom design,M10x1.5 two ends; preload to be calculated,,False,True,1,22305.307840487538
+TW-F4,拉杆平垫圈,Fasteners,hardened steel,nominal custom design,,,False,True,1,455.1382356888213
+TW-R4,拉杆平垫圈,Fasteners,hardened steel,nominal custom design,,,False,True,1,455.1382356888213
+TN-F4,拉杆六角螺母,Fasteners,class 10 steel,nominal custom design,M10x1.5,,False,True,1,1373.9322028316642
+TN-R4,拉杆六角螺母,Fasteners,class 10 steel,nominal custom design,M10x1.5,,False,True,1,1373.9322028316642
+BL-01,集成阀块_厂家M22阀孔_双腔独立热泄压,Block,45 steel,nominal custom design,4xM22x1.5; 2xM20x1.5; G ports; M14x1.5; 4xM8,M22x1.5 per Wandfluh 3-395.4; 180 degree bottom permitted. M20 relief cavities nominal pending procurement.,False,True,1,1261971.2453354304
+V2-BD1,V2_厂家座阀与紧固帽,Valves,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,False,True,1,6522.39768872866
+V2-BD2,V2_厂家座阀与紧固帽,Valves,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,False,True,1,39368.049325741995
+V2-CL1,V2_厂家线圈组件_1,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,10913.780560033554
+V2-CL2,V2_厂家线圈组件_2,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,87.90400212686065
+V2-CL3,V2_厂家线圈组件_3,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,10081.307763366185
+V2-CL4,V2_厂家线圈组件_4,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,261.71287760412326
+V2-CL5,V2_厂家线圈组件_5,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,1149.6556214050622
+V2-CL6,V2_厂家线圈组件_6,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,25877.801342443723
+V2-HB1,V2_厂家封闭插头_1,Valves,45 steel,official Wandfluh HB0.STEP,,,False,True,1,546.2995319246672
+V2-HB2,V2_厂家封闭插头_2,Valves,45 steel,official Wandfluh HB0.STEP,,,False,True,1,26.540174737526698
+V2-SE1,V2_安装密封包络_18.72x2.62,Seals,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,False,True,1,161.98645908674794
+V2-SE2,V2_安装密封包络_18.77x1.78,Seals,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,False,True,1,137.92669741362278
+V2-SE3,V2_安装密封包络_15.60x1.78,Seals,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,False,True,1,137.1053860665254
+V2-BR,V2_厂家尺寸挡圈_16.1x19x1.4,Seals,PTFE,manufacturer spare part dimensions; installed position provisional,,,False,True,1,111.92395067311665
+V4-BD1,V4_厂家座阀与紧固帽,Valves,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,False,True,1,6522.397688728659
+V4-BD2,V4_厂家座阀与紧固帽,Valves,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,False,True,1,39368.049325741995
+V4-CL1,V4_厂家线圈组件_1,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,10913.780560033554
+V4-CL2,V4_厂家线圈组件_2,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,87.90400212686065
+V4-CL3,V4_厂家线圈组件_3,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,10081.307763366176
+V4-CL4,V4_厂家线圈组件_4,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,261.7128776041234
+V4-CL5,V4_厂家线圈组件_5,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,1149.655621405062
+V4-CL6,V4_厂家线圈组件_6,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,25877.801342443723
+V4-HB1,V4_厂家封闭插头_1,Valves,45 steel,official Wandfluh HB0.STEP,,,False,True,1,546.2995319246671
+V4-HB2,V4_厂家封闭插头_2,Valves,45 steel,official Wandfluh HB0.STEP,,,False,True,1,26.540174737526712
+V4-SE1,V4_安装密封包络_18.72x2.62,Seals,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,False,True,1,161.98645909008337
+V4-SE2,V4_安装密封包络_18.77x1.78,Seals,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,False,True,1,137.92669436882633
+V4-SE3,V4_安装密封包络_15.60x1.78,Seals,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,False,True,1,137.1053860665255
+V4-BR,V4_厂家尺寸挡圈_16.1x19x1.4,Seals,PTFE,manufacturer spare part dimensions; installed position provisional,,,False,True,1,111.9239506731167
+V3-BD1,V3_厂家座阀与紧固帽,Valves,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,False,True,1,6522.39768872866
+V3-BD2,V3_厂家座阀与紧固帽,Valves,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,False,True,1,39368.04932574201
+V3-CL1,V3_厂家线圈组件_1,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,10913.780560033554
+V3-CL2,V3_厂家线圈组件_2,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,87.90400212686059
+V3-CL3,V3_厂家线圈组件_3,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,10081.307763366174
+V3-CL4,V3_厂家线圈组件_4,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,261.71287760412326
+V3-CL5,V3_厂家线圈组件_5,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,1149.6556214050624
+V3-CL6,V3_厂家线圈组件_6,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,25877.801342443723
+V3-HB1,V3_厂家封闭插头_1,Valves,45 steel,official Wandfluh HB0.STEP,,,False,True,1,546.2995319246672
+V3-HB2,V3_厂家封闭插头_2,Valves,45 steel,official Wandfluh HB0.STEP,,,False,True,1,26.540174737526723
+V3-SE1,V3_安装密封包络_18.72x2.62,Seals,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,False,True,1,161.98645908660595
+V3-SE2,V3_安装密封包络_18.77x1.78,Seals,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,False,True,1,137.92669707150296
+V3-SE3,V3_安装密封包络_15.60x1.78,Seals,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,False,True,1,137.10538606652545
+V3-BR,V3_厂家尺寸挡圈_16.1x19x1.4,Seals,PTFE,manufacturer spare part dimensions; installed position provisional,,,False,True,1,111.92395067311679
+V1-BD1,V1_厂家座阀与紧固帽,Valves,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,False,True,1,6522.39768872866
+V1-BD2,V1_厂家座阀与紧固帽,Valves,45 steel,official Wandfluh STEP STP_1.11-2061,,Manufacturer solid topology retained; supplier internal functional construction not fully exposed.,False,True,1,39368.049325742
+V1-CL1,V1_厂家线圈组件_1,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,10913.78056003355
+V1-CL2,V1_厂家线圈组件_2,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,87.90400212686059
+V1-CL3,V1_厂家线圈组件_3,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,10081.307763366174
+V1-CL4,V1_厂家线圈组件_4,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,261.7128776041231
+V1-CL5,V1_厂家线圈组件_5,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,1149.6556214050624
+V1-CL6,V1_厂家线圈组件_6,Valves,vendor multi-material,official Wandfluh VDE37_19x50.STEP,,,False,True,1,25877.801342443723
+V1-HB1,V1_厂家封闭插头_1,Valves,45 steel,official Wandfluh HB0.STEP,,,False,True,1,546.2995319246672
+V1-HB2,V1_厂家封闭插头_2,Valves,45 steel,official Wandfluh HB0.STEP,,,False,True,1,26.540174737526716
+V1-SE1,V1_安装密封包络_18.72x2.62,Seals,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,False,True,1,161.98645908994936
+V1-SE2,V1_安装密封包络_18.77x1.78,Seals,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,False,True,1,137.92669649130278
+V1-SE3,V1_安装密封包络_15.60x1.78,Seals,NBR70,manufacturer stock ring size; available installed gland envelope only,,Occupies available gland space; does not prove compression ratio or sealing performance. Supplier gland confirmation required.,False,True,1,137.10538606652545
+V1-BR,V1_厂家尺寸挡圈_16.1x19x1.4,Seals,PTFE,manufacturer spare part dimensions; installed position provisional,,,False,True,1,111.92395067311676
+RV-R,有杆腔7MPa机械溢流阀_设计包络,Valves,45 steel,"project nominal M20 design envelope, supplier pending",M20x1.5,,False,True,1,19138.482081914262
+RV-C,无杆腔7MPa机械溢流阀_设计包络,Valves,45 steel,"project nominal M20 design envelope, supplier pending",M20x1.5,,False,True,1,19138.482081914273
+PS-C,无杆腔压力传感器,Sensors,stainless,nominal G1/4 sensor envelope,G1/4 A,,False,True,1,30829.5288640399
+PS-R,有杆腔压力传感器,Sensors,stainless,nominal G1/4 sensor envelope,G1/4 A,,False,True,1,30829.52886403991
+TW-01,封闭端油温套管,Sensors,304 stainless,nominal custom design,M14x1.5,,False,True,1,3664.382554138836
+PT-01,Pt100油温探杆,Sensors,stainless,nominal diameter 3 probe envelope,,,False,True,1,3852.4565312808236
+TW-R,有杆腔独立封闭测温套管,Sensors,304 stainless,nominal custom design,M10x1,Independent cavity temperature; closed tip 1mm. Sensor time constant requires bench identification.,False,True,1,1981.1634601380072
+PT-R,有杆腔独立Pt100温度探杆,Sensors,stainless,"nominal diameter2 Pt100 probe, catalogue pending",,,False,True,1,2916.654619592763
+TP-R,测压排气接头_R,Ports,45 steel,nominal M16x2 test fitting envelope,M16x2,,False,True,1,10182.117480212211
+TP-C,测压排气接头_C,Ports,45 steel,nominal M16x2 test fitting envelope,M16x2,,False,True,1,10182.117480212213
+OR-01,可换阻尼螺塞_真实孔径0.1,Block,304 stainless,nominal custom design,M8x1 with hydraulic thread seal,Actual 0.1 mm through hole; z16..20; shoulder/thread sealing must be specified for procurement/manufacturing.,False,True,1,180.46263227915122
+SE-FR,阀块对接端面O圈_R,Seals,NBR70,15x2.65 nominal installed compressed,,,False,True,1,284.22677980064975
+SE-FC,阀块对接端面O圈_C,Seals,NBR70,15x2.65 nominal installed compressed,,,False,True,1,284.2267798006489
+BS-1,阀块连接内六角螺钉,Fasteners,8.8 steel,nominal custom design,"M8x70, pitch 1.25, engaged length 17",,False,True,1,4455.734430788958
+BS-2,阀块连接内六角螺钉,Fasteners,8.8 steel,nominal custom design,"M8x70, pitch 1.25, engaged length 17",,False,True,1,4455.734430788959
+BS-3,阀块连接内六角螺钉,Fasteners,8.8 steel,nominal custom design,"M8x70, pitch 1.25, engaged length 17",,False,True,1,4455.734430788958
+BS-4,阀块连接内六角螺钉,Fasteners,8.8 steel,nominal custom design,"M8x70, pitch 1.25, engaged length 17",,False,True,1,4455.73443078896
+DP-1,端盖阀块定位销,Fasteners,hardened steel,nominal custom design,,Nominal interference/dowel fit represented by equal envelopes.,False,True,1,438.2521751757761
+DP-2,端盖阀块定位销,Fasteners,hardened steel,nominal custom design,,Nominal interference/dowel fit represented by equal envelopes.,False,True,1,438.2521751757762
+PF-B,外接油口适配接头_B,Ports,45 steel,nominal BSPP straight adapter envelope,G3/8,,False,True,1,9029.91223860739
+PF-PP,外接油口适配接头_PP,Ports,45 steel,nominal BSPP straight adapter envelope,G1/4,,False,True,1,6314.780551854228
+PF-RT,外接油口适配接头_RT,Ports,45 steel,nominal BSPP straight adapter envelope,G1/4,,False,True,1,6608.519464964873
+PF-T,外接油口适配接头_T,Ports,45 steel,nominal BSPP straight adapter envelope,G1/4,,False,True,1,6608.519464964876
+PF-A,外接油口适配接头_A,Ports,45 steel,nominal BSPP straight adapter envelope,G3/8,,False,True,1,9029.912238607387
+PF-CT,无杆腔热溢流独立回油接头,Ports,45 steel,nominal G1/8 adapter,G1/8,,False,True,1,2075.4675952139105

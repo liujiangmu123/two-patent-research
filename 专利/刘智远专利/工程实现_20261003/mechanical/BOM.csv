@@ -1,0 +1,34 @@
+﻿id,description,quantity,nominal_axis_length_mm,material,release_status,notes
+BaseFront,40x40x2 nominal hollow aluminum tube,1,650.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+BaseRear,40x40x2 nominal hollow aluminum tube,1,650.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+BaseLeft,40x40x2 nominal hollow aluminum tube,1,420.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+BaseRight,40x40x2 nominal hollow aluminum tube,1,420.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+Upright0,40x40x2 nominal hollow aluminum tube,1,650.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+Upright1,40x40x2 nominal hollow aluminum tube,1,650.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+Crossbar,40x40x2 nominal hollow aluminum tube,1,400.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+Brace0,20x20x2 nominal hollow aluminum tube,1,772.0104,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+Brace1,20x20x2 nominal hollow aluminum tube,1,772.0104,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+CouponArm0,20x20x2 nominal hollow aluminum tube,1,150.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+CouponArm1,20x20x2 nominal hollow aluminum tube,1,150.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+TargetArm0,20x20x2 nominal hollow aluminum tube,1,130.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+TargetArm1,20x20x2 nominal hollow aluminum tube,1,130.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+TargetArm2,20x20x2 nominal hollow aluminum tube,1,100.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+TargetArm3,20x20x2 nominal hollow aluminum tube,1,70.0,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Axis length; brace cut faces/fittings require CAD and supplier confirmation
+C08,L100x8 steel coupon,1,150,Steel actual grade and section measured,DESIGN_ONLY_NOT_RELEASED,Nominal shape only; real hot-rolled fillets are absent
+C10,L100x10 steel coupon,1,150,Steel actual grade and section measured,DESIGN_ONLY_NOT_RELEASED,Nominal shape only; real hot-rolled fillets are absent
+ClampPlate0,150x55x8 plate with two nominal 35x6.6 slots,1,,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Inside 1.5kg brackets allowance; clamping straps/bolts not frozen
+IsolationPad0,150x55x2 isolating pad,1,,Polymer grade TBD,DESIGN_ONLY_NOT_RELEASED,Part of connection allowance; lower coupon contact area masked from observation
+ClampPlate1,150x55x8 plate with two nominal 35x6.6 slots,1,,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Inside 1.5kg brackets allowance; clamping straps/bolts not frozen
+IsolationPad1,150x55x2 isolating pad,1,,Polymer grade TBD,DESIGN_ONLY_NOT_RELEASED,Part of connection allowance; lower coupon contact area masked from observation
+ReferenceTarget0,Nominal matte spherical reference target D40,1,,Vendor certified/independently measured,DESIGN_ONLY_NOT_RELEASED,Hollow/solid material TBD; mass inside 0.9kg feet+target allowance
+ReferenceTarget1,Nominal matte spherical reference target D40,1,,Vendor certified/independently measured,DESIGN_ONLY_NOT_RELEASED,Hollow/solid material TBD; mass inside 0.9kg feet+target allowance
+ReferenceTarget2,Nominal matte spherical reference target D40,1,,Vendor certified/independently measured,DESIGN_ONLY_NOT_RELEASED,Hollow/solid material TBD; mass inside 0.9kg feet+target allowance
+ReferenceTarget3,Nominal matte spherical reference target D40,1,,Vendor certified/independently measured,DESIGN_ONLY_NOT_RELEASED,Hollow/solid material TBD; mass inside 0.9kg feet+target allowance
+FootEnvelope0,"M8 leveling foot, D50 pad, 20 travel",1,,Procured part TBD,DESIGN_ONLY_NOT_RELEASED,Support envelope only; real thread/locknuts to be added after selection
+FootEnvelope1,"M8 leveling foot, D50 pad, 20 travel",1,,Procured part TBD,DESIGN_ONLY_NOT_RELEASED,Support envelope only; real thread/locknuts to be added after selection
+FootEnvelope2,"M8 leveling foot, D50 pad, 20 travel",1,,Procured part TBD,DESIGN_ONLY_NOT_RELEASED,Support envelope only; real thread/locknuts to be added after selection
+FootEnvelope3,"M8 leveling foot, D50 pad, 20 travel",1,,Procured part TBD,DESIGN_ONLY_NOT_RELEASED,Support envelope only; real thread/locknuts to be added after selection
+BallastTray,300x110x3 ballast support tray,1,,Aluminum grade TBD,DESIGN_ONLY_NOT_RELEASED,Inside brackets mass allowance; retaining strap and crush sleeves required
+BallastEnvelope,260x60x24.5 steel weight ~3kg,1,,Steel,DESIGN_ONLY_NOT_RELEASED,Use unless measured mass and CG meet assumptions; lock into tray
+CONNECTIONS,"Corner/gusset plates, M6 fasteners, sleeves, clamp/retaining straps",,,Procured/custom fittings TBD,DESIGN_ONLY_NOT_RELEASED,"1.5kg total allowance includes two Al plates, tray and pads; counts/hole patterns not frozen"
+HOLDERS,"Target offset holders, M8 nuts and leveling hardware",,,Procured fittings TBD,DESIGN_ONLY_NOT_RELEASED,0.9kg total allowance includes targets/feet; confirm manufacturer dimensions before drawings

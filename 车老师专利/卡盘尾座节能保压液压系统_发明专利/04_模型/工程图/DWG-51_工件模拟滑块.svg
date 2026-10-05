@@ -1,0 +1,319 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<svg baseProfile="tiny" height="297mm" version="1.2" viewBox="0 0 4200 2970" width="420mm" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:freecad="https://www.freecad.org/wiki/index.php?title=Svg_Namespace" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>FreeCAD SVG Export</title>
+ <desc>Drawing page: Page_51 exported from FreeCAD document: D3_Drawings</desc>
+ <defs/>
+ <g id="Page_51" inkscape:groupmode="layer" inkscape:label="TechDraw">
+  <g fill="none" fill-rule="evenodd" id="DrawingContent" stroke="black" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="1">
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1000.32,1432.5)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="67" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="92.2344">主视</text>
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="67" font-style="normal" font-weight="400" stroke="none" x="138" xml:space="preserve" y="92.2344">图</text>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M-325,437.5 L325,437.5 L325,-237.5 L325,-437.5 L125,-437.5 L-325,-437.5 L-325,437.5" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M-325,437.5 L325,437.5 L325,-237.5 L125,-237.5 L125,-437.5 L-325,-437.5 L-325,437.5" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M125,-237.5 L325,-237.5 L325,-437.5 L125,-437.5 L125,-237.5" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M-325,437.5 L-325,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M325,437.5 L325,-237.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M-325,-437.5 L125,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M-325,437.5 L325,437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M125,-437.5 L325,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M325,-237.5 L325,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M125,-237.5 L325,-237.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M125,-237.5 L125,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M-325,437.5 L-325,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M125,-237.5 L325,-237.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M125,-237.5 L125,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M-325,-437.5 L325,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M-325,437.5 L325,437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M325,437.5 L325,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M215,-138 L325,-247.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M215,-138 L215,-137" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,970)">
+    <path d="M215,-137 L325,-27.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1000.32,2420)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="67" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="92.2344">俯视</text>
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="67" font-style="normal" font-weight="400" stroke="none" x="138" xml:space="preserve" y="92.2344">图</text>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M125,375 L325,375 L325,-375 L-325,-375 L-325,225 L125,225 L125,375" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M-325,225 L-325,-375" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M-325,225 L125,225" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M125,375 L125,225" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M125,375 L325,375" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M325,375 L325,-375" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M-325,-375 L325,-375" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M-325,225 L-325,-375" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M-325,225 L325,225" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M-325,-375 L325,-375" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M325,225 L325,-375" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M325,375 L325,225" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M125,375 L125,225" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M125,375 L325,375" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M215,-74.5 L215,-75.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M215,-74.5 L325,35" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,2020)">
+    <path d="M215,-75.5 L325,-185" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,2349.28,1432.5)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="67" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="92.2344">左视</text>
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="67" font-style="normal" font-weight="400" stroke="none" x="138" xml:space="preserve" y="92.2344">图</text>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M375,-237.5 L375,-437.5 L225,-437.5 L-375,-437.5 L-375,437.5 L225,437.5 L225,-237.5 L375,-237.5" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M225,437.5 L225,-237.5 L225,-437.5 L-375,-437.5 L-375,437.5 L225,437.5" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M375,-237.5 L375,-437.5 L225,-437.5 L225,-237.5 L375,-237.5" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M225,437.5 L225,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M225,-437.5 L-375,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M-375,437.5 L-375,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M225,437.5 L-375,437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M375,-437.5 L225,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M375,-237.5 L225,-237.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M375,-237.5 L375,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M225,437.5 L225,-237.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M225,-237.5 L225,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M375,-437.5 L-375,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M-375,437.5 L-375,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M225,437.5 L-375,437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M375,-237.5 L225,-237.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M375,-237.5 L375,-437.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M35,-137.5 C35,-76.7487 -14.2487,-27.5 -75,-27.5 C-135.751,-27.5 -185,-76.7487 -185,-137.5 C-185,-198.251 -135.751,-247.5 -75,-247.5 C-14.2487,-247.5 35,-198.251 35,-137.5 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-dasharray="42,10.5" stroke-dashoffset="0" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,2450,970)">
+    <path d="M-74.5,-137.5 C-74.5,-137.224 -74.7239,-137 -75,-137 C-75.2761,-137 -75.5,-137.224 -75.5,-137.5 C-75.5,-137.776 -75.2761,-138 -75,-138 C-74.7239,-138 -74.5,-137.776 -74.5,-137.5 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,3329,1264.02)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="67" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="92.2344">轴测</text>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-167.382,417.193 L257.196,417.193 L453.156,77.7817 L167.382,-417.193 L-257.196,-417.193 L-453.156,-77.7817 L-167.382,417.193" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M257.196,417.193 L453.156,77.7817 L167.382,-417.193 L-77.5672,7.07107 L-12.2474,120.208 L36.7423,35.3553 L257.196,417.193" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-167.382,417.193 L257.196,417.193 L36.7423,35.3553 L-12.2474,120.208 L-142.887,120.208 L-208.207,7.07107 L-159.217,-77.7817 L-453.156,-77.7817 L-167.382,417.193" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-208.207,7.07107 L-77.5672,7.07107 L167.382,-417.193 L-257.196,-417.193 L-453.156,-77.7817 L-159.217,-77.7817 L-208.207,7.07107" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-142.887,120.208 L-12.2474,120.208 L-77.5672,7.07107 L-208.207,7.07107 L-142.887,120.208" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M131.619,-15.2748 C151.508,18.862 183.593,18.694 203.362,-15.6505 C223.131,-49.995 223.131,-105.569 203.362,-139.913 C183.593,-174.257 151.508,-174.426 131.619,-140.289 C131.565,-140.195 131.51,-140.101 131.456,-140.007 C121.9,-123.455 116.544,-100.99 116.575,-77.5822 C116.606,-54.1741 122.02,-31.7517 131.619,-15.2748 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-167.382,417.193 L-453.156,-77.7817" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-453.156,-77.7817 L-257.196,-417.193" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M257.196,417.193 L36.7423,35.3553" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-453.156,-77.7817 L-159.217,-77.7817" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-167.382,417.193 L257.196,417.193" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-208.207,7.07107 L-159.217,-77.7817" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-208.207,7.07107 L-77.5672,7.07107" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-77.5672,7.07107 L167.382,-417.193" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-257.196,-417.193 L167.382,-417.193" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M453.156,77.7817 L167.382,-417.193" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M257.196,417.193 L453.156,77.7817" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-12.2474,120.208 L36.7423,35.3553" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-12.2474,120.208 L-77.5672,7.07107" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M131.456,-140.007 C121.9,-123.455 116.544,-100.99 116.575,-77.5822 C116.606,-54.1741 122.02,-31.7517 131.619,-15.2748 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M131.619,-15.2748 C151.508,18.862 183.593,18.694 203.362,-15.6505 C223.131,-49.995 223.131,-105.569 203.362,-139.913 C183.593,-174.257 151.508,-174.426 131.619,-140.289 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M131.619,-140.289 C131.565,-140.195 131.51,-140.101 131.456,-140.007 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-142.887,120.208 L-12.2474,120.208" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,3400,820)">
+    <path d="M-142.887,120.208 L-208.207,7.07107" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1385.5,1365)">
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="58" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="53.8438">卡盘尾座节能保压液压系统 试验台</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1385.5,1365)">
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="58" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="111.844">D3-51 </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="58" font-style="normal" font-weight="400" stroke="none" x="178" xml:space="preserve" y="111.844">工件模拟滑块</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1385.5,1365)">
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="58" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="169.844">比例 1:2 材料 45 钢调质 </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="58" font-style="normal" font-weight="400" stroke="none" x="700" xml:space="preserve" y="169.844">HB220~250（</text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="58" font-style="normal" font-weight="400" stroke="none" x="1019" xml:space="preserve" y="169.844">或 </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="58" font-style="normal" font-weight="400" stroke="none" x="1106" xml:space="preserve" y="169.844">Q235 </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="58" font-style="normal" font-weight="400" stroke="none" x="1251" xml:space="preserve" y="169.844">时效）</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1385.5,1365)">
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="58" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="227.844">质量 21.72 </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="58" font-style="normal" font-weight="400" stroke="none" x="323" xml:space="preserve" y="227.844">kg </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="58" font-style="normal" font-weight="400" stroke="none" x="410" xml:space="preserve" y="227.844">图幅 </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="58" font-style="normal" font-weight="400" stroke="none" x="555" xml:space="preserve" y="227.844">A3 D3 2026-10</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1385.5,1365)">
+    <text fill="#000000" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" x="932" xml:space="preserve" y="227.844"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1061,1366)">
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="43.5313">技术要求</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1061,1366)">
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="89.5313">1. 顶尖中心孔 60°（</text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="464" xml:space="preserve" y="89.5313">GB/T 145 B </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="717" xml:space="preserve" y="89.5313">型 </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="786" xml:space="preserve" y="89.5313">B4），</text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="924" xml:space="preserve" y="89.5313">与导轨安装面距离 115±0.01（主轴中心高 1080）。</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1061,1366)">
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="135.531">2. 中心孔轴线与导轨安装底面平行度 0.01，与推力受力面垂直度 0.01。</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1061,1366)">
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="181.531">3. 底面与 2 组 </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="349" xml:space="preserve" y="181.531">HGH15 </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="487" xml:space="preserve" y="181.531">导轨滑块 50</text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="740" xml:space="preserve" y="181.531">c </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="786" xml:space="preserve" y="181.531">螺钉连接（孔位按滑块样本配作），底面平面度 0.01，</text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="1913" xml:space="preserve" y="181.531">Ra0.8。</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1061,1366)">
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="227.531">4. </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="73" xml:space="preserve" y="227.531">滑块行程 ≥0.5 </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="418" xml:space="preserve" y="227.531">mm，</text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="510" xml:space="preserve" y="227.531">无间隙预紧。未注公差 </text>
+    <text fill="#212529" fill-opacity="1" font-family="SimHei" font-size="46" font-style="normal" font-weight="400" stroke="none" x="993" xml:space="preserve" y="227.531">GB/T 1804-m。</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1061,1366)">
+    <text fill="#000000" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" x="1292" xml:space="preserve" y="227.531"/>
+   </g>
+  </g>
+ </g>
+</svg>

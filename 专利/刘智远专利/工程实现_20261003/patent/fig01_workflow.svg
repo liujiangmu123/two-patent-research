@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="1230" viewBox="0 0 1240 1230" role="img" aria-labelledby="title desc">
+  <title id="title">图1：角钢候选、承载分歧与测量切换闭环</title>
+  <desc id="desc">共享节点及有限厚度实体生成观测，保留不可辨识候选，以承载分歧选择遥测或测厚并回灌。条件不足输出未决。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="black"/></marker></defs>
+  <rect width="1240" height="1230" fill="white"/>
+  <g font-family="Microsoft YaHei, SimHei, sans-serif" fill="black" text-anchor="middle">
+    <text text-anchor="middle" x="620" y="42" font-size="27" font-weight="bold">图1  参数反演—承载分歧—测量切换闭环</text>
+    <text text-anchor="middle" x="620" y="70" font-size="16">方法示意；阈值和效果须经标定验证；不代表自动安全认证</text>
+    <g stroke="black" stroke-width="2" fill="white">
+      <rect x="80" y="100" width="650" height="70" rx="5"/>
+      <rect x="80" y="205" width="650" height="80" rx="5"/>
+      <rect x="80" y="320" width="650" height="80" rx="5"/>
+      <rect x="80" y="435" width="650" height="80" rx="5"/>
+      <rect x="80" y="550" width="650" height="80" rx="5"/>
+      <path d="M405 670 L580 735 L405 800 L230 735 Z"/>
+      <rect x="825" y="700" width="330" height="80" rx="5"/>
+      <rect x="825" y="550" width="330" height="90" rx="5"/>
+      <rect x="80" y="855" width="650" height="100" rx="5"/>
+      <rect x="80" y="990" width="650" height="80" rx="5"/>
+      <rect x="825" y="990" width="330" height="80" rx="5"/>
+    </g>
+    <g font-size="21">
+      <text text-anchor="middle" x="405" y="128">影像 / 激光 / 标定 / 连接图 / 规格</text>
+      <text text-anchor="middle" x="405" y="154">材料、荷载与连接来源值或区间</text>
+      <text text-anchor="middle" x="405" y="237">共享节点、有限厚度 L 实体</text>
+      <text text-anchor="middle" x="405" y="264">确定性生成内外面、厚度边面和端面</text>
+      <text text-anchor="middle" x="405" y="352">对离散候选分别反演</text>
+      <text text-anchor="middle" x="405" y="379">物理观测 + 受约束干扰参数</text>
+      <text text-anchor="middle" x="405" y="467">可辨识性门控与观测等价候选保留</text>
+      <text text-anchor="middle" x="405" y="494">先验支持和数据支持分别记录</text>
+      <text text-anchor="middle" x="405" y="582">指定工况验算与判定分歧候选对</text>
+      <text text-anchor="middle" x="405" y="609">真实缺材保留；机构不得自动补杆</text>
+      <text text-anchor="middle" x="405" y="728" font-size="18">输入与候选风险受控，</text>
+      <text text-anchor="middle" x="405" y="753" font-size="17">全部通过 / 全部不通过？</text>
+      <text text-anchor="middle" x="990" y="732">停止并输出一致类别</text>
+      <text text-anchor="middle" x="990" y="758">通过或不通过，附条件</text>
+      <text text-anchor="middle" x="990" y="582">必要输入缺失 / 机构 / 失败</text>
+      <text text-anchor="middle" x="990" y="610">输出未决与调查要求</text>
+      <text text-anchor="middle" x="405" y="884">对分歧候选预测噪声归一化分离度</text>
+      <text text-anchor="middle" x="405" y="913">存在有效遥测 → 遥测任务</text>
+      <text text-anchor="middle" x="405" y="941">遥测不能区分关键厚度 → 局部测厚</text>
+      <text text-anchor="middle" x="405" y="1022">有效观测回灌同一参数模型</text>
+      <text text-anchor="middle" x="405" y="1049">冲突则扩展候选、核查身份与校准</text>
+      <text text-anchor="middle" x="990" y="1022">测量不可达 / 预算耗尽</text>
+      <text text-anchor="middle" x="990" y="1049">停止并输出未决原因</text>
+    </g>
+    <g stroke="black" stroke-width="2" fill="none" marker-end="url(#arrow)">
+      <path d="M405 170 V205"/><path d="M405 285 V320"/><path d="M405 400 V435"/><path d="M405 515 V550"/><path d="M405 630 V670"/>
+      <path d="M580 735 H825"/><path d="M730 595 H825"/><path d="M405 800 V855"/><path d="M405 955 V990"/>
+      <path d="M730 905 H990 V990"/><path d="M80 1030 H35 V360 H80"/>
+    </g>
+    <text text-anchor="middle" x="696" y="722" font-size="18">是</text><text text-anchor="middle" x="426" y="832" font-size="18">否</text>
+    <text text-anchor="middle" x="405" y="1120" font-size="18">新增遥测与现场测厚均使用原杆件 ID、单位、校准及误差记录</text>
+    <text text-anchor="middle" x="620" y="1185" font-size="17">首版：现成无人机 + 地面工作站；任务由现场人员核定执行</text>
+    <g fill="black" stroke="none">
+      <path d="M399 195 L411 195 L405 205 Z M399 310 L411 310 L405 320 Z M399 425 L411 425 L405 435 Z M399 540 L411 540 L405 550 Z M399 660 L411 660 L405 670 Z M399 845 L411 845 L405 855 Z M399 980 L411 980 L405 990 Z"/>
+      <path d="M815 729 L815 741 L825 735 Z M815 589 L815 601 L825 595 Z M984 980 L996 980 L990 990 Z M70 354 L70 366 L80 360 Z"/>
+    </g>
+  </g>
+</svg>

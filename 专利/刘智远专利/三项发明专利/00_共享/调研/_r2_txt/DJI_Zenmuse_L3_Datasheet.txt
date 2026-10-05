@@ -1,0 +1,368 @@
+ 
+OPTRON (Pty) Ltd   
+ 
+Tel: 
++27 12 683 4500  
+Lakefield Office Park (Building C) 
+Email: 
+info@optron.com 
+272 West Avenue, Centurion 0157 
+Website: 
+www.optron.com 
+SOUTH AFRICA 
+ 
+ 
+ZENMUSE L3 
+   
+ 
+See Through, Far and True 
+ 
+DJI's next-generation high-accuracy aerial LiDAR system features a long-range 
+LiDAR capable of reaching up to 950 m even on objects with just 10% reflectivity. 
+ 
+Dual 100MP RGB mapping cameras and a high-precision POS system accelerate 
+geospatial data acquisition, enabling daily coverage of up to 100 km². 
+ 
+GENERAL 
+ 
+Dimensions: 
+ 
+ 
+192×162×202 mm (L×W×H) 
+Weight: 
+ 
+1.60 kg  
+Environmental Protection: 
+IP54 
+ 
+ 
+(without single gimbal connector) 
+ 
+Supported Aircraft: 
+ 
+Matrice 400 
+Power: 
+64 W (typical)  | 100 W (max.) 
+ 
+Operating Temperature: 
+-20° to 50° C 
+Storage Temperature: -40° to 70° C 
+ 
+SYSTEM PERFORMANCE 
+ 
+Point Cloud System Accuracy: 
+At 120m Flight Altitude 
+At 300m Flight Altitude 
+ 
+ 
+ 
+Vertical Accuracy: 3 cm (RMSE) 
+Vertical Accuracy 5 cm (RMSE) 
+ 
+ 
+ 
+ 
+ 
+Horizontal Accuracy: 4 cm (RMSE) 
+Horizontal Accuracy: 7.5 cm (RMSE) 
+ 
+Point Cloud Thickness: 
+1.2 cm@1σ (120m nadir flight altitude) 
+2 cm@1σ (300m nadir flight altitude) 
+ 
+ 
+Combined Horizontal FOV  (Dual RGB Mapping Cameras): 107° 
+ 
+ 
+RGB Ground Sampling Distance (GSD) 
+ 
+Average 3 cm (300m nadir flight altitude) 
+ 
+ 
+ 
+ 
+LiDAR 
+ 
+Laser Wavelength: 
+ 
+1535 nm 
+Laser Beam Divergence: 0.25 mrad (1/e²) 
+ 
+Laser Spot Size: 
+ 
+Φ 41 mm@120 m (1/e²) 
+Ranging Accuracy: 
+±10 mm Absolute Accuracy  
+ 
+ 
+ 
+Φ 86 mm@300 m (1/e²) 
+ 
+< 5 mm (1σ) Repeatability 
+ 
+Detection Range: 
+ 
+700 m@10% reflectivity, 350 kHz 
+Wire Detection Range: 
+300 m@100 klx, 350 kHz  
+ 
+ 
+ 
+950 m@10% reflectivity, 100 kHz 
+ 
+(21.6mm STD Steel Core Alu Wire) 
+ 
+ 
+ 
+2000 m@80% reflectivity, 100 kHz 
+ 
+100 m@100 klx, 350 kHz 
+ 
+ 
+ 
+ 
+ 
+(18.4mm Black PVC Insulated Wire) 
+ 
+Min Detection Range:  
+10 m 
+Cross-Cycle Calculation: 300 m@100 klx, 350 kHz 
+ 
+ 
+Laser Pulse Emission Frequency: 
+100 kHz, recommended flight altitude < 500 m 
+ 
+ 
+ 
+ 
+350 kHz, recommended flight altitude < 300 m 
+ 
+ 
+ 
+ 
+1000 kHz, recommended flight altitude < 100 m 
+ 
+ 
+ 
+ 
+2000 kHz, recommended flight altitude < 50 m 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+Number of Returns: 
+ 
+ 
+4, 8, 16 returns (100 kHz, 350 kHz) 
+ 
+ 
+ 
+ 
+4, 8 returns (1000 kHz) 
+ 
+ 
+ 
+ 
+4 returns (2000 kHz) 
+ 
+  
+ 
+ 
+Scanning Mode and FOV:  
+Linear Scanning Mode: Horizontal 80°, vertical 3° 
+ 
+ 
+ 
+ 
+Star-Shaped Scanning Mode: Horizontal 80°, vertical 80° 
+ 
+ 
+ 
+ 
+Non-Repetitive Scanning Mode: Horizontal 80°, vertical 80° 
+ 
+Laser Safety Classification: 
+Class 1 (IEC 60825-1:2014) 
+ 
+DATA SHEET 
+
+ 
+OPTRON (Pty) Ltd   
+ 
+Tel: 
++27 12 683 4500  
+Lakefield Office Park (Building C) 
+Email: 
+info@optron.com 
+272 West Avenue, Centurion 0157 
+Website: 
+www.optron.com 
+SOUTH AFRICA 
+RGB MAPPING CAMERA 
+ 
+Sensor: 
+4/3 CMOS 
+ 
+Photo Size 
+100 MP:   12288×8192 
+ 
+ 
+ 
+ 
+ 
+25 MP:     6144×4096 
+Lens 
+Equivalent Focal Length:  
+28 mm 
+ 
+FOV:  
+ 
+73.3° (dia), 62° (hor), 41.2° (vert) 
+ 
+ 
+Aperture:  
+ 
+f/2.0-f/11 
+ 
+Shutter 
+Mechanical Shutter:  
+2-1/1500 s (f/2.0), 2-1/2000 s (f/2.8-f/11) 
+ 
+Shutter Count:   
+500,000 
+ 
+Electronic Shutter:  
+2-1/16000 s 
+ 
+ 
+Minimum Photo Interval 
+JPEG:  
+25 MP: 0.5 s | 100 MP: 1 s 
+ 
+ 
+ 
+RAW or JPEG + RAW: 1.2 s 
+ 
+Video Specification 
+ 
+Video Format:  
+MP4 (MPEG-4 HEVC/H.265) 
+ 
+ 
+ 
+Resolution: 
+4K: 3840×2160@30fps 
+ 
+ 
+ 
+FHD:  
+1920×1080@30fps 
+ 
+POSITIONING AND ORIENTATION (POS) 
+ 
+GNSS Update Rate: 
+ 
+5 Hz 
+POS Update Rate: 
+200 Hz 
+ 
+Attitude Error 
+Yaw Angle:  
+0.02° (post-processed, 1σ) 
+Positioning Accuracy  
+Hor:  1.0 cm + 1 ppm (RTK fix) 
+ 
+Pitch/Roll Angle: 
+0.01° (post-processed, 1σ) 
+ 
+ 
+Vert: 1.5 cm + 1 ppm (RTK fix) 
+ 
+  
+Supported PPK Differential Data Formats 
+ 
+ 
+DAT:  
+Generated in Base Station Mode by D-RTK 3 Multifunctional Station and D-RTK 2 
+RINEX:  
+v2.1x, v3.0x 
+RTCM:  
+v3.0, v3.1, v3.2, v3.3 (protocols: MSM3, MSM4, MSM5, MSM6, MSM7) 
+OEM:  
+OEM4, OEM6 
+ 
+GIMBAL 
+ 
+Degrees of Freedom: 
+3-axis (pitch, roll, yaw) 
+Angular Accuracy: 
+±0.01° 
+ 
+Mechanical Range  
+Pitch: 
+-135° to +73° 
+Controllable Range: 
+Pitch:   -120° to +60° 
+ 
+Roll: 
+-90° to +60° 
+ 
+Yaw:     -80° to +80° 
+ 
+Yaw: 
+-105° to +105° 
+ 
+ 
+Self-Check Method 
+Roll Axis: 
+Self-check not required 
+Mounting Method: 
+Detachable DJI SKYPORT  
+ 
+Yaw Axis: 
+Checks using limit stop 
+ 
+(Zenmuse L3 single gimbal connector) 
+ 
+Pitch Axis: Self-check not required 
+ 
+Mounting Method:  
+Detachable DJI SKYPORT  
+ 
+(Zenmuse L3 single gimbal connector) 
+ 
+DATA STORAGE 
+ 
+Raw Data Storage:  
+Photo/IMU/Point cloud/GNSS/Calibration files 
+ 
+ 
+Standard Memory Card: CFexpress™ Type B Memory Card, sequential write speed 1500 MB/s 
+ 
+Standard Card Reader:  
+Read/write speed > 900 MB/s 
+ 
+SOFTWARE ECOSYSTEM 
+ 
+Data Collection: 
+DJI Pilot 2  
+Data Processing: 
+DJI Terra 
+ 
+Data Application: 
+DJI Modify 
+Cloud Application: 
+DJI FlightHub 2 
+ 
+Data Application 
+DJI Terra supports exporting point cloud models in the following formats: 
+ 
+Standard Point Cloud Format - PNTS/LAS/LAZ/PLY/PCD/S3MB 
+ 
+ 
+DJI Modify supports importing point cloud models in the following formats: 
+ 
+Standard Point Cloud Format - LAS 

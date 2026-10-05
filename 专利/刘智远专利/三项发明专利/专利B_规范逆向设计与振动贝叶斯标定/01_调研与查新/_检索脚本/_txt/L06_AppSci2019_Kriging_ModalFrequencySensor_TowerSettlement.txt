@@ -1,0 +1,547 @@
+applied  
+sciences
+Article
+A Kriging Surrogate Model for the Interference
+Reduction in the Settlement Surveillance Sensors
+of Steel Transmission Towers
+Jiajia Shi 1
+, Liu Chu 1,*
+and Eduardo Souza de Cursi 2
+1
+School of Transportation and Civil engineering, Nantong University, Nantong 226019, Jiangsu, China
+2
+Département Mécanique, Institut National des Sciences Appliquées de Rouen,
+76800 Saint-Étienne-du-Rouvray, France
+*
+Correspondence: chuliu@ntu.edu.cn
+Received: 12 June 2019; Accepted: 9 August 2019; Published: 14 August 2019
+
+
+Abstract: The utilization of modal frequency sensors is a feasible and eﬀective way to monitor the
+settlement problem of the transmission tower foundation. However, the uncertainties and interference
+in the real operation environment of transmission towers highly aﬀect the accuracy and identiﬁcation
+of modal frequency sensors. In order to reduce the interference of modal frequency sensors for
+transmission towers, a Kriging surrogate model is proposed in this study. The ﬁnite element model
+of typical transmission towers is created and validated to provide the eﬀective original database for
+the Kriging surrogate model. The prediction accuracy and convergences of the Kriging surrogate
+model are measured and conﬁrmed. Besides the merits in computational cost and high-eﬃciency,
+the Kriging surrogate model is proven to have a satisﬁed and robust interference reduction capacity.
+Therefore, the Kriging surrogate model is feasible and competitive for interference ﬁltration in the
+settlement surveillance sensors of steel transmission towers.
+Keywords: Kriging surrogate model; surveillance sensor; interference reduction; transmission tower
+1. Introduction
+The steel transmission tower is a signiﬁcant component of the electrical systems for the power
+transmission and distribution network [1,2]. The reliability and safety of steel transmission towers
+are crucial issues in both the design process and the operation periods [3]. The failure or damage
+of steel transmission towers can cause huge economic losses and even disasters for both industrial
+manufacturing and people’s daily lives [4]. The surveillance sensors are useful to help monitor the
+real-time status of transmission towers [5]. By the data of surveillance sensors, it is not only possible to
+predict the safe service life, but it is also possible to avoid the collapse of transmission towers by the
+maintenance in advance.
+The application of surveillance sensors in the key location of the transmission towers to monitor
+the real-time status attracts great concerns of engineers and researchers. For example, the inclination
+sensors are eﬀective at reﬂecting the stress of the large deformation, but the parameters corresponding
+to the load balance and the yield failure of the local rods are ignored [6]. In addition, the strain
+sensors by the resistance strain gauge are sensitive enough to identify the ﬂuctuation of forces, but are
+very susceptible to electromagnetic interference and are not robust enough to avoid rusting in the
+measurement circuits [7]. Even though the grating ﬁber strain sensors have some level of improvement
+in the measurement accuracy and range, the limitation in the installation location and quantity is not
+completely overcome [8].
+The modal identiﬁcation sensors are one of the promising technologies and have been widely
+used in structural health monitoring, such as in the reinforced concrete bridges [9,10] and wind turbine
+Appl. Sci. 2019, 9, 3343; doi:10.3390/app9163343
+www.mdpi.com/journal/applsci
+
+Appl. Sci. 2019, 9, 3343
+2 of 13
+blades [11]. By the modal identiﬁcation of the reinforced concrete bridges, the passing vehicles on the
+bridge pavement deck and fatigue damage of the bridge body are tracked and recorded. Moreover,
+the modal frequency sensors are eﬀective in identifying the vibration of wind turbine blade and are
+sensitive to the structural changes related to damage or failures. Furthermore, the modal identiﬁcation
+technology is also applied in the safety and reliability analysis of transmission towers [12].
+The inevitable uncertainties and interference in the modal identiﬁcation of transmission towers are
+originated from several aspects. First, the terrain environment often has uncontrollable factors, such as
+the ground displacement, foundation inclination and even cracking and subsidence of rocks. In addition,
+the natural climate and weather environment also provides unpredictable uncertainties [13]. For
+example, snow in the winter not only evidently increases the weight of the transmission towers, but also
+heavily inﬂuences the material properties of steel, which causes the reduction of structural stiﬀness
+and strength and makes transmission towers fragile to fracture and collapse. Besides, the random
+wind force is non-negligible to aﬀect the modal identiﬁcation of transmission towers [14,15]. Under
+the strong winds [16], such as hurricanes, tornados or isolated thunderstorms, the nonlinear inelastic
+behaviors of transmission tower structures become dominated [17,18]. The quasi-steady dynamic
+loads make the modal frequencies of transmission towers diﬃcult to analyze. Therefore, it is necessary
+to develop the feasible analytical model to identify and reduce the interference in modal identiﬁcation
+sensors of transmission towers.
+This paper proposes a Kriging surrogate model to eﬀectively reduce the interference in settlement
+surveillance sensors of steel transmission towers. At ﬁrst, the ﬁnite element model of the transmission
+tower structure is created based on the ANSYS Parameter Design Language (ANSYS, APDL,
+Version 14.5). Meanwhile, the ﬁrst ﬁve order vibration modes and natural frequencies are computed
+and recorded. The veriﬁcation for the numerical simulation model of the transmission towers is
+performed by comparing it with the data from the experimental measurements. Next, based on the
+database of natural frequencies computed by the ﬁnite element method, a Kriging surrogate model
+is built to eﬀectively reduce the interference or uncertainties in the identiﬁcation of the transmission
+tower settlement. The accuracy and convergence of the Kriging surrogate model are conﬁrmed in
+typical tests. Finally, some brief summaries are drawn in the last section.
+2. Problem Formulation and Theoretical Methods
+2.1. Steel Transmission Towers
+The structures of transmission towers have multiple types. The original ﬁnite element model
+of the transmission tower structure in this study is presented in Figure 1. The jointed trusses in the
+ﬁnite element model of the transmission tower are meshed with the beam ﬁnite elements. There are
+690 trusses, 2524 beam elements and 2168 nodes.
+In addition, the parameters corresponding to the geometrical properties of the transmission
+tower are shown in Figure 1, and the serial number for the transmission tower is 2A2-J1. For the
+material property parameters, the Young’s modulus is 2 × 1011 Pa, the physical density is 7850 kg/m3
+and the Poisson ratio is 0.28. The ﬂuctuations and uncertainties in the material and geometrical
+property parameters caused by the environment, weather, operation status, etc., are supposed to be the
+interference in the settlement surveillance sensor.
+The relationship between the parameters corresponding with the settlement in the transmission
+tower and the natural frequencies is implicit. Creating the explicit function to express the mathematical
+relationship is not feasible in the safety surveillance of transmission towers. By using the Kriging
+surrogate model, the implicit expression of the parameters is successfully represented, and the input
+signals provided by the sensors installed in the transmission tower can be eﬀectively ﬁltered for
+settlement identiﬁcation.
+
+Appl. Sci. 2019, 9, 3343
+3 of 13
+Figure 1.
+The ﬁnite element model of the transmission tower structure (the unit is cm, serial
+number [19] for the transmission tower is 2A2-J1).
+2.2. Kriging Surrogate Model
+The Kriging surrogate model is a stochastic interpolation algorithm that assumes that the model
+output is a realization of a Gaussian process indexed by x ∈DX ⊂RM. A Kriging model is described
+by the following equation [20,21]:
+y ≈MK(x) = βT f(x) + σ2Z(x, w)
+(1)
+where y = M(x) is the output data and βT f(x) and σ2 are the mean and variance of the Gaussian
+process, respectively. Z(x, w) is a zero mean, unit variance, stationary Gaussian process, which is
+characterized by a correlation function R with hyper-parameters θ.
+Given X = {x1, x2, · · · , xn}, then y =
+n
+MK(x1), MK(x2), · · · , MK(xn)
+oT, and the calculation of
+prediction MK(x) in the point x is based on the Gaussian properties of the process.
+The Gaussian assumption states that the vector formed by the true model responses, y and the
+prediction,
+^
+Y(x) has a joint Gaussian distribution deﬁned by [22]:
+
+^
+Y(x)
+y
+∼NN+1
+ (
+f T(x)β
+Fβ
+)
+, σ2
+(
+1
+rT(x)
+r(x)
+R
+)!
+(2)
+where F is the information matrix of generic terms: Fij = fj(xi), i = 1, · · · , N, j = 1, · · · , P; r(x) is the
+vector of cross-correlations between the prediction point x and each one of the observations whose
+terms read: ri = R(x, xi; θ), i = 1, · · · , N and R is the correlation matrix whose terms are written as:
+Rij = R(x, xi; θ), i, j = 1, · · · , N.
+(3)
+Consequently, the mean and variance of the Gaussian random variate
+^
+Y(x) can be calculated as [23]:
+σ2
+^
+Y
+(x) = σ2(1 −rT(x)R−1r(x) + uT(x)(FTR−1F)
+−1u(x))
+(4)
+
+Appl. Sci. 2019, 9, 3343
+4 of 13
+β = (FTR−1F)
+−1FTR−1y.
+(5)
+The generalized least-square estimate of the underlying regression problem can be
+expressed as [24]:
+u(x) = FTR−1r(x) −f(x).
+(6)
+Another useful corollary of the Gaussian assumption is that:
+^
+Y(x) ∼N(µ^
+Y(x), σ2
+^
+Y
+(x)).
+(7)
+Thus,
+P
+"^
+Y(x) ≤t
+#
+= φ
+
+
+t −µ^
+Y(x)
+σ^
+Y(x)
+
+
+(8)
+where φ(·) denotes the Gaussian cumulative density function.
+Based on the above equation,
+the conﬁdence intervals on the predictor can be calculated by Equation (9) with probability 1 −α.
+^
+Y(x) ∈
+
+µ^
+Y(x) −φ−1
+
+1 −α
+2
+
+σ^
+Y(x), µ^
+Y(x) + φ−1
+
+1 −α
+2
+
+σ^
+Y(x)
+
+.
+(9)
+In order to create the Kriging surrogate model and perform it to provide precise prediction,
+the functional basis of the Kriging trend should be selected ﬁrst, and then the appropriate correlation
+function R(x, x′; θ) is chosen. If the hyper-parameters θ and the Gaussian process variance σ2 are
+unknown, then this involves setting up an optimization problem and solving it. Using the optimal
+value of θ, the rest of the unknown Kriging parameters (σ2, β) can be calculated.
+2.3. Interference Reduction in Settlement Surveillance Sensor
+The interference reduction in the settlement surveillance sensor strongly depends on the original
+database of the ﬁnite element computation for the natural frequencies of the transmission tower
+structure. The parameters corresponding with the settlement of the transmission tower and the natural
+frequencies are related to the Kriging surrogate model by implicit expression. By the Kriging surrogate
+model, the input signals provided by the sensors installed in the transmission tower are ﬁltered, and the
+interference signals are eﬀectively reduced to identify the settlement. Then, real time safety surveillance
+of the transmission tower is successfully implemented. The process of interference reduction in the
+settlement surveillance sensor is shown in Figure 2.
+Due to the satisﬁed accuracy and feasibility, and the computational cost saving compared with
+the ﬁnite element method, the Kriging surrogate model is chosen for interference reduction in the
+settlement surveillance sensor. The uncertainty and randomness of the settlement in the transmission
+tower are propagated as that in the real situation. A number of 1000 stochastic samples of the
+transmission tower with the settlement are simulated by the ﬁnite element model. The records of the
+transmission tower settlement and the corresponding natural frequencies in the ﬁve vibration modes
+are shown in Figure 3. The results of the natural frequencies and related settlement of transmission
+tower provide the useful original database for the Kriging surrogate model.
+
+Appl. Sci. 2019, 9, 3343
+5 of 13
+ 
+Figure 2. Schematic diagram of interference reduction in the settlement surveillance sensor.
+Figure 3. Records of the transmission tower settlement and the corresponding natural frequencies (a)
+is the records of the transmission tower settlement, and (b–f) are the natural frequency records of the
+ﬁrst to ﬁfth order vibration modes, respectively.
+
+Appl. Sci. 2019, 9, 3343
+6 of 13
+3. Results and Discussion
+Validation of Finite Element Model
+For the validation of the transmission tower ﬁnite element model, the displacement and rotation
+of the ﬁrst order vibration mode are computed and presented in Figures 4 and 5. The X, Y and Z
+directions in the ﬁnite element model of the transmission tower are marked in Figure 1. In Figure 4,
+the displacement in the Z direction is more primary than that in the X and Y direction. However,
+the rotation in the X direction is more substantial and closer to the sum vector result in Figure 5.
+The results demonstrated in Figures 4 and 5 are quite true to the facts.
+In addition, the displacement and rotation results of the transmission tower with settlement are
+computed by the ﬁnite element method and revealed in Figures 6 and 7. Diﬀerent from the transmission
+tower without settlement, the settlement makes the natural frequencies of the transmission tower
+obviously ampliﬁed. Furthermore, even though the displacement in the Z direction plays an essential
+role in the sum vector result, the changes of the displacement in the X direction are evident in Figure 6
+when compared with that in Figure 4. Besides, the most dangerous locations in the displacement in
+the X direction move up in Figure 6a when the settlement happens. The modiﬁcations in the rotation
+of the transmission tower caused by settlement are apparent in the Y and Z directions, as shown in
+Figure 7. The rotation in the X direction is more dominant in the sum vector result, as shown in Figure 5.
+The experimental test and numerical simulation in the reported literature [5] also prove that the X
+direction is most sensitive in detecting the settlement of the transmission tower. The displacement
+of the transmission tower in the X direction is obviously ﬂuctuated after the settlement and can be
+cited as the eﬀective evidence for the identiﬁcation and judgment of the foundation settlement. Thus,
+the ﬁnite element model of the transmission towers is veriﬁed to analyze the settlement by the natural
+frequencies and vibration modes.
+ 
+ 
+ 
+ 
+ 
+(a) 
+(b) 
+(c) 
+(d) 
+Figure 4. Displacement of the transmission tower in the ﬁrst order vibration mode; (a–c) are the results
+in the X, Y and Z directions, respectively, and (d) is the sum vector result.
+
+Appl. Sci. 2019, 9, 3343
+7 of 13
+ 
+ 
+ 
+ 
+ 
+(a) 
+(b) 
+(c) 
+(d) 
+Figure 5. Rotation of the transmission tower in the ﬁrst order vibration mode; (a–c) are the results in
+the X, Y and Z directions, respectively, and (d) is the sum vector result.
+ 
+ 
+ 
+ 
+(a) 
+(b) 
+(c) 
+(d) 
+Figure 6. Displacement of the transmission tower in the ﬁrst order vibration mode with settlement;
+(a–c) are the results in the X, Y and Z directions, respectively, and (d) is the sum vector result.
+
+Appl. Sci. 2019, 9, 3343
+8 of 13
+ 
+ 
+ 
+ 
+ 
+(a) 
+(b) 
+(c) 
+(d) 
+Figure 7. Rotation of the transmission tower in the first order vibration mode with settlement; (a–c) are for
+the X, Y and Z directions, respectively, and (d) is for the sum vector result.
+4. Settlement Identiﬁcation
+As explained by the schematic diagram of the interference reduction in the settlement surveillance
+sensor in Figure 2, the Kriging surrogate model is performed to identify the settlement and eﬀectively
+reduce the interference in the settlement surveillance sensor. Based on the original database provided
+by the ﬁnite element model computation, the implicit relationship between the natural frequencies
+and the settlement are eﬀectually created. When the natural frequencies of the transmission tower are
+measured and recorded by the sensor, the settlement can be predicted and evaluated by the Kriging
+surrogate model for the safety surveillance. The accuracy of the Kriging surrogate model for the
+identiﬁcation of the transmission tower settlement is tested and compared with the precise solution of
+the ﬁnite element model, as shown in Figures 8 and 9.
+In Figure 8, the diﬀerences between the Kriging surrogate model prediction and the precise results
+of the transmission tower ﬁnite element model for the ﬁrst ﬁve natural frequencies are demonstrated.
+By comparison, it is obvious that the Kriging surrogate model provides more accurate predictions
+in the low order vibration modes for transmission towers, as the relative errors in Figure 8a,b are
+evidently smaller than that in Figure 8d,e. In addition, the prediction accuracy of the Kriging surrogate
+model in the third vibration mode is more satisﬁed than that of the ﬁrst two order natural frequencies.
+The reasons for this phenomenon can be several possibilities. The better original database of ﬁnite
+element results in the local interval can cause more accurate predictions of the Kriging surrogate
+model in Figure 8c. The further conﬁrmation is performed in the following. Even the diﬀerences
+between the Kriging surrogate model predictions with the precise results have ﬂuctuations, the relative
+errors are smaller than 0.01 Hz for natural frequencies in the ﬁrst two vibration modes. The sharp
+peak or high plateau is not present in the low vibration modes. The evident oscillation is marked in
+Figure 8d,e. The threshold to track the oscillation for the Kriging surrogate model prediction is when
+the relative errors are continuously larger than 0.005 Hz. Thus, the low orders such as the ﬁrst and
+the second natural frequencies are useful to be tracked and recorded as the settlement reference for
+transmission towers.
+
+Appl. Sci. 2019, 9, 3343
+9 of 13
+Figure 8. The diﬀerences between the Kriging surrogate model prediction and precise results; (a–e) are
+for ﬁrst ﬁve vibration modes, respectively.
+ 
+Figure 9. The settlement identiﬁcations of the Kriging surrogate model by the inverse function (a–e)
+are the errors of the ﬁrst ﬁve vibration modes, respectively.
+
+Appl. Sci. 2019, 9, 3343
+10 of 13
+To be more comprehensive, the settlement identiﬁcations of the Kriging surrogate model by the
+inverse function are presented in Figure 9. For the normal implicit function of the Kriging surrogate
+model, the input information is the settlement possibly happened in the transmission tower, while the
+output results are the natural frequencies predicted by the Kriging surrogate model. On the contrary,
+for the inverse implicit function, the input database of the Kriging surrogate model is the natural
+frequencies of the transmission tower, while the predictive results are the settlement of foundation.
+Based on the available natural frequencies tested and recorded by the surveillance sensor, the settlement
+of the transmission tower is calculated by the Kriging surrogate model.
+As shown in Figure 9a,b, the settlement identiﬁcation of the Kriging surrogate model is satisﬁed in
+the ﬁrst two vibration modes. However, diﬀerent from the results in Figure 8c, the merits of the Kriging
+surrogate model in the third vibration mode disappear in Figure 9d for settlement identiﬁcation.
+Diﬀerent from the threshold in Figure 9, the oscillation for the settlement results for the transmission
+tower is marked with the red circle when the value of the relative error is larger than 0.025 m. In addition,
+even the Kriging surrogate model oﬀers better results based on the high order natural frequencies in
+the local intervals, and the instability in Figure 9e is unneglectable. The reasons for the selection of the
+low order natural frequencies to identify the settlement of transmission tower include two aspects.
+On the one hand, the natural frequencies of low order vibration modes before and after settlement
+are obvious both in experiments and numerical simulation. On the other hand, the instability and
+ﬂuctuation in the natural frequencies of high order vibration modes make the settlement identiﬁcation
+lack accurate and convergent results. Therefore, compared with the high order natural frequencies,
+the ﬁrst two order natural frequencies provided by the surveillance sensor are more robust to the
+settlement prediction of the Kriging surrogate model.
+Interference Reduction
+The ﬁrst two order natural frequencies of the transmission tower are veriﬁed to be eﬀective
+references recorded by the surveillance sensor for settlement identiﬁcation. The capacity of interference
+reduction in the Kriging surrogate model is measured by taking the uncertainties of the material
+property parameters into consideration.
+According to the real operation situation of transmission towers, the uncertainties and ﬂuctuations
+in the material parameters, such as the Young’s modulus, Poisson’s ratio and physical density,
+are propagated in the ﬁnite element model. The signals received by the settlement surveillance sensor
+are interfered with by the factors corresponding to the changes and uncertainties in the material
+properties of transmission towers. The Kriging surrogate model is used to identify and ﬁlter the
+interference. The ﬁltration percentage discussed in this study is the percentage of uncertain interference
+identiﬁed by the Kriging surrogate model for the transmission tower. The calculation of ﬁltration
+percentage is based on the statistical mathematics. According to the two diﬀerent order natural
+frequencies of the transmission tower, the prediction results of the settlement by the Kriging surrogate
+model form the sampling space for the interference identiﬁcation. The predictive results of the Kriging
+surrogate model present the discrepancy or ﬂuctuation if there are interferences and uncertainties in
+the system. The settlement discrepancy between two order natural frequencies is tracked and recorded
+for interference ﬁltration.
+By the Kriging surrogate model proposed in this study, the ﬁltration percentage results of
+interference reduction for the settlement surveillance sensor are presented in Figure 10. Each subﬁgure
+selects two order natural frequencies to jointly calculate the ﬁltration percentage. For example, F1–F2
+means the ﬁltration percentage when taking the ﬁrst and second order natural frequencies into
+consideration. Firstly, in Figure 10b–d, it can be found that the ﬁltration percentages by the Kriging
+surrogate model are very stable and satisﬁed, and the values stay above 92% even if the accuracy
+of the Kriging surrogate model decreases. Thus, the ﬁrst and the third order (F1–F3), the ﬁrst and
+the fourth order (F1–F4) and the ﬁrst and the ﬁfth order (F1–F4) natural frequencies are the satisﬁed
+and robust signals used to identify and ﬁlter the interference in the settlement surveillance sensor.
+
+Appl. Sci. 2019, 9, 3343
+11 of 13
+In addition, the second and the third order (F2–F3), the second and the fourth order (F2–F4) and
+the second and the ﬁfth order (F2–F4) natural frequencies, as shown in Figure 10e–g, can also reach
+as high as 92% of interference reduction, but with small performance degradation along with the
+accuracy decline of the Kriging surrogate model. The third and the fourth order (F3–F4) natural
+frequencies oﬀered by the settlement surveillance sensor are not decent references to identify or judge
+the interference. Finally, according to the results in Figure 10a,i,j, with the accuracy reduction of the
+Kriging surrogate model, the ﬁltration percentage results have evident deterioration in the settlement
+surveillance sensor. However, the Kriging surrogate model still provides 90% of ﬁltration percentage
+in the cases of Figure 10a,i,j. Therefore, the Kriging surrogate model provides a satisﬁed and robust
+interference ﬁltration capacity for the settlement surveillance sensor of the transmission tower.
+Figure 10. Filtration percentage results of interference reduction by the Kriging surrogate model for
+the settlement surveillance sensor (F1, F2, F3, F4 and F5 are the ﬁrst ﬁve order natural frequencies,
+respectively). (a): F1-F2; (b): F1-F3; (c): F1-F4; (d): F1-F5; (e): F2-F3; (f): F2-F4; (g): F2-F5; (h): F3-F4;
+(i): F3-F5; (j): F4-F5.
+Furthermore, the Kriging surrogate model also has time-saving and high-eﬃciency merits in
+settlement surveillance sensors. The ﬁnite element model for natural frequency computation takes
+more time, is expensive and lacks the inverse judgment ability to identify the complicated interference.
+
+Appl. Sci. 2019, 9, 3343
+12 of 13
+Besides, the prediction and identiﬁcation for the 5000 sample signals of natural frequencies form
+the settlement surveillance sensor only cost 20.44 s. The proposed Kriging surrogate model is to be
+embedded in the safety surveillance system of transmission tower for interference reduction in the
+settlement identiﬁcation, instead of replacing the ﬁnite element model. The data of natural frequencies
+of the transmission tower in the real system are collected and transferred by modal identiﬁcation
+sensor rather than from the ﬁnite element model in the simulation. Furthermore, the rapid sample
+treatment speed and high computational eﬃciency also make the Kriging surrogate model very
+competitive in modal identiﬁcation sensors. Therefore, the Kriging surrogate model not only provides
+the satisﬁed prediction accuracy and robust interference ﬁltration, but also is very competitive in
+computational costs.
+5. Conclusions
+In this paper, a Kriging surrogate model is proposed to eﬀectively reduce the interference in the
+settlement surveillance sensor for the transmission tower. According to the comparison and analysis,
+the results show that:
+1.
+The displacement of transmission towers in the X direction is obviously ﬂuctuated after the
+settlement and can be cited as the eﬀective evidence for the foundation settlement.
+2.
+Based on the original database of the ﬁnite element model of transmission towers, the Kriging
+surrogate model provides accurate prediction for the natural frequencies and settlement.
+3.
+Compared with the high order natural frequencies, the ﬁrst two order natural frequencies
+provided by the surveillance sensor are more robust for the settlement prediction by the Kriging
+surrogate model.
+4.
+The Kriging surrogate model performs the satisﬁed and robust interference ﬁltration as high as
+92% for the settlement surveillance sensor of the transmission tower.
+5.
+The merits of computational costs and high eﬃciency in the Kriging surrogate model make this
+model feasible and competitive in settlement surveillance sensors.
+Author Contributions: Conceptualization, J.S. and L.C.; methodology, L.C.; software, L.C.; validation, J.S. and
+L.C.; formal analysis, J.S and L.C.; investigation, L.C.; resources, E.S.d.C; data curation, L.C.; writing—original draft
+preparation, J.S.; writing—review and editing, L.C.; visualization, J.S; supervision, E.S.d.C.; project administration,
+E.S.d.C.; funding acquisition, E.S.d.C.
+Funding: This research was funded by the National Natural Science Foundation of China Grant Nos. 61801247
+and 61901235.
+Conﬂicts of Interest: The authors declare no conﬂicts of interest.
+References
+1.
+Couceiro, I.; Paris, J.; Martinez, S.; Colominas, I.; Navarrina, F.; Casteleiro, M. Structural optimization of
+lattice steel transmission towers. Eng. Struct. 2016, 117, 274–286. [CrossRef]
+2.
+Guo, H.Y.; Li, Z.L. Structural topology optimization of high-voltage transmission tower with discrete
+variables. Struct. Multidiscip. Optim. 2011, 43, 851–861. [CrossRef]
+3.
+Li, X.; Zhang, W.; Niu, H.; Wu, Z.Y. Probabilistic capacity assessment of single circuit transmission tower-line
+system subjected to strong winds. Eng. Struct. 2018, 175, 517–530. [CrossRef]
+4.
+Savory, E.; Parke, G.A.; Zeinoddini, M.; Toy, N.; Disney, P. Modelling of tornado and microburst-induced
+wind loading and failure of a lattice transmission tower. Eng. Struct. 2001, 23, 365–375. [CrossRef]
+5.
+Huang, X.; Zhao, Y.; Zhao, L.; Yang, L. A Method for Settlement Detection of the Transmission Line Tower
+under Wind Force. Sensors 2018, 18, 4355. [CrossRef] [PubMed]
+6.
+Malhara, S.; Vittal, V. Mechanical State Estimation of Overhead Transmission Lines Using Tilt Sensors.
+IEEE Trans. Power Syst. 2010, 25, 1282–1290. [CrossRef]
+7.
+Xia, Y.; Zhang, P.; Ni, Y.-Q.; Zhu, H.-P. Deformation monitoring of a super-tall structure using real-time strain
+data. Eng. Struct. 2014, 67, 29–38. [CrossRef]
+
+Appl. Sci. 2019, 9, 3343
+13 of 13
+8.
+Bang, H.-J.; Kim, H.-I.; Lee, K.-S. Measurement of strain and bending deﬂection of a wind turbine tower
+using arrayed FBG sensors. Int. J. Precis. Eng. Manuf. 2012, 13, 2121–2126. [CrossRef]
+9.
+Huynh, T.-C.; Park, J.-H.; Kim, J.-T. Structural identiﬁcation of cable-stayed bridge under back-to-back
+typhoons by wireless vibration monitoring. Measurement 2016, 88, 385–401. [CrossRef]
+10.
+Ding, K. Application of Wavelet Analysis of Curvature Modal to Damage Detection of Bridges. Noise Vib. Control
+2013, 33, 131–135.
+11.
+Ou, Y.W.; Eleni, N.C.; Vasilis, K.D.; Minas, D.S. Vibration-based experimental damage detection of a
+small-scale wind turbine blade. Struct. Health Monit. 2017, 16, 79–96. [CrossRef]
+12.
+Iwaniec, J.; Iwaniec, M.; Kasprzyk, S. Transverse vibrations of transmission tower of variable geometrical
+structure. J. Low Freq. Noise Vib. Act. Control. 2019, 38. [CrossRef]
+13.
+El Damatty, A.; Elawady, A. Critical load cases for lattice transmission line structures subjected to downbursts:
+Economic implications for design of transmission lines. Eng. Struct. 2018, 159, 213–226. [CrossRef]
+14.
+Cai, Y.; Xie, Q.; Xue, S.; Hu, L.; Kareem, A. Fragility modelling framework for transmission line towers under
+winds. Eng. Struct. 2019, 191, 686–697. [CrossRef]
+15.
+Abd-Elaal, E.-S.; Mills, J.E.; Ma, X. A review of transmission line systems under downburst wind loads.
+J. Wind. Eng. Ind. Aerodyn. 2018, 179, 503–513. [CrossRef]
+16.
+Hamzah, N.H.; Usman, F. Geospatial analysis of wind velocity to determine wind loading on transmission
+tower. Wind Struct. 2019, 28, 381–388.
+17.
+Zhou, Q.; Zhang, H.; Ma, B.; Huang, Y. Wind loads on transmission tower bodies under skew winds with
+both yaw and tilt angles. J. Wind. Eng. Ind. Aerodyn. 2019, 187, 48–60. [CrossRef]
+18.
+Darwish, M.; El Damatty, A. Critical Parameters and Conﬁgurations Aﬀecting the Analysis and Design of
+Guyed Transmission Towers under Downburst Loading. Pr. Period. Struct. Des. Constr. 2017, 22, 4016017.
+[CrossRef]
+19.
+Liu, Z. General Design of Power Transmission and Transformation Project of State Grid Corporation of China; China
+Electric Power Press: Beijing, China, 2011; Volume 50.
+20.
+Marelli, S.; Sudret, B. UQLab: A Framework for Uncertainty Quantiﬁcation in Matlab. In Proceedings
+of the Second International Conference on Vulnerability, Risk Analysis and Management (ICVRAM2014),
+Liverpool, UK, 13–16 July 2014; pp. 2554–2563.
+21.
+Santner, T.J.; Williams, B.J.; Notz, W.I. The Design and Analysis of Computer Experiments; Springer:
+Berlin/Heidelberg, Germany, 2003.
+22.
+Shi, J.; Chu, L.; Braun, R. A Kriging Surrogate Model for Uncertainty Analysis of Graphene Based on a Finite
+Element Method. Int. J. Mol. Sci. 2019, 20, 2355. [CrossRef] [PubMed]
+23.
+Chu, L.; Shi, J.; De Cursi, E.S. Kriging Surrogate Model for Resonance Frequency Analysis of Dental Implants
+by a Latin Hypercube-Based Finite Element Method. Appl. Bionics Biomech. 2019, 2019, 1–14. [CrossRef]
+[PubMed]
+24.
+Lataniotis, C.; Marelli, S.; Sudret, B. UQLAB User Manual—Kriging (Gaussian Process Modelling); Report
+UQLab-V1.2-105; Chair of Risk, Safety & Uncertainty Quantiﬁcation, ETH Zurich: Zurich, Switzerland, 2019.
+© 2019 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access
+article distributed under the terms and conditions of the Creative Commons Attribution
+(CC BY) license (http://creativecommons.org/licenses/by/4.0/).

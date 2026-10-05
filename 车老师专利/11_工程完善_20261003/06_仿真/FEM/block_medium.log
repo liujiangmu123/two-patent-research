@@ -1,0 +1,1307 @@
+Info    : Running 'C:\Users\Administrator\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.exe block_medium.geo -3 -format msh2 -o block_medium.msh -log block_medium.log -nopopup' [Gmsh 4.15.0, 1 node, max. 1 thread]
+Info    : Started on Sat Oct  3 16:06:57 2026
+Info    : Reading 'block_medium.geo'...
+Info    : Reading 'block.brep'...
+Info    : Snapping geometry point 137 to curve (distance = 1.13971e-08)
+Info    : Snapping geometry point 137 to curve (distance = 2.18138e-08)
+Info    : Snapping geometry point 137 to curve (distance = 1.01866e-08)
+Info    : Snapping geometry point 146 to curve (distance = 3.06918e-08)
+Info    : Snapping geometry point 146 to curve (distance = 5.54457e-08)
+Info    : Snapping geometry point 146 to curve (distance = 1.92994e-08)
+Info    : Done reading 'block.brep'
+Info    : Done reading 'block_medium.geo'
+Info    : Meshing 1D...
+Info    : [  0%] Meshing curve 1 (Line)
+Info    : [ 10%] Meshing curve 2 (Line)
+Info    : [ 10%] Meshing curve 3 (Line)
+Info    : [ 10%] Meshing curve 4 (Line)
+Info    : [ 10%] Meshing curve 5 (Circle)
+Info    : [ 10%] Meshing curve 6 (Line)
+Info    : [ 10%] Meshing curve 7 (Line)
+Info    : [ 10%] Meshing curve 8 (Line)
+Info    : [ 10%] Meshing curve 9 (Circle)
+Info    : [ 10%] Meshing curve 10 (Circle)
+Info    : [ 10%] Meshing curve 11 (Circle)
+Info    : [ 10%] Meshing curve 12 (Circle)
+Info    : [ 10%] Meshing curve 13 (Line)
+Info    : [ 10%] Meshing curve 14 (Line)
+Info    : [ 10%] Meshing curve 15 (Circle)
+Info    : [ 10%] Meshing curve 16 (Circle)
+Info    : [ 10%] Meshing curve 17 (Circle)
+Info    : [ 10%] Meshing curve 18 (Circle)
+Info    : [ 10%] Meshing curve 19 (Circle)
+Info    : [ 10%] Meshing curve 20 (Circle)
+Info    : [ 10%] Meshing curve 21 (Circle)
+Info    : [ 10%] Meshing curve 22 (Circle)
+Info    : [ 10%] Meshing curve 23 (Circle)
+Info    : [ 10%] Meshing curve 24 (Circle)
+Info    : [ 10%] Meshing curve 25 (Circle)
+Info    : [ 10%] Meshing curve 26 (Circle)
+Info    : [ 10%] Meshing curve 27 (Circle)
+Info    : [ 10%] Meshing curve 28 (Circle)
+Info    : [ 10%] Meshing curve 29 (Line)
+Info    : [ 10%] Meshing curve 30 (Line)
+Info    : [ 10%] Meshing curve 31 (Circle)
+Info    : [ 10%] Meshing curve 32 (Circle)
+Info    : [ 10%] Meshing curve 33 (Circle)
+Info    : [ 10%] Meshing curve 34 (Circle)
+Info    : [ 10%] Meshing curve 35 (Circle)
+Info    : [ 10%] Meshing curve 36 (Circle)
+Info    : [ 10%] Meshing curve 37 (Circle)
+Info    : [ 10%] Meshing curve 38 (Circle)
+Info    : [ 10%] Meshing curve 39 (Line)
+Info    : [ 10%] Meshing curve 40 (Circle)
+Info    : [ 10%] Meshing curve 41 (Circle)
+Info    : [ 10%] Meshing curve 42 (Circle)
+Info    : [ 20%] Meshing curve 43 (Circle)
+Info    : [ 20%] Meshing curve 44 (Circle)
+Info    : [ 20%] Meshing curve 45 (Circle)
+Info    : [ 20%] Meshing curve 46 (Circle)
+Info    : [ 20%] Meshing curve 47 (Circle)
+Info    : [ 20%] Meshing curve 48 (Circle)
+Info    : [ 20%] Meshing curve 49 (Circle)
+Info    : [ 20%] Meshing curve 50 (Line)
+Info    : [ 20%] Meshing curve 51 (Circle)
+Info    : [ 20%] Meshing curve 52 (Circle)
+Info    : [ 20%] Meshing curve 53 (Line)
+Info    : [ 20%] Meshing curve 54 (Circle)
+Info    : [ 20%] Meshing curve 55 (Line)
+Info    : [ 20%] Meshing curve 56 (Circle)
+Info    : [ 20%] Meshing curve 57 (Line)
+Info    : [ 20%] Meshing curve 58 (Circle)
+Info    : [ 20%] Meshing curve 59 (Line)
+Info    : [ 20%] Meshing curve 60 (Circle)
+Info    : [ 20%] Meshing curve 61 (Line)
+Info    : [ 20%] Meshing curve 62 (Circle)
+Info    : [ 20%] Meshing curve 63 (Line)
+Info    : [ 20%] Meshing curve 64 (Line)
+Info    : [ 20%] Meshing curve 65 (Circle)
+Info    : [ 20%] Meshing curve 66 (Line)
+Info    : [ 20%] Meshing curve 67 (Circle)
+Info    : [ 20%] Meshing curve 68 (Line)
+Info    : [ 20%] Meshing curve 69 (Circle)
+Info    : [ 20%] Meshing curve 70 (Line)
+Info    : [ 20%] Meshing curve 71 (Circle)
+Info    : [ 20%] Meshing curve 72 (Line)
+Info    : [ 20%] Meshing curve 73 (Circle)
+Info    : [ 20%] Meshing curve 74 (Line)
+Info    : [ 20%] Meshing curve 75 (Circle)
+Info    : [ 20%] Meshing curve 76 (Line)
+Info    : [ 20%] Meshing curve 77 (Circle)
+Info    : [ 20%] Meshing curve 78 (Line)
+Info    : [ 20%] Meshing curve 79 (Circle)
+Info    : [ 20%] Meshing curve 80 (Line)
+Info    : [ 20%] Meshing curve 81 (Circle)
+Info    : [ 20%] Meshing curve 82 (Line)
+Info    : [ 20%] Meshing curve 83 (Circle)
+Info    : [ 30%] Meshing curve 84 (Line)
+Info    : [ 30%] Meshing curve 85 (Circle)
+Info    : [ 30%] Meshing curve 86 (Line)
+Info    : [ 30%] Meshing curve 87 (Circle)
+Info    : [ 30%] Meshing curve 88 (Line)
+Info    : [ 30%] Meshing curve 89 (Circle)
+Info    : [ 30%] Meshing curve 90 (Line)
+Info    : [ 30%] Meshing curve 91 (Circle)
+Info    : [ 30%] Meshing curve 92 (Line)
+Info    : [ 30%] Meshing curve 93 (Circle)
+Info    : [ 30%] Meshing curve 94 (Line)
+Info    : [ 30%] Meshing curve 95 (Circle)
+Info    : [ 30%] Meshing curve 96 (Line)
+Info    : [ 30%] Meshing curve 97 (Circle)
+Info    : [ 30%] Meshing curve 98 (Line)
+Info    : [ 30%] Meshing curve 99 (Circle)
+Info    : [ 30%] Meshing curve 100 (Line)
+Info    : [ 30%] Meshing curve 101 (Circle)
+Info    : [ 30%] Meshing curve 102 (Line)
+Info    : [ 30%] Meshing curve 103 (Circle)
+Info    : [ 30%] Meshing curve 104 (Line)
+Info    : [ 30%] Meshing curve 105 (Circle)
+Info    : [ 30%] Meshing curve 106 (Line)
+Info    : [ 30%] Meshing curve 107 (Circle)
+Info    : [ 30%] Meshing curve 108 (Line)
+Info    : [ 30%] Meshing curve 109 (Circle)
+Info    : [ 30%] Meshing curve 110 (Line)
+Info    : [ 30%] Meshing curve 111 (Circle)
+Info    : [ 30%] Meshing curve 112 (Line)
+Info    : [ 30%] Meshing curve 113 (Circle)
+Info    : [ 30%] Meshing curve 114 (Circle)
+Info    : [ 30%] Meshing curve 115 (Circle)
+Info    : [ 30%] Meshing curve 116 (Circle)
+Info    : [ 30%] Meshing curve 117 (Circle)
+Info    : [ 30%] Meshing curve 118 (Circle)
+Info    : [ 30%] Meshing curve 119 (Circle)
+Info    : [ 30%] Meshing curve 120 (Circle)
+Info    : [ 30%] Meshing curve 121 (Circle)
+Info    : [ 30%] Meshing curve 122 (Circle)
+Info    : [ 30%] Meshing curve 123 (Circle)
+Info    : [ 30%] Meshing curve 124 (Circle)
+Info    : [ 40%] Meshing curve 125 (Circle)
+Info    : [ 40%] Meshing curve 126 (Circle)
+Info    : [ 40%] Meshing curve 127 (Circle)
+Info    : [ 40%] Meshing curve 128 (Circle)
+Info    : [ 40%] Meshing curve 129 (Circle)
+Info    : [ 40%] Meshing curve 130 (Circle)
+Info    : [ 40%] Meshing curve 131 (Line)
+Info    : [ 40%] Meshing curve 132 (Circle)
+Info    : [ 40%] Meshing curve 133 (Circle)
+Info    : [ 40%] Meshing curve 134 (Line)
+Info    : [ 40%] Meshing curve 135 (Circle)
+Info    : [ 40%] Meshing curve 136 (Line)
+Info    : [ 40%] Meshing curve 137 (Circle)
+Info    : [ 40%] Meshing curve 138 (Line)
+Info    : [ 40%] Meshing curve 139 (Circle)
+Info    : [ 40%] Meshing curve 140 (Line)
+Info    : [ 40%] Meshing curve 141 (Circle)
+Info    : [ 40%] Meshing curve 142 (Line)
+Info    : [ 40%] Meshing curve 143 (Circle)
+Info    : [ 40%] Meshing curve 144 (Line)
+Info    : [ 40%] Meshing curve 145 (Circle)
+Info    : [ 40%] Meshing curve 146 (Line)
+Info    : [ 40%] Meshing curve 147 (Circle)
+Info    : [ 40%] Meshing curve 148 (Line)
+Info    : [ 40%] Meshing curve 149 (Circle)
+Info    : [ 40%] Meshing curve 150 (Line)
+Info    : [ 40%] Meshing curve 151 (Circle)
+Info    : [ 40%] Meshing curve 152 (Line)
+Info    : [ 40%] Meshing curve 153 (Circle)
+Info    : [ 40%] Meshing curve 154 (Line)
+Info    : [ 40%] Meshing curve 155 (Circle)
+Info    : [ 40%] Meshing curve 156 (Line)
+Info    : [ 40%] Meshing curve 157 (Circle)
+Info    : [ 40%] Meshing curve 158 (Line)
+Info    : [ 40%] Meshing curve 159 (Circle)
+Info    : [ 40%] Meshing curve 160 (Line)
+Info    : [ 40%] Meshing curve 161 (Circle)
+Info    : [ 40%] Meshing curve 162 (Line)
+Info    : [ 40%] Meshing curve 163 (Circle)
+Info    : [ 40%] Meshing curve 164 (Circle)
+Info    : [ 40%] Meshing curve 165 (Line)
+Info    : [ 50%] Meshing curve 166 (Circle)
+Info    : [ 50%] Meshing curve 167 (Circle)
+Info    : [ 50%] Meshing curve 168 (Circle)
+Info    : [ 50%] Meshing curve 169 (Circle)
+Info    : [ 50%] Meshing curve 170 (Circle)
+Info    : [ 50%] Meshing curve 171 (Circle)
+Info    : [ 50%] Meshing curve 172 (Circle)
+Info    : [ 50%] Meshing curve 173 (Circle)
+Info    : [ 50%] Meshing curve 174 (Circle)
+Info    : [ 50%] Meshing curve 175 (Circle)
+Info    : [ 50%] Meshing curve 176 (Circle)
+Info    : [ 50%] Meshing curve 177 (Circle)
+Info    : [ 50%] Meshing curve 178 (Circle)
+Info    : [ 50%] Meshing curve 179 (Circle)
+Info    : [ 50%] Meshing curve 180 (Circle)
+Info    : [ 50%] Meshing curve 181 (Circle)
+Info    : [ 50%] Meshing curve 182 (BSpline)
+Info    : [ 50%] Meshing curve 183 (Line)
+Info    : [ 50%] Meshing curve 184 (Circle)
+Info    : [ 50%] Meshing curve 185 (Line)
+Info    : [ 50%] Meshing curve 186 (BSpline)
+Info    : [ 50%] Meshing curve 187 (Line)
+Info    : [ 50%] Meshing curve 188 (BSpline)
+Info    : [ 50%] Meshing curve 189 (BSpline)
+Info    : [ 50%] Meshing curve 190 (Line)
+Info    : [ 50%] Meshing curve 191 (BSpline)
+Info    : [ 50%] Meshing curve 192 (BSpline)
+Info    : [ 50%] Meshing curve 193 (BSpline)
+Info    : [ 50%] Meshing curve 194 (Line)
+Info    : [ 50%] Meshing curve 195 (BSpline)
+Info    : [ 50%] Meshing curve 196 (Line)
+Info    : [ 50%] Meshing curve 197 (Line)
+Info    : [ 50%] Meshing curve 198 (BSpline)
+Info    : [ 50%] Meshing curve 199 (Line)
+Info    : [ 50%] Meshing curve 200 (BSpline)
+Info    : [ 50%] Meshing curve 201 (Circle)
+Info    : [ 50%] Meshing curve 202 (BSpline)
+Info    : [ 50%] Meshing curve 203 (Line)
+Info    : [ 50%] Meshing curve 204 (BSpline)
+Info    : [ 50%] Meshing curve 205 (Line)
+Info    : [ 50%] Meshing curve 206 (Circle)
+Info    : [ 60%] Meshing curve 207 (Line)
+Info    : [ 60%] Meshing curve 208 (Circle)
+Info    : [ 60%] Meshing curve 209 (Circle)
+Info    : [ 60%] Meshing curve 210 (Circle)
+Info    : [ 60%] Meshing curve 211 (Line)
+Info    : [ 60%] Meshing curve 212 (BSpline)
+Info    : [ 60%] Meshing curve 213 (Line)
+Info    : [ 60%] Meshing curve 214 (Circle)
+Info    : [ 60%] Meshing curve 215 (Line)
+Info    : [ 60%] Meshing curve 216 (Circle)
+Info    : [ 60%] Meshing curve 217 (Line)
+Info    : [ 60%] Meshing curve 218 (BSpline)
+Info    : [ 60%] Meshing curve 219 (BSpline)
+Info    : [ 60%] Meshing curve 220 (BSpline)
+Info    : [ 60%] Meshing curve 221 (Circle)
+Info    : [ 60%] Meshing curve 222 (Line)
+Info    : [ 60%] Meshing curve 223 (BSpline)
+Info    : [ 60%] Meshing curve 224 (Line)
+Info    : [ 60%] Meshing curve 225 (BSpline)
+Info    : [ 60%] Meshing curve 226 (Circle)
+Info    : [ 60%] Meshing curve 227 (Line)
+Info    : [ 60%] Meshing curve 228 (Circle)
+Info    : [ 60%] Meshing curve 229 (Line)
+Info    : [ 60%] Meshing curve 230 (Ellipse)
+Info    : [ 60%] Meshing curve 231 (Line)
+Info    : [ 60%] Meshing curve 232 (Ellipse)
+Info    : [ 60%] Meshing curve 233 (Line)
+Info    : [ 60%] Meshing curve 234 (Ellipse)
+Info    : [ 60%] Meshing curve 235 (Line)
+Info    : [ 60%] Meshing curve 236 (Ellipse)
+Info    : [ 60%] Meshing curve 237 (BSpline)
+Info    : [ 60%] Meshing curve 238 (Line)
+Info    : [ 60%] Meshing curve 239 (BSpline)
+Info    : [ 60%] Meshing curve 240 (Line)
+Info    : [ 60%] Meshing curve 241 (BSpline)
+Info    : [ 60%] Meshing curve 242 (Line)
+Info    : [ 60%] Meshing curve 243 (Circle)
+Info    : [ 60%] Meshing curve 244 (Circle)
+Info    : [ 60%] Meshing curve 245 (Circle)
+Info    : [ 60%] Meshing curve 246 (Line)
+Info    : [ 60%] Meshing curve 247 (Circle)
+Info    : [ 60%] Meshing curve 248 (Circle)
+Info    : [ 70%] Meshing curve 249 (Line)
+Info    : [ 70%] Meshing curve 250 (Circle)
+Info    : [ 70%] Meshing curve 251 (Line)
+Info    : [ 70%] Meshing curve 252 (Circle)
+Info    : [ 70%] Meshing curve 253 (Circle)
+Info    : [ 70%] Meshing curve 254 (Ellipse)
+Info    : [ 70%] Meshing curve 255 (Ellipse)
+Info    : [ 70%] Meshing curve 256 (Ellipse)
+Info    : [ 70%] Meshing curve 257 (Line)
+Info    : [ 70%] Meshing curve 258 (Ellipse)
+Info    : [ 70%] Meshing curve 259 (Ellipse)
+Info    : [ 70%] Meshing curve 260 (Ellipse)
+Info    : [ 70%] Meshing curve 261 (Ellipse)
+Info    : [ 70%] Meshing curve 262 (Ellipse)
+Info    : [ 70%] Meshing curve 263 (Circle)
+Info    : [ 70%] Meshing curve 264 (Circle)
+Info    : [ 70%] Meshing curve 265 (Line)
+Info    : [ 70%] Meshing curve 266 (Circle)
+Info    : [ 70%] Meshing curve 267 (Circle)
+Info    : [ 70%] Meshing curve 268 (Line)
+Info    : [ 70%] Meshing curve 269 (BSpline)
+Info    : [ 70%] Meshing curve 270 (Circle)
+Info    : [ 70%] Meshing curve 271 (Circle)
+Info    : [ 70%] Meshing curve 272 (BSpline)
+Info    : [ 70%] Meshing curve 273 (Circle)
+Info    : [ 70%] Meshing curve 274 (Line)
+Info    : [ 70%] Meshing curve 275 (Ellipse)
+Info    : [ 70%] Meshing curve 276 (Line)
+Info    : [ 70%] Meshing curve 277 (Ellipse)
+Info    : [ 70%] Meshing curve 278 (Ellipse)
+Info    : [ 70%] Meshing curve 279 (Ellipse)
+Info    : [ 70%] Meshing curve 280 (Line)
+Info    : [ 70%] Meshing curve 281 (Ellipse)
+Info    : [ 70%] Meshing curve 282 (Ellipse)
+Info    : [ 70%] Meshing curve 283 (Line)
+Info    : [ 70%] Meshing curve 284 (Ellipse)
+Info    : [ 70%] Meshing curve 285 (Ellipse)
+Info    : [ 70%] Meshing curve 286 (Ellipse)
+Info    : [ 70%] Meshing curve 287 (Line)
+Info    : [ 70%] Meshing curve 288 (Ellipse)
+Info    : [ 70%] Meshing curve 289 (Ellipse)
+Info    : [ 80%] Meshing curve 290 (Line)
+Info    : [ 80%] Meshing curve 291 (Ellipse)
+Info    : [ 80%] Meshing curve 292 (Circle)
+Info    : [ 80%] Meshing curve 293 (Circle)
+Info    : [ 80%] Meshing curve 294 (Circle)
+Info    : [ 80%] Meshing curve 295 (Line)
+Info    : [ 80%] Meshing curve 296 (Circle)
+Info    : [ 80%] Meshing curve 297 (Circle)
+Info    : [ 80%] Meshing curve 298 (Circle)
+Info    : [ 80%] Meshing curve 299 (Circle)
+Info    : [ 80%] Meshing curve 300 (Circle)
+Info    : [ 80%] Meshing curve 301 (Line)
+Info    : [ 80%] Meshing curve 302 (Circle)
+Info    : [ 80%] Meshing curve 303 (Circle)
+Info    : [ 80%] Meshing curve 304 (Circle)
+Info    : [ 80%] Meshing curve 305 (Circle)
+Info    : [ 80%] Meshing curve 306 (Line)
+Info    : [ 80%] Meshing curve 307 (Circle)
+Info    : [ 80%] Meshing curve 308 (Circle)
+Info    : [ 80%] Meshing curve 309 (Circle)
+Info    : [ 80%] Meshing curve 310 (Ellipse)
+Info    : [ 80%] Meshing curve 311 (Ellipse)
+Info    : [ 80%] Meshing curve 312 (Ellipse)
+Info    : [ 80%] Meshing curve 313 (Ellipse)
+Info    : [ 80%] Meshing curve 314 (Line)
+Info    : [ 80%] Meshing curve 315 (Circle)
+Info    : [ 80%] Meshing curve 316 (Circle)
+Info    : [ 80%] Meshing curve 317 (Line)
+Info    : [ 80%] Meshing curve 318 (Circle)
+Info    : [ 80%] Meshing curve 319 (Circle)
+Info    : [ 80%] Meshing curve 320 (Line)
+Info    : [ 80%] Meshing curve 321 (Circle)
+Info    : [ 80%] Meshing curve 322 (Circle)
+Info    : [ 80%] Meshing curve 323 (Line)
+Info    : [ 80%] Meshing curve 324 (BSpline)
+Info    : [ 80%] Meshing curve 325 (Circle)
+Info    : [ 80%] Meshing curve 326 (Line)
+Info    : [ 80%] Meshing curve 327 (Circle)
+Info    : [ 80%] Meshing curve 328 (Circle)
+Info    : [ 80%] Meshing curve 329 (Line)
+Info    : [ 80%] Meshing curve 330 (Circle)
+Info    : [ 90%] Meshing curve 331 (Circle)
+Info    : [ 90%] Meshing curve 332 (Line)
+Info    : [ 90%] Meshing curve 333 (BSpline)
+Info    : [ 90%] Meshing curve 334 (Circle)
+Info    : [ 90%] Meshing curve 335 (Line)
+Info    : [ 90%] Meshing curve 336 (Circle)
+Info    : [ 90%] Meshing curve 337 (Circle)
+Info    : [ 90%] Meshing curve 338 (Line)
+Info    : [ 90%] Meshing curve 339 (Line)
+Info    : [ 90%] Meshing curve 340 (Circle)
+Info    : [ 90%] Meshing curve 341 (Circle)
+Info    : [ 90%] Meshing curve 342 (Circle)
+Info    : [ 90%] Meshing curve 343 (Line)
+Info    : [ 90%] Meshing curve 345 (Circle)
+Info    : [ 90%] Meshing curve 346 (Circle)
+Info    : [ 90%] Meshing curve 347 (Line)
+Info    : [ 90%] Meshing curve 348 (Ellipse)
+Info    : [ 90%] Meshing curve 349 (Ellipse)
+Info    : [ 90%] Meshing curve 350 (Ellipse)
+Info    : [ 90%] Meshing curve 351 (Line)
+Info    : [ 90%] Meshing curve 352 (Circle)
+Info    : [ 90%] Meshing curve 353 (Line)
+Info    : [ 90%] Meshing curve 354 (Ellipse)
+Info    : [ 90%] Meshing curve 355 (Circle)
+Info    : [ 90%] Meshing curve 356 (Circle)
+Info    : [ 90%] Meshing curve 357 (Line)
+Info    : [ 90%] Meshing curve 359 (Circle)
+Info    : [ 90%] Meshing curve 360 (Line)
+Info    : [ 90%] Meshing curve 361 (Line)
+Info    : [ 90%] Meshing curve 362 (Circle)
+Info    : [ 90%] Meshing curve 363 (Circle)
+Info    : [ 90%] Meshing curve 364 (Line)
+Info    : [ 90%] Meshing curve 365 (Line)
+Info    : [ 90%] Meshing curve 366 (Circle)
+Info    : [ 90%] Meshing curve 367 (Circle)
+Info    : [ 90%] Meshing curve 368 (Line)
+Info    : [ 90%] Meshing curve 369 (Circle)
+Info    : [ 90%] Meshing curve 370 (Circle)
+Info    : [ 90%] Meshing curve 371 (Line)
+Info    : [100%] Meshing curve 372 (Circle)
+Info    : [100%] Meshing curve 373 (Circle)
+Info    : [100%] Meshing curve 374 (Line)
+Info    : [100%] Meshing curve 375 (Circle)
+Info    : [100%] Meshing curve 376 (Circle)
+Info    : [100%] Meshing curve 377 (Circle)
+Info    : [100%] Meshing curve 378 (Line)
+Info    : [100%] Meshing curve 380 (Circle)
+Info    : [100%] Meshing curve 381 (Line)
+Info    : [100%] Meshing curve 382 (Circle)
+Info    : [100%] Meshing curve 383 (Circle)
+Info    : [100%] Meshing curve 384 (Line)
+Info    : [100%] Meshing curve 385 (Circle)
+Info    : [100%] Meshing curve 386 (Ellipse)
+Info    : [100%] Meshing curve 387 (Line)
+Info    : [100%] Meshing curve 388 (Ellipse)
+Info    : [100%] Meshing curve 389 (Ellipse)
+Info    : [100%] Meshing curve 390 (Line)
+Info    : [100%] Meshing curve 391 (Ellipse)
+Info    : [100%] Meshing curve 392 (Line)
+Info    : [100%] Meshing curve 393 (Line)
+Info    : [100%] Meshing curve 394 (Circle)
+Info    : [100%] Meshing curve 395 (Line)
+Info    : [100%] Meshing curve 396 (Line)
+Info    : [100%] Meshing curve 397 (Circle)
+Info    : [100%] Meshing curve 398 (Line)
+Info    : [100%] Meshing curve 399 (Circle)
+Info    : [100%] Meshing curve 400 (Circle)
+Info    : [100%] Meshing curve 401 (Line)
+Info    : [100%] Meshing curve 402 (Circle)
+Info    : [100%] Meshing curve 403 (Circle)
+Info    : [100%] Meshing curve 404 (Circle)
+Info    : [100%] Meshing curve 405 (Circle)
+Info    : [100%] Meshing curve 406 (Circle)
+Info    : [100%] Meshing curve 407 (Circle)
+Info    : [100%] Meshing curve 408 (Circle)
+Info    : [100%] Meshing curve 409 (Circle)
+Info    : [100%] Meshing curve 410 (Circle)
+Info    : [100%] Meshing curve 411 (Line)
+Info    : [100%] Meshing curve 412 (Line)
+Info    : Done meshing 1D (Wall 0.237592s, CPU 0.203125s)
+Info    : Meshing 2D...
+Info    : [  0%] Meshing surface 1 (Plane, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 2 (Plane, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 3 (Plane, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 4 (Plane, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 5 (Plane, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 6 (Cylinder, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 7 (Plane, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 8 (Cylinder, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 9 (Cylinder, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 10 (Cylinder, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 11 (Cylinder, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 12 (Cylinder, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 13 (Cylinder, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 14 (Cylinder, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 15 (Cylinder, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 16 (Cylinder, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 17 (Cylinder, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 18 (Cylinder, Frontal-Delaunay)
+Info    : [ 10%] Meshing surface 19 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 20 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 21 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 22 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 23 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 24 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 25 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 26 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 27 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 28 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 29 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 30 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 31 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 32 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 33 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 34 (Plane, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 35 (Cylinder, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 36 (Plane, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 37 (Plane, Frontal-Delaunay)
+Info    : [ 20%] Meshing surface 38 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 39 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 40 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 41 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 42 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 43 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 44 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 45 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 46 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 47 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 48 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 49 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 50 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 51 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 52 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 53 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 54 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 55 (Plane, Frontal-Delaunay)
+Info    : [ 30%] Meshing surface 56 (Plane, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 57 (Cylinder, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 58 (Plane, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 59 (Cylinder, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 60 (Cylinder, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 61 (Cylinder, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 62 (Cylinder, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 63 (Cone, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 64 (Cone, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 65 (Cylinder, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 66 (Cone, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 67 (Cone, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 68 (Cylinder, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 69 (Cylinder, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 70 (Cylinder, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 71 (Cylinder, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 72 (Cylinder, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 73 (Cylinder, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 74 (Plane, Frontal-Delaunay)
+Info    : [ 40%] Meshing surface 75 (Cylinder, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 76 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 77 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 78 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 79 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 80 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 81 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 82 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 83 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 84 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 85 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 86 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 87 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 88 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 89 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 90 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 91 (Cylinder, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 92 (Plane, Frontal-Delaunay)
+Info    : [ 50%] Meshing surface 93 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 94 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 95 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 96 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 97 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 98 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 99 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 100 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 101 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 102 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 103 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 104 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 105 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 106 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 107 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 108 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 109 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 110 (Plane, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 111 (Cylinder, Frontal-Delaunay)
+Info    : [ 60%] Meshing surface 112 (Cylinder, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 113 (Cylinder, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 114 (Cylinder, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 115 (Plane, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 116 (Cylinder, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 117 (Cylinder, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 118 (Cylinder, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 119 (Plane, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 120 (Cylinder, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 121 (Plane, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 122 (Plane, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 123 (Plane, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 124 (Plane, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 125 (Cone, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 126 (Plane, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 127 (Plane, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 128 (Cone, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 129 (Plane, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 130 (Cylinder, Frontal-Delaunay)
+Info    : [ 70%] Meshing surface 131 (Plane, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 132 (Plane, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 133 (Cylinder, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 134 (Cylinder, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 135 (Cylinder, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 136 (Cylinder, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 137 (Plane, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 138 (Cylinder, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 139 (Cylinder, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 140 (Cylinder, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 141 (Plane, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 142 (Cylinder, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 143 (Cylinder, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 144 (Cylinder, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 145 (Cylinder, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 146 (Cone, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 147 (Plane, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 148 (Plane, Frontal-Delaunay)
+Info    : [ 80%] Meshing surface 149 (Cylinder, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 150 (Cylinder, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 151 (Plane, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 152 (Cylinder, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 153 (Plane, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 154 (Cone, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 155 (Plane, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 156 (Cylinder, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 157 (Cylinder, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 158 (Cylinder, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 159 (Cone, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 160 (Cone, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 161 (Cone, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 162 (Cone, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 163 (Plane, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 164 (Cone, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 165 (Cylinder, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 166 (Cylinder, Frontal-Delaunay)
+Info    : [ 90%] Meshing surface 167 (Plane, Frontal-Delaunay)
+Info    : [ 90%] :-( There are 4 intersections in the 1D mesh (curves 382 392 392 383)
+Info    : [ 90%] 8-| Splitting those edges and trying again - level 0
+Info    : [ 90%] :-( There are 4 intersections in the 1D mesh (curves 382 392 392 383)
+Info    : [ 90%] 8-| Splitting those edges and trying again - level 1
+Info    : [ 90%] :-( There are 4 intersections in the 1D mesh (curves 382 392 392 383)
+Info    : [ 90%] 8-| Splitting those edges and trying again - level 2
+Info    : [ 90%] :-) All edges recovered after 3 iterations
+Info    : [ 90%] Meshing surface 168 (Plane, Frontal-Delaunay)
+Info    : [100%] Meshing surface 169 (Cylinder, Frontal-Delaunay)
+Info    : [100%] Meshing surface 170 (Plane, Frontal-Delaunay)
+Info    : [100%] Meshing surface 171 (Plane, Frontal-Delaunay)
+Info    : [100%] Meshing surface 172 (Cylinder, Frontal-Delaunay)
+Info    : [100%] Meshing surface 173 (Cylinder, Frontal-Delaunay)
+Info    : [100%] Meshing surface 174 (Cylinder, Frontal-Delaunay)
+Info    : [100%] Meshing surface 175 (Cylinder, Frontal-Delaunay)
+Info    : [100%] Meshing surface 176 (Plane, Frontal-Delaunay)
+Info    : [100%] Meshing surface 177 (Cylinder, Frontal-Delaunay)
+Info    : [100%] Meshing surface 178 (Plane, Frontal-Delaunay)
+Info    : [100%] Meshing surface 179 (Cylinder, Frontal-Delaunay)
+Info    : [100%] Meshing surface 180 (Plane, Frontal-Delaunay)
+Info    : [100%] Meshing surface 181 (Plane, Frontal-Delaunay)
+Info    : [100%] Meshing surface 182 (Plane, Frontal-Delaunay)
+Info    : [100%] Meshing surface 183 (Cylinder, Frontal-Delaunay)
+Info    : [100%] Meshing surface 184 (Cylinder, Frontal-Delaunay)
+Info    : [100%] Meshing surface 185 (Cylinder, Frontal-Delaunay)
+Info    : [100%] Meshing surface 186 (Cylinder, Frontal-Delaunay)
+Info    : [100%] Meshing surface 166 (Cylinder, Frontal-Delaunay)
+Info    : Done meshing 2D (Wall 0.59632s, CPU 0.578125s)
+Info    : Meshing 3D...
+Info    : 3D Meshing 1 volume with 1 connected component
+Info    : Tetrahedrizing 17049 nodes...
+Info    : Done tetrahedrizing 17057 nodes (Wall 0.137298s, CPU 0.125s)
+Info    : Reconstructing mesh...
+Info    :  - Creating surface mesh
+Info    :  - Identifying boundary edges
+Info    :  - Recovering boundary
+Info    :  - Added 9 Steiner points
+Info    : Done reconstructing mesh (Wall 0.355179s, CPU 0.34375s)
+Info    : Found volume 1
+Info    : It. 0 - 0 nodes created - worst tet radius 34.5165 (nodes removed 0 0)
+Info    : It. 500 - 442 nodes created - worst tet radius 3.63585 (nodes removed 12 46)
+Info    : It. 1000 - 927 nodes created - worst tet radius 2.77102 (nodes removed 23 50)
+Info    : It. 1500 - 1415 nodes created - worst tet radius 2.39011 (nodes removed 28 57)
+Info    : It. 2000 - 1904 nodes created - worst tet radius 2.16103 (nodes removed 39 57)
+Info    : It. 2500 - 2395 nodes created - worst tet radius 1.99393 (nodes removed 48 57)
+Info    : It. 3000 - 2884 nodes created - worst tet radius 1.87583 (nodes removed 59 57)
+Info    : It. 3500 - 3364 nodes created - worst tet radius 1.77787 (nodes removed 77 59)
+Info    : It. 4000 - 3847 nodes created - worst tet radius 1.69612 (nodes removed 94 59)
+Info    : It. 4500 - 4332 nodes created - worst tet radius 1.63268 (nodes removed 107 61)
+Info    : It. 5000 - 4818 nodes created - worst tet radius 1.61983 (nodes removed 119 63)
+Info    : It. 5500 - 5286 nodes created - worst tet radius 1.52783 (nodes removed 147 67)
+Info    : It. 6000 - 5780 nodes created - worst tet radius 12.2814 (nodes removed 151 69)
+Info    : It. 6500 - 6257 nodes created - worst tet radius 1.44594 (nodes removed 164 79)
+Info    : It. 7000 - 6750 nodes created - worst tet radius 1.41092 (nodes removed 166 84)
+Info    : It. 7500 - 7243 nodes created - worst tet radius 1.37523 (nodes removed 170 87)
+Info    : It. 8000 - 7730 nodes created - worst tet radius 1.34656 (nodes removed 182 88)
+Info    : It. 8500 - 8221 nodes created - worst tet radius 1.31956 (nodes removed 189 90)
+Info    : It. 9000 - 8711 nodes created - worst tet radius 1.29422 (nodes removed 194 95)
+Info    : It. 9500 - 9208 nodes created - worst tet radius 1.27051 (nodes removed 197 95)
+Info    : It. 10000 - 9704 nodes created - worst tet radius 1.24946 (nodes removed 199 97)
+Info    : It. 10500 - 10199 nodes created - worst tet radius 1.22975 (nodes removed 203 98)
+Info    : It. 11000 - 10690 nodes created - worst tet radius 1.21191 (nodes removed 211 99)
+Info    : It. 11500 - 11184 nodes created - worst tet radius 1.19522 (nodes removed 214 102)
+Info    : It. 12000 - 11680 nodes created - worst tet radius 1.17885 (nodes removed 216 104)
+Info    : It. 12500 - 12175 nodes created - worst tet radius 1.16115 (nodes removed 221 104)
+Info    : It. 13000 - 12672 nodes created - worst tet radius 1.14598 (nodes removed 224 104)
+Info    : It. 13500 - 13169 nodes created - worst tet radius 1.13102 (nodes removed 226 105)
+Info    : It. 14000 - 13662 nodes created - worst tet radius 1.11702 (nodes removed 232 106)
+Info    : It. 14500 - 14158 nodes created - worst tet radius 1.10356 (nodes removed 235 107)
+Info    : It. 15000 - 14655 nodes created - worst tet radius 1.09075 (nodes removed 238 107)
+Info    : It. 15500 - 15146 nodes created - worst tet radius 1.07921 (nodes removed 244 110)
+Info    : It. 16000 - 15641 nodes created - worst tet radius 1.06679 (nodes removed 247 112)
+Info    : It. 16500 - 16131 nodes created - worst tet radius 1.05635 (nodes removed 256 113)
+Info    : It. 17000 - 16622 nodes created - worst tet radius 1.04586 (nodes removed 258 120)
+Info    : It. 17500 - 17117 nodes created - worst tet radius 1.03615 (nodes removed 261 122)
+Info    : It. 18000 - 17613 nodes created - worst tet radius 1.02658 (nodes removed 265 122)
+Info    : It. 18500 - 18104 nodes created - worst tet radius 1.01693 (nodes removed 273 123)
+Info    : It. 19000 - 18591 nodes created - worst tet radius 1.00847 (nodes removed 281 128)
+Info    : 3D refinement terminated (36097 nodes total):
+Info    :  - 19 Delaunay cavities modified for star shapeness
+Info    :  - 415 nodes could not be inserted
+Info    :  - 175789 tetrahedra created in 0.919275 sec. (191225 tets/s)
+Info    : 63 node relocations
+Info    : Done meshing 3D (Wall 2.16944s, CPU 2.10938s)
+Info    : Optimizing mesh...
+Info    : Optimizing volume 1
+Info    : Optimization starts (volume = 1.26508e+06) with worst = 2.23419e-07 / average = 0.746493:
+Info    : 0.00 < quality < 0.10 :       614 elements
+Info    : 0.10 < quality < 0.20 :      2410 elements
+Info    : 0.20 < quality < 0.30 :      2216 elements
+Info    : 0.30 < quality < 0.40 :      3719 elements
+Info    : 0.40 < quality < 0.50 :      6061 elements
+Info    : 0.50 < quality < 0.60 :     12923 elements
+Info    : 0.60 < quality < 0.70 :     24502 elements
+Info    : 0.70 < quality < 0.80 :     43006 elements
+Info    : 0.80 < quality < 0.90 :     53795 elements
+Info    : 0.90 < quality < 1.00 :     26543 elements
+Info    : 3742 edge swaps, 128 node relocations (volume = 1.26508e+06): worst = 8.32771e-06 / average = 0.758732 (Wall 0.132957s, CPU 0.109375s)
+Info    : 3807 edge swaps, 139 node relocations (volume = 1.26508e+06): worst = 8.32771e-06 / average = 0.758875 (Wall 0.177077s, CPU 0.15625s)
+Warning : 7 ill-shaped tets are still in the mesh
+Info    : 0.00 < quality < 0.10 :        57 elements
+Info    : 0.10 < quality < 0.20 :      1210 elements
+Info    : 0.20 < quality < 0.30 :       169 elements
+Info    : 0.30 < quality < 0.40 :      3710 elements
+Info    : 0.40 < quality < 0.50 :      6015 elements
+Info    : 0.50 < quality < 0.60 :     12833 elements
+Info    : 0.60 < quality < 0.70 :     24371 elements
+Info    : 0.70 < quality < 0.80 :     43625 elements
+Info    : 0.80 < quality < 0.90 :     54023 elements
+Info    : 0.90 < quality < 1.00 :     26452 elements
+Info    : Done optimizing mesh (Wall 0.398423s, CPU 0.359375s)
+Info    : Meshing order 2 (curvilinear off)...
+Info    : [  0%] Meshing curve 1 order 2
+Info    : [ 10%] Meshing curve 2 order 2
+Info    : [ 10%] Meshing curve 3 order 2
+Info    : [ 10%] Meshing curve 4 order 2
+Info    : [ 10%] Meshing curve 5 order 2
+Info    : [ 10%] Meshing curve 6 order 2
+Info    : [ 10%] Meshing curve 7 order 2
+Info    : [ 10%] Meshing curve 8 order 2
+Info    : [ 10%] Meshing curve 9 order 2
+Info    : [ 10%] Meshing curve 10 order 2
+Info    : [ 10%] Meshing curve 11 order 2
+Info    : [ 10%] Meshing curve 12 order 2
+Info    : [ 10%] Meshing curve 13 order 2
+Info    : [ 10%] Meshing curve 14 order 2
+Info    : [ 10%] Meshing curve 15 order 2
+Info    : [ 10%] Meshing curve 16 order 2
+Info    : [ 10%] Meshing curve 17 order 2
+Info    : [ 10%] Meshing curve 18 order 2
+Info    : [ 10%] Meshing curve 19 order 2
+Info    : [ 10%] Meshing curve 20 order 2
+Info    : [ 10%] Meshing curve 21 order 2
+Info    : [ 10%] Meshing curve 22 order 2
+Info    : [ 10%] Meshing curve 23 order 2
+Info    : [ 10%] Meshing curve 24 order 2
+Info    : [ 10%] Meshing curve 25 order 2
+Info    : [ 10%] Meshing curve 26 order 2
+Info    : [ 10%] Meshing curve 27 order 2
+Info    : [ 10%] Meshing curve 28 order 2
+Info    : [ 10%] Meshing curve 29 order 2
+Info    : [ 10%] Meshing curve 30 order 2
+Info    : [ 10%] Meshing curve 31 order 2
+Info    : [ 10%] Meshing curve 32 order 2
+Info    : [ 10%] Meshing curve 33 order 2
+Info    : [ 10%] Meshing curve 34 order 2
+Info    : [ 10%] Meshing curve 35 order 2
+Info    : [ 10%] Meshing curve 36 order 2
+Info    : [ 10%] Meshing curve 37 order 2
+Info    : [ 10%] Meshing curve 38 order 2
+Info    : [ 10%] Meshing curve 39 order 2
+Info    : [ 10%] Meshing curve 40 order 2
+Info    : [ 10%] Meshing curve 41 order 2
+Info    : [ 10%] Meshing curve 42 order 2
+Info    : [ 10%] Meshing curve 43 order 2
+Info    : [ 10%] Meshing curve 44 order 2
+Info    : [ 10%] Meshing curve 45 order 2
+Info    : [ 10%] Meshing curve 46 order 2
+Info    : [ 10%] Meshing curve 47 order 2
+Info    : [ 10%] Meshing curve 48 order 2
+Info    : [ 10%] Meshing curve 49 order 2
+Info    : [ 10%] Meshing curve 50 order 2
+Info    : [ 10%] Meshing curve 51 order 2
+Info    : [ 10%] Meshing curve 52 order 2
+Info    : [ 10%] Meshing curve 53 order 2
+Info    : [ 10%] Meshing curve 54 order 2
+Info    : [ 10%] Meshing curve 55 order 2
+Info    : [ 10%] Meshing curve 56 order 2
+Info    : [ 10%] Meshing curve 57 order 2
+Info    : [ 10%] Meshing curve 58 order 2
+Info    : [ 10%] Meshing curve 59 order 2
+Info    : [ 10%] Meshing curve 60 order 2
+Info    : [ 20%] Meshing curve 61 order 2
+Info    : [ 20%] Meshing curve 62 order 2
+Info    : [ 20%] Meshing curve 63 order 2
+Info    : [ 20%] Meshing curve 64 order 2
+Info    : [ 20%] Meshing curve 65 order 2
+Info    : [ 20%] Meshing curve 66 order 2
+Info    : [ 20%] Meshing curve 67 order 2
+Info    : [ 20%] Meshing curve 68 order 2
+Info    : [ 20%] Meshing curve 69 order 2
+Info    : [ 20%] Meshing curve 70 order 2
+Info    : [ 20%] Meshing curve 71 order 2
+Info    : [ 20%] Meshing curve 72 order 2
+Info    : [ 20%] Meshing curve 73 order 2
+Info    : [ 20%] Meshing curve 74 order 2
+Info    : [ 20%] Meshing curve 75 order 2
+Info    : [ 20%] Meshing curve 76 order 2
+Info    : [ 20%] Meshing curve 77 order 2
+Info    : [ 20%] Meshing curve 78 order 2
+Info    : [ 20%] Meshing curve 79 order 2
+Info    : [ 20%] Meshing curve 80 order 2
+Info    : [ 20%] Meshing curve 81 order 2
+Info    : [ 20%] Meshing curve 82 order 2
+Info    : [ 20%] Meshing curve 83 order 2
+Info    : [ 20%] Meshing curve 84 order 2
+Info    : [ 20%] Meshing curve 85 order 2
+Info    : [ 20%] Meshing curve 86 order 2
+Info    : [ 20%] Meshing curve 87 order 2
+Info    : [ 20%] Meshing curve 88 order 2
+Info    : [ 20%] Meshing curve 89 order 2
+Info    : [ 20%] Meshing curve 90 order 2
+Info    : [ 20%] Meshing curve 91 order 2
+Info    : [ 20%] Meshing curve 92 order 2
+Info    : [ 20%] Meshing curve 93 order 2
+Info    : [ 20%] Meshing curve 94 order 2
+Info    : [ 20%] Meshing curve 95 order 2
+Info    : [ 20%] Meshing curve 96 order 2
+Info    : [ 20%] Meshing curve 97 order 2
+Info    : [ 20%] Meshing curve 98 order 2
+Info    : [ 20%] Meshing curve 99 order 2
+Info    : [ 20%] Meshing curve 100 order 2
+Info    : [ 20%] Meshing curve 101 order 2
+Info    : [ 20%] Meshing curve 102 order 2
+Info    : [ 20%] Meshing curve 103 order 2
+Info    : [ 20%] Meshing curve 104 order 2
+Info    : [ 20%] Meshing curve 105 order 2
+Info    : [ 20%] Meshing curve 106 order 2
+Info    : [ 20%] Meshing curve 107 order 2
+Info    : [ 20%] Meshing curve 108 order 2
+Info    : [ 20%] Meshing curve 109 order 2
+Info    : [ 20%] Meshing curve 110 order 2
+Info    : [ 20%] Meshing curve 111 order 2
+Info    : [ 20%] Meshing curve 112 order 2
+Info    : [ 20%] Meshing curve 113 order 2
+Info    : [ 20%] Meshing curve 114 order 2
+Info    : [ 20%] Meshing curve 115 order 2
+Info    : [ 20%] Meshing curve 116 order 2
+Info    : [ 20%] Meshing curve 117 order 2
+Info    : [ 20%] Meshing curve 118 order 2
+Info    : [ 20%] Meshing curve 119 order 2
+Info    : [ 20%] Meshing curve 120 order 2
+Info    : [ 30%] Meshing curve 121 order 2
+Info    : [ 30%] Meshing curve 122 order 2
+Info    : [ 30%] Meshing curve 123 order 2
+Info    : [ 30%] Meshing curve 124 order 2
+Info    : [ 30%] Meshing curve 125 order 2
+Info    : [ 30%] Meshing curve 126 order 2
+Info    : [ 30%] Meshing curve 127 order 2
+Info    : [ 30%] Meshing curve 128 order 2
+Info    : [ 30%] Meshing curve 129 order 2
+Info    : [ 30%] Meshing curve 130 order 2
+Info    : [ 30%] Meshing curve 131 order 2
+Info    : [ 30%] Meshing curve 132 order 2
+Info    : [ 30%] Meshing curve 133 order 2
+Info    : [ 30%] Meshing curve 134 order 2
+Info    : [ 30%] Meshing curve 135 order 2
+Info    : [ 30%] Meshing curve 136 order 2
+Info    : [ 30%] Meshing curve 137 order 2
+Info    : [ 30%] Meshing curve 138 order 2
+Info    : [ 30%] Meshing curve 139 order 2
+Info    : [ 30%] Meshing curve 140 order 2
+Info    : [ 30%] Meshing curve 141 order 2
+Info    : [ 30%] Meshing curve 142 order 2
+Info    : [ 30%] Meshing curve 143 order 2
+Info    : [ 30%] Meshing curve 144 order 2
+Info    : [ 30%] Meshing curve 145 order 2
+Info    : [ 30%] Meshing curve 146 order 2
+Info    : [ 30%] Meshing curve 147 order 2
+Info    : [ 30%] Meshing curve 148 order 2
+Info    : [ 30%] Meshing curve 149 order 2
+Info    : [ 30%] Meshing curve 150 order 2
+Info    : [ 30%] Meshing curve 151 order 2
+Info    : [ 30%] Meshing curve 152 order 2
+Info    : [ 30%] Meshing curve 153 order 2
+Info    : [ 30%] Meshing curve 154 order 2
+Info    : [ 30%] Meshing curve 155 order 2
+Info    : [ 30%] Meshing curve 156 order 2
+Info    : [ 30%] Meshing curve 157 order 2
+Info    : [ 30%] Meshing curve 158 order 2
+Info    : [ 30%] Meshing curve 159 order 2
+Info    : [ 30%] Meshing curve 160 order 2
+Info    : [ 30%] Meshing curve 161 order 2
+Info    : [ 30%] Meshing curve 162 order 2
+Info    : [ 30%] Meshing curve 163 order 2
+Info    : [ 30%] Meshing curve 164 order 2
+Info    : [ 30%] Meshing curve 165 order 2
+Info    : [ 30%] Meshing curve 166 order 2
+Info    : [ 30%] Meshing curve 167 order 2
+Info    : [ 30%] Meshing curve 168 order 2
+Info    : [ 30%] Meshing curve 169 order 2
+Info    : [ 30%] Meshing curve 170 order 2
+Info    : [ 30%] Meshing curve 171 order 2
+Info    : [ 30%] Meshing curve 172 order 2
+Info    : [ 30%] Meshing curve 173 order 2
+Info    : [ 30%] Meshing curve 174 order 2
+Info    : [ 30%] Meshing curve 175 order 2
+Info    : [ 30%] Meshing curve 176 order 2
+Info    : [ 30%] Meshing curve 177 order 2
+Info    : [ 30%] Meshing curve 178 order 2
+Info    : [ 30%] Meshing curve 179 order 2
+Info    : [ 30%] Meshing curve 180 order 2
+Info    : [ 40%] Meshing curve 181 order 2
+Info    : [ 40%] Meshing curve 182 order 2
+Info    : [ 40%] Meshing curve 183 order 2
+Info    : [ 40%] Meshing curve 184 order 2
+Info    : [ 40%] Meshing curve 185 order 2
+Info    : [ 40%] Meshing curve 186 order 2
+Info    : [ 40%] Meshing curve 187 order 2
+Info    : [ 40%] Meshing curve 188 order 2
+Info    : [ 40%] Meshing curve 189 order 2
+Info    : [ 40%] Meshing curve 190 order 2
+Info    : [ 40%] Meshing curve 191 order 2
+Info    : [ 40%] Meshing curve 192 order 2
+Info    : [ 40%] Meshing curve 193 order 2
+Info    : [ 40%] Meshing curve 194 order 2
+Info    : [ 40%] Meshing curve 195 order 2
+Info    : [ 40%] Meshing curve 196 order 2
+Info    : [ 40%] Meshing curve 197 order 2
+Info    : [ 40%] Meshing curve 198 order 2
+Info    : [ 40%] Meshing curve 199 order 2
+Info    : [ 40%] Meshing curve 200 order 2
+Info    : [ 40%] Meshing curve 201 order 2
+Info    : [ 40%] Meshing curve 202 order 2
+Info    : [ 40%] Meshing curve 203 order 2
+Info    : [ 40%] Meshing curve 204 order 2
+Info    : [ 40%] Meshing curve 205 order 2
+Info    : [ 40%] Meshing curve 206 order 2
+Info    : [ 40%] Meshing curve 207 order 2
+Info    : [ 40%] Meshing curve 208 order 2
+Info    : [ 40%] Meshing curve 209 order 2
+Info    : [ 40%] Meshing curve 210 order 2
+Info    : [ 40%] Meshing curve 211 order 2
+Info    : [ 40%] Meshing curve 212 order 2
+Info    : [ 40%] Meshing curve 213 order 2
+Info    : [ 40%] Meshing curve 214 order 2
+Info    : [ 40%] Meshing curve 215 order 2
+Info    : [ 40%] Meshing curve 216 order 2
+Info    : [ 40%] Meshing curve 217 order 2
+Info    : [ 40%] Meshing curve 218 order 2
+Info    : [ 40%] Meshing curve 219 order 2
+Info    : [ 40%] Meshing curve 220 order 2
+Info    : [ 40%] Meshing curve 221 order 2
+Info    : [ 40%] Meshing curve 222 order 2
+Info    : [ 40%] Meshing curve 223 order 2
+Info    : [ 40%] Meshing curve 224 order 2
+Info    : [ 40%] Meshing curve 225 order 2
+Info    : [ 40%] Meshing curve 226 order 2
+Info    : [ 40%] Meshing curve 227 order 2
+Info    : [ 40%] Meshing curve 228 order 2
+Info    : [ 40%] Meshing curve 229 order 2
+Info    : [ 40%] Meshing curve 230 order 2
+Info    : [ 40%] Meshing curve 231 order 2
+Info    : [ 40%] Meshing curve 232 order 2
+Info    : [ 40%] Meshing curve 233 order 2
+Info    : [ 40%] Meshing curve 234 order 2
+Info    : [ 40%] Meshing curve 235 order 2
+Info    : [ 40%] Meshing curve 236 order 2
+Info    : [ 40%] Meshing curve 237 order 2
+Info    : [ 40%] Meshing curve 238 order 2
+Info    : [ 40%] Meshing curve 239 order 2
+Info    : [ 40%] Meshing curve 240 order 2
+Info    : [ 50%] Meshing curve 241 order 2
+Info    : [ 50%] Meshing curve 242 order 2
+Info    : [ 50%] Meshing curve 243 order 2
+Info    : [ 50%] Meshing curve 244 order 2
+Info    : [ 50%] Meshing curve 245 order 2
+Info    : [ 50%] Meshing curve 246 order 2
+Info    : [ 50%] Meshing curve 247 order 2
+Info    : [ 50%] Meshing curve 248 order 2
+Info    : [ 50%] Meshing curve 249 order 2
+Info    : [ 50%] Meshing curve 250 order 2
+Info    : [ 50%] Meshing curve 251 order 2
+Info    : [ 50%] Meshing curve 252 order 2
+Info    : [ 50%] Meshing curve 253 order 2
+Info    : [ 50%] Meshing curve 254 order 2
+Info    : [ 50%] Meshing curve 255 order 2
+Info    : [ 50%] Meshing curve 256 order 2
+Info    : [ 50%] Meshing curve 257 order 2
+Info    : [ 50%] Meshing curve 258 order 2
+Info    : [ 50%] Meshing curve 259 order 2
+Info    : [ 50%] Meshing curve 260 order 2
+Info    : [ 50%] Meshing curve 261 order 2
+Info    : [ 50%] Meshing curve 262 order 2
+Info    : [ 50%] Meshing curve 263 order 2
+Info    : [ 50%] Meshing curve 264 order 2
+Info    : [ 50%] Meshing curve 265 order 2
+Info    : [ 50%] Meshing curve 266 order 2
+Info    : [ 50%] Meshing curve 267 order 2
+Info    : [ 50%] Meshing curve 268 order 2
+Info    : [ 50%] Meshing curve 269 order 2
+Info    : [ 50%] Meshing curve 270 order 2
+Info    : [ 50%] Meshing curve 271 order 2
+Info    : [ 50%] Meshing curve 272 order 2
+Info    : [ 50%] Meshing curve 273 order 2
+Info    : [ 50%] Meshing curve 274 order 2
+Info    : [ 50%] Meshing curve 275 order 2
+Info    : [ 50%] Meshing curve 276 order 2
+Info    : [ 50%] Meshing curve 277 order 2
+Info    : [ 50%] Meshing curve 278 order 2
+Info    : [ 50%] Meshing curve 279 order 2
+Info    : [ 50%] Meshing curve 280 order 2
+Info    : [ 50%] Meshing curve 281 order 2
+Info    : [ 50%] Meshing curve 282 order 2
+Info    : [ 50%] Meshing curve 283 order 2
+Info    : [ 50%] Meshing curve 284 order 2
+Info    : [ 50%] Meshing curve 285 order 2
+Info    : [ 50%] Meshing curve 286 order 2
+Info    : [ 50%] Meshing curve 287 order 2
+Info    : [ 50%] Meshing curve 288 order 2
+Info    : [ 50%] Meshing curve 289 order 2
+Info    : [ 50%] Meshing curve 290 order 2
+Info    : [ 50%] Meshing curve 291 order 2
+Info    : [ 50%] Meshing curve 292 order 2
+Info    : [ 50%] Meshing curve 293 order 2
+Info    : [ 50%] Meshing curve 294 order 2
+Info    : [ 50%] Meshing curve 295 order 2
+Info    : [ 50%] Meshing curve 296 order 2
+Info    : [ 50%] Meshing curve 297 order 2
+Info    : [ 50%] Meshing curve 298 order 2
+Info    : [ 50%] Meshing curve 299 order 2
+Info    : [ 50%] Meshing curve 300 order 2
+Info    : [ 60%] Meshing curve 301 order 2
+Info    : [ 60%] Meshing curve 302 order 2
+Info    : [ 60%] Meshing curve 303 order 2
+Info    : [ 60%] Meshing curve 304 order 2
+Info    : [ 60%] Meshing curve 305 order 2
+Info    : [ 60%] Meshing curve 306 order 2
+Info    : [ 60%] Meshing curve 307 order 2
+Info    : [ 60%] Meshing curve 308 order 2
+Info    : [ 60%] Meshing curve 309 order 2
+Info    : [ 60%] Meshing curve 310 order 2
+Info    : [ 60%] Meshing curve 311 order 2
+Info    : [ 60%] Meshing curve 312 order 2
+Info    : [ 60%] Meshing curve 313 order 2
+Info    : [ 60%] Meshing curve 314 order 2
+Info    : [ 60%] Meshing curve 315 order 2
+Info    : [ 60%] Meshing curve 316 order 2
+Info    : [ 60%] Meshing curve 317 order 2
+Info    : [ 60%] Meshing curve 318 order 2
+Info    : [ 60%] Meshing curve 319 order 2
+Info    : [ 60%] Meshing curve 320 order 2
+Info    : [ 60%] Meshing curve 321 order 2
+Info    : [ 60%] Meshing curve 322 order 2
+Info    : [ 60%] Meshing curve 323 order 2
+Info    : [ 60%] Meshing curve 324 order 2
+Info    : [ 60%] Meshing curve 325 order 2
+Info    : [ 60%] Meshing curve 326 order 2
+Info    : [ 60%] Meshing curve 327 order 2
+Info    : [ 60%] Meshing curve 328 order 2
+Info    : [ 60%] Meshing curve 329 order 2
+Info    : [ 60%] Meshing curve 330 order 2
+Info    : [ 60%] Meshing curve 331 order 2
+Info    : [ 60%] Meshing curve 332 order 2
+Info    : [ 60%] Meshing curve 333 order 2
+Info    : [ 60%] Meshing curve 334 order 2
+Info    : [ 60%] Meshing curve 335 order 2
+Info    : [ 60%] Meshing curve 336 order 2
+Info    : [ 60%] Meshing curve 337 order 2
+Info    : [ 60%] Meshing curve 338 order 2
+Info    : [ 60%] Meshing curve 339 order 2
+Info    : [ 60%] Meshing curve 340 order 2
+Info    : [ 60%] Meshing curve 341 order 2
+Info    : [ 60%] Meshing curve 342 order 2
+Info    : [ 60%] Meshing curve 343 order 2
+Info    : [ 60%] Meshing curve 344 order 2
+Info    : [ 60%] Meshing curve 345 order 2
+Info    : [ 60%] Meshing curve 346 order 2
+Info    : [ 60%] Meshing curve 347 order 2
+Info    : [ 60%] Meshing curve 348 order 2
+Info    : [ 60%] Meshing curve 349 order 2
+Info    : [ 60%] Meshing curve 350 order 2
+Info    : [ 60%] Meshing curve 351 order 2
+Info    : [ 60%] Meshing curve 352 order 2
+Info    : [ 60%] Meshing curve 353 order 2
+Info    : [ 60%] Meshing curve 354 order 2
+Info    : [ 60%] Meshing curve 355 order 2
+Info    : [ 60%] Meshing curve 356 order 2
+Info    : [ 60%] Meshing curve 357 order 2
+Info    : [ 60%] Meshing curve 358 order 2
+Info    : [ 60%] Meshing curve 359 order 2
+Info    : [ 60%] Meshing curve 360 order 2
+Info    : [ 70%] Meshing curve 361 order 2
+Info    : [ 70%] Meshing curve 362 order 2
+Info    : [ 70%] Meshing curve 363 order 2
+Info    : [ 70%] Meshing curve 364 order 2
+Info    : [ 70%] Meshing curve 365 order 2
+Info    : [ 70%] Meshing curve 366 order 2
+Info    : [ 70%] Meshing curve 367 order 2
+Info    : [ 70%] Meshing curve 368 order 2
+Info    : [ 70%] Meshing curve 369 order 2
+Info    : [ 70%] Meshing curve 370 order 2
+Info    : [ 70%] Meshing curve 371 order 2
+Info    : [ 70%] Meshing curve 372 order 2
+Info    : [ 70%] Meshing curve 373 order 2
+Info    : [ 70%] Meshing curve 374 order 2
+Info    : [ 70%] Meshing curve 375 order 2
+Info    : [ 70%] Meshing curve 376 order 2
+Info    : [ 70%] Meshing curve 377 order 2
+Info    : [ 70%] Meshing curve 378 order 2
+Info    : [ 70%] Meshing curve 379 order 2
+Info    : [ 70%] Meshing curve 380 order 2
+Info    : [ 70%] Meshing curve 381 order 2
+Info    : [ 70%] Meshing curve 382 order 2
+Info    : [ 70%] Meshing curve 383 order 2
+Info    : [ 70%] Meshing curve 384 order 2
+Info    : [ 70%] Meshing curve 385 order 2
+Info    : [ 70%] Meshing curve 386 order 2
+Info    : [ 70%] Meshing curve 387 order 2
+Info    : [ 70%] Meshing curve 388 order 2
+Info    : [ 70%] Meshing curve 389 order 2
+Info    : [ 70%] Meshing curve 390 order 2
+Info    : [ 70%] Meshing curve 391 order 2
+Info    : [ 70%] Meshing curve 392 order 2
+Info    : [ 70%] Meshing curve 393 order 2
+Info    : [ 70%] Meshing curve 394 order 2
+Info    : [ 70%] Meshing curve 395 order 2
+Info    : [ 70%] Meshing curve 396 order 2
+Info    : [ 70%] Meshing curve 397 order 2
+Info    : [ 70%] Meshing curve 398 order 2
+Info    : [ 70%] Meshing curve 399 order 2
+Info    : [ 70%] Meshing curve 400 order 2
+Info    : [ 70%] Meshing curve 401 order 2
+Info    : [ 70%] Meshing curve 402 order 2
+Info    : [ 70%] Meshing curve 403 order 2
+Info    : [ 70%] Meshing curve 404 order 2
+Info    : [ 70%] Meshing curve 405 order 2
+Info    : [ 70%] Meshing curve 406 order 2
+Info    : [ 70%] Meshing curve 407 order 2
+Info    : [ 70%] Meshing curve 408 order 2
+Info    : [ 70%] Meshing curve 409 order 2
+Info    : [ 70%] Meshing curve 410 order 2
+Info    : [ 70%] Meshing curve 411 order 2
+Info    : [ 70%] Meshing curve 412 order 2
+Info    : [ 70%] Meshing surface 1 order 2
+Info    : [ 70%] Meshing surface 2 order 2
+Info    : [ 70%] Meshing surface 3 order 2
+Info    : [ 70%] Meshing surface 4 order 2
+Info    : [ 70%] Meshing surface 5 order 2
+Info    : [ 70%] Meshing surface 6 order 2
+Info    : [ 70%] Meshing surface 7 order 2
+Info    : [ 70%] Meshing surface 8 order 2
+Info    : [ 80%] Meshing surface 9 order 2
+Info    : [ 80%] Meshing surface 10 order 2
+Info    : [ 80%] Meshing surface 11 order 2
+Info    : [ 80%] Meshing surface 12 order 2
+Info    : [ 80%] Meshing surface 13 order 2
+Info    : [ 80%] Meshing surface 14 order 2
+Info    : [ 80%] Meshing surface 15 order 2
+Info    : [ 80%] Meshing surface 16 order 2
+Info    : [ 80%] Meshing surface 17 order 2
+Info    : [ 80%] Meshing surface 18 order 2
+Info    : [ 80%] Meshing surface 19 order 2
+Info    : [ 80%] Meshing surface 20 order 2
+Info    : [ 80%] Meshing surface 21 order 2
+Info    : [ 80%] Meshing surface 22 order 2
+Info    : [ 80%] Meshing surface 23 order 2
+Info    : [ 80%] Meshing surface 24 order 2
+Info    : [ 80%] Meshing surface 25 order 2
+Info    : [ 80%] Meshing surface 26 order 2
+Info    : [ 80%] Meshing surface 27 order 2
+Info    : [ 80%] Meshing surface 28 order 2
+Info    : [ 80%] Meshing surface 29 order 2
+Info    : [ 80%] Meshing surface 30 order 2
+Info    : [ 80%] Meshing surface 31 order 2
+Info    : [ 80%] Meshing surface 32 order 2
+Info    : [ 80%] Meshing surface 33 order 2
+Info    : [ 80%] Meshing surface 34 order 2
+Info    : [ 80%] Meshing surface 35 order 2
+Info    : [ 80%] Meshing surface 36 order 2
+Info    : [ 80%] Meshing surface 37 order 2
+Info    : [ 80%] Meshing surface 38 order 2
+Info    : [ 80%] Meshing surface 39 order 2
+Info    : [ 80%] Meshing surface 40 order 2
+Info    : [ 80%] Meshing surface 41 order 2
+Info    : [ 80%] Meshing surface 42 order 2
+Info    : [ 80%] Meshing surface 43 order 2
+Info    : [ 80%] Meshing surface 44 order 2
+Info    : [ 80%] Meshing surface 45 order 2
+Info    : [ 80%] Meshing surface 46 order 2
+Info    : [ 80%] Meshing surface 47 order 2
+Info    : [ 80%] Meshing surface 48 order 2
+Info    : [ 80%] Meshing surface 49 order 2
+Info    : [ 80%] Meshing surface 50 order 2
+Info    : [ 80%] Meshing surface 51 order 2
+Info    : [ 80%] Meshing surface 52 order 2
+Info    : [ 80%] Meshing surface 53 order 2
+Info    : [ 80%] Meshing surface 54 order 2
+Info    : [ 80%] Meshing surface 55 order 2
+Info    : [ 80%] Meshing surface 56 order 2
+Info    : [ 80%] Meshing surface 57 order 2
+Info    : [ 80%] Meshing surface 58 order 2
+Info    : [ 80%] Meshing surface 59 order 2
+Info    : [ 80%] Meshing surface 60 order 2
+Info    : [ 80%] Meshing surface 61 order 2
+Info    : [ 80%] Meshing surface 62 order 2
+Info    : [ 80%] Meshing surface 63 order 2
+Info    : [ 80%] Meshing surface 64 order 2
+Info    : [ 80%] Meshing surface 65 order 2
+Info    : [ 80%] Meshing surface 66 order 2
+Info    : [ 80%] Meshing surface 67 order 2
+Info    : [ 80%] Meshing surface 68 order 2
+Info    : [ 90%] Meshing surface 69 order 2
+Info    : [ 90%] Meshing surface 70 order 2
+Info    : [ 90%] Meshing surface 71 order 2
+Info    : [ 90%] Meshing surface 72 order 2
+Info    : [ 90%] Meshing surface 73 order 2
+Info    : [ 90%] Meshing surface 74 order 2
+Info    : [ 90%] Meshing surface 75 order 2
+Info    : [ 90%] Meshing surface 76 order 2
+Info    : [ 90%] Meshing surface 77 order 2
+Info    : [ 90%] Meshing surface 78 order 2
+Info    : [ 90%] Meshing surface 79 order 2
+Info    : [ 90%] Meshing surface 80 order 2
+Info    : [ 90%] Meshing surface 81 order 2
+Info    : [ 90%] Meshing surface 82 order 2
+Info    : [ 90%] Meshing surface 83 order 2
+Info    : [ 90%] Meshing surface 84 order 2
+Info    : [ 90%] Meshing surface 85 order 2
+Info    : [ 90%] Meshing surface 86 order 2
+Info    : [ 90%] Meshing surface 87 order 2
+Info    : [ 90%] Meshing surface 88 order 2
+Info    : [ 90%] Meshing surface 89 order 2
+Info    : [ 90%] Meshing surface 90 order 2
+Info    : [ 90%] Meshing surface 91 order 2
+Info    : [ 90%] Meshing surface 92 order 2
+Info    : [ 90%] Meshing surface 93 order 2
+Info    : [ 90%] Meshing surface 94 order 2
+Info    : [ 90%] Meshing surface 95 order 2
+Info    : [ 90%] Meshing surface 96 order 2
+Info    : [ 90%] Meshing surface 97 order 2
+Info    : [ 90%] Meshing surface 98 order 2
+Info    : [ 90%] Meshing surface 99 order 2
+Info    : [ 90%] Meshing surface 100 order 2
+Info    : [ 90%] Meshing surface 101 order 2
+Info    : [ 90%] Meshing surface 102 order 2
+Info    : [ 90%] Meshing surface 103 order 2
+Info    : [ 90%] Meshing surface 104 order 2
+Info    : [ 90%] Meshing surface 105 order 2
+Info    : [ 90%] Meshing surface 106 order 2
+Info    : [ 90%] Meshing surface 107 order 2
+Info    : [ 90%] Meshing surface 108 order 2
+Info    : [ 90%] Meshing surface 109 order 2
+Info    : [ 90%] Meshing surface 110 order 2
+Info    : [ 90%] Meshing surface 111 order 2
+Info    : [ 90%] Meshing surface 112 order 2
+Info    : [ 90%] Meshing surface 113 order 2
+Info    : [ 90%] Meshing surface 114 order 2
+Info    : [ 90%] Meshing surface 115 order 2
+Info    : [ 90%] Meshing surface 116 order 2
+Info    : [ 90%] Meshing surface 117 order 2
+Info    : [ 90%] Meshing surface 118 order 2
+Info    : [ 90%] Meshing surface 119 order 2
+Info    : [ 90%] Meshing surface 120 order 2
+Info    : [ 90%] Meshing surface 121 order 2
+Info    : [ 90%] Meshing surface 122 order 2
+Info    : [ 90%] Meshing surface 123 order 2
+Info    : [ 90%] Meshing surface 124 order 2
+Info    : [ 90%] Meshing surface 125 order 2
+Info    : [ 90%] Meshing surface 126 order 2
+Info    : [ 90%] Meshing surface 127 order 2
+Info    : [ 90%] Meshing surface 128 order 2
+Info    : [100%] Meshing surface 129 order 2
+Info    : [100%] Meshing surface 130 order 2
+Info    : [100%] Meshing surface 131 order 2
+Info    : [100%] Meshing surface 132 order 2
+Info    : [100%] Meshing surface 133 order 2
+Info    : [100%] Meshing surface 134 order 2
+Info    : [100%] Meshing surface 135 order 2
+Info    : [100%] Meshing surface 136 order 2
+Info    : [100%] Meshing surface 137 order 2
+Info    : [100%] Meshing surface 138 order 2
+Info    : [100%] Meshing surface 139 order 2
+Info    : [100%] Meshing surface 140 order 2
+Info    : [100%] Meshing surface 141 order 2
+Info    : [100%] Meshing surface 142 order 2
+Info    : [100%] Meshing surface 143 order 2
+Info    : [100%] Meshing surface 144 order 2
+Info    : [100%] Meshing surface 145 order 2
+Info    : [100%] Meshing surface 146 order 2
+Info    : [100%] Meshing surface 147 order 2
+Info    : [100%] Meshing surface 148 order 2
+Info    : [100%] Meshing surface 149 order 2
+Info    : [100%] Meshing surface 150 order 2
+Info    : [100%] Meshing surface 151 order 2
+Info    : [100%] Meshing surface 152 order 2
+Info    : [100%] Meshing surface 153 order 2
+Info    : [100%] Meshing surface 154 order 2
+Info    : [100%] Meshing surface 155 order 2
+Info    : [100%] Meshing surface 156 order 2
+Info    : [100%] Meshing surface 157 order 2
+Info    : [100%] Meshing surface 158 order 2
+Info    : [100%] Meshing surface 159 order 2
+Info    : [100%] Meshing surface 160 order 2
+Info    : [100%] Meshing surface 161 order 2
+Info    : [100%] Meshing surface 162 order 2
+Info    : [100%] Meshing surface 163 order 2
+Info    : [100%] Meshing surface 164 order 2
+Info    : [100%] Meshing surface 165 order 2
+Info    : [100%] Meshing surface 166 order 2
+Info    : [100%] Meshing surface 167 order 2
+Info    : [100%] Meshing surface 168 order 2
+Info    : [100%] Meshing surface 169 order 2
+Info    : [100%] Meshing surface 170 order 2
+Info    : [100%] Meshing surface 171 order 2
+Info    : [100%] Meshing surface 172 order 2
+Info    : [100%] Meshing surface 173 order 2
+Info    : [100%] Meshing surface 174 order 2
+Info    : [100%] Meshing surface 175 order 2
+Info    : [100%] Meshing surface 176 order 2
+Info    : [100%] Meshing surface 177 order 2
+Info    : [100%] Meshing surface 178 order 2
+Info    : [100%] Meshing surface 179 order 2
+Info    : [100%] Meshing surface 180 order 2
+Info    : [100%] Meshing surface 181 order 2
+Info    : [100%] Meshing surface 182 order 2
+Info    : [100%] Meshing surface 183 order 2
+Info    : [100%] Meshing surface 184 order 2
+Info    : [100%] Meshing surface 185 order 2
+Info    : [100%] Meshing surface 186 order 2
+Info    : [100%] Meshing volume 1 order 2
+Info    : Done meshing order 2 (Wall 2.14179s, CPU 2.01562s)
+Info    : 261833 nodes 210749 elements
+Info    : Writing 'block_medium.msh'...
+Info    : Done writing 'block_medium.msh'
+Info    : Stopped on Sat Oct  3 16:07:04 2026 (From start: Wall 6.60444s, CPU 6.25s)

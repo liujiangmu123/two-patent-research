@@ -1,0 +1,1 @@
+session_id,object_id,member_id,limb_id,axis_position_m,measurement_id,repeat_index,thickness_mm,thickness_uncertainty_mm,width_mm,width_uncertainty_mm,coating_state,probe_model,instrument_serial,calibration_id,temperature_C,measurement_valid,invalid_reason,waveform_path,photo_path,operator_id,timestamp_utc,nominal_spec,material_source,notes

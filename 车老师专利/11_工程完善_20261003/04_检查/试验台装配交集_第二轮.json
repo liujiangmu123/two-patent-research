@@ -1,0 +1,122 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"result\": {\n    \"stage\": \"bench_interference\",\n    \"status\": \"done\",\n    \"started\": 1791010235.4497843,\n    \"detail\": \"359/359 GD-LOCK\",\n    \"pair_count\": 828,\n    \"collisions\": [\n      {\n        \"a\": \"TC-V2-BD1\",\n        \"b\": \"TC-V2-BD2\",\n        \"volume_mm3\": 227.996655\n      },\n      {\n        \"a\": \"TC-V2-BD2\",\n        \"b\": \"TC-V2-HB1\",\n        \"volume_mm3\": 33.85557\n      },\n      {\n        \"a\": \"TC-V2-CL2\",\n        \"b\": \"TC-V2-CL3\",\n        \"volume_mm3\": 1.052669\n      },\n      {\n        \"a\": \"TC-V2-CL3\",\n        \"b\": \"TC-V2-CL4\",\n        \"volume_mm3\": 11.001386\n      },\n      {\n        \"a\": \"TC-V4-BD1\",\n        \"b\": \"TC-V4-BD2\",\n        \"volume_mm3\": 227.996655\n      },\n      {\n        \"a\": \"TC-V4-BD2\",\n        \"b\": \"TC-V4-HB1\",\n        \"volume_mm3\": 33.85557\n      },\n      {\n        \"a\": \"TC-V4-CL2\",\n        \"b\": \"TC-V4-CL3\",\n        \"volume_mm3\": 1.052669\n      },\n      {\n        \"a\": \"TC-V4-CL3\",\n        \"b\": \"TC-V4-CL4\",\n        \"volume_mm3\": 11.001386\n      },\n      {\n        \"a\": \"TC-V3-BD1\",\n        \"b\": \"TC-V3-BD2\",\n        \"volume_mm3\": 227.996655\n      },\n      {\n        \"a\": \"TC-V3-BD2\",\n        \"b\": \"TC-V3-HB1\",\n        \"volume_mm3\": 33.85557\n      },\n      {\n        \"a\": \"TC-V3-CL2\",\n        \"b\": \"TC-V3-CL3\",\n        \"volume_mm3\": 1.052669\n      },\n      {\n        \"a\": \"TC-V3-CL3\",\n        \"b\": \"TC-V3-CL4\",\n        \"volume_mm3\": 11.001386\n      },\n      {\n        \"a\": \"TC-V1-BD1\",\n        \"b\": \"TC-V1-BD2\",\n        \"volume_mm3\": 227.996655\n      },\n      {\n        \"a\": \"TC-V1-BD2\",\n        \"b\": \"TC-V1-HB1\",\n        \"volume_mm3\": 33.85557\n      },\n      {\n        \"a\": \"TC-V1-CL2\",\n        \"b\": \"TC-V1-CL3\",\n        \"volume_mm3\": 1.052669\n      },\n      {\n        \"a\": \"TC-V1-CL3\",\n        \"b\": \"TC-V1-CL4\",\n        \"volume_mm3\": 11.001386\n      },\n      {\n        \"a\": \"GD-P2\",\n        \"b\": \"GD-LEFT\",\n        \"volume_mm3\": 24080.0\n      },\n      {\n        \"a\": \"GD-P4\",\n        \"b\": \"GD-RIGHT\",\n        \"volume_mm3\": 24080.0\n      },\n      {\n        \"a\": \"GD-T2\",\n        \"b\": \"GD-TOP\",\n        \"volume_mm3\": 86240.0\n      }\n    ],\n    \"elapsed_s\": 13.22\n  },\n  \"stdout\": \"\",\n  \"stderr\": \"\",\n  \"execution_time_ms\": 60.44679996557534,\n  \"error_type\": null,\n  \"error_traceback\": null\n}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "result": {
+      "stage": "bench_interference",
+      "status": "done",
+      "started": 1791010235.4497843,
+      "detail": "359/359 GD-LOCK",
+      "pair_count": 828,
+      "collisions": [
+        {
+          "a": "TC-V2-BD1",
+          "b": "TC-V2-BD2",
+          "volume_mm3": 227.996655
+        },
+        {
+          "a": "TC-V2-BD2",
+          "b": "TC-V2-HB1",
+          "volume_mm3": 33.85557
+        },
+        {
+          "a": "TC-V2-CL2",
+          "b": "TC-V2-CL3",
+          "volume_mm3": 1.052669
+        },
+        {
+          "a": "TC-V2-CL3",
+          "b": "TC-V2-CL4",
+          "volume_mm3": 11.001386
+        },
+        {
+          "a": "TC-V4-BD1",
+          "b": "TC-V4-BD2",
+          "volume_mm3": 227.996655
+        },
+        {
+          "a": "TC-V4-BD2",
+          "b": "TC-V4-HB1",
+          "volume_mm3": 33.85557
+        },
+        {
+          "a": "TC-V4-CL2",
+          "b": "TC-V4-CL3",
+          "volume_mm3": 1.052669
+        },
+        {
+          "a": "TC-V4-CL3",
+          "b": "TC-V4-CL4",
+          "volume_mm3": 11.001386
+        },
+        {
+          "a": "TC-V3-BD1",
+          "b": "TC-V3-BD2",
+          "volume_mm3": 227.996655
+        },
+        {
+          "a": "TC-V3-BD2",
+          "b": "TC-V3-HB1",
+          "volume_mm3": 33.85557
+        },
+        {
+          "a": "TC-V3-CL2",
+          "b": "TC-V3-CL3",
+          "volume_mm3": 1.052669
+        },
+        {
+          "a": "TC-V3-CL3",
+          "b": "TC-V3-CL4",
+          "volume_mm3": 11.001386
+        },
+        {
+          "a": "TC-V1-BD1",
+          "b": "TC-V1-BD2",
+          "volume_mm3": 227.996655
+        },
+        {
+          "a": "TC-V1-BD2",
+          "b": "TC-V1-HB1",
+          "volume_mm3": 33.85557
+        },
+        {
+          "a": "TC-V1-CL2",
+          "b": "TC-V1-CL3",
+          "volume_mm3": 1.052669
+        },
+        {
+          "a": "TC-V1-CL3",
+          "b": "TC-V1-CL4",
+          "volume_mm3": 11.001386
+        },
+        {
+          "a": "GD-P2",
+          "b": "GD-LEFT",
+          "volume_mm3": 24080.0
+        },
+        {
+          "a": "GD-P4",
+          "b": "GD-RIGHT",
+          "volume_mm3": 24080.0
+        },
+        {
+          "a": "GD-T2",
+          "b": "GD-TOP",
+          "volume_mm3": 86240.0
+        }
+      ],
+      "elapsed_s": 13.22
+    },
+    "stdout": "",
+    "stderr": "",
+    "execution_time_ms": 60.44679996557534,
+    "error_type": null,
+    "error_traceback": null
+  },
+  "isError": false
+}

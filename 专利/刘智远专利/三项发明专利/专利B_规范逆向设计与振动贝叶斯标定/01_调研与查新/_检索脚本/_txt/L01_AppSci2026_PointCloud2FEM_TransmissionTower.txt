@@ -1,0 +1,1189 @@
+ 
+ 
+ 
+Appl. Sci. 2026, 16, 6640 
+https://doi.org/10.3390/app16136640 
+Article 
+From Point Clouds to FEM: A Practical Framework for  
+the Automated Modeling of Transmission Towers 
+Bo Jin 1, Zhen Zhang 1, Jie Li 1, Aimin Wang 1, Lei Wang 1, Duo Chen 2, Zexuan Li 3 and Qing Sun 3,* 
+1 Inner Mongolia Power (Group) Co., Ltd., Hohhot 010010, China; ning_xi_82@163.com (B.J.) 
+2 Ordos Power Supply Company, Inner Mongolia Electric Power (Group) Co., Ltd., Ordos 017000, China 
+3 Department of Civil Engineering, Xi’an Jiaotong University, Xi’an 710049, China; 
+robin.harden@stu.xjtu.edu.cn 
+* Correspondence: sunq@mail.xjtu.edu.cn 
+Abstract 
+Finite element modeling is central to the safety assessment and structural health monitor-
+ing of transmission towers, yet conventional workflows remain labor-intensive and de-
+pend on complete engineering drawings, which are often unavailable for aging towers. 
+This study proposes an automated finite element modeling framework based on un-
+manned aerial vehicle (UAV) point clouds. Multi-view stereo reconstruction with geomet-
+ric–photometric depth refinement is used to generate dense three-dimensional point 
+clouds, from which key nodal coordinates are extracted and converted into executable 
+ANSYS APDL command streams. Material properties, boundary conditions, and loads 
+are then assigned automatically to construct computable finite element models. This 
+method was first validated using concrete cubes and Q235B steel members and was fur-
+ther evaluated on a scaled transmission tower through comparison with the commercial 
+SmartTower workflow. The results show that the proposed approach reduces modeling 
+time from 1.5 days to 4.3 h, corresponding to an 88% efficiency improvement, while keep-
+ing nodal coordinate errors within 10% and modal frequency errors within 3.7%. The 
+framework satisfies the basic requirements of transmission tower numerical analysis and 
+provides a practical non-contact solution for the rapid assessment of aging towers lacking 
+design documentation. 
+Keywords: transmission tower; structural health monitoring; computer vision; point 
+cloud model reconstruction; finite element modeling 
+ 
+1. Introduction 
+As critical infrastructure components of modern power grids, transmission towers 
+play a vital role in ensuring reliable electricity transmission across long distances while 
+withstanding extreme environmental loads [1]. Statistical reports indicate the length of 
+220 kV+ voltage level transmission lines in China rising from 5.439 billion km to 9.197 
+billion km between 2013 and 2023 (69% growth) [2]. The magnitude of this grid expansion 
+proportionally increases the operational and maintenance burdens on infrastructure en-
+gineers, particularly for aging tower networks. However, these towers are often located 
+in remote and harsh environments, where they are susceptible to multiple environmental 
+stressors, such as high winds, lightning strikes, ice loads, corrosion, and material degra-
+dation caused by mechanical fatigue [3,4]. These factors can lead to the gradual accumu-
+Academic Editor: Nico P. Avdelidis 
+Received: 30 April 2026 
+Revised: 12 June 2026 
+Accepted: 18 June 2026 
+Published: 2 July 2026 
+Copyright: © 2026 by the authors. 
+Licensee MDPI, Basel, Switzerland. 
+This article is an open access article 
+distributed under the terms and 
+conditions of the Creative Commons 
+Attribution (CC BY) license. 
+
+Appl. Sci. 2026, 16, 6640 
+2 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+lation of structural damage, and if these damages are not detected and addressed 
+promptly, they may reduce the load-bearing capacity of the tower and even lead to struc-
+tural failure. Thus, structural health monitoring (SHM) and timely maintenance of trans-
+mission towers are especially crucial [5–8]. 
+Traditional SHM for transmission towers predominantly employs a dual approach 
+combining physical sensor networks and finite element analysis (FEA) [9]. Sensor deploy-
+ment techniques involve placing sensors at critical points of the tower to collect real-time 
+deformation and displacement responses, thereby reflecting the actual state of the struc-
+ture and identifying localized issues. Meanwhile, the FEA of transmission towers can as-
+sess the overall structural behavior. Ultimately, by integrating the strengths of both meth-
+ods, the monitoring system is capable of performing comprehensive modal identification 
+and reliability assessments of transmission towers. Nonetheless, for large structures such 
+as transmission towers that frequently carry high-voltage electricity during operation, 
+physical sensor networks face significant challenges including difficult installation, high 
+costs, limited measurement points, and restricted monitoring durations [10]. More criti-
+cally, FEA implementation encounters two fundamental limitations: (i) labor-intensive 
+model construction requiring 5–7 days per tower—increasingly inadequate for growing 
+inspection demands—and (ii) mandatory reliance on as-built drawings. Industry reports 
+and our fieldwork confirm that a large number of the aging towers in the areas studied 
+lack complete drawings. 
+In recent years, with the rapid development of image processing technology, com-
+puter vision-based monitoring methods have emerged as a promising alternative [11,12]. 
+With advantages such as long-range capability, non-contact measurement, high precision, 
+and time efficiency, these methods address many limitations of traditional approaches 
+and have increasingly gained favor among engineers and researchers [13–17], gradually 
+finding application in practical engineering projects. Computer vision-based monitoring 
+systems typically incorporate techniques such as feature detection, feature extraction, fea-
+ture matching, and feature tracking, analyzing digital image and video data to assess 
+structural conditions [18]. And they have shown promising capabilities in areas such as 
+displacement time-history signal acquisition [19–21], structural crack detection [22], and 
+deformation damage assessment [23]. Tang et al. [24] proposed a method for the real-time, 
+continuous monitoring of the structural posture of long-span bridge cables. The feasibility 
+of this approach was verified through theoretical simulations, laboratory tests, and prac-
+tical applications. Zhu et al. [25] proposed a dual-camera-based visual monitoring system 
+to address displacement monitoring during the construction and post-construction phases 
+of prefabricated subway stations, and this system has been implemented in real engineer-
+ing projects. Zhu et al. [26] developed a computer vision-based structural vibration iden-
+tification system using techniques such as image preprocessing, phase optical flow esti-
+mation, mode decomposition, and phase motion amplification, successfully detecting 
+structural vibrations in complex environments. Experimental and field test results indi-
+cate that this system can accurately detect structural vibrations in complex environments. 
+However, the overall technical approach of the visual monitoring systems developed 
+by researchers has primarily focused on the collection of real-time monitoring data, with 
+limited contribution to the establishment of structural mechanical models. For engineer-
+ing structures such as transmission towers, comprehensive and real-time health monitor-
+ing is essential, and FEM remains the standard method for addressing global analysis 
+challenges. Therefore, exploring the integration of traditional FEM with computer vision-
+based monitoring systems is of significant importance. 
+Since the beginning of the 21st century, with the rapid advancement of computa-
+tional capabilities, computer vision has achieved revolutionary progress, which also 
+serves as an inspiration for the methods proposed in this paper. Researchers have started 
+
+Appl. Sci. 2026, 16, 6640 
+3 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+integrating computer vision with machine learning, deep learning [27–29], UAVs [30], and 
+other advanced algorithms to explore increasingly complex visual monitoring tasks, in-
+cluding 3D reconstruction [31–35] and motion analysis. Liu et al. [36] developed a com-
+puter vision-based framework that extracts 1D vibration signals from edge pixels in video 
+footage and, using a 1D convolutional neural network (CNN) and long short-term 
+memory (LSTM) network, derives structural modal parameters from these signals. Khuc 
+et al. [37] proposed an enhanced non-contact displacement measurement method that 
+combines UAVs and computer vision algorithms to address challenges in traditional vis-
+ual measurement methods when dealing with high or inaccessible areas. As for studies 
+on 3D reconstruction, Qu et al. [38] proposed a method for obtaining the 3D coordinates 
+of the surface feature points of architectural structures based on computer vision. This 
+method reconstructs the target structure by utilizing camera motion and tests its feasibil-
+ity on seven different buildings. Lin et al. [39] proposed an automated high-precision ge-
+ometric reconstruction method for cable net structures, which includes extracting cable 
+shapes and forces from laser-scanned point clouds. This method determines the shape 
+and force of cables by extracting the coordinates of key cable regions, applying segmented 
+chain theory and nonlinear optimization, and was validated on single-curvature cable net 
+structures. Angelosanti et al. [40] introduced a new workflow that directly converts mag-
+nified digital image correlation (M-DIC) point cloud data into surfaces within building 
+information modeling (BIM) systems. This approach addresses the challenge of efficiently 
+managing and visualizing large-scale dynamic SHM data. 
+To the best of the authors’ knowledge, existing visual monitoring systems primarily 
+focus on improving the accuracy of real-time measurement data and the creation of virtual 
+3D models, while relatively little research has been conducted on the integration of visual 
+technologies with FEM. To overcome the limitations of traditional FEM methods, which 
+are heavily reliant on engineering drawings, time-consuming, labor-intensive, and com-
+plex to operate, this study proposes an automated FEM approach for transmission towers 
+via UAV-Based Point Clouds. The proposed approach utilizes advanced multi-view vi-
+sion principles to reconstruct the target structure’s point cloud model through UAV-cap-
+tured multi-angle images, achieving over 95% feature coverage. Subsequently, depth-
+aware densification through geometric photometric optimization yields a dense point 
+cloud with substantially higher number of points and accuracy. Finally, based on the point 
+cloud model, the automated APDL (ANSYS Parametric Design Language) command 
+stream generator developed by the research team is used to systematically connect the key 
+nodes and assign material properties, loads, and boundary conditions, which are then in-
+tegrated into the ANSYS APDL command stream to achieve the automated finite element 
+modeling of transmission towers. This approach reduces labor and resource consumption, 
+significantly enhances modeling efficiency, and aims to establish an FEM using computer 
+vision technology. Section 2 of this paper provides a detailed explanation of the principles 
+of the proposed method, while Sections 3 and 4 experimentally verify the feasibility and 
+applicability of the method. Section 5 provides a summary of the entire paper and offers 
+an outlook on the future development of this field. 
+2. Materials and Methods 
+2.1. Basic Steps 
+The FEM approach to the automation of transmission towers proposed in this study 
+is centered on the point cloud model reconstruction technology. As shown in Figure 1, 
+this method comprises three main components: the collection and processing of image 
+datasets, sparse and dense point cloud reconstruction, and command stream generation 
+for FEM. 
+
+Appl. Sci. 2026, 16, 6640 
+4 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+Firstly, a UAV is used to capture images of the target structure from various angles, 
+followed by image processing to obtain an unordered image dataset of the structure. Sub-
+sequently, feature detection and matching are performed on the image dataset. Based on 
+the registration results, triangulation, pose estimation, and model optimization are con-
+ducted to generate a sparse point cloud model of the structure. Following this, based on 
+multi-view stereo (MVS) principles, the depth information from the image dataset is uti-
+lized to fill and fit the sparse model using optical and geometric consistency, thereby com-
+pleting the dense point cloud reconstruction. Finally, the coordinates of the dense point 
+cloud model are transformed into actual coordinates using the rigid body transformation 
+law, which are then integrated with FEM software （ANSYS 18.0）for the FEM of the 
+structure. This novel approach successfully converts virtual three-dimensional models es-
+tablished through visual technology into mechanical models of engineering structures. 
+ 
+Figure 1. Flowchart of FEM method for transmission towers based on point cloud model reconstruc-
+tion. 
+2.2. Image Acquisition and Processing 
+The collection of image datasets is a critical stage in the research process, directly 
+influencing the accuracy and quality of the final point cloud model. In this study, the orig-
+inal image set consists of video frames captured by a camera mounted on a UAV. This 
+method ensures that all details of the structure’s surface are captured, thereby enhancing 
+the completeness and reliability of the point cloud model and significantly saving labor 
+and resources. Additionally, to ensure the accuracy of the FEA of the final structure, it is 
+essential to capture images with consistent camera parameters. Therefore, disabling fea-
+tures such as autofocus, automatic FPS, and auto white balance during shooting is also an 
+important step. 
+Considering that reconstructing a point cloud model is often computationally inten-
+sive, it is critical to maintain the coordinate accuracy of numerous point sets. This study 
+
+Appl. Sci. 2026, 16, 6640 
+5 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+proposes that the careful processing of the original image set can potentially address this 
+challenge. Cropping images along the structure’s contours minimizes unnecessary feature 
+point detection and matching, significantly improving computational efficiency. Addi-
+tionally, in computer vision, lighting and noise often affect the accuracy of feature detec-
+tion; thus, preprocessing operations such as noise reduction and contrast enhancement 
+are necessary to optimize the image set. 
+2.3. Point Cloud Model Reconstruction 
+Point cloud model reconstruction is the most critical stage in performing the FEM of 
+civil engineering structures using computer vision systems. This process utilizes the prin-
+ciples of “pinhole imaging” and multi-view vision to convert real 3D coordinates to planar 
+2D coordinates and recover the target structure in a computer-constructed virtual coordi-
+nate system. After obtaining the image dataset, this stage primarily comprises sparse 
+point cloud reconstruction, depth information acquisition, and dense point cloud recon-
+struction. A schematic of the point cloud model reconstruction process is shown in Figure 
+2. 
+ 
+Figure 2. Schematic diagram of point cloud reconstruction process for transmission towers. 
+ 
+
+Appl. Sci. 2026, 16, 6640 
+6 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+2.3.1. Constructing Sparse Point Cloud Model of Transmission Tower 
+In the sparse point cloud reconstruction module, the main approach adopted in this 
+study is to incrementally add images for feature detection and matching, iteratively per-
+forming the 3D reconstruction of the target structure. Simultaneously, the camera poses 
+are estimated based on the reconstructed model, and a global optimization method is ap-
+plied to continuously improve model accuracy until all usable images in the dataset are 
+fitted. The final output includes all camera parameters and a sparse point cloud model 
+that provides the basis for subsequent dense point cloud reconstruction. 
+Given the “multi-corner, multi-edge” characteristics of transmission tower struc-
+tures, this study selects the Scale-Invariant Feature Transform (SIFT) algorithm for feature 
+detection. This algorithm, with its robust scale and rotation invariance, is particularly 
+suited for image matching and 3D reconstruction in computer vision applications. During 
+feature detection and extraction, the computer identifies feature points of the transmission 
+tower structure based on specified recognition parameters. To enhance the accuracy of 
+point cloud reconstruction, appropriate peak and edge response thresholds must be ad-
+justed, although this may impact computational speed. Additionally, the detected feature 
+points include RGB values, which improve the realism of the point cloud model and fa-
+cilitate the selection of key node locations for constructing the FEM. Moreover, EXIF files 
+within the image set, containing the camera’s internal parameters such as focal length, 
+aperture, and shutter speed, are also extracted to prepare for subsequent steps. 
+Next, the detected and extracted feature points are matched. Given the large number 
+of feature points, this study uses the “nearest neighbor search algorithm” to accelerate 
+matching between image datasets. Symmetric matching and the RANSAC algorithm are 
+applied to filter and optimize the matched pairs, effectively improving the accuracy and 
+reliability of the matching process. Symmetric matching refers to bidirectional matching 
+between two images: first matching from Image A to Image B and then from Image B to 
+Image A. Only feature pairs that match successfully in both directions are retained. The 
+retained matching pairs are then subjected to geometric verification to ensure they meet 
+geometric constraints. After matching is completed, a feature point matching matrix is 
+generated. The displayed image is a heatmap of the matching results, where colors range 
+from dark (red) to light (blue), representing confidence levels from high to low. This 
+heatmap reflects, to some extent, the density of feature matching between image sets as 
+well as the accuracy of the point cloud model. 
+In fact, the previous steps only completed the initial matching by selecting the high-
+est-quality image pair from the dataset as a foundation, without utilizing the full infor-
+mation from the entire dataset. To complete the initial sparse point cloud model, incre-
+mental reconstruction is required. As shown in Figure 3, using the initial matched pair as 
+the base, additional images are gradually added to the reconstruction process. For each 
+new image added, feature matching and 3D point cloud updates are performed. Mean-
+while, using the previously obtained internal camera parameters and the initial camera 
+pose estimation, the Perspective-n-Point (PnP) algorithm is applied to estimate the camera 
+pose of the new image. This is an iterative updating process, where the continuous addi-
+tion of images and viewpoints iteratively improves and refines the sparse point cloud 
+model. Unlike the previous feature matching validation process between two images, in-
+cremental reconstruction requires multi-image matching validation with loop closure ver-
+ification. This ensures that feature point matches in the image sequence form a consistent 
+loop, thereby enhancing the reliability of the matches. 
+Finally, this study further optimizes and refines the generated point cloud model. 
+Through statistical and geometric validation, incorrectly matched feature points and mis-
+estimated 3D points were removed, and the accuracy of the camera pose and 3D point 
+
+Appl. Sci. 2026, 16, 6640 
+7 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+coordinates in the model was improved to obtain a highly accurate sparse point cloud 
+model. 
+ 
+Figure 3. General procedure for incremental reconstruction of point cloud models. 
+At this stage, the sparse point cloud reconstruction of the transmission tower struc-
+ture is complete, providing numerous feature points on the tower body and the camera 
+pose for each measurement point. However, to apply this to practical engineering and 
+bridge the gap between computer vision and structural analysis, it is necessary to further 
+construct a dense point cloud model to enhance model accuracy. 
+2.3.2. Getting Depth Information from Image Dataset 
+The sparse point cloud model contains only a limited number of 3D points and may 
+have considerable gaps and incomplete regions. To accurately describe the surface details 
+of the structure and transition to a dense point cloud, depth information serves as a crucial 
+bridge. Depth information here refers to the distance between each pixel and the camera. 
+This study employs an MVS reconstruction approach, primarily involving disparity cal-
+culation, matching cost computation for corresponding features on reference images, cost 
+aggregation, and optimization to ultimately obtain depth information. However, before 
+this process, the original image set must be undistorted, as skipping this step would in-
+troduce significant errors. 
+Initial depth estimation is first conducted using feature point matching results, ap-
+plying geometric constraints and photometric consistency to obtain preliminary depth in-
+formation. Geometric constraints ensure the spatial relationships of feature points across 
+different viewpoints, while photometric consistency ensures that corresponding points 
+have similar color or brightness. The basic principle of disparity calculation is used here 
+to convert disparity into depth information. Disparity represents the positional difference 
+in the same object across images from different viewpoints and is inversely related to 
+depth information. The calculation process is shown in Equations (1) and (2): 
+1
+2
+Disparity
+x
+x
+=
+−
+ 
+(1)
+In Equation (1), x1 and x2 represent the pixel coordinates of the same point in different 
+images. According to the disparity formula, the depth is calculated as follows: 
+f B
+Depth
+Disparity
+
+=
+ 
+(2)
+In Equation (2), f represents the focal length of the camera, and B is the baseline dis-
+tance between the two cameras. 
+Secondly, since the initial depth estimates are often rough and contain significant 
+errors, further optimization and refinement of the depth information is necessary. This 
+requires calculating the matching cost for each pixel to assess the similarity and matching 
+
+Appl. Sci. 2026, 16, 6640 
+8 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+degree of corresponding pixels between images. For each pixel (u, ν), the cost function can 
+be expressed as follows: 
+1
+2
+(
+, )
+( , )
+( , , )
+|
+( , )
+(
+, )|
+u v
+N u v
+C u v d
+I u v
+I u
+d v
+
+
+=
+−
+
+−
+
+
+
+ 
+(3)
+In Equation (3), d represents the disparity, and N(u, ν) denotes the neighborhood of 
+pixel (u, ν). The cost function is then aggregated within a certain range to reduce noise 
+and incorrect matches: 
+( , )
+( , )
+( , , )
+( , , )
+u v
+W u v
+C u v d
+C u v d
+
+
+
+
+
+=
+
+ 
+(4)
+In Equation (4), W(u, ν) represents the window around pixel (u, ν). Based on the ag-
+gregated cost function, the position with the minimum cost is selected as the depth value 
+of the pixel: 
+( , )
+arg min
+( , ,
+)
+d
+d u v
+C u v d
+=
+
+ 
+(5)
+Finally, the calculated depth information is optimized and refined to eliminate the 
+effects of noise and discontinuities, resulting in the final depth information. The computer 
+also integrates “photometric consistency” and “geometric consistency” to generate high-
+precision depth maps and normal vector maps. For photometric consistency, the com-
+puter uses lighting information from the image set (such as pixel color and brightness) to 
+determine the correspondences of the same physical point from different perspectives. 
+However, relying solely on photometric consistency is prone to errors due to variations 
+in lighting, shadows, and reflections and a lack of texture. In contrast, geometric con-
+sistency depends on the position and structure of points in 3D space and is unaffected by 
+lighting, reflections, or texture, providing more robust matching. The complementary na-
+ture of these two methods enables the computer to achieve optimal depth information. 
+At this stage, by combining the detection of surface feature points from the sparse 
+point cloud model with the acquisition of depth information for all pixel points in the 
+image set, the conditions are met to construct a dense point cloud model that more closely 
+represents the actual structure. 
+2.3.3. Constructing Dense Point Cloud Model of Transmission Tower 
+In order to construct a high-quality dense point cloud model, after the first few steps 
+of obtaining depth information from the image dataset, the steps of depth map fusion, 
+filling, and optimization are required to obtain the optimal solution of the fitted surface of 
+the densely filled sparse point cloud. Depth map fusion involves aggregating depth maps 
+from multiple viewpoints to generate a unified point set that represents the 3D structure 
+of the entire scene. During the aggregation process, overlapping regions from multiple 
+viewpoints are depth-fused, selecting the most reliable depth values to form an optimal 
+point set that includes as much scene detail as possible. Next, based on the original sparse 
+point cloud spatial coordinate system, the aggregated optimal point set is incorporated 
+into the previously generated sparse point cloud model and corrected using an error cor-
+rection algorithm. 
+At this point, a dense point cloud model of the transmission tower structure is suc-
+cessfully constructed. This virtual model will be used for the FEM of the engineering struc-
+ture. 
+2.4. Automated Finite Element Modeling Based on Point Cloud Models 
+In civil engineering, the construction and analysis of FEM structures involve estab-
+lishing a mechanical model and computing and integrating discrete elements. Taking a 
+transmission tower as an example, engineers typically establish a mechanical model based 
+on the actual structure of the tower and use modeling tools to create the corresponding 
+
+Appl. Sci. 2026, 16, 6640 
+9 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+structural model. They then use software like Abaqus 2023, ANSYS 18.0, or HyperMesh 
+2022 to divide the computational object into multiple numbered elements for FEA. The 
+novel FEM method proposed in this study significantly accelerates the process of con-
+structing the mechanical model. The help of a dense point cloud model provides precise 
+coordinate information on key transmission tower nodes. This study uses ANSYS FEA 
+software (ANSYS 18.0) as an example and develops an automated APDL command 
+stream generator. The developed algorithm takes nodal data extracted from the point 
+cloud model as input and systematically connects these nodes to construct the structural 
+framework. Crucially, the generator integrates a comprehensive material property data-
+base—a 15-year curated repository by our research team—containing standardized pa-
+rameters for transmission tower components, boundary conditions, and load configura-
+tions [41–50]. This database enables rapid parameter assignment to the generated frame-
+work, with the system ultimately exporting executable APDL commands in TXT format. 
+It should be emphasized that material properties are not derived from the point cloud 
+itself but are assigned from a predefined database of standard transmission tower mate-
+rials and sections. The vision-based inference of mechanical properties remains beyond 
+the scope of this study. 
+To demonstrate the contribution of the proposed method to the mechanical modeling 
+of transmission towers, this study adopted a two-phase validation approach. Initially, fea-
+sibility assessment tests were conducted on fundamental concrete blocks and steel struc-
+tural specimens to verify methodological validity. Subsequently, the developed FEM 
+scripting system was applied to establish a scaled transmission tower model (Figure 4), 
+where the automatically generated APDL commands were executed in ANSYS for nu-
+merical simulation. Modal analysis served as the representative case study to evaluate 
+modeling performance, with comprehensive experimental procedures and the analytical 
+results detailed in Sections 3 and 4. 
+ 
+Figure 4. Transmission tower scale-down model. 
+The finite element modeling process of the transmission tower is illustrated in Figure 
+5. The target structure of Figure 4 contains many of the desired critical nodes, though only 
+a subset of these points are identifiable in the sparse point cloud model (Figure 5a). By 
+contrast, the dense point cloud model (Figure 5b) accurately captures the positions of 
+these nodes and extracts their coordinates. Using the developed script, these nodes are 
+automatically and systematically connected to form the structural framework (Figure 5c). 
+Finally, material properties, boundary conditions, and loads are assigned to generate the 
+complete finite element model (Figure 5d). 
+
+Appl. Sci. 2026, 16, 6640 
+10 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+ 
+ 
+(a) 
+(b) 
+ 
+ 
+(c) 
+(d) 
+Figure 5. Stages of constructing transmission tower FEM: (a) sparse point cloud model and some 
+nodes; (b) dense point cloud model and some nodes; (c) generated structural framework; (d) FEM 
+of transmission tower structure. 
+3. Benchmark Testing of Automated FEM on Basic  
+Structural Specimens 
+In this study, benchmark tests on simple concrete and steel specimens are first carried 
+out to systematically verify the applicability of the proposed modeling method in foun-
+dation components. Concrete specimen blocks (C30, 200 mm cube) and Q235B steel I-sec-
+tions (I-beam, 350 × 150 × 30 × 18 mm) are selected as the test objects. 
+The test process mainly consists of the following (Figures 6 and 7 illustrate the test 
+flow and details): (1) A smartphone (iPhone 15 (Apple Inc., Cupertino, CA, USA)), frame 
+rate: 60FPS, resolution: 4K) is used to capture the image data of the target structure at all 
+angles. (2) The captured image dataset is preprocessed in MATLAB 2023a to m itigate the 
+effects of noise and illumination on the test. (3) Through the above process in this paper, 
+the sparse point cloud model and dense point cloud model of the two structures are con-
+structed. (4) Based on the point cloud model, a finite element model is generated by the 
+developed automated APDL command stream generator. 
+
+Appl. Sci. 2026, 16, 6640 
+11 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+It should be noted that no auxiliary equipment (e.g., tripod, rail, calibration target) 
+was used during smartphone image acquisition for the benchmark tests. To mitigate hu-
+man-induced geometric deviations, the capture process followed a structured multi-angle 
+trajectory with >50% image overlap, and all frames were subsequently cropped and de-
+noised prior to reconstruction. 
+ 
+Figure 6. Workflow of concrete cube testing via point cloud FEM. 
+ 
+Figure 7. Workflow of Q235B steel I-section testing via point cloud FEM. 
+The test results show that for the concrete specimen and the steel member, which are 
+two kinds of structures with clear angles, the detection and matching of their characteristic 
+points in the test are relatively smooth, and the error between the node data obtained in 
+
+Appl. Sci. 2026, 16, 6640 
+12 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+the point cloud model and the standard data can be controlled within 2.5%. In addition, 
+automated modeling is simpler and faster than the traditional method, with the average 
+modeling time for a single specimen not exceeding 1.5 h. 
+This benchmark study not only confirms the reliability of the method on simple struc-
+tures but also demonstrates its scalability for modeling complex transmission towers (Sec-
+tion 4). The quantitative accuracy and efficiency metrics provide a solid foundation for 
+field applications. 
+4. Field-Applicable Validation: Scaled Transmission Tower Modeling 
+via UAV Photogrammetry 
+4.1. Experimental Overview 
+To verify the feasibility of the proposed innovative FEM method, this study con-
+ducted an outdoor field test on a “transmission tower model.” The dimensions and struc-
+ture of the transmission tower model are shown in Figure 8. In the experiment, FEMs of 
+the target tower were constructed using both point cloud reconstruction technology and 
+traditional engineering drawings. The natural frequencies and mode shapes of the struc-
+ture were selected as FEA results for comparative analysis. 
+Firstly, throughout the experiment, the main image acquisition device used was a DJI 
+UAV, model Matrice M300 RTK (Da-Jiang Innovations, Shenzhen, China), equipped with a 
+Saier 6100 gimbal camera and a 40MM professional surveying lens. The camera’s perfor-
+mance was comparable to that of a standard smartphone, with the camera model 
+SHARE6100PLUS061X, an aperture of f/0, ISO sensitivity of ISO-250, and a fixed focal 
+length of 40 mm. The final resolution of the captured raw image data was 9504 × 6336 
+pixels, and the EXIF file version for the automatic reading of camera internal parameters 
+by the computer was 0231. In principle, the image dataset used for generating the point 
+cloud model with computer vision technology needs to meet the following requirements: 
+(1) capture a large number of photos from multiple angles; (2) ensure the lens captures the 
+entire structure’s outline; (3) maintain clear and visible images; (4) ensure at least 50% 
+overlap between images in the raw dataset to guarantee accuracy in subsequent feature 
+matching as well as the continuity and completeness of the point cloud model; and (5) 
+minimize direct sunlight exposure in the collection environment to reduce lighting-re-
+lated errors in the raw images. However, based on the structural characteristics of trans-
+mission towers and to simulate the entire process of obtaining image datasets of transmis-
+sion towers in real engineering applications, this study was conducted in a relatively ide-
+alized environment. A UAV equipped with a camera lens was used to orbit the transmis-
+sion tower model and capture video. The video file was then imported into VLC media 
+player, where frames of interest were extracted according to research needs. These frames 
+were subsequently cropped individually in Krita 5.2.0 software and saved in JPG format, 
+forming the raw image dataset required to build the point cloud model, which was then 
+processed in the computer for subsequent steps. In this study, the use of a UAV ensured 
+that the camera lens could capture all key nodes of the transmission tower model compre-
+hensively during the shooting process, supporting subsequent FEM. This approach also 
+aligns with the advantages of using computer vision in real engineering applications, such 
+as “long-range” and “non-contact” capabilities. 
+Subsequently, based on the principles and methods described above, the sparse point 
+cloud reconstruction, depth information acquisition, and dense point cloud reconstruction 
+of the transmission tower model were completed sequentially. After the dense point cloud 
+reconstruction is completed, the dense point cloud model can be saved in PLY file format, 
+exported as a Poisson point cloud model or Delaunay point cloud model, and viewed in 
+point cloud processing software such as Meshlab 2023.12 to assess the reconstruction re-
+
+Appl. Sci. 2026, 16, 6640 
+13 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+sults. According to the needs of the experimental study, each part of the transmission 
+tower model is examined to determine whether there are insufficient points. In such cases, 
+additional camera poses are added in the corresponding areas to reestablish the original 
+image dataset, and the above steps are repeated to ensure the completeness of the point 
+cloud model reconstruction. 
+ 
+Figure 8. Dimensions and construction of transmission tower models. 
+Finally, the developed APDL command stream generator was utilized to assign ma-
+terial properties and boundary conditions to the model, automatically generating execut-
+able command streams for ANSYS. These commands were then input into the software to 
+perform FEA, thereby completing the entire workflow. It should be noted that the nodal 
+coordinates in the virtual coordinate system of the point cloud model do not represent 
+actual physical dimensions, and the scale of the model differs significantly from the real 
+structure. To establish a full-scale finite element model, coordinate transformation from 
+the virtual to the real-world coordinate system must be performed. This conversion is 
+achieved by calculating a scaling factor based on the distance ratio between corresponding 
+point pairs in both coordinate systems. In the virtual coordinate system, the distance be-
+tween two points is calculated as shown in Equation (6): 
+(
+)
+(
+)
+(
+)
+2
+2
+2
+ab
+a
+b
+a
+b
+a
+b
+l
+x
+x
+y
+y
+z
+z
+=
+−
++
+−
++
+−
+ 
+(6)
+In the above equation, lab represents the distance between points A and B in the vir-
+tual coordinate system, where xa, ya and za are the x, y, and z coordinates of point A, and 
+xb, yb and zb are the x, y, and z coordinates of point B, respectively. In the real coordinate 
+system, the actual distance between the corresponding point pairs on the transmission 
+tower model is measured manually, typically using an engineering tape measure to obtain 
+the distance lab′. The ratio between the two distances is then used to calculate the scaling 
+factor, as shown in Equation (7): 
+'
+ab
+ab
+l
+s
+l
+=
+ 
+(7)
+Consequently, this study may inevitably encounter human errors or computational 
+errors in distance measurement and scaling factor calculation. However, the impact of 
+such minor errors on the final results falls within the acceptable range in engineering. 
+ 
+
+Appl. Sci. 2026, 16, 6640 
+14 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+4.2. Analysis of Experimental Results 
+4.2.1. Original Image Dataset Collection 
+Based on the image dataset collection devices and considerations mentioned in the 
+overview of the experiment, this study captured images of the transmission tower model 
+in the university’s testing facility. Image data collection for this experiment was conducted 
+on a sunny day between 4 PM and 5 PM, ensuring good and even lighting while avoiding 
+the effects of harsh midday sunlight. To ensure that images of the transmission tower 
+model are captured from multiple viewpoints, the UAV was controlled to orbit the model 
+at a distance of 2 m and at various heights to obtain the corresponding video files. The 
+arrangement of the transmission tower model and the UAV, along with other experi-
+mental devices, is shown in Figure 9. 
+ 
+ 
+(a) 
+(b) 
+Figure 9. Setup for image dataset collection experiment: (a) field photograph of experiment; (b) ex-
+perimental schematic. 
+After the UAV captures the video files, it is essential to ensure that a sufficient num-
+ber of images are obtained during the video extraction process in VLC Media Player, cov-
+ering every angle and detail of the structure while discarding frames that exhibit motion 
+blur due to sudden movements of the UAV. Generally speaking, the more images col-
+lected, the better the reconstruction of the point cloud. In this experiment, a total of 172 
+JPG image files were extracted. However, to ensure the accuracy and completeness of the 
+final generated point cloud model, the extracted images must be processed in Krita and 
+MATLAB. In Krita, the images are primarily cropped along the contours of the transmis-
+sion tower model, and the cropped images are then saved as JPG files. This approach aims 
+to accelerate the subsequent generation of the point cloud model by the computer, reduc-
+ing unnecessary feature detection and matching in the images. 
+4.2.2. Model Tower Point Cloud Model Reconstruction 
+After obtaining the raw image dataset, the principles mentioned above can be ap-
+plied to the sparse point cloud reconstruction, depth information acquisition, dense point 
+cloud reconstruction, and FEM of the transmission tower model. The reconstruction re-
+sults of the sparse point cloud model and the dense point cloud model are shown in Figure 
+10. 
+Firstly, the unordered image set is input into the program for feature extraction, fea-
+ture detection, and feature matching. After a short wait, the sparse point cloud model of 
+the target transmission tower and the camera poses of the UAV in the shooting scene are 
+
+Appl. Sci. 2026, 16, 6640 
+15 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+obtained, as shown in Figure 10a, which illustrates a preliminary shape of the transmis-
+sion tower. In this model, the various parts do not contain enough points; however, the 
+overall outline of the transmission tower model is depicted based on the sparse feature 
+points on the structure’s surface. In Figure 10a, the orange tetrahedral shapes represent 
+the camera poses during the UAV’s filming process, corresponding to the viewpoints 
+from which each original image dataset was captured, including the camera’s position 
+coordinates and shooting angles in the virtual coordinate system. Combining Figure 10a 
+with the methods mentioned earlier, the resulting sparse point cloud model and camera 
+poses, after undergoing incremental reconstruction, triangulation, and iterative optimiza-
+tion, are largely consistent with the actual experimental conditions. During this process, 
+it is vividly observed that the sparse point cloud model becomes more complete with the 
+addition of camera poses, exemplifying incremental reconstruction. The computer does 
+not take too long to process feature points and generates a feature matching matrix based 
+on the results of feature matching, indicating whether the matching level is satisfactory. 
+The feature point matching matrix for the transmission tower model in this experiment is 
+shown in Figure 11. 
+ 
+ 
+(a) 
+(b) 
+Figure 10. Reconstruction results of point cloud models: (a) sparse point cloud model; (b) dense 
+point cloud model. 
+ 
+Figure 11. Feature point matching matrix. 
+The feature point matching matrix allows for the visualization of a heatmap of the 
+matching results. The distribution of this matching matrix shows relatively dense regions, 
+indicating a rich presence of feature points in the original data and sufficient matching 
+between images. The dense color near the diagonal in the figure implies a higher number 
+
+Appl. Sci. 2026, 16, 6640 
+16 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+of matching points between adjacent images, indicating good coherence in camera move-
+ment and minimal variation in shooting angles. This suggests that during the data acqui-
+sition process, the control of the camera’s movement was relatively stable, which is bene-
+ficial for the continuity and completeness of the target point cloud during 3D reconstruc-
+tion. However, the parallel color bands in the figure exhibit a loose distribution in some 
+areas, with certain regions showing insufficient tightness in the arrangement of the color 
+bands. This may indicate that in some areas of data collection, due to the instability of the 
+UAV’s flight, there was a lack of rigor in controlling the camera’s movement, resulting in 
+insufficient matching between specific images. Considering the above analysis of the fig-
+ure, it can be concluded that, overall, the sparse point cloud reconstruction process made 
+effective use of the information from the original image set. 
+After obtaining the sparse point cloud model of the transmission tower structure and 
+the camera pose information, the reconstruction model is incomplete, making it difficult 
+to obtain the coordinates of the key nodes of the tower model. To further construct the 
+dense point cloud model of the target structure, depth information estimation must be 
+performed on the original image set based on the principles mentioned earlier. An exam-
+ple of the depth estimation results in this experiment is shown in Figure 12. Figure 12a 
+displays the original image, while Figure 12b and 12c present the depth map and normal 
+vector map based on “photometric consistency,” respectively. Figure 12d and 12e show 
+the depth map and normal vector map based on “geometric consistency,” respectively. 
+ 
+ 
+(a) 
+(b) 
+ 
+ 
+(c) 
+(d) 
+
+Appl. Sci. 2026, 16, 6640 
+17 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+ 
+(e) 
+Figure 12. Image processing results: (a) original image; (b) photometric depth map; (c) photometric 
+normal vector map; (d) geometric depth map; (e) geometric normal vector map. 
+The depth map distinguishes the depth of the target from the camera plane based on 
+variations in RGB color. In image processing, the normal vector map provides a more 
+intuitive assessment of the 3D fitting accuracy of the target structure. By analyzing Figure 
+12, it can be observed that the depth map generated based on “photometric consistency” 
+displays relatively chaotic depth information, particularly in areas with structural details, 
+where color differentiation is not clear, indicating low accuracy in depth estimation. Fur-
+thermore, normal vector mapping indicates the presence of roughness on the model sur-
+face, with a high number of non-target points, resulting in suboptimal surface fitting. 
+However, in the depth map optimized based on “geometric consistency,” the color differ-
+entiation of depth information is significantly improved, especially in the key structural 
+parts of the tower, where the depth estimation is closer to the actual situation, indicating 
+that geometric optimization effectively enhances the accuracy of depth estimation. Simul-
+taneously, normal vector mapping filters out most non-target points, resulting in a 
+smoother surface of the tower that is closer to the actual structure. This demonstrates that 
+through the joint optimization of photometric and geometric consistency, the generated 
+depth map can better represent the actual structure of the target building, providing a 
+more reliable foundation for subsequent 3D reconstruction. Additionally, this optimiza-
+tion process can reduce reconstruction time, enhance the accuracy and continuity of point 
+cloud construction, and yield more precise reconstruction results. 
+Subsequently, based on the obtained depth information and the principles described 
+in this paper, the sparse point cloud model was filled, resulting in the final dense point 
+cloud model of the transmission tower. 
+As shown in Figure 10b, the 3D model displayed in the virtual coordinate system 
+partially restores the target structure. Despite using UAV orbiting photography to achieve 
+a more detailed reconstruction of the transmission tower model, some areas still exhibit 
+certain deficiencies, indicating that there is room for improvement in the completeness of 
+the dense point cloud model. In terms of the experiment itself, the constructed dense point 
+cloud model essentially met the experimental requirements, with the structure’s propor-
+tions and color textures closely resembling the actual tower. Furthermore, it is evident 
+that the number of points in the dense point cloud model is significantly greater than that 
+in the sparse point cloud model (see Table 1 for detailed experimental data). More im-
+portantly, this model is now capable of fulfilling the function of obtaining the coordinate 
+information of key nodes for the FEM in practical applications. 
+
+Appl. Sci. 2026, 16, 6640 
+18 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+Table 1. Image-based point cloud generation metrics for structural specimens. 
+Target Structure 
+Number of Images 
+Sparse Point Cloud Points 
+Dense Point Cloud Points 
+C30 Concrete Specimen 
+32 
+14,312 
+1,144,374 
+Q235B Steel Element 
+53 
+14,810 
+912,880 
+Scaled Tower Model 
+173 
+100,262 
+4,914,095 
+4.2.3. Experimental Comparison of Finite Element Modeling Methods for Transmission 
+Towers Based on Point Cloud Techniques and SmartTower Finite Element  
+Modeling Methods 
+Based on the generated high-precision point cloud model, the finite element model 
+of the transmission tower was successfully constructed in this study using the aforemen-
+tioned method. The node information after coordinate conversion was inputted into the 
+developed automated APDL command flow generator, and the nodes were connected in 
+an orderly manner to form the model framework. Appropriate material properties and 
+boundary conditions were then assigned. Specifically, the model uses a material with an 
+elastic modulus of 69 GPa, Poisson’s ratio of 0.3, and density of 3000 kg/m3—representa-
+tive of an aluminum alloy or similar lightweight structural material. Three cross-sectional 
+types were defined, corresponding to L-shaped angle sections of different dimensions: 
+Section 1 (L40 × 40 × 3), Section 2 (L20 × 20 × 1), and Section 3 (L30 × 30 × 2). The finite 
+element model employs BEAM188 and BEAM189 elements for discretization, with each 
+structural member typically represented by a single element. Fixed boundary conditions 
+are applied at four key support points (keypoints 7000, 7001, 7002, 7003) to simulate rigid 
+supports. The final output is a complete APDL command flow that can be directly im-
+ported into ANSYS software. The command stream can be analyzed by the finite element 
+software for subsequent mechanical analysis, thus realizing the complete transformation 
+from a 3D point cloud model to a computable mechanical model. 
+To validate the engineering applicability of this UAV point cloud-based automated 
+FEM system, a comparative analysis was conducted against SmartTower V2024—a com-
+mercial FEM software specialized for transmission towers and widely adopted in power 
+industry design practices. The comparative results are summarized as follows: 
+(1) Nodal Coordinate Accuracy: Both methods generated ANSYS APDL command 
+streams containing complete nodal coordinates of the FEM. As presented in Table 2, 
+10 node coordinates were arbitrarily selected for comparison, and the maximum co-
+ordinate deviation between the point cloud-based model and the reference Smart-
+Tower model was limited to 10%, demonstrating high geometric fidelity. 
+Table 2. Comparison of node coordinate accuracy. 
+No. 
+Point Cloud Finite Element Modeling 
+SmartTower Finite Element Model 
+Maximum Error 
+1 
+(0.4142, 0.4147, −0.0319) 
+(0.4200, 0.4200, 0.0000) 
+7.6% 
+2 
+(−0.4351, 0.4045, 0.0034) 
+(−0.4200, 0.4200, 0.0000) 
+4.9% 
+3 
+(0.4094, −0.4231, 0.0099) 
+(0.4200, −0.4200, 0.0000) 
+3.1% 
+4 
+(−0.4360, −0.4218, −0.0469) 
+(−0.4200, −0.4200, 0.0000) 
+3.8% 
+5 
+(0.9193, 0.1224, −1.7890) 
+(1.0000, 0.1150, −1.7300) 
+9.2% 
+6 
+(−1.0817, 0.0365, −1.6984) 
+(−1.0000, 0.1150, −1.7300) 
+8.1% 
+7 
+(0.9220, 0.1044, −1.7808) 
+(1.0000, −0.1150, −1.7300) 
+9.2% 
+8 
+(−1.0597, −0.1190, −1.7028) 
+(−1.0000, −0.1150, −1.7300) 
+5.9% 
+9 
+(0.9278, 0.0382, −1.5535) 
+(1.0000, 0.1150, −1.5000) 
+7.2% 
+10 
+(−1.0619, 0.0491, −1.4779) 
+(−1.0000, 0.1150, −1.5000) 
+6.1% 
+
+Appl. Sci. 2026, 16, 6640 
+19 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+(2) Modeling Efficiency: As presented in Table 3, the proposed point cloud-based meth-
+odology significantly improves efficiency by reducing the total modeling time by 88% 
+(from 1.5 days to 4.3 h) compared to SmartTower’s workflow using engineering 
+drawings. 
+Table 3. Comparative analysis of modeling efficiency metrics. 
+FEM Approach 
+Time 
+Point cloud 
+4.3 h 
+SmartTower 
+1.5 days 
+(3) Modal Analysis Performance: Focusing on SHM requirements, the first three natural 
+frequencies and corresponding mode shapes were compared (Table 4 and Figure 13). 
+While minor discrepancies existed between the two models (maximum frequency 
+error: 3.69% for the first mode), all differences fell well within the acceptable 5% 
+threshold for civil engineering monitoring. 
+Table 4. Comparison of natural frequency calculations for first three vibration modes. 
+FEM Approach 
+First-Order Frequency 
+Second-Order Frequency 
+Third-Order Frequency 
+Point cloud 
+15.90 
+35.30 
+43.34 
+SmartTower 
+16.51 
+35.16 
+43.46 
+Relative error 
+3.69% 
+0.39% 
+0.27% 
+ 
+Figure 13. Calculation results of first three orders of vibration patterns of two finite element models: 
+(a,c,e): calculation results of finite element model constructed by using engineering drawings; 
+(b,d,f): calculation results of finite element model constructed by using point cloud model. 
+Notably, the mode shapes exhibited identical deformation patterns (Figure 13), con-
+firming the kinematic consistency of the proposed method. These results validate that the 
+modeling accuracy of the point cloud technique used in this paper basically meets the 
+traditional modeling standards. 
+It can be seen that this approach shows promising prospects for the real-time moni-
+toring of transmission towers in engineering and holds significant potential in the field of 
+non-contact health monitoring. This method is expected to serve as a bridge between com-
+
+Appl. Sci. 2026, 16, 6640 
+20 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+puter vision and structural FEA, enhancing flexibility and robustness in practical engi-
+neering operations within the field of SHM while also facilitating ease of use. 
+5. Conclusions 
+This study presents an innovative framework for the automated finite element mod-
+eling of transmission towers through UAV-based point cloud reconstruction. The key con-
+tributions and findings can be summarized as follows: 
+(1) Methodological Innovation: The proposed pipeline from computer vision to finite 
+element modeling establishes an automated workflow that connects UAV photo-
+grammetry (90% feature coverage) to structural analysis. Multi-view stereo match-
+ing, geometric photometric refinement, and the development of an automated APDL 
+command generator allow for the conversion of dense point clouds into finite ele-
+ment models, filling an important research gap in non-contact structural modeling. 
+It should be noted that research at this intersection is currently very limited, and di-
+rect quantitative comparison with other methods is not yet feasible. 
+(2) Technical Validation: This study systematically validated the effectiveness and feasi-
+bility of the proposed method through benchmark tests on concrete specimens and 
+steel structural components, as well as field tests on a scaled transmission tower 
+model. The experimental results demonstrate that the method achieves high model-
+ing accuracy for target structures. Compared with traditional FEM software (e.g., 
+SmartTower), the proposed approach maintains nodal coordinate errors within 10%, 
+limits frequency errors in modal analysis to 3.7%, and shows excellent consistency in 
+mode shapes. Remarkably, it improves modeling efficiency by 88%, reducing the con-
+ventional 1.5-day workflow to under 5 h. These results meet industry standards for 
+civil engineering monitoring accuracy, confirming the reliability of the technical ap-
+proach. 
+(3) Engineering Significance: This approach solves two core pain points in transmission 
+tower modeling through point cloud technology: first, it breaks through the depend-
+ence of traditional methods on engineering drawings and provides a feasible digital 
+modeling solution for the old towers that lack complete drawings; second, it shortens 
+the modeling cycle time for a single tower, which significantly improves the effi-
+ciency of large-scale inspections of the power grid. This “computer vision + finite 
+element” fusion paradigm provides a new technical path for the rapid safety assess-
+ment of electric power infrastructure, which is especially suitable for engineering sce-
+narios such as post-disaster emergency assessment and tower monitoring in remote 
+areas. 
+(4) Limitations and Future Work: Current limitations include lighting-dependent recon-
+struction accuracy and predefined material assumptions. The current method relies 
+on a predefined database for cross-sectional properties and does not automatically 
+identify member geometries from point clouds. Structural defect recognition (e.g., 
+bolt loosening, member deformation) is also not addressed in this study. Future work 
+will explore automated cross-section recognition through point cloud geometric 
+analysis or deep learning-based classification, as well as the integration of defect de-
+tection techniques into the point-cloud-to-FEM pipeline. Future work will also inte-
+grate LiDAR–thermal fusion and deep learning for robust automated modeling, par-
+ticularly for aged infrastructure and tower-line systems. 
+Overall, this approach provides insights and methodologies for the application of 
+computer vision to structural FEA and serves as a reference for developing software re-
+lated to FEM using computer vision technology. Improving modeling accuracy and auto-
+mation is a focus and direction for future work in this research. 
+
+Appl. Sci. 2026, 16, 6640 
+21 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+Author Contributions: Conceptualization, Q.S. and B.J.; methodology, Q.S. and Z.Z.; software, Z.Z.; 
+validation, B.J., Z.L. and J.L.; formal analysis, Z.L. and Z.Z.; investigation, B.J., J.L., A.W., L.W. and 
+D.C.; resources, B.J., A.W. and D.C.; data curation, Z.L. and Z.Z.; writing—original draft prepara-
+tion, Z.Z. and B.J.; writing—review and editing, Q.S., Z.Z. and B.J.; visualization, Z.L. and Z.Z.; su-
+pervision, Q.S.; project administration, B.J. and A.W.; funding acquisition, B.J. and Q.S. All authors 
+have read and agreed to the published version of the manuscript. 
+Funding: This study received funding from Inner Mongolia Electric Power (Group) Co., Ltd., grant 
+number Nei Dian Sheng (2022) No. 6. The funder provided financial support for this project; the 
+specific roles of the authors employed by the funder are described in the Author Contributions Sec-
+tion. The funder had no additional role in the design of the study; in the collection, analyses, or 
+interpretation of data; in the writing of the manuscript; or in the decision to publish the results. 
+Institutional Review Board Statement: Not applicable. 
+Informed Consent Statement: Not applicable. 
+Data Availability Statement: The original contributions presented in this study are included in the 
+article. Further inquiries can be directed to the corresponding author. 
+Conflicts of Interest: B.J., Z.Z., J.L., A.W. and L.W. were employed by Inner Mongolia Electric Power 
+(Group) Co., Ltd. D.C. was employed by Ordos Power Supply Company, Inner Mongolia Electric 
+Power (Group) Co., Ltd. The remaining authors declare that this research was conducted in the 
+absence of any commercial or financial relationships that could be construed as a potential conflict 
+of interest.  
+References 
+1. 
+Fei, Q.G.; Zhou, H.G.; Han, X.L.; Wang, J. Structural health monitoring-oriented stability and dynamic analysis of a long-span 
+transmission tower-line system. Eng. Fail. Anal. 2012, 20, 80–87. 
+2. 
+Li, J.X.; Zhang, X.H.; McClure, G. Numerical and full-scale test case studies on post-elastic performance of transmission towers. 
+Eng. Struct. 2022, 259, 114133. 
+3. 
+Meng, X.R.; Tian, L.; Ma, R.S.; Zhang, L.Y.; Liu, J.C.; Dong, X. Typhoon-induced failure analysis of electricity transmission 
+tower-line system incorporating microtopography. Eng. Fail. Anal. 2024, 163, 108556. 
+4. 
+Rong, K.J.; Tian, L.; Luo, J.Y.; Wang, L.H. Study on wind-induced fatigue performance of large-span transmission tower-line 
+system considering the combined distribution probability of wind direction and speed. Eng. Fail. Anal. 2024, 156, 107785. 
+5. 
+Wang, W.M.; Sheng, H.K.; Gao, Y.H.; Zhang, S.B. Seismic performance analysis of ultra-high voltage transmission tower-line 
+system based on capacity spectrum method. Structures 2024, 61, 105950. 
+6. 
+Dikshit, S.; Dobson, I.; Alipour, A. Cascading structural failures of towers in an electric power transmission line due to straight 
+line winds. Reliab. Eng. Syst. Saf. 2024, 250, 110304. 
+7. 
+Liu, Z.C.; Huang, X.B.; Zhao, L.; Wen, G.R.; Feng, G.Z.; Zhang, Y. Research on online monitoring technology for transmission 
+tower bolt looseness. Measurement 2023, 223, 113703. 
+8. 
+Roman, R.R.; Miguel, L.F.F.; Alminhana, F. Model uncertainty applied to the failure analysis of transmission towers. Eng. Fail. 
+Anal. 2024, 158, 108023. 
+9. 
+Das, S.; Saha, P. A review of some advanced sensors used for health diagnosis of civil engineering structures. Measurement 2018, 
+129, 68–90. 
+10. 
+Lin, J.F.; Xu, Y.L.; Zhan, S. Experimental investigation on multi-objective multi-type sensor optimal placement for structural 
+damage detection. Struct. Health Monit. 2019, 18, 882–901. 
+11. 
+Shao, Y.D.; Li, L.; Li, J.; Li, Q.L.; An, S.J.; Hao, H. Monocular vision-based 3D vibration displacement measurement for civil 
+engineering structures. Eng. Struct. 2023, 293, 116661. 
+12. 
+Shao, Y.D.; Li, L.; Li, J.; An, S.J.; Hao, H. Computer vision-based target-free 3D vibration displacement measurement of struc-
+tures. Eng. Struct. 2021, 246, 113040. 
+13. 
+Huang, Y.; Feng, R.; Zhong, C.; Tong, X.; Shao, X.; Gu, L.; Hui, Z. Computer vision-based real-time deflection monitoring of 
+complex and sizeable steel structures. Eng. Struct. 2024, 305, 117752. 
+
+Appl. Sci. 2026, 16, 6640 
+22 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+14. 
+Rinaldi, C.; Smarra, F.; Franchi, F.; Graziosi, F.; D’Innocenzo, A. An Edge-Based Machine Learning-Enabled Approach in Struc-
+tural Health Monitoring for Public Protection. In Proceedings of the IEEE Future Networks World Forum (FNWF), Montreal, 
+QC, Canada, 2022; pp. 125–130. 
+15. 
+Jin, Z.F.; Chen, G.Y.; Niu, Y.B.; Zhang, C.G.; Zhang, X.W.; Shu, J.P. Variational mode decomposition-based multirate data-fusion 
+framework for estimating structural dynamic displacement by integrating vision- and acceleration-based measurements. Mech. 
+Syst. Signal Process. 2024, 211, 111252. 
+16. 
+Wang, W.; Cui, D.; Ai, C.; Zaheer, Q.; Wang, J.; Qiu, S.; Li, F.; Xiong, J. Target-free recognition of cable vibration in complex 
+backgrounds based on computer vision. Mech. Syst. Signal Process. 2023, 197, 110392. 
+17. 
+Song, Q.S.; Wu, J.R.; Wang, H.L.; An, Y.S.; Tang, G.W. Computer vision-based illumination-robust and multi-point simultane-
+ous structural displacement measuring method. Mech. Syst. Signal Process. 2022, 170, 108822. 
+18. 
+Xu, Y.; Brownjohn, J.M.W. Review of machine-vision based methodologies for displacement measurement in civil structures. J. 
+Civ. Struct. Health Monit. 2018, 8, 91–110. 
+19. 
+Gao, X.; Ji, X.D.; Zhang, Y.; Zhuang, Y.C.; Cai, E.J. Structural displacement estimation by a hybrid computer vision approach. 
+Mech. Syst. Signal Process. 2023, 204, 110754. 
+20. 
+Ma, Z.; Choi, J.; Liu, P.; Sohn, H. Structural displacement estimation by fusing vision camera and accelerometer using hybrid 
+computer vision algorithm and adaptive multi-rate Kalman filter. Autom. Constr. 2022, 140, 104338. 
+21. 
+Zhang, S.F.; Ni, P.H.; Wen, J.N.; Han, Q.; Du, X.L.; Xu, K. Automated vision-based multi-plane bridge displacement monitoring. 
+Autom. Constr. 2024, 166, 105619. 
+22. 
+Zhang, C.G.; Shu, J.P.; Zhang, H.; Ning, Y.J.; Yu, Y.T. Estimation of load-carrying capacity of cracked RC beams using 3D digital 
+twin model integrated with point clouds and images. Eng. Struct. 2024, 310, 118126. 
+23. 
+Wu, T.; Tang, L.; Zhou, F.L.; Zhang, Y.D.; Zhou, Z.X. Damage detection based on accelerometers and computer vision measure-
+ments of moving load-induced structural responses. Mech. Syst. Signal Process. 2024, 211, 111246. 
+24. 
+Tang, Y.; Huang, B.; Wang, S.; Zhou, J.; Xiang, Z.; Sheng, C.; He, C.; Wang, H.; Ruan, L. Computer vision-based real-time con-
+tinuous monitoring of the pose for large-span bridge cable lifting structures. Autom. Constr. 2024, 162, 105383. 
+25. 
+Zhu, M.; Rao, W.; Hong, C.; Chen, X.; Dai, J.; Wu, C.; Li, M. Displacement measurement of underground prefabricated metro 
+stations by computer vision technology. Measurement 2024, 231, 114500. 
+26. 
+Zhu, Q.K.; Cui, D.P.; Zhang, Q.; Du, Y.F. A robust structural vibration recognition system based on computer vision. J. Sound. 
+Vib. 2022, 541, 117321. 
+27. 
+Cha, Y.J.; Ali, R.; Lewis, J.; Büyükoztürk, O. Deep learning-based structural health monitoring. Autom. Constr. 2024, 161, 105328. 
+28. 
+Sun, C.J.; Gu, D.L.; Lu, X.Z. Three-dimensional structural displacement measurement using monocular vision and deep learn-
+ing-based pose estimation. Mech. Syst. Signal Process. 2023, 190, 110141. 
+29. 
+Hurtado, A.C.; Alamdari, M.M.; Atroshchenko, E.; Chang, K.; Kim, C.W. A data-driven methodology for bridge indirect health 
+monitoring using unsupervised computer vision. Mech. Syst. Signal Process. 2024, 210, 111109. 
+30. 
+Ejaz, N.; Choudhury, S. Computer vision in drone imagery for infrastructure management. Autom. Constr. 2024, 163, 105418. 
+31. 
+Kassotakis, N.; Sarhosis, V.; Riveiro, B.; Conde, B.; D'ALtri, A.M.; Mills, J.; Milani, G.; de Miranda, S.; Castellazzi, G. Three-
+dimensional discrete element modeling of rubble masonry structures from dense point clouds. Autom. Constr. 2020, 119, 103365. 
+32. 
+Smith, A.; Sarlo, R. Automated extraction of structural beam lines and connections from point clouds of steel buildings. Comput.-
+Aided Civ. Infrastruct. Eng. 2022, 37, 110–125. 
+33. 
+Walsh, S.B.; Borello, D.J.; Guldur, B.; Hajjar, J.F. Data Processing of Point Clouds for Object Detection for Structural Engineering 
+Applications. Comput.-Aided Civ. Infrastruct. Eng. 2013, 28, 495–508. 
+34. 
+Dong, S.H.; Han, S.; Yin, Y.Y.; Zhang, Z.; Yao, T.F. The method for accurate acquisition of pavement macro-texture and corre-
+sponding finite element model based on three-dimensional point cloud data. Constr. Build. Mater. 2021, 312, 125390. 
+35. 
+Pan, X.; Yang, T.Y. 3D vision-based bolt loosening assessment using photogrammetry, deep neural networks, and 3D point-
+cloud processing. J. Build. Eng. 2023, 70, 106326. 
+36. 
+Liu, Y.K.; Cao, R.; Xu, S.P.; Deng, L. A deep learning-based method for structural modal analysis using computer vision. Eng. 
+Struct. 2024, 301, 117285. 
+37. 
+Khuc, T.; Nguyen, T.A.; Dao, H.; Catbas, F.N. Swaying displacement measurement for structural monitoring using computer 
+vision and an unmanned aerial vehicle. Measurement 2020, 159, 107769. 
+38. 
+Qu, C.X.; Jiang, J.Z.; Yi, T.H.; Li, H.N. Computer vision-based 3D coordinate acquisition of surface feature points of building 
+structures. Eng. Struct. 2024, 300, 117212. 
+
+Appl. Sci. 2026, 16, 6640 
+23 of 23 
+ 
+https://doi.org/10.3390/app16136640 
+39. 
+Lin, S.W.; Duan, L.P.; Liu, J.M.; Xiao, X.; Miao, J.; Zhao, J.C. Automated geometric reconstruction and cable force inference for 
+cable-net structures using 3D point clouds. Autom. Constr. 2024, 165, 105543. 
+40. 
+Angelosanti, M.; Currà, E.; Sabato, A. BIM oriented applications of structural health monitoring based on magnified digital 
+image correlation point-clouds. Autom. Constr. 2023, 148, 104754. 
+41. 
+Wang, J.; Wu, X.; Wei, S.; Zhao, C.; Sheng, M.; Paulo, P.; Sun, Q. Fatigue experimental study on the joint plate under out-of-
+plane vibration in steel tubular transmission towers. Thin-Walled Struct. 2025, 212, 113178. 
+42. 
+Wei, S.; Wu, X.; Su, Y.; Zhu, Y.; Zhao, C.; Liu, J.; Sun, Q. Experiment-based modal identification of steel lattice towers considering 
+the effect of conductors. J. Constr. Steel Res. 2025, 227, 109416. 
+43. 
+An, Y.; Sheng, M.; Zhang, Y.; Gama, P.; Luosang, C.; Sun, Q.; Xue, X.. Research on Wind-induced Vibration Analysis and Its 
+Vibration Coefficient Design of Cup-type Transmission Towers Line System in Xizang. High Volt. Appar. 2024, 60, 188–198. 
+44. 
+Su, Y.-H.; Zhu, Y.-M.; Zhao, C.; Lam, H.-F.; Sun, Q. Bayesian uncertainty quantification of modal parameters and RRF identifi-
+cation of transmission towers with limited measured vibration data. Eng. Struct. 2024, 308, 118019. 
+45. 
+Feng, Y.; Su, Y.; Zhao, C.; Zhu, Y.; Sun, Q. A two-stage automated OMA framework for transmission towers based on clustering 
+algorithms. Structures 2024, 61, 106023. 
+46. 
+Zhao, C.; Su, Y.; Zhu, Y.; Wei, S.; Wang, X.; Sun, Q. Automated Bayesian modal identification for full-scale transmission towers 
+by comprehensive field tests. Struct. Infrastruct. Eng. 2024, 1–23. https://doi.org/10.1080/15732479.2024.2439489 
+47. 
+Zhu, Y.; Sun, Q.; Zhao, C.; Qi, H.; Su, Y. Bayesian Operational Modal Analysis with Interactive Optimization for Model Updat-
+ing of Large-Size UHV Transmission Towers. J. Struct. Eng. 2023, 149, 04023184. 
+48. 
+Wang, J.; Qi, H.; Zhang, Z.; Zhang, B.; Sun, Q. Failure mechanism of a Q690 steel tubular transmission Tower: Full-Scale exper-
+iment and numerical simulation. Eng. Struct. 2023, 295, 116881. 
+49. 
+Zhao, C.; Su, Y.; Zhu, Y.; Sun, Q.; Wei, S.; Wang, X. Enhanced semi-automated Bayesian modal identification approach for Ultra-
+high voltage transmission towers. Structures 2023, 57, 105247. 
+50. 
+Zhang, Y.; Jiang, Y.; Li, X.; Zhou, W.; Tan, H.; Zhang, X.; Sun, Q. Calculation of jump height for uneven ice-shedding of overhead 
+transmission lines. J. Vib. Shock 2023, 42, 75–86. 
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual au-
+thor(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to 
+people or property resulting from any ideas, methods, instructions or products referred to in the content. 

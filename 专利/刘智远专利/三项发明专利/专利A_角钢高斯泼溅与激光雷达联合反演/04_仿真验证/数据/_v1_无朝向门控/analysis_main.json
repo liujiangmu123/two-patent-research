@@ -1,0 +1,47 @@
+{
+ "orientation": {
+  "flip_rule": {
+   "FLIP_MIN_B_m": 0.063,
+   "FLIP_MIN_L_m": 2.5
+  },
+  "eligible_n": 195,
+  "eligible_init_correct": 0.8717948717948718,
+  "eligible_final_correct": 0.9794871794871794,
+  "eligible_init_wrong": 25,
+  "eligible_fixed": 23,
+  "eligible_broken": 2,
+  "rest_n": 575,
+  "rest_init_correct": 0.9113043478260869,
+  "rest_final_correct": 0.8747826086956522,
+  "rest_fixed": 2,
+  "rest_broken": 23,
+  "all_init_correct": 0.9012987012987013,
+  "all_final_correct": 0.9012987012987013,
+  "main_init_correct": 1.0,
+  "main_final_correct": 1.0,
+  "diagonal_init_correct": 0.852760736196319,
+  "diagonal_final_correct": 0.8803680981595092,
+  "auxiliary_init_correct": 0.8833333333333333,
+  "auxiliary_final_correct": 0.8458333333333333
+ },
+ "thickness": {
+  "note": "同一重建几何与肢宽，肢厚分别取该肢宽档中间厚度（本发明默认，影像不可观测）与真值肢厚（oracle）",
+  "secs_mid_eq_true_rate": 0.0,
+  "secs_orc_eq_true_rate": 0.4623376623376623
+ },
+ "change": {
+  "moved_node": 188,
+  "flagged": [
+   187,
+   188,
+   203,
+   274
+  ],
+  "hops_from_moved": {
+   "187": 7,
+   "188": 0,
+   "203": 4,
+   "274": 3
+  }
+ }
+}

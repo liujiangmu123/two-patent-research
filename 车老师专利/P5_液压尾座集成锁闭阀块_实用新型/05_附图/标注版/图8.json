@@ -1,0 +1,134 @@
+{
+ "fig": 8,
+ "title": "图1 的另一局部放大图",
+ "scale": 1.53409,
+ "size_mm": [
+  154.1,
+  138.0
+ ],
+ "size_clean_mm": [
+  138.0,
+  138.0
+ ],
+ "labels": [
+  "2",
+  "12",
+  "19",
+  "22",
+  "24",
+  "26",
+  "27",
+  "32",
+  "34",
+  "42",
+  "62",
+  "72"
+ ],
+ "missing": [],
+ "crossings": 0,
+ "min_leader_pass_mm": 3.07,
+ "all_anchors_ok": true,
+ "anchors": [
+  {
+   "num": "2",
+   "name": "阀块本体",
+   "side": "R",
+   "anchor_part": "P00_2",
+   "ok": true,
+   "inside_mm": 11.72
+  },
+  {
+   "num": "12",
+   "name": "前端盖",
+   "side": "L",
+   "anchor_part": "P35_12",
+   "ok": true,
+   "inside_mm": 9.3
+  },
+  {
+   "num": "19",
+   "name": "第二缸体油道",
+   "side": "L",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "22",
+   "name": "第二对接油口",
+   "side": "L",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "24",
+   "name": "第二主孔道",
+   "side": "L",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "26",
+   "name": "第二锁闭油道",
+   "side": "R",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "27",
+   "name": "端面密封圈",
+   "side": "L",
+   "anchor_part": "P28_27",
+   "ok": true,
+   "inside_mm": 1.5
+  },
+  {
+   "num": "32",
+   "name": "第二锁闭阀孔",
+   "side": "R",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "34",
+   "name": "预压阀孔",
+   "side": "R",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "42",
+   "name": "第二锁闭座阀",
+   "side": "L",
+   "anchor_part": "P05_42",
+   "ok": true,
+   "inside_mm": 6.07
+  },
+  {
+   "num": "62",
+   "name": "第二测压孔",
+   "side": "L",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "72",
+   "name": "第二压力传感器",
+   "side": "L",
+   "anchor_part": "P21_72",
+   "ok": true,
+   "inside_mm": 4.6
+  }
+ ],
+ "n_items": 36,
+ "dropped_small": 0,
+ "n_lines": 126,
+ "n_hatch": 378,
+ "t_s": 13.8
+}

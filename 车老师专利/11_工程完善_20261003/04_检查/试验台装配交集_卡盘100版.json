@@ -1,0 +1,90 @@
+{
+  "stage": "bench_interference",
+  "status": "done",
+  "started": 1791015924.7214434,
+  "detail": "428/428 FC-S22",
+  "pair_count": 1042,
+  "collisions": [
+    {
+      "a": "TC-V2-BD1",
+      "b": "TC-V2-BD2",
+      "volume_mm3": 227.996655
+    },
+    {
+      "a": "TC-V2-BD2",
+      "b": "TC-V2-HB1",
+      "volume_mm3": 33.85557
+    },
+    {
+      "a": "TC-V2-CL2",
+      "b": "TC-V2-CL3",
+      "volume_mm3": 1.052669
+    },
+    {
+      "a": "TC-V2-CL3",
+      "b": "TC-V2-CL4",
+      "volume_mm3": 11.001386
+    },
+    {
+      "a": "TC-V4-BD1",
+      "b": "TC-V4-BD2",
+      "volume_mm3": 227.996655
+    },
+    {
+      "a": "TC-V4-BD2",
+      "b": "TC-V4-HB1",
+      "volume_mm3": 33.85557
+    },
+    {
+      "a": "TC-V4-CL2",
+      "b": "TC-V4-CL3",
+      "volume_mm3": 1.052669
+    },
+    {
+      "a": "TC-V4-CL3",
+      "b": "TC-V4-CL4",
+      "volume_mm3": 11.001386
+    },
+    {
+      "a": "TC-V3-BD1",
+      "b": "TC-V3-BD2",
+      "volume_mm3": 227.996655
+    },
+    {
+      "a": "TC-V3-BD2",
+      "b": "TC-V3-HB1",
+      "volume_mm3": 33.85557
+    },
+    {
+      "a": "TC-V3-CL2",
+      "b": "TC-V3-CL3",
+      "volume_mm3": 1.052669
+    },
+    {
+      "a": "TC-V3-CL3",
+      "b": "TC-V3-CL4",
+      "volume_mm3": 11.001386
+    },
+    {
+      "a": "TC-V1-BD1",
+      "b": "TC-V1-BD2",
+      "volume_mm3": 227.996655
+    },
+    {
+      "a": "TC-V1-BD2",
+      "b": "TC-V1-HB1",
+      "volume_mm3": 33.85557
+    },
+    {
+      "a": "TC-V1-CL2",
+      "b": "TC-V1-CL3",
+      "volume_mm3": 1.052669
+    },
+    {
+      "a": "TC-V1-CL3",
+      "b": "TC-V1-CL4",
+      "volume_mm3": 11.001386
+    }
+  ],
+  "elapsed_s": 31.13
+}

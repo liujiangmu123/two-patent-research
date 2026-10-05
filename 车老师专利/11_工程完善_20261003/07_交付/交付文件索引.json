@@ -1,0 +1,233 @@
+{
+  "updated_at": "2026-10-03T16:39:39.585185+08:00",
+  "status": "engineering work in progress, not released for manufacture or patent filing",
+  "part_counts": {
+    "尾座总成": 121,
+    "试验台": 428
+  },
+  "latest_models": {
+    "core": "03_模型/精细尾座阀块油缸_V2.FCStd",
+    "bench": "03_模型/精细液压试验台_V3.FCStd",
+    "historical_benchV2": "389-part saved prior snapshot; current BOM is for V3"
+  },
+  "blender": "supplied E folder contains only addon_blendermcp.py; no executable in folder; no live Blender connection",
+  "verification": "tailstock140mm and standalone chuck20mm each checked in5 positions; final bench nominal intersections checked;16 vendor-internal intersections retained",
+  "simulation": "CalculiX local block7MPa coarse and medium cases completed; finest case failed with0xC0000005; peak stress changes9.905% and is not sufficiently converged",
+  "open_items": [
+    "complete hydraulic hose/valveboard/thermal service connections and every fixture fastening",
+    "all-part manufacturing dimensions, drilling access, tolerance and seal closure review",
+    "full force chain static/fatigue/contact FEA, thermal and dynamic modelling",
+    "P1-P3 qualified algorithms and fault/tolerance simulations",
+    "licensed FluidSIM and AMESim runs;3D flow simulation not executed",
+    "Blender executable location and live addon connection",
+    "patent descriptions/claims/figures consistency updates and additional prior-art search",
+    "procurement interface confirmation, physical manufacture, hydrostatic/leak/thermal/force tests"
+  ],
+  "files": [
+    {
+      "file": "00_设计基准\\原始文件基线.json",
+      "bytes": 40884,
+      "sha256": "7d08c69eb3d06ffdfd114b245a5729768797788ec296974f3d1487c1cc083fec"
+    },
+    {
+      "file": "00_设计基准\\统一设计基准.json",
+      "bytes": 4206,
+      "sha256": "c41b5b0d8a80ddcddcac60b21d03dd4929bcfc0ba7192bfb4abd76f6cbfbb61a"
+    },
+    {
+      "file": "03_模型\\精细尾座阀块油缸_V2.20261003-151549.FCBak",
+      "bytes": 3145230,
+      "sha256": "b657c8d42c64682d1493a1cd001b754fb1929d7d03a14c6160c906ef9ad19554"
+    },
+    {
+      "file": "03_模型\\精细尾座阀块油缸_V2.FCStd",
+      "bytes": 3153147,
+      "sha256": "0220af0dc8afe96f5387f48f65d265d824df2f8f3ca29a87263e865a4f62cfab"
+    },
+    {
+      "file": "03_模型\\精细尾座阀块油缸_V2.step",
+      "bytes": 7509625,
+      "sha256": "ea29208ad7ed43cc75f986fea3b2c33d1aa4bf7bc581d59a1f842f296f11776c"
+    },
+    {
+      "file": "03_模型\\精细液压试验台_V2.20261003-151554.FCBak",
+      "bytes": 3855890,
+      "sha256": "6c97feec4c38f6b66edd6bf20730b948566d7356ba7a6a85f1b03797879b01d9"
+    },
+    {
+      "file": "03_模型\\精细液压试验台_V2.FCStd",
+      "bytes": 3873641,
+      "sha256": "7dc7caffb7dc12c3db109ccbc5e046af78ca868ea611756b28253348543b3a39"
+    },
+    {
+      "file": "03_模型\\精细液压试验台_V2.step",
+      "bytes": 10574559,
+      "sha256": "41b48b8950dbdd0539e8fd97dc2ee191f8e4ae1b4d580deb56431971da424f52"
+    },
+    {
+      "file": "03_模型\\精细液压试验台_V3.FCStd",
+      "bytes": 3942394,
+      "sha256": "990cc7ed252652431a6600a77bcddb3b8d8e727c9df06fd77b7235486f2c8484"
+    },
+    {
+      "file": "03_模型\\精细液压试验台_V3.step",
+      "bytes": 10928825,
+      "sha256": "9e6cdbcbd09b885891963343e7983c6dbcfe9ba1622980d36fda2a18fb2667d8"
+    },
+    {
+      "file": "04_检查\\卡盘试验缸20mm行程检查.json",
+      "bytes": 580,
+      "sha256": "ecfef076f64eef574632f561a326f622aa61c369dfcdce645ebffdb3cb0c78da"
+    },
+    {
+      "file": "04_检查\\厂家STEP分件检查.json",
+      "bytes": 32897,
+      "sha256": "c9005f5b1c3a5767b87750b9f677291210827c95a9c9eefa1213127a3ebf20d1"
+    },
+    {
+      "file": "04_检查\\厂家STEP检查.json",
+      "bytes": 34053,
+      "sha256": "41aed4a78b2501dbe4e117755ce93d96e839ce7db6c65399e0bfd217086955ab"
+    },
+    {
+      "file": "04_检查\\原始文件基线复核.json",
+      "bytes": 156,
+      "sha256": "3120a2c39d1e33685f635f9e7dc458c4ae41fc719f16a726dfcd1b3819cd3044"
+    },
+    {
+      "file": "04_检查\\核心STEP回读检查.json",
+      "bytes": 1386,
+      "sha256": "072e4eca4832c5bbf91a4bac15ba9be92edc24732eed533211399675a2358c91"
+    },
+    {
+      "file": "04_检查\\核心STEP导出.json",
+      "bytes": 1191,
+      "sha256": "e8330572c79da1678cf7e760c9e2a0e4a72c57c79aed6686912162cb32cf209d"
+    },
+    {
+      "file": "04_检查\\核心装配交集_位移参考版.json",
+      "bytes": 5331,
+      "sha256": "70d69d60798898c589a1e834e00a8f24361143f39824f2e5d0a2b97d987b1614"
+    },
+    {
+      "file": "04_检查\\核心装配交集_双测温最终.json",
+      "bytes": 5333,
+      "sha256": "cf83682334bd6a71b035f4c5f0f8faf9480fd572b845a7dd28daea5427529e2d"
+    },
+    {
+      "file": "04_检查\\核心装配交集_挡圈版.json",
+      "bytes": 5331,
+      "sha256": "d0a189deff2ab2377bd6d50e2915950162c58e6b86fcc3e3b25fbb4093585749"
+    },
+    {
+      "file": "04_检查\\核心装配交集_第二轮.json",
+      "bytes": 5329,
+      "sha256": "4dbb8fb477fa88967e30c72835736ef59b8ba22cc9932a4158a2ed8980e0736a"
+    },
+    {
+      "file": "04_检查\\核心装配交集_首轮.json",
+      "bytes": 9927,
+      "sha256": "aa32b06dae5a5dcc1b48acd434aa483e0db48d314cafd131a50915c952b0964c"
+    },
+    {
+      "file": "04_检查\\精细核心生成报告.json",
+      "bytes": 96637,
+      "sha256": "f98b4750197a6fd5cd5151ee6a81b5428b82b14b167c133d65e9238ef937a1ed"
+    },
+    {
+      "file": "04_检查\\精细核心视图.png",
+      "bytes": 74091,
+      "sha256": "2bcea7c0a883b26763dc9def8e584b20121e90a7dce218d399b26811dfec9690"
+    },
+    {
+      "file": "04_检查\\精细核心零件清单.json",
+      "bytes": 45499,
+      "sha256": "58c6e31650563fe22f53092092aa470c5ea4fe0b7759b6b4971f8f77f393edfd"
+    },
+    {
+      "file": "04_检查\\精细试验台视图.png",
+      "bytes": 93597,
+      "sha256": "5859c3eb11d5cfe1f8067c430141ddcb3143ee8664b912ba20db4eff576837e6"
+    },
+    {
+      "file": "04_检查\\精细试验台零件清单.json",
+      "bytes": 145978,
+      "sha256": "7d3416505b98de3ae61bb27a05dc3fca7ba88a448e413b6dba6fb5ddedd5f993"
+    },
+    {
+      "file": "04_检查\\试验台STEP回读检查.json",
+      "bytes": 1368,
+      "sha256": "da44f55a47a6a1c2aec8c160bab655650f38518fdf61672fa623f17be370814b"
+    },
+    {
+      "file": "04_检查\\试验台STEP导出.json",
+      "bytes": 1187,
+      "sha256": "107a582e6d7d06114503b1cf634cfac3fa82057f250793c99ad1ac28437fb559"
+    },
+    {
+      "file": "04_检查\\试验台V3_STEP回读检查.json",
+      "bytes": 369,
+      "sha256": "f0405683323b0681c84ed0e50323337125a4e61c52d4e1901322bde0b1670148"
+    },
+    {
+      "file": "04_检查\\试验台装配交集_位移参考版.json",
+      "bytes": 4655,
+      "sha256": "1e36eac6b4bbe7934c87721d0e4acc0b314108adc4b5db885b39d30559c2d153"
+    },
+    {
+      "file": "04_检查\\试验台装配交集_卡盘100版.json",
+      "bytes": 1725,
+      "sha256": "4b0fb236b0877c5abcc83e4c84850330bbb9497e65cd99958a8c0d5cdaa3007b"
+    },
+    {
+      "file": "04_检查\\试验台装配交集_安装完善版.json",
+      "bytes": 5111,
+      "sha256": "7f14699c160c385b2b1cd78bb1d02bb8aede3c3da75d09dd1b29ae714eaf9f94"
+    },
+    {
+      "file": "04_检查\\试验台装配交集_第三轮.json",
+      "bytes": 4655,
+      "sha256": "5ddc81e38a01583e9bf79f3b1bcb8e8377f35fc860247175d94ee603d57d89e1"
+    },
+    {
+      "file": "04_检查\\试验台装配交集_第二轮.json",
+      "bytes": 5305,
+      "sha256": "12b5d45f0b67d63e47d88916b15c4f2fb11275b27a01f1db3299b14e7d675d8f"
+    },
+    {
+      "file": "04_检查\\试验台装配交集_首轮.json",
+      "bytes": 13915,
+      "sha256": "ac5882060a73d6cf5be7ad2ecdabaa8bc9acc5495f3c4d96cae5fa9a918a8e52"
+    },
+    {
+      "file": "04_检查\\阀块投影边索引.json",
+      "bytes": 821,
+      "sha256": "db25033ff5d92254ceecdee438458c49421b18042df0237478d08bf9123b289c"
+    },
+    {
+      "file": "04_检查\\阀块投影边索引_缩放.json",
+      "bytes": 18483,
+      "sha256": "92d9ef1899311fdc7979017d3aca7d47acfe7e3c6427c9067f530cb51929bf91"
+    },
+    {
+      "file": "05_工程图\\阀块_V2_三视图.20261003-155718.FCBak",
+      "bytes": 151659,
+      "sha256": "bbdc8448937e3b89d34f494e42285eb9221c3bdadab41dec8ddf3df0abc43823"
+    },
+    {
+      "file": "05_工程图\\阀块_V2_三视图.FCStd",
+      "bytes": 151660,
+      "sha256": "f397d68ba8f7f7f02dd779274a4f46d7491e16927bd170abe25e5268b9c460a7"
+    },
+    {
+      "file": "05_工程图\\阀块_V2_三视图.png",
+      "bytes": 226625,
+      "sha256": "1066167701263fe6cafd5fdad0c8ead5c644a3f12f75c1622a200e50f361f0f1"
+    },
+    {
+      "file": "05_工程图\\阀块_V2_三视图.svg",
+      "bytes": 100489,
+      "sha256": "cea448c13c0f53c7b4017842bb4a185d6fd141d291523e03ddab56edd3f5018e"
+    }
+  ]
+}

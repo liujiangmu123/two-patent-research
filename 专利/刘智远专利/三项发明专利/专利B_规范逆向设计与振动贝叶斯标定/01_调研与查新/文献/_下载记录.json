@@ -1,0 +1,153 @@
+{
+ "L01_AppSci2026_PointCloud2FEM_TransmissionTower.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/applsci/applsci-16-06640/article_deploy/applsci-16-06640.pdf",
+  "ok": true,
+  "bytes": 2316503
+ },
+ "L02_AppSci2026_DigitalTwin_SHM_TransmissionTower_BIM_IoT_FEM.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/applsci/applsci-16-03620/article_deploy/applsci-16-03620.pdf",
+  "ok": true,
+  "bytes": 4679329
+ },
+ "L03_Buildings2024_CrossBracing_DLT5486_ASCE10_GB50017.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/buildings/buildings-14-01784/article_deploy/buildings-14-01784.pdf",
+  "ok": true,
+  "bytes": 3278502
+ },
+ "L04_Buildings2026_BayesianOMA_Review.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/buildings/buildings-16-01807/article_deploy/buildings-16-01807.pdf",
+  "ok": true,
+  "bytes": 2408929
+ },
+ "L05_Sensors2020_VibrationAnatomy_TransmissionTower_LimitedSensors.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/sensors/sensors-20-01731/article_deploy/sensors-20-01731.pdf",
+  "ok": true,
+  "bytes": 2050970
+ },
+ "L06_AppSci2019_Kriging_ModalFrequencySensor_TowerSettlement.pdf": {
+  "url": "https://res.mdpi.com/d_attachment/applsci/applsci-09-03343/article_deploy/applsci-09-03343-v2.pdf",
+  "ok": true,
+  "bytes": 2634107,
+  "text": true
+ },
+ "L07_EVACES2025_DigitalTwin_OMA_100mSteelTrussTower.pdf": {
+  "url": "https://fe.up.pt/evaces2025/ficheiros/papers_finais/SS13_paper_1196.pdf",
+  "ok": true,
+  "bytes": 1184309,
+  "text": true
+ },
+ "L08_Frontiers2015_SensorPlacement_TransmissionTower_Entropy.pdf": {
+  "url": "https://www.frontiersin.org/articles/10.3389/fbuil.2015.00024/pdf",
+  "ok": true,
+  "bytes": 1213796,
+  "text": true
+ },
+ "L09_Buildings2026_SensorPlacement_MPA_FIM_TransmissionTower.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/buildings/buildings-16-02018/article_deploy/buildings-16-02018.pdf",
+  "ok": true,
+  "bytes": 1803259
+ },
+ "L10_Buildings2025_MultiObjective_OSP_BayesianModalID_Entropy.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/buildings/buildings-15-00821/article_deploy/buildings-15-00821.pdf",
+  "ok": true,
+  "bytes": 2621225
+ },
+ "L11_Sensors2024_GPS_PPS_Sync_WirelessSensors.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/sensors/sensors-24-00199/article_deploy/sensors-24-00199.pdf",
+  "ok": true,
+  "bytes": 6919233
+ },
+ "L12_Sensors2020_Synchronized_HighSensitivity_WirelessAccelerometer.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/sensors/sensors-20-04169/article_deploy/sensors-20-04169.pdf",
+  "ok": true,
+  "bytes": 6460969
+ },
+ "L13_IWSHM2025_Accelerometer_PPS.pdf": {
+  "url": "https://flore.unifi.it/retrieve/3b0239fc-af1f-4a19-aa64-1a3dd45fbb37/2025___IWSHM___Accelerometer_PPS-2.pdf",
+  "ok": true,
+  "bytes": 6632326,
+  "text": true
+ },
+ "L14_Liverpool_BayesianModelUpdating_BoltedJoints_MCMC.pdf": {
+  "url": "https://livrepository.liverpool.ac.uk/3017833/1/STC-17-0017%20revised.pdf",
+  "ok": false,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ "L15_TMCMC_Ching_Chen_NCREE.pdf": {
+  "url": "https://www.ncree.org/GetFile.ashx?id=10000647",
+  "ok": false,
+  "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1082)>"
+ },
+ "L16_TMCMC_Observations_Improvements_TUM.pdf": {
+  "url": "http://mediatum.ub.tum.de/doc/1451922/document.pdf",
+  "ok": false,
+  "error": "not a PDF (likely HTML/landing page)"
+ },
+ "L17_Algorithms2026_ISSA_TransmissionTower_SizingOptimization.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/algorithms/algorithms-19-00513/article_deploy/algorithms-19-00513.pdf",
+  "ok": true,
+  "bytes": 729402
+ },
+ "L18_Designs2023_TrihedralLatticeTower_Optimization_Slenderness.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/designs/designs-07-00010/article_deploy/designs-07-00010.pdf",
+  "ok": true,
+  "bytes": 3710759
+ },
+ "L19_ADXL354_ADXL355_Datasheet_RevC.pdf": {
+  "url": "https://www.mouser.com/datasheet/2/609/adxl354_adxl355-3122364.pdf",
+  "ok": false,
+  "error": "not a PDF (likely HTML/landing page)"
+ },
+ "L20_Epson_M-A352AD10_Datasheet.pdf": {
+  "url": "https://www.epsondevice.com/sensing/en/pdf/m-a352_datasheet_e_rev20220401.pdf",
+  "ok": true,
+  "bytes": 1967594,
+  "text": true
+ },
+ "L21_Kionix_KX134-1211_Specifications.pdf": {
+  "url": "https://cdn.sparkfun.com/assets/b/2/6/2/e/KX134-1211_Datasheet.pdf",
+  "ok": true,
+  "bytes": 1274652,
+  "text": true
+ },
+ "L22_Sensors2026_QMEMS_Accelerometer_SHM_Evaluation.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/sensors/sensors-26-05528/article_deploy/sensors-26-05528.pdf",
+  "ok": true,
+  "bytes": 14862797
+ },
+ "L23_Buildings2022_TransmissionTower_FullScaleTest_BoltSlip.pdf": {
+  "url": "https://www.mdpi.com/2075-5309/12/4/389/pdf",
+  "ok": false,
+  "error": "HTTP Error 403: Forbidden",
+  "alt_tried": [
+   "https://mdpi-res.com/d_attachment/buildings/buildings-12-00389/article_deploy/buildings-12-00389.pdf -> not pdf / too large",
+   "https://mdpi-res.com/d_attachment/buildings/buildings-12-00389/article_deploy/buildings-12-00389-v2.pdf -> HTTP Error 404: Not Found",
+   "https://mdpi-res.com/d_attachment/buildings/buildings-12-00389/article_deploy/buildings-12-00389-v3.pdf -> HTTP Error 404: Not Found",
+   "https://res.mdpi.com/d_attachment/buildings/buildings-12-00389/article_deploy/buildings-12-00389.pdf -> not pdf / too large",
+   "https://res.mdpi.com/d_attachment/buildings/buildings-12-00389/article_deploy/buildings-12-00389-v2.pdf -> HTTP Error 404: Not Found",
+   "https://res.mdpi.com/d_attachment/buildings/buildings-12-00389/article_deploy/buildings-12-00389-v3.pdf -> HTTP Error 404: Not Found"
+  ]
+ },
+ "L24_Sustainability2022_LongSpanTower_Aeroelastic_WindTunnel.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/sustainability/sustainability-14-11613/article_deploy/sustainability-14-11613.pdf",
+  "ok": true,
+  "bytes": 886770
+ },
+ "L25_RemoteSens2024_GNSS_Accelerometer_Integrated_Sensor.pdf": {
+  "url": "https://mdpi-res.com/d_attachment/remotesensing/remotesensing-16-00607/article_deploy/remotesensing-16-00607.pdf",
+  "ok": true,
+  "bytes": 9049456
+ },
+ "L26_Polimi2025_FEModelUpdating_DigitalTwin_OMA_Thesis.pdf": {
+  "url": "https://www.politesi.polimi.it/retrieve/9d472077-43cd-417e-b57d-9132effdebec/2025_04_Ali.pdf",
+  "ok": true,
+  "bytes": 22701723,
+  "text": true
+ },
+ "L27_Epson_M-A352AD10_BriefSheet.pdf": {
+  "url": "https://www.epsondevice.com/sensing/en/pdf/m-a352ad10_briefsheet_e_rev20220401.pdf",
+  "ok": true,
+  "bytes": 468100,
+  "text": true
+ }
+}

@@ -1,0 +1,1266 @@
+Virtual laser scanning with HELIOS++: A novel take on ray
+tracing-based simulation of topographic 3D laser scanning
+Lukas Winiwartera,∗, Alberto Manuel Esmor´ıs Penab, Hannah Weisera, Katharina
+Andersa,c, Jorge Mart´ınez Sanchezb, Mark Searlea, Bernhard H¨oﬂea,c,∗
+a3DGeo Research Group, Institute of Geography, Heidelberg University, Germany
+bCentro Singular de Investigaci´on en Tecnolox´ıas Intelixentes, CiTIUS, USC, Spain
+cInterdisciplinary Center for Scientiﬁc Computing (IWR), Heidelberg University, Germany
+Abstract
+Topographic laser scanning is a remote sensing method to create detailed 3D point cloud
+representations of the Earth’s surface. Since data acquisition is expensive, simulations can
+complement real data given certain premises are available: i) a model of 3D scene and
+scanner, ii) a model of the beam-scene interaction, simpliﬁed to a computationally feasible
+while physically realistic level, and iii) an application for which simulated data is ﬁt for
+use. A number of laser scanning simulators for diﬀerent purposes exist, which we enrich
+by presenting HELIOS++. HELIOS++ is an open-source simulation framework for ter-
+restrial static, mobile, UAV-based and airborne laser scanning implemented in C++. The
+HELIOS++ concept provides a ﬂexible solution for the trade-oﬀbetween physical accuracy
+(realism) and computational complexity (runtime, memory footprint), as well as ease of
+use and of conﬁguration. Unique features of HELIOS++ include the availability of Python
+bindings (pyhelios) for controlling simulations, and a range of model types for 3D scene
+representation. Such model types include meshes, digital terrain models, point clouds and
+partially transmissive voxels, which are especially useful in laser scanning simulations of
+vegetation. In a scene, object models of diﬀerent types can be combined, so that repre-
+sentations spanning multiple spatial scales in diﬀerent resolutions and levels of detail are
+possible. We aim for a modular design, where the core components of platform, scene, and
+scanner can be individually interchanged, and easily conﬁgured by working with XML ﬁles
+and Python bindings. Virtually scanned point clouds may be used for a broad range of
+applications. Our literature review of publications employing virtual laser scanning revealed
+the four categories of use cases prevailing at present: data acquisition planning, method
+evaluation, method training and sensing experimentation. To enable direct interaction with
+3D point cloud processing and GIS software, we support standard data formats for input
+models (Wavefront Objects, GeoTIFFs, ASCII xyz point clouds) and output point clouds
+(LAS/LAZ and ASCII). HELIOS++ further allows the simulation of beam divergence using
+a subsampling strategy, and is able to create full-waveform outputs as a basis for detailed
+analysis. As generation and analysis of waveforms can strongly impact runtimes, the user
+may set the level of detail for the subsampling, or optionally disable full-waveform output
+altogether.
+A detailed assessment of computational considerations and a comparison of
+1
+arXiv:2101.09154v1  [cs.CV]  21 Jan 2021
+
+HELIOS++ to its predecessor, HELIOS, reveal reduced runtimes by up to 83 %. At the
+same time, memory requirements are reduced by up to 94 %, allowing for much larger (i.e.
+more complex) 3D scenes to be loaded into memory and hence to be virtually acquired by
+laser scanning simulation.
+Keywords:
+software, LiDAR simulation, point cloud, data generation, voxel, vegetation
+modelling, diﬀuse media
+1. Introduction
+Simulation of physical processes is often carried out when experiments are not feasible
+or simply impossible, or to ﬁnd parameters that produce a certain outcome if inversion is
+non-trivial. In virtual laser scanning (VLS), simulations of LiDAR (Light Detection and
+Ranging) create 3D point clouds from models of scenes, platforms, and scanners (Figure 1),
+that aim to recreate real-world scenarios of laser scanning acquisitions. Such simulated point
+clouds may, for certain use cases, replace real data, and may even allow for analyses where
+real data capture is not feasible, e.g. due to technical, economical or logistic constraints,
+or when simulating hardware which is not yet existing. However, there are use cases where
+VLS is not appropriate, for example, when analysing eﬀects only partially modelled in the
+simulation such as penetration of the laser into opaque objects.
+In a similar argument,
+(passive) photogrammetry is inadequate for the reconstruction of a non-textured ﬂat area,
+but still a useful method for many other tasks. Therefore, VLS can be seen as a tool to
+acquire 3D geospatial data under certain premises. These include:
+1. an adequate model of the 3D scene and the scanner, as well as the platform behaviour,
+2. a simpliﬁcation of the real-world beam-scene interactions to a computationally feasible
+and physically realistic level, and ﬁnally,
+3. an application for which VLS data is ﬁt for use.
+VLS can easily and cheaply produce large amounts of data with very well deﬁned prop-
+erties and known ground truth. Parameters (e.g. tree attributes such as crown base height)
+can be extracted from the scene model (e.g. a mesh object that is being scanned) automati-
+cally and without errors, and these parameters can in turn be used for training or validation
+of algorithms that attempt to extract them from point cloud data. Due to the low cost
+compared to real data acquisitions, VLS can be combined with Monte-Carlo simulations to
+solve non-continuous optimisation problems on scan settings and acquisition strategies. In
+a research workﬂow, VLS experiments may be employed to identify promising candidate
+settings before carrying out a selected number of real experiments that are used to answer
+the respective research questions.
+∗Corresponding authors
+Email addresses: lukas.winiwarter@uni-heidelberg.de (Lukas Winiwarter),
+hoefle@uni-heidelberg.de (Bernhard H¨oﬂe)
+Preprint submitted to Remote Sensing of Environment
+January 25, 2021
+
+Figure 1: Schematic concept of HELIOS++, showcasing platforms (boxed labels) and object models com-
+posing a scene (non-boxed labels). A variety of model types to represent 3D scenes are supported: terrain
+models, voxel models (custom .vox format or XYZ point clouds) and mesh models. For platforms, four
+options are currently supported: airplane, multicopter, ground vehicle and static tripod. A schematic di-
+verging laser beam and its corresponding waveform (magenta) is shown being emitted from the airplane and
+interacting with a mesh model tree and the rasterised ground surface.
+In this paper, we present a novel take on ray tracing-based VLS covering the given
+premises (1-3). This is implemented as the open source software package HELIOS++ (Hei-
+delberg LiDAR Operations Simulator ++)1. HELIOS++ is the successor of HELIOS (Bech-
+told and H¨oﬂe, 2016), with a completely new code base, implemented in C++ (whereas the
+former version was implemented in Java). HELIOS++ improves over HELIOS in terms
+of memory footprint and runtime, and also in functionality, correctness of implemented
+algorithms, and usability, making it versatile and highly performant to end users.
+We ﬁrst motivate the need for a novel VLS framework by a survey of previous method-
+ologies to laser scanning simulation and their applications, and point out the unique features
+of HELIOS++ (Section 2). In Section 3, we present the architecture and design considera-
+tions of HELIOS++. We then show diﬀerent types of applications and conduct a systematic
+literature survey of uses of HELIOS in Section 4. Technical considerations concerning the
+handling of big 3D scenes and ray tracing are dealt with in Section 5 and conclusions are
+drawn in Section 6.
+1HELIOS++ is available on GitHub (https://github.com/3dgeo-heidelberg/helios) and is licensed under
+both GNU GPL and GNU LGPL. HELIOS++ is also indexed with Zenodo (Winiwarter et al., 2021).
+3
+
+2. Existing implementations and state of the art virtual laser scanning
+Simulating a process within a system always involves a simpliﬁed substitute of reality.
+The complexity of this substitute depends on the process understanding, on computational
+considerations and on the speciﬁc problem that is to be solved. Approaches with diﬀerent
+levels of simulation complexity exist regarding i) the type of input scene model (e.g. 2.5D
+digital elevation models (DEMs) vs. 3D meshes) and ii) how the interaction of beam and
+object is modeled (e.g. single ray/echo vs. full-waveform). An overview of publications of
+these approaches is listed in Table 1.
+A simple airborne laser scanning (ALS) simulator is presented by Lohani and Mishra
+(2007) for use in research and education. Their tool comes with a user-friendly graphical
+user interface (GUI) and allows selecting diﬀerent scanner and trajectory conﬁgurations.
+This simulator models the laser ray as an inﬁnitesimal beam with zero divergence to simplify
+the ray tracing procedure. The scene is represented by a 2.5D elevation raster, which allows
+only a simpliﬁed representation of the Earth’s surface.
+In a diﬀerent application, the interactions between laser beams and forest canopies are
+investigated by Goodwin et al. (2007), Holmgren et al. (2003) and Lovell et al. (2005). They
+present approaches of combining 3D forest modelling and ALS simulation using ray tracing.
+As in Lohani and Mishra (2007), their simulators all model the laser beam as an inﬁnite
+straight line, which intersects the scene in one distinct point.
+Full-waveform laser scanners can record the full waveform of the backscattered signal,
+providing information about the objects in a scene that are illuminated by the conic beam.
+This waveform from a ﬁnite footprint was speciﬁcally simulated by Ranson and Sun (2000)
+in the forestry context and by Tulldahl and Steinvall (1999) for airborne LiDAR bathymetry.
+Morsdorf et al. (2007) use the ray tracing software POV-Ray2 to model the waveform of laser
+scans of a 3D tree model from a combination of intensity and depth images.
+Kukko and Hyypp¨a (2009) aim for a more complete and universal LiDAR simulator
+that considers platform and beam orientation, pulse transmission depending on power dis-
+tribution and laser beam divergence, beam interaction with the scene, and full-waveform
+recording. Their approach models the physics involved in LiDAR measurements in high de-
+tail, and is demonstrated for a use case in forestry. Similar to the work by Lohani and Mishra
+(2007), they use 2.5D elevation maps to represent the scene. This makes the simulator useful
+for airborne simulations over terrain or building models, where the scene is scanned from
+above and scene elements are assumed to be solid and opaque. However, it is less suited
+for penetrable 3D objects such as vegetation or overhanging geometries, especially for the
+simulation of ground-based acquisitions which are less in a bird’s-eye view perspective. Kim
+et al. (2012) present a similarly detailed simulator, which includes radiometric simulation
+and recording of the waveform and includes explicit 3D object representations. It is unclear
+if it also supports static platforms such as TLS.
+TLS simulations are the sole focus of some studies for speciﬁc applications, such as leaf
+area index inversion (Wang et al., 2013) or TLS measurement error quantiﬁcation (Hodge,
+2http://www.povray.org/
+4
+
+Publication
+Platforms
+Beam
+div.
+FWF
+Scene
+Comments
+North (1996),
+North et al. (2010)
+satellite
+✓
+✓
+3D
+FLIGHT model
+Lewis (1999)
+ALS
+✓
+✓
+3D
+used by
+Calders et al. (2013) &
+Disney et al. (2010)
+Tulldahl and Steinvall
+(1999)
+ALS
+✓
+✓
+3D
+for bathymetry
+Ranson and Sun
+(2000)
+ALS
+(nadir)
+✓
+✓
+3D
+Holmgren et al. (2003)
+ALS
+3D
+Goodwin et al. (2007)
+ALS
+3D
+LITE model
+Lohani and Mishra
+(2007)
+ALS
+2.5D
+Morsdorf et al. (2007)
+ALS
+✓
+✓
+3D
+using POVray
+Kim et al. (2009)
+ALS
+3D
+Kukko and Hyypp¨a
+(2009)
+ALS, MLS
+✓
+✓
+2.5D
+Hodge (2010)
+TLS
+✓
+✓
+2.5D
+Kim et al. (2012)
+ALS
+✓
+✓
+3D
+Wang et al. (2013)
+TLS
+3D
+Gastellu-Etchegorry
+et al. (2015)
+satellite,
+ALS, TLS
+✓
+✓
+3D
+DART model
+Bechtold and H¨oﬂe
+(2016)
+ALS, TLS,
+MLS, ULS
+✓
+✓
+3D
+HELIOS
+Table 1: Overview of virtual laser scanning simulators and associated publications. For each simulator, a
+check mark (✓) is added if they support simulation of ﬁnite (non-zero) beam divergence (”Beam div.”) and
+full waveforms (”FWF”). Scene representation may be in full 3D or 2.5D, i.e. raster-based.
+5
+
+2010). While Wang et al. (2013) use a more simple model assuming no beam divergence, the
+simulation described by Hodge (2010) includes both the modelling of beam divergence and
+recording of the waveform. Their simulation again uses 2.5D elevation models to represent
+the scene, which is appropriate for their particular objective of error quantiﬁcation in high-
+resolution, short-range TLS of natural surfaces, speciﬁcally ﬂuvial sediment deposits, of
+small scenes (area of 1 m × 1 m).
+Established Monte-Carlo ray tracing simulator are used and being extended for airborne
+and satellite laser scanning simulations. The librat model (Calders et al., 2013; Disney et al.,
+2009; Disney et al., 2010), a modular development of ARARAT (Lewis and Muller, 1993)
+is such a Monte-Carlo simulator. Similarly, North et al. (2010) extend the 3D radiative
+transfer model FLIGHT (North, 1996) to model satellite LiDAR waveforms. Monte-Carlo
+methods represent a simple, robust and versatile set of techniques to solve multi-dimensional
+problems by repeatedly sampling from a probability density function describing the system
+that is investigated (Disney et al., 2000). These stochastic methods are useful for simulating
+multi-scattering processes, e.g. for modeling canopy reﬂectance. The main drawback of
+Monte-Carlo ray tracing methods are high computation times to simulate suﬃcient photons
+for the scattering model to converge to an accurate solution (Disney et al., 2000; Gastellu-
+Etchegorry et al., 2016). The LiDAR extension of the Discrete Anisotropic Radiative Trans-
+fer (DART) model attempts to alleviate these restrictions by quickly selecting scattering
+directions of simulated photons using the so-called Box method and modeling their prop-
+agation and interaction using a Ray Carlo method, which combines classical Monte-Carlo
+and ray tracing methods (Gastellu-Etchegorry et al., 2016).
+A comprehensive review of simulators for the generation of point cloud data, including
+LiDAR simulators, is presented in Schlager et al. (2020) with focus on their applicability to
+generate data in the context of driver assistance systems and autonomous driving vehicles.
+In this context, they analyse algorithms with respect to their ﬁdelity, operating principles,
+considered eﬀects and possible improvements.
+In contrast to most of the previously mentioned approaches, HELIOS++ provides a
+framework for full 3D laser scanning simulation with multiple platforms (terrestrial (TLS),
+mobile (MLS), UAV-borne (ULS) and airborne (ALS)), and a ﬂexible system to represent
+scenes, which allows combination of input data from multiple sources and data formats
+(Figure 1). The simulation of beam divergence and full waveform recording are supported.
+While HELIOS++ may not be as realistic in terms of physical accuracy regarding the
+energy budget of a single laser shot as, e.g., DART, it provides a sensible trade-oﬀbetween
+computational eﬀorts and resulting point cloud quality.
+Users can simulate VLS over a
+large range of scales, and even combine diﬀerent scales in one scene. For example, a highly
+detailed tree model with individual leaves might be placed in a forest scene represented by
+(transmissive) voxels (Weiser et al., 2021), while using a rasterised digital terrain model
+as ground surface. This allows to model the inﬂuence of the surrounding of a particular
+object of interest on the derived VLS point clouds.
+Furthermore, HELIOS++ aims for
+high usability by providing a comprehensible set of parameters, while not overwhelming the
+users with options. These parameters represent the state of the art and are supported by
+peer-reviewed literature. Since HELIOS++ can be used from the command line and from
+6
+
+within Python, workﬂows integrating HELIOS++ can be easily scripted and automated, as
+well as linked to external software (e.g. GIS, 3D point cloud processing software, Jupyter
+Notebooks, and others).
+HELIOS++ comes with an extensive documentation of all algorithms that are used in
+the simulations, including examples and references to the relevant literature describing the
+implemented methods. Furthermore, the open source implementation allows any user to
+i) inspect and ii) alter/adapt the source code of the program. For ease of use, we provide
+pre-compiled versions that are ready to use for major operating systems (Microsoft Windows
+10 and Debian Linux 10.7 Buster), and the option to use Python as a scripting language to
+create, manipulate and simulate VLS data acquisition with HELIOS++.
+3. Implementation of HELIOS++
+This section introduces the concepts and interfaces of HELIOS++, for which the im-
+portant components are the overall architecture and modules (Section 3.1), platforms (Sec-
+tion 3.2), scanners and laser beam deﬂectors (Section 3.3), the waveform simulation (Sec-
+tion 3.4), input formats (Section 3.5) and output formats (Section 3.6), and the aspect of
+randomness and repeatability of results (Section 3.7).
+3.1. Architecture and modules
+The central element in HELIOS++ simulations is a survey. A survey contains links to
+the scene, which deﬁnes the objects that are scanned, the platform, on which the virtual
+scanner is mounted and moved through the scene, and to the scanner itself. Furthermore,
+a survey contains a number of legs, which represent waypoints for the platform. The scene
+consists of a number of parts. Each part represents one input source, for example, a 3D
+mesh ﬁle, or a voxel ﬁle. Multiple parts may be combined in a scene, and no limitation to
+the combination of diﬀerent data source types is imposed. HELIOS++ uses internationally
+accepted standard ﬁle formats for input and output. These elements are deﬁned through
+Extensible Markup Language (XML) ﬁles, that are referenced using (relative) ﬁle paths.
+XML is a text-based format, which can easily be manipulated using a text editor or an
+XML editor. Figure 2 presents the diﬀerent ﬁles along with a subset of the parameters that
+can be set in the respective ﬁles.
+A survey may then be run through either i) the command line, where an executable
+is provided or ii) the Python bindings pyhelios.
+The Python bindings allow access to
+the simulation parameters as parsed from the XML ﬁles, including changing the parameters
+programmatically for each simulation run. For example, diﬀerent scanners can be exchanged
+automatically and simulated in sequence in a single Python script without changing any
+other input and settings of the simulation.
+pyhelios furthermore allows access to the
+simulation result, i.e. the point cloud and the platform trajectory, and converts them into
+a NumPy array either at the end of the simulation run or through a callback function
+that can be executed every n-th cast laser ray. In this way, a live preview of the point
+cloud acquisition can be implemented in Python to give a visual impression of the ongoing
+simulation. A Python script distributed with HELIOS++ acts as such a visualiser, and
+7
+
+Figure 2: File structure of HELIOS++ survey, scene, platform, and scanner. A survey consists of one or
+more legs, and a single scanner, platform, and scene, respectively. A scene is built up from one or more
+parts, which can be of diﬀerent data type.
+is called with the same commands as the standalone executable. A user may thus quickly
+switch between using the pure C++ implementation without visualisation or the Python
+bindings with visualisation, as presented in Listing 1.
+Listing 1: Comparison between running HELIOS++ as an executable and through the Python wrapper
+providing an interactive viewer
+1 run\helios.exe data\surveys\arbaro_demo.xml --lasOutput --
+,→writeWaveform
+2 python pyhelios\helios.py data\surveys\arbaro_demo.xml --
+,→lasOutput --writeWaveform
+With pyhelios, it is also possible to combine HELIOS++ with tools like Jupyter Note-
+books, allowing for explanations along-side code and ﬁgures. We include sample notebooks
+in the documentation of HELIOS++. One of these samples is shown in Figure 3.
+3.2. Supported laser scanning platforms
+Both static and dynamic platforms are supported by HELIOS++, which can resemble
+an airplane (LinearPath platform), a multicopter (Multicopter platform), a ground-based
+vehicle (GroundVehicle platform) or a static tripod (Static platform). In the case of the
+LinearPath platform, the vehicle is moved with a constant speed from one waypoint (leg)
+to the next one. The orientation of the platform is always towards the next waypoint. The
+Multicopter platform additionally simulates acceleration and deceleration of the platform.
+In the turn mode smooth, the platform banks to make more smooth turns at the waypoints
+8
+
+Figure 3: Screenshot of a Jupyter Notebook showcasing the Python bindings of HELIOS++ by plotting the
+trajectory of a simulation over ﬂat terrain.
+9
+
+instead of stopping and turning on the spot. This mode simulates the banked angle turns
+available in the ﬂight protocols of major drone companies (e.g. DJI). Custom yaw angles
+for the beginning and the end of each leg can be provided. The GroundVehicle platform
+is bound to elements of the scene deﬁned as ground in the respective material ﬁle (cf.
+Section 3.5). Furthermore, it considers maximum turn radii and implements three-point-
+turns to resemble a car or tractor on which a scanner is mounted (i.e. MLS). The diﬀerent
+platforms and scene types (Section 3.5) are shown in Figure 1.
+As expected, choice of
+platform inﬂuences the resulting pointcloud, which is shown in Figure 4.
+Figure 4: Point clouds resulting from virtual laser scanning of the scene shown in Figure 1, using (a) an
+airplane, (b) a multicopter, (c) a ground vehicle and (d) a static tripod as platform. Since HELIOS++
+records which objects are generating which return, the points can be perfectly assigned to the objects, here
+illustrated by distinct colouring.
+3.3. Supported laser scanners and scan deﬂectors
+The core component of the simulation is the laser scanner, which includes a model for
+the scan deﬂector. The choice of the deﬂector inﬂuences the resulting scan pattern (Fig. 5).
+HELIOS++ supports polygonal mirror deﬂection, resulting in parallel scan lines with
+even point density (Fig. 5a), ﬁbre-optics, where the beam is fed through ﬁbreoptic cables
+to point in diﬀerent directions, resulting in a similar scan pattern to (a), but without the
+need of mechanically moving parts (Fig. 5b), a swinging mirror, which results in a zig-zag-
+pattern with increased point densities at the extrema (Fig. 5c) and rotating slanted mirrors,
+resulting in a conical point pattern at a constant scan angle oﬀ-nadir, also referred to as
+Palmer scanner (Fig. 5d).
+3.4. Waveform simulation
+During real LiDAR acquisitions, a laser beam sent out from the laser scanner has a ﬁnite
+footprint, i.e. a non-zero area that intersects with the scene. For every inﬁnitesimal point
+10
+
+Figure 5: Diﬀerent scan patterns depending on the deﬂector used in the simulation: a) rotating mirror, b)
+ﬁbre-optic line scanner, c) oscillating mirror and d) slanted rotating mirror (Palmer scanner). The patterns
+shown here result from simulations with HELIOS++ using the respective deﬂectors, albeit with unrealistic
+settings of pulse repetition rate and scanning frequency, in order to show the patterns more clearly.
+in this area, energy is transmitted back to the detector where it is recorded as the integral
+of intensities over the area. By considering this received intensity over time, it is possible
+to extract multiple echoes from one laser pulse, corresponding to multiple targets that were
+hit by parts of the intersection area, respectively.
+In HELIOS++, the non-zero beam divergence is simulated by subrays, that are sampled
+in a regular pattern around the central ray (Fig. 6). Every subray has its own base intensity,
+which is calculated according to Equation 1, representing a 2D Gaussian power distribution
+(Carlsson et al., 2001).
+I = I0 exp
+ −2r2/w2
+(1)
+11
+
+where I0 [W] is the peak power, w [m] the local beam divergence and r [m] the radial
+distance from the power maximum, i.e. the ray centre. w is calculated using Equation 2
+from the beam waist radius w0 [m], and the helper values ω =
+λR
+πw2
+0 and ω0 = λR0
+πw2
+0 with λ
+[nm] as the wavelength, R [m] the range of the target and R0 [m] the focusing length of the
+laser.
+w = w0
+q
+ω2
+0 + ω2
+(2)
+Every subray is individually cast into the scene and intersected with objects. If it hits
+an object, a return is generated and recorded by the detector. The respective subray does
+not continue in the scene through transmission or reﬂection. In the case of the transmissive
+voxel model (cf. Section 3.5), a subray may either fully traverse a voxel or produce a return,
+but never both. Therefore, the property of transmissivity of a scene part is coupled to the
+use of multiple subrays. The power returned from the object is further dependent on the
+material speciﬁed in the scene deﬁnition (Section 3.5).
+The number of subrays generated can be set by the user by providing the
+beamSampleQuality parameter in the XML ﬁle of the scanner or the survey. The beamSampleQuality
+corresponds to the number of concentric circles where subrays are sampled. For each circle,
+the number of subrays is deﬁned as ⌊2πi⌋where i = 1, . . . ,beamSampleQuality is the circle
+index. This ensures that the angular distance between adjacent subrays is approximately
+constant, i.e. each subray represents a solid angle of equal size. A central subray is always
+added. Figure 6 shows the subray distribution for three diﬀerent beam sample qualities.
+Figure 6: Subray conﬁgurations for beam sample qualities of (a) 2 (7 subrays), (b) 5 (93 subrays), and (c)
+9 (279 subrays). The colour of the subrays corresponds to the normalised intensity at this location within
+the beam cone: low (purple) to high (yellow). The black circle represents the single beam divergence (at
+the 1/e2 points, here: 0.3 mrad), the gray circle twice the beam divergence.
+The pulse shape in time is approximated using bins of a regular, user-deﬁned size via the
+parameter binWidth_ns. Each bin’s power is calculated according to Equation 3, where t
+[ns] is the time and τ [ns] is the pulse length of the scanner divided by 1.75 (Carlsson et al.,
+2001). I [W] is calculated for each subray according to Equation 1.
+P(t) = I
+ t
+τ
+2
+exp
+
+−t
+τ
+
+(3)
+12
+
+For every pulse, the subrays are collected as a representation of the full returned wave-
+form, and the recorded power for each bin is taken as the sum of the subray’s waveforms,
+shifted according to the diﬀerent ranges of the subrays. Range diﬀerence is converted to
+time diﬀerence by using the speed of light as a constant (c = 299,792,458 m s−1). A local
+maximum ﬁlter is then used on the summed waveform to detect peaks, which are regarded
+as echoes and exported as points. Optionally, a Gaussian may be ﬁtted to the resulting
+waveform, to get a measure of echo width (i.e. standard deviation of the Gaussian). The
+position of the point along the range (time) axis, however, is taken from the local maximum,
+not from the ﬁtted Gaussian, as the outgoing waveform (Eq. 3) is not Gaussian.
+3.5. Input scene models
+HELIOS++ supports data formats that are (de-facto) standards in the ﬁeld, and can
+be created and manipulated with free software such as QGIS3, CloudCompare4, Blender5 or
+AmapVOX6.
+3.5.1. Wavefront objects
+In wavefront object ﬁles (ﬁle extension .obj), meshes are represented as lists of triangles
+(triples of point IDs) and points (triples of coordinates). This allows opaque 3D models
+of arbitrary complexity. In addition, material properties can be assigned to the objects in
+so-called material ﬁles (ﬁle extension .mtl; Wavefront Technologies, 1992).
+3.5.2. GeoTIFF models
+Raster models created with common GIS tools, such as a digital elevation or a digital
+surface model, can be included. The raster is converted to a triangular mesh on import,
+where the pixel centres are interpreted as points. Invalid pixels (i.e. no-data values) are
+ignored in the triangulation, resulting in holes in the mesh. This data type allows an simple
+representation of the Earth’s surface. As prescribed by the ﬁle format, only 2.5D-data is
+supported.
+3.5.3. Point clouds
+In ASCII xyz ﬁles, point clouds can be used as a raw input to HELIOS++. On import,
+the point clouds are voxelised using a voxel size deﬁned by the user. In addition, a normal
+vector used for intensity calculation can be assigned to the voxels (by nearest neighbour or
+mean reducing) or calculated from the point cloud on the spot (cf. Section 5). Alternatively,
+all laser rays can be set to have an incidence angle of 0◦, or the rays are intersected with the
+actual faces of the cube representing the voxel. Material properties can be deﬁned in the
+respective scene part deﬁnition of the XML ﬁle.
+3https://qgis.org/en/site/
+4https://www.danielgm.net/cc/
+5https://www.blender.org/
+6Vincent et al. (2017), http://amap-dev.cirad.fr/projects/amapvox
+13
+
+3.5.4. Transmissive voxels
+Especially for modelling vegetation, we include support for voxel data containing plant
+area density information (e.g. created using the AmapVOX software (Vincent et al., 2017),
+ﬁle extension .vox). Multiple modes are supported in this case:
+• opaque voxels, where the voxels are represented by solid cubes with a ﬁxed side length
+equal to voxel resolution,
+• adaptive scaling of opaque voxel cubes (with optional random but reproducible shift
+to avoid regular patterns in the result), where the scaling (side length of a voxel a) is
+dependent on the plant area density PAD, the user-deﬁned scaling factor α, the base
+voxel size a0 and the maximum PAD, related by Equation 4, and
+• transmissive voxels (explained in more detail in the following).
+Point clouds resulting from a tree simulation using these diﬀerent modes are shown in
+Figure 7. The opaque voxel models also support the deﬁnition of material properties through
+the scene part’s deﬁnition. A comprehensive study on the eﬀects of diﬀerent levels of detail
+in modelling forests using the ﬁrst two modes on the extraction of forestry and point cloud
+parameters is performed by Weiser et al. (2021).
+a = a0
+
+PAD
+PADmax
+α
+(4)
+Here, a is the side length of the resulting cube, a0 the base voxel size, PAD the plant
+area density of each individual voxel, PADmax a maximum value for the plant area density
+and α a user-deﬁned scaling factor.
+The transmissive voxels use an extinction approach as presented by North (1996). The
+extinction coeﬃcient σ is calculated following Equation 5:
+σ = µL
+2π
+Z 2π
+0
+gL |Ω′ · ΩL| dΩL
+(5)
+Here, µL is the plant area density (PAD) as deﬁned in the .vox ﬁle, gL is the probability
+taken from the leaf angle distribution at direction L, and |Ω′ · ΩL| is the cosine of the angle
+between the incident ray Ω′ and the direction ΩL. This leaf angle distribution is supplied via
+a look-up-table as shown in Table 2, and examples for planophile, erectophile, plagiophile,
+extremophile, spherical and uniform distributions are provided.
+Subsequently, a random number R is drawn from a uniform distribution ∈[0, 1). The
+expectation of the intersection of a subray with a voxel given the extinction coeﬃcient σ is
+then given as in Equation 6, where s is the distance of an echo after entering the voxel (i.e.
+traversed distance).
+s = −ln(R)
+σ
+(6)
+If the actual length of the subray traversing the voxel is larger than s, no echo is recorded
+for this ray in the voxel, and it is assumed to have transmitted through the voxel, potentially
+14
+
+Figure 7: VLS point cloud of a tree based on diﬀerent voxel modes, using a UAV as a platform. Point clouds
+are simulated using input voxel models with diﬀerent ﬁxed sizes (a-c), PAD-dependent scaled voxels (d and
+e) and transmissive voxels (f).
+intersecting the next voxel or another object. Otherwise, an echo is created at distance s
+from where the subray ﬁrst entered the respective voxel, and the subray is not continued
+through the scene (North, 1996).
+Irrespective of the input type, each scene part can be individually scaled, rotated and
+translated within the scene, allowing the re-use of models to create multiple instances of
+similar objects. These transformations can also be manipulated using the Python bindings.
+For rotations, both extrinsic (”global”, ﬁxed coordinate axes) and intrinsic (”local”, rotating
+coordinate axes) modes are supported.
+HELIOS++ allows arbitrary combinations of all possible object models in a scene. For
+example, a GeoTIFF can be used as digital terrain model on which a vehicle is moving,
+combined with transmissive voxel models of trees, mesh models for tree stems and a point
+cloud of buildings, which is voxelised by HELIOS++ (Figure 1). Such combination allows
+highly versatile use of the scene deﬁnition, while considering shadowing and overlapping
+eﬀects between the diﬀerent types of object models, and is one of the key advantages over
+other VLS software.
+15
+
+3.6. Output format and options
+The simulated point clouds can be written either as LAS ﬁle (Version 1.0, point format 1),
+according to the format deﬁnition by the American Society of Photogrammetry and Remote
+Sensing (ASPRS, 2011), as LAZ ﬁle, which is a lossless compression of LAS provided by the
+LASzip library7, or as ASCII ﬁle, where the point coordinates and attributes are written in
+columns. The LAS/LAZ formats allow for smaller ﬁle sizes and faster read/write access (cf.
+Section 5.4), while the ASCII format can be parsed by any program working with text ﬁles.
+In addition to creating compressed LAS ﬁles, HELIOS++ can also compress output
+ASCII ﬁles, if smaller output sizes are required. Uncompressing LAZ or compressed ASCII
+ﬁles is possible by invoking HELIOS++ using the --unzip ﬂag.
+In the simulation of full waveforms (see Section 3.4), the echo width is optionally es-
+timated for every recorded return.
+Since this estimation uses a non-linear least squares
+method and is hence expensive to calculate, the estimation has to be switched on explicitly
+by the user. In typical use cases, this increases the runtime of the simulation by a factor of
+1.3.
+If the full waveform is to be exported, a separate ASCII ﬁle will be written. This ﬁle
+contains information about every beam that generated at least one hit consisting in the beam
+origin and the beam direction, as well as the sampled returned waveform. The bin size as well
+as the maximum length of this sampled waveform can be deﬁned by the user (Section 3.4).
+To connect the point cloud output with the full waveform output, the point cloud has an
+attribute fullwaveIndex, which corresponds to the fullwaveIndex in the ASCII waveform
+output. Multiple points, if coming from the same beam, may have the same fullwaveIndex.
+The output created by HELIOS++ can be easily converted to standard waveform formats
+such as PulseWaves and LAS 1.4 WDP.
+Furthermore, HELIOS++ comes with an option to export the trajectory of the platform.
+The time interval between successive platform positions can be deﬁned by the user in the
+survey XML ﬁle. In addition to the time and the position of the platform, the attitude
+angles of roll, pitch and yaw are exported.
+3.7. Randomness and repeatability
+The trajectory of the platform, the scanner deﬁnitions and the ray-scene interactions
+with the exception of transmissive voxels are deterministic. To allow for more realistic point
+clouds, random noise sources may be introduced at various points of the simulation. A
+single distance measurement is attributed with a random ranging error, drawn from a normal
+distribution with parameters deﬁned for each scanner. Additionally, random platform noise
+can be added to simulate trajectory estimation or scan position localisation errors.
+By
+default, the system time is used to generate randomness, which results in diﬀerent outcomes
+for every simulation run. However, the ability to produce the identical results in repeated
+simulation runs is a major advantage of VLS over real data acquisitions and may be aspired
+for certain use cases. To allow for repeatable survey results while using randomness, there
+7https://laszip.org/, Isenburg (2013)
+16
+
+are additional options to deﬁne a custom seed for pseudo-randomness generation. Still, when
+using multithreading, each thread accesses the randomness generator in a non-deterministic
+order, resulting in diﬀerent outputs for every simulation run. This can be avoided by running
+HELIOS++ in single-threaded mode and with a ﬁxed seed. This will generate the exact
+same result in repeated runs, even for transmissive voxels, as the random number drawn
+from the uniform distribution is also created based on the seed.
+4. Applications of laser scanning simulation
+To investigate the usability of the HELIOS++ concept of providing a sensible trade-oﬀ
+between physical reality and computational complexity, along with the support of generic
+input ﬁles to create the 3D scene, we present applications of laser scanning simulation. This
+literature survey is based on studies that use HELIOS++’s predecessor, HELIOS (Bechtold
+and H¨oﬂe, 2016) or pre-release versions of HELIOS++. Since the functionality of HELIOS,
+apart from the visualisation module, is fully integrated in HELIOS++, the publications
+presented in the following provide an adequate review of simulation applications.
+The analysis is conducted on all publications that cite the original publication of Bechtold
+and H¨oﬂe (2016), and that actively use HELIOS in their research according to the published
+article. It consists of journal papers, conference contributions and posters. The following
+questions are posed to analyse the contents of each publication.
+• What is the scientiﬁc target of the simulation?
+• How many simulations are carried out on which platform (ALS, TLS, ULS, MLS)?
+• Which type of model is employed to compose the scene for the simulation?
+• Which parameters are extracted from the point cloud, if applicable?
+• What is the resulting VLS point cloud compared to?
+The synthesis of the literature review allows a grouping of the publications and of the
+purposes of laser scanning simulation into four main categories: (1) optimising or analysing
+diﬀerent scan settings and acquisition modes, (2) comparing parameters extracted from sim-
+ulated data to error-free ground truth, (3) generating training data for supervised machine
+learning, and (4) testing and development of novel or future algorithms and sensors.
+4.1. Data acquisition planning and scan setting eﬀects
+Data acquisition planning at its core is an optimisation problem. The goal is to acquire
+data that is ﬁt for the purpose of the analysis by minimal eﬀort. This can be a minimum
+number of scan positions, ﬂight lines, etc., that is suﬃcient for the speciﬁc requirement to
+the data, such as coverage of the scene regarding occlusion or a certain point density. While
+ﬂight planning tools and visibility analysis-based methods can be used to create potential
+acquisition plans, they usually lack methods to verify the ﬁtness for use of obtained data.
+With virtual laser scanning, assuming that at least a coarse model of the area of interest
+is available, a 3D point cloud can be generated and tested for its ﬁtness directly in the
+17
+
+planned application. There is no need to deﬁne proxy metrics like target point density,
+required accuracy and overlap as required by simple survey planning tools. This way, users
+can ensure that the acquired data will meet all requirements such as coverage, adequate
+representation of geometry, and resolution before actually going to the ﬁeld to collect the
+data, by running their analyses on the simulated point clouds and interpreting the results.
+Similarly, the eﬀects of diﬀerent scan settings on parameters extracted from the simulated
+point clouds can be studied with HELIOS++, as single variables can easily be manipulated
+in a way that is isolated from all other inﬂuences, including environmental inﬂuences, which
+are very diﬃcult to control in repeated real-world acquisitions. For example, the eﬀects of
+ﬂying height and maximum scan angle on the resulting ground point density and resolution
+(i.e. illuminated area per beam) may be analysed. Similarly, TLS scans of diﬀerent resolution
+can be simulated and the eﬀect of resolution on the results of data analysis (e.g. the quality
+of extraction of tree stems) can be quantiﬁed.
+While the quality of the simulation in terms of being physically realistic highly depends on
+the input models, even a coarse model can be useful to estimate occlusion and resulting point
+densities. Such analyses, carried out prior to real data acquisitions, can save valuable time
+in the ﬁeld. Using a Monte-Carlo approach, multiple simulations using diﬀerent parameters
+are carried out to create the optimal (in terms of number of positions, time, etc.) acquisition
+plan.
+Existing publications in this category include Backes et al. (2020), who use a digital
+surface model created from photogrammetry to simulate acquisition of an alpine valley by
+TLS and ULS. They estimate the minimal detectable change, to optimise scan positions and
+trajectories for change analysis. Similar analyses, but with focus on resulting point density
+and completeness of data acquisition, are carried out based on a DEM provided by public
+agencies by Lin and Wang (2019). They are able to show that a downsampled scene model
+can provide accurate measures for simulated point densities when also reducing the pulse
+frequency. This validates the simulation’s representation of spatial scales.
+A validation of scan position planning based on viewshed analysis is carried out with
+respect to achieved accuracy, point density and completeness by Previtali et al. (2019).
+Their use cases are acquisitions of complex archaeological sites, where complete coverage is
+often diﬃcult to achieve due to occlusions. In two examples, they optimise the positions of
+97 and 16 scan positions, respectively, to scan a basilica and part of an ancient food storage
+in Italy.
+The eﬀect of scan settings on point cloud-based parameters is analysed for forestry set-
+tings by H¨ammerle et al. (2017), who extract understory tree heights from TLS and ULS
+data. They use 3D models created with the Arbaro tree generator8, on which they densely
+sample points to create a reference point cloud as ground truth. They ﬁnd a favourable
+trade-oﬀbetween acquisition eﬀort and accuracy of results for a number of three TLS scan
+positions around a tree object of interest (H¨ammerle et al., 2017). Similarly, Li et al. (2020)
+create 3D tree models using ONYXTREE9 and evaluate the inﬂuence of scan parameters
+8http://arbaro.sourceforge.net/ (Weber and Penn, 1995)
+9http://www.onyxtree.com/
+18
+
+on extracted values of diameter at breast height (DBH), tree height, stem curve and crown
+volume. They succeed in reducing the root-mean-squared error on these values by iteratively
+adapting scan parameters.
+Weiser et al. (2021) analyse the diﬀerent opaque voxel models at diﬀerent scales and
+their eﬀect on common tree metrics, showing that a scaled voxel model requires much less
+complexity (i.e., allows for a larger voxel size) than binary voxels at a ﬁxed scale. Sch¨afer
+et al. (2019) use the novel transmissive voxel-support of HELIOS++ for similar analyses
+with ALS and ULS data.
+4.2. Algorithm and method evaluation: validation and calibration
+In numerous point cloud analysis methods, the objective is to extract certain parameters
+describing the objects of interest. For example, in forestry applications, ALS and TLS point
+clouds are commonly used to derive the diameter at breast height of trees, crown radii, tree
+heights, and tree species (Giannetti et al., 2018). To calibrate the extraction algorithms as
+well as to validate the results, in-situ measurements are required, which are laborious and
+costly to acquire, and not free of error.
+An alternative to this in-situ data acquisition can be provided by HELIOS++, if the
+parameters to be extracted from the point cloud can be derived from the objects within
+the scene, or the scene is created dynamically according to the parameters. For example, a
+method may be designed to measure DBH from a point cloud. In VLS, the true values of
+DBH can be derived from the stem models, or the virtual tree models themselves may be
+generated according to given values of DBH. In addition to being error-free, the domain of
+the parameters (e.g. the range of DBH values) used in the simulation can be deﬁned by the
+user. A simulated example can therefore be picked to have exactly the properties needed in
+a speciﬁc application (say, use case-speciﬁc DBH values between 20 cm to 25 cm), whereas
+real objects with the required properties as ground truth may be hard to ﬁnd.
+In addition to parameter extraction, perfect ground truth can be used to evaluate the
+performance of classiﬁcation algorithms. Currently, classiﬁcation methods are diﬃcult to
+compare, as authors use diﬀerent evaluation approaches, mainly due to the lack of semantic
+reference data. Since in VLS the interaction between the laser beam and the scene can be
+attributed to the exact mesh face that is hit during ray casting, and therefore to a speciﬁc
+object, the ground truth data is free of error even in highly complex and multi-echo sce-
+narios. This has compelling advantages: First, reference data can be created automatically,
+drastically cutting costs and providing the possibility of generating massive amounts. And
+second, it removes labelling errors, as manual labelling will always include some degree of
+human error.
+Considerable research using HELIOS to validate or calibrate extracted parameters has
+been undertaken in multiple forestry applications. Liu et al. (2019a) and Liu et al. (2019b)
+estimated leaf angles on trees, where ground truth is practically impossible to obtain, because
+in real settings, leaves are continuously moving due to wind. VLS allows to validate their
+approach of leaf angle estimation and subsequently apply it to real data. Wang et al. (2020)
+validate their calculation of photon recollision probability over spatial locations using VLS
+data. Zhu et al. (2020) use two diﬀerent methods to assess Leaf Area Index (LAI) and
+19
+
+compare these methods with ground truth obtained from the object models, allowing them
+a comparison with the true LAI of the input objects. For tree segmentation, ground truth is
+also diﬃcult to obtain, as tree canopies often intersect each other. By using HELIOS, Wang
+(2020) and Xiao et al. (2019) obtain perfect ground truth for training and validation of their
+segmentation methods. Wang (2020) achieve 2.9 % and 19.8 % RMSE for tree height and
+crown diameter estimates.
+In a non-forestry application, road curves are reconstructed and the reconstruction is
+compared with the model parameters (Zhang et al., 2019), achieving a relative accuracy
+of 0.6 % in circle radii estimation using VLS data. Requirements for Building Information
+Modelling (BIM) are evaluated by (Rebolj et al., 2017), who generate around 100 point
+clouds to ascertain the inﬂuence of parameter values.
+They deﬁne accuracy criteria for
+the successful identiﬁcation of building elements in the scans. Bechtold et al. (2016) test
+a segmentation tool for rock outcrops by using HELIOS as a simulator. They show the
+value of simulated test data for method development by easily generating point clouds with
+diﬀerent occlusions and scan settings, resulting in a multitude of point densities and point
+patterns.
+4.3. Method training
+With the advent of neural networks as supervised machine learning method in geospatial
+domains, the need for training data has grown almost indeﬁnitely. While raster-based ap-
+proaches can make use of existing pre-trained networks by domain transfer (Pires de Lima
+and Marfurt, 2019), no such networks exist for point-based deep learning such as PointNet/-
+PointNet++ (Qi et al., 2017).
+Simulated data, though only replicating parts of reality, can be used by neural networks
+to learn basic descriptors which describe point cloud neighbourhoods, e.g. planes, corners
+or edges. From these descriptors, higher-level features are derived, which are subsequently
+used in classiﬁcation or regression (Winiwarter et al., 2019).
+Once a network has learned to represent data in form of these features, it can be adjusted
+to real data by adding relatively small amounts of training data, in approaches shown to
+work for the image domain (Danielczuk et al., 2019). Further research is needed on this
+approach especially for point cloud data, but HELIOS++ allows easy and fast generation
+of labelled training data, which does not suﬀer from ground truth errors.
+As an example application of this purpose, Mart´ınez S´anchez et al. (2019) use HELIOS-
+simulated data to train and evaluate a semantic classiﬁcation of an urban scene created from
+OpenStreetMap10 models. The use of VLS allowed a quantiﬁcation of their classiﬁer’s total
+error, which amounts to 0.5 % on simulated point clouds.
+4.4. Sensing experimentation
+The fourth category summarises publications concerned with the development of novel
+sensors and methods, such as Park et al. (2020), who present a new Time-of-Flight sensor
+10https://www.openstreetmap.org/
+20
+
+and compare its results to a HELIOS simulation. In general, the parameters of the virtual
+sensors can be tuned to resemble a non-existent sensor, the performance of which can then
+be simulated without the need of actually building a prototype. Especially when looking
+for potential improvements of current sensors, this enables the identiﬁcation of weak links
+or bottlenecks for certain use cases.
+More in-depth experimentation is also conceivable, where e.g. a novel deﬂector model
+shall be simulated. Due to the open-source license, a developer may take the HELIOS++
+framework and would only have to implement a new deﬂection method, whereas the scene
+and all other components can be used as is to run a simulation, testing the usability of the
+novel deﬂector model.
+Especially when considering the short lifecycle of current hardware, simulation may be
+the only way to ensure ﬁtness for use of the sensor. Equivalent simulators are widely used in
+remote sensing, as especially tools working with data acquired by satellites can be developed
+using the simulated data, and are then ready to use as soon as the ﬁrst real data is delivered.
+5. Computational considerations
+Since modern laser scanners can measure millions of points per second, it is crucial to have
+an eﬃcient implementation for the ray-scene intersection. In this section, we ﬁrst present
+theoretical considerations on the ray tracing implemented in HELIOS++, the modelling of
+vegetation and options of generating large and complex scenes. In Section 5.4, a comparison
+between HELIOS++ and its predecessor HELIOS is carried out.
+5.1. Ray tracing implementation using a kD-Tree
+A scene S in HELIOS++ context can be mathematically described as a set of primitives,
+so S = {P1, . . . , Pn}. For each primitive P its boundaries are deﬁned considering an axis-
+aligned bounding box, its centroid, and the set of vertices V = {v1, . . . , vm} composing the
+primitive. Each primitive supports rotation, scaling and translation together with a material
+speciﬁcation deﬁning its reﬂectance and specularity. Certain primitives, such as transmissive
+voxels, also support a look-up table which can be used for vegetation modelling, as explained
+in Section 5.2.
+The scene building process consists in generating the set of primitives composing the
+scene. Multiple input sources are supported (cf. Section 3.5), so it is possible to build a
+scene considering Wavefront Object ﬁles, point clouds as ASCII ﬁles specifying (X, Y, Z)
+coordinates for each point, GeoTIFF ﬁles, or a custom voxel ﬁle format based on AMAPVox
+(Vincent et al., 2017). When building a scene, diﬀerent sources can be considered, as each
+one is associated to its own scene part. It is also possible to apply aforementioned aﬃne
+transformations to an entire scene part. This can be used, for instance, to load the same
+object multiple times in one scene and placing it in diﬀerent locations through translations.
+Saving and loading already built scenes is relying on boost serialisation technology (Ramey,
+2004).
+Ray intersections are computed through a recursive search performed over a kD-Tree
+containing all primitives (Bentley, 1975). Let O be the ray origin and ˆv the normalised ray
+21
+
+Beam horizontal component
+Beam vertical component
+Hit probability gL
+1.000000
+0.000000
+0.424413
+0.999683
+0.025180
+0.424682
+0.998732
+0.050345
+0.425489
+...
+...
+...
+0.009444
+0.999955
+0.848789
+0.000000
+1.000000
+0.848822
+Table 2: Values from a look-up table (LUT) for the hit probability gL at a given beam direction L, represented
+by horizontal and vertical component. The numbers here correspond to an erectophile distribution and are
+obtained using a numerical integration method on the formulae from North (1996). The probability gL is
+normalised over 2π.
+direction vector. When recursively searching through the kD-Tree starting at O, ˆv is used to
+consider which node must be visited until a leaf node is reached. For each recursive search
+operation s, coordinates are analysed, so s ≡0 mod 3 means the X coordinate splits the
+space, s ≡1 mod 3 means the Y coordinate splits the space, and s ≡2 mod 3 means the
+Z coordinate splits the space. Once inside a leaf node, ray intersections with respect to each
+primitive are computed. The minimum distance intersection t0 is the time the ray needed
+to enter the primitive while t1 is the time the ray needed to leave it. It is possible to have
+only t0 determined, as is the case for triangles, since they are only intersected once per ray.
+For the special case of primitives which support multiple ray intersections, such as trans-
+missive voxels, the process is repeated considering consecutive origins. Suppose we have a
+transmissive voxel intersected by a ray {O1, ˆv}: If this voxel lets the ray pass through it, then
+the next ray intersection will be found considering the ray {O2, ˆv}, with O2 = O1 +(t1 +ε)ˆv,
+where ε is a small decimal number to assure getting out of the previously intersected prim-
+itive.
+5.2. Vegetation modelling: Transmissive voxels
+One of the new functionalities of HELIOS++ is vegetation modelling through transmis-
+sive voxel primitives. For this purpose, a look-up table for leaf angle distribution is used to
+compute ray intensity with respect to a σ (cross-section) value obtained from it. The values
+in this look-up table represent a hit probability gL given the horizontal and vertical com-
+ponent of the beam vector (Tab. 2). The intensity I is calculated according to Equation 7
+where P is the emitted power from Equation 3 (Carlsson et al., 2001), d is the distance
+between ray origin and intersection point, α2 is the square of the scanner receiver diameter,
+β2 is the square of the scanner beam divergence and λ is the product between atmospheric
+factor and scanner eﬃciency. The σ value can be seen as function of ray direction vector
+σ(ˆv), so it will have a diﬀerent value depending on ray incidence.
+I ∝λσ Pα2
+4πd4β2
+(7)
+Voxels can operate in transmissive mode. This implies the voxel will let the ray continue
+and not return a signal after intersection if σ = 0.
+If σ > 0, then the return of the
+22
+
+ray is randomly determined by sampling a value u from a uniform distribution ∈[0, 1)
+and computing s =
+−log(u)
+σ
+. If the value of s is greater than the distance between both
+intersection points at the voxel, the ray will continue. Otherwise, the ray will stop at the
+voxel. For the non-transmissive mode, only voxels with transmittance 1.0 will allow rays to
+continue.
+Thus, by using detailed voxels operating in transmissive mode together with an appro-
+priate look-up table speciﬁcation, HELIOS++ is capable of simulating laser scanning of
+vegetation from a precomputed leaf angle distribution following North (1996). To achieve
+high-quality output, it is recommended to apply individual leaf angle distributions for each
+vegetation type within a scene.
+5.3. Strategy to handle large and complex scenes
+When loading point clouds from ASCII xyz ﬁles, big ﬁles might not be entirely contain-
+able in memory. For this purpose, a two-stage algorithm is used to digest point clouds of
+arbitrary size. The ﬁrst stage simply ﬁnds the minimum and maximum values for each co-
+ordinate and counts the total number of points. The second stage builds all necessary voxels
+to represent the point cloud inside HELIOS++. For this purpose, a voxel grid is allocated.
+Then, voxels which have points inside them are built as HELIOS++ primitives. For each
+voxel its spatial coordinates (X, Y, Z), normal vector components (Nx, Ny, Nz) and colour
+components (R, G, B) are considered, if available, as may be the case for photogrammetric
+point clouds.
+The colour for the voxel is computed as the average of each colour component for all
+points inside the voxel. We approximate the sRGB color space by averaging the squares of
+the red, green, and blue values, and taking the square root of this average as the resulting
+value for the voxel. If normals are provided, the voxel normal can be determined either as
+the normal of the point which is closest to the voxel centre or the average of each normal
+component for all points.
+In case no normal vectors are provided, HELIOS++ can estimate them using singular
+value decomposition (SVD, Golub and Kahan (1965)). All points inside a voxel are con-
+sidered to build a matrix of coordinates, for which singular values and singular vectors are
+obtained. Then, the singular vector of the smallest singular value is the orthonormal vector
+deﬁning the plane which best ﬁts the point set in terms of the smallest sum of squared
+orthogonal residuals. It can hence be understood as the voxel normal vector. The normal
+estimation method can be applied to the entire input point cloud in a single stage for small
+point clouds. If the size of input point cloud is too big with respect to RAM, the normal
+estimation is performed in batch mode, dividing the workload into smaller parts. Each batch
+extracts points inside its voxels while ignoring points outside its scope.
+5.4. Performance comparison
+As the direct successor of HELIOS (Bechtold and H¨oﬂe, 2016), it is interesting to com-
+pare the performance of HELIOS++ with the original implementation in Java. However,
+HELIOS++ was not just a port of the code, but also comes with multiple computational
+improvements over its predecessor. One of these improvements concerns the ability for the
+23
+
+user to better leverage accuracy at the cost of runtime, or vice versa, by setting parameters
+accordingly. For some tasks, a rough, thereby faster simulation may suﬃce, whereas for
+other tasks very detailed simulation is required, but smaller sample sizes can be used or long
+processing times are acceptable.
+Another improvement concerns the binning mechanism for the full-waveform simulation,
+which is used for maxima detection even if the waveform is not written to an output ﬁle.
+In HELIOS++, we use the parameters binSize_ns and maxFullwaveRange_ns for this
+binning, where the bin size is used for both the outgoing pulse and the returned waveform.
+To limit the impact on performance of very low-incidence rays with a high sampling quality,
+the user can provide a maximum length of the recorded waveform, beyond which any further
+echoes are discarded.
+To compare the performances of HELIOS++ (Version 1.0.0) and HELIOS (Version 2018-
+09-24), we carry out a number of simulations using diﬀerent parameter settings, and record
+the runtime as well as peak memory usage.
+We present three diﬀerent scenes, at three
+diﬀerent complexity levels, and make use of the option in HELIOS++ to write diﬀerent ﬁle
+types and to skip the echo width determination, if not required.
+The ﬁrst example scenario represents an ALS survey over terrain, which is created by
+loading a digital terrain model in GeoTIFF format as described in Section 3.5. Since the
+GeoTIFF loader in the Java version was faulty and this version is no longer maintained, we
+created a mesh in Wavefront Object format as an input for the Java version. We simulate
+two ﬂight lines at an altitude of 1,500 m asl over terrain with an extent of 26 km × 17.8 km.
+As scanner we use a Leica ALS50-II, and a Cessna SR-22 as platform. The scene is shown
+in Figure 8.
+Figure 8: Visualisation of example survey for airborne laser scanning (ALS), using a digital terrain model
+as object and a standard ALS instrument as scanner. The 3”-SRTM model by the USGS is used as input
+raster.
+24
+
+The second scenario represents a mobile laser scan of an urban area, where a car is
+driving through downtown buildings modelled as prisms, cylinders and pyramids (Figure 9).
+The trajectory of the car is 208 m long and its average speed is 20 m s−1. The scanner is an
+oblique-mounted RIEGL VUX-1UAV.
+Figure 9: Visualisation of example survey for mobile laser scanning (MLS), with a car driving between
+objects of simple geometry. The yellow points show the acquired point cloud of scanned parts.
+In the third and ﬁnal scenario, we present a TLS survey of a vegetation scene with
+a large potential for multi-echoes, as it represents two trees generated with the Arbaro
+Tree Simulator (Weber and Penn, 1995), scanned using a RIEGL VZ-400 from two static
+positions. This simulation has a large number of geometric primitives. A visual is depicted
+in Figure 10.
+Each simulation scenario was carried out three times on an Intel-i9-7900 @ 3.3 GHz with
+64 GB of RAM, and I/O on an SSD connected via SATA. The average runtime and memory
+consumption values are given in Table 3.
+In the case with largest improvement over HELIOS, runtimes of HELIOS++ are lower
+by 83 % (TLS) while using only 6 % of the previously required memory. Especially for large
+scenes, the issue of memory footprint has been a limiting factor for the usability of HELIOS.
+In the case of the ALS scene, the memory consumption can be reduced by 66 %, from more
+than 6 GB to just above 2 GB, with a runtime reduction of 51 %. For the MLS scene using
+the simple geometric shapes, the reduced processing overhead leads to a reduction of 96 % in
+memory usage and 76 % in runtime. From these results we deduce a signiﬁcant improvement
+both in runtime and memory footprint when comparing any conﬁguration of HELIOS++
+to the previous Java version.
+6. Conclusions
+With HELIOS++, we present an open-source laser scanning simulation framework that
+enables highly performant virtual laser scanning (VLS). In its C++ implementation and with
+25
+
+HELIOS (Java)
+Version 2018-09-24
+HELIOS++
+Version 1.0.0
+Echo width
+✓
+✓
+Waveform output
+✓
+✓
+✓
+File format
+XYZ
+XYZ
+XYZ
+LAS
+Scene 1
+(ALS, GeoTIFF)
+4,712.1 ± 613.8 s
+6,570 MB
+2,773.0 ± 53.8 s
+2,246 MB
+2,403.8 ± 18.0 s
+2,246 MB
+1,912.10 ± 20.22 s
+2,246 MB
+Scene 2
+(MLS, geometric
+primitives)
+68.0 ± 2.3 s
+560 MB
+23.9 ± 0.2 s
+24 MB
+23.0 ± 0.3 s
+24 MB
+16.1 ± 0.6 s
+24 MB
+Scene 3
+(TLS, tree models)
+362.6 ± 6.7 s
+5,360 MB
+97.2 ± 1.3 s
+314 MB
+74.4 ± 1.0 s
+314 MB
+62.4 ± 0.3 s
+314 MB
+Table 3: Performance comparison of HELIOS and HELIOS++ with diﬀerent options. We use default parameters for waveform modelling
+(beamSampleQuality=3 and binSize_ns=0.25; numBins=100 and numFullwaveBins=200 for HELIOS++ and HELIOS, respectively). Run-
+times are average of three runs (± standard deviation), memory footprint is the highest value (maximum) during the full run.
+26
+
+Figure 10: Visualisation of example survey for terrestrial laser scanning (TLS), scanning two highly complex
+tree models created using the Arbaro Tree Simulator. The yellow points show the acquired point cloud of
+scanned parts.
+the possibility to use the pyhelios package in Python to manipulate simulation parameters,
+we opt for an eﬃcient and easy-to-use software. While physical accuracy and realism may be
+superseded by complementing simulation software, HELIOS++ provides a ﬂexible solution
+to balance computational requirements (runtime, memory footprint) and quality of results
+(physical realism), while being easy to use and conﬁgure for users.
+Diﬀerent studies using the HELIOS concept demonstrate the usefulness of virtually ac-
+quired laser scanning data for analyses in diﬀerent categories of purpose. The main categories
+are (a) planning of ﬂight patterns (ULS, ALS) or scan positions (TLS); (b) generation of
+ground-truth data for validation of algorithms that extract parameters (i.a. for forestry)
+from point clouds, (c) generation of training data for supervised machine learning, and (d)
+testing and development of novel sensors and algorithms.
+The novel object model of HELIOS++, the transmissive voxel, allows a stochastic sim-
+ulation of penetrable objects, such as vegetation canopy, without the need for a highly
+detailed 3D mesh model. Generally, HELIOS++ performs up to of 5.8 × faster than its
+predecessor HELIOS on common scenes, and allows the user to omit intensive calculations
+if not required (e.g. the calculation of the echo width for returned pulses).
+To summarise, HELIOS++ is a versatile, easy-to-use, well documented scientiﬁc software
+for virtual laser scanning simulations that provides a tool to generate VLS data, thereby
+complementing data obtained by real-world laser scanning. The framework invites users to
+experiment and develop new ideas, while being able to rely on established algorithms from
+the literature.
+27
+
+Acknowledgements
+The authors wish to acknowledge the contribution of Patrick Herbers (Ruhr-Universit¨at
+Bochum), for the improvement the triangle-ray intersection in C++, which helped to signif-
+icantly reduce the runtime of HELIOS++.
+Figures 1, 4, 5, and 8 show an airplane model CC-BY Emmanuel Beranger. Figures 1 and
+4 show a house model by free3d.com user gerhald3d, and a drone model by cgtrader.com
+user CGaxr.
+References
+ASPRS, 2011. LAS speciﬁcation. https://www.asprs.org/wp-content/uploads/2010/12/LAS_1_4_r13.
+pdf.
+Backes, D., Smigaj, M., Schimka, M., Zahs, V., Grzn´arov´a, A., Scaioni, M., 2020. River Morphology Mon-
+itoring of a Small-Scale Alpine Riverbed using Drone Photogrammetry and LiDAR. ISPRS - Interna-
+tional Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences XLIII-B2-2020,
+1017–1024. doi:10.5194/isprs-archives-XLIII-B2-2020-1017-2020.
+Bechtold, S., H¨ammerle, M., H¨oﬂe, B., 2016. Simulated full-waveform laser scanning of outcrops for devel-
+opment of point cloud analysis algorithms and survey planning: An application for the HELIOS LiDAR
+simulation framework, in: Proceedings of the 2nd Virtual Geoscience Conference, Bergen, Norway, pp.
+57–58. URL: http://lvisa.geog.uni-heidelberg.de/papers/2016/Bechtold_et_al_2016.pdf.
+Bechtold, S., H¨oﬂe, B., 2016.
+HELIOS: A Multi-Purpose LiDAR Simulation Framework for Research,
+Planning and Training of Laser Scanning Operations with Airborne, Ground-Based Mobile and Stationary
+Platforms. ISPRS Annals of Photogrammetry, Remote Sensing and Spatial Information Sciences III–3,
+161–168. doi:10.5194/isprs-annals-III-3-161-2016.
+Bentley, J.L., 1975. Multidimensional binary search trees used for associative searching. Communications
+of the ACM 18, 509–517. doi:https://doi.org/10.1145/361002.361007.
+Calders, K., Lewis, P., Disney, M., Verbesselt, J., Herold, M., 2013. Investigating assumptions of crown
+archetypes for modelling LiDAR returns. Remote Sensing of Environment 134, 39–49. doi:10.1016/j.
+rse.2013.02.018.
+Carlsson, T., Steinvall, O., Letalick, D., 2001. Signature simulation and signal analysis for 3-D laser radar.
+Danielczuk, M., Matl, M., Gupta, S., Li, A., Lee, A., Mahler, J., Goldberg, K., 2019. Segmenting Unknown
+3D Objects from Real Depth Images using Mask R-CNN Trained on Synthetic Data, in: 2019 International
+Conference on Robotics and Automation (ICRA), pp. 7283–7290. doi:10.1109/ICRA.2019.8793744.
+Disney, M., Lewis, P., North, P., 2000. Monte Carlo ray tracing in optical canopy reﬂectance modelling.
+Remote Sensing Reviews 18, 163–196. doi:10.1080/02757250009532389.
+Disney, M.I., Kalogirou, V., Lewis, P., Prieto-Blanco, A., Hancock, S., Pfeifer, M., 2010. Simulating the
+impact of discrete-return lidar system and survey characteristics over young conifer and broadleaf forests.
+Remote Sensing of Environment 114, 1546–1560. doi:10.1016/j.rse.2010.02.009.
+Disney, M.I., Lewis, P.E., Bouvet, M., Prieto-Blanco, A., Hancock, S., 2009. Quantifying Surface Reﬂectivity
+for Spaceborne LiDAR via Two Independent Methods. IEEE Transactions on Geoscience and Remote
+Sensing 47, 3262–3271. doi:10.1109/TGRS.2009.2019268.
+Gastellu-Etchegorry, J.P., Yin, T., Lauret, N., Cajgﬁnger, T., Gregoire, T., Grau, E., Feret, J.B., Lopes,
+M., Guilleux, J., Dedieu, G., Malenovsk´y, Z., Cook, B., Morton, D., Rubio, J., Durrieu, S., Cazanave,
+G., Martin, E., Ristorcelli, T., 2015. Discrete Anisotropic Radiative Transfer (DART 5) for Modeling
+Airborne and Satellite Spectroradiometer and LIDAR Acquisitions of Natural and Urban Landscapes.
+Remote Sensing 7, 1667–1701. doi:10.3390/rs70201667.
+Gastellu-Etchegorry, J.P., Yin, T., Lauret, N., Grau, E., Rubio, J., Cook, B.D., Morton, D.C., Sun, G.,
+2016. Simulation of satellite, airborne and terrestrial LiDAR with DART (I): Waveform simulation with
+quasi-Monte Carlo ray tracing. Remote Sensing of Environment 184, 418–435. doi:10.1016/j.rse.2016.
+07.010.
+28
+
+Giannetti, F., Puletti, N., Quatrini, V., Travaglini, D., Bottalico, F., Corona, P., Chirici, G., 2018. Integrat-
+ing terrestrial and airborne laser scanning for the assessment of single-tree attributes in Mediterranean
+forest stands. European Journal of Remote Sensing 51, 795–807. doi:10.1080/22797254.2018.1482733.
+Golub, G., Kahan, W., 1965. Calculating the Singular Values and Pseudo-Inverse of a Matrix. Journal of
+the Society for Industrial and Applied Mathematics Series B Numerical Analysis 2, 205–224. doi:https:
+//doi.org/10.1137/0702016.
+Goodwin, N.R., Coops, N.C., Culvenor, D.S., 2007. Development of a simulation model to predict LiDAR
+interception in forested environments. Remote Sensing of Environment 111, 481–492. doi:10.1016/j.
+rse.2007.04.001.
+Hodge, R.A., 2010. Using simulated Terrestrial Laser Scanning to analyse errors in high-resolution scan
+data of irregular surfaces. ISPRS Journal of Photogrammetry and Remote Sensing 65, 227–240. doi:10.
+1016/j.isprsjprs.2010.01.001.
+Holmgren, J., Nilsson, M., Olsson, H., 2003. Simulating the eﬀects of LiDAR scanning angle for estimation
+of mean tree height and canopy closure. Canadian Journal of Remote Sensing 29, 623–632. doi:10.5589/
+m03-030.
+H¨ammerle, M., Lukaˇc, N., Chen, K.C., Koma, Z., Wang, C.K., Anders, K., H¨oﬂe, B., 2017. Simulating
+Various Terrestrial and UAV LiDAR Scanning Conﬁgurations for Understory Forest Structure Modelling.
+ISPRS Annals of Photogrammetry, Remote Sensing and Spatial Information Sciences IV-2/W4, 59–65.
+doi:10.5194/isprs-annals-IV-2-W4-59-2017.
+Isenburg, M., 2013. LASzip: lossless compression of LiDAR data. Photogrammetric Engineering and Remote
+Sensing 79, 209–217. URL: https://www.cs.unc.edu/~isenburg/lastools/download/laszip.pdf.
+Kim, S., Lee, I., Lee, M., 2012. LiDAR Waveform Simulation over Complex Targets. ISPRS - International
+Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences XXXIX-B7, 517–522.
+doi:10.5194/isprsarchives-XXXIX-B7-517-2012.
+Kim, S., Min, S., Kim, G., Lee, I., Jun, C., 2009. Data simulation of an airborne lidar system, in: Turner,
+M.D., Kamerman, G.W. (Eds.), Laser Radar Technology and Applications XIV, SPIE. p. 73230C. doi:10.
+1117/12.818545.
+Kukko, A., Hyypp¨a, J., 2009.
+Small-footprint Laser Scanning Simulator for System Validation, Error
+Assessment, and Algorithm Development. Photogrammetric Engineering & Remote Sensing 75, 1177–
+1189. doi:10.14358/PERS.75.10.1177.
+Lewis, P., 1999. Three-dimensional plant modelling for remote sensing simulation studies using the Botanical
+Plant Modelling System. Agronomie 19, 185–210. doi:10.1051/agro:19990302.
+Lewis, P., Muller, J.P., 1993. The advanced radiometric ray tracer: Ararat for plant canopy reﬂectance
+simulation. Proc. 29th Conf. Int. Soc. Photogramm. Remote Sens. 29. URL: http://www.isprs.org/
+proceedings/XXIX/congress/part7/26_XXIX-part7.pdf.
+Li, L., Mu, X., Soma, M., Wan, P., Qi, J., Hu, R., Zhang, W., Tong, Y., Yan, G., 2020. An Iterative-Mode
+Scan Design of Terrestrial Laser Scanning in Forests for Minimizing Occlusion Eﬀects. IEEE Transactions
+on Geoscience and Remote Sensing , 1–20doi:10.1109/TGRS.2020.3018643.
+Pires de Lima, R., Marfurt, K., 2019. Convolutional Neural Network for Remote-Sensing Scene Classiﬁcation:
+Transfer Learning Analysis. Remote Sensing 12, 86. URL: http://dx.doi.org/10.3390/rs12010086,
+doi:10.3390/rs12010086.
+Lin, C.H., Wang, C.K., 2019.
+Point Density Simulation for ALS Survey, in: Proceedings of the 11th
+International Conference on Mobile Mapping Technology (MMT2019), pp. 157–160. URL: https://www.
+geog.uni-heidelberg.de/md/chemgeo/geog/gis/mmt2019-lin_and_wang_compr.pdf.
+Liu, J., Skidmore, A.K., Wang, T., Zhu, X., Premier, J., Heurich, M., Beudert, B., Jones, S., 2019a. Variation
+of leaf angle distribution quantiﬁed by terrestrial LiDAR in natural European beech forest. ISPRS Journal
+of Photogrammetry and Remote Sensing 148, 208–220. doi:10.1016/j.isprsjprs.2019.01.005.
+Liu, J., Wang, T., Skidmore, A.K., Jones, S., Heurich, M., Beudert, B., Premier, J., 2019b. Compari-
+son of terrestrial LiDAR and digital hemispherical photography for estimating leaf angle distribution in
+European broadleaf beech forests. ISPRS Journal of Photogrammetry and Remote Sensing 158, 76–89.
+doi:10.1016/j.isprsjprs.2019.09.015.
+29
+
+Lohani, B., Mishra, R.K., 2007. Generating LiDAR Data in Laboratory: LiDAR Simulator, in: ISPRS
+Workshop on Laser Scanning 2007 and SilviLaser 2007, pp. 264–269. URL: https://www.isprs.org/
+proceedings/XXXVI/3-W52/final_papers/Lohani_2007.pdf.
+Lovell, J.L., Jupp, D., Newnham, G.J., Coops, N.C., Culvenor, D.S., 2005. Simulation study for ﬁnding
+optimal LiDAR acquisition parameters for forest height retrieval. Forest Ecology and Management 214,
+398–412. doi:10.1016/j.foreco.2004.07.077.
+Mart´ınez S´anchez, J., V´aquez Alvarez, A., L´opez Vilarino, D., Fern´andez Rivera, F., Cabaleiro Dom´ınguez,
+J.C., Fern´andez Pena, T., 2019.
+Fast Ground Filtering of Airborne LiDAR Data Based on Iterative
+Scan-Line Spline Interpolation. Remote Sensing 11, 2256. doi:10.3390/rs11192256.
+Morsdorf, F., Frey, O., Koetz, B., Meier, E., 2007. Ray Tracing for Modeling of Small Footprint Airborne
+Laser Scanning Returns. doi:10.3929/ETHZ-B-000107380.
+North, P., 1996.
+Three-dimensional forest light interaction model using a Monte Carlo method.
+IEEE
+Transactions on Geoscience and Remote Sensing 34, 946–956. doi:10.1109/36.508411.
+North, P.R.J., Rosette, J.A.B., Su´arez, J.C., Los, S.O., 2010.
+A Monte Carlo radiative transfer model
+of satellite waveform LiDAR. International Journal of Remote Sensing 31, 1343–1358. doi:10.1080/
+01431160903380664.
+Park, M., Baek, Y., Dinare, M., Lee, D., Park, K.H., Ahn, J., Kim, D., Medina, J., Choi, W.J., Kim,
+S., et al., 2020. Hetero-integration enables fast switching time-of-ﬂight sensors for light detection and
+ranging. Scientiﬁc Reports 10, 2764. doi:10.1038/s41598-020-59677-x.
+Previtali, M., D´ıaz-Vilari˜no, L., Scaioni, M., Fr´ıas Nores, E., 2019. Evaluation of the Expected Data Quality
+in Laser Scanning Surveying of Archaeological Sites, in: 4th International Conference on Metrology for
+Archaeology and Cultural Heritage, Florence, Italy, pp. 19–24. URL: https://re.public.polimi.it/
+retrieve/handle/11311/1124569/476842/Previtali%20et%20al%202019%20MetroArchaeo.pdf.
+Qi, C.R., Yi, L., Su, H., Guibas, L.J., 2017. PointNet++: Deep hierarchical feature learning on point sets
+in a metric space, in: Advances in Neural Information Processing Systems, pp. 5099–5108.
+Ramey, R., 2004. C++ BOOST Serialization. URL: https://www.boost.org/doc/libs/1_72_0/libs/
+serialization/doc/index.html.
+Ranson, K.J., Sun, G., 2000.
+Modeling LiDAR Returns from Forest Canopies.
+IEEE Transactions on
+Geoscience and Remote Sensing 38, 2617–2626. doi:10.1109/36.885208.
+Rebolj, D., Puˇcko, Z., Babiˇc, N.C., Bizjak, M., Mongus, D., 2017. Point cloud quality requirements for Scan-
+vs-BIM based automated construction progress monitoring. Automation in Construction 84, 323–334.
+doi:10.1016/j.autcon.2017.09.021.
+Schlager, B., Muckenhuber, S., Schmidt, S., Holzer, H., Rott, R., Maier, F.M., Saad, K., Kirchengast, M.,
+Stettinger, G., Watzenig, D., Ruebsam, J., 2020. State-of-the-Art Sensor Models for Virtual Testing
+of Advanced Driver Assistance Systems/Autonomous Driving Functions. SAE International Journal of
+Connected and Automated Vehicles 3, 233–261. doi:10.4271/12-03-03-0018.
+Sch¨afer, J., Faßnacht, F., H¨oﬂe, B., Weiser, H., 2019.
+Das SYSSIFOSS-Projekt:
+Synthetische 3D-
+Fernerkundungsdaten f¨ur verbesserte Waldinventurmodelle, in: 2. Symposium zur angewandten Satel-
+litenerdbeoachtung, Cologne, Germany.
+URL: https://www.dialogplattform-erdbeobachtung.de/
+downloads/cms/Stele3/EO-Symposium_Jannika.Schaefer.pdf.
+Tulldahl, H.M., Steinvall, K.O., 1999.
+Analytical waveform generation from small objects in LiDAR
+bathymetry. Applied optics 38, 1021–1039. doi:10.1364/ao.38.001021.
+Vincent, G., Antin, C., Laurans, M., Heurtebize, J., Durrieu, S., Lavalley, C., Dauzat, J., 2017.
+Mapping plant area index of tropical evergreen forest by airborne laser scanning. A cross-validation
+study using LAI2200 optical sensor.
+Remote Sensing of Environment 198, 254 – 266.
+URL:
+http://www.sciencedirect.com/science/article/pii/S003442571730233X, doi:https://doi.org/
+10.1016/j.rse.2017.05.034.
+Wang, D., 2020. Unsupervised semantic and instance segmentation of forest point clouds. ISPRS Journal
+of Photogrammetry and Remote Sensing 165, 86–97. doi:10.1016/j.isprsjprs.2020.04.020.
+Wang, D., Schraik, D., Hovi, A., Rautiainen, M., 2020. Direct estimation of photon recollision probability
+using terrestrial laser scanning. Remote Sensing of Environment 247, 111932. doi:10.1016/j.rse.2020.
+30
+
+111932.
+Wang, Y., Xie, D., Yan, G., Zhang, W., Mu, X., 2013. Analysis on the inversion accuracy of LAI based
+on simulated point clouds of terrestrial LiDAR of tree by ray tracing algorithm, in: IGARSS 2013-
+2013 IEEE International Geoscience and Remote Sensing Symposium, IEEE, Piscataway. pp. 532–535.
+doi:10.1109/IGARSS.2013.6721210.
+Wavefront Technologies, 1992.
+Appendix B1. Object Files (.obj), Advanced Visualizer Manual.
+URL:
+http://fegemo.github.io/cefet-cg/attachments/obj-spec.pdf.
+Weber, J., Penn, J., 1995.
+Creation and rendering of realistic trees, in: Mair, S.G., Cook, R. (Eds.),
+Computer graphics proceedings, Association for Computing Machinery, New York, NY. pp. 119–128.
+doi:10.1145/218380.218427.
+Weiser, H., Winiwarter, L., Fassnacht, F., H¨oﬂe, B., 2021. Opaque Voxel-based Tree Models for Virtual
+Laser Scanning in Forestry Applications. In preparation.
+Winiwarter, L., Mandlburger, G., Schmohl, S., Pfeifer, N., 2019. Classiﬁcation of ALS Point Clouds Using
+End-to-End Deep Learning. PFG – Journal of Photogrammetry, Remote Sensing and Geoinformation
+Science URL: https://doi.org/10.1007/s41064-019-00073-0, doi:10.1007/s41064-019-00073-0.
+Winiwarter, L., Pena, A.M.E., Weiser, H., Anders, K., Saches, J.M., Searle, M., H¨oﬂe, B., 2021. 3dgeo-
+heidelberg/helios:
+Version 1.0.0.
+URL: https://doi.org/10.5281/zenodo.4452871, doi:10.5281/
+zenodo.4452871.
+Xiao, W., Zaforemska, A., Smigaj, M., Wang, Y., Gaulton, R., 2019. Mean shift segmentation assessment
+for individual forest tree delineation from airborne lidar data. Remote Sensing 11, 1263. doi:10.3390/
+rs11111263.
+Zhang, Z., Li, J., Guo, Y., Yang, C., Wang, C., 2019. 3D Highway Curve Reconstruction From Mobile Laser
+Scanning Point Clouds. IEEE Transactions on Intelligent Transportation Systems , 1–11doi:10.1109/
+TITS.2019.2946259.
+Zhu, X., Liu, J., Skidmore, A.K., Premier, J., Heurich, M., 2020. A voxel matching method for eﬀective
+leaf area index estimation in temperate deciduous forests from leaf-on and leaf-oﬀairborne LiDAR data.
+Remote Sensing of Environment 240. doi:10.1016/j.rse.2020.111696.
+31

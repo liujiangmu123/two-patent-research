@@ -1,0 +1,1 @@
+session_id,object_id,record_id,device_id,model,firmware,calibration_id,original_path,sha256,raw_timestamp,time_scale,timestamp_definition,time_sigma_ns,clock_status,frame_or_packet_count,loss_count,exposure_us,rolling_line_time_us,lidar_return_mode,capability_level,no_return_enabled,weather,range_m,operator_id,notes

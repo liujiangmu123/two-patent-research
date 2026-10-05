@@ -1,0 +1,1197 @@
+Engineering Structures 311 (2024) 118164
+0141-0296/© 2024 Elsevier Ltd. All rights reserved.
+Long-term deformation monitoring of a steel-truss arch bridge using PSI 
+technique refined by temperature field analysis 
+Yun Zhou a,b, Guanwang Hao b,*, Jianwei Chen b, Junjie Wei b, Jiayuan Zheng b 
+a Key Laboratory for Damage Diagnosis of Engineering Structures of Hunan Province, Hunan University, Changsha 410082, China 
+b College of Civil Engineering, Hunan University, Changsha 410082, China   
+A R T I C L E I N F O  
+Keywords: 
+Steel-truss arch bridge 
+Structural health monitoring 
+Persistent scatterer interferometry 
+Meteorological shared data 
+Temperature field 
+Bridge deformation 
+A B S T R A C T  
+Satellite-based Interferometric Synthetic Aperture Radar (InSAR) is a radar technique that can identify 
+millimeter-level deformation of long-span bridges. However, the technique focuses on the influence of air 
+temperature on long-span bridge deformation, neglecting the difference between the structural temperature field 
+and the ambient temperatures. This oversight leads to a diminished precision in the estimation of the thermal 
+dilation phase of the InSAR technique. To address this limitation, this study presents a long-term deformation 
+monitoring methodology for long-span bridges by integrating Persistent Scatterer Interferometry (PSI) with a 
+structure’s temperature field. A finite-element (FE) model is constructed for investigating the key structural 
+members of a bridge, and, utilizing ambient air temperature sourced from a meteorological data sharing plat­
+form, a transient heat transfer analysis is conducted to obtain the time-dependent temperature distribution. The 
+temperature field at the moment of SAR imaging is utilized by the PSI technique, instead of the ambient air 
+temperature. The proposed method was applied to monitor the deformation of a long-span steel truss arch bridge 
+using 163 Sentinel-1A acquisitions and 35 COSMO-SkyMed acquisitions, to obtain the line of sight displacement. 
+The displacements derived from different data sources were analyzed and subsequently compared with FE 
+calculation results and on-site measurement data. The observed relative error of thermal dilation velocity using 
+the PSI technology refined by bridge temperature field (RPSI) spanned from −
+4.52 % to 4.50 %, indicating the 
+estimations of thermal dilation were well refined. Results demonstrate that RPS succeeds in large-span bridges 
+deformations measurement, providing a valuable tool for realizing lightweight monitoring of bridge structures.   
+1. Introduction 
+Bridge deformation, which reflects the overall stiffness of the bridge 
+structure, is crucial for structural performance assessment [1,2]. Bridge 
+displacement measurement techniques can be categorized into contact 
+and non-contact measurement methods. Contact measurement methods 
+such as using displacement meters, inclinometers, connecting tubes, 
+global navigation satellite systems, and fully automated total stations, 
+are widely used due to their reliability. However, they are limited by the 
+local observation and the high costs, especially for continuous moni­
+toring tasks. While the non-contact measurement methods, including 
+machine vision technique, microwave radar sensing technique, 
+photogrammetric technique, and 3D laser scanning technique, have 
+notably improved the efficiency of bridge displacement measurement, 
+the accuracy of these non-contact methods may be compromised by 
+environmental conditions and the distances involved in testing. 
+Space-to-Earth observation techniques, represented by the Interfero­
+metric Synthetic Aperture Radar (InSAR) technique, extracts the target 
+deformation through slant range phase interferometry, which can obtain 
+large-area surface deformation at all-times and under all weather con­
+ditions. The InSAR technique which has been extensively used in 
+infrastructure deformation monitoring, including buildings [3], high­
+ways [4], railways [5], dams and embankments [6], also presents a 
+much more cost-effective solution for deformation monitoring. 
+Abbreviations: InSAR,, Interferometric Synthetic Aperture Radar; CSK,, COSMO-SkyMed; S1A,, Sentinel-1A; PS,, Persistent scatterer; RPSI,, Refined PSI technique; 
+PSI,, Persistent Scatterer Interferometry; FE, Finite-element; MAE, Mean absolute error; RMSE, Root mean squared error; MaxAE, Maximum absolute error; S1A-PSI, 
+S1A data processed with the PSI technique; CSK-PSI, CSK data processed with the PSI technique; S1A-RPSI, S1A data processed with the RPSI technique; CSK-RPSI, 
+CSK data processed with the RPSI technique; TDV, Thermal dilation velocity. 
+* Corresponding author. 
+E-mail address: gwh0114@hnu.edu.cn (G. Hao).  
+Contents lists available at ScienceDirect 
+Engineering Structures 
+journal homepage: www.elsevier.com/locate/engstruct 
+https://doi.org/10.1016/j.engstruct.2024.118164 
+Received 14 November 2023; Received in revised form 11 March 2024; Accepted 4 May 2024   
+
+Engineering Structures 311 (2024) 118164
+2
+Relying on the assistance of medium to high-resolution SAR satel­
+lites, the accuracy of deformation measurements via InSAR technique 
+has been effectively enhanced. However, the practical application of 
+InSAR has been restricted by influence factors such as atmospheric de­
+lays, temporal decorrelation, and spatial decorrelation. The Persistent 
+Scatterer Interferometry (PSI) approach, which focuses on reliable and 
+stable points in a series of SAR images, addresses these limitations and is 
+applied for small movements monitoring. Huang et al. [7] utilized PSI 
+technique to monitor displacements in a high-speed railway bridge, and 
+the PSI-measured displacements was compared with in-situ measure­
+ments results. Ma et al. [8] conducted a tentative test for measuring the 
+sub-millimeter settlement and uplift of a bridge, in which the persistent 
+scatterer (PS) and distributed scatterer were jointly detected to increase 
+point density. Qin et al. [9] proposed a method to integrate the 
+Point-like Targets selection strategies of PS and small baseline interfer­
+ometric processing, which effectively boosted the robustness of the 
+deformation estimation for cable-stayed bridges. Caspani et al. [10] 
+extracted the displacement of a highway bridge using the PSI technique 
+and investigated its correlation with environmental phenomena, spe­
+cifically variations in air temperature and river water flow. Moreover, 
+the structural movement velocity acquired using PSI-derived displace­
+ment time series can serve as an indicator for bridge safety assessment. 
+Based on both ascending and descending SAR acquisitions, a 
+two-dimensional displacement configuration of multi-span bridges with 
+properly defined error bounds was determined, demonstrating the 
+effectiveness of the InSAR technique in early damage detection [11]. 
+Sousa [12] processed 52 S1A images from 1995 to 2001 using the PSI 
+technique, successfully tracing back to the historical subsidence infor­
+mation of a bridge, revealing that the maximum deformation rate before 
+the bridge collapse reached 20 mm/year. A displacement map for the 
+structure was generated by Milillo et al. [13] based on the InSAR tech­
+nique and Markov Chain Monte Carlo approach, which indicated that 
+the bridge was undergoing an increased magnitude of deformations over 
+time prior to its collapse. Using the SqueeSAR algorithm, the time series 
+of bridge deformations with millimeter-range precision were obtained, 
+indicating that no permanent deformations occurred in the 
+post-tensioned segments during the 1.3-year monitoring period [14]. 
+Displacement data obtained by InSAR was combined with structural and 
+collapse analysis by Farneti et al., thereby enabling the recognition of 
+potentially critical conditions and the prediction of failure times for 
+bridges experiencing slow landslide-induced movements [15]. The 
+feasibility of the PSI technique in monitoring the long-term deformation 
+of bridges has been effectively validated in previous studies. Thermal 
+dilation significantly contributes to the deformation of long-span 
+bridges, making it crucial to the precision of PSI measurements [16, 
+17]. The InSAR technique was used to detect the millimeter-level motion 
+on ground structures and the thermal sensitivity was introduced by 
+Cusson et al. [18] to monitor bridge behavior. A linear regression model 
+between InSAR longitudinal displacement and ambient air temperature 
+was developed by Huang et al. [7] showing that the PSI-measured dis­
+placements were in good agreement with the in-situ measurements. 
+Lazecky et al. [19] utilized an approach to identify the thermal expan­
+sion component, using an additional parameter to search for a rela­
+tionship between interferogram phase values and temperature 
+differences at the times of image acquisition. Qin. et al. [20,21] intro­
+duced the linear thermal dilation estimation into the traditional differ­
+ential InSAR method, which significantly improved the thermal dilation 
+separation for arch bridges. 
+In previous research on the estimation of thermal dilation using the 
+PSI technique, which the air temperature was utilized, the difference 
+between the bridge’s temperature field and the ambient air temperature 
+was generally ignored. The temperature field of a long-span bridge is 
+variable and complicated, influenced by periodically time-varying solar 
+radiation and continuous structural heat exchange with the surrounding 
+environment [22–24]. Based on meteorological data measured by 
+on-site installed sensors, computational methodologies for bridge 
+temperature fields can be established [25]. Lu et al. [26] studied the 
+concrete bridge box girder temperature distribution and thermal effect 
+under solar radiation and the thermal load. A two-dimensional FE model 
+for a typical section of a box girder of a long-span suspension and 
+cable-stayed bridge was constructed, with which the time-dependent 
+temperature distribution was determined based on ambient tempera­
+ture measurements through transient heat transfer analysis [27–29]. 
+Based on long-term temperature monitoring data and statistical anal­
+ysis, Xia et al. [30] developed a time-varying solar radiation model that 
+incorporates the impact of real-time weather fluctuations, including 
+variations 
+in 
+cloud 
+cover. 
+A 
+vertical 
+discrete 
+and 
+dimensionality-reduced model for rapid temperature loads calculation 
+of bridge structures were proposed by Fan et al. [31] The random forest 
+model was used to predict the sectional effective temperature, taking 
+into consideration the environmental and meteorological factors (tem­
+perature, solar radiation, humidity, wind speed, and direction) [32]. Xia 
+et al. [33] developed a unified approach of heat-transfer and structural 
+analyses to calculate the temperature distribution and the associated 
+responses of an entire structure by integrating the field monitoring data. 
+A refined 3D model of a three-tower cable-stayed bridge, of which the 
+thermal boundary conditions were determined using environmental 
+field monitoring data, was constructed to facilitate a comprehensive 
+global 3D heat-transfer analysis [34]. Abid et al. and Lu et al. [35,36] 
+described the construction and instrumentation of an experimental 
+box-girder segment, aiming to analyze the temperature distributions in 
+concrete bridges under the fluctuation of air temperature and solar ra­
+diation thermal loads. Consequently, to analyze the temperature effects 
+on bridges based on the field monitoring data, it is essential to establish 
+the on-site monitoring system to collect extensive temperature mea­
+surement data. 
+To the best of the authors’ knowledge, few studies have emphasized 
+the impact of the difference between air temperature and bridge tem­
+perature field on the calculation accuracy of thermal dilation of the PSI 
+technique. This study therefore focuses on analyzing the temperature 
+field of bridge structures by utilizing meteorological shared data, with 
+the aim of overcoming the limitations due to insufficient temperature 
+measurement data and of refining the PSI technique (RPSI) through the 
+bridge temperature field for long-term deformation monitoring. Tran­
+sient thermal analysis was conducted based on equivalent air tempera­
+ture and equivalent heat transfer coefficient, which were derived from 
+meteorological shared data (temperature, wind speed, and precipita­
+tion) obtained from a weather station near the case study bridge. This 
+analysis determined the temperature distribution of the key structural 
+members, thereby providing a time-dependent temperature for esti­
+mating the thermal dilation phase of the RPSI technique. Applying this 
+novel approach, S1A (medium-low resolution) and CSK (high resolu­
+tion) imagery datasets were processed to derive the line of sight (LOS) 
+displacement time series for the case study steel-truss arch bridge. By 
+integrating the SAR imaging LOS geometry with the structural charac­
+teristics of the bridge, the bridge’s longitudinal displacement time series 
+was derived. The RPSI-based displacements were then compared with 
+PSI-based displacements, FE simulated results and field monitoring data, 
+to verify the reliability and accuracy of the proposed approach. The 
+outcomes of this study can offer technical support for achieving light­
+weight monitoring of the long-term deformation of long-span bridges, 
+thereby facilitating sensor-free and cost-effective structural health 
+assessments. 
+2. Methodology 
+2.1. RPSI technique 
+Lightweight monitoring involves the use of minimal equipment, 
+materials, and labor for structural health monitoring, highlighting its 
+status as an optimal solution that balances precision with economic 
+viability. The PSI technique is a feasible lightweight monitoring method 
+Y. Zhou et al.                                                                                                                                                                                                                                    
+
+Engineering Structures 311 (2024) 118164
+3
+owing to its cost-efficiency and accuracy in measurement. PSI technique 
+examines SAR time-series, concentrating on steady, point-like scatterers 
+that exhibit no speckle and generate a definitive signal response [37,38]. 
+Assuming N SAR images covering the observation area over a certain 
+period are available, one image is selected as the master image consid­
+ering temporal baseline, spatial baseline, and Doppler centroid fre­
+quency, with the remaining images serving as slave images. The N-1 
+slave images are co-registered and resampled to the spatial domain of 
+the master image, resulting in N-1 interferometric pairs. Utilizing digital 
+elevation models, differential interferometric processing is applied to 
+these interferometric pairs, yielding differential phases for each PS point 
+as shown in the following equation: 
+ψ = φref + φtop + φdef + φatm + φnoi
+(1)  
+where the interferometric phase in SAR images is affected by various 
+error sources, which can be categorized into five components: φref rep­
+resents the orbit estimation errors, φtop is the height errors, φdef means 
+the terrain displacement in LOS path, φatm indicates the atmospheric 
+phase delay, and φnoi represents the thermal noise and other error 
+components. After differential processing the phase contains the linear 
+deformation phase, elevation phase, and residual phase, as follows: 
+ψ = 4π
+λ t⋅v +
+4π
+λR sin θ B⋅ε + φres
+(2)  
+where λ represents the radar wavelength; R is the slant range from the 
+radar to the ground target; θ denotes the radar incidence angle; B stands 
+for the vertical baseline; ε is the elevation error caused by the vertical 
+structural displacement of the bridge; t refers to the temporal baseline; v 
+is the linear deformation rate along the LOS direction, and φres signifies 
+the residual phase, which includes atmospheric contributions, non- 
+linear deformation phase, and noise. 
+The temperature is a primary factor influencing the long-term 
+deformation of long-span bridges. Hence, thermal dilation parameters 
+are introduced to the nonlinear deformation of the interferometric 
+model by the RPSI technique, as expressed by the following equation: 
+ψ = 4π
+λ t⋅v +
+4π
+λR sin θ B⋅ε + 4π
+λ Ttf⋅k + φres
+(3)  
+where Ttf denotes the temperature field of the bridge structure corre­
+sponding to the PS points at each image acquisition, and k is the thermal 
+expansion coefficient. 
+To accurately estimate the parameters of the interference phase 
+model, this study conducted a quadratic difference interference analysis 
+on the connections between PS points within the Delaunay triangulation 
+network formed by PS points. The expression for the quadratic differ­
+ence interference model is as follows: 
+Δψ = 4π
+λ tΔv +
+4π
+λR sin θ BΔε + 4π
+λ TtfΔk + Δφres
+(4)  
+where Δψ is the differential interferometric wrapped phase, Δv denotes 
+the unknown differential velocity, Δε stands for the differential elevation 
+error, Δk represents the differential thermal expansion parameter, and 
+Δφres refers to the residual phase component. 
+The estimation of parameters Δv, Δε, and Δk is aimed at searching for 
+the optimal solution of the objective function, meaning finding the 
+parameter estimates that correspond to the maximum coherence coef­
+ficient of γ. This function is depicted as follows: 
+γ = 1
+N
+∑
+N
+i=1
+exp
+(
+jΔψi
+obs −Δψi
+m
+(
+Δv, Δε, Δk
+))
+(5)  
+where Δψi
+obs represents the observed phase difference, Δψi
+m denotes the 
+model’s calculated value, and N signifies the number of interference 
+pairs. 
+The thermal dilation phase after differential processing can be 
+expressed as follows: 
+Δψi
+T = 4π
+λ ΔTtf
+ik
+(6)  
+where ΔTtf
+i is the difference of the bridge temperature between the two 
+acquisitions. 
+The RPSI technique involves four steps: images co-registration, PS 
+points identification, atmospheric phase screen (APS) estimation and 
+removal, and deformation recovery. The workflow of this technique is 
+depicted in Fig. 1 and involves the following steps: 
+(1) Images co-registration. The master image is chosen from N SAR 
+images based on the principle of minimal temporal and spatial baselines. 
+The coherence coefficient method is employed to register all slave im­
+ages with the master image. 
+Fig. 1. RPSI processing flow.  
+Fig. 2. SAR observation geometry of the target point.  
+Y. Zhou et al.                                                                                                                                                                                                                                    
+
+Engineering Structures 311 (2024) 118164
+4
+(2) PS points identification. Using precise orbital vectors and inter­
+ferometric geometric relationships, the reference phase is removed. The 
+topographic phase is eliminated with digital elevation models, produc­
+ing a differential interferometric series map. The amplitude time series is 
+calculated for each pixel within the image, and the PS points are selected 
+based on the amplitude residual information. 
+(3) APS estimation and removal. The bridge temperature field is 
+utilized to estimate the thermal dilation component of RPSI technique at 
+this stage. The height errors are estimated using the geometric infor­
+mation of the structure. Based on the spatial low-frequency and tem­
+poral high-frequency characteristics of the atmospheric phase, the 
+filtering is applied to obtain the nonlinear deformation. 
+(4) Deformation recovery. The geometric transformation relation­
+ship between the radar coordinate system and the geospatial coordinate 
+system is used to obtain the displacement time series of the PS points at 
+the geospatial location of the bridge. 
+The LOS displacement of the bridge is the sum of the projections of its 
+three-dimensional displacement components onto the LOS direction.  
+Fig. 2 illustrates the SAR side-looking imaging geometry, using 
+descending datasets as an example. The relationship between the LOS 
+deformation and the three-dimensional deformation components is 
+presented as follows: 
+DLOS = Dv⋅cos θ + Dn⋅sin θ⋅sin α −De⋅sin θ⋅cos α
+(7)  
+where Dv, Dn, De are the displacements in vertical, north-south, and 
+west-east directions respectively. θ is the side-looking angle, α is the 
+azimuth angle, and β is the angle between the bridge and the north- 
+south direction. Considering the deformation orientation of the target 
+point and the spatial geometric imaging relationship of SAR, this rela­
+tionship can be expressed as follows: 
+DLOS = Dv⋅cos θ −Dn⋅sin θ⋅sin(α + β) −De⋅sin θ⋅cos(α + β)
+(8) 
+Assuming the vertical and transverse displacements are disregarded, 
+the relationship between the longitudinal displacement Dx and the LOS 
+displacement can be represented as follows: 
+Dx = DLOS/ sin θ⋅sin(α + β)
+(9)  
+2.2. Structural temperature field determination 
+To enhance the calculations accuracy of thermal dilation of the PSI 
+technique, the temperature field of the key structural members at the 
+SAR image acquisition time was used instead of the air temperature. The 
+bridge structural members constantly exchange heat with the environ­
+ment through thermal convection and radiation. The meteorological 
+parameters required for calculating the temperature field include air 
+temperature, wind speed, and absorbed radiation. The air temperature 
+and wind speed were obtained from the web of WeatherSpark (http://zh 
+. Weatherspark.com). Given the time, location, material properties of 
+the structure, and the normal angles of each surface of the key members, 
+the absorbed radiation can be determined by the Kehlbeck model as 
+follows [39]: 
+I = In + Iw + Ir + Id + Ie
+(10)  
+In = Isc0.9(tuka/ sin β)
+(11)  
+Iw = 0.5Isc sin β 1 −(0.9tuka)(sin β)−1
+1 −1.4 ln(0.9tuka)
+(12)  
+Ir = 0.5re(In + Iw)(1 −
+cos θ)
+(13)  
+Id = EaCs(Tk + Ta)40.5(1 −
+cos θ)
+(14)  
+Ie = (Eu/Ea −Eu + 1)Id
+(15)  
+whereIn, Iw, Ir, Idand Ie represent the direct solar radiation, diffuse ra­
+diation, ground surface radiation, atmospheric radiation from the sky, 
+and the environmental radiation, respectively; Isc is the solar constant; tu 
+denotes the turbidity coefficient; ka is the atmospheric pressure; β rep­
+resents the solar altitude angle; re is the ground radiation coefficient; θ is 
+the angle between the desired surface and the horizontal plane; Ea and 
+Eu are the atmospheric radiation coefficients and environmental radia­
+tion coefficients, respectively; Cs represents the blackbody radiation 
+coefficient; Tk is used to convert between Celsius and absolute temper­
+ature; Ta is the ambient temperature at bridge location obtained from 
+the weather station data Tai using spatial interpolation method. The 
+Fig. 3. Thermal environments of a bridge.  
+Fig. 4. Bridge temperature field calculation method based on shared meteo­
+rological data. 
+Y. Zhou et al.                                                                                                                                                                                                                                    
+
+Engineering Structures 311 (2024) 118164
+5
+thermal environment is depicted in Fig. 3. 
+In this study, the Kehlbeck formula was adopted to calculate the 
+convection heat transfer coefficient hc, while the irradiation heat 
+transfer coefficient hr was computed using the following empirical for­
+mula proposed by Fernando A. Branco [40]: 
+hc = 5.8 + 4v
+(16)  
+hr = ε[4.8 + 0.075(Ta −5)]
+(17)  
+where v is the wind speed obtained from the weather station data vi 
+using spatial interpolation method and ε denotes the emissivity of the 
+structural material. 
+The heat flux on the boundary is proportional to the difference be­
+tween the air temperature and the bridge-surface temperature [27]. The 
+boundary conditions for the thermal analysis of a bridge can be written 
+as follows: 
+λ ∂T
+∂n⃒⃒⃒⃒s
+= h(Ta −Ts)
+(18)  
+where n represents normal to the boundary surface s; h is referred to as 
+equivalent heat transfer coefficient; Ta denotes the air temperature; Ts 
+denotes the structural surface temperature. 
+h = hc + hr
+(19)  
+when considering both radiation and convection loads on the structural 
+members, the radiative heat flux density needs to be equivalently con­
+verted to convective heat flux density. The equivalent air temperature at 
+the boundary surface can be expressed as follows: 
+T = Ta + αI/h
+(20)  
+where α (0 < α < 1) represents the absorptivity coefficient of the surface 
+material. 
+For bridges without adequate temperature sensors installations, on- 
+site measurements could not provide a comprehensive initial tempera­
+ture of the key structural members. In this study, an initial uniform 
+temperature field was assumed and the equivalent air temperature at 
+sunrise was calculated. The heat transfer boundary conditions were 
+applied to the members. The temperature distribution becomes 
+nonuniform, serving as the initial condition for more detailed thermal 
+analysis. 
+As depicted in Fig. 4, the equivalent heat transfer boundary 
+conditions, including the equivalent air temperature and the heat 
+transfer coefficient, were employed as convection loads. By conducting a 
+transient thermal analysis, the temperature field of the key structural 
+members was obtained. 
+2.3. Meteorological data calculation 
+Based on meteorological data from weather stations, calculations for 
+the bridge location were performed using the inverse square distance 
+gradient method [41] for air temperature and the Kriging method [42] 
+for wind speed. The performance of interpolation methods was evalu­
+ated, leading to a strategy for computing meteorological data at varying 
+straight-line distances between the bridge and the weather stations. Six 
+representative regions were evaluated - Tibet Autonomous Region, 
+Jiangsu Province, Chongqing Municipality, Sichuan Province, Hainan 
+Province, and Heilongjiang Province - considering factors such as 
+longitude, latitude, altitude, weather stations density, and topography. 
+The topographical maps are shown in Fig. 5. 
+Based on the hourly air temperature observed by ground meteoro­
+logical stations in various regions from February 15 to February 25, 
+2023, the distance d between the target meteorological station and the 
+nearest station was used as the classification criterion. A total of 401 
+ground meteorological stations distributed in these regions were divided 
+into six groups. Taking a meteorological station as the target location, 
+the spatial interpolation methods were performed using temperature or 
+wind speed data from the five nearest meteorological stations. The 
+interpolated results at the target location for temperature are shown in  
+Fig. 5. Topographical maps of different regions (Unit: m). (a) Tibet Autonomous Region; (b) Jiangsu Province; (c) Chongqing Municipality; (d) Sichuan Province; (e) 
+Hainan Province; (f) Heilongjiang Province. 
+Table 1 
+Spatial interpolation errors for air temperature.  
+Group 
+dmin (km) 
+d (km) 
+MAEint 
+MAEnea 
+RMSEint 
+RMSEnea 
+A 
+0-15  
+36.5  
+0.63  
+0.61  
+0.94  
+0.94 
+B 
+15-20  
+26.5  
+0.44  
+0.38  
+0.60  
+0.54 
+C 
+20-25  
+40.5  
+0.66  
+0.95  
+0.90  
+1.20 
+D 
+25-30  
+56.9  
+1.06  
+1.61  
+1.39  
+2.03 
+E 
+30-35  
+44.6  
+0.73  
+1.05  
+1.02  
+1.46 
+Note: MAE = ∑n
+i=1|Ni −
+Mi|/n, RMSE =̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅
+∑n
+i=1(Ni −Mi)2/n
+√
+, Ni represents the 
+actual value; Mi stands for the interpolated value; n is the total number of 
+samples. MAEint and RMSEint denote the indictors derived from interpolated 
+results, while MAEnea and RMSEnea are those from the nearest weather station.  
+Y. Zhou et al.                                                                                                                                                                                                                                    
+
+Engineering Structures 311 (2024) 118164
+6
+Table 1, and for wind speed in Table 2. The mean absolute error (MAE) 
+and root mean squared error (RMSE) are used to assess the accuracy of 
+the spatial interpolation methods. The interpolated errors for air tem­
+perature and wind speed are influenced by the spatial distribution of the 
+weather stations. Particularly, the distance from the target location to 
+the nearest station dmin and the average distance to the stations d.uti­
+lized for interpolation play a significant role. It can be found that if 
+dminwas less than 20 km, the MAE derived from using temperature or 
+wind speed values from the closest meteorological station is lower than 
+that obtained from interpolated predictions using surrounding stations. 
+Consequently, if dmin is under 20 km, it’s advisable to directly use the air 
+temperature or the wind speed from that nearest station for the target 
+location. 
+3. Deflection of case study bridge 
+3.1. Details of case study bridge 
+A six-lane high-speed railway bridge was used as a case study, which 
+consists of two continuous steel-truss arches and four approach spans, 
+with a span configuration of 108 + 192 + 336 + 336 + 192 + 108 m. 
+The overall layout of the bridge is shown in Fig. 6. Spherical steel 
+bearings are used as supports, with the #7 being a fixed support, and the 
+other supports allowing longitudinal motion as movable bearings. Since 
+the bridge piers has deep pile foundations, vertical settlement is virtu­
+ally negligible [43,44] and as the lateral displacement was found to be 
+less than 1 % of the longitudinal displacement it was ignored in the 
+subsequent analysis [45]. Hence, the displacements caused by the 
+temperature were observed at the bridge’s piers along the longitudinal 
+direction. 
+3.2. SAR datasets 
+A total of 163 scenes of S1A interferometric wide swath imagery with 
+a resolution of 5 m × 20 m (ascending orbit) from January 2017 to 
+December 2021 were used, and 35 scenes of CSK spotlight imagery with 
+a resolution of 1.2 m × 1.9 m (descending orbit) from September 2016 
+to September 2019 were also utilized. The temporal and spatial base­
+lines of the images are illustrated in Fig. 7. For the S1A satellite, the 
+incidence angle, denoted as θ1, is 33.91◦, and its corresponding heading 
+angle, represented as α1, is 349.26◦. Similarly, the CSK satellite has a 
+33.94◦incidence angle, designated as θ2, and its associated heading 
+angle, denoted as α2, is 190.55◦. The bridge’s longitudinal axis is ori­
+ented at a 45◦angle to true north. The selected S1A and CSK image 
+capture times were 10:03 and 09:53 respectively. The bridge is in the 
+UTC+ 8 time zone and the SAR image time is around 18:00. 
+3.3. Meteorological data 
+To compute meteorological parameters, the study utilized hourly 
+temperature and wind speed data obtained from an airport weather 
+station near the case study bridge, which were accessed through the 
+WeatherSpark platform. Since the case study bridge was located 16 ki­
+lometers in a straight line from the airport, the ambient temperature at 
+the airport can be assumed to be representative of that at the bridge 
+location. The meteorological parameters of ambient temperature and 
+average wind speed were recorded at the airport weather station from 
+Table 2 
+Spatial interpolation errors for wind speed.  
+Group 
+dmin (km) 
+d (km) 
+MAEint 
+MAEnea 
+RMSEint 
+RMSEnea 
+A 
+0-15  
+36.5  
+0.90  
+0.94  
+1.13  
+1.19 
+B 
+15-20  
+26.5  
+0.65  
+0.65  
+0.81  
+0.86 
+C 
+20-25  
+40.5  
+0.82  
+1.00  
+1.05  
+1.26 
+D 
+25-30  
+56.9  
+0.80  
+1.00  
+1.03  
+1.28 
+E 
+30-35  
+44.6  
+0.72  
+0.86  
+0.92  
+1.10  
+Fig. 6. Layout of the case study bridge (Unit: m).  
+Fig. 7. Perpendicular baseline vs temporal baseline plot. (a) S1A; (b) CSK.  
+Fig. 8. Ambient temperature.  
+Y. Zhou et al.                                                                                                                                                                                                                                    
+
+Engineering Structures 311 (2024) 118164
+7
+March 5th to 16th, 2015 (as depicted in Fig. 8 and Fig. 9), and used for 
+calculating the structural temperature field. Additionally, fiber Bragg 
+grating temperature sensors were installed as illustrated in Fig. 10 [46]. 
+3.4. Solar radiation and deck shading 
+Fluctuations in the surface azimuth angle, solar altitude angle, and 
+projection angle induce alterations in the illuminated and shaded re­
+gions on a structure’s surface [47]. Taking January 1, 2020, as an 
+example, sunrise is at 7:04 am, and sunset is at 5:11 pm. By analyzing 
+the positional relationship between the solar trajectory and the bridge 
+deck, the bearings of side truss were exposed to sunlight from 7:04 am to 
+11:27 am. Afterward, they remained in the shaded area until 5:11 pm, as 
+illustrated in Fig. 11(a). The bearing of mid-truss was covered by the 
+bridge deck and truss members in the whole daytime, as depicted in 
+Fig. 11(b). Hence, the solar radiation was utilized to address the 
+Fig. 9. Wind speed.  
+Fig. 10. Location of temperature sensors (unit: mm).  
+Fig. 11. Description of solar motion and deck shading. (a) bearing of side main truss; (b) bearing of middle main truss.  
+Fig. 12. FE model of key members. (a) section A-A; (b) section B-B; (c) section C-C; (d) section D-D.  
+Y. Zhou et al.                                                                                                                                                                                                                                    
+
+Engineering Structures 311 (2024) 118164
+8
+influence of shadow on the structure’s surface caused by the sun’s 
+motion. 
+4. Application of the PSI technique refined by temperature field 
+4.1. Thermal analysis of the box-shaped cross section and Convergence 
+analysis 
+The temperature distribution in the bridge’s longitudinal direction is 
+assumed to remain uniform [48]. The two-dimensional FE models of the 
+truss members’ cross-sections were constructed using the PLANE55 
+element in ANSYS 2021 R1, which possesses four temperature degrees of 
+freedom at its nodes. The steel material is Q345qD, with a thermal 
+conductivity of 60.5 W/(m⋅℃) and a heat capacity of 434 J/(kg⋅℃). See  
+Fig. 12. 
+The chosen mesh must ensure solution convergence for the heat 
+diffusion problem. And the section A-A FE model in Fig. 12 was selected 
+to analyze the convergence. The solution’s behavior as a function of the 
+number of finite elements is valuable for determining the threshold 
+mesh density for convergence. Fig. 13 illustrates the mesh configura­
+tions with varying numbers FEs. For the thermal problem, considering 
+the two-dimensional FE model’s average temperature at 8:00 pm on 
+March 9, 2015, as a representative solution parameter is essential. The 
+solutions show monotonic convergence with an increase in the number 
+of FEs, reaching a point beyond which additional increases in mesh 
+density no longer influence the result. By adopting around 0.6 × 104 
+FEs, solution convergence for both issues are secured [49,50]. 
+The material properties for thermal analysis and the equivalent heat 
+transfer boundary conditions were input into the established FE model. 
+The time-dependent temperature curves were then obtained as shown in  
+Fig. 14. The comparison between the measured and calculated values 
+indicates a consistent trend with an average error ranging from 
+−2.56 % to 2.50 %. This discrepancy arises from two primary sources. 
+Firstly, the temporal variability of wind speed, influenced by factors 
+such as environmental obstructions, local temperature differences, and 
+the geographical landscape, contributes to the error in temperature 
+calculations. Secondly, the precision of solar radiation intensity calcu­
+lations, significantly affected by climatic conditions like cloud cover and 
+humidity, also plays a crucial role in the observed temperature 
+deviations. 
+4.2. Bridge FE model analysis 
+A three-dimensional FE model of the case study bridge is established 
+to analyze the bridge deflection under various temperatures. As shown 
+in Fig. 15, the bridge FE model consists of 59,918 nodes and 112,706 
+elements. The trusses, hangers, and stiffeners are established by a 
+BEAM188 element, and the steel decks and the diaphragms of the box 
+girder are established by a SHELL181 element. The boundary conditions 
+Fig. 13. Temperature variation with the number of finite elements.  
+Fig. 14. Temperature time history curves. (a) WA-S; (b) WB-N; (c)WC-N; (d) WD-N.  
+Fig. 15. Bridge FE model.  
+Y. Zhou et al.                                                                                                                                                                                                                                    
+
+Engineering Structures 311 (2024) 118164
+9
+of the FE model are set as follows: the boundary conditions of the 7# 
+piers are restrained with all translational degrees of freedom including 
+longitudinal X, transverse Y, and vertical Z, and the boundary conditions 
+at remaining piers are restrained in the Z-direction and Y-direction. 
+Moreover, the thermal expansion coefficients of the FE model were set as 
+1.2 × 10−5/℃. Based on the heat transfer boundary conditions, the 
+materials’ thermal conductivity and heat capacity, the temperature 
+fields of the truss members were determined through the principles of 
+heat transfer theory. The time-dependent temperatures of these mem­
+bers were treated as loads and applied to the bridge FE model. The 
+temperature-induced deformation was then obtained by transient ther­
+mal analysis. 
+4.3. RPSI-derived displacement time series 
+The temperature field of the structural members were obtained 
+through transient thermal analysis as mentioned in Section 4.1. Conse­
+quently, the temperature of the bridge’s PS points at the SAR image 
+acquisition time can be employed in Eq. (3) and Eq. (6) for differential 
+interferometric processing. Leveraging the time-dependent temperature 
+distributions has enhanced the calculation accuracy of the thermal 
+dilation phase, thereby improving the measurement precision of RPSI- 
+based LOS deformation. The LOS deformation velocity of the bridge’s 
+PS points is shown in Fig. 16. The spatial distribution of PS points, based 
+on both CSK and S1A data, aligns well with the bridge’s geometric 
+shape. The deformation velocity displays evident symmetry with respect 
+to the #7 support. The deformation time series at each pier and the air 
+temperature at the image acquisition time are presented in Fig. 17. 
+There is a strong correlation between the LOS deformation and air 
+temperature, indicting distinct periodic characteristics. The deformation 
+time series at piers #4 to #6 show a positive correlation with air tem­
+perature, while piers #8 to #10 exhibit the opposite correlation. Addi­
+tionally, the deformation at six piers displays symmetric characteristics 
+relative to the central symmetry of pier #7. 
+4.4. Comparison of the InSAR-measured and simulated displacement 
+The time-dependent temperature of the key members cross-section 
+was applied to the nodes of the FE model (bottom surface of the deck 
+slab, longitudinal and transverse beams, top chord, web members, and 
+bottom chord) to obtain the bridge deformation under various temper­
+atures. Based on the LOS deformation discussed in Section 4.2, the 
+longitudinal displacement at six piers was derived using Eq. (9). This 
+displacement was then compared with the simulated results, as depicted 
+Fig. 16. Spatial distribution and LOS deformation of PS points (mm/year). (a) S1A, (b) CSK.  
+Fig. 17. LOS deformation at six piers and image acquisition temperatures. (a) S1A; (b) CSK.  
+Y. Zhou et al.                                                                                                                                                                                                                                    
+
+Engineering Structures 311 (2024) 118164
+10
+in Fig. 18. It is noticeable that both PSI and RPSI measured results are in 
+good agreement with the simulated results, with RPSI technique 
+demonstrating higher accuracy. The errors in longitudinal displacement 
+measurement, derived from the processing of the CSK and S1A data 
+using both PSI and RPSI techniques, are listed in Table 3. Compared to 
+the numerical results, the MAE of the RPSI-derived displacement mea­
+surements is consistently lower than that of PSI technique. Similarly, 
+RMSE associated with the RPSI method is also less than that of the PSI 
+technique, which is particularly evident when considering the maximum 
+absolute error (MaxAE). For both S1A and CSK datasets, the error for PSI 
+technique ranges from 4.73 mm to 24.57 mm, whereas for RPSI tech­
+nique, it lies between 2.67 mm and 14.48 mm. This investigation 
+demonstrates that by utilizing shared meteorological data and employ­
+ing thermal analysis methods to determine the structural temperature at 
+the location of bridge’s PS points during SAR imaging, the calculation 
+precision of the thermal expansion phase can be effectively refined, 
+leading to enhanced deformation measurement accuracy of the PSI 
+technique. In addition, despite the relatively lower spatial resolution of 
+S1A imagery compared to CSK imagery, the calculated results reveal a 
+comparable level of displacement measurement accuracy for both 
+datasets. Considering that S1A imagery can be freely accessed from 
+platforms such as National Aeronautics and Space Administration 
+(NASA), United States Geological Survey (USGS), and European Space 
+Agency (ESA), it presents an economically and reasonably accurate 
+method for long-term bridge deformation monitoring using the RPSI 
+technique. The results of this study confirm that the RPSI technique 
+stands as a viable and effective approach for lightweight bridge moni­
+toring, meeting engineering accuracy requirements. 
+4.5. Comparison of InSAR and field measurement 
+To further validate the accuracy of deformation measured using RPSI 
+technique, the long-term correlation was analyzed between longitudinal 
+displacement at the piers and ambient temperature. Moreover, the 
+deformation calculation accuracy of the RPSI technique and the con­
+ventional PSI technique was compared. Using both the PSI and RPSI 
+techniques to process the SIA and CSK data, the longitudinal displace­
+ment of the case study bridge piers has been determined. This 
+displacement exhibits a high linear correlation with the ambient tem­
+perature, as illustrated in Fig. 19. This figure presents four scenarios: 
+S1A data processed with the PSI technique (S1A-PSI), CSK data 
+Fig. 18. InSAR-measured and simulated longitudinal displacement. (a) #4, CSK; (b) #5, CSK; (c) #6, CSK; (d) #4, S1A; (e) #5, S1A; (f) #6, S1A.  
+Table 3 
+Comparison of longitudinal displacement calculation error (mm).  
+Piers 
+S1A 
+CSK 
+#4 
+#5 
+#6 
+#4 
+#5 
+#6 
+MAEPSI  
+1.43  
+1.66  
+4.11  
+3.07  
+2.38  
+1.75 
+MAERPSI  
+1.16  
+1.12  
+1.74  
+1.59  
+1.24  
+1.06 
+RMSEPSI  
+1.84  
+1.92  
+4.45  
+3.91  
+3.15  
+1.94 
+RMSERPSI  
+1.69  
+1.86  
+2.18  
+1.93  
+1.56  
+1.08 
+MaxAEPSI  
+5.58  
+24.57  
+19.65  
+9.49  
+7.58  
+4.73 
+MaxAERPSI  
+6.09  
+14.48  
+9.67  
+4.15  
+3.54  
+2.67 
+Note:MAE = 1
+n
+∑n
+i=1|yi −̂
+yi|, RMSE =̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅
+1
+n
+∑n
+i=1(yi −̂ yi)2
+√
+, and MaxAE =
+max
+i
+|yi −̂
+yi|, where yi represents the numerical results. ̂yi denotes the InSAR- 
+based results, and n is the total number of SAR acquisition.  
+Y. Zhou et al.                                                                                                                                                                                                                                    
+
+Engineering Structures 311 (2024) 118164
+11
+processed with the PSI technique (CSK-PSI), S1A data processed with the 
+RPSI technique (S1A-RPSI), and CSK data processed with the RPSI 
+technique (CSK-RPSI). It is clear that the thermal dilation velocity (TDV) 
+(displacement caused by unit air temperature change), as represented by 
+the slope of the temperature-fitted curve for longitudinal displacement, 
+is smaller at the support near pier #7 and larger for those located farther 
+from pier #7. The TDV obtained from RPSI and PSI technique is sum­
+marized in Table 4. For the PSI technique, the errors in calculating 
+longitudinal displacement range from −12.90 % to 3.28 % with S1A 
+data and −10.69 to −8.59 % with CSK data. For the RPSI technique, 
+the associated errors span from −4.07 % to 3.85 % using S1A data and 
+−
+4.52 % to 4.50 % using CSK data. The computational results demon­
+strate that RPSI exhibits enhanced accuracy in displacement measure­
+ment, attributed to the thermal dilation phase refined by the 
+temperature field of the structural members. It’s worth noting that the 
+spatial distributed discrepancy between the on-site installed sensors and 
+the PS points could be a significant source of errors in the displacement 
+measurements. 
+This study revealed that the thermal dilation phase primarily affects 
+the accuracy of PSI technique in the measurement of bridge deforma­
+tion. Given that the focus of this investigation is on a steel-truss arch 
+bridge, it is generally understood that the rates of heat convection and 
+radiation surpass those in concrete box girder bridges. Consequently, in 
+the case of concrete steel box girder bridges, the discrepancy between 
+the bridge’s temperature field and the ambient temperature becomes 
+more pronounced thereby renders the use of RPSI technology particu­
+larly advantageous for deformation monitoring. Currently, research 
+focused on improving the accuracy of PSI technique remains scarce. The 
+proposed RPSI method serves as an effective tool for assessing bridge 
+deformation, acknowledging the variations between air temperature 
+and the bridge’s temperature field. The findings from this study serve as 
+a valuable reference for lightweight monitoring of long-span bridges 
+through InSAR technology. 
+5. Conclusions 
+This study focused on utilizing the InSAR technique for displacement 
+measurements of a steel-truss arch bridge. By utilizing the meteorolog­
+ical sharing data and heat-transfer analysis method, the time-dependent 
+temperature of the bridge members was obtained. The members’ tem­
+perature was instrumental in refining the thermal dilation phase 
+calculation, thereby enhancing the accuracy of bridge deformation 
+monitoring using the RPSI technique. The main conclusions are as 
+follows.  
+(1) The temperature field was obtained without field monitoring 
+data by using meteorological sharing data. The heat transfer 
+boundary conditions of the structure were determined using 
+Fig. 19. Linear regression model of the longitudinal displacements with respect to the ambient temperatures. (a) S1A-PSI; (b) CSK-PSI; (c) S1A-RPSI; (d) CSK-RPSI.  
+Table 4 
+Comparison of thermal dilation velocity (mm/℃).  
+Piers 
+#4 
+#5 
+#6 
+#8 
+#9 
+#10 
+Field data 
+7.23 
+6.05 
+4.21 
+4.42 
+6.12 
+6.96 
+S1A-PSI 
+7.12 
+6.14 
+3.74 
+3.85 
+5.80 
+6.82 
+CSK-PSI 
+6.99 
+5.72 
+3.76 
+4.34 
+6.58 
+7.56 
+S1A-RPSI 
+7.47 
+5.68 
+4.37 
+4.24 
+5.92 
+7.23 
+CSK-RPSI 
+7.56 
+5.82 
+4.40 
+4.22 
+6.01 
+7.19 
+ES1A-PSI 
+-2.01 % 
+3.28 % 
+-11.16 % 
+-12.90 % 
+-5.26 % 
+-2.04 % 
+ECSK-PSI 
+-1.83 % 
+-3.78 % 
+-10.69 % 
+-1.81 % 
+7.48 % 
+8.62 % 
+ES1A-RPSI 
+2.81 % 
+-4.46 % 
+3.80 % 
+-4.07 % 
+-3.30 % 
+3.85 % 
+ECSK-RPSI 
+4.05 % 
+-2.10 % 
+4.51 % 
+-4.52 % 
+-1.83 % 
+3.30 % 
+Note: The term “Field data” refers to TDV derived from on-site displacement 
+measurements as reported in literature [40]. The equation for relative error of 
+the TDV calculation is given by E = (dI – dF)/dF, where dF indicates the TDV 
+from field data and dI denotes the TDV calculated using an InSAR-based method, 
+i.e., PSI or RPSI technique. 
+Y. Zhou et al.                                                                                                                                                                                                                                    
+
+Engineering Structures 311 (2024) 118164
+12
+meteorological parameters such as the bridge’s geographical 
+coordinates, material emissivity, air temperature, and wind 
+speed. With the boundary conditions, thermal conductivity and 
+heat capacity of the members’ material, the temperature-time 
+curves were derived from transient thermal analysis. 
+(2) The accuracy of deformation monitoring using the RPSI tech­
+nique can be effectively refined by the bridge temperature field. 
+Thermal dilation is a critical component of the RPSI-based bridge 
+deformation. The computational accuracy was improved by 
+adopting time-dependent temperature instead of ambient air 
+temperatures, thereby enhancing the precision of measurements 
+obtained with the RPSI technique.  
+(3) The RPSI technique was employed to analyze the S1A and CSK 
+data to depict the bridge’s spatiotemporal deformation. Tempo­
+rally, a strong correlation emerged between LOS displacement 
+and air temperature. Spatially, the maximum longitudinal 
+displacement caused by a unit temperature change was observed 
+at piers #4 and #10.  
+(4) Compared to numerical results, the MAE and RMSE values from 
+the RPSI technique were both lower than those from the PSI 
+technique, confirming the enhanced accuracy of RPSI in defor­
+mation monitoring. Moreover, despite the relatively lower spatial 
+resolution of S1A imagery, the derived measurements demon­
+strate that the displacement detection accuracy of S1A is com­
+parable to CSK datasets.  
+(5) The TDV derived from both the RPSI and PSI techniques was 
+compared to field measurements. For S1A and CSK data, the TDV 
+relative error ranged from −12.9 % to 8.59 % using the PSI 
+technique, while the TDV relative error using the RPSI technique 
+ranged from −4.52 % to 4.50 %, validating the superior perfor­
+mance of the RPSI technique over the PSI technique. 
+The accuracy of deformation measurement using conventional PS- 
+InSAR technology is well refined with a structural temperature field. 
+Consequently, the proposed RPSI technique provides a powerful tool for 
+achieving lightweight and non-contact structural health monitoring in 
+future. 
+CRediT authorship contribution statement 
+Jiayuan Zheng: Visualization, Validation, Methodology. Junjie 
+Wei: Validation, Methodology, Investigation. JianWei Chen: Valida­
+tion, Investigation, Data curation. Guanwang Hao: Writing – original 
+draft, Visualization, Validation, Software, Project administration, 
+Methodology, Conceptualization. Yun Zhou: Writing – review & edit­
+ing, Supervision, Resources, Project administration, Funding acquisi­
+tion, Conceptualization. 
+Declaration of Competing Interest 
+The authors declare that they have no conflict of interest. 
+Data availability 
+Data will be made available on request. 
+Acknowledgements 
+The authors sincerely appreciate the funding support provided by the 
+National Natural Science Foundation of China (NSFC) (No.52278306), 
+the Key Research and Development Program of Hunan Province (No. 
+2022SK2096), the Hunan Provincial Natural Science Foundation of 
+China (No. 2023JJ70003), and the Science and Technology Progress and 
+Innovation Project of Department of Transportation of Hunan Province 
+(No.201912). We are grateful to Jiping Li and Mao Zhu for providing 
+CSK satellite imagery and sharing their experience in InSAR data 
+processing. The Sentinel-1A data were downloaded from the Alaska 
+Satellite Facility Data Search. 
+References 
+[1] Bonopera M, Chang KC, Chen CC, Lee ZK, Sun YC, Tullini N. Fiber Bragg 
+grating–differential settlement measurement system for bridge displacement 
+monitoring: case study. J Bridge Eng 2019;24(10):1–12. 
+[2] Zhang LX, Liu P, Yan X, Zhao XF. Middle displacement monitoring of 
+medium–small span bridges based on laser technology. Struct Control Health Monit 
+2020;27(4):e2509. 
+[3] Infante D, Di M, Diego, Confuorto P, Tessitore S, T`omas R, et al. Assessment of 
+building behavior in slow-moving landslide-affected areas through DInSAR data 
+and structural analysis. Eng Struct 2019;199:109638. 
+[4] Perissin D, Wang Z, Lin H. Shanghai subway tunnels and highways monitoring 
+through Cosmo-SkyMed Persistent Scatterers. ISPRS J Photo Remote Sens 2012;73: 
+58–67. 
+[5] Macchiarulo V, Milillo P, Blenkinsopp C, Giardina G. Monitoring deformations of 
+infrastructure networks: a fully automated GIS integration and analysis of InSAR 
+time-series. Struct Health Monit 2022;21(4):1849–78. 
+[6] Emadali L, Motagh M, Haghshenas MH. Characterizing post-construction 
+settlement of the Masjed-Soleyman embankment dam, Southwest Iran, using 
+TerraSAR-X SpotLight radar imagery. Eng Struct 2017;143:261–73. 
+[7] Huang QH, Crosetto M, Monserrat O, Crippa B. Displacement monitoring and 
+modelling of a high-speed railway bridge using C-band Sentinel-1 data. Isprs J 
+Photogramm Remote Sens 2017;128(1)):204–11. 
+[8] Ma PF, Li T, Fang CY, Lin H. A tentative test for measuring the sub-millimeter 
+settlement and uplift of a high-speed railway bridge using COSMO-SkyMed images. 
+ISPRS J Photo Remote Sens 2019;155:1–12. 
+[9] Qin XQ, Ding XL, Liao MS. Capturing the deformation characteristics of cable- 
+stayed bridges with multi-temporal SAR interferometry. In: Proceedings of the fifth 
+international workshop on earth observation and remote sensing applications 
+(EORSA). Xian, CHN,; 2018. 
+[10] Caspani VF, Tonelli D, Rocca A, Torboli R, Vitti A, Zonta D. Satellite InSAR 
+technology for structural health monitoring of road bridges and the surrounding 
+territory: a case study. In: Proceedings of the conference on sensors and smart 
+structures technologies for civil, mechanical, and aerospace systems. CA, USA 
+2023. 
+[11] Farneti E, Cavalagli N, Costantini M, Trillo F, Minati F, Venanzi I, et al. Remote 
+sensing satellite data and progressive collapse analysis for structural monitoring of 
+multi-span bridges. In: Proceedings of the tenth European workshop on structural 
+health monitoring (EWSHM). Palermo; 2022. 
+[12] Sousa JJ, Bastos L. Multi-temporal SAR interferometry reveals acceleration of 
+bridge sinking before collapse. Nat Hazard Earth Syst 2013;13(3):659–67. 
+[13] Milillo P, Giardina G, Perissin D, Milillo G, Coletta A, Terranova C. Pre-collapse 
+space geodetic observations of critical infrastructure: the Morandi Bridge, Genoa, 
+Italy. Remote Sens 2019;11(12):1403. 
+[14] Hoppe EJ, Novali F, Rucci A, Fumagalli A, Del Conte S, Falorni G, et al. 
+Deformation monitoring of posttensioned bridges using high-resolution satellite 
+remote sensing. J Bridge Eng 2019;24(12):04019115. 
+[15] Farneti E, Cavalagli N, Venanzi I, Salvatore W, Ubertini F. Residual service life 
+prediction for bridges undergoing slow landslide-induced movements combining 
+satellite radar interferometry and numerical collapse simulation. Eng Struct 2023; 
+293:116628. 
+[16] Fornaro G, Reale D, Verde S. Bridge thermal dilation monitoring with millimeter 
+sensitivity via multidimensional SAR imaging. IEEE Geosci Remote Sens 2013;10 
+(4):677–81. 
+[17] Jung J, Kim DJ, Vadivel P, Yun SH. Long-term deflection monitoring for bridges 
+using X and C-band time-series SAR interferometry. Remote Sens 2019;11(11): 
+1258. 
+[18] Cusson D, Rossi C, Ozkan IF. Early warning system for the detection of unexpected 
+bridge displacements from radar satellite data. J Civ Struct Health Monit 2021;11 
+(1):189–204. 
+[19] Lazecky M, Hlavacova I, Bakon M, Sousa JJ, Perissin D, Patricio G. Bridge 
+displacements monitoring using Space-Borne X-Band SAR interferometry. IEEE J- 
+STARS 2017;10(1):205–10. 
+[20] Qin XQ, Liao MS, Zhang L, Yang MS. Structural health and stability assessment of 
+high-speed railways via thermal dilation mapping with time-series InSAR analysis. 
+IEEE J STARS 2017;10(6):2999–3010. 
+[21] Qin XQ, Zhang L, Yang MS, Luo M, Liao MS, Ding XL. Mapping surface deformation 
+and thermal dilation of arch bridges by structure-driven multi-temporal DInSAR 
+analysis. Remote Sens Environ 2018;216:71–90. 
+[22] Huang SJ, Cai CZ, He XH, Li C. Comparison of the corrugated steel web composite 
+box-girder and traditional girders regarding temperature field under solar 
+radiation. Eng Struct 2023;291:116419. 
+[23] Fan JS, Liu YF, Liu C. Experiment study and refined modeling of temperature field 
+of steel-concrete composite beam bridges. Eng Struct 2021;240:112350. 
+[24] Tao TY, Wang H, Zhu QX, Zou ZQ, Li J, Wang LB. Long-term temperature field of 
+steel-box girder of a long-span bridge: measurement and simulation. Eng Struct 
+2021;236:111924. 
+[25] Xu YL, Chen B, Ng CL, Wong KY, Chan WY. Monitoring temperature effect on a 
+long suspension bridge. Struct Control Health Monit 2010;17(6):632–53. 
+[26] Lu Y, Li D, Wang K, Jia SW. Study on solar radiation and the extreme thermal effect 
+on concrete box girder bridges. Appl Sci-Basel 2021;11(14):6332. 
+Y. Zhou et al.                                                                                                                                                                                                                                    
+
+Engineering Structures 311 (2024) 118164
+13
+[27] Zhou LR, Xia Y, Brownjohn JMW, Koo KY. Temperature analysis of a long-span 
+suspension bridge based on field monitoring and numerical simulation. J Bridge 
+Eng 2016;21(1):04015027. 
+[28] Xia Y, Chen B, Zhou XQ, Xu YL. Field monitoring and numerical analysis of Tsing 
+MA Suspension Bridge Temperature Behavior. Struct Control Health Monit 2013; 
+20(4):560–75. 
+[29] Tom´e ES, Pimentel M, Figueiras J. Structural response of a concrete cable-stayed 
+bridge under thermal loads. Eng Struct 2018;176:652–72. 
+[30] Xia Q, Liu SL, Zhang J. Temperature analysis of a long-span suspension bridge 
+based on a time-varying solar radiation model. Smart Struct Syst 2020;25(1): 
+23–35. 
+[31] Fan JS, Li BL, Liu C, Liu YF. An efficient model for simulation of temperature field 
+of steel-concrete composite beam bridges. Structures 2022;43:1868–80. 
+[32] Wang ZW, Zhang WM, Zhang YF, Liu Z. Temperature prediction of flat steel box 
+girders of long-span bridges utilizing in situ environmental parameters and 
+machine learning. J Bridge Eng 2022;27(3):04022004. 
+[33] Xia Q, Wu WL, Li FN, Zhou XQ, XuYL, Xia Y. Temperature behaviors of an arch 
+bridge through integration of field monitoring and unified numerical simulation. 
+Adv Struct Eng 2022;25(16):3492–509. 
+[34] Li LF, Shan YS, Jing Q, Yan Y, Xia ZL, Xia Y. Global temperature behavior 
+monitoring and analysis of a three-tower cable-stayed bridge. Eng Struct 2023;295: 
+116855. 
+[35] Abid SR, Tayi N, Zaka M. Experimental analysis of temperature gradients in 
+concrete box-girders. Constr Build Mater 2016;106:523–32. 
+[36] Lu HL, Hao J, Zhong JW, Wang YF, Yang HY. Analysis of sunshine temperature 
+field of steel box girder based on monitoring data. Adv Civ Eng 2020;2020(3): 
+9572602. 
+[37] Ferretti A, Prati C, Rocca F. Permanent scatterers in SAR interferometry. IEEE 
+Trans Geosci Remote Sens 2001;39(1):8–20. 
+[38] Hooper A, Bekaert D, Spaans K, Arikan M. Recent advances in SAR interferometry 
+time series analysis for measuring crustal deformation. Tectonophysics 2012;514: 
+1–13. 
+[39] Elbadry MM, Ghali A. Temperature variations in concrete bridges. J Struct Eng 
+1983;109(10):2355–74. 
+[40] Branco FA, Mendes PA. Thermal actions for concrete bridge design. J Struct Eng 
+1993;119(8):2313–31. 
+[41] Nalder IA, Wein RW. Spatial interpolation of climatic normals: test of a new 
+method in the Canadian boreal forest. Agr Meteor 1998;92(4):211–25. 
+[42] Cressie N. The origins of kriging. Math Geol 1990;22(3):239–52. 
+[43] Xia CY, Zhong TY. Numerical analysis of the Nanjing Dashengguan Yangtze River 
+Bridge subjected to non-uniform seismic excitations. J Mech Sci Technol 2011;25 
+(5):1297–306. 
+[44] Zhao HW, Ding YL, Nagarajaiah S, Li AQ. Longitudinal displacement behavior and 
+girder end reliability of a jointless steel-truss arch railway bridge during operation. 
+Appl Sci 2019;9(11):2222. 
+[45] Ding YL, Wang GX, Sun P, Wu LY, Yue Q. Long-term structural health monitoring 
+system for a high-speed railway bridge structure. Sci World J 2015;2015:250562. 
+[46] Wang GX, Ding YL, Song YS, Wu LY, Yue Q, Mao GH. Detection and location of the 
+degraded bearings based on monitoring the longitudinal expansion performance of 
+the main girder of the Dashengguan Yangtze Bridge. J Perform Constr Fac 2016;30 
+(4):04015074. 
+[47] Wang GX, Zhou X, Ding YL, Liu XW. Long-term monitoring of temperature 
+differences in a steel truss bridge with two-layer decks compared with bridge. 
+J Bridge Eng 2021;26(3):05020013. 
+[48] Zhou LR, Liang CF, Chen L, Xia Y. Numerical simulation method of thermal 
+analysis for bridges without using field measurements. In: Proceedings of the sixth 
+international workshop on performance, protection and strengthening of structures 
+under extreme loading (PROTECT). CHN: Guangzhou; 2017. 
+[49] Carboni B, Lacarbonara W. A three-dimensional continuum approach to the 
+thermoselasto- dynamics of large-scale structures. Eng Struct 2012;40:155–67. 
+[50] Ali MA, Shimoda M. On multiphysics concurrent multiscale topology optimization 
+for designing porous heat-activated compliant mechanism under convection for 
+additive manufacture. Eng Struct 2023;294:116756. 
+Y. Zhou et al.                                                                                                                                                                                                                                    

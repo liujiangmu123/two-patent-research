@@ -1,0 +1,17 @@
+item_id,tier,quantity,mass_each_kg_low,mass_each_kg_high,power_each_W_typ,power_each_W_budget_peak,basis,source,exclusions
+B02,B1,1,8,18,350,750,整机工程规划估计非实测,工程建议2026-10-03,不含显示器UPS;不构成无人机载荷
+B03,B2,1,12,25,650,1000,整机工程规划估计非实测,工程建议2026-10-03,不含显示器UPS;额定电源按实物
+B05,B1/B2,1,0.4309,0.4309,,,官方仪器质量;供电3AA或USB无确定功耗,https://ims.evidentscientific.com/en/products/thickness-gauges/45mg,探头线校准块及电池质量条件向厂商确认
+P01,OPTIONAL_P1,1,0.498,0.498,9,16,官方重复扫描典型及启动值,https://www.livoxtech.com/avia/specs,线与转换器另计;低温启动需实测
+P02,OPTIONAL_P1,2,0.080,0.080,2.7,5,质量及典型功耗官方;5W每路预留为估计,https://www.baslerweb.com/en-us/shop/aca2440-35uc/,镜头线外壳另计
+P03,OPTIONAL_P1,2,0.08,0.15,0,0,镜头质量工程估计未选型,工程建议2026-10-03,实际焦距和材料后定
+P04,OPTIONAL_P1,1,0.065,0.065,1.5,3,质量官方;功耗工程预留非额定,https://www.sbg-systems.com/ins/ellipse-d/,网页功耗数据冲突;实际代次与天线核验
+P04A,OPTIONAL_P1,2,0.03,0.08,0.1,0.2,天线功耗及质量工程估计,https://www.sbg-systems.com/ins/ellipse-d/,不得作为正式天线规格
+P05,OPTIONAL_P1,1,0.03,0.10,1.5,3,定制同步板工程估计,工程建议2026-10-03,尚无PCB与台架结果
+P06,OPTIONAL_P1,1,0.25,0.50,15,30,仅记录计算单元工程估计,工程建议2026-10-03,无机载GPU优化要求
+P06S,OPTIONAL_P1,1,0.02,0.08,3,7,NVMe工程估计,工程建议2026-10-03,实际SSD热与持续写入另测
+P06N,OPTIONAL_P1,1,0.05,0.15,2,4,接口交换及转换工程估计,工程建议2026-10-03,不能重复计入具体计算单元
+P07,OPTIONAL_P1,1,0.08,0.20,,,供电板质量估计;损耗按实际效率计算,工程建议2026-10-03,总输入功率不得只相加典型功耗
+P07C,OPTIONAL_P1,1,0.05,0.15,0,0,线束质量工程估计,工程建议2026-10-03,含接口及应力释放
+P07M,OPTIONAL_P1,1,0.15,0.40,0,0,支架质量工程估计,工程建议2026-10-03,实际安装设计未完成
+P07T,OPTIONAL_P1,1,0.15,0.35,2,4,外壳质量及散热辅助工程估计,工程建议2026-10-03,未进行温升/防护等级认证

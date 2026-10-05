@@ -1,0 +1,117 @@
+{
+ "R01_Lamas2023_桁架桥点云实例语义分割.pdf": {
+  "url": "https://www.investigo.biblioteca.uvigo.es/xmlui/bitstream/11093/4752/4/2023_lamas_point_clouds.pdf",
+  "ok": false,
+  "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
+ },
+ "R02_Lamas2023_桁架桥合成点云.pdf": {
+  "url": "https://www.investigo.biblioteca.uvigo.es/xmlui/bitstream/11093/5438/1/2023_lamas_point_clouds.pdf",
+  "ok": false,
+  "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
+ },
+ "R03_Qiao2022_构件分割与模型匹配塔重建.pdf": {
+  "url": "https://www.mdpi.com/2072-4292/14/19/4905/pdf",
+  "ok": false,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ "R04_Zhou2017_启发式塔重建.pdf": {
+  "url": "https://www.mdpi.com/2072-4292/9/11/1172/pdf",
+  "ok": false,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ "R05_Chen2019_抽象模板塔重建.pdf": {
+  "url": "https://www.mdpi.com/2072-4292/11/13/1579/pdf",
+  "ok": false,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ "R06_SymmCompletion2025_对称引导补全.pdf": {
+  "url": "https://arxiv.org/pdf/2503.18007",
+  "ok": false,
+  "error": "超过 30 MB，放弃"
+ },
+ "R07_QualityGuidedNBV2025_质量引导无人机NBV.pdf": {
+  "url": "https://arxiv.org/pdf/2511.20353",
+  "ok": true,
+  "bytes": 3768161
+ },
+ "R08_FU-MPC2026_电机旋转激光雷达无人机探索.pdf": {
+  "url": "https://arxiv.org/pdf/2605.14920",
+  "ok": true,
+  "bytes": 15037124
+ },
+ "R09_FC-Planner2023_骨架引导覆盖规划.pdf": {
+  "url": "https://arxiv.org/pdf/2309.13882",
+  "ok": true,
+  "bytes": 20063187
+ },
+ "R10_Roberts2017_子模航迹优化.pdf": {
+  "url": "https://arxiv.org/pdf/1705.00703",
+  "ok": true,
+  "bytes": 2931309
+ },
+ "R11_Review2022_无人机重建视点与路径规划综述.pdf": {
+  "url": "https://arxiv.org/pdf/2205.03716",
+  "ok": true,
+  "bytes": 679828
+ },
+ "R12_HELIOS++2021_虚拟激光扫描.pdf": {
+  "url": "https://arxiv.org/pdf/2101.09154",
+  "ok": true,
+  "bytes": 5970630
+ },
+ "R13_QualityAdaptiveMultiUAV2026.pdf": {
+  "url": "https://arxiv.org/pdf/2607.24233",
+  "ok": true,
+  "bytes": 4080054
+ },
+ "R14_Huang2022_无人机激光塔倾斜评估.pdf": {
+  "url": "https://www.mdpi.com/2072-4292/14/2/408/pdf",
+  "ok": false,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ "R15_Zhou2026_格构钢塔倾斜检测截面算法.pdf": {
+  "url": "https://www.mdpi.com/1424-8220/26/17/5558/pdf",
+  "ok": false,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ "R16_Skeleton2026_骨架螺旋覆盖路径.pdf": {
+  "url": "https://www.mdpi.com/2076-3417/16/17/8743/pdf",
+  "ok": false,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ "R17_ShapePrior2026_无人机激光塔提取.pdf": {
+  "url": "https://www.mdpi.com/2072-4292/18/13/2082/pdf",
+  "ok": false,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ "R18_TUM_钢框架点云重建.pdf": {
+  "url": "https://mediatum.ub.tum.de/doc/1785448/1785448.pdf",
+  "ok": false,
+  "error": "非 PDF（text/html; charset=utf-8）"
+ },
+ "S01_RIEGL_VUX-120-23_规格书.pdf": {
+  "url": "https://www.thefuture3d.com/spec-sheets/riegl/RIEGL_VUX-120-23__Datasheet_2026-08-20_EN.pdf",
+  "ok": true,
+  "bytes": 3138316
+ },
+ "S02_RIEGL_miniVUX-3UAV_规格书.pdf": {
+  "url": "https://ggs-solutions.eu/wp-content/uploads/2024/05/miniVUX-3UAV-Data-Sheet.pdf",
+  "ok": true,
+  "bytes": 719624
+ },
+ "S03_Hesai_XT32M2X_折页.pdf": {
+  "url": "https://3fcd7a14-6521-4f80-9edc-873fa9919932.filesusr.com/ugd/42e3eb_87f17fd6b5154513970ba9a42d3cf759.pdf",
+  "ok": true,
+  "bytes": 4769124
+ },
+ "T01_DLT409-2023_电力安全工作规程线路部分_报批稿.pdf": {
+  "url": "https://hbba.sacinfo.org.cn/portal/download/00913ed979aad12bc2c4621e047a6b2d265a2cc9437d6f7fa118188c84afd486",
+  "ok": true,
+  "bytes": 489584
+ },
+ "T99_hbba_e8b44_待识别.pdf": {
+  "url": "https://hbba.sacinfo.org.cn/portal/download/e8b44e4dce0945ff401d206e245aa2df5ca6149b88772a4d3979277565ef3e22",
+  "ok": true,
+  "bytes": 412490
+ }
+}

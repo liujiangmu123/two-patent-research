@@ -1,0 +1,828 @@
+Academic Editor: Humberto Varum
+Received: 19 February 2025
+Revised: 2 March 2025
+Accepted: 3 March 2025
+Published: 5 March 2025
+Citation: Pei, X.-Y.; Hou, Y.; Huang,
+H.-B.; Zheng, J.-X. A Multi-Objective
+Sensor Placement Method
+Considering Modal Identification
+Uncertainty and Damage Detection
+Sensitivity. Buildings 2025, 15, 821.
+https://doi.org/10.3390/
+buildings15050821
+Copyright: © 2025 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license
+(https://creativecommons.org/
+licenses/by/4.0/).
+Article
+A Multi-Objective Sensor Placement Method Considering Modal
+Identification Uncertainty and Damage Detection Sensitivity
+Xue-Yang Pei 1, Yuan Hou 1, Hai-Bin Huang 2
+and Jun-Xing Zheng 3,*
+1
+School of Civil Engineering, Yancheng Institute of Technology, Yancheng 224051, China
+2
+School of Civil and Transportation Engineering, Hebei University of Technology, Tianjin 300401, China
+3
+School of Civil and Hydraulic Engineering, Huazhong University of Science and Technology,
+Wuhan 430074, China
+*
+Correspondence: junxing@hust.edu.cn
+Abstract: Structural Health Monitoring relies on accurate modal identification and effective
+damage detection to assess structural performance and safety. However, traditional sensor
+placement methods struggle to balance modal identification uncertainty, which arises from
+limited sensor coverage and measurement noise and damage detection sensitivity, which
+requires sensors to be optimally positioned to capture structural stiffness variations. To
+address this challenge, this study proposes a multi-objective sensor placement optimization
+method based on the Non-Dominated Sorting Genetic Algorithm. The method introduces
+two key objective functions: minimizing modal identification uncertainty by leveraging
+Bayesian modal identification theory and information entropy and maximizing damage de-
+tection sensitivity by incorporating an entropy-based measure to quantify the uncertainty in
+stiffness variation estimation. By formulating the problem as Pareto-based multi-objective
+optimization, the method efficiently explores a trade-off between the two competing ob-
+jectives and provides a diverse set of optimal sensor placement solutions. The proposed
+approach is validated through numerical experiments on a simply supported beam and
+a benchmark bridge structure, demonstrating that different optimization objectives lead
+to distinct sensor placement patterns. The results show that solutions prioritizing modal
+identification distribute sensors across the structure to improve global response estimation,
+while solutions favoring damage detection concentrate sensors in critical areas to enhance
+sensitivity. The proposed method significantly improves sensor placement strategies by
+offering a systematic and flexible framework for SHM applications, enabling engineers to
+tailor monitoring strategies based on specific structural assessment needs.
+Keywords: multi-objective sensor placement; modal identification uncertainty; damage
+detection sensitivity; Pareto optimization; non-dominated sorting genetic algorithm
+1. Introduction
+The safety and functionality of civil infrastructure are continuously assessed through
+Structural Health Monitoring (SHM) systems, which collect and analyze real-time struc-
+tural response data to provide critical insights [1,2]. The accurate identification of modal
+parameters, such as natural frequencies, mode shapes, and modal coordinates, is a cru-
+cial component of SHM. These parameters play a key role in system identification, finite
+element model updating, and structural damage detection [3–5]. Structural damage is
+typically manifested as variations in these modal parameters, indicating potential changes
+in stiffness, mass, or damping characteristics [6]. However, the precision of modal pa-
+rameter identification and damage detection is inherently constrained by the quality and
+Buildings 2025, 15, 821
+https://doi.org/10.3390/buildings15050821
+
+Buildings 2025, 15, 821
+2 of 15
+spatial distribution of sensor data, which can be affected by sensor placement limitations
+and measurement noise [7–9]. In practical engineering applications, such as bridges and
+high-rise buildings, researchers often need to develop optimized placement strategies
+for different types of sensors, including displacement and acceleration sensors, based on
+practical requirements and specific structural characteristics, in order to improve structural
+data collection [10–12]. Even when the number of sensors is limited, these strategies can
+still ensure accurate and consistent modal parameter identification.
+The optimization of sensor placement for modal parameters has been widely explored
+in an effort to improve modal identification accuracy. This research primarily aims to mini-
+mize uncertainties stemming from modeling errors and measurement noise. Among these
+approaches, the Effective Independence (EI) method has emerged as a widely adopted strat-
+egy, selecting sensor locations by minimizing the Fisher information matrix’s determinant,
+which is directly related to the covariance matrix of modal coordinate estimators [13]. This
+method has been further extended to support multidimensional sensor layouts, where mul-
+tiple rows in the mode shape matrix are linked to a single sensor location [14]. Additionally,
+the relationship between the EI method and the kinetic energy (KE) method, which incorpo-
+rates the mass matrix into the Fisher information matrix to enhance sensor selection criteria,
+has been explored [15]. Recent advancements have introduced Bayesian statistical frame-
+works into sensor placement optimization, leveraging probabilistic uncertainty modeling to
+improve robustness. In particular, information entropy has been proposed as a scalar metric
+for quantifying uncertainty, providing a rigorous theoretical basis for optimizing sensor
+configurations [16,17]. Furthermore, novel strategies integrating heterogeneous sensor
+types have been developed to enhance measurement accuracy. Pei et al. [18] proposed a
+hybrid placement method that optimizes the deployment of strain and acceleration sensors
+to minimize the uncertainty in displacement mode shape estimation. Similarly, Zhang
+and Xu [19] incorporated discrete Kalman filtering into sensor placement optimization,
+facilitating sensor arrangement strategies tailored for both response reconstruction and
+excitation reconstruction scenarios.
+Damage detection-oriented sensor placement methods aim to strategically position
+sensors to enhance the identification of structural stiffness changes while improving modal
+identification accuracy. Among these approaches, frequency-based damage identification
+methods have been widely utilized due to their computational efficiency and simplicity.
+Early studies primarily relied on natural frequency shifts as indicators of structural dam-
+age [20,21]. However, compared to frequency-based approaches, mode shape analysis
+offers greater sensitivity to localized stiffness variations due to its spatially distributed
+characteristics [22,23].
+To further refine damage detection, Yang [24] introduced information entropy as a
+measure to assess uncertainties arising from stiffness variations, treating them as model
+errors. Hiramoto et al. [25] applied the explicit solution of the algebraic Riccati equation to
+optimize both sensor and actuator placements for active vibration control, demonstrating
+an integrated approach to monitoring and control. Worden and Burrows [26] leveraged
+curvature data to develop novel sensor distribution methods, emphasizing the role of
+spatial derivatives in detecting structural anomalies. Additionally, Shi et al. [27] and Guo
+et al. [28] proposed sensor layouts specifically designed to detect and localize structural
+damage using test modal data, an area that remains relatively underexplored in sensor
+placement research. Further developments in damage-oriented sensor placement include
+the work of Pei et al. [29], who treated potential structural damage as modeling errors,
+adjusting sensor configurations to enhance modal identification. However, while their
+study optimized sensor placement for modal identification accuracy, it did not explicitly
+evaluate the impact of sensor placement on damage detection sensitivity or establish a
+
+Buildings 2025, 15, 821
+3 of 15
+comprehensive framework that simultaneously addresses modal identification uncertainty
+and damage detection sensitivity. This gap highlights the need for a more integrated
+optimization strategy that considers both objectives within a unified framework.
+Structural Health Monitoring (SHM) necessitates multi-objective optimization meth-
+ods to balance competing demands, a challenge that has gained increasing attention among
+researchers worldwide. To address this, various studies have explored advanced optimiza-
+tion strategies for sensor placement. Sankary and Ostfeld [30] introduced a multi-objective
+approach for wireless sensor placement, enhancing the quality of modal information while
+minimizing energy consumption. Soman et al. [31] proposed an optimization framework
+that considers both structural modal identification and mode shape expansion, demon-
+strating its applicability to long-span bridges. Similarly, Cha et al. [32] utilized a genetic
+algorithm to refine the positioning of active control devices and sensors within a structural
+framework, achieving both cost reductions and improved control performance. Further
+advancements in Pareto-based sensor placement optimization have been proposed to ad-
+dress the complexity of multi-objective trade-offs. Nong et al. [33] developed a method
+incorporating Pareto optimization to simultaneously satisfy multiple modal parameter
+estimation criteria. This approach employed the Non-Dominated Sorting Genetic Algo-
+rithm II (NSGA-II) to efficiently compute the Pareto front, enabling the selection of sensor
+configurations that optimally balance competing objectives [34]. However, as the number
+of sensor placement evaluation criteria increases, the computational burden associated
+with exhaustive search methods becomes prohibitively large, rendering them impractical
+for large-scale structures. Consequently, intelligent algorithms have been widely adopted
+to identify near-optimal sensor configurations while maintaining an acceptable level of
+accuracy [35–37].
+In this study, sensor placement criteria are separately formulated to address modal
+identification uncertainty and damage detection sensitivity, and a Pareto-based multi-
+objective optimization algorithm using the Non-Dominated Sorting Genetic Algorithm
+(NSGA-II) is proposed. First, Bayesian modal identification theory is applied to establish
+a sensor placement criterion that minimizes uncertainty in modal coordinate estimation,
+enhancing the accuracy and reliability of modal parameter identification. Next, leveraging
+the relationship between modal parameter variations and stiffness damage coefficients, a
+second sensor placement criterion is introduced to improve damage detection sensitivity
+by minimizing uncertainty in the identification of damage coefficients. To effectively
+balance these two competing objectives, NSGA-II is employed to construct a multi-objective
+optimization framework that yields a collection of Pareto-optimal sensor configurations,
+enabling a trade-off between modal identification accuracy and damage detectability.
+Finally, the proposed method is validated through numerical studies on a simply supported
+beam and a benchmark bridge structure, demonstrating its effectiveness in generating
+sensor configurations tailored to different monitoring priorities. Additionally, the interplay
+between modal identification uncertainty and damage detection sensitivity under identical
+sensor placement scenarios is analyzed to provide deeper insight into their mutual influence
+and trade-offs.
+2. Methodology
+2.1. Modal Identification Uncertainty
+In general, the candidate sensor locations for a structure are selected based on the
+nodal positions of the corresponding finite element (FE) model. Sensors are then deployed
+on a subset of these candidate locations to capture response signals. However, due to
+measurement noise and other error factors, the structural responses recorded by sensors
+
+Buildings 2025, 15, 821
+4 of 15
+may deviate from their true values. At a given sampling time t, the observed structural
+response, y(t), can be expressed as follows:
+y(t) = L(x(t, θ) + e(t, θ))
+(1)
+where L is the sensor selection matrix, which determines the chosen sensor locations from
+the set of candidate positions. It is a binary matrix (composed of 0 s and 1 s), where each
+entry indicates whether a sensor is placed at a given location. θ represents the parameter to
+be estimated; e(t, θ) denotes the measurement noise, which accounts for the discrepancy
+between the observed and true structural response. Since a Gaussian distribution has the
+maximum entropy property, e(t, θ) is generally considered to be a Gaussian random vector
+characterized by a zero mean and a covariance matrix Σ.
+We assume that structural measurements are conducted and measurement data are
+obtained at N discrete sampling instances, denoted as D = {yk, k = 1, · · · , N}, where k
+corresponds to the time step in discrete sampling. Using these sampled data along with
+prior information, the posterior probability density function, p(θ|Σ,D), of the structural
+parameter is expressed as follows:
+p(θ|Σ,D)=c
+1
+√
+2π
+Np
+det(Σ)
+exp
+
+−1
+2
+N
+∑
+k=1
+[yk −Lx(θ, k)]
+T
+LΣLT−1
+[yk −Lx(θ, k)]
+
+pθ(θ)
+(2)
+where pθ(θ) represents the prior probability distribution of the parameter; c is a normal-
+ization constant, ensuring that the right-hand side of Equation (2) integrates to 1; and
+det[·] denotes the determinant operation. p(θ|Σ,D) quantifies the uncertainty in the iden-
+tified structural parameters to a certain extent. By examining the exponential term in
+Equation (2), it can be observed that different sensor selection matrices lead to different
+values of the determinant. To evaluate the effectiveness of different sensor placement con-
+figurations in improving parameter identification accuracy, an uncertainty quantification
+metric is required. When the total number of discrete sampling instances is sufficiently
+large, the asymptotic form of information entropy is employed to measure the degree of
+uncertainty [16]:
+H(L|Σ, D) = 1
+2 Nθ ln(2π) −1
+2 ln[det(Q(L|θ0, Σ))]
+(3)
+where E[·] represents the expectation operator, computing the expected value of a func-
+tion, and ln[·] denotes the natural logarithm operation. H(L|Σ, D) is the information
+entropy associated with a given sensor placement, quantifying the uncertainty in param-
+eter identification. A lower entropy value indicates reduced uncertainty, enhancing the
+precision of identifying structural parameters. The Fisher information matrix, Q(L|θ0, Σ),
+is theoretically expanded as follows:
+Q(L|θ0, Σ) =
+N
+∑
+k=1
+ L∇θ0x(θ, k)
+T
+LΣLT−1 L∇θ0x(θ, k)
+
+(4)
+where ∇θ0 is the gradient matrix with respect to θ0, which represents the optimal estimation
+of the structural parameter. During modal parameter identification, structural parameters
+are often expressed using modal coordinates (q = θ), ensuring high precision in multi-order
+modal identification. The structural response is then reformulated as follows:
+x(θ)=Φq
+(5)
+
+Buildings 2025, 15, 821
+5 of 15
+where Φ is the modal shape matrix of the structure, q contains modal coordinates, including
+natural frequencies and damping ratios for multiple modes. Reducing the estimation uncer-
+tainty of modal coordinates directly enhances the accuracy of natural frequency estimation.
+The best sensor placement, L1, is the one that achieves the lowest information entropy:
+L1 = argmin
+L
+H(L|D) = argmax
+L
+det
+
+(LΦ)T
+LΣLT−1
+(LΦ)
+
+(6)
+2.2. Damage Detection Sensitivity
+When using modal parameters for structural damage detection, the sensitivity of
+modal parameters to structural changes is crucial. The selected sensor locations should
+ensure that the observed modal parameters effectively reflect structural damage. In finite
+element simulations and dynamic equations, structural damage is typically represented by
+changes in stiffness. The theoretical relationship between structural damage and modal
+parameter variations is given as follows [8,27]:
+(K + ∆K)(Φi + ∆Φi) = (λ + ∆λi)M(Φi + ∆Φi)
+(7)
+where K and M represent the stiffness matrix and mass matrix of the structure, respectively.
+λi and Φi correspond to the eigenvalues and eigenvectors of the i-th mode. The operator ∆
+denotes variations in these parameters due to structural damage. By expanding Equation (7)
+and normalizing the mode shape using the mass matrix, while neglecting higher-order small
+terms, the changes in natural frequencies and mode shapes can be expressed as follows:
+fi = ΦT
+i ∆KΦi
+8 · fi · π2
+(8)
+∆Φi =
+m
+∑
+r=1
+−
+ΦT
+r ∆KΦi
+4π2 f 2r −f 2
+i
+Φr
+(9)
+where fi and fr represent the i-th and r-th natural frequencies, and m denotes the modal
+order under consideration. Variations in the stiffness matrix coefficients of individual
+elements serve as indicators of structural damage:
+∆K =
+Ne
+∑
+j=1
+βjKj
+(10)
+where Ne is the number of stiffness matrix elements, and Kj represents the contribution
+of the j-th element to the overall stiffness matrix. βj is the damage coefficient, a scalar
+between 0 and 1, indicating the degree of damage in the j-th element. The variations in
+modal parameters can be further rewritten as
+∆fi =
+"
+ΦT
+i K1Φi
+8 · fi · π2 , · · · , ΦT
+i KNeΦi
+8 · fi · π2
+#
+[β1, · · · , βNe]T=Fiβ
+(11)
+∆Φi =
+
+
+Nd
+∑
+r = 1
+r̸ = i
+−ΦT
+r K1Φi
+λr −λi
+Φr, · · · ,
+Nd
+∑
+r = 1
+r̸ = i
+−ΦT
+r KNeΦi
+λr −λi
+Φr
+
+
+[β1, · · · , βNe]T = Eiβ
+(12)
+where β is the structural damage coefficient vector, and Fi and Ei are the sensitivity coefficient
+vectors of natural frequencies and mode shapes with respect to β. Equations (11) and (12)
+
+Buildings 2025, 15, 821
+6 of 15
+describe the sensitivity of modal parameters to structural damage. Notably, Equation (11) is in-
+dependent of the sensor selection matrix, implying that reducing the uncertainty estimation is
+directly linked to frequency estimation accuracy, which is addressed in Section 2.1. Conversely,
+Equation (12) reveals that the observed mode shape variations depend significantly on sensor
+placement. Its mathematical form is similar to Equation (6), allowing it to be reformulated as
+∆ˆΦ = L(∆Φ(β) + e(β))
+(13)
+where ∆ˆΦ is the observed mode shape variation, and ∆Φ(β) represents the actual mode
+shape variation. e(β) denotes the observation noise, with the i-th column corresponding
+to the i-th mode’s measurement error. Assuming a Gaussian noise model with zero mean
+and variance Σi, the optimal sensor placement should minimize the entropy of damage
+coefficient estimation uncertainty. Thus, the best sensor placement L2 is the one that
+achieves the lowest information entropy:
+L2 = argmin
+L
+H
+ L
+∆ˆΦ
+ = argmax
+L
+m
+∑
+i=1
+det
+
+(LEi)T
+LΣiLT−1
+(LEi)
+
+(14)
+2.3. Multi-Objective Optimization Method
+In sensor placement optimization, when both modal identification uncertainty and
+damage detection sensitivity must be considered simultaneously, single-objective opti-
+mization methods often fail to effectively balance these competing factors. To address this
+challenge, Pareto optimization is introduced to establish a multi-objective sensor placement
+criterion, allowing for a comprehensive evaluation of how these two objectives influence
+the optimal sensor configuration. The core concept of Pareto optimization is to solve for the
+Pareto front, which yields a collection of non-dominated solutions, capturing the trade-offs
+between the two objectives rather than converging to a single globally optimal outcome.
+The Pareto front ensures that no other solution can simultaneously outperform a given so-
+lution in both objectives, thereby providing multiple optimized sensor placement strategies
+for decision-making. However, solving for the Pareto front poses significant computational
+challenges. Traditional global search algorithms often involve excessive computational
+costs, while sequential optimization methods tend to become trapped in local optima. To
+improve computational efficiency and obtain high-quality sensor placement solutions, this
+study employs the NSGA-II. The proposed approach consists of four key steps:
+(1)
+Discrete Encoding of Candidate Sensor Locations: A set of finite element model
+nodes are selected as candidate measurement positions, ensuring that potential sensor
+locations are well distributed across the structure. To represent sensor placement
+decisions, a binary encoding scheme (0, 1) is adopted, where ‘1’ indicates that a sensor
+is placed at a given node and ‘0’ means no sensor is placed at that node. This encoding
+forms the sensor selection matrix L, which is shown in Equation (1).
+(2)
+Initial Population Generation and Evolution: An initial population of sensor place-
+ment configurations is randomly generated, and their bi-objective function values are
+computed. Through selection, crossover, and mutation operations, new solutions are
+iteratively generated, allowing the population to evolve over successive generations.
+(3)
+Non-Dominated Sorting and Crowding Distance Computation: the parent and off-
+spring populations are merged, and non-dominated sorting, along with crowding
+distance measures, is applied to select superior individuals, maintaining both the
+quality and diversity of Pareto front solutions.
+(4)
+Convergence Assessment and Termination: The process is repeated until a termination
+threshold is reached, either upon hitting the maximum generation count or when
+
+Buildings 2025, 15, 821
+7 of 15
+population convergence is achieved. If the termination criterion is not satisfied, the
+optimization process continues until a stable Pareto front solution set is obtained.
+By leveraging this multi-objective optimization framework, a reasonable balance be-
+tween modal identification uncertainty and damage detection sensitivity can be achieved.
+The proposed approach provides an optimized sensor placement strategy for SHM applica-
+tions, facilitating more efficient and reliable monitoring of engineering structures.
+3. Case Study Analysis
+3.1. The Simply Supported Beam
+The proposed sensor placement method is first applied to a simply supported beam
+numerical model to analyze the characteristics of sensor distributions corresponding to
+modal identification uncertainty and damage detection sensitivity. Additionally, the mutual
+influence between these two objectives on sensor placement is investigated. The simply
+supported beam model has a Young’s modulus of 212 GPa, a density of 7456 kg/m3, and
+cross-sectional dimensions of 50 mm × 15.62 mm [29]. The beam has a total length of 1.9 m
+and is discretized into 19 finite elements using planar beam elements (Ne = 19). As shown
+in Figure 1, the 18 vertical degrees of freedom (DOFs) at the nodes serve as candidate sensor
+locations. The first three modal shapes are selected as the target modes for identification.
+Since Rayleigh damping preserves the mode shapes for both damped and undamped cases,
+the damping effect does not influence the mode shape selection. To ensure accurate modal
+identification, the number of sensors must exceed the number of target modes. Thus, the
+number of deployed sensors is set to five to ensure adequate monitoring coverage, with the
+objective functions defined as follows: Objective Function 1 focuses on minimizing modal
+identification uncertainty, as formulated in Equation (6), while Objective Function 2 aims
+to maximize damage detection sensitivity, as formulated in Equation (14).
+Figure 1. Numbering of candidate sensor locations on a simply supported beam.
+Figure 2 presents the distribution of nine Pareto-optimal solutions, where the horizontal
+axis represents Objective Function 1 (modal identification uncertainty) and the vertical axis
+represents Objective Function 2 (damage detection sensitivity). In the figure, red-filled circles
+denote Pareto front solutions, while blue-filled circles indicate locally optimal solutions
+obtained during the optimization process. By analyzing the Pareto front and locally optimal
+solutions, along with the better and worse trade-off directions, it is evident that no solution
+on the Pareto front is simultaneously outperformed in both objectives. The specific number
+of nine solutions is not pre-determined but rather emerges from the convergence process of
+the optimization algorithm. In general, the greater the number of candidate sensor locations
+and the larger the variations in different modal shapes, the more complex the model becomes
+in the algorithm’s computation. This increases the likelihood of falling into local optima,
+making it necessary to run the algorithm multiple times to capture as many Pareto front
+solutions as possible. Additionally, when no clear preference exists between the two objectives,
+solutions on the Pareto front cannot be directly ranked as superior or inferior. The Pareto
+front exhibits a downward trend from the upper left to the lower right, indicating an inherent
+trade-off relationship; optimizing one objective typically leads to the deterioration of the
+other. To illustrate different trade-off scenarios, three representative solutions (Case A, Case
+B, and Case C) are marked in Figure 2. Case A prioritizes modal identification uncertainty
+reduction, but at the expense of lower damage detection sensitivity. Case C prioritizes damage
+
+Buildings 2025, 15, 821
+8 of 15
+detection sensitivity, resulting in increased modal identification uncertainty. Case B represents
+a compromise solution, balancing both objectives.
+Figure 2. Pareto front based on bi-objective function.
+Figure 3 visualizes the sensor placement configurations corresponding to Case A, Case
+B, and Case C, where brown arrows indicate the selected sensor locations. The sensor
+distributions reflect different trade-off orientations within the multi-objective optimization
+framework. Case A (minimizing modal identification uncertainty): Sensors are concen-
+trated at positions 5, 10–12, and 18, particularly covering critical modal response regions,
+such as the mid-span and support areas. This layout enhances the stability of modal pa-
+rameter identification, making it suitable for applications emphasizing global vibration
+characteristics and modal parameter estimation. Case C (maximizing damage detection
+sensitivity): Sensors are positioned towards the central region of the beam, specifically at
+positions 6–13, to capture local damage characteristics more effectively. This configuration
+improves the ability to detect stiffness changes and small-scale structural damage, making
+it ideal for damage-sensitive monitoring applications. Case B (balanced trade-off solution):
+Sensors are more evenly distributed, covering positions 1, 3, 5, 6, 10, 12, 16, and 18, en-
+suring both stable modal identification and enhanced damage detection capability. This
+configuration achieves a balance between global and local monitoring objectives, making it
+suitable for scenarios requiring both structural integrity assessment and damage sensitivity.
+Figure 3. Sensor placement corresponding to different pareto fronts: (a) Case A; (b) Case B; (c) Case C.
+Figure 4 provides a statistical analysis of sensor selection frequency across Pareto-
+optimal solutions: Figure 4a corresponds to the top four Pareto-optimal solutions for
+modal identification uncertainty; Figure 4b corresponds to the top four solutions for
+damage detection sensitivity. The horizontal axis represents sensor locations, while the
+vertical axis indicates the frequency of selection for each location across multiple Pareto-
+
+Buildings 2025, 15, 821
+9 of 15
+optimal solutions. Numbers in parentheses (e.g., (69, 3)) denote the number of times a
+specific location was chosen. From Figure 4a, it is evident that modal identification-focused
+optimization results in a more distributed sensor placement, with frequently selected
+locations being 8, 11, 12, 15, 16, and 18. Conversely, Figure 4b shows that damage detection-
+focused optimization concentrates sensors in specific locations, particularly 3, 6, 9, 10, 14,
+and 16, where localized damage sensitivity is higher. This further confirms that the two
+objectives mutually influence the sensor placement strategy—certain locations are favored
+in one optimization scheme but may be less significant in the other.
+ 
+(a) 
+(b) 
+Frequency
+Frequency
+Figure 4. Pareto front sensor placement for single-objective function preference: (a) Objective 1;
+(b) Objective 2.
+3.2. The Bridge Benchmark Structure
+To further validate the effectiveness of the proposed method, a benchmark bridge
+model developed by the University of Central Florida is employed. This model has been
+widely utilized in research related to modal identification and damage detection [29,38].
+Figure 5a presents a physical view of the benchmark bridge model, which is constructed
+using spatial beam elements and consists of 182 structural elements. The vertical direction
+(Z-axis) is considered the primary direction of interest, and the first three Z-directional
+modal shapes are selected for identification. The nodes on the bridge deck serve as can-
+didate sensor locations, and Figure 5b illustrates their numbering sequence. Compared
+to the previous simply supported beam model, where only five sensors were deployed,
+ten sensors are allocated in this case to better observe their spatial distribution within a
+more complex structural system. The two objective functions used for optimization are
+formulated based on Equations (6) and (14), respectively.
+ 
+ 
+(a) 
+(b) 
+x
+y
+1  2        59 – 65        3  4  5           66 - 72          6  7  8 
+73 - 79         9  10 11         80 - 86       12 13 14        87 - 93        15 16 17       94 - 100      18 19
+20 21
+101 - 107    22 23 24     108 - 114      25 26 27 
+115 - 121      28 29 30     122 - 128      31 32 33     129 - 135      34 35 36     136 - 142     37 38
+39                                       41                                        43                                       45 
+47                                       49                                       51      
+40                                       42                                       44                                       46
+48                                       50                                       52       
+143                                     148                                     153                                     158  
+163                                     168                                     173            
+144                                     149                                     154                                     159  
+164                                     169                                     174            
+145                                     150                                     155                                     160  
+165                                     170                                    175             
+146                                     151                                     156                                     161  
+166                                     171                                    176             
+147                                     152                                     157                                     162  
+167                                     172                                    177             
+Figure 5. The bridge benchmark structure: (a) physical model diagram; (b) numbering of candidate
+measurement points.
+
+Buildings 2025, 15, 821
+10 of 15
+Figure 6 depicts the distribution of seven Pareto-optimal solutions, where the hor-
+izontal axis represents Objective Function 1 (modal identification uncertainty) and the
+vertical axis represents Objective Function 2 (damage detection sensitivity). Red-filled
+circles indicate Pareto front solutions, whereas blue-filled circles represent locally optimal
+solutions obtained during the optimization process. Analyzing the Pareto front and locally
+optimal solutions, along with the direction of the better and worse trade-offs, reveals that
+no solution on the Pareto front can be simultaneously outperformed in both objectives.
+Compared to Figure 2, the proportion of locally optimal solutions is significantly higher in
+Figure 6, primarily due to the higher complexity of the benchmark bridge model compared
+to the simpler simply supported beam model. This increased complexity limits the capa-
+bility of the optimization algorithm to reach global optima, often resulting in suboptimal
+solutions. Additionally, when no clear preference exists between the two objectives, the
+solutions on the Pareto front cannot be directly ranked as superior or inferior. The Pareto
+front exhibits a downward trend from the upper left to the lower right, indicating an
+inherent trade-off relationship; improving one objective typically leads to the deterioration
+of the other. Similarly to Figure 2, three representative cases (Case A, Case B, and Case C)
+are marked in the figure. Case A corresponds to a solution where modal identification un-
+certainty is minimized, but at the cost of reduced damage detection sensitivity. Conversely,
+Case C prioritizes damage detection sensitivity, resulting in a higher modal identification
+uncertainty. Case B, situated between the two extremes, provides a balanced trade-off and
+serves as a compromise solution between both objectives.
+Figure 6. Pareto front based on bi-objective function.
+Figure 7 illustrates the sensor placement configurations corresponding to different op-
+timization preferences, where brown arrows indicate the selected sensor locations. The
+distribution patterns reflect distinct optimization priorities within the multi-objective frame-
+work. In Case A, sensors are predominantly placed along the edges, support regions, and
+certain mid-span locations (e.g., sensors at positions 44, 160, and 45). This configuration is well
+suited for capturing the global vibrational response, thereby reducing modal identification
+uncertainty and improving the accuracy of modal parameter estimation. Such a distribution
+is ideal for applications emphasizing global structural behavior characterization. In Case C,
+sensor placement is more concentrated in the web region and other critical localized areas
+(e.g., positions 41, 43, 45, and 159), with additional sensors near beam ends and support
+locations. This setup enhances damage detection sensitivity, making it more effective in
+identifying small-scale damage or local stiffness variations and making it particularly suitable
+
+Buildings 2025, 15, 821
+11 of 15
+for damage-sensitive monitoring scenarios. Case B serves as a compromise configuration,
+balancing global modal identification accuracy and local damage sensitivity. Sensors are dis-
+tributed across the edges, mid-span, and support areas, ensuring stable modal identification
+while also improving damage detection capabilities. This configuration is particularly useful
+in applications where a balanced monitoring strategy is required.
+(a) 
+(b) 
+(c) 
+Figure 7. Sensor placement corresponding to different pareto fronts: (a) Case A; (b) Case B; (c) Case C.
+Figure 8 presents a statistical analysis of sensor selection frequency across different
+Pareto-optimal solutions. Figure 8a corresponds to the top three Pareto-optimal solutions
+for modal identification uncertainty, while Figure 8b corresponds to the top three solutions
+for damage detection sensitivity. The horizontal axis represents sensor locations, and the
+vertical axis indicates the number of times a given location was selected across multiple
+Pareto-optimal solutions. The numbers in parentheses denote the frequency of selection for
+each location. From Figure 8a, it is evident that modal identification-focused optimization
+results in a more dispersed sensor distribution, primarily covering locations 68, 69, 91,
+
+Buildings 2025, 15, 821
+12 of 15
+109, 110, and 114. Among these, locations 68 and 69 were selected three times, indicating
+their significant contribution to reducing modal identification uncertainty and ensuring
+the stability of global modal responses. In contrast, Figure 8b demonstrates that damage
+detection-focused optimization produces a more localized sensor distribution, with sensors
+concentrated at locations 66, 68, 69, 110, 158, and 159. Notably, locations 66, 69, and
+158 were selected three times, highlighting their high sensitivity to localized damage and
+their ability to capture small-scale structural anomalies. Compared to modal identification
+optimization, damage detection optimization results in sensor placement that is more
+focused on key regions, particularly around locations 66, 69, and 158. From an overall
+perspective, modal identification-driven sensor layouts tend to cover a broader range of
+locations, ensuring a more evenly distributed placement that enhances global response
+estimation. In contrast, damage detection-driven layouts prioritize localized key areas,
+improving the sensitivity to structural anomalies. Additionally, some locations—such
+as positions 68, 69, and 110—were frequently selected in both optimization strategies,
+suggesting that they play a critical role in achieving both objectives. In practical engineering
+applications, the sensor placement strategy can be adjusted based on the specific monitoring
+priorities, ensuring an optimal balance between global modal estimation accuracy and
+localized damage detection sensitivity.
+(a) 
+(b) 
+Frequency
+Frequency
+Figure 8. Pareto front sensor placement for single-objective function preference: (a) Objective 1;
+(b) Objective 2.
+
+Buildings 2025, 15, 821
+13 of 15
+3.3. Discussion
+In the finite element model of a structure, changes in the stiffness matrix are typically
+used to represent structural variations. Generally, the overall stiffness matrix change is
+obtained by accumulating the changes in individual element stiffness matrices, which
+are typically caused by material degradation or constraint variations, both of which are
+reflected in the variation coefficients of the element stiffness matrices. In our study, we
+simulate structural damage by reducing the stiffness of selected finite element components
+in both the simply supported beam model and the benchmark bridge model according to
+damage coefficients. In damage detection research, it is commonly assumed that the damage
+coefficient lies between 0.1 and 0.3. Notably, when the covariance matrix is assumed to be a
+diagonal matrix with equal diagonal elements, the absolute values of the assumed damage
+coefficients do not affect the relative ranking of different sensor placements. Furthermore,
+Equation (14) is a simplified form, assuming that the variations in different stiffness matrix
+coefficients are similar. If there are significant differences in the variation patterns, Equation
+(13) can be used to derive the partial derivative of the damage coefficient, which can then
+be substituted into Equation (4) for further analysis.
+Previous studies on structural parameter identification (including modal and physical
+parameters) have examined the impact of damage on parameter estimation and further
+evaluated its influence on sensor placement strategies. The findings indicate that when
+damage detection sensitivity is not considered and only parameter identification uncer-
+tainty is considered in a single-objective framework, the presence of structural damage
+has little impact on sensor placement [29]. On the one hand, in computational analysis,
+the effect of damage is often modeled as variations in noise variance or as a random
+distribution. These assumptions do not introduce significant fluctuations into the data
+distribution and, consequently, do not lead to substantial differences in the computational
+results [13,17,24,27,28]. On the other hand, as observed in this study, even when damage
+effects are considered, the optimization criteria remain focused on structural parameter
+estimation, fundamentally maintaining a single-objective optimization framework. Since
+the objective function remains unchanged and the structural information contained in
+the selected sensor locations varies only slightly, the sensor placement strategy remains
+largely unaffected. However, the multi-objective optimization approach proposed in this
+study reveals that the selection of sensor locations is influenced by the interplay between
+the two objectives. Given that different objective functions exhibit distinct computational
+tendencies, the information captured at different sensor locations also varies, leading to
+an interdependent selection process. It is important to note that this interaction does not
+always manifest as a conflicting relationship, as it depends on the definition of the objective
+functions and the correlation between the data used in the computation.
+4. Conclusions
+This study proposes a multi-objective sensor placement method based on the NSGA-II
+to balance modal identification uncertainty and damage detection sensitivity in SHM. By
+introducing information entropy to quantify the uncertainty in both modal coordinate
+estimation and stiffness variation assessment, the method provides a systematic framework
+for optimizing sensor layouts. Numerical validation on a simply supported beam and a
+benchmark bridge structure confirms its effectiveness in generating sensor configurations
+tailored to different monitoring priorities.
+A key innovation of this study is the use of information entropy to evaluate the
+uncertainty in stiffness variation estimation, which enhances the assessment of damage
+detection sensitivity. By integrating this approach within the optimization framework, the
+method enables a more robust and adaptive selection of sensor placements, improving both
+
+Buildings 2025, 15, 821
+14 of 15
+the accuracy and reliability of structural damage identification. The results show that sensor
+layouts optimized for damage detection tend to cluster in regions where stiffness changes
+are most pronounced, effectively enhancing sensitivity to localized structural deterioration.
+Conversely, configurations prioritizing modal identification are more evenly distributed,
+ensuring comprehensive modal response capture but potentially reducing sensitivity to
+local damage. This interplay highlights the inherent trade-off between the two objectives,
+where optimizing one may come at the expense of the other.
+Additionally, the Pareto-based optimization framework provides a range of trade-
+off solutions, allowing engineers to select sensor placements that best align with specific
+monitoring requirements. The results indicate that while balanced sensor distributions
+ensure adequate performance for both objectives, targeted configurations can be fine-tuned
+to either enhance modal identification accuracy or increase sensitivity to structural damage.
+This adaptability ensures that the method can be effectively applied to various SHM
+scenarios with different constraints and priorities.
+Due to time and capability constraints, there are still areas in this study that can be
+further explored. Future research could incorporate physical parameter identification,
+time-series prediction, and correlation analysis to formulate additional objective functions.
+By utilizing Pareto optimization methods, the interactions between different monitoring
+objectives in sensor placement can be analyzed, leading to further optimization of sensor
+placement strategies.
+Author Contributions: Conceptualization, X.-Y.P.; methodology, X.-Y.P. and J.-X.Z.; software, Y.H.
+and H.-B.H.; validation, J.-X.Z. and H.-B.H.; formal analysis, J.-X.Z.; investigation, X.-Y.P.; data
+curation, X.-Y.P. and H.-B.H.; writing—original draft preparation, X.-Y.P. and Y.H.; writing—review
+and editing X.-Y.P. and J.-X.Z.; funding acquisition, X.-Y.P. and H.-B.H. All authors have read and
+agreed to the published version of the manuscript.
+Funding: This research work was jointly supported by the National Natural Science Foundation of
+China (Grant No. 52108287) and the Tiankai Higher Education Science and Technology Innovation
+Park Enterprise R&D Special Project (Grant No. 23YFZXYC00026).
+Data Availability Statement: Some or all of the data models that support the findings of this study
+are available from the corresponding author upon reasonable request.
+Conflicts of Interest: The authors declare no conflicts of interest.
+References
+1.
+Farrar, C.R.; Worden, K. An introduction to structural health monitoring. Philos. Trans. R. Soc. A Math. Phys. Eng. Sci. 2006, 365,
+303–315. [CrossRef] [PubMed]
+2.
+Mishra, M.; Lourenço, P.B.; Ramana, G.V. Structural health monitoring of civil engineering structures by using the internet of
+things: A review. J. Build. Eng. 2022, 48, 103954. [CrossRef]
+3.
+Reynders, E. System identification methods for (operational) modal analysis: Review and comparison. Arch. Comput. Methods
+Eng. 2012, 19, 51–124. [CrossRef]
+4.
+Huang, H.B.; Yi, T.H.; Li, H.N. Bayesian combination of weighted principal component analysis for diagnosing sensor faults in
+structural monitoring systems. J. Eng. Mech. 2017, 143, 04017088. [CrossRef]
+5.
+Frigui, F.; Faye, J.P.; Martin, C.; Dalverny, O.; Peres, F.; Judenherc, S. Global methodology for damage detection and localization in
+civil engineering structures. Eng. Struct. 2018, 171, 686–695. [CrossRef]
+6.
+Avci, O.; Abdeljaber, O.; Kiranyaz, S.; Hussein, M.; Gabbouj, M.; Inman, D.J. A review of vibration-based damage detection in
+civil structures: From traditional methods to machine learning and deep learning applications. Mech. Syst. Signal Process. 2021,
+147, 107077. [CrossRef]
+7.
+Yi, T.H.; Li, H.N.; Gu, M. Sensor placement for structural health monitoring of Canton Tower. Smart Struct. Syst. 2012, 10, 313–329. [CrossRef]
+8.
+Yin, T.; Zhu, H.; Yu, L. Noise analysis for sensitivity-based structural damage detection. Appl. Math. Mech. 2007, 28, 741–750. [CrossRef]
+9.
+Cao, X.; Chen, J.; Xu, Q.; Li, J. A distance coefficient-multi objective information fusion algorithm for optimal sensor placement in
+structural health monitoring. Adv. Struct. Eng. 2021, 24, 718–732. [CrossRef]
+
+Buildings 2025, 15, 821
+15 of 15
+10.
+Nicoletti, V.; Quarchioni, S.; Amico, L.; Gara, F. Assessment of different optimal sensor placement methods for dynamic
+monitoring of civil structures and infrastructures. Struct. Infrastruct. Eng. 2024, 1–16. [CrossRef]
+11.
+Taher, S.A.; Li, J.; Fang, H. Simultaneous seismic input and state estimation with optimal sensor placement for building structures
+using incomplete acceleration measurements. Mech. Syst. Signal Process. 2023, 188, 110047. [CrossRef]
+12.
+Garbowski, T.; Cornaggia, A.; Zaborowicz, M.; Sowa, S. Computer-Aided Structural Diagnosis of Bridges Using Combinations of
+Static and Dynamic Tests: A Preliminary Investigation. Materials 2023, 16, 7512. [CrossRef] [PubMed]
+13.
+Kammer, D.C. Effect of model error on sensor placement for on-orbit modal identification of large space structures. J. Guid.
+Control. Dyn. 1992, 15, 334–341. [CrossRef]
+14.
+Kammer, D.C.; Tinker, M.L. Optimal placement of triaxial accelerometers for modal vibration tests. Mech. Syst. Signal Process.
+2004, 18, 29–41. [CrossRef]
+15.
+Li, D.S.; Li, H.N.; Fritzen, C.P. The connection between effective independence and modal kinetic energy methods for sensor
+placement. J. Sound Vib. 2007, 305, 945–955. [CrossRef]
+16.
+Papadimitriou, C.; Beck, J.L.; Au, S.K. Entropy-based optimal sensor location for structural model updating. J. Vib. Control. 2000, 6, 781–800. [CrossRef]
+17.
+Papadimitriou, C.; Lombaert, G. The effect of prediction error correlation on optimal sensor placement in structural dynamics.
+Mech. Syst. Signal Process. 2012, 28, 105–127. [CrossRef]
+18.
+Pei,X.Y.; Yi,T.H.; Li,H.N.Amultitypesensorplacementmethodforthemodalestimationofstructure.SmartStruct. Syst.2018,21,407–420. [CrossRef]
+19.
+Zhang, C.D.; Xu, Y.L. Optimal multi-type sensor placement for response excitation reconstruction. J. Sound Vib. 2016, 360, 112–128. [CrossRef]
+20.
+Huang, J.Z.; Li, D.S.; Li, H.N. A new regime-switching cointegration method for structural health monitoring under changing
+environmental and operational conditions. Measurement 2023, 212, 112682. [CrossRef]
+21.
+Pei, X.Y.; Huang, H.B.; Cao, P. An Improved Gaussian Mixture Model-Based Data Normalization Method for Removing
+Environmental Effects on Damage Detection of Structures. Buildings 2025, 15, 359. [CrossRef]
+22.
+Roy, K.; Samit, R.C. Fundamental mode shape and its derivatives in structural damage localization. J. Sound Vib. 2013, 332, 5584–5593. [CrossRef]
+23.
+Yoon, M.K.; Heider, D.; Gillespie, J.W.; Ratcliffe, C.P.; Crane, R.M. Local damage detection with the global fitting method using
+mode shape data in notched beams. J. Nondestruct. Eval. 2009, 28, 63–74. [CrossRef]
+24.
+Yang, W.; Sun, L.M.; Yu, G. Optimal sensor placement methodology for uncertainty reduction in the assessment of structural
+condition. Struct. Control. Health Monit. 2016, 24, e1927. [CrossRef]
+25.
+Hiramoto, K.; Doki, H.; Obinata, G. Optimal sensor/actuator placement for active vibration control using explicit solution of
+algebraic Riccati equation. J. Sound Vib. 2000, 229, 1057–1075. [CrossRef]
+26.
+Worden, K.; Burrows, A.P. Optimal sensor placement for fault detection. Eng. Struct. 2001, 23, 885–901. [CrossRef]
+27.
+Shi, Z.Y.; Law, S.S.; Zhang, L.M. Optimum sensor placement for structuraldamage detection. J. Eng. Mech. 2000, 126, 1173–1179. [CrossRef]
+28.
+Guo, H.Y.; Zhang, L.; Zhang, L.L.; Zhou, J. Optimal placement of sensors for structural health monitoring using improved genetic
+algorithms. Smart Mater. Struct. 2004, 13, 528. [CrossRef]
+29.
+Pei, X.Y.; Yi, T.H.; Qu, C.X.; Li, H.-N. Conditional information entropy based sensor placement method considering separated
+model error and measurement noise. J. Sound Vib. 2019, 449, 389–404. [CrossRef]
+30.
+Sankary, N.; Ostfeld, A. Multiobjective Optimization of Inline Mobile and Fixed Wireless Sensor Networks under Conditions of
+Demand Uncertainty. J. Water Resour. Plan. Manag. 2018, 144, 04018043. [CrossRef]
+31.
+Soman, R.N.; Onoufriou, T.; Kyriakides, M.A.; Votsis, R.A.; Chrysostomou, C.Z. Multi-type, multi-sensor placement opti-mization
+for structural health monitoring of long span bridges. Smart Struct. Syst. 2014, 14, 55–70. [CrossRef]
+32.
+Cha, Y.; Raich, A.; Barroso, L.; Agrawal, A. Optimal placement of active control devices and sensors in frame structures using
+multi-objective genetic algorithms. Struct. Control. Heal. Monit. 2011, 20, 16–44. [CrossRef]
+33.
+Nong, S.X.; Yang, D.H.; Yi, T.H. Pareto-based bi-objective optimization method of sensor placement in structural health monitoring.
+Buildings 2021, 11, 549. [CrossRef]
+34.
+Srinivas, N.; Deb, K. Multiobjective optimization using non-dominated sorting in genetic algorithms. Evol. Comput. 1994, 2, 221–248. [CrossRef]
+35.
+Ahlawat, A.S.; Ramaswamy, A. Multiobjective Optimal Structural Vibration Control Using Fuzzy Logic Control System. J. Struct.
+Eng. 2001, 127, 1330–1337. [CrossRef]
+36.
+Rao, A.R.M.; Anandakumar, G. Optimal placement of sensors for structural system identification and health monitoring using a
+hybrid swarm intelligence technique. Smart Mater. Struct. 2007, 16, 2658–2672. [CrossRef]
+37.
+Yi, T.-H.; Li, H.-N.; Song, G.; Zhang, X.-D. Optimal sensor placement for health monitoring of high-rise structure using adaptive
+monkey algorithm. Struct. Control Health Monit. 2015, 22, 667–681. [CrossRef]
+38.
+Caicedo, J.M.; Catbas, N.; Gul, M.; Zaurin, R.; Dyke, S.J. Benchmark problem for bridge health monitoring: Definition paper. In
+Proceedings of the 4th World Conference on Structural Control and Monitoring, San Diego, CA, USA, 11–13 July 2006.
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.

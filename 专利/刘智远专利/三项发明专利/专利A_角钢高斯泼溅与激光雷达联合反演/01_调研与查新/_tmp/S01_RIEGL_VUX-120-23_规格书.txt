@@ -1,0 +1,464 @@
+RIEGL
+RIEGL VUX-120
+ VUX-120
+Airborne Laser Scanning
+visit our website 
+www.riegl.com
+„NFB“ (Nadir/Forward/Backward) Scanning UAV LiDAR Sensor
+23
+23
+Typical applications include 
+	
+• Corridor Mapping: 
+Power Line, Railway Track and 
+Pipeline Inspection
+	
+• Topography in Open-Cast Mining
+	
+• Surveying of Urban Environments
+	
+• Archeology and Cultural  
+Heritage Documentation
+	
+• Agriculture & Forestry
+®
+The RIEGL VUX-12023 is a lightweight and versatile airborne laser 
+scanner offering a wide field of view of 100 degrees and an extre-
+mely high pulse repetition rate of up to 2.4 MHz. Thus, it is perfectly 
+suited for high point density corridor mapping applications.
+The measuring beam of the RIEGL VUX-12023 is consecutively emitted 
+in three different directions: it alternates from strictly nadir, to 
++10 degrees forward, and to -10 degrees backward. This allows 
+data acquisition with an unrivaled completeness in data capture, 
+especially in challenging environments with vertical surfaces and 
+narrow canyons. 
+The scanner provides an internal data storage capacity of 2 TByte 
+and a removeable CFast card. Interfaces for up to two optional external 
+cameras and for integration of an external IMU/GNSS system are 
+available. Additionally, the RIEGL VUX-12023 can be equipped with one 
+of RIEGL`s RiLOC IMU/GNSS system solutions. 
+The sophisticated design of the RIEGL VUX-12023 allows smooth 
+integration on UAS/UAV/RPAS, small manned aeroplanes (like gyro-
+copters), but also on helicopters. It is offered as stand-alone UAV LiDAR 
+sensor and also in various fully-integrated UAV-based laser scanning 
+system configurations with appropriate IMU/GNSS system and optional 
+cameras to perfectly meet specific customer requirements.
+	
+• laser pulse repetition rate 
+up to 2.4 MHz
+	
+• measurement rate up to  
+2,000,000 meas./sec 
+	
+• scan speed up to 400 lines/second
+	
+• operating flight altitude up to 
+720 m / 2,350 ft
+	
+• Field of View up to 100°
+	
+• compact & lightweight 
+(2.3 kg / 4.4 lbs)
+	
+• Nadir/Forward/Backward Scanning 
+for unrivaled completeness of scan 
+data even on vertical structures and 
+narrow canyons
+	
+• cutting edge RIEGL technology  
+providing: 
+ - echo signal digitization 
+ - multiple target capability 
+ - online waveform processing 
+ - multiple-time-around processing
+	
+• easily mountable to unmanned 
+platforms (UAVs) and small manned 
+aircraft 
+	
+• mechanical and electrical interface 
+for IMU/GNSS integration
+	
+• RIEGL RiLOC IMU/GNSS system 
+solutions available
+	
+• interfaces for up to 2 external 
+cameras
+	
+• scan data storage on internal  
+SSD Memory
+	
+• removeable CFAST®  
+memory card  
+Data Sheet
+
+RIEGL VUX-12023 Scan Pattern „NFB“ (Nadir/Forward/Backward)
+Flight Direction
+top view
+side view
+Forward Scanning
+Backward Scanning
+Nadir Scanning
+Forward Scan Line
+Backward Scan Line
+Nadir Scan Line
+-10°
++10°
+The RIEGL VUX-12023 offers a sophisticated scan pattern consisting of scan lines 
+with periodically changing directions. The scan directions in the center of the 
+scan lines change consecutively from strictly nadir, to +10 degrees forward 
+and to -10 degrees backward. This scan pattern provides an almost complete 
+3D data set, as also vertical surfaces like the facades of buildings and objects 
+(e.g. masts and poles) are accurately sampled by laser range measurements. 
+In addition, the nadir direction enables the reliable data acquisition down to 
+the bottom of narrow canyons.
+Field of View
+± 50° (100°) 
+Forward/Backward Scan Angle in Swath Center
+± 10°
+Forward/Backward Scan Angle at Swath Edges
+± 15°
+2
+Data Sheet
+Copyright RIEGL Laser Measurement Systems GmbH © 2026 – All rights reserved.
+Facet 1
+Facet 2
+Facet 3
+front view with FOV
+
+ Maximum Measurement Range & Point Density RIEGL VUX®-12023
+PRR = 150 kHz
+PRR = 300 kHz
+PRR = 600 kHz
+Operating Flight Altitude AGL given for the following conditions:
+FOV 100°, ambiguity resolved by multiple-time-around (MTA) processing,
+average ambient brightness, target size ≥ laser footprint, roll angle ±5
+Operating Flight Altitude AGL given for the following conditions:
+FOV 100°, ambiguity resolved by multiple-time-around (MTA) processing,
+average ambient brightness, target size ≥ laser footprint, roll angle ±5
+Operating Flight Altitude AGL given for the following conditions:
+FOV 100°, ambiguity resolved by multiple-time-around (MTA) processing,
+average ambient brightness, target size ≥ laser footprint, roll angle ±5
+  Example: VUX-12023 at 150,000 pulses/sec, laser power level 100%
+	
+Altitude = 1,500 ft AGL, Speed 60 kn, resulting point density ~ 4 pts/m²
+  Example: VUX-12023 at 300,000 pulses/sec, laser power level 100%
+	
+Altitude = 1,000 ft AGL, Speed 60 kn, resulting point density ~ 11 pts/m²
+  Example: VUX-12023 at 600,000 pulses/sec, laser power level 100%
+	
+Altitude = 800 ft AGL, Speed 30 kn, resulting point density ~ 55 pts/m²
+Data Sheet
+3
+Copyright RIEGL Laser Measurement Systems GmbH © 2026 – All rights reserved.
+
+ Maximum Measurement Range & Point Density RIEGL VUX®-12023
+PRR = 1200 kHz
+PRR = 1800 kHz
+PRR = 2400 kHz
+Operating Flight Altitude AGL given for the following conditions:
+FOV 100°, ambiguity resolved by multiple-time-around (MTA) processing,
+average ambient brightness, target size ≥ laser footprint, roll angle ±5
+Operating Flight Altitude AGL given for the following conditions:
+FOV 100°, ambiguity resolved by multiple-time-around (MTA) processing,
+average ambient brightness, target size ≥ laser footprint, roll angle ±5
+Operating Flight Altitude AGL given for the following conditions:
+FOV 100°, ambiguity resolved by multiple-time-around (MTA) processing,
+average ambient brightness, target size ≥ laser footprint, roll angle ±5
+  Example: VUX-12023 at 1,200,000 pulses/sec, laser power level 100%
+	
+Altitude = 600 ft AGL, Speed 30 kn, resulting point density ~ 150 pts/m²
+  Example: VUX-12023 at 1,800,000 pulses/sec, laser power level 100%
+	
+Altitude = 500 ft AGL, Speed 30 kn, resulting point density ~ 270 pts/m²
+  Example: VUX-12023 at 2,400,000 pulses/sec, laser power level 100%
+	
+Altitude = 400 ft AGL, Speed 30 kn, resulting point density ~ 450 pts/m²
+4
+Data Sheet
+Copyright RIEGL Laser Measurement Systems GmbH © 2026 – All rights reserved.
+
+ Dimensional Drawings RIEGL VUX®-12023
+RIEGL VUX-12023 UAV LiDAR Sensor 
+with Connection Box
+all dimensions in mm
+Data Sheet
+5
+Copyright RIEGL Laser Measurement Systems GmbH © 2026 – All rights reserved.
+
+RIEGL VUX-12023 UAV LiDAR Sensor 
+with Interface Box
+ Dimensional Drawings RIEGL VUX®-12023
+all dimensions in mm
+6
+Data Sheet
+Copyright RIEGL Laser Measurement Systems GmbH © 2026 – All rights reserved.
+
+Technical Data RIEGL VUX®-12023
+Laser Product Classification	
+ 
+	
+	
+Range Measurement Performance
+Measuring Principle	
+time of flight measurement, echo signal digitization, multiple target 
+	
+capability, online waveform processing, multiple-time-around-processing
+ 
+Minimum Range	
+5 m
+Accuracy 6) 8)	
+10 mm
+Precision 7) 8)	
+5 mm
+Laser Pulse Repetition Rate 1) 9)	
+up to 2400 kHz
+Max. Effective Measurement Rate 1)	
+up to 2,000,000 meas./sec. (@ 2400 kHz PRR & 100° scan angle)
+Echo Signal Intensity	
+for each echo signal, high-resolution 16 bit intensity information is provided
+Laser Wavelength	
+near infrared
+Laser Beam Divergence	
+0.4 mrad 10)
+Laser Beam Footprint (Gaussian Beam Definition)	
+40 mm @ 100 m, 200 mm @ 500 m, 400 mm @ 1000 m
+Scanner Performance
+Scanning Mechanism	
+rotating polygon mirror
+Scan Pattern	
+parallel scan lines, angular directions -10°, 0°, +10° transvers to the scan 	
+	
+direction for forward and backward view
+Field of View (selectable)	
+± 50° = 100°
+Scan Speed (selectable)	
+50 - 400 lines/sec
+Angular Step Width   (selectable)	
+0.0025° ≤   ≤ 0.32° 11) 12) 
+between consecutive laser shots 
+Angle Measurement Resolution	
+0.001°
+Scan Sync (optional)	
+scanner rotation synchronization
+Data Interfaces
+Configuration, Scan Data Output &
+Communication with External Devices	
+2x LAN 10/100/1000 MBit/sec 13) 14)
+GNSS Interface	
+Serial RS-232 interface, TTL input for 1pps synchronisation pulse,
+	
+accepts different data formats for GNSS-time information
+General IO & Control 13)	
+1 x TTL input, 1x TTL output, 1 x Remote on/off
+Camera Interfaces at connector panel	
+2x power (max. 1.2 A), trigger, exposure, and GNSS RS-232 Tx & PPS
+Camera Interfaces via multi purpose connector 15)	
+1x trigger and exposure
+IMU Interface (optional)	
+IMU data, power
+General Technical Data
+Power Supply Input Voltage / Consumption	
+11 - 34 V DC / typ. 45 W
+Main Dimensions (L x W x H)	
+242 mm x 117 mm x 126 mm (with interface box)
+Weight (without IMU/GNSS system)	
+approx. 2.3 kg (with interface box), approx. 2.2 kg (without interface box)  
+Humidity 	
+max. 80 % non condensing @ 31°C
+Protection Class	
+IP64, dust and splash-proof
+Max. Flight Altitude (operating & not operating)	
+18 500 ft (5 600 m) above MSL (Mean Sea Level)
+Temperature Range	
+-10°C up to +40°C (operation) / -20°C up to +50°C (storage)
+8) One sigma @ 150 m range under RIEGL test conditions.
+  9) User selectable.
+10) Measured at the 1/e2 points. 0.4 mrad corresponds to an increase of 40 mm of beam diameter  
+per 100 m distance.
+6)	 Accuracy is the degree of conformity of a measured quantity 
+to its actual (true) value.
+7)	 Precision, also called reproducibility or repeatability, is the 
+degree to which further measurements show the same result.
+Laser Pulse Repetition Rate PRR 1)	
+150 kHz	
+300 kHz	
+600 kHz	
+1200 kHz	
+1800 kHz	
+2400 kHz
+Max. Measuring Range 2) 3) 
+	
+natural targets  ≥ 20 % 	
+760 m	
+  550 m  	
+400 m	
+280 m	
+230 m	
+200 m
+	
+natural targets  ≥ 60 % 	
+1260 m	
+  920 m  	
+670 m	
+ 480 m	
+ 400 m	
+350 m
+	
+natural targets  ≥ 80 % 	
+1430 m	
+  1050 m  	
+760 m	
+ 550 m	
+ 450 m 	
+400 m
+Max. Operating Flight Altitude AGL 2) 4)
+	
+@  ≥ 20 %	 	
+  440 m	
+  320 m   	
+230 m 	
+ 160 m	
+130 m	
+110 m
+	
+	
+	
+(1450 ft)	
+  (1050 ft)	
+(750 ft) 	
+ (550 ft)	
+  (450 ft)	
+(360 ft)
+	
+@  ≥ 60 %	 	
+  720 m	
+  530 m   	
+380 m 	
+ 280 m	
+230 m	
+200 m
+	
+	
+	
+(2350 ft)	
+  (1750 ft)	
+(1250 ft) 	
+ (900 ft)	
+ (750 ft)	
+(650 ft)
+Max. Number of Targets per Pulse 5) 	
+32	
+32	
+24	
+11	
+7	
+5	
+	
+	
+1)	 Rounded average PRR.
+2)	 Typical values for average conditions and average ambient brightness. In bright sunlight, the max. range is shorter than under an overcast sky.
+3)	 The maximum range is specified for flat targets with size in excess of the laser beam diameter, perpendicular angle of incidence, and for atmospheric visibility of 23 km. Range  
+ambiguities have to be resolved by multiple-time-around processing.
+4)	 Considering max. effective FOV 100°, additional roll angle ± 5°.
+5)	 If the laser beam hits, in part, more than one target, the laser‘s pulse power is split accordingly. Thus the achievable range is reduced.
+11)	 The angular step width depends on the selected laser PRR.
+12)	 The maximum angular step width is limited by the maximum 
+scan rate.
+13) 1x externally available via multi-purpose connector
+Class 1 Laser Product according to IEC60825-1:2014	
+The following clause applies for instruments delivered into the  
+United States: Complies with 21 CFR 1040.10 and 1040.11 except for  
+conformance with IEC 60825-1 Ed.3., as described in Laser Notice  
+No. 56, dated May 8, 2019.
+14) 1x available directly on optional interface box
+15) externally available via connection board (including 1x power camera)
+Data Sheet
+7
+Copyright RIEGL Laser Measurement Systems GmbH © 2026 – All rights reserved.
+
+all dimensions in mm
+Technical Data RIEGL VUX®-12023 (continued)
+Data Storage 
+Internal Data Storage    	
+Solid State Disc SSD, 2 TByte
+Memory Card Slot      	
+for CFAST® 1) industrial memory card 1 TByte
+RIEGL VUX-12023 equipped with APX-20 UAV
+RIEGL VUX-12023 equipped with AP+50
+RIEGL VUX®-12023 Camera Option
+RIEGL VUX-12023 LiDAR sensor with integrated IMU/GNSS unit (RIEGL RiLOC-Finside)
+and nadir RGB camera (e.g. Sony ILX-L1 + lens) fully integrated
+1)	
+CFast is a registered trademark of CompactFlash Association.
+2)	 See technical details at the RILOC-E25 infosheet 
+3)	 See technical details at the RILOC-F/RiLOC-Finside infosheet
+4)	 See technical details at the according Applanix datasheet 
+5)	 Use of the RiSYS-CU-23 Control Unit is mandatory 
+6)	 Accuracy specifications for post-processed data
+7)	 Total weight includes RiSYS-CU-23 Control Unit (0.9 kg)
+IMU & GNSS (optional)	
+RIEGL RiLOC-E25 2) 	
+RIEGL RiLOC-F 3) /	
+Applanix	
+ Applanix 	
+	
+	
+	
+	
+RIEGL RiLOC-F
+ inside 3)	
+APX-20 UAV 4)	
+AP+50 4) 5) 
+Orientation Accuracy 6)	
+	
+	
+Roll, Pitch	
+0.010°	
+0.005°	
+0.015°	
+0.005°	
+	
+Heading	
+0.025°	
+0.020°	
+0.035°	
+0.010°	
+IMU Sampling Rate	
+up to 700 Hz	
+up to 700 Hz	
+200 Hz	
+200 Hz	
+Position Accuracy (typ.)	
+0.02 - 0.04 m	
+0.02 - 0.03 m	
+0.02 - 0.05 m	
+0.02 - 0.05 m
+System Total Weight (approx.)	
+2.6 kg	
+2.6 kg / 2.5 kg	
+3.0 kg	
+3.6 kg 7)
+RIEGL VUX-12023 equipped with  
+RIEGL RiLOC-Finside
+RIEGL VUX-12023 equipped with  
+RIEGL RiLOC-F
+RIEGL VUX-12023 equipped with  
+RIEGL RiLOC-E25
+Data Sheet, RIEGL VUX-12023, 2026-08-20
+Contact us
+Copyright RIEGL Laser Measurement Systems GmbH © 2026– All rights reserved.
+Use of this Data Sheet other than for personal purposes requires RIEGL’s written consent.
+This Data Sheet is compiled with care. However, errors cannot be fully excluded and alternations might be necessary.
+www.riegl.com
+RIEGL Japan Ltd. 
+RIEGL China Ltd.  
+RIEGL Australia Pty Ltd.  
+RIEGL Canada Inc.  
+RIEGL UK Ltd. 
+RIEGL Asia Pacific Ltd. 
+RIEGL South America SpA  
+RIEGL Deutschland Vertriebsgesellschaft mbH  
+RIEGL France SAS
+RIEGL Laser Measurement Systems GmbH, Headquarters 
+RIEGL USA Inc., Headquarters North America

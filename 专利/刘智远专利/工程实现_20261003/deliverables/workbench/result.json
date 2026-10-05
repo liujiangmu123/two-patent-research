@@ -1,0 +1,2204 @@
+{
+  "schema_version": "trusstwin.case-result/0.1",
+  "name": "Synthetic finite-thickness angle/truss measurement demonstration",
+  "units": "m-N-Pa",
+  "engineering_decision": "report_conditionally",
+  "engineering_decision_reasons": [
+    "Report only under the declared geometry, material, load and simplified-truss assumptions; no standards-compliance conclusion."
+  ],
+  "joint_disagreement": false,
+  "unresolved_joint_pair_count": 0,
+  "members": [
+    {
+      "id": "M1",
+      "endpoints": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "node_ids": [
+        "base",
+        "top"
+      ],
+      "width": 0.1,
+      "width_m": 0.1,
+      "orientation_rad": 0.0,
+      "thickness_candidates": [
+        0.008,
+        0.01
+      ],
+      "posterior": [
+        2.4714071397803488e-39,
+        1.0
+      ],
+      "likelihood_only_weights": [
+        2.4714071397803488e-39,
+        1.0
+      ],
+      "prior_weights": [
+        0.5,
+        0.5
+      ],
+      "candidates": [
+        {
+          "candidate_id": "M1:C0",
+          "thickness_m": 0.008,
+          "width_m": 0.1,
+          "orientation_rad": 0.0,
+          "chi_square": 177.79206189224428,
+          "residual_count": 8,
+          "fit_degrees_of_freedom": 8,
+          "nominal_fit_p_value": 2.9934843089527975e-34,
+          "prior_probability": 0.5,
+          "fit": {
+            "success": true,
+            "parameters": [],
+            "nfev": 0,
+            "local_rank": 0,
+            "local_rank_deficient": false,
+            "at_parameter_bounds": false,
+            "note": "geometry parameters fixed"
+          },
+          "section_properties": {
+            "area_m2": 0.001536,
+            "centroid_m": [
+              0.02795833333333333,
+              0.02795833333333334
+            ],
+            "Ixx_m4": 1.4817253333333335e-06,
+            "Iyy_m4": 1.4817253333333342e-06,
+            "Ixy_m4": -8.81666666666667e-07,
+            "I_min_m4": 6.000586666666668e-07,
+            "I_max_m4": 2.3633920000000007e-06
+          },
+          "probability": 2.4714071397803488e-39,
+          "likelihood_probability": 2.4714071397803488e-39,
+          "absolute_fit_consistent": false,
+          "retained": false,
+          "utilization_min": null,
+          "utilization_max": null,
+          "screening_decisions": []
+        },
+        {
+          "candidate_id": "M1:C1",
+          "thickness_m": 0.01,
+          "width_m": 0.1,
+          "orientation_rad": 0.0,
+          "chi_square": 0.0,
+          "residual_count": 8,
+          "fit_degrees_of_freedom": 8,
+          "nominal_fit_p_value": 1.0,
+          "prior_probability": 0.5,
+          "fit": {
+            "success": true,
+            "parameters": [],
+            "nfev": 0,
+            "local_rank": 0,
+            "local_rank_deficient": false,
+            "at_parameter_bounds": false,
+            "note": "geometry parameters fixed"
+          },
+          "section_properties": {
+            "area_m2": 0.0019000000000000002,
+            "centroid_m": [
+              0.028684210526315788,
+              0.028684210526315788
+            ],
+            "Ixx_m4": 1.8000438596491234e-06,
+            "Iyy_m4": 1.8000438596491238e-06,
+            "Ixy_m4": -1.0657894736842104e-06,
+            "I_min_m4": 7.342543859649132e-07,
+            "I_max_m4": 2.865833333333334e-06
+          },
+          "probability": 1.0,
+          "likelihood_probability": 1.0,
+          "absolute_fit_consistent": true,
+          "retained": true,
+          "utilization_min": 0.8895478131949591,
+          "utilization_max": 0.8895478131949591,
+          "screening_decisions": [
+            "below_screening_limit"
+          ]
+        }
+      ],
+      "status": "measurement_supported_candidate",
+      "exists": true,
+      "section_source": "unspecified",
+      "usable_for_conditional_report": true,
+      "evidence_summary": {
+        "has_effective_residuals": true,
+        "any_absolute_fit_consistent": true,
+        "all_candidates_rejected": false,
+        "conflicting_thickness_observations": false,
+        "outside_candidate_library": false,
+        "fit_test": "nominal chi-square diagnostic under declared independent whitened Gaussian residuals",
+        "rejection_alpha": 0.001,
+        "no_safety_probability_claim": true
+      },
+      "utilization": {
+        "minimum": 0.8895478131949591,
+        "maximum": 0.8895478131949591,
+        "definition": "conditional gross-yield/Euler axial screening; not code compliance"
+      }
+    },
+    {
+      "id": "M2",
+      "endpoints": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "node_ids": [
+        "brace_x",
+        "top"
+      ],
+      "width": 0.1,
+      "width_m": 0.1,
+      "orientation_rad": 0.0,
+      "thickness_candidates": [
+        0.012
+      ],
+      "posterior": [
+        1.0
+      ],
+      "likelihood_only_weights": [
+        1.0
+      ],
+      "prior_weights": [
+        1.0
+      ],
+      "candidates": [
+        {
+          "candidate_id": "M2:C0",
+          "thickness_m": 0.012,
+          "width_m": 0.1,
+          "orientation_rad": 0.0,
+          "chi_square": 0.0,
+          "residual_count": 0,
+          "fit_degrees_of_freedom": 0,
+          "nominal_fit_p_value": null,
+          "prior_probability": 1.0,
+          "fit": {
+            "success": true,
+            "parameters": [],
+            "nfev": 0,
+            "local_rank": 0,
+            "local_rank_deficient": false,
+            "at_parameter_bounds": false,
+            "note": "geometry parameters fixed"
+          },
+          "section_properties": {
+            "area_m2": 0.002256,
+            "centroid_m": [
+              0.029404255319148937,
+              0.029404255319148937
+            ],
+            "Ixx_m4": 2.1001273191489365e-06,
+            "Iyy_m4": 2.1001273191489373e-06,
+            "Ixy_m4": -1.235744680851064e-06,
+            "I_min_m4": 8.643826382978731e-07,
+            "I_max_m4": 3.3358720000000006e-06
+          },
+          "probability": 1.0,
+          "likelihood_probability": 1.0,
+          "absolute_fit_consistent": null,
+          "retained": true,
+          "utilization_min": 0.0,
+          "utilization_max": 0.0,
+          "screening_decisions": [
+            "below_screening_limit"
+          ]
+        }
+      ],
+      "status": "input_fixed_section",
+      "exists": true,
+      "section_source": "synthetic_known_input",
+      "usable_for_conditional_report": true,
+      "evidence_summary": {
+        "has_effective_residuals": false,
+        "any_absolute_fit_consistent": false,
+        "all_candidates_rejected": false,
+        "conflicting_thickness_observations": false,
+        "outside_candidate_library": false,
+        "fit_test": "nominal chi-square diagnostic under declared independent whitened Gaussian residuals",
+        "rejection_alpha": 0.001,
+        "no_safety_probability_claim": true
+      },
+      "utilization": {
+        "minimum": 0.0,
+        "maximum": 0.0,
+        "definition": "conditional gross-yield/Euler axial screening; not code compliance"
+      }
+    },
+    {
+      "id": "M3",
+      "endpoints": [
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "node_ids": [
+        "brace_y",
+        "top"
+      ],
+      "width": 0.1,
+      "width_m": 0.1,
+      "orientation_rad": 0.0,
+      "thickness_candidates": [
+        0.012
+      ],
+      "posterior": [
+        1.0
+      ],
+      "likelihood_only_weights": [
+        1.0
+      ],
+      "prior_weights": [
+        1.0
+      ],
+      "candidates": [
+        {
+          "candidate_id": "M3:C0",
+          "thickness_m": 0.012,
+          "width_m": 0.1,
+          "orientation_rad": 0.0,
+          "chi_square": 0.0,
+          "residual_count": 0,
+          "fit_degrees_of_freedom": 0,
+          "nominal_fit_p_value": null,
+          "prior_probability": 1.0,
+          "fit": {
+            "success": true,
+            "parameters": [],
+            "nfev": 0,
+            "local_rank": 0,
+            "local_rank_deficient": false,
+            "at_parameter_bounds": false,
+            "note": "geometry parameters fixed"
+          },
+          "section_properties": {
+            "area_m2": 0.002256,
+            "centroid_m": [
+              0.029404255319148937,
+              0.029404255319148937
+            ],
+            "Ixx_m4": 2.1001273191489365e-06,
+            "Iyy_m4": 2.1001273191489373e-06,
+            "Ixy_m4": -1.235744680851064e-06,
+            "I_min_m4": 8.643826382978731e-07,
+            "I_max_m4": 3.3358720000000006e-06
+          },
+          "probability": 1.0,
+          "likelihood_probability": 1.0,
+          "absolute_fit_consistent": null,
+          "retained": true,
+          "utilization_min": 0.0,
+          "utilization_max": 0.0,
+          "screening_decisions": [
+            "below_screening_limit"
+          ]
+        }
+      ],
+      "status": "input_fixed_section",
+      "exists": true,
+      "section_source": "synthetic_known_input",
+      "usable_for_conditional_report": true,
+      "evidence_summary": {
+        "has_effective_residuals": false,
+        "any_absolute_fit_consistent": false,
+        "all_candidates_rejected": false,
+        "conflicting_thickness_observations": false,
+        "outside_candidate_library": false,
+        "fit_test": "nominal chi-square diagnostic under declared independent whitened Gaussian residuals",
+        "rejection_alpha": 0.001,
+        "no_safety_probability_claim": true
+      },
+      "utilization": {
+        "minimum": 0.0,
+        "maximum": 0.0,
+        "definition": "conditional gross-yield/Euler axial screening; not code compliance"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "M1_action_0",
+      "kind": "image_edge_gap",
+      "member_id": "M1",
+      "score": 0.0,
+      "effective": false,
+      "reason": "No retained joint-candidate pair changes the declared screening decision vector.",
+      "separation_sigma": 0.0,
+      "required_separation_sigma": 3.0,
+      "cost_units": 1.0,
+      "measurement_template": {
+        "kind": "image_edge_gap",
+        "member_id": "M1",
+        "sigma_px": 1.2,
+        "cost_units": 1.0,
+        "K": [
+          [
+            1800.0,
+            0,
+            960
+          ],
+          [
+            0,
+            1800.0,
+            540
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "R": [
+          [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          [
+            0.1643989873053573,
+            -0.0,
+            -0.9863939238321437
+          ],
+          [
+            -0.9863939238321437,
+            0.0,
+            -0.1643989873053573
+          ]
+        ],
+        "t_m": [
+          0.0,
+          0.4931969619160719,
+          30.49601214514378
+        ]
+      },
+      "separable_joint_pair_ids": [],
+      "unseparated_joint_pair_ids": [],
+      "separable_pair_count": 0,
+      "unseparated_pair_count": 0,
+      "weighted_conflict_pair_coverage": 0.0,
+      "resolves_all_current_pairs": false
+    },
+    {
+      "id": "M1_action_1",
+      "kind": "lidar_edge_gap",
+      "member_id": "M1",
+      "score": 0.0,
+      "effective": false,
+      "reason": "No retained joint-candidate pair changes the declared screening decision vector.",
+      "separation_sigma": 0.0,
+      "required_separation_sigma": 3.0,
+      "cost_units": 2.0,
+      "measurement_template": {
+        "kind": "lidar_edge_gap",
+        "member_id": "M1",
+        "sigma_m": 0.01,
+        "beam_diameter_m": 0.03,
+        "scan_direction": [
+          0.7071067811865476,
+          -0.7071067811865476,
+          0.0
+        ],
+        "cost_units": 2.0
+      },
+      "separable_joint_pair_ids": [],
+      "unseparated_joint_pair_ids": [],
+      "separable_pair_count": 0,
+      "unseparated_pair_count": 0,
+      "weighted_conflict_pair_coverage": 0.0,
+      "resolves_all_current_pairs": false
+    },
+    {
+      "id": "M1_action_2",
+      "kind": "thickness",
+      "member_id": "M1",
+      "score": 0.0,
+      "effective": false,
+      "reason": "No retained joint-candidate pair changes the declared screening decision vector.",
+      "separation_sigma": 0.0,
+      "required_separation_sigma": 3.0,
+      "cost_units": 8.0,
+      "measurement_template": {
+        "kind": "thickness",
+        "member_id": "M1",
+        "sigma_m": 0.00015,
+        "cost_units": 8.0
+      },
+      "separable_joint_pair_ids": [],
+      "unseparated_joint_pair_ids": [],
+      "separable_pair_count": 0,
+      "unseparated_pair_count": 0,
+      "weighted_conflict_pair_coverage": 0.0,
+      "resolves_all_current_pairs": false
+    },
+    {
+      "id": "M2_action_0",
+      "kind": "image_edge_gap",
+      "member_id": "M2",
+      "score": 0.0,
+      "effective": false,
+      "reason": "No retained joint-candidate pair changes the declared screening decision vector.",
+      "separation_sigma": 0.0,
+      "required_separation_sigma": 3.0,
+      "cost_units": 1.0,
+      "measurement_template": {
+        "kind": "image_edge_gap",
+        "member_id": "M2",
+        "sigma_px": 1.2,
+        "cost_units": 1.0,
+        "K": [
+          [
+            1800.0,
+            0,
+            960
+          ],
+          [
+            0,
+            1800.0,
+            540
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "R": [
+          [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          [
+            0.1643989873053573,
+            -0.0,
+            -0.9863939238321437
+          ],
+          [
+            -0.9863939238321437,
+            0.0,
+            -0.1643989873053573
+          ]
+        ],
+        "t_m": [
+          0.0,
+          0.410997468263393,
+          30.98920910705985
+        ]
+      },
+      "separable_joint_pair_ids": [],
+      "unseparated_joint_pair_ids": [],
+      "separable_pair_count": 0,
+      "unseparated_pair_count": 0,
+      "weighted_conflict_pair_coverage": 0.0,
+      "resolves_all_current_pairs": false
+    },
+    {
+      "id": "M2_action_1",
+      "kind": "lidar_edge_gap",
+      "member_id": "M2",
+      "score": 0.0,
+      "effective": false,
+      "reason": "No retained joint-candidate pair changes the declared screening decision vector.",
+      "separation_sigma": 0.0,
+      "required_separation_sigma": 3.0,
+      "cost_units": 2.0,
+      "measurement_template": {
+        "kind": "lidar_edge_gap",
+        "member_id": "M2",
+        "sigma_m": 0.01,
+        "beam_diameter_m": 0.03,
+        "scan_direction": [
+          0.4999999999999983,
+          0.7071067811865476,
+          0.5000000000000016
+        ],
+        "cost_units": 2.0
+      },
+      "separable_joint_pair_ids": [],
+      "unseparated_joint_pair_ids": [],
+      "separable_pair_count": 0,
+      "unseparated_pair_count": 0,
+      "weighted_conflict_pair_coverage": 0.0,
+      "resolves_all_current_pairs": false
+    },
+    {
+      "id": "M2_action_2",
+      "kind": "thickness",
+      "member_id": "M2",
+      "score": 0.0,
+      "effective": false,
+      "reason": "No retained joint-candidate pair changes the declared screening decision vector.",
+      "separation_sigma": 0.0,
+      "required_separation_sigma": 3.0,
+      "cost_units": 8.0,
+      "measurement_template": {
+        "kind": "thickness",
+        "member_id": "M2",
+        "sigma_m": 0.00015,
+        "cost_units": 8.0
+      },
+      "separable_joint_pair_ids": [],
+      "unseparated_joint_pair_ids": [],
+      "separable_pair_count": 0,
+      "unseparated_pair_count": 0,
+      "weighted_conflict_pair_coverage": 0.0,
+      "resolves_all_current_pairs": false
+    },
+    {
+      "id": "M3_action_0",
+      "kind": "image_edge_gap",
+      "member_id": "M3",
+      "score": 0.0,
+      "effective": false,
+      "reason": "No retained joint-candidate pair changes the declared screening decision vector.",
+      "separation_sigma": 0.0,
+      "required_separation_sigma": 3.0,
+      "cost_units": 1.0,
+      "measurement_template": {
+        "kind": "image_edge_gap",
+        "member_id": "M3",
+        "sigma_px": 1.2,
+        "cost_units": 1.0,
+        "K": [
+          [
+            1800.0,
+            0,
+            960
+          ],
+          [
+            0,
+            1800.0,
+            540
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "R": [
+          [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          [
+            0.1643989873053573,
+            -0.0,
+            -0.9863939238321437
+          ],
+          [
+            -0.9863939238321437,
+            0.0,
+            -0.1643989873053573
+          ]
+        ],
+        "t_m": [
+          -0.5,
+          0.4931969619160719,
+          30.49601214514378
+        ]
+      },
+      "separable_joint_pair_ids": [],
+      "unseparated_joint_pair_ids": [],
+      "separable_pair_count": 0,
+      "unseparated_pair_count": 0,
+      "weighted_conflict_pair_coverage": 0.0,
+      "resolves_all_current_pairs": false
+    },
+    {
+      "id": "M3_action_1",
+      "kind": "lidar_edge_gap",
+      "member_id": "M3",
+      "score": 0.0,
+      "effective": false,
+      "reason": "No retained joint-candidate pair changes the declared screening decision vector.",
+      "separation_sigma": 0.0,
+      "required_separation_sigma": 3.0,
+      "cost_units": 2.0,
+      "measurement_template": {
+        "kind": "lidar_edge_gap",
+        "member_id": "M3",
+        "sigma_m": 0.01,
+        "beam_diameter_m": 0.03,
+        "scan_direction": [
+          0.7071067811865488,
+          -0.49999999999999906,
+          -0.49999999999999906
+        ],
+        "cost_units": 2.0
+      },
+      "separable_joint_pair_ids": [],
+      "unseparated_joint_pair_ids": [],
+      "separable_pair_count": 0,
+      "unseparated_pair_count": 0,
+      "weighted_conflict_pair_coverage": 0.0,
+      "resolves_all_current_pairs": false
+    },
+    {
+      "id": "M3_action_2",
+      "kind": "thickness",
+      "member_id": "M3",
+      "score": 0.0,
+      "effective": false,
+      "reason": "No retained joint-candidate pair changes the declared screening decision vector.",
+      "separation_sigma": 0.0,
+      "required_separation_sigma": 3.0,
+      "cost_units": 8.0,
+      "measurement_template": {
+        "kind": "thickness",
+        "member_id": "M3",
+        "sigma_m": 0.00015,
+        "cost_units": 8.0
+      },
+      "separable_joint_pair_ids": [],
+      "unseparated_joint_pair_ids": [],
+      "separable_pair_count": 0,
+      "unseparated_pair_count": 0,
+      "weighted_conflict_pair_coverage": 0.0,
+      "resolves_all_current_pairs": false
+    }
+  ],
+  "geometry": {
+    "nodes": [
+      {
+        "id": "base",
+        "position_m": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": "top",
+        "position_m": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": "brace_x",
+        "position_m": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": "brace_y",
+        "position_m": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      }
+    ],
+    "members": [
+      {
+        "id": "M1",
+        "endpoints": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "display_candidate_thickness_m": 0.01,
+        "display_is_conditional": false,
+        "mesh": {
+          "vertices_m": [
+            [
+              -0.028684210526315788,
+              0.028684210526315788,
+              0.0
+            ],
+            [
+              -0.028684210526315788,
+              -0.07131578947368422,
+              0.0
+            ],
+            [
+              -0.01868421052631579,
+              -0.07131578947368422,
+              0.0
+            ],
+            [
+              -0.01868421052631579,
+              0.01868421052631579,
+              0.0
+            ],
+            [
+              0.07131578947368422,
+              0.01868421052631579,
+              0.0
+            ],
+            [
+              0.07131578947368422,
+              0.028684210526315788,
+              0.0
+            ],
+            [
+              -0.028684210526315788,
+              0.028684210526315788,
+              1.0
+            ],
+            [
+              -0.028684210526315788,
+              -0.07131578947368422,
+              1.0
+            ],
+            [
+              -0.01868421052631579,
+              -0.07131578947368422,
+              1.0
+            ],
+            [
+              -0.01868421052631579,
+              0.01868421052631579,
+              1.0
+            ],
+            [
+              0.07131578947368422,
+              0.01868421052631579,
+              1.0
+            ],
+            [
+              0.07131578947368422,
+              0.028684210526315788,
+              1.0
+            ],
+            [
+              -0.028684210526315788,
+              0.028684210526315788,
+              0.0
+            ],
+            [
+              -0.028684210526315788,
+              -0.07131578947368422,
+              0.0
+            ],
+            [
+              -0.01868421052631579,
+              -0.07131578947368422,
+              0.0
+            ],
+            [
+              -0.01868421052631579,
+              0.028684210526315788,
+              0.0
+            ],
+            [
+              -0.01868421052631579,
+              0.01868421052631579,
+              0.0
+            ],
+            [
+              0.07131578947368422,
+              0.01868421052631579,
+              0.0
+            ],
+            [
+              0.07131578947368422,
+              0.028684210526315788,
+              0.0
+            ],
+            [
+              -0.028684210526315788,
+              0.028684210526315788,
+              1.0
+            ],
+            [
+              -0.028684210526315788,
+              -0.07131578947368422,
+              1.0
+            ],
+            [
+              -0.01868421052631579,
+              -0.07131578947368422,
+              1.0
+            ],
+            [
+              -0.01868421052631579,
+              0.028684210526315788,
+              1.0
+            ],
+            [
+              -0.01868421052631579,
+              0.01868421052631579,
+              1.0
+            ],
+            [
+              0.07131578947368422,
+              0.01868421052631579,
+              1.0
+            ],
+            [
+              0.07131578947368422,
+              0.028684210526315788,
+              1.0
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              7
+            ],
+            [
+              0,
+              7,
+              6
+            ],
+            [
+              1,
+              2,
+              8
+            ],
+            [
+              1,
+              8,
+              7
+            ],
+            [
+              2,
+              3,
+              9
+            ],
+            [
+              2,
+              9,
+              8
+            ],
+            [
+              3,
+              4,
+              10
+            ],
+            [
+              3,
+              10,
+              9
+            ],
+            [
+              4,
+              5,
+              11
+            ],
+            [
+              4,
+              11,
+              10
+            ],
+            [
+              5,
+              0,
+              6
+            ],
+            [
+              5,
+              6,
+              11
+            ],
+            [
+              14,
+              13,
+              12
+            ],
+            [
+              15,
+              14,
+              12
+            ],
+            [
+              17,
+              16,
+              15
+            ],
+            [
+              18,
+              17,
+              15
+            ],
+            [
+              19,
+              20,
+              21
+            ],
+            [
+              19,
+              21,
+              22
+            ],
+            [
+              22,
+              23,
+              24
+            ],
+            [
+              22,
+              24,
+              25
+            ]
+          ],
+          "section_polygon_m": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.1,
+              0.0
+            ],
+            [
+              0.1,
+              0.01
+            ],
+            [
+              0.01,
+              0.01
+            ],
+            [
+              0.01,
+              0.1
+            ],
+            [
+              0.0,
+              0.1
+            ]
+          ],
+          "section_properties": {
+            "area_m2": 0.0019000000000000002,
+            "centroid_m": [
+              0.028684210526315788,
+              0.028684210526315788
+            ],
+            "Ixx_m4": 1.8000438596491234e-06,
+            "Iyy_m4": 1.8000438596491238e-06,
+            "Ixy_m4": -1.0657894736842104e-06,
+            "I_min_m4": 7.342543859649132e-07,
+            "I_max_m4": 2.865833333333334e-06
+          }
+        },
+        "display_observation_model_valid": true
+      },
+      {
+        "id": "M2",
+        "endpoints": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "display_candidate_thickness_m": 0.012,
+        "display_is_conditional": true,
+        "mesh": {
+          "vertices_m": [
+            [
+              0.9792080516680892,
+              -0.029404255319148937,
+              -0.020791948331910826
+            ],
+            [
+              1.0499187297867438,
+              -0.029404255319148937,
+              0.049918729786743936
+            ],
+            [
+              1.0499187297867438,
+              -0.017404255319148937,
+              0.049918729786743936
+            ],
+            [
+              0.9876933330423278,
+              -0.017404255319148937,
+              -0.012306666957672255
+            ],
+            [
+              0.9876933330423278,
+              0.07059574468085107,
+              -0.012306666957672255
+            ],
+            [
+              0.9792080516680892,
+              0.07059574468085107,
+              -0.020791948331910826
+            ],
+            [
+              -0.02079194833191078,
+              -0.029404255319148937,
+              0.9792080516680891
+            ],
+            [
+              0.04991872978674394,
+              -0.029404255319148937,
+              1.0499187297867438
+            ],
+            [
+              0.04991872978674394,
+              -0.017404255319148937,
+              1.0499187297867438
+            ],
+            [
+              -0.01230666695767213,
+              -0.017404255319148937,
+              0.9876933330423278
+            ],
+            [
+              -0.01230666695767213,
+              0.07059574468085107,
+              0.9876933330423278
+            ],
+            [
+              -0.02079194833191078,
+              0.07059574468085107,
+              0.9792080516680891
+            ],
+            [
+              0.9792080516680892,
+              -0.029404255319148937,
+              -0.020791948331910826
+            ],
+            [
+              1.0499187297867438,
+              -0.029404255319148937,
+              0.049918729786743936
+            ],
+            [
+              1.0499187297867438,
+              -0.017404255319148937,
+              0.049918729786743936
+            ],
+            [
+              0.9792080516680892,
+              -0.017404255319148937,
+              -0.020791948331910826
+            ],
+            [
+              0.9876933330423278,
+              -0.017404255319148937,
+              -0.012306666957672255
+            ],
+            [
+              0.9876933330423278,
+              0.07059574468085107,
+              -0.012306666957672255
+            ],
+            [
+              0.9792080516680892,
+              0.07059574468085107,
+              -0.020791948331910826
+            ],
+            [
+              -0.02079194833191078,
+              -0.029404255319148937,
+              0.9792080516680891
+            ],
+            [
+              0.04991872978674394,
+              -0.029404255319148937,
+              1.0499187297867438
+            ],
+            [
+              0.04991872978674394,
+              -0.017404255319148937,
+              1.0499187297867438
+            ],
+            [
+              -0.02079194833191078,
+              -0.017404255319148937,
+              0.9792080516680891
+            ],
+            [
+              -0.01230666695767213,
+              -0.017404255319148937,
+              0.9876933330423278
+            ],
+            [
+              -0.01230666695767213,
+              0.07059574468085107,
+              0.9876933330423278
+            ],
+            [
+              -0.02079194833191078,
+              0.07059574468085107,
+              0.9792080516680891
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              7
+            ],
+            [
+              0,
+              7,
+              6
+            ],
+            [
+              1,
+              2,
+              8
+            ],
+            [
+              1,
+              8,
+              7
+            ],
+            [
+              2,
+              3,
+              9
+            ],
+            [
+              2,
+              9,
+              8
+            ],
+            [
+              3,
+              4,
+              10
+            ],
+            [
+              3,
+              10,
+              9
+            ],
+            [
+              4,
+              5,
+              11
+            ],
+            [
+              4,
+              11,
+              10
+            ],
+            [
+              5,
+              0,
+              6
+            ],
+            [
+              5,
+              6,
+              11
+            ],
+            [
+              14,
+              13,
+              12
+            ],
+            [
+              15,
+              14,
+              12
+            ],
+            [
+              17,
+              16,
+              15
+            ],
+            [
+              18,
+              17,
+              15
+            ],
+            [
+              19,
+              20,
+              21
+            ],
+            [
+              19,
+              21,
+              22
+            ],
+            [
+              22,
+              23,
+              24
+            ],
+            [
+              22,
+              24,
+              25
+            ]
+          ],
+          "section_polygon_m": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.1,
+              0.0
+            ],
+            [
+              0.1,
+              0.012
+            ],
+            [
+              0.012,
+              0.012
+            ],
+            [
+              0.012,
+              0.1
+            ],
+            [
+              0.0,
+              0.1
+            ]
+          ],
+          "section_properties": {
+            "area_m2": 0.002256,
+            "centroid_m": [
+              0.029404255319148937,
+              0.029404255319148937
+            ],
+            "Ixx_m4": 2.1001273191489365e-06,
+            "Iyy_m4": 2.1001273191489373e-06,
+            "Ixy_m4": -1.235744680851064e-06,
+            "I_min_m4": 8.643826382978731e-07,
+            "I_max_m4": 3.3358720000000006e-06
+          }
+        },
+        "display_observation_model_valid": null
+      },
+      {
+        "id": "M3",
+        "endpoints": [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "display_candidate_thickness_m": 0.012,
+        "display_is_conditional": true,
+        "mesh": {
+          "vertices_m": [
+            [
+              -0.029404255319148937,
+              1.0207919483319108,
+              0.020791948331910826
+            ],
+            [
+              -0.029404255319148937,
+              0.9500812702132561,
+              -0.049918729786743936
+            ],
+            [
+              -0.017404255319148937,
+              0.9500812702132561,
+              -0.049918729786743936
+            ],
+            [
+              -0.017404255319148937,
+              1.0123066669576724,
+              0.012306666957672255
+            ],
+            [
+              0.07059574468085107,
+              1.0123066669576724,
+              0.012306666957672255
+            ],
+            [
+              0.07059574468085107,
+              1.0207919483319108,
+              0.020791948331910826
+            ],
+            [
+              -0.029404255319148937,
+              0.020791948331910892,
+              1.0207919483319108
+            ],
+            [
+              -0.029404255319148937,
+              -0.04991872978674383,
+              0.9500812702132561
+            ],
+            [
+              -0.017404255319148937,
+              -0.04991872978674383,
+              0.9500812702132561
+            ],
+            [
+              -0.017404255319148937,
+              0.012306666957672241,
+              1.0123066669576721
+            ],
+            [
+              0.07059574468085107,
+              0.012306666957672241,
+              1.0123066669576721
+            ],
+            [
+              0.07059574468085107,
+              0.020791948331910892,
+              1.0207919483319108
+            ],
+            [
+              -0.029404255319148937,
+              1.0207919483319108,
+              0.020791948331910826
+            ],
+            [
+              -0.029404255319148937,
+              0.9500812702132561,
+              -0.049918729786743936
+            ],
+            [
+              -0.017404255319148937,
+              0.9500812702132561,
+              -0.049918729786743936
+            ],
+            [
+              -0.017404255319148937,
+              1.0207919483319108,
+              0.020791948331910826
+            ],
+            [
+              -0.017404255319148937,
+              1.0123066669576724,
+              0.012306666957672255
+            ],
+            [
+              0.07059574468085107,
+              1.0123066669576724,
+              0.012306666957672255
+            ],
+            [
+              0.07059574468085107,
+              1.0207919483319108,
+              0.020791948331910826
+            ],
+            [
+              -0.029404255319148937,
+              0.020791948331910892,
+              1.0207919483319108
+            ],
+            [
+              -0.029404255319148937,
+              -0.04991872978674383,
+              0.9500812702132561
+            ],
+            [
+              -0.017404255319148937,
+              -0.04991872978674383,
+              0.9500812702132561
+            ],
+            [
+              -0.017404255319148937,
+              0.020791948331910892,
+              1.0207919483319108
+            ],
+            [
+              -0.017404255319148937,
+              0.012306666957672241,
+              1.0123066669576721
+            ],
+            [
+              0.07059574468085107,
+              0.012306666957672241,
+              1.0123066669576721
+            ],
+            [
+              0.07059574468085107,
+              0.020791948331910892,
+              1.0207919483319108
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              7
+            ],
+            [
+              0,
+              7,
+              6
+            ],
+            [
+              1,
+              2,
+              8
+            ],
+            [
+              1,
+              8,
+              7
+            ],
+            [
+              2,
+              3,
+              9
+            ],
+            [
+              2,
+              9,
+              8
+            ],
+            [
+              3,
+              4,
+              10
+            ],
+            [
+              3,
+              10,
+              9
+            ],
+            [
+              4,
+              5,
+              11
+            ],
+            [
+              4,
+              11,
+              10
+            ],
+            [
+              5,
+              0,
+              6
+            ],
+            [
+              5,
+              6,
+              11
+            ],
+            [
+              14,
+              13,
+              12
+            ],
+            [
+              15,
+              14,
+              12
+            ],
+            [
+              17,
+              16,
+              15
+            ],
+            [
+              18,
+              17,
+              15
+            ],
+            [
+              19,
+              20,
+              21
+            ],
+            [
+              19,
+              21,
+              22
+            ],
+            [
+              22,
+              23,
+              24
+            ],
+            [
+              22,
+              24,
+              25
+            ]
+          ],
+          "section_polygon_m": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.1,
+              0.0
+            ],
+            [
+              0.1,
+              0.012
+            ],
+            [
+              0.012,
+              0.012
+            ],
+            [
+              0.012,
+              0.1
+            ],
+            [
+              0.0,
+              0.1
+            ]
+          ],
+          "section_properties": {
+            "area_m2": 0.002256,
+            "centroid_m": [
+              0.029404255319148937,
+              0.029404255319148937
+            ],
+            "Ixx_m4": 2.1001273191489365e-06,
+            "Iyy_m4": 2.1001273191489373e-06,
+            "Ixy_m4": -1.235744680851064e-06,
+            "I_min_m4": 8.643826382978731e-07,
+            "I_max_m4": 3.3358720000000006e-06
+          }
+        },
+        "display_observation_model_valid": null
+      }
+    ],
+    "gaussian_count": 252,
+    "gaussian_members": [
+      {
+        "member_id": "M1",
+        "first_gaussian_index": 0,
+        "gaussian_count": 64,
+        "thickness_m": 0.01,
+        "width_m": 0.1,
+        "orientation_rad": 0.0
+      },
+      {
+        "member_id": "M2",
+        "first_gaussian_index": 64,
+        "gaussian_count": 94,
+        "thickness_m": 0.012,
+        "width_m": 0.1,
+        "orientation_rad": 0.0
+      },
+      {
+        "member_id": "M3",
+        "first_gaussian_index": 158,
+        "gaussian_count": 94,
+        "thickness_m": 0.012,
+        "width_m": 0.1,
+        "orientation_rad": 0.0
+      }
+    ],
+    "representation": "finite-thickness deterministic engineering surfaces; no image-trained scene"
+  },
+  "measurements": [
+    {
+      "kind": "image_points",
+      "member_id": "M1",
+      "feature": "section_vertices",
+      "indices": [
+        0,
+        3
+      ],
+      "pixels": [
+        [
+          961.7134806705204,
+          539.8577031754965
+        ],
+        [
+          961.1164896827295,
+          539.907280578546
+        ]
+      ],
+      "sigma_px": 1.2,
+      "K": [
+        [
+          1800.0,
+          0,
+          960
+        ],
+        [
+          0,
+          1800.0,
+          540
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "R": [
+        [
+          0.0,
+          1.0,
+          -0.0
+        ],
+        [
+          0.08304547985373997,
+          -0.0,
+          -0.9965457582448797
+        ],
+        [
+          -0.9965457582448797,
+          0.0,
+          -0.08304547985373997
+        ]
+      ],
+      "t_m": [
+        0.0,
+        0.49827287912243967,
+        30.14550918690761
+      ]
+    },
+    {
+      "kind": "lidar_points",
+      "member_id": "M1",
+      "points_m": [
+        [
+          -0.028684210526315788,
+          -0.03798245614035089,
+          0.3333333333333333
+        ],
+        [
+          0.0046491228070175495,
+          0.028684210526315788,
+          0.3333333333333333
+        ],
+        [
+          0.041315789473684215,
+          0.01868421052631579,
+          0.3333333333333333
+        ]
+      ],
+      "sigma_m": 0.015,
+      "beam_diameter_m": 0.03
+    },
+    {
+      "kind": "thickness",
+      "member_id": "M1",
+      "value_m": 0.01,
+      "sigma_m": 0.00015
+    }
+  ],
+  "material": {
+    "name": "explicit demo material",
+    "E_Pa": 200000000000.0,
+    "yield_strength_Pa": 355000000.0
+  },
+  "supports": [
+    {
+      "node": "base",
+      "dofs": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "node": "brace_x",
+      "dofs": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "node": "brace_y",
+      "dofs": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "loads": [
+    {
+      "node": "top",
+      "force_N": [
+        0.0,
+        0.0,
+        -600000.0
+      ]
+    }
+  ],
+  "measurement_independence": {
+    "identified_measurement_count": 0,
+    "unidentified_measurement_count": 3,
+    "assumption": "Unique IDs are not proof of independence; declared scalar noises assume external de-correlation/whitening. No automatic correlation estimation is implemented."
+  },
+  "solver": {
+    "status": "solved",
+    "model": "linear 3D pin-jointed axial truss",
+    "inference": "discrete thickness enumeration with optional profiled least-squares width/orientation; fixed shared nodes and calibration",
+    "joint_candidate_count": 2,
+    "solved_candidate_count": 2,
+    "admissible_joint_candidate_count": 1,
+    "joint_conflicting_pairs": [],
+    "force_balance_error_N": 1.1641532182693481e-10,
+    "mechanics_cases": [
+      {
+        "id": "J0000",
+        "weight": 2.4714071397803488e-39,
+        "likelihood_weight": 2.4714071397803488e-39,
+        "sections": {
+          "M1": 0.008,
+          "M2": 0.012,
+          "M3": 0.012
+        },
+        "candidate_ids": {
+          "M1": "M1:C0",
+          "M2": "M2:C0",
+          "M3": "M3:C0"
+        },
+        "decision_vector": {
+          "M1": "exceeds_screening_limit",
+          "M2": "below_screening_limit",
+          "M3": "below_screening_limit"
+        },
+        "analysis": {
+          "status": "solved",
+          "free_dof_nullity": 0,
+          "displacements_m": {
+            "base": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "top": [
+              -0.0019531249999999996,
+              -0.0019531249999999996,
+              -0.0019531249999999996
+            ],
+            "brace_x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "brace_y": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "reactions_N": {
+            "base": [
+              0.0,
+              0.0,
+              599999.9999999999
+            ],
+            "top": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "brace_x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "brace_y": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "force_balance_error_N": 1.1641532182693481e-10,
+          "free_dof_residual_N": 0.0,
+          "strain_energy_J": 585.9374999999999,
+          "external_work_half_J": 585.9374999999999,
+          "member_results": {
+            "M1": {
+              "axial_force_N": -599999.9999999999,
+              "mode": "compression",
+              "yield_capacity_N": 545280.0,
+              "euler_weak_axis_capacity_N": 1184468.3314890293,
+              "screening_capacity_N": 545280.0,
+              "utilization": 1.100352112676056,
+              "decision": "exceeds_screening_limit"
+            },
+            "M2": {
+              "axial_force_N": 0.0,
+              "mode": "tension",
+              "yield_capacity_N": 800880.0000000001,
+              "euler_weak_axis_capacity_N": 853111.4691169916,
+              "screening_capacity_N": 800880.0000000001,
+              "utilization": 0.0,
+              "decision": "below_screening_limit"
+            },
+            "M3": {
+              "axial_force_N": 0.0,
+              "mode": "tension",
+              "yield_capacity_N": 800880.0000000001,
+              "euler_weak_axis_capacity_N": 853111.4691169916,
+              "screening_capacity_N": 800880.0000000001,
+              "utilization": 0.0,
+              "decision": "below_screening_limit"
+            }
+          }
+        },
+        "observation_admissible": false
+      },
+      {
+        "id": "J0001",
+        "weight": 1.0,
+        "likelihood_weight": 1.0,
+        "sections": {
+          "M1": 0.01,
+          "M2": 0.012,
+          "M3": 0.012
+        },
+        "candidate_ids": {
+          "M1": "M1:C1",
+          "M2": "M2:C0",
+          "M3": "M3:C0"
+        },
+        "decision_vector": {
+          "M1": "below_screening_limit",
+          "M2": "below_screening_limit",
+          "M3": "below_screening_limit"
+        },
+        "analysis": {
+          "status": "solved",
+          "free_dof_nullity": 0,
+          "displacements_m": {
+            "base": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "top": [
+              -0.0015789473684210524,
+              -0.0015789473684210524,
+              -0.0015789473684210524
+            ],
+            "brace_x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "brace_y": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "reactions_N": {
+            "base": [
+              0.0,
+              0.0,
+              600000.0
+            ],
+            "top": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "brace_x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "brace_y": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "force_balance_error_N": 0.0,
+          "free_dof_residual_N": 0.0,
+          "strain_energy_J": 473.6842105263157,
+          "external_work_half_J": 473.6842105263157,
+          "member_results": {
+            "M1": {
+              "axial_force_N": -600000.0,
+              "mode": "compression",
+              "yield_capacity_N": 674500.0000000001,
+              "euler_weak_axis_capacity_N": 1449360.0638476943,
+              "screening_capacity_N": 674500.0000000001,
+              "utilization": 0.8895478131949591,
+              "decision": "below_screening_limit"
+            },
+            "M2": {
+              "axial_force_N": 0.0,
+              "mode": "tension",
+              "yield_capacity_N": 800880.0000000001,
+              "euler_weak_axis_capacity_N": 853111.4691169916,
+              "screening_capacity_N": 800880.0000000001,
+              "utilization": 0.0,
+              "decision": "below_screening_limit"
+            },
+            "M3": {
+              "axial_force_N": 0.0,
+              "mode": "tension",
+              "yield_capacity_N": 800880.0000000001,
+              "euler_weak_axis_capacity_N": 853111.4691169916,
+              "screening_capacity_N": 800880.0000000001,
+              "utilization": 0.0,
+              "decision": "below_screening_limit"
+            }
+          }
+        },
+        "observation_admissible": true
+      }
+    ],
+    "probability_semantics": "conditional Gaussian/profile likelihood weights, not empirical safety confidence"
+  },
+  "limitations": [
+    "The model is a small-strain 3D pin-jointed axial truss, not a full angle-tower beam/connection model or standards-compliance check.",
+    "Screening uses gross-section axial yield and weak-axis Euler buckling with the supplied effective-length factor. Local buckling, net-section holes, connections, slip, eccentricity, imperfections and code factors are excluded.",
+    "Image/LiDAR association and camera calibration are supplied; raw photographs are not automatically interpreted. The shared-node graph is fixed; fitted continuous parameters are member width and orientation only.",
+    "Member existence is a fixed user input, not an implemented missing-member detector. Raw rays, eligible no-return evidence, time synchronization and trajectory estimation are not implemented.",
+    "Posterior and likelihood-only weights are conditional/profile weights, not calibrated safety probabilities. Absolute chi-square fit screening assumes declared independent, whitened Gaussian residuals; its nominal p-values are diagnostic and not empirically validated coverage guarantees.",
+    "Provided measurement_id values must be unique. Different IDs or missing IDs do not prove independence: repeated points, same acquisition frames and correlated observations require external covariance/whitening or aggregation before this prototype.",
+    "Laser footprint is represented by added scalar uncertainty; occlusion, multi-return intensity, scattering and full beam integration are not simulated.",
+    "Gaussian PLY contains deterministic finite-thickness engineering surface surfels, with assigned colour/opacity, not a scene trained from real imagery.",
+    "The action score is a noise-normalized candidate-separation/cost proxy, not a fully integrated expected value of information."
+  ],
+  "case": {
+    "name": "Synthetic finite-thickness angle/truss measurement demonstration",
+    "units": "m-N-Pa",
+    "nodes": {
+      "base": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "top": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "brace_x": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "brace_y": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    "members": [
+      {
+        "id": "M1",
+        "nodes": [
+          "base",
+          "top"
+        ],
+        "width_m": 0.1,
+        "thickness_candidates_m": [
+          0.008,
+          0.01
+        ],
+        "orientation_rad": 0.0,
+        "effective_length_factor": 1.0
+      },
+      {
+        "id": "M2",
+        "nodes": [
+          "brace_x",
+          "top"
+        ],
+        "width_m": 0.1,
+        "thickness_candidates_m": [
+          0.012
+        ],
+        "orientation_rad": 0.0,
+        "effective_length_factor": 1.0,
+        "section_source": "synthetic_known_input"
+      },
+      {
+        "id": "M3",
+        "nodes": [
+          "brace_y",
+          "top"
+        ],
+        "width_m": 0.1,
+        "thickness_candidates_m": [
+          0.012
+        ],
+        "orientation_rad": 0.0,
+        "effective_length_factor": 1.0,
+        "section_source": "synthetic_known_input"
+      }
+    ],
+    "material": {
+      "name": "explicit demo material",
+      "E_Pa": 200000000000.0,
+      "yield_strength_Pa": 355000000.0
+    },
+    "supports": [
+      {
+        "node": "base",
+        "dofs": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "node": "brace_x",
+        "dofs": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "node": "brace_y",
+        "dofs": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "loads": [
+      {
+        "node": "top",
+        "force_N": [
+          0.0,
+          0.0,
+          -600000.0
+        ]
+      }
+    ],
+    "measurements": [
+      {
+        "kind": "image_points",
+        "member_id": "M1",
+        "feature": "section_vertices",
+        "indices": [
+          0,
+          3
+        ],
+        "pixels": [
+          [
+            961.7134806705204,
+            539.8577031754965
+          ],
+          [
+            961.1164896827295,
+            539.907280578546
+          ]
+        ],
+        "sigma_px": 1.2,
+        "K": [
+          [
+            1800.0,
+            0,
+            960
+          ],
+          [
+            0,
+            1800.0,
+            540
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "R": [
+          [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          [
+            0.08304547985373997,
+            -0.0,
+            -0.9965457582448797
+          ],
+          [
+            -0.9965457582448797,
+            0.0,
+            -0.08304547985373997
+          ]
+        ],
+        "t_m": [
+          0.0,
+          0.49827287912243967,
+          30.14550918690761
+        ]
+      },
+      {
+        "kind": "lidar_points",
+        "member_id": "M1",
+        "points_m": [
+          [
+            -0.028684210526315788,
+            -0.03798245614035089,
+            0.3333333333333333
+          ],
+          [
+            0.0046491228070175495,
+            0.028684210526315788,
+            0.3333333333333333
+          ],
+          [
+            0.041315789473684215,
+            0.01868421052631579,
+            0.3333333333333333
+          ]
+        ],
+        "sigma_m": 0.015,
+        "beam_diameter_m": 0.03
+      },
+      {
+        "kind": "thickness",
+        "member_id": "M1",
+        "value_m": 0.01,
+        "sigma_m": 0.00015
+      }
+    ],
+    "candidate_probability_floor": 0.01,
+    "measurement_separation_threshold": 3.0,
+    "gaussian_spacing_m": 0.1,
+    "synthetic": true
+  },
+  "artifacts": {
+    "gaussians": "surface_gaussians.ply",
+    "mapping": "gaussian_members.json",
+    "result": "result.json"
+  }
+}

@@ -1,0 +1,1351 @@
+IEEE/ASME TRANSACTIONS ON MECHATRONICS, VOL. XX, NO. X, MONTH YEAR
+1
+FU-MPC: Frontier- and Uncertainty-Aware Model Predictive Control
+for Efficient and Accurate UAV Exploration with Motorized LiDAR
+Jianping Li, Pengfei Wan, Zhongyuan Liu, Yi Wang, Yiheng Chen, Xinhang Xu, Rui Jin, Boyu Zhou,
+and Lihua Xie, Fellow, IEEE
+Abstract—Efficient UAV exploration in unknown environments
+requires rapid coverage expansion while maintaining accurate
+and reliable localization, since safe navigation in complex scenes
+depends on consistent mapping and pose estimation. However,
+for conventional LiDAR-equipped UAVs, the observable region
+is tightly coupled with the UAV pose and motion. Expanding
+coverage often requires additional translational or rotational
+maneuvers, which can reduce exploration efficiency and increase
+the risk of localization degradation in geometrically challenging
+environments. Motorized rotating LiDARs provide a promising
+solution by actively adjusting the sensor viewing direction without
+changing the UAV motion, thereby introducing an additional
+sensing degree of freedom. Nevertheless, existing exploration sys-
+tems rarely exploit this scanning freedom as an explicit decision
+variable linked to both exploration progress and localization
+quality. To address this gap, we develop a UAV platform equipped
+with an independently actuated rotating LiDAR and propose a hi-
+erarchical exploration framework. The global planner organizes
+frontiers into representative viewpoints and sequences them using
+topology-aware transition costs. Built upon this planner, FU-MPC
+serves as a local receding-horizon scan controller that optimizes
+LiDAR rotation along the predicted flight trajectory. The con-
+troller jointly considers frontier-aware exploration utility and
+direction-dependent localization uncertainty, while lightweight
+surrogate evaluation enables real-time onboard execution. Exper-
+iments in complex environments demonstrate that the proposed
+system improves exploration efficiency while maintaining robust
+localization performance compared with fixed-pattern scanning
+and uncertainty-only baselines. The project page can be found
+at https://kafeiyin00.github.io/FU-MPC/.
+I. INTRODUCTION
+Autonomous UAV exploration in unknown environments
+is a key capability for rapid 3D mapping in applications
+such as underground infrastructure surveying and post-disaster
+assessment [1]–[3]. In these missions, the system must be both
+efficient, by rapidly expanding spatial coverage [4], and accu-
+rate, by maintaining reliable localization and map consistency
+during long-horizon operation [5]. However, achieving both
+objectives remains challenging in complex environments with
+unevenly distributed geometric structures. Such conditions
+can degrade observability and cause SLAM errors to accu-
+mulate, which may compromise map consistency, destabilize
+autonomous navigation, and ultimately lead to mission failure
+[6], [7].
+One important reason for this difficulty is that the sensing
+capability of a UAV is tightly constrained by the LiDAR field
+of view (FoV). For rigidly mounted LiDARs, the observable
+region is directly coupled with the UAV pose and motion. As
+a result, expanding vertical or lateral coverage often requires
+additional translational or rotational maneuvers rather than
+This work was supported by NTUitive Gap Fund (NGF-2025-17006). J. Li
+and P. Wan contribute equally to this work. J. Li is the corresponding author.
+(e-mail: jianping.li@ntu.edu.sg)
+Fig. 1: Key features of FU-MPC. (a) Mechanical design
+of the UAV with active rotating LiDAR; (b) Efficient and
+accurate exploration in unknown environments considering
+frontier distribution and positioning uncertainty.
+only adjusting the sensing direction [8], [9]. Such motion
+is inefficient in confined spaces and may further introduce
+LiDAR matching degeneracy, thereby increasing the burden on
+LiDAR-Inertial Odometry (LIO) [6], [10]. Therefore, limited
+and motion-coupled sensing becomes a key factor that restricts
+both exploration efficiency and localization robustness. Mo-
+torized rotating LiDAR modules offer a promising alternative
+[9], [11]. By actively changing the scanning direction, they
+can enlarge the effective FoV without adding extra sensors or
+requiring excessive UAV maneuvers. More importantly, they
+introduce an additional actuation channel, namely the scan
+motion itself. This creates an opportunity to adjust the sensing
+process according to the current exploration and localization
+needs. However, although motorized LiDAR hardware has
+been increasingly studied, control algorithms that explicitly
+exploit this sensing degree of freedom for autonomous ex-
+ploration remain limited. Existing exploration systems still
+primarily optimize where the UAV should move, while treating
+the LiDAR scanning mechanism as a preset peripheral process.
+Consequently, scan motion is rarely linked to the two task-
+level objectives that are critical during exploration: revealing
+frontier-rich unknown space and maintaining strong geometric
+constraints for localization. Active SLAM and information-
+theoretic planning methods address uncertainty reduction [5],
+[12], but they remain largely trajectory-centric and do not
+provide a direct, actionable mapping from controllable scan
+motion to exploration progress and estimation quality. What
+is still missing is a task-aware control formulation for the
+rotating LiDAR itself, so that the system can explicitly regulate
+scan motion according to exploration demand and localization
+condition. Without such a formulation, scan behavior remains
+arXiv:2605.14920v1  [cs.RO]  14 May 2026
+
+IEEE/ASME TRANSACTIONS ON MECHATRONICS, VOL. XX, NO. X, MONTH YEAR
+2
+trapped in a practical trade-off: faster sweeping can expose un-
+known space more quickly, whereas slower and more selective
+scanning can provide more stable geometric feature tracking
+for localization [5], [10].
+To address this gap, we design and build a UAV platform
+with an independently actuated motorized LiDAR module
+and tight multi-sensor time synchronization. Unlike existing
+platforms in which LiDAR rotation is treated as a passive
+or fixed-speed process, our system elevates LiDAR rotation
+speed to a dedicated real-time-commandable control input.
+A microcontroller-based timing hub aligns encoder, IMU,
+and LiDAR data streams under a unified timestamp proto-
+col, enabling consistent sensor fusion across modalities. This
+hardware design decouples scanning motion from UAV flight
+dynamics and provides the physical foundation for treating
+scan motion as a decision variable in autonomous exploration.
+Building on this platform, we redesign the global explo-
+ration planning pipeline for UAVs equipped with rotating
+LiDAR. Instead of sequencing frontier targets solely according
+to geometric distance, the proposed planner first aggregates
+frontier regions into representative viewpoints and then eval-
+uates transitions between them using a topology-aware global
+cost. This cost incorporates path reachability, vertical motion
+burden, and heading consistency, enabling the planner to
+generate more executable global decisions in cluttered 3D en-
+vironments. The resulting viewpoint sequence is subsequently
+passed to the local planner to produce dynamically feasible
+reference trajectories for downstream scan control [13]. Based
+on the planned flight trajectory, we further develop FU-MPC
+as a local receding-horizon scan controller to regulate the
+LiDAR rotation online. FU-MPC jointly optimizes frontier-
+aware exploration utility and direction-dependent localization
+quality, where the latter is estimated from local geometric
+constraints using a Fisher-information-based surrogate and
+an A-optimality criterion [5], [7]. To meet onboard real-
+time requirements, lightweight piecewise-linear surrogates are
+employed to approximate the predictive utility field and avoid
+expensive online evaluation [14]. This design enables closed-
+loop scan optimization within a strict 0.1 s control cycle. In
+summary, this paper makes the following contributions:
+1) To address the limited exploration efficiency of existing
+UAV platforms that mostly rely on fixed sensing configu-
+rations, we develop a UAV with an independently actuated
+motorized LiDAR, enabling active scan motion as a real-time
+control input for exploration.
+2) Existing global exploration planners mainly optimize
+the waypoint travelling distance. This often causes aggressive
+reorientation and inefficient exploration, and does not exploit
+the sensing characteristics of rotating-LiDAR UAVs. To ad-
+dress this issue, we propose a hierarchical planning framework
+that organizes frontiers into representative viewpoints and
+sequences them using a topology-aware global cost with path
+reachability, and heading consistency.
+3) Safe exploration requires accurate localization, yet exist-
+ing methods lack a local scan controller that jointly considers
+exploration efficiency and localization quality. To address this
+issue, we propose FU-MPC, which optimizes LiDAR scan
+direction along the predicted flight trajectory using frontier-
+aware utility and uncertainty metrics under real-time con-
+straints.
+4) We validate the proposed system through simulation
+in three large-scale scenes and real-world flight experiments,
+demonstrating improved exploration efficiency and accurate,
+robust SLAM performance compared with fixed-pattern scan-
+ning and uncertainty-only baselines.
+II. RELATED WORK
+A. Motorized LiDAR Platforms and Hardware Design
+Motorized rotating LiDARs can enlarge a UAV’s effective
+field of view without using multiple sensors, but their inte-
+gration introduces challenges in calibration, synchronization,
+and motion compensation. Since LiDAR measurements are af-
+fected by both UAV motion and actuator-induced scan motion,
+accurate modeling of the LiDAR–actuator transform and mo-
+tion distortion is essential. Prior studies have addressed these
+issues through automatic self-calibration [15], continuous-time
+trajectory modeling [16], and real-time LiDAR odometry and
+mapping pipelines such as LOAM [17].
+Recent hardware designs further improve the utility of actu-
+ated sensing through perception-feedback scan accumulation
+[18], variable-resolution panoramic scanning [19], lightweight
+robot-sensor decoupling [20], and self-rotating UAV platforms
+[9]. However, most existing systems still treat LiDAR rota-
+tion as a preset peripheral process rather than a task-driven
+control input. In contrast, our platform provides a tightly
+time-synchronized and real-time-commandable scan-speed in-
+terface, enabling LiDAR rotation to be actively regulated
+according to exploration progress and localization quality.
+B. Frontier-Based Exploration and Viewpoint Planning
+A large body of UAV exploration research focuses on where
+the robot should move. Offline methods pre-compute coverage
+paths from coarse geometry or aerial imagery [21]–[24], but
+they are difficult to apply when accurate prior maps are un-
+available. Online frontier-based methods instead guide UAVs
+toward boundaries between known and unknown space [4],
+[13], [14], [25]–[27]. Recent studies further incorporate exe-
+cution cost, dynamic feasibility, and global routing objectives,
+such as TSP-style topology planning, to reduce redundant
+revisits and improve exploration efficiency [13], [26], [28]–
+[30]. Gimbal-based or stabilized-payload systems decouple
+sensor pointing from UAV heading to reduce unnecessary
+yawing [31], but their vertical sensing flexibility remains
+limited.
+Despite these advances, most methods still treat LiDAR
+sensing as a fixed pattern: the UAV trajectory is optimized,
+while the scanner operates at a preset rate independent of
+local exploration and localization needs. Consequently, scan
+effort cannot be actively directed toward frontier-rich or geo-
+metrically informative regions, nor reduced when localization
+is vulnerable in feature-sparse areas. In contrast, our method
+couples predictive frontier gain with motorized scan control
+in a receding-horizon framework, enabling scan effort to be
+allocated according to both exploration value and localization
+quality.
+
+IEEE/ASME TRANSACTIONS ON MECHATRONICS, VOL. XX, NO. X, MONTH YEAR
+3
+C. Active SLAM and Uncertainty-aware Scan Control
+Active
+SLAM
+links
+sensing,
+motion,
+and
+estimation
+by selecting actions that improve state inference quality.
+Observability-aware methods analyze which state components
+can be reliably estimated and preserve the correct observable
+subspace during linearization [32]. Information-theoretic plan-
+ning further selects viewpoints or trajectories by maximizing
+expected information gain to reduce pose and map uncer-
+tainty [33], while belief-space control explicitly propagates
+covariance dynamics for posterior uncertainty reduction [34].
+Learning-based active perception complements these methods
+by using semantic cues to improve observation reliability and
+informativeness [35].
+The most relevant work to ours is UA-MPC, which treats
+LiDAR spin rate as a control input and optimizes it online to
+balance sensing efficiency and localization accuracy through
+a predicted estimation utility [36]. Related MPC and inverse-
+reinforcement-learning methods also provide useful tools for
+closed-loop decision-making under constraints [37], [38].
+However, most existing active SLAM methods remain
+trajectory-centric and often rely on costly belief propagation
+or matrix operations, making them difficult to deploy for
+high-rate onboard scan control. More importantly, they do not
+directly map controllable scan motion to direction-dependent
+localization quality, nor do they couple estimation-aware scan
+control with frontier-driven exploration. To address this gap,
+we construct a Fisher-information-based uncertainty surrogate
+tailored to motorized scan actuation, integrate it with predictive
+frontier gain in a unified MPC objective, and enable real-
+time execution through lightweight piecewise-linear approx-
+imations.
+III. SYSTEM OVERVIEW
+A. Hardware System for the Motorized Scanning UAV
+To enable active exploration, we developed a tightly time-
+synchronized UAV platform (Fig. 2). An STM32 microcon-
+troller hardware-synchronizes multi-sensor streams (LiDAR,
+IMU, encoder, and flight states) and transmits them to the on-
+board computer, which computes real-time motor commands.
+A front-mounted LiDAR rotates independently of UAV dy-
+namics, providing panoramic perception. This variable-speed
+actuation allows the system to adaptively prioritize exploration
+frontiers and regions with high localization uncertainty without
+compromising flight stability.
+B. Notation
+We define four coordinate frames (Fig. 2): world FW , UAV
+body FB, motor base FMB, and LiDAR FL. A point rL
+p maps
+to the world frame rW
+p
+via the kinematic chain:
+rW
+p = RW
+B (t)
+
+RB
+MB
+ RMB
+M (θ(t))
+ RM
+L rL
+p + rM
+L
+
++ rB
+MB
+
++ rW
+B (t),
+(1)
+where (RM
+L , rM
+L ) and (RB
+MB, rB
+MB) are constant extrinsics for
+the LiDAR and motor base, respectively. The LIO estimates
+the UAV pose (RW
+B (t), rW
+B (t)).
+Fig. 2: Hardware system design of the active rotating LiDAR-
+UAV. (a) LiDAR rotating control system. (b) UAV with active
+rotating LiDAR hardware design. (c) Coordination systems
+related to the FU-MPC UAV.
+The rotating motor stage introduces a time-varying rotation
+θ(t) about the z-axis of FMB:
+RMB
+M (θ(t)) =
+
+
+cos θ(t)
+−sin θ(t)
+0
+sin θ(t)
+cos θ(t)
+0
+0
+0
+1
+
+.
+(2)
+For FU-MPC, time is discretized by a fixed interval ∆t. The
+predicted motor state evolves as:
+θi+1 = θi + ωi∆t,
+(3)
+where the commanded angular velocity ωi is the optimization
+variable.
+C. Hierarchical Exploration Planning
+We build the overall exploration pipeline upon the point-
+cloud-based framework [39] and adapt it to a UAV equipped
+with a motorized rotating LiDAR. Section IV focuses on
+global planning: it converts raw frontier observations into
+representative viewpoints, constructs a topology-aware global
+sequencing strategy, and generates dynamically feasible local
+reference trajectories using MINCO. Built on top of this
+motion-planning layer, Section V focuses on active perception:
+given the future flight trajectory produced by Section IV, FU-
+MPC optimizes the LiDAR rotation online to improve frontier
+
+IEEE/ASME TRANSACTIONS ON MECHATRONICS, VOL. XX, NO. X, MONTH YEAR
+4
+Fig. 3: Overview of the proposed FU-MPC system for explo-
+ration. The system integrates hierarchical exploration planning,
+predictive frontier gain estimation, direction-dependent local-
+ization uncertainty evaluation, and surrogate-assisted receding-
+horizon optimization to adapt the motorized LiDAR rotation
+speed online for efficient exploration and reliable SLAM.
+discovery and localization quality. In this way, Section IV
+determines where the UAV should move next, whereas Section
+V determines how the motorized LiDAR should scan along
+that motion.
+IV. TOPOLOGY-AWARE GLOBAL EXPLORATION PLANNING
+A. Viewpoint Sampling and Dynamic Clustering
+To reduce target redundancy while preserving observation
+structure, we organize frontier clusters into a higher-level
+representation. For each frontier cluster FC, we first estimate
+its center c and dominant normal n, and then sample candidate
+viewpoints only in the local hemisphere oriented by n. This
+design is motivated by the fact that informative observations
+are usually obtained from the free-space side of a frontier,
+whereas back-side or tangential views provide limited explo-
+ration gain.
+Each sampled viewpoint is required to satisfy three condi-
+tions: it must lie inside the valid map boundary, keep a safe
+distance from nearby obstacles, and belong to a region sup-
+ported by the current topological graph. For every remaining
+candidate viewpoint v, we evaluate its visibility with respect to
+the frontier cluster by voxel ray-casting. If the cluster contains
+NF C frontier cells, its visibility ratio is defined as:
+r(v) =
+1
+NF C
+NF C
+X
+k=1
+δ(v, pk),
+(4)
+where pk is the k-th frontier cell and δ(v, pk) ∈{0, 1}
+indicates whether pk is visible from v. A viewpoint is regarded
+as valid if r(v) exceeds a preset threshold r0. Accordingly,
+each frontier cluster is associated with an effective visible
+region
+R = { v | r(v) ≥r0 }.
+(5)
+Based on these visible regions, we further build dynamic
+clusters. The key idea is that if multiple frontier clusters share
+overlapping visible regions, then they can be jointly observed
+and need not be treated as independent planning targets [40].
+Let Rs denote the shared visible region of an existing dynamic
+cluster and Rd denote the dynamic cluster after merging. A
+new frontier cluster with visible region R can be merged only
+if R ∩Rd̸ = ∅. To balance shared observability and spatial
+compactness, we define the merge cost as
+J = α∆d −βq,
+(6)
+where ∆d is the increase in the spatial extent after merging,
+q is the size of the shared visible region, and α, β are
+weighting coefficients. We greedily merge each frontier cluster
+into the dynamic cluster with the minimum valid merge cost;
+otherwise, a new dynamic cluster is created. In Fig. 4, the
+frontier clusters are detected through the observation map
+and after viewpoint sampling, the dynamic clusters will be
+constructed by the method above.
+Finally, a representative viewpoint is selected for each
+dynamic cluster from its shared visible region. In this way,
+the original frontier set is transformed into a much smaller set
+of representative observation targets, which preserves the joint
+visibility structure while significantly reducing the complexity
+of the subsequent global tour planning. In Fig. 4, the proposed
+viewpoint sampling and dynamic clustering strategy reduces
+redundant frontier targets and produces a more compact global
+tour than the fixed-FoV baseline. This demonstrates that
+exploiting the enlarged observation capability of the rotating
+LiDAR can improve the efficiency of global exploration plan-
+ning.
+B. Global Waypoint Sequencing with Topology-Aware Cost
+After dynamic cluster construction, the planner obtains a
+set of representative viewpoints V = {v1, v2, . . . , vM}. The
+objective of the global planning layer is to determine an
+efficient visiting order over these high-level observation targets
+and provide the current next goal for the local planner. The key
+idea is that, for exploration in cluttered 3D environments, the
+straight-line distance between viewpoints is often a poor proxy
+for the actual execution effort. We therefore design a topology-
+aware global cost that explicitly captures the traversability and
+motion burden of moving between representative viewpoints,
+which is one of the main contributions of this planning module.
+Specifically, each representative viewpoint is temporarily
+inserted into the topological graph, and the current odometry
+node is treated as the start node. For any two nodes i and j,
+if a feasible topological path exists, their pairwise transition
+cost is defined as
+dij =
+1
+vmax/2
+X
+l
+
+∥xl+1 −xl∥+ 0.5|zl+1 −zl|
+
+,
+(7)
+where xl is the l-th point on the path, zl is its altitude,
+and vmax is the maximum flight speed. Unlike a Euclidean
+metric, this cost is evaluated along a feasible topological
+route and additionally penalizes altitude variation, so that the
+resulting value reflects not only path length but also the vertical
+
+IEEE/ASME TRANSACTIONS ON MECHATRONICS, VOL. XX, NO. X, MONTH YEAR
+5
+Fig. 4: The process of global planning and the global tour compared to the fixed FoV LiDAR method.
+maneuvering effort required by the UAV. In this way, the
+global cost favors transitions that are shorter, smoother, and
+easier to execute, while unreachable pairs are assigned a large
+penalty to exclude infeasible connections from the global tour.
+The generated shorter, smoother, and easier global tour is
+shown in Fig. 4.
+In addition, the first selected target has a direct influence
+on the immediate motion of the UAV and thus strongly
+affects short-horizon execution efficiency. To reduce abrupt
+reorientation and improve consistency between the global plan
+and the current flight state, we introduce a heading-consistency
+term for the first target:
+dhead
+j
+= wfθj,
+(8)
+where θj is the angle between the current velocity direction
+and the direction of vj, and wf is a weighting coefficient.
+This term biases the planner toward targets that are better
+aligned with the current motion direction, thereby reducing
+unnecessary turning at the beginning of each replanning cycle.
+With all reachable viewpoints, the pairwise transition costs
+are assembled into a global cost matrix, and the sequencing
+problem is formulated as an open tour optimization:
+Jtour =
+M−1
+X
+k=0
+dπk,πk+1,
+(9)
+where π = (0, π1, π2, . . . , πM) is the visiting order and
+node 0 denotes the current odometry node. Since exploration
+does not require returning to the start node, the problem is
+solved as an open asymmetric traveling salesman problem
+(ATSP) using the Lin–Kernighan–Helsgaun (LKH) solver.
+Overall, this global planning design converts frontier-aware
+representative viewpoints into an execution-oriented visiting
+sequence through a cost formulation that jointly accounts for
+topological reachability, vertical transition burden, and motion-
+direction consistency.
+V. FU-MPC FOR LOCAL SCAN CONTROL
+During UAV exploration, the rotating LiDAR continuously
+scans the surrounding environment along the planned flight
+trajectory. Its angular velocity directly affects both the dis-
+tribution of newly observed frontiers and the geometric con-
+straints available for LiDAR-inertial localization. Therefore,
+we formulate LiDAR rotation regulation as a receding-horizon
+control problem, in which the scan motion is optimized
+online according to predicted exploration gain and localization
+uncertainty.
+A. Predictive Scanning
+Traditional rotating LiDAR typically operates at a fixed
+rotational speed, where its scanning behavior is determined
+entirely by the current motor state and cannot utilize the
+future motion information of the UAV. However, in active
+exploration tasks, the effective observation within a future
+period depends not only on the current orientation of the
+LiDAR but also on where the UAV will perform the scanning.
+Therefore, this paper predicts the future scanning process of
+the LiDAR within the current control horizon, which is shown
+in Fig 1, and uses this prediction result as the foundation
+for the subsequent localization uncertainty evaluation and
+environmental complexity assessment.
+Specifically, at the current control time t0, the system knows
+the current angle θ0 and angular velocity ω0 of the rotating
+LiDAR, and obtains the future reference trajectory pref(t) of
+the UAV from the local planner. Over a prediction horizon of
+length N, we represent the scanning state at the i-th prediction
+step as:
+xi =
+
+θi
+ωi
+
+,
+(10)
+where θi and ωi represent the LiDAR angle and angular veloc-
+ity at that moment, respectively. The control input is defined
+as the angular acceleration ui. Considering the velocity upper
+
+IEEE/ASME TRANSACTIONS ON MECHATRONICS, VOL. XX, NO. X, MONTH YEAR
+6
+bounds and angular acceleration constraints of the motor, the
+scanning dynamics adopt the following discrete form:
+ωi+1 = sat[ωmin, ωmax](ωi + ui∆t) ,
+(11)
+θi+1 = θi + ωi+1∆t,
+(12)
+where ∆t is the prediction step size, and sat[·] represents
+the saturation operator. Thus, given the initial state (θ0, ω0)
+and the control sequence {ui}N−1
+i=0 , the future scanning state
+sequence within the current control horizon can be obtained.
+To couple the scanning prediction with the UAV motion, we
+further use the future reference trajectory to obtain the sensor
+position at each prediction step:
+pi = pref(t0 + i∆t).
+(13)
+Combining the attitude transformation from the body frame to
+the world frame RW
+B and the fixed extrinsic parameters from
+the LiDAR motor base frame to the body frame RB
+MB, the
+principal scanning direction of the LiDAR in the world frame
+at the i-th prediction step can be written as:
+dW
+i
+= RW
+B RB
+MB
+
+
+cos θi
+sin θi
+0
+
+.
+(14)
+Therefore, at each prediction step, the system can obtain a set
+of future scanning states (pi, θi, ωi, dW
+i ). This implies that
+what this paper optimizes is not the instantaneous scanning
+angle at a certain moment, but a continuous scanning process
+evolving along the future flight trajectory.
+Based on the above prediction results, the future observa-
+tion area within the current control horizon can be further
+determined, and the impact of different scanning strategies
+on localization constraints and environmental perception gains
+can be analyzed accordingly. In other words, the role of
+Predictive Scanning is not to directly evaluate the quality
+of the scan, but to provide a unified time-domain prediction
+basis for the subsequent two analysis modules. The former
+evaluates the constraint capability of the local geometry on
+pose estimation based on the predicted scanning states, while
+the latter evaluates the coverage gain of future observations on
+the frontier areas based on the same predicted scanning states.
+B. Localization Uncertainty Analysis
+Reliable localization requires the UAV to observe surfaces
+under sufficiently diverse geometric constraints. To quantify
+the localization quality associated with different scan direc-
+tions, we construct a Fisher-information-based metric from
+the distribution of visible surface normals. For each retained
+point, the surface normal nk is estimated from its K nearest
+neighbors. For a candidate motor angle θc, the set of normals
+visible from that direction defines the Fisher information
+matrix:
+F(θc) =
+X
+k
+nkn⊤
+k ∈R3×3.
+(15)
+A well-conditioned matrix F indicates that the observed local
+geometry provides balanced constraints along different direc-
+tions. Based on this matrix, we define the localization cost as
+the trace of the inverse of the Fisher information matrix,
+f(θc) = tr
+ F(θc)−1
+,
+(16)
+A smaller value of f(θc) indicates stronger expected localiz-
+ability for the corresponding scan direction. To satisfy real-
+time control requirements, we evaluate this cost offline within
+each update cycle at Nc uniformly spaced candidate angles,
+and store the results in a lookup table. During MPC, the
+localization cost at an arbitrary angle is obtained by linear
+interpolation between neighboring samples. This design sep-
+arates the expensive normal-estimation and matrix-evaluation
+steps from the high-rate optimization loop while preserving
+direction-dependent uncertainty information for online control.
+C. Frontier-Aware Exploration Utility
+To explicitly connect scan motion with exploration progress,
+we construct a frontier-aware environment complexity cost that
+evaluates how much frontier information can be revealed by
+a predicted scan pose. For each frontier cluster with center
+ci, visibility is determined jointly by a distance gate and an
+angular gate relative to the current scan direction. Visible
+clusters contribute a reward weighted by both spatial proximity
+and cluster intensity:
+rk,i = exp
+ 
+−
+d2
+k,i
+2σ2
+!
+· si,
+(17)
+where dk,i = ∥pk −ci∥, σ is a distance-decay scale parameter
+and si denotes the cluster intensity score. Based on these
+visible rewards, the complexity cost at prediction step k is
+defined as
+J(θk) = Rtotal −
+X
+i∈F(θk)
+rk,i,
+(18)
+where Rtotal = P
+i rk,i is a constant baseline at prediction
+step k and F(θk) is the set of frontier clusters visible at
+angle θk. A smaller value of J(θk) therefore indicates that
+the candidate scan is expected to expose more informative
+frontiers. This design provides a lightweight surrogate for
+frontier gain and establishes a direct optimization link between
+motorized scanning and exploration efficiency.
+D. Frontier-Uncertainty Model Predictive Control
+FU-MPC unifies the frontier-aware complexity term and
+the uncertainty-aware localization term into a single receding-
+horizon controller that regulates the LiDAR motor online. Over
+the prediction horizon, the controller minimizes:
+min
+{uk}
+N−1
+X
+k=0
+h
+αJ(θk) + βf(θk)
+i
++ γ
+N−2
+X
+k=0
+(uk+1 −uk)2,
+(19)
+subject to:
+ωmin ≤ωk ≤ωmax,
+(20)
+|uk| ≤umax,
+(21)
+where the first two terms balance exploration gain and local-
+ization quality, and the third term regularizes control variation
+to avoid aggressive speed changes. α, β and γ are the weights
+of different cost functions. N is the prediction window length.
+To enable real-time onboard execution, the nonlinear objec-
+tive in MPC is optimized using a local approximation strategy.
+
+IEEE/ASME TRANSACTIONS ON MECHATRONICS, VOL. XX, NO. X, MONTH YEAR
+7
+At each MPC update, the cost terms are linearized around the
+current predicted scan trajectory, yielding a lightweight local
+problem solved by Ceres. The optimization follows a receding-
+horizon scheme, where only the first scan command is applied
+to the motor and the remaining sequence is shifted forward to
+warm-start the next iteration. The uncertainty table is refreshed
+asynchronously in a separate thread, thereby separating model
+updating from online scan optimization and maintaining low-
+latency operation under onboard computational constraints.
+VI. EXPERIMENTS
+In this section, we implemented FU-MPC using C++ and
+ROS. We evaluate our method against three state-of-the-art
+exploration algorithms: FUEL [13], EPIC [39], ERRT [29].
+These three methods show different ways of real-time environ-
+mental information processing. As state-of-the-art exploration
+techniques, they provide a fair and reproducible basis for
+comparison.
+A. Baselines and Metrics
+1) Baselines: We evaluate our method against three state-
+of-the-art exploration algorithms: EPIC, FUEL, ERRT. Our
+tests were conducted in three large-scale scenes: a sinkhole
+[70 × 45 × 13.5] m3, a spatial maze [119 × 20 × 8] m3, and a
+lava tube [315×53.5×27] m3. We rendered all three scenarios
+into point cloud maps. Each method was executed three times
+per scene with a maximum velocity of 3.0 m/s.
+2) Metrics: To quantitatively evaluate the accuracy of local-
+ization and mapping via FU-MPC, we adopt the Absolute Pose
+Error (APE) as one of the evaluation metrics of FU-MPC. APE
+measures the deviation between the estimated UAV trajectory
+of exploration and the ground-truth poses, providing a direct
+indicator of localization and mapping accuracy.
+To measure exploration efficiency, we used the exploration
+coverage rate over the same time period length as an indicator
+in the simulation experiment.
+B. Simulation Evaluation
+1) Efficiency of Exploration: We evaluate the exploration
+performance on three representative 3D maps with distinct
+geometric and perceptual challenges to demonstrate the ben-
+efits of active rotating LiDAR and the proposed FU-MPC
+planner. Table I reports the exploration time, trajectory length,
+and completion status, while Fig. 5 shows the coverage
+evolution over time. Across all scenarios, FU-MPC achieves
+faster coverage accumulation and shorter completion time than
+EPIC. Notably, only FU-MPC and EPIC complete the large-
+scale benchmarks, whereas FUEL and ERRT fail within the
+effective time budget, with their coverage curves saturating at
+low values.
+The Spatial Maze is a large multi-level environment with
+ramps, height-varying barriers, and vertically separated pas-
+sages. In such 3D scenes, a front-mounted LiDAR may miss
+regions below the UAV due to limited vertical FoV, leading to
+incomplete exploration or navigation failures near obstacles.
+The active rotating LiDAR provides both upward and down-
+ward observations, improving traversability understanding and
+TABLE I: Results of Benchmark Comparisons
+Scene
+Method
+Exp.
+Time (s)
+Trajectory (m)
+Exp.
+Fin.
+Spatial Maze
+ERRT
+–
+–
+No
+FUEL
+–
+–
+No
+EPIC
+178.65
+418.80
+Yes
+FU-MPC
+112.98
+214.94
+Yes
+Sinkhole
+ERRT
+–
+–
+No
+FUEL
+–
+–
+No
+EPIC
+405.99
+779.06
+Yes
+FU-MPC
+255.01
+607.63
+Yes
+Lava tube
+ERRT
+–
+–
+No
+FUEL
+–
+–
+No
+EPIC
+359.91
+338.67
+Yes
+FU-MPC
+138.11
+343.17
+Yes
+reducing unobserved areas. FU-MPC completes the mission
+in 112.98 s, which is 36.8% faster than EPIC at 178.65 s. It
+also reduces the trajectory length from 418.80 m to 214.94
+m, corresponding to a 48.7% reduction and indicating fewer
+redundant revisits. The coverage curves show that FU-MPC
+reaches nearly full coverage around 110 s, whereas EPIC
+approaches full coverage much later. In contrast, FUEL and
+ERRT remain at low coverage and fail to complete this large-
+scale maze.
+The Sinkhole represents an open, large-scale environment
+where global visibility and viewpoint selection dominate ex-
+ploration efficiency. By expanding the sensing footprint and
+mitigating blind directions, rotating LiDAR improves frontier
+discovery and reduces unproductive revisits. As shown in
+Table I, FU-MPC finishes in 255.01 s, compared with 405.99
+s for EPIC, achieving a 37.2% reduction in exploration time.
+FU-MPC also shortens the trajectory from 779.06 m to 607.63
+m, corresponding to a 22.0% reduction. As shown in Fig. 5,
+FU-MPC maintains higher coverage throughout the run and
+reaches near-complete coverage earlier, while EPIC grows
+more slowly, especially in the initial stage. FUEL and ERRT
+again plateau at low coverage, indicating limited scalability in
+large open scenes.
+The Lava Tube is a long and narrow tunnel-like envi-
+ronment, relevant to future lunar subsurface exploration. Its
+corridor-constrained geometry limits route diversity, so suc-
+cessful methods tend to follow similar routes and thus produce
+comparable travel distances. This explains the close trajectory
+lengths of EPIC and FU-MPC in Table I, 338.67 m and 343.17
+m, respectively, with only a 1.3% difference. However, FU-
+MPC still achieves a substantial time reduction, completing in
+138.11 s compared with 359.91 s for EPIC, corresponding to
+a 61.6% improvement.This time gap is mainly attributed to
+the different sensing mechanisms. EPIC relies on UAV yaw
+rotation to adjust the sensing direction of the front-mounted
+LiDAR, which introduces frequent heading changes and pre-
+vents the UAV from accelerating continuously to vmax along
+the lava tube. The coverage curves further confirm this trend:
+FU-MPC reaches maximum coverage roughly 50 s earlier than
+EPIC within the shown time window, demonstrating more
+consistent mapping progress in elongated, visibility-limited
+tunnels. Meanwhile, FUEL and ERRT make little progress
+and do not finish within the mission time budget.
+
+IEEE/ASME TRANSACTIONS ON MECHATRONICS, VOL. XX, NO. X, MONTH YEAR
+8
+Fig. 5: The exploration progress of all three state-of-the-art benchmarks and the proposed method in three scenes. (a) The
+exploration progress of four methods in the Sinkhole. (b) The exploration progress of four methods in the Spatial Maze. (c)
+The exploration progress of four methods in the Lava Tube. (d)-(f) The UAV trajectories of the proposed FU-MPC in Sinkhole,
+Lava Tube, and Spatial Maze.
+TABLE II: Comparison of FU-MPC with baseline methods on
+three simulation maps.
+Scene
+Method
+Exp.
+Fin.
+RMSE (m)
+Mean (m)
+Max (m)
+Spatial
+Maze
+EPIC
+Yes
+0.112
+0.098
+0.545
+ERRT
+No
+0.019
+0.014
+0.057
+FUEL
+No
+0.025
+0.020
+0.095
+FU-MPC
+Yes
+0.068
+0.063
+0.161
+Lava
+Tube
+EPIC
+Yes
+0.664
+0.542
+1.821
+ERRT
+No
+0.118
+0.104
+0.303
+FUEL
+No
+0.076
+0.067
+0.270
+FU-MPC
+Yes
+0.191
+0.153
+1.418
+Sinkhole
+EPIC
+Yes
+58.987
+22.502
+557.526
+ERRT
+No
+0.021
+0.019
+0.116
+FUEL
+No
+0.072
+0.048
+0.813
+FU-MPC
+Yes
+1.030
+0.894
+2.426
+Overall, FU-MPC reduces completion time by 36.8%,
+37.2%, and 61.6% in Spatial Maze, Sinkhole, and Lava Tube,
+respectively, compared with EPIC. It also reduces path length
+by 48.7% and 22.0% in the first two scenes. Together with the
+consistently steeper coverage growth in Fig. 5 and the failure
+of FUEL/ERRT to complete any benchmark, these results
+validate the efficiency and robustness of FU-MPC with active
+rotating LiDAR for complex 3D exploration tasks.
+2) Accuracy of Mapping: Table II compares FU-MPC with
+EPIC, FUEL, and ERRT in terms of task completion status and
+translational APE. It should be noted that APE is computed
+only along the executed trajectory. Therefore, a low APE
+does not necessarily indicate successful exploration, especially
+when the planner falls into local repetitive scanning.
+In our experiments, FUEL and ERRT failed to complete
+the exploration task in several environments.They tended to
+repeatedly scan already explored regions instead of continu-
+ously expanding toward unknown space.This local repetitive
+behavior resulted in relatively small pose variations and ge-
+ometrically familiar observations, which explains their low
+APE values. Therefore, their low translational APE should be
+interpreted together with their incomplete exploration status.
+Compared with EPIC, FU-MPC achieves lower translational
+APE while successfully completing the exploration task.In
+the Spatial Maze map, FU-MPC reduces the RMSE from
+0.112 m to 0.068 m and the maximum APE from 0.545 m to
+0.161 m.In the Lava Tube map, FU-MPC reduces the RMSE
+from 0.664 m to 0.191 m and the maximum APE from 1.821 m
+to 1.418 m.This indicates that the proposed method improves
+localization accuracy over EPIC while maintaining successful
+exploration.
+In the Sinkhole map, EPIC suffers from severe trajectory
+drift, leading to an RMSE of 58.987 m and a maximum APE
+of 557.526 m.In contrast, FU-MPC successfully completes
+the exploration task and maintains bounded translational er-
+ror, with an RMSE of 1.030 m and a maximum APE of
+2.426 m.These results show that FU-MPC provides substan-
+tially better robustness than EPIC in complex environments.
+Overall, although FUEL and ERRT obtain low APE values
+in some cases, they do not successfully complete the explo-
+ration task due to local repetitive scanning. The comparison
+with EPIC demonstrates that FU-MPC achieves lower trans-
+lational APE while preserving task completion, indicating im-
+proved accuracy and robustness in the evaluated environments.
+
+IEEE/ASME TRANSACTIONS ON MECHATRONICS, VOL. XX, NO. X, MONTH YEAR
+9
+C. Ablation Studies
+TABLE III: Translation APE and exploration efficiency com-
+parison under different rotation strategies.
+Control Strategies
+Fixed
+30 deg/s
+Fixed
+100 deg/s
+Fixed
+360 deg/s
+FU-MPC
+RMSE (m)
+0.121
+0.075
+0.097
+0.068
+Mean (m)
+0.111
+0.063
+0.091
+0.063
+Max (m)
+0.351
+0.569
+0.176
+0.161
+Trajectory (m)
+309.68
+276.76
+237.92
+214.94
+Exp.Time (s)
+165.50
+147.24
+125.69
+112.98
+Table III reports the ablation results of different LiDAR
+rotation strategies in terms of translational APE. Compared
+with fixed-speed rotation strategies, the proposed active rota-
+tion strategy achieves the lowest translational RMSE in the
+Spatial Maze map. In the Spatial Maze map, the adaptive
+strategy reduces the RMSE to 0.068 m, outperforming the
+fixed 30 deg/s, 100 deg/s, and 360 deg/s settings, whose RMSE
+values are 0.121 m, 0.075 m, and 0.097 m, respectively. It also
+obtains the lowest maximum APE of 0.161 m, indicating more
+stable pose estimation over the trajectory. Traditional constant
+speed strategies exhibit a severe accuracy-efficiency trade-off.
+Lower rates 30 deg/s incur excessive trajectory 309.68 m and
+time 165.5 s costs, whereas higher rates 360 deg/s degrade
+accuracy. FU-MPC successfully overcomes this bottleneck. By
+dynamically optimizing the control law, it completes the task
+with the minimal trajectory length 214.94 m and execution
+time 112.98 s, yielding reductions of 9.6% and 10.1%, re-
+spectively, compared to the Fixed 360 deg/s baseline.
+Overall, the ablation study shows that actively regulating the
+LiDAR rotation speed can improve translational accuracy and
+enhance robustness in environments with different geometric
+characteristics.
+D. Real-World Evaluation
+To further validate the effectiveness of the proposed method,
+we conduct extensive field experiments in outdoor environ-
+ments using the UAV platform shown in Fig. 2. The platform
+is equipped with an x86 Intel-N305 edge computing unit,
+enabling fully onboard computation. In all tests, the dynamics
+limits as vmax = 0.5 m/s and ωmax =180 deg/s to ensure safety.
+The first test scenario is a parking-lot tunnel containing
+two roofless house-like structures. The first-person and third-
+person views during the exploration process are presented
+in Fig. 6. In addition, Fig. 6 illustrates the online mapping
+process, together with the historical trajectory and the planned
+trajectory of the UAV. In this scenario, the rotating LiDAR
+enables the UAV to scan the interior regions of the roofless
+structures from outside, without physically entering them. This
+capability improves both exploration efficiency and operational
+safety, particularly in confined or partially enclosed spaces.
+We further evaluate the proposed method in a complex
+building-like environment, where the online mapping result
+is shown in Fig. 7, and the corresponding exploration process
+is also presented in Fig. 6. This scenario contains two sharp
+corners, where the surrounding structure changes abruptly
+Fig. 6: Real-world evaluation of the proposed FU-MPC in two
+different real scenarios. (a)-(d) The first-person perspective of
+UAV and the online mapping process. (e)-(f) The third-person
+perspective of UAV.
+Fig. 7: Real-world evaluation of the proposed FU-MPC. FU-
+MPC adaptively controls the LiDAR rotation speed via pre-
+dictive scanning, improving both exploration efficiency and
+localization accuracy. (a) Overall trajectory in the industrial
+scene. (b)-(c) Predictive scanning at two representative corners
+and the rotating speed of LiDAR in two corners.
+and poses challenges to both perception and localization.
+Benefiting from the proposed active LiDAR motion planning
+strategy, the UAV adaptively regulates the rotation speed of
+the LiDAR according to the local environmental complexity
+and motion prediction. As the UAV approaches a corner, the
+LiDAR rotation speed is reduced to improve scan overlap and
+localization accuracy through predictive scanning, as shown
+
+IEEE/ASME TRANSACTIONS ON MECHATRONICS, VOL. XX, NO. X, MONTH YEAR
+10
+Fig. 8: Real-time performance of the proposed control policy
+evaluated on an x86 Intel-N305 edge computing unit. Local
+Scan Control refers to the MPC controller of the rotating
+LiDAR. Global Exploration Planning includes global planning
+and local planning of UAV exploration.
+in Fig. 7. After passing the corner and entering the corridor,
+the LiDAR rotation speed increases to enhance environmental
+coverage and exploration efficiency. More detailed results and
+visualizations of all real-world experiments are provided in the
+supplementary video.
+E. Real-Time Performance Analysis
+Beyond planning accuracy, the practical deployability of the
+proposed system also depends on its computational efficiency
+for real-time onboard execution. To this end, we further
+evaluate the runtime CPU utilization of the main onboard
+modules on an x86 Intel-N305 edge computing unit.
+We benchmarked the CPU usage over a 90s real-world run,
+including the Global Exploration Planning module, Local Scan
+Control module, and SLAM module. As shown in Fig 8. The
+Global Exploration Planning module consumes an average of
+17.25% CPU, with a peak of 24.88%, while the Local Scan
+Control module remains lightweight, requiring only 1.88%
+CPU on average and 2.38% at peak. The SLAM module
+consumes 9.86% CPU on average, with a peak of 12.13%.
+Overall, the combined workload occupies 28.98% CPU on
+average and remains below 36.75% throughout the experiment.
+These results demonstrate that the system satisfies real-time
+execution requirements while retaining substantial computa-
+tional headroom for concurrent onboard tasks. In particular,
+the low overhead of our proposed method FU-MPC confirms
+that the proposed control module can be integrated with explo-
+ration planning and LiDAR-inertial SLAM without imposing
+a significant burden on the edge computing platform.
+VII. CONCLUSION
+This paper presented FU-MPC, a Frontier- and Uncertainty-
+Aware Model Predictive Control framework for efficient and
+reliable UAV exploration with a motorized LiDAR. By treating
+LiDAR scanning as a controllable decision variable, we cou-
+pled two online-computable objectives: a predictive frontier
+gain derived from the future swept volume and a direction-
+dependent localization uncertainty metric constructed from
+local geometric constraints via Fisher information and an A-
+optimality criterion. To enable high-rate onboard execution, we
+introduced a lightweight piecewise-linear surrogate that signif-
+icantly reduces the computational cost of utility evaluation and
+supports real-time receding-horizon optimization under hard-
+ware constraints. Experimental results demonstrate that FU-
+MPC improves exploration progress while maintaining robust
+SLAM performance compared with fixed-pattern scanning and
+uncertainty-only baselines.
+REFERENCES
+[1] M. Faria, A. S. Ferreira, H. P´erez-Leon, I. Maza, and A. Viguria,
+“Autonomous 3d exploration of large structures using an uav equipped
+with a 2d lidar,” Sensors, vol. 19, no. 22, p. 4849, 2019.
+[2] R. Zhang, G. Hao, K. Zhang, and Z. Li, “Unmanned aerial vehicle
+navigation in underground structure inspection: A review,” Geological
+Journal, vol. 58, no. 6, pp. 2454–2472, 2023.
+[3] N. Kerle, F. Nex, M. Gerke, D. Duarte, and A. Vetrivel, “Uav-based
+structural damage mapping: A review,” ISPRS international journal of
+geo-information, vol. 9, no. 1, p. 14, 2019.
+[4] B. Yamauchi, “A frontier-based approach for autonomous exploration,”
+in Proceedings 1997 IEEE International Symposium on Computational
+Intelligence in Robotics and Automation CIRA’97.’Towards New Com-
+putational Principles for Robotics and Automation’.
+IEEE, 1997, pp.
+146–151.
+[5] J. A. Placed, J. Strader, H. Carrillo, N. Atanasov, V. Indelman, L. Car-
+lone, and J. A. Castellanos, “A survey on active simultaneous localization
+and mapping: State of the art and new frontiers,” IEEE Transactions on
+Robotics, vol. 39, no. 3, pp. 1686–1705, 2023.
+[6] W. Xu and F. Zhang, “Fast-lio: A fast, robust lidar-inertial odometry
+package by tightly-coupled iterated kalman filter,” IEEE Robotics and
+Automation Letters, vol. 6, no. 2, pp. 3317–3324, 2021.
+[7] Z. Zhang and D. Scaramuzza, “Beyond point clouds: Fisher information
+field for active visual localization,” in 2019 International Conference on
+Robotics and Automation (ICRA).
+IEEE, 2019, pp. 5986–5992.
+[8] W. Xu, Y. Cai, D. He, J. Lin, and F. Zhang, “Fast-lio2: Fast direct lidar-
+inertial odometry,” IEEE Transactions on Robotics, vol. 38, no. 4, pp.
+2053–2073, 2022.
+[9] N. Chen, F. Kong, W. Xu, Y. Cai, H. Li, D. He, Y. Qin, and F. Zhang, “A
+self-rotating, single-actuated uav with extended sensor field of view for
+autonomous navigation,” Science Robotics, vol. 8, no. 76, p. eade4538,
+2023.
+[10] K. Chen, R. Nemiroff, and B. T. Lopez, “Direct lidar-inertial odometry:
+Lightweight lio with continuous-time motion correction,” arXiv preprint
+arXiv:2203.03749, 2022.
+[11] K. Chen, K. Zhan, F. Pang, X. Yang, and D. Zhang, “R-lio: Rotating
+lidar inertial odometry and mapping,” Sustainability, vol. 14, no. 17, p.
+10833, 2022.
+[12] J. A. Placed and J. A. Castellanos, “A general relationship between
+optimality criteria and connectivity indices for active graph-slam,” IEEE
+Robotics and Automation Letters, vol. 8, no. 2, pp. 816–823, 2022.
+[13] B. Zhou, Y. Zhang, X. Chen, and S. Shen, “Fuel: Fast uav exploration
+using incremental frontier structure and hierarchical planning,” IEEE
+Robotics and Automation Letters, vol. 6, no. 2, pp. 779–786, 2021.
+[14] B. Tang, Y. Ren, F. Zhu, R. He, S. Liang, F. Kong, and F. Zhang,
+“Bubble explorer: Fast uav exploration in large-scale and cluttered 3d-
+environments using occlusion-free spheres,” in 2023 IEEE/RSJ Interna-
+tional Conference on Intelligent Robots and Systems (IROS).
+IEEE,
+2023, pp. 1118–1125.
+[15] H. Alismail and B. Browning, “Automatic calibration of spinning
+actuated lidar internal parameters,” Journal of Field Robotics, vol. 32,
+no. 5, pp. 723–747, 2015.
+[16] L. Kaul, R. Zlot, and M. Bosse, “Continuous-time three-dimensional
+mapping for micro aerial vehicles with a passively actuated rotating
+laser scanner,” Journal of Field Robotics, vol. 33, no. 1, pp. 103–132,
+2016.
+[17] J. Zhang and S. Singh, “Loam: Lidar odometry and mapping in real-
+time.” in Robotics: Science and systems, vol. 2, no. 9.
+Berkeley, CA,
+2014, pp. 1–9.
+[18] C. Shi, G. Lai, Y. Yu, M. Bellone, and V. Lippiello, “Real-time multi-
+modal active vision for object detection on uavs equipped with limited
+field of view lidar and camera,” IEEE Robotics and Automation Letters,
+vol. 8, no. 10, pp. 6571–6578, 2023.
+
+IEEE/ASME TRANSACTIONS ON MECHATRONICS, VOL. XX, NO. X, MONTH YEAR
+11
+[19] J. Cui, Y. He, J. Niu, Z. Ouyang, and G. Xing, “αlidar: An adaptive high-
+resolution panoramic lidar system,” in Proceedings of the 30th Annual
+International Conference on Mobile Computing and Networking, 2024,
+pp. 1515–1529.
+[20] Y. Chen, D. Wang, L. Thomas, K. Dantu, and S. J. Koppal, “Design
+of an adaptive lightweight lidar to decouple robot–camera geometry,”
+IEEE Transactions on Robotics, vol. 40, pp. 2254–2271, 2024.
+[21] C. Feng, H. Li, M. Zhang, X. Chen, B. Zhou, and S. Shen, “Fc-
+planner: A skeleton-guided planning framework for fast aerial coverage
+of complex 3d scenes,” in 2024 IEEE International Conference on
+Robotics and Automation (ICRA).
+IEEE, 2024, pp. 8686–8692.
+[22] F. Yan, E. Xia, Z. Li, and Z. Zhou, “Sampling-based path planning for
+high-quality aerial 3d reconstruction of urban scenes,” Remote Sensing,
+vol. 13, no. 5, p. 989, 2021.
+[23] X. Zhou, K. Xie, K. Huang, Y. Liu, Y. Zhou, M. Gong, and H. Huang,
+“Offsite aerial path planning for efficient urban scene reconstruction,”
+ACM Transactions on Graphics (TOG), vol. 39, no. 6, pp. 1–16, 2020.
+[24] C. Feng, H. Li, F. Gao, B. Zhou, and S. Shen, “Predrecon: A prediction-
+boosted planning framework for fast and high-quality autonomous aerial
+reconstruction,” arXiv preprint arXiv:2302.04488, 2023.
+[25] B. Yamauchi, “Frontier-based exploration using multiple robots,” in
+Proceedings of the second international conference on Autonomous
+agents, 1998, pp. 47–53.
+[26] B. Zhou, H. Xu, and S. Shen, “Racer: Rapid collaborative exploration
+with a decentralized multi-uav system,” IEEE Transactions on Robotics,
+vol. 39, no. 3, pp. 1816–1835, 2023.
+[27] C. Cao, H. Zhu, H. Choset, and J. Zhang, “Tare: A hierarchical frame-
+work for efficiently exploring complex 3d environments.” in Robotics:
+Science and Systems, vol. 5, 2021, p. 2.
+[28] A. Bircher, M. Kamel, K. Alexis, H. Oleynikova, and R. Siegwart,
+“Receding horizon” next-best-view” planner for 3d exploration,” in
+2016 IEEE international conference on robotics and automation (ICRA).
+IEEE, 2016, pp. 1462–1468.
+[29] B. Lindqvist, A. Patel, K. L¨ofgren, and G. Nikolakopoulos, “A tree-based
+next-best-trajectory method for 3-d uav exploration,” IEEE Transactions
+on Robotics, vol. 40, pp. 3496–3513, 2024.
+[30] T. Cieslewski, E. Kaufmann, and D. Scaramuzza, “Rapid exploration
+with multi-rotors: A frontier selection method for high speed flight,”
+in 2017 IEEE/RSJ International Conference on Intelligent Robots and
+Systems (IROS).
+IEEE, 2017, pp. 2135–2142.
+[31] K. Xu, L. Zheng, M. Wei, and H. Cheng, “Vrexplorer: An efficient view-
+region based autonomous exploration method in unknown environments
+for uav,” in 2024 IEEE/RSJ International Conference on Intelligent
+Robots and Systems (IROS).
+IEEE, 2024, pp. 8081–8087.
+[32] G. P. Huang, A. I. Mourikis, and S. I. Roumeliotis, “Observability-based
+rules for designing consistent ekf slam estimators,” The international
+journal of Robotics Research, vol. 29, no. 5, pp. 502–528, 2010.
+[33] W.
+Burgard,
+“Information
+gain-based
+exploration
+using
+rao-
+blackwellized particle filters,” in Robotics: science and systems I,
+2005.
+[34] S. Koga, A. Asgharivaskasi, and N. Atanasov, “Active slam over
+continuous trajectory and control: A covariance-feedback approach,” in
+2022 American Control Conference (ACC).
+IEEE, 2022, pp. 5062–
+5068.
+[35] L. Bartolomei, L. Teixeira, and M. Chli, “Semantic-aware active per-
+ception for uavs using deep reinforcement learning,” in 2021 IEEE/RSJ
+International Conference on Intelligent Robots and Systems (IROS).
+IEEE, 2021, pp. 3101–3108.
+[36] J. Li, X. Xu, J. Liu, K. Cao, S. Yuan, and L. Xie, “Ua-mpc: Uncertainty-
+aware model predictive control for motorized lidar odometry,” IEEE
+Robotics and Automation Letters, 2025.
+[37] A. Romero, Y. Song, and D. Scaramuzza, “Actor-critic model predictive
+control,” in 2024 IEEE International Conference on Robotics and
+Automation (ICRA).
+IEEE, 2024, pp. 14 777–14 784.
+[38] K. Cao and L. Xie, “Trust-region inverse reinforcement learning,” IEEE
+Transactions on Automatic Control, vol. 69, no. 2, pp. 1037–1044, 2023.
+[39] S. Geng, Z. Ning, F. Zhang, and B. Zhou, “Epic: A lightweight
+lidar-based uav exploration framework for large-scale scenarios,” IEEE
+Robotics and Automation Letters, 2025.
+[40] Z. Zhu, Y. Fang, X. Xiao, X. Lyu, J. Mei, and B. Zhou, “Flare:
+Fast autonomous aerial exploration in large-scale 3d scenarios using
+actively rotated lidar,” IEEE Transactions on Automation Science and
+Engineering, vol. 22, pp. 24 077–24 091, 2025.
+Jianping Li (Member, IEEE) received the B.S. degree in geographic
+information system (GIS) and the Ph.D. degree in photogrammetry and
+remote sensing from Wuhan University, Wuhan, China, in 2015 and 2021,
+respectively. He is currently a Research Fellow with the School of Electrical
+and Electronic Engineering, Nanyang Technological University, Singapore.
+His research interests include 3-D sensing system integration, uncrewed aerial
+vehicle (UAV)/uncrewed ground vehicle (UGV) mapping, robot perception,
+and point cloud data processing, with over 50 publications in venues, such as
+ISRPS, IEEE TITS, IEEE TGRS, RAL, ICRA, and IROS. He received the
+Science and Technology Progress Award in Surveying and Mapping in 2019
+and 2023.
+Pengfei Wan received the B.Eng. degree in automation from Northwestern
+Polytechnical University, Xi’an, China, in 2022. He is currently pursuing the
+M.S. degree in computer control and automation with the School of Electrical
+and Electronic Engineering, Nanyang Technological University, Singapore.
+His current research interests include uncrewed aerial vehicle (UAV) mapping,
+autonomous exploration, and motion planning.
+Zhongyuan Liu received the B.Sc. (Hons.) degree in telecommunications
+engineering with management from Queen Mary University of London, U.K.,
+and Beijing University of Posts and Telecommunications, China, in 2024. He
+is the Co-Founder of CertaintyX, Singapore. His research interests include
+sensor calibrationx and fusion, active SLAM, and robotic navigation.
+Yi Wang received the B.E. degree in robotics engineering from Zhejiang
+University, Hangzhou, China, in 2024, and the M.Eng. degree in control
+science and engineering from Zhejiang University, Hangzhou, China, and
+the M.Sc. degree in Electrical and Electronic Engineering from Nanyang
+Technological University, Singapore, in 2026. His research interests include
+aerial manipulation, and motion planning.
+Yiheng Chen is currently pursuing the B.Eng. degree in mechanical engi-
+neering with The Hong Kong Polytechnic University, Hong Kong. He was an
+exchange student at the National University of Singapore. His current research
+interests include autonomous aerial vehicles, autonomous exploration, robotic
+perception, motion planning, and intelligent control systems.
+Xinhang Xu received the B.Eng. degree in automation from the South
+China University of Technology, Guangzhou, China, and the M.Sc. degree in
+Electrical and Electronic Engineering from Nanyang Technological University,
+Singapore, in 2023. He is currently pursuing the Ph.D. degree in Electrical
+and Electronic Engineering at Nanyang Technological University, Singapore.
+His research interests include intelligent sensing, social navigation, aerial
+manipulation, and tethered robotics.
+Rui Jin received the B.E. degree in mechanical design, manufacturing and
+automation from Northwestern Polytechnical University, Xi’an, China, in
+2021, and the M.Eng. degree in control science and engineering from Zhejiang
+University, Hangzhou, China, in 2024. He is currently working toward the
+Ph.D. degree with the School of Electrical and Electronic Engineering,
+Nanyang Technological University, Singapore, under the supervision of Prof.
+Lihua Xie. His research interests include aerial manipulation, and motion
+planning.
+Boyu Zhou (Member, IEEE) received the Ph.D. degree in electronic and
+computer engineering from The Hong Kong University of Science and
+Technology, Hong Kong, China, in 2022. He is currently a tenure-track
+Assistant Professor (doctoral supervisor) with the Southern University of
+Science and Technology (SUSTech), where he is also the Director of the Smart
+Autonomous Robotics (STAR) Group. His research interests encompass aerial
+and mobile robots, motion planning, active perception, multi-robot systems,
+mobile manipulation, and vision-language navigation. He was a recipient of
+the IEEE TRO 2023 King-Sun Fu Best Paper Award, the IEEE RAL 2023
+Best Paper Award, and the IEEE ICRA 2024 Best UAV Paper Finalist. He is
+an Associate Editor of IEEE TRANSACTIONS ON ROBOTICS and IEEE
+ICRA.
+Lihua Xie (Fellow, IEEE) received the Ph.D. degree in electrical engineering
+from the University of Newcastle, Callaghan, NSW, Australia, in 1992. He was
+the Head of the Division of Control and Instrumentation and the Co-Director
+of the Delta-NTU Corporate Laboratory for Cyber-Physical Systems. He is
+currently a President’s Chair Professor and the Director of the Center for
+Advanced Robotics Technology Innovation, Nanyang Technological Univer-
+sity, Singapore. His research interests include robust control and estimation,
+networked control systems, multiagent systems, and uncrewed systems. Dr.
+Xie is a Fellow of the Academy of Engineering Singapore, IFAC, and CAA.
+He is currently the Editor-in-Chief of Unmanned Systems. He has served as
+an Editor for the IET Book Series in Control and as an Associate Editor for
+several journals, including IEEE Transactions on Automatic Control, Automat-
+ica, IEEE Transactions on Control Systems Technology, IEEE Transactions on
+Control of Network Systems, and IEEE Transactions on Circuits and Systems
+II: Express Briefs. He was an IEEE Distinguished Lecturer from 2012 to 2014.

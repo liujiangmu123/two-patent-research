@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://www.wandfluh.com/fileadmin/user_upload/Wandfluh/Products/Components/DataSheets/Englisch/1.11%20Poppet%20valves/1_11_2061_e.pdf",
+    "file": "1_11_2061_e.pdf",
+    "bytes": 632010,
+    "sha256": "a6b814f867e5cb473eec56f0b8f156940fc6505c5ea117e0b04796042ef6f91a"
+  },
+  {
+    "url": "https://www.wandfluh.com/fileadmin/user_upload/Wandfluh/Products/Components/Step%20Files/STP_1.11-2061.zip",
+    "file": "STP_1.11-2061.zip",
+    "bytes": 1169640,
+    "sha256": "7ecce0a9d7adb458500a35d1841f07a779663eb8bda5093e7b3cb80f589532c8"
+  },
+  {
+    "url": "https://www.wandfluh.com/fileadmin/user_upload/Wandfluh/Products/Components/DataSheets/Englisch/2.13%20Cavities/2_13_1008_e.pdf",
+    "file": "2_13_1008_e.pdf",
+    "bytes": 206516,
+    "sha256": "f395e5e696c214199097e1648d1e8148c1b001a8ed876ae7b213f7dd52f48bff"
+  }
+]

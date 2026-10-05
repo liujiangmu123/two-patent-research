@@ -1,0 +1,109 @@
+XT32M2X
+32-Channel LiDAR
+High Precision, Long Range
+More echoes, Light Weight
+Proprietary LiDAR ASICs
+XT32M2X
+Key Specifications
+Data Points Generated 
+Clock Source
+Power Consumption
+Operating Voltage
+Weight 
+Vertical FOV
+Vertical Resolution
+Range Accuracy
+Up to 3 returns
+Triple Return: 1,920,000 points/sec
+GPS / PTP
+10 W (typical)
+DC 9 to 36 V
+0.49 kg
+Ingress Protection
+IP6K7
+Operating Temperature
+-20°C to 60°C
+Dimensions
+Height: 75.00 mm
+Top/Bottom: Φ89.0 / 93.0 mm  
+Horizontal Resolution
+0.09° (5 Hz) / 0.18° (10 Hz)  
+0.36° (20 Hz)
+Frame Rate
+5 Hz, 10 Hz, 20 Hz
+40.3° (-20.8° to 19.5°)
+1.3°
+±1 cm (typical）
+Range Precision
+0.5 cm (1σ, typical）
+Instrument Range
+0.5 to 300 m
+Range Capability
+80 m, all channels@10% reﬂectivity  
+(100 klux, POD>90%)
+Drones
+Vehicles
+Indoors
+XT32M2X
+Applications
+
+XT32M2X
+Product Superiority
+Strong Range Capability
+Range detection up to 300 m, POD>90% 
+when detecting 10% reﬂectivity targets at 
+80 m (all channels),which increases the 
+ﬂight altitude and recognition rate of 
+application scenarios such as power line 
+inspection.
+Light And Small
+XT32M2X weighs only 490g, which is 
+only about 60% of the weight of 
+PandarXT, and is smaller in size, 
+making it more suitable for drones.
+Wider VFOV
+The XT32M2X's VFOV has been expanded 
+from PandarXT's 31° to 40.3°, so the ﬁeld 
+of view is wider. If the ﬂying altitude is 
+the same, the ﬁeld of view can be 
+increased by 32%.
+Dedicated Chipsets
+The lasers' transmitting and receiving 
+systems are based on Hesai's self-devel-
+oped ASICs, greatly improving LiDAR 
+performance and reducing costs
+and production complexity.
+Outstanding Precision
+Superior to comparable products on the 
+market.
+Interference Rejection
+Every pulse has its own ‘ﬁngerprint’, 
+rejecting noise when multiple LiDARs
+operate closely together.
+More Echoes
+Up to 3 returns, and more details of trees, 
+ground, etc. can be obtained during 
+SLAM for natural.
+High-Quality Reﬂectivity
+High accuracy and consistency, greater 
+dynamic range, and provides more
+accurate reﬂectivity information.
+XT32M2X
+Point Cloud
+200 m
+100 m
+300 m
+The farthest instrument range of XT32M2X is 300m
+Road signs
+Road
+Vehicle
+Parking lot barrier
+2.5 cm (peak-to-peak thickness)
+Sharp point cloud of the corner
+A wall corner - front view
+A wall corner - Top View
+주식회사 모빌테크
+HESAI 한국 공식 대리점
+CONTACT US
+sales@mobiltech.io
+Website QR Code

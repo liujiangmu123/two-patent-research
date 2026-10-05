@@ -1,0 +1,317 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"result\": {\n    \"stage\": \"bench_interference\",\n    \"status\": \"done\",\n    \"started\": 1791009791.454248,\n    \"detail\": \"359/359 GD-LOCK\",\n    \"pair_count\": 836,\n    \"collisions\": [\n      {\n        \"a\": \"BD-01\",\n        \"b\": \"GD-LEFT\",\n        \"volume_mm3\": 39600.0\n      },\n      {\n        \"a\": \"LD-02\",\n        \"b\": \"LD-S1\",\n        \"volume_mm3\": 275.475625\n      },\n      {\n        \"a\": \"LD-02\",\n        \"b\": \"CH-J1\",\n        \"volume_mm3\": 2500.0\n      },\n      {\n        \"a\": \"LD-02\",\n        \"b\": \"CH-J2\",\n        \"volume_mm3\": 3928.20323\n      },\n      {\n        \"a\": \"LD-02\",\n        \"b\": \"CH-J3\",\n        \"volume_mm3\": 6200.0\n      },\n      {\n        \"a\": \"WD-02\",\n        \"b\": \"FS-L\",\n        \"volume_mm3\": 2261.066982\n      },\n      {\n        \"a\": \"SC-01\",\n        \"b\": \"SV-01\",\n        \"volume_mm3\": 565.486678\n      },\n      {\n        \"a\": \"SV-01\",\n        \"b\": \"GD-BACK\",\n        \"volume_mm3\": 29400.0\n      },\n      {\n        \"a\": \"LR-1\",\n        \"b\": \"LR-S1-1\",\n        \"volume_mm3\": 138.858395\n      },\n      {\n        \"a\": \"LR-1\",\n        \"b\": \"LR-S1-2\",\n        \"volume_mm3\": 138.858395\n      },\n      {\n        \"a\": \"LR-1\",\n        \"b\": \"LR-S1-3\",\n        \"volume_mm3\": 138.858395\n      },\n      {\n        \"a\": \"LR-1\",\n        \"b\": \"LR-S1-4\",\n        \"volume_mm3\": 138.858395\n      },\n      {\n        \"a\": \"LR-2\",\n        \"b\": \"LR-S2-1\",\n        \"volume_mm3\": 138.858395\n      },\n      {\n        \"a\": \"LR-2\",\n        \"b\": \"LR-S2-2\",\n        \"volume_mm3\": 138.858395\n      },\n      {\n        \"a\": \"LR-2\",\n        \"b\": \"LR-S2-3\",\n        \"volume_mm3\": 138.858395\n      },\n      {\n        \"a\": \"LR-2\",\n        \"b\": \"LR-S2-4\",\n        \"volume_mm3\": 138.858395\n      },\n      {\n        \"a\": \"WS-01\",\n        \"b\": \"WS-S111\",\n        \"volume_mm3\": 224.616094\n      },\n      {\n        \"a\": \"WS-01\",\n        \"b\": \"WS-S112\",\n        \"volume_mm3\": 224.827832\n      },\n      {\n        \"a\": \"WS-01\",\n        \"b\": \"WS-S121\",\n        \"volume_mm3\": 224.616094\n      },\n      {\n        \"a\": \"WS-01\",\n        \"b\": \"WS-S122\",\n        \"volume_mm3\": 224.827832\n      },\n      {\n        \"a\": \"WS-01\",\n        \"b\": \"WS-S211\",\n        \"volume_mm3\": 224.827832\n      },\n      {\n        \"a\": \"WS-01\",\n        \"b\": \"WS-S212\",\n        \"volume_mm3\": 224.827832\n      },\n      {\n        \"a\": \"WS-01\",\n        \"b\": \"WS-S221\",\n        \"volume_mm3\": 224.827832\n      },\n      {\n        \"a\": \"WS-01\",\n        \"b\": \"WS-S222\",\n        \"volume_mm3\": 224.827832\n      },\n      {\n        \"a\": \"TS-HOUSE\",\n        \"b\": \"TC-PS-R\",\n        \"volume_mm3\": 2650.718801\n      },\n      {\n        \"a\": \"TC-V2-BD1\",\n        \"b\": \"TC-V2-BD2\",\n        \"volume_mm3\": 227.996655\n      },\n      {\n        \"a\": \"TC-V2-BD2\",\n        \"b\": \"TC-V2-HB1\",\n        \"volume_mm3\": 33.85557\n      },\n      {\n        \"a\": \"TC-V2-CL2\",\n        \"b\": \"TC-V2-CL3\",\n        \"volume_mm3\": 1.052669\n      },\n      {\n        \"a\": \"TC-V2-CL3\",\n        \"b\": \"TC-V2-CL4\",\n        \"volume_mm3\": 11.001386\n      },\n      {\n        \"a\": \"TC-V4-BD1\",\n        \"b\": \"TC-V4-BD2\",\n        \"volume_mm3\": 227.996655\n      },\n      {\n        \"a\": \"TC-V4-BD2\",\n        \"b\": \"TC-V4-HB1\",\n        \"volume_mm3\": 33.85557\n      },\n      {\n        \"a\": \"TC-V4-CL2\",\n        \"b\": \"TC-V4-CL3\",\n        \"volume_mm3\": 1.052669\n      },\n      {\n        \"a\": \"TC-V4-CL3\",\n        \"b\": \"TC-V4-CL4\",\n        \"volume_mm3\": 11.001386\n      },\n      {\n        \"a\": \"TC-V3-BD1\",\n        \"b\": \"TC-V3-BD2\",\n        \"volume_mm3\": 227.996655\n      },\n      {\n        \"a\": \"TC-V3-BD2\",\n        \"b\": \"TC-V3-HB1\",\n        \"volume_mm3\": 33.85557\n      },\n      {\n        \"a\": \"TC-V3-CL2\",\n        \"b\": \"TC-V3-CL3\",\n        \"volume_mm3\": 1.052669\n      },\n      {\n        \"a\": \"TC-V3-CL3\",\n        \"b\": \"TC-V3-CL4\",\n        \"volume_mm3\": 11.001386\n      },\n      {\n        \"a\": \"TC-V1-BD1\",\n        \"b\": \"TC-V1-BD2\",\n        \"volume_mm3\": 227.996655\n      },\n      {\n        \"a\": \"TC-V1-BD2\",\n        \"b\": \"TC-V1-HB1\",\n        \"volume_mm3\": 33.85557\n      },\n      {\n        \"a\": \"TC-V1-CL2\",\n        \"b\": \"TC-V1-CL3\",\n        \"volume_mm3\": 1.052669\n      },\n      {\n        \"a\": \"TC-V1-CL3\",\n        \"b\": \"TC-V1-CL4\",\n        \"volume_mm3\": 11.001386\n      },\n      {\n        \"a\": \"TJ-01\",\n        \"b\": \"TJ-PLL1\",\n        \"volume_mm3\": 164.03826\n      },\n      {\n        \"a\": \"TJ-01\",\n        \"b\": \"TJ-PLL2\",\n        \"volume_mm3\": 164.03826\n      },\n      {\n        \"a\": \"TJ-01\",\n        \"b\": \"TJ-PLL3\",\n        \"volume_mm3\": 164.03826\n      },\n      {\n        \"a\": \"TJ-01\",\n        \"b\": \"TJ-PLL4\",\n        \"volume_mm3\": 164.03826\n      },\n      {\n        \"a\": \"TJ-01\",\n        \"b\": \"TJ-PLL5\",\n        \"volume_mm3\": 164.03826\n      },\n      {\n        \"a\": \"TJ-01\",\n        \"b\": \"TJ-PLL6\",\n        \"volume_mm3\": 164.03826\n      },\n      {\n        \"a\": \"TJ-01\",\n        \"b\": \"TJ-PLR1\",\n        \"volume_mm3\": 164.03826\n      },\n      {\n        \"a\": \"TJ-01\",\n        \"b\": \"TJ-PLR2\",\n        \"volume_mm3\": 164.03826\n      },\n      {\n        \"a\": \"TJ-01\",\n        \"b\": \"TJ-PLR3\",\n        \"volume_mm3\": 164.03826\n      },\n      {\n        \"a\": \"TJ-01\",\n        \"b\": \"TJ-PLR4\",\n        \"volume_mm3\": 164.03826\n      },\n      {\n        \"a\": \"TJ-01\",\n        \"b\": \"TJ-PLR5\",\n        \"volume_mm3\": 164.03826\n      },\n      {\n        \"a\": \"TJ-01\",\n        \"b\": \"TJ-PLR6\",\n        \"volume_mm3\": 164.03826\n      },\n      {\n        \"a\": \"HP-PUMP\",\n        \"b\": \"HP-COUP\",\n        \"volume_mm3\": 13096.012818\n      },\n      {\n        \"a\": \"CH-ROD\",\n        \"b\": \"GD-LEFT\",\n        \"volume_mm3\": 2945.243113\n      },\n      {\n        \"a\": \"CH-DS6\",\n        \"b\": \"GD-LEFT\",\n        \"volume_mm3\": 4370.363788\n      },\n      {\n        \"a\": \"CH-DS7\",\n        \"b\": \"GD-LEFT\",\n        \"volume_mm3\": 2264.397153\n      },\n      {\n        \"a\": \"NV-01\",\n        \"b\": \"GD-LEFT\",\n        \"volume_mm3\": 6542.059364\n      }\n    ],\n    \"elapsed_s\": 27.6\n  },\n  \"stdout\": \"\",\n  \"stderr\": \"\",\n  \"execution_time_ms\": 60.15760009177029,\n  \"error_type\": null,\n  \"error_traceback\": null\n}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "result": {
+      "stage": "bench_interference",
+      "status": "done",
+      "started": 1791009791.454248,
+      "detail": "359/359 GD-LOCK",
+      "pair_count": 836,
+      "collisions": [
+        {
+          "a": "BD-01",
+          "b": "GD-LEFT",
+          "volume_mm3": 39600.0
+        },
+        {
+          "a": "LD-02",
+          "b": "LD-S1",
+          "volume_mm3": 275.475625
+        },
+        {
+          "a": "LD-02",
+          "b": "CH-J1",
+          "volume_mm3": 2500.0
+        },
+        {
+          "a": "LD-02",
+          "b": "CH-J2",
+          "volume_mm3": 3928.20323
+        },
+        {
+          "a": "LD-02",
+          "b": "CH-J3",
+          "volume_mm3": 6200.0
+        },
+        {
+          "a": "WD-02",
+          "b": "FS-L",
+          "volume_mm3": 2261.066982
+        },
+        {
+          "a": "SC-01",
+          "b": "SV-01",
+          "volume_mm3": 565.486678
+        },
+        {
+          "a": "SV-01",
+          "b": "GD-BACK",
+          "volume_mm3": 29400.0
+        },
+        {
+          "a": "LR-1",
+          "b": "LR-S1-1",
+          "volume_mm3": 138.858395
+        },
+        {
+          "a": "LR-1",
+          "b": "LR-S1-2",
+          "volume_mm3": 138.858395
+        },
+        {
+          "a": "LR-1",
+          "b": "LR-S1-3",
+          "volume_mm3": 138.858395
+        },
+        {
+          "a": "LR-1",
+          "b": "LR-S1-4",
+          "volume_mm3": 138.858395
+        },
+        {
+          "a": "LR-2",
+          "b": "LR-S2-1",
+          "volume_mm3": 138.858395
+        },
+        {
+          "a": "LR-2",
+          "b": "LR-S2-2",
+          "volume_mm3": 138.858395
+        },
+        {
+          "a": "LR-2",
+          "b": "LR-S2-3",
+          "volume_mm3": 138.858395
+        },
+        {
+          "a": "LR-2",
+          "b": "LR-S2-4",
+          "volume_mm3": 138.858395
+        },
+        {
+          "a": "WS-01",
+          "b": "WS-S111",
+          "volume_mm3": 224.616094
+        },
+        {
+          "a": "WS-01",
+          "b": "WS-S112",
+          "volume_mm3": 224.827832
+        },
+        {
+          "a": "WS-01",
+          "b": "WS-S121",
+          "volume_mm3": 224.616094
+        },
+        {
+          "a": "WS-01",
+          "b": "WS-S122",
+          "volume_mm3": 224.827832
+        },
+        {
+          "a": "WS-01",
+          "b": "WS-S211",
+          "volume_mm3": 224.827832
+        },
+        {
+          "a": "WS-01",
+          "b": "WS-S212",
+          "volume_mm3": 224.827832
+        },
+        {
+          "a": "WS-01",
+          "b": "WS-S221",
+          "volume_mm3": 224.827832
+        },
+        {
+          "a": "WS-01",
+          "b": "WS-S222",
+          "volume_mm3": 224.827832
+        },
+        {
+          "a": "TS-HOUSE",
+          "b": "TC-PS-R",
+          "volume_mm3": 2650.718801
+        },
+        {
+          "a": "TC-V2-BD1",
+          "b": "TC-V2-BD2",
+          "volume_mm3": 227.996655
+        },
+        {
+          "a": "TC-V2-BD2",
+          "b": "TC-V2-HB1",
+          "volume_mm3": 33.85557
+        },
+        {
+          "a": "TC-V2-CL2",
+          "b": "TC-V2-CL3",
+          "volume_mm3": 1.052669
+        },
+        {
+          "a": "TC-V2-CL3",
+          "b": "TC-V2-CL4",
+          "volume_mm3": 11.001386
+        },
+        {
+          "a": "TC-V4-BD1",
+          "b": "TC-V4-BD2",
+          "volume_mm3": 227.996655
+        },
+        {
+          "a": "TC-V4-BD2",
+          "b": "TC-V4-HB1",
+          "volume_mm3": 33.85557
+        },
+        {
+          "a": "TC-V4-CL2",
+          "b": "TC-V4-CL3",
+          "volume_mm3": 1.052669
+        },
+        {
+          "a": "TC-V4-CL3",
+          "b": "TC-V4-CL4",
+          "volume_mm3": 11.001386
+        },
+        {
+          "a": "TC-V3-BD1",
+          "b": "TC-V3-BD2",
+          "volume_mm3": 227.996655
+        },
+        {
+          "a": "TC-V3-BD2",
+          "b": "TC-V3-HB1",
+          "volume_mm3": 33.85557
+        },
+        {
+          "a": "TC-V3-CL2",
+          "b": "TC-V3-CL3",
+          "volume_mm3": 1.052669
+        },
+        {
+          "a": "TC-V3-CL3",
+          "b": "TC-V3-CL4",
+          "volume_mm3": 11.001386
+        },
+        {
+          "a": "TC-V1-BD1",
+          "b": "TC-V1-BD2",
+          "volume_mm3": 227.996655
+        },
+        {
+          "a": "TC-V1-BD2",
+          "b": "TC-V1-HB1",
+          "volume_mm3": 33.85557
+        },
+        {
+          "a": "TC-V1-CL2",
+          "b": "TC-V1-CL3",
+          "volume_mm3": 1.052669
+        },
+        {
+          "a": "TC-V1-CL3",
+          "b": "TC-V1-CL4",
+          "volume_mm3": 11.001386
+        },
+        {
+          "a": "TJ-01",
+          "b": "TJ-PLL1",
+          "volume_mm3": 164.03826
+        },
+        {
+          "a": "TJ-01",
+          "b": "TJ-PLL2",
+          "volume_mm3": 164.03826
+        },
+        {
+          "a": "TJ-01",
+          "b": "TJ-PLL3",
+          "volume_mm3": 164.03826
+        },
+        {
+          "a": "TJ-01",
+          "b": "TJ-PLL4",
+          "volume_mm3": 164.03826
+        },
+        {
+          "a": "TJ-01",
+          "b": "TJ-PLL5",
+          "volume_mm3": 164.03826
+        },
+        {
+          "a": "TJ-01",
+          "b": "TJ-PLL6",
+          "volume_mm3": 164.03826
+        },
+        {
+          "a": "TJ-01",
+          "b": "TJ-PLR1",
+          "volume_mm3": 164.03826
+        },
+        {
+          "a": "TJ-01",
+          "b": "TJ-PLR2",
+          "volume_mm3": 164.03826
+        },
+        {
+          "a": "TJ-01",
+          "b": "TJ-PLR3",
+          "volume_mm3": 164.03826
+        },
+        {
+          "a": "TJ-01",
+          "b": "TJ-PLR4",
+          "volume_mm3": 164.03826
+        },
+        {
+          "a": "TJ-01",
+          "b": "TJ-PLR5",
+          "volume_mm3": 164.03826
+        },
+        {
+          "a": "TJ-01",
+          "b": "TJ-PLR6",
+          "volume_mm3": 164.03826
+        },
+        {
+          "a": "HP-PUMP",
+          "b": "HP-COUP",
+          "volume_mm3": 13096.012818
+        },
+        {
+          "a": "CH-ROD",
+          "b": "GD-LEFT",
+          "volume_mm3": 2945.243113
+        },
+        {
+          "a": "CH-DS6",
+          "b": "GD-LEFT",
+          "volume_mm3": 4370.363788
+        },
+        {
+          "a": "CH-DS7",
+          "b": "GD-LEFT",
+          "volume_mm3": 2264.397153
+        },
+        {
+          "a": "NV-01",
+          "b": "GD-LEFT",
+          "volume_mm3": 6542.059364
+        }
+      ],
+      "elapsed_s": 27.6
+    },
+    "stdout": "",
+    "stderr": "",
+    "execution_time_ms": 60.15760009177029,
+    "error_type": null,
+    "error_traceback": null
+  },
+  "isError": false
+}

@@ -1,0 +1,26 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"result\": {\n    \"doc\": \"CheBlockDrawingV2\",\n    \"page\": \"Page\",\n    \"linear_edges\": {\n      \"Front\": [],\n      \"Top\": [],\n      \"Right\": []\n    }\n  },\n  \"stdout\": \"\",\n  \"stderr\": \"\",\n  \"execution_time_ms\": 246.24679994303733,\n  \"error_type\": null,\n  \"error_traceback\": null\n}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "result": {
+      "doc": "CheBlockDrawingV2",
+      "page": "Page",
+      "linear_edges": {
+        "Front": [],
+        "Top": [],
+        "Right": []
+      }
+    },
+    "stdout": "",
+    "stderr": "",
+    "execution_time_ms": 246.24679994303733,
+    "error_type": null,
+    "error_traceback": null
+  },
+  "isError": false
+}

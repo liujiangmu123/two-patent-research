@@ -1,0 +1,36 @@
+{
+ "final_leg_z_mm_est": [
+  -11.41,
+  -3.35,
+  -0.44,
+  -2.22
+ ],
+ "final_leg_z_mm_true": [
+  -10.0,
+  -2.0,
+  -1.0,
+  -2.0
+ ],
+ "std_mm": [
+  0.46,
+  0.43,
+  0.62,
+  0.63
+ ],
+ "foundation_tilt_permille": 0.847,
+ "top_tilt_permille": 0.838,
+ "warning": "正常",
+ "thermal_explained": 0.939,
+ "assoc": {
+  "FC1_ASC": {
+   "n_ps": 16,
+   "n_kept": 11,
+   "correct": 10
+  },
+  "FC1_DSC": {
+   "n_ps": 16,
+   "n_kept": 10,
+   "correct": 8
+  }
+ }
+}

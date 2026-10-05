@@ -1,0 +1,116 @@
+{
+ "fig": 6,
+ "title": "沿安全阀孔轴线的横向剖视图",
+ "scale": 1.08,
+ "size_mm": [
+  154.1,
+  214.7
+ ],
+ "size_clean_mm": [
+  138.0,
+  214.7
+ ],
+ "labels": [
+  "2",
+  "11",
+  "14",
+  "15",
+  "45",
+  "75",
+  "35",
+  "55",
+  "65",
+  "26"
+ ],
+ "missing": [],
+ "crossings": 0,
+ "min_leader_pass_mm": 5.09,
+ "all_anchors_ok": true,
+ "anchors": [
+  {
+   "num": "2",
+   "name": "阀块本体",
+   "side": "R",
+   "anchor_part": "P00_2",
+   "ok": true,
+   "inside_mm": 9.8
+  },
+  {
+   "num": "11",
+   "name": "缸筒",
+   "side": "R",
+   "anchor_part": "P36_11",
+   "ok": true,
+   "inside_mm": 6.5
+  },
+  {
+   "num": "14",
+   "name": "活塞",
+   "side": "R",
+   "anchor_part": "P38_14",
+   "ok": true,
+   "inside_mm": 2.76
+  },
+  {
+   "num": "15",
+   "name": "活塞杆",
+   "side": "R",
+   "anchor_part": "P39_15",
+   "ok": true,
+   "inside_mm": 8.49
+  },
+  {
+   "num": "45",
+   "name": "安全溢流阀",
+   "side": "R",
+   "anchor_part": "P17_45",
+   "ok": true,
+   "inside_mm": 5.3
+  },
+  {
+   "num": "75",
+   "name": "测压排气接头",
+   "side": "L",
+   "anchor_part": "P24_75",
+   "ok": true,
+   "inside_mm": 4.6
+  },
+  {
+   "num": "35",
+   "name": "安全阀孔",
+   "side": "L",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "55",
+   "name": "安全阀回油口",
+   "side": "R",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "65",
+   "name": "第二测压排气孔",
+   "side": "R",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  },
+  {
+   "num": "26",
+   "name": "第二锁闭油道",
+   "side": "R",
+   "anchor_part": "(几何点)",
+   "ok": true,
+   "inside_mm": 99.0
+  }
+ ],
+ "n_items": 11,
+ "dropped_small": 0,
+ "n_lines": 109,
+ "n_hatch": 1166,
+ "t_s": 5.2
+}

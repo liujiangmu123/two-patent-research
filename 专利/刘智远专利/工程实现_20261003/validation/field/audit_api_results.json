@@ -1,0 +1,71 @@
+{
+  "audit_date": "2026-10-03",
+  "data_semantics": "Synthetic adversarial API checks only; no physical measurement",
+  "source_sha256": {
+    "cli.py": "cc7f0553148307d3220e4964446ea0c21eae4ab491d277e217016a8f2e535cca",
+    "export_geometry_fixture.py": "9253ef44992fe006490eb47fe653843acd315f1b5cbd8889d66f7d8751983a2b",
+    "geometry.py": "ad7812c5584f25c033e537e1896e13105b779475d457106c6554068d472a8f44",
+    "mechanics.py": "4782ce46b366816ba3ba784f46674e8fc6322ce9202e5b6901cfeee30b108dc6",
+    "observations.py": "026fdc0446ea683588647f81541f4919403788588be3bfd99ba92e7bcc08922a",
+    "pipeline.py": "498d98a39781ab48261023464d02e57aaa406d48fae1ed790a6bd027e063f5fb",
+    "__init__.py": "189c544f6dbe6d19b0ef017e6fa8641680eb29122cf2935a2ebb6d3d3846182f",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+  },
+  "results": [
+    {
+      "id": "A01",
+      "status": "outside_candidate_library",
+      "decision": "undetermined",
+      "admissible_joint_candidates": 0
+    },
+    {
+      "id": "A02",
+      "status": "inconsistent_observations",
+      "decision": "undetermined"
+    },
+    {
+      "id": "A03",
+      "status": "screening_disagreement",
+      "likelihood_only": [
+        0.5,
+        0.5
+      ],
+      "retained_candidates": 2
+    },
+    {
+      "id": "A04",
+      "status": "rejected",
+      "reason": "image_points indices must be nonempty and inside associated features"
+    },
+    {
+      "id": "A05",
+      "status": "undetermined",
+      "solver_status": "solved"
+    },
+    {
+      "id": "A06",
+      "status": "joint_disagreement_retained",
+      "joint_candidates": 64,
+      "before_conflicting_pairs": 1833,
+      "after_one_UT_conflicting_pairs": 408,
+      "one_action_weighted_pair_coverage": 0.5188216039279869,
+      "updated_decision": "undetermined"
+    },
+    {
+      "id": "A07",
+      "status": "rejected_duplicate_source",
+      "reason": "duplicate measurement_id UT-001: repeated evidence must not be counted as independent"
+    },
+    {
+      "id": "A08",
+      "status": "unverified_single_section_input",
+      "decision": "undetermined"
+    }
+  ],
+  "all_assertions_passed": true,
+  "pytest": {
+    "passed": 23,
+    "elapsed_seconds": 1.09,
+    "command": "project .venv python -B -m pytest software/tests -q -p no:cacheprovider; isolated validation/field/audit_pytest_release"
+  }
+}

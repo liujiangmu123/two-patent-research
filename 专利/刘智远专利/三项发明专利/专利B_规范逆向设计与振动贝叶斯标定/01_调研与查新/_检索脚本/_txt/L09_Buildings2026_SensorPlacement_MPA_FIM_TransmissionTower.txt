@@ -1,0 +1,1200 @@
+Academic Editor: Eugeniusz Koda
+Received: 2 February 2026
+Revised: 13 May 2026
+Accepted: 15 May 2026
+Published: 20 May 2026
+Copyright: © 2026 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license.
+Article
+A Novel Sensor Placement Strategy Based on Marine Predators
+Algorithm and Its Application to Transmission Towers
+Yang Cheng 1, Meng Ding 2, Shuli Fan 2,*
+, Lei Niu 1, Dongbo Song 1 and Shaolong Peng 2
+1
+Electric Power Research Institute, State Grid Anhui Electric Power Co., Ltd., Hefei 230601, China
+2
+State Key Laboratory of Coastal and Offshore Engineering, Dalian University of Technology,
+Dalian 116024, China
+*
+Correspondence: shuli@dlut.edu.cn
+Abstract
+An effective sensor network strategy is fundamental to structural health monitoring (SHM).
+Optimal sensor placement (OSP) for transmission towers remains insufficiently studied,
+primarily owing to the extensive number of candidate nodes and the complex structural
+responses of these structures under diverse environmental loads. Utilizing finite element
+analysis (FEA), this paper proposes a novel framework for the sensor placement of transmis-
+sion towers. The maximum modal order of a Y-shaped transmission tower is determined
+using the Fisher Information Matrix (FIM), which characterizes its dynamic properties,
+while the Modal Assurance Criterion (MAC) is employed to identify the optimal num-
+ber of sensors. The Marine Predators Algorithm (MPA) is then utilized to determine the
+optimal sensor configuration for the transmission tower based on four different fitness
+functions. The performance of these four fitness functions in sensor layout design is sys-
+tematically compared. The results indicate that the MPA can efficiently generate optimal
+sensor configurations under a constraint on the maximum number of sensors. The choice
+of fitness function has a significant impact on the sensor placement results. The proposed
+MPA-based OSP method provides a reliable technical framework for the optimal design of
+SHM systems in power transmission engineering.
+Keywords: transmission towers; structural health monitoring; optimal sensor placement;
+marine predators algorithm; modal analysis
+1. Introduction
+To facilitate the optimal distribution of power resources, China has continuously
+promoted the West-to-East and North-to-South Power Transmission projects, establishing
+a robust backbone power grid. By the end of 2023, the total length of transmission lines
+with voltage levels of 220 kV and above in China had reached approximately 920,000 km,
+according to statistics published by the China Electric Power Planning and Engineering
+Institute (EPPEI) [1]. As critical components of the power grid, transmission towers must
+maintain structural reliability to ensure the safe and stable transmission of electricity.
+However, under extreme environmental conditions, such as ice accretion and strong winds,
+transmission towers become increasingly vulnerable due to the combined effects of multiple
+deterioration mechanisms, including corrosion and bolt loosening [2–5]. The deployment
+of intelligent sensors at strategic locations is an effective approach to monitoring the
+structural health of transmission towers. Nevertheless, as transmission towers are complex
+spatial structures, they exhibit multiple vibration modes and failure patterns under various
+Buildings 2026, 16, 2018
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+2 of 16
+loading conditions. Therefore, optimizing the placement of a limited number of sensors to
+effectively capture key modal parameters, such as mode shapes and natural frequencies,
+remains a critical challenge.
+Optimal sensor placement (OSP) serves as a fundamental prerequisite for developing
+effective sensor networks, as it directly influences the measurement quality and sampling
+accuracy of structural health monitoring (SHM) systems [6]. The objective of OSP is to
+determine the optimal sensor configuration based on specific evaluation criteria, thereby
+enhancing the acquisition of reliable data for modal identification, state estimation, and
+damage detection [7]. Previous OSP studies have primarily focused on simple structures
+or simplified structural models. Based on the modal superposition theory (MST), Kam-
+mer [8] proposed the Effective Independence (EFI) method as an efficient approach for
+maximizing linear independence, in which candidate sensor locations are eliminated or
+added according to rankings derived from the determinant of the Fisher Information Matrix
+(FIM). Kim et al. [9] proposed a stochastic EFI method for sensor location selection based
+on optimal energy usage and demonstrated that it outperforms existing methods under
+system uncertainty. Bakir [10] presented six OSP schemes for buildings and concluded that
+the EFI method was the most effective. Vergara et al. [11] investigated sensor placement for
+transmission towers and transmission tower-line systems, comparing the results with those
+obtained using the EFI method. Zhou et al. [12] combined the EFI method with the Modal
+Assurance Criterion (MAC) to determine both the minimum number of sensors and their
+optimal locations. Raphael and Jadhav [13] evaluated a sensor placement methodology for
+transmission line towers based on entropy and model falsification. Existing literature indi-
+cates that the EFI method and its variants serve as the primary and most widely adopted
+strategies for OSP in large-scale complex spatial structures such as transmission towers.
+Various quantitative criteria are commonly employed to assess the efficacy and per-
+formance of OSP methods, ensuring reliable and actionable outcomes [14]. The modal
+kinetic energy (MKE) criterion was proposed by Salama et al. [15] in 1987 to enhance the
+signal-to-noise ratio (SNR) of monitoring signals. It quantifies the resilience of a config-
+uration to sensor noise. The Fisher Information Matrix (FIM), proposed by Kammer [8]
+based on modal superposition theory, has been proven to be an important parameter for
+evaluating the influence of model parameters on model predictions. The maximized FIM
+is widely used as a criterion for OSP to ensure accurate model identification. Carne and
+Dohrmann [16] proposed the MAC as an index for measuring the similarity between modal
+vectors and facilitating the distinction of vibration modes. While the MAC indicates the
+consistency between the actual structural mode shapes and the identified ones, a practical
+issue arises when the maximum off-diagonal term fails to decrease monotonically as the
+sensor count increases. The singular value decomposition (SVD) ratio, defined as the ratio
+between the maximum and minimum singular values of the eigenvector matrix, can also
+serve as an evaluation criterion for verifying OSP schemes [17]. It reflects the requirements
+of modal orthogonality, modal expansion, and modal observability of the sensor locations.
+Different evaluation criteria emphasize different aspects, and thus yield different sensor
+configurations using the same OSP method. Therefore, the compatibility between eval-
+uation criteria and optimization methods should be investigated to achieve an optimal
+sensor placement.
+Inspired by advances in intelligent optimization algorithms, recent studies have
+applied these methods to address sensor placement problems in transmission towers.
+Chow et al. [18] demonstrated under laboratory conditions that genetic algorithms (GA)
+are effective for placing a specified number of sensors on large-scale transmission towers to
+achieve an entropy-optimal configuration. Hu et al. [19] incorporated a linearly decreasing
+inertia weight into an improved particle swarm optimization (IPSO) algorithm to optimize
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+3 of 16
+the balance between global exploration and local exploitation when solving the OSP prob-
+lem for cat-head-type transmission towers. Dong et al. [20] verified the applicability of
+the Dung Beetle Optimizer (DBO) for the optimal sensor placement of a double-circuit
+corner tower. Feng et al. [21] proposed a method known as the siege ant colony algo-
+rithm (SACA) and compared its performance against conventional approaches using the
+Hanjiang transmission tower as a case study. These studies demonstrate that intelligent
+optimization algorithms can significantly enhance the efficiency and effectiveness of sensor
+placement design.
+The Marine Predators Algorithm (MPA) is one of the meta-heuristic algorithms (MAs)
+used for solving numerous optimization problems [22]. Benefiting from its simple frame-
+work, flexible implementation and limited adjustable parameters, several researchers have
+conducted in-depth studies to investigate and modify MPA for various practical applica-
+tions [23–28]. And it has been confirmed that the MPA delivers prominent advantages in
+convergence rate and solution accuracy over other MAs [29–32]. Motivated by these advan-
+tages, this paper proposes a novel framework for sensor placement in transmission towers
+based on MPA. Because the selection of the fitness function significantly alters the spatial
+distribution of sensors—thereby directly impacting mode identifiability metrics—four dif-
+ferent fitness functions are integrated with the MPA. The performance of these fitness
+functions in solving large-scale discrete OSP problems for lattice structures is systematically
+compared and analyzed.
+2. Methodology for OSP Using MPA
+The number and placement of sensors determine the precision of monitoring mea-
+surements and the accuracy of structural health assessments for transmission towers. To
+ensure reliable modal identification, this study proposes a combined optimization strategy
+integrating the Fisher Information Matrix (FIM), the Modal Assurance Criterion (MAC),
+and the Marine Predators Algorithm (MPA) for sensor placement design in transmission
+towers. The proposed hybrid optimization procedure consists of the following steps:
+1.
+Constructing the finite element model of the transmission tower;
+2.
+Performing modal analysis;
+3.
+Determining the number of modes to be considered using the 2-norm method of
+the FIM;
+4.
+Determining the number of sensors according to the maximum Modal Assurance
+Criterion (maxMAC);
+5.
+Optimizing sensor deployment locations using the MPA.
+The methods used in this study to determine the target modal order, the number of
+sensors, and their locations are briefly reviewed below.
+2.1. Marine Predators Algorithm
+The Marine Predators Algorithm (MPA) is a metaheuristic optimization algorithm
+inspired by the foraging behavior of marine predators. Its design is based on several
+biological and ecological mechanisms, including optimal encounter rate strategies, group
+aggregation behavior, eddy current effects, and memory characteristics. The MPA models
+predator–prey interactions through a dynamic velocity ratio, and the optimization process
+is divided into three stages. Two fundamental search patterns, namely Lévy flight and
+Brownian motion, are incorporated into these stages to balance global exploration and local
+exploitation [22].
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+4 of 16
+In the Brownian motion stochastic model, the probability distribution of the step sizes
+used for local search follows a normal distribution with zero mean µ = 0 and unit variance
+σ2 = 1. The probability density function (PDF) at point x is given by Equation (1).
+fB(x, µ, σ) =
+1
+√
+2π · σ2 · exp
+ 
+−(x −µ)2
+2σ2
+!
+=
+1
+√
+2π
+· exp
+
+−x2
+2
+
+(1)
+The random walk for global exploration is described by Lévy flight. The step sizes
+are random variables that follow a heavy-tailed distribution and are generated according
+to Equation (2).
+S = 0.05 ×
+x
+|y|
+1
+α
+(2)
+where α denotes an exponential distribution ranging from 0 to 2; x and y are normally
+distributed random variables, as given in Equation (3).
+x = Normal
+
+0, σ2
+x
+
+,
+y = Normal
+
+0, σ2
+x
+
+(3)
+σx and σy are defined by Equation (4).
+σx =
+
+
+Γ(1 + α) × sin
+  πα
+2
+
+Γ
+
+1+α
+2
+
+× α × 2
+(α−1)
+2
+
+
+1
+α
+, σy = 1, α = 1.5
+(4)
+In Equation (4), Γ represents the Gamma function, which is defined in Equation (5).
+Γ(z) =
+Z ∞
+0
+tz−1e−tdt
+(5)
+The initial prey positions are generated from a uniform distribution over the search
+space, as expressed in Equation (6).
+X0 = Xmin + rand(Xmax −Xmin)
+(6)
+where Xmin and Xmax denote the lower and upper bounds of the variables, respectively,
+and rand is a random vector within the interval [0, 1].
+According to the survival-of-the-fittest principle, the best solution is regarded as the top
+predator and is stored in a matrix referred to as the Elite matrix, as defined in Equation (7).
+Elite =
+
+
+XI
+1,1
+XI
+1,2
+· · ·
+XI
+1,d
+XI
+2,1
+XI
+2,2
+· · ·
+XI
+2,d
+...
+...
+...
+...
+XI
+n,1
+XI
+n,2
+· · ·
+XI
+n,d
+
+
+n×d
+(7)
+where
+→
+XI is multiplied n times to construct the Elite matrix, standing for the top predator
+vector. n denotes the number of search agents, and d represents the dimensionality of the
+Elite matrix. A prey matrix is then introduced to update the positions of the predators, as
+expressed in Equation (8).
+Prey =
+
+
+X1,1
+X1,2
+· · ·
+X1,d
+X2,1
+X2,2
+· · ·
+X2,d
+...
+...
+...
+...
+Xn,1
+Xn,2
+· · ·
+Xn,d
+
+
+n×d
+(8)
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+5 of 16
+Xi,j represents the jth dimension of the ith prey individual. The entire optimization
+procedure is carried out based on these two matrices.
+The optimization process of MPA is divided into three phases according to the relative
+velocities of the predators and prey [23,29].
+Phase 1: Exploration phase.
+While Iter < 1/3Max_Iter
+
+
+
+
+
+→
+stepsizei =
+→
+RB ⊗
+
+→
+Elitei −
+→
+RB ⊗
+→
+Preyi
+
+i = 1, · · · , n
+→
+Preyi =
+→
+Preyi + P ·
+→
+R ⊗
+→
+stepsizei
+(9)
+where
+→
+RB is a random vector representing Brownian motion with a standard normal
+distribution. P = 0.5, and
+→
+R is a vector of uniformly distributed random numbers in the
+interval [0, 1].
+Phase 2: Transition phase.
+While 1/3Max_Iter < Iter < 2/3Max_Iter
+The first half of the population is updated according to Equation (10).
+
+
+
+
+
+→
+stepsizei =
+→
+RL ⊗
+
+→
+Elitei −
+→
+RL ⊗
+→
+Preyi
+
+i = 1, · · · , n
+2
+→
+Preyi =
+→
+Preyi + P ·
+→
+R ⊗
+→
+stepsizei
+(10)
+where
+→
+RL denotes Lévy motion generated from the Lévy distribution.
+The second half of the population is updated according to Equation (11).
+
+
+
+
+
+→
+stepsizei =
+→
+RB ⊗
+ →
+RB ⊗
+→
+Elitei −
+→
+Preyi
+
+i = n
+2 , · · · , n
+→
+Preyi =
+→
+Elitei + P · CF ⊗
+→
+stepsizei
+(11)
+CF is an adaptive parameter to adjust the step size of the predator, CF =
+
+1 −
+Iter
+Max_Iter
+(2
+Iter
+Max_Iter )
+.
+Phase 3: Exploitation phase.
+While Iter > 2/3Max_Iter:
+
+
+
+
+
+→
+stepsizei =
+→
+RL ⊗
+→
+RL ⊗
+→
+Elitei −
+→
+Preyi
+
+→
+Preyi =
+→
+Elitei + P · CF ⊗
+→
+stepsizei
+(12)
+→
+RL ⊗
+→
+Elitei is again used to simulate the predator motion in the Lévy strategy.
+To prevent the MPA from being trapped in a local search region, Fish Aggregating
+Devices (FADs) are incorporated into the algorithm and modeled by Equation (13).
+→
+Preyi =
+
+
+
+
+
+
+
+→
+Preyi + CF
+→
+Xmin +
+→
+R ⊗
+→
+Xmax −
+→
+Xmin
+
+⊗
+→
+U
+r ≤FADs
+→
+Preyi + [FADs(1 −r) + r]
+ →
+Preyr1 −
+→
+Preyr2
+
+r > FADs
+(13)
+where FADs refers to the FADs effect.
+→
+U is a random vector with arrays including 0 and 1.
+r is uniform random number in [0, 1]. r1 and r2 subscripts represent the random indices of
+the prey matrix.
+Marine predators are assumed to possess the ability to remember and identify histori-
+cally resource-rich areas. At the end of each iteration, the algorithm compares the fitness of
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+6 of 16
+the current solution with that of the historical best solution stored in the Elite matrix. If the
+current solution is better, the corresponding solution in the Elite matrix is replaced.
+2.2. Evaluation Criteria of OSP
+Various evaluation criteria have been developed to assess the effectiveness of sensor
+layout schemes based on specific monitoring objectives [14]. The application of distinct
+evaluation criteria inherently leads to different sensor placement configurations, as each
+criterion reflects a distinct perspective on structural response and modal information [7].
+In this study, four OSP evaluation criteria are adopted as fitness functions for the MPA to
+assess the performance of sensor placement schemes.
+2.2.1. Modal Assurance Criterion (MAC)
+The MAC matrix serves as an evaluation criterion for measuring the discreteness of
+resulting vectors and the linear independence of modal vectors. The MAC matrix is defined
+by Equation (14) [33].
+MACij =
+ΦT
+i Φj
+
+r ΦT
+i Φi
+
+ΦT
+j Φj
+
+(14)
+In Equation (14), MACij denotes the element in the ith row and jth column of the MAC
+matrix. The off-diagonal elements represent the correlations between modal vectors of
+different orders. A larger value of MACij indicates a higher degree of correlation between
+the corresponding modal vectors. When MACij = 1, the ith and jth modal vectors are
+perfectly correlated.
+The maximum off-diagonal element is defined by Equation (15).
+γ = max
+
+MACij
+i̸ = j
+	
+(15)
+2.2.2. Singular Value Decomposition Ratio (SVDR)
+The SVDR is an important indicator for evaluating the orthogonality and observability
+of structural vibrations, and its magnitude has clear physical significance in the selection
+of optimization parameters. It is defined as the ratio of the maximum to the minimum
+singular value of the modal matrix, as expressed in Equation (16) [17].
+SVDR = σmax
+σmin
+(16)
+where σmax and σmin are the maximum and minimum singular values of the modal matrix,
+respectively. The SVDR value close to unity is a strong indicator that the OSP strategy is
+effectively capturing the target mode shapes with high fidelity.
+2.2.3. 2-Norm of FIM
+FIM proposed by Kammer [8] is based on the modal superposition theory and has de-
+veloped into an efficient approach for maximizing the linear independence. The structural
+response can be expressed as Equation (17).
+FFIM = ΦT
+s Φs
+(17)
+In Equation (17), Φ is the mode shape matrix, and the subscript s denotes the sth column
+vector of the model matrix.
+The rate of change (ROC) of the FIM 2-norm, denoted as ROCFIM, is defined as the
+ratio of the difference between the FIM matrix 2-norms of ith and jth order to the 2-norm of
+ith order. It can be calculated using Equation (18).
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+7 of 16
+ROCFIM = ∥Qi+1∥2 −∥Qi∥2
+∥Qi∥2
+(18)
+in which Q is the FIM 2-norm. The ROCFIM value gradually approaches zero with the
+increase in mode number i.
+2.2.4. Modal Kinetic Energy (MKE)
+The modal kinetic energy (MKE) distribution at each position describes the structure
+dynamic behavior and the signal-to-noise ratio (SNR) of the collected data at measurement
+points. It is defined by Equation (19).
+MKEi =
+Nm
+∑
+j=1
+
+Φij∑k MikΦkj
+
+(19)
+where Nm is the number of modal orders. Φij is the ith row and jth column of modal matrix.
+Mik is the ith row and kth column of the mass matrix.
+3. Application in a Transmission Tower
+In this section, the proposed OSP method is applied to a Y-shaped transmission tower
+to evaluate its feasibility and effectiveness.
+3.1. Model Introduction
+The ±220 kV Y-shaped transmission tower investigated in this study is an A-type
+tower primarily subjected to conductor weight and wind loads. As illustrated in Figure 1,
+the overall height of the tower is 34.9 m. The tower is constructed from galvanized 16 Mn
+angle steel. The steel material is assumed to be linear elastic, with an elastic modulus
+of E = 200 GPa and a density of ρ = 7800 kg/m3. The main members feature L-shaped
+cross-sections with dimensions of 160 mm × 14 mm. The cross-sectional dimensions of
+the bracing members decrease progressively from 160 mm × 14 mm to 45 mm × 4 mm
+along the height of the transmission tower. The structural components are eccentrically
+connected by bolts.
+ 
+(a) 
+(b) 
+7000
+3200
+4400
+6200
+5100
+6500
+4500
+34900
+5000
+4500
+6200
+6200
+18000
+6922
+Figure 1. Layout of the Y-shaped Transmission Tower (unit: mm): (a) Main view; (b) Side view.
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+8 of 16
+A finite element model of the Y-shaped transmission tower was established using beam
+elements, as illustrated in Figure 2. The model consists of 15,939 nodes and 8295 elements
+and the maximum element length of 0.5 m. A rigorous mesh convergence analysis was
+performed to ensure that the numerical results are stable and mesh-independent for the first
+50 vibration modes. The tower base was assumed to be rigidly connected to the foundation,
+and fixed-support boundary conditions were simulated by constraining all degrees of
+freedom at the tower-leg support locations. Connection details between members were
+simplified as rigid joints.
+ 
+ 
+(a) 
+(b) 
+Figure 2. Finite Element Model of the Y-shaped Transmission Tower: (a) global model; (b) section details.
+3.2. Finite Element Modal Analysis
+Modal analysis was conducted to identify the natural vibration characteristics of the
+transmission tower and to obtain the mode shape matrix Φ. By examining the vibration
+behavior at various natural frequencies, the structural deformation characteristics can be
+clearly understood. The Block Lanczos method was employed for eigenvalue extraction,
+and the first six mode shapes are presented in Figure 3. This analysis was performed under
+ideal conditions without external loads (wind, ice, etc.) or measurement noise, which is
+a common and reasonable simplification for identifying inherent dynamic characteristics.
+Under actual service conditions, wind loads, ice accretion, and environmental noise will
+indeed affect tower dynamic responses. Specifically, wind loads may induce additional
+vibration and slight changes in modal frequencies, while ice coating increases structural
+mass and stiffness, typically leading to a decrease in natural frequencies. However, such
+influences primarily affect vibration amplitudes and response fluctuations, rather than
+significantly altering the global mode shapes and natural frequencies investigated in
+this study.
+Based on the modal analysis results, the first and second mode shapes correspond to
+bending modes in the longitudinal and transverse directions, with natural frequencies of
+4.04 Hz and 4.07 Hz, respectively. The modal displacement generally increases with height.
+Higher-order mode shapes are characterized by local vibration patterns concentrated in
+the inclined members, auxiliary members of the tower legs, and the lower part of the
+tower body.
+Previous hurricane damage investigations and numerical studies [34–36] have shown
+that, under wind or earthquake excitation, the vulnerable components of transmission
+towers are primarily the main members and diagonal bracing members located in the
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+9 of 16
+upper and middle parts of the structure. Because the main members are the primary
+load-bearing components, their structural condition has a critical influence on the overall
+safety and stability of transmission towers. Variations in the modal parameters of these
+main members can effectively reflect the operational state of the tower. Therefore, to
+avoid convergence stagnation during the later stages of sensor configuration optimization,
+sensors are preliminarily arranged on the main load-bearing members of the transmission
+tower. In this study, all nodes on one side of the main load-bearing members are selected
+as candidate sensor locations. Consequently, the total number of candidate degrees of
+freedom available for sensor installation on these main members is 112. A schematic of the
+selected main members is shown in Figure 2a marked with blue color.
+ 
+ 
+ 
+(a) 
+(b) 
+(c) 
+ 
+ 
+(d) 
+(e) 
+(f) 
+0
+.114
+.228
+.342
+.456
+.570
+.684
+.798
+.912
+1.03
+0
+0
+0
+0
+0
+0
+0
+0
+0
+.111
+.223
+.334
+.445
+.557
+.668
+.779
+.891
+1.00
+0
+0
+0
+0
+0
+0
+0
+0
+0
+.112
+.224
+.336
+.448
+.560
+.672
+.783
+.895
+1.01
+0
+0
+0
+0
+0
+0
+0
+0
+0
+.112
+.224
+.336
+.448
+.560
+.672
+.784
+.896
+1.01
+0
+0
+0
+0
+0
+0
+0
+0
+0
+.112
+.224
+.336
+.448
+.560
+.672
+.784
+.896
+1.01
+0
+0
+0
+0
+0
+0
+0
+0
+0
+.112
+.224
+.336
+.448
+.560
+.672
+.784
+.895
+1.01
+0
+0
+0
+0
+0
+0
+0
+0
+Figure 3. First six mode shapes of the Y-shaped transmission tower: (a) First vibrational mode
+(4.04 Hz); (b) Second vibrational mode (4.07 Hz); (c) Third vibrational mode (5.14 Hz); (d) Fourth
+vibrational mode (6.89 Hz); (e) Fifth vibrational mode (6.90 Hz); (f) Sixth vibrational mode (7.19 Hz).
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+10 of 16
+3.3. Determination of the Target Modal Orders
+For transmission towers subjected to environmental excitation, only a limited number
+of modal orders are critical to structural safety. Higher-order modes are difficult to excite
+and have minimal influence on the global dynamic response of the structure. Therefore,
+sensor configuration optimization can focus on capturing the dynamic responses of these
+dominant modes. To enhance the accuracy of identifying the dynamic characteristics of
+transmission towers from monitoring data, the FIM is adopted in this study to determine
+the target maximum modal order.
+The ROCFIM variation curve for the main members of the transmission tower is shown
+in Figure 4. As illustrated, the ROCFIM value becomes nearly constant when the modal
+order exceeds 30. Therefore, to preserve the completeness of the modal information, the
+first 30 modes are selected as the target modes for OSP. It is evident from the curve that the
+ROCFIM value changes only slightly when the modal order reaches 30 and subsequently
+gradually stabilizes, with no significant variation thereafter. These results indicate that the
+first 30 modal orders are the dominant modes relevant to structural safety. Accordingly, the
+target modal number k is set to 30.
+0
+5 10 15 20 25 30 35 40 45 50 55 60
+0.00
+0.01
+0.02
+0.03
+0.04
+0.05
+0.06
+0.07
+0.08
+0.09
+0.10
+ROC
+Model orders
+Figure 4. ROC Variation with Modal Order.
+3.4. Determination of the Minimum Number of Sensors
+For the structural health monitoring of transmission towers, the objective of sensor
+optimization is not to maximize the number of sensors, but to determine the minimum
+number required to reduce the number of non-separable modes to a level that satisfies
+engineering requirements. This objective can be achieved by combining the EFI method
+with the MAC, as proposed by Zhou et al. [12]. According to the improved EFI-based
+method, the minimum number of sensors can be determined from the variation curve of
+the maximum off-diagonal element of the MAC matrix using the following procedure:
+1.
+Set the initial number of sensors m to 2;
+2.
+Employ the EFI method to obtain the sensor placement scheme;
+3.
+Extract the mode shape matrix Φ from the modal analysis results, with dimensions
+of m × k;
+4.
+Calculate the MACij values and record the maximum off-diagonal element
+γ = max
+
+MACij
+i̸ = j
+	
+;
+5.
+Increase the number of sensors m and repeat steps 2–4;
+6.
+Plot the variation curve of the maxMAC γ with respect to the number of sensors, and
+determine the minimum number of sensors for OSP.
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+11 of 16
+Figure 5 illustrates the variation in the maxMAC γ with respect to the number of
+sensors. The maxMAC γ decreases rapidly as the number of sensors increases from 0 to
+15. After the sensor count reaches 15, the curve gradually stabilizes, and the maximum
+off-diagonal element of the Gram matrix changes by only 0.001–0.01 for each additional
+sensor. This indicates that further increasing the number of sensors yields only marginal
+improvement in reducing the maximum off-diagonal element, that is, in improving modal
+orthogonality. By balancing monitoring performance and economic cost, and considering
+previous studies suggesting that the threshold of the maximum off-diagonal element can
+be set to 0.25, the optimal number of sensors for the transmission tower monitoring system
+is determined to be 10.
+0
+10 20 30 40 50 60 70 80 90 100
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+γ
+Number of sensors
+Figure 5. Variation Curve of MAC with Sensor Quantity.
+3.5. Optimal Sensor Placement Adopting MPA Method
+In the process of determining the sensor quantity, the initial placement schemes were
+first obtained using the EFI method. The MPA was then employed for further optimization
+of sensor locations, with the population size set to 50, the maximum number of iterations
+set to 300, the FADs probability set to 0.2, and the search domain restricted to the main
+load-bearing members of the transmission tower. The MPA was executed three times
+with different random seeds. A small standard deviation confirms the robustness and
+repeatability of the optimization results. The algorithm converges smoothly within the
+maximum number of iterations. Four indicators were adopted as the fitness functions
+for the MPA, namely the FIM 2-norm, the maximum off-diagonal element of the MAC
+matrix, the SDVR of the mode shape matrix, and the proportion of MKE, as described in
+the previous section.
+The sensor layout schemes obtained using different fitness functions are presented in
+Figure 6, and the corresponding fitness values and sensor locations are listed in Table 1.
+When the optimization objective is to minimize the off-diagonal elements of the MAC
+matrix, the sensors are distributed relatively uniformly over the key structural regions of
+the transmission tower after MPA optimization. This distribution reduces modal coupling
+and improves the accuracy of modal identification. Under this layout scheme, the SVDR of
+the mode shape matrix is 1.71, indicating a relatively low level of identifiability uniformity.
+However, the values of the FIM 2-norm and the proportion of MKE remain low, suggesting
+that the overall modal identifiability of the transmission tower and the sensitivity to its
+dominant vibration modes are still insufficient. When the FIM 2-norm and the MKE are
+used as the fitness functions, the sensors tend to cluster in local regions of the transmission
+tower, as shown in Figure 6c,d. The corresponding SVDR values are markedly inferior
+and differ from those of the other optimization schemes by several orders of magnitude.
+Consequently, these layout schemes fail to capture the overall vibration response of the
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+12 of 16
+transmission tower adequately and substantially reduce the reliability of modal parameter
+identification based on monitoring data.
+ 
+ 
+ 
+(a) 
+(b) 
+(c) 
+(d) 
+Figure 6. Single-Objective Sensor Layout Results: (a) f(x) = MAC(x); (b) f(x) = SVDR; (c) f(x) = FIM;
+(d) f(x) = MKE.
+Table 1. Sensor Locations and Fitness Values for Single-Objective Sensor Layout Results.
+Fitness Function Values
+Sensor Locations
+MAC
+SVDR
+FIM
+MKE
+f(x) = MAC
+2.1 m, 5.72 m, 9.22 m, 12.15 m, 14.0 m,
+18.0 m, 20.27 m, 24.2 m, 26.88 m, 30.4 m
+0.164
+1.71
+0.039
+0.53
+f(x) = SVDR
+2.1 m, 5.72 m, 9.22 m, 10.22 m, 12.15 m,
+16.0 m, 18.0 m, 21.1 m, 24.2 m, 26.88 m
+0.46
+1.33
+0.037
+0.54
+f(x) = FIM
+27.7 m, 28.0 m, 28.47 m, 29.15 m, 29.5 m,
+29.8 m, 30.74 m, 31.08 m, 31.39 m, 31.7 m
+0.978
+1.87 × 106
+0.074
+1.04
+f(x) = MKE
+18.0 m, 18.02 m, 18.06 m, 18.11 m, 18.18 m,
+18.27 m, 28.85 m, 29.15 m, 31.39 m, 31.70 m
+0.97
+8.63 × 106
+0.049
+1.572
+4. Discussion
+In sensor placement optimization, different fitness functions lead to fundamentally
+distinct optimization trends. This discrepancy arises from the unique constraints and
+preferences imposed by each indicator on the extraction of modal information within
+the analytical framework. The optimization results obtained in this study validate this
+observation. As a complex spatial structure, a transmission tower exhibits substantial
+variation in its optimal sensor placement scheme when different optimization objectives
+are employed.
+From a linear algebraic standpoint, optimization based on the MAC and SVDR is
+equivalent to achieving optimal sampling of the structural mode shape matrix in its column
+space. These mathematical properties require the sensor positions to capture the orthogo-
+nality characteristics of different modal vectors. Specifically, the MAC drives sensors to be
+distributed at spatial locations that can effectively distinguish different modal orders by
+minimizing the maximum correlation between modal vectors; in contrast, SVDR essentially
+requires the sensor layout to enhance the independence of the modal matrix column space
+by maximizing the singular value ratio of the modal matrix. Both metrics implicitly require
+sensors to comprehensively cover the nodal and antinodal regions of different mode shapes
+in physical space, thereby promoting a relatively uniform spatial distribution. Therefore,
+when the maximum off-diagonal element of the MAC matrix and SVDR are utilized as
+fitness functions, the MPA can achieve near-global optimal sampling of the modal matrix
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+13 of 16
+column space by balancing exploration and exploitation. As a result, the sensor locations
+are distributed relatively uniformly over the key structural regions of the transmission
+tower. Such arrangements are more effective for reconstructing the global mode shapes of
+the transmission tower using a limited number of measurement points, while preserving
+both modal orthogonality and modal-order distinguishability.
+Optimization based on the FIM and MKE is essentially a single-objective convex
+optimization process, in which the extreme points of the objective function in Hilbert space
+often correspond to regions with the highest local energy or information density. Because
+such formulations lack explicit constraints on modal orthogonality and spatial coverage,
+the resulting sensor layouts are prone to converging into local optima and generating
+redundant information. The trace maximization of the FIM is, in essence, equivalent to
+maximizing the lower bound of parameter estimation accuracy. Its mathematical form can
+be decomposed into a weighted quadratic form of the derivatives of the modal vectors at the
+sensor locations. This process prioritizes regions that are highly sensitive to the parameters.
+However, because structural parameter sensitivity is often spatially aggregated, the sensors
+tend to cluster in a few highly sensitive regions. Similarly, the MKE index is directly related
+to the spatial distribution of modal kinetic energy, and its optimization process tends to
+select locations where the modal displacement amplitude is maximal. However, the kinetic
+energy peaks of higher-order modes are usually concentrated in specific areas, such as
+structural connections or regions near boundary constraints, making it difficult for the
+sensor layout to effectively cover other modal feature regions.
+It should be noted that the OSP results presented here were obtained from deter-
+ministic finite-element modal analysis and therefore represent baseline sensor placement
+schemes under nominal structural conditions. In practical applications, environmental
+effects such as wind loading, ice accretion, and measurement noise may influence the
+identified modal parameters, which can in turn affect the absolute values of the fitness
+functions and the ranking of candidate sensor locations. Under extreme loading conditions,
+the occurrence of local or global instability, localized or distributed plastic deformation, and
+more general geometric and material nonlinear effects may alter modal frequencies, and
+geometric characteristics of mode shapes. Therefore, the spatial distribution of structural
+modal deformation can evolve markedly during and after critical events, which further
+influences sensor layout arrangement and monitoring performance [37]. Given that a sig-
+nificant number of damage localization methods explicitly rely on changes in mode-shape
+features, some scholars have conducted in-depth explorations in these aspects and obtained
+fruitful research results [38–41]. Future work should incorporate environmental variability,
+model uncertainty, and measurement noise into a robust or data-updated OSP formulation.
+5. Conclusions
+To address the sensor placement problem for complex spatial transmission tower
+structures, this study proposes an MPA-based optimal sensor placement method integrating
+different fitness functions to satisfy the diverse performance requirements of structural
+health monitoring. Given its unique mechanism inspired by the foraging behavior of marine
+predators, the MPA offers notable advantages in balancing exploration and exploitation
+while escaping local optima. Consequently, it effectively avoids premature convergence
+and low solution accuracy, while successfully adapting to the discrete and constrained
+characteristics of transmission tower sensor optimization. When the MAC and SVDR are
+adopted as the fitness functions, the sensors are distributed relatively uniformly over the
+key structural regions of the transmission tower. In contrast, optimization based on the
+FIM and MKE leads to sensor clustering in a few highly sensitive regions of the structure.
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+14 of 16
+The results further indicate that single-objective optimization is inadequate to accom-
+modate the structural complexity and multiple performance requirements of transmission
+towers. Pursuing only modal orthogonality, as represented by the MAC and SVDR, can
+promote a relatively uniform sensor distribution for capturing global mode shapes, but
+may overlook fine-scale features in locally sensitive regions. Conversely, relying solely
+on information- or energy-density-based criteria, such as the FIM and MKE, can lead to
+excessive sensor concentration. Although this improves local monitoring capabilities, it
+compromises the completeness of modal coverage and adversely affects the reconstruction
+of higher-order modes. Therefore, future research should develop a weighted multi-
+objective optimization method that integrates multiple key indicators to balance conflicting
+optimization objectives and achieve a more comprehensive sensor placement scheme for
+practical transmission tower structural health monitoring.
+Author Contributions: Conceptualization, S.F. and Y.C.; methodology, S.F. and S.P.; software, M.D.;
+validation, S.F., L.N. and D.S.; formal analysis, S.P.; investigation, Y.C.; resources, L.N.; data curation,
+Y.C. and D.S.; writing—original draft preparation, M.D. and S.P.; writing—review and editing, S.F.;
+funding acquisition, Y.C. All authors have read and agreed to the published version of the manuscript.
+Funding: This research was funded by the Science and Technology Project of State Grid Anhui
+Electric Power Co., Ltd., grant number B3120524001S.
+Data Availability Statement: The original contributions presented in this study are included in the
+article. Further inquiries can be directed to the corresponding authors.
+Conflicts of Interest: Authors Yang Cheng, Lei Niu and Dongbo Song were employed by the State
+Grid Anhui Electric Power Co., Ltd. The remaining authors declare that the research was conducted
+in the absence of any commercial or financial relationships that could be construed as a potential
+conflict of interest.
+References
+1.
+Electric Power Planning & Engineering Institute. China Electric Power Development Report 2024; People’s Daily Press: Beijing,
+China, 2024.
+2.
+Fu, X.; Li, H.; Li, G.; Dong, Z.; Zhao, M. Failure analysis of a transmission line considering the joint probability distribution of
+wind speed and rain intensity. Eng. Struct. 2021, 233, 111913. [CrossRef]
+3.
+Ma, L.; Khazaali, M.; Bocchini, P. Component-based fragility analysis of transmission towers subjected to hurricane wind load.
+Eng. Struct. 2021, 242, 112586. [CrossRef]
+4.
+Jafari, M.; Sarkar, P.P. Buffeting and self-excited load measurements to evaluate ice and dry galloping of yawed power transmission
+lines. J. Struct. Eng. 2021, 147, 11. [CrossRef]
+5.
+Lam, H.; Yin, T. Dynamic reduction-based structural damage detection of transmission towers: Practical issues and experimental
+verification. Eng. Struct. 2011, 33, 1459–1478. [CrossRef]
+6.
+Mallardo, V.; Aliabadi, M.H. Optimal sensor placement for structural, damage and impact identification: A review. Struct. Durab.
+Health Monit. 2014, 9, 287–323. [CrossRef]
+7.
+Wang, Y.; Chen, Y.; Yao, Y.; Ou, J. Advancements in optimal sensor placement for enhanced structural health monitoring: Current
+insights and future prospects. Buildings 2023, 13, 3129. [CrossRef]
+8.
+Kammer, D.C. Sensor placement for on-orbit modal identification and correlation of large space structures. J. Guid. Control Dyn.
+1991, 14, 334–341. [CrossRef] [PubMed]
+9.
+Kim, T.; Youn, B.D.; Oh, H. Development of a stochastic effective independence (SEFI) method for optimal sensor placement
+under uncertainty. Mech. Syst. Signal Process. 2018, 111, 615–627. [CrossRef]
+10.
+Gunde Bakir, P. Evaluation of optimal sensor placement techniques for parameter identification in buildings. Math. Comput. Appl.
+2011, 16, 456–466. [CrossRef]
+11.
+Vergara, J.A.; Castro-Triguero, R.; Bullejos, D.; Gallego, R.; Zamora, D. Optimal sensor placement for structural health monitoring
+of power transmission tower-line systems. In Conference Proceedings of the Society for Experimental Mechanics Series; Springer Science
+and Business Media, LLC: Garden Grove, CA, USA, 2013.
+12.
+Zhou, C.; Liu, Y.; Wu, J.; Zhou, C. Optimal sensor placement and minimum number selection of sensors for health monitoring of
+transmission towers. Shock Vib. 2020, 2020, 2375947. [CrossRef]
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+15 of 16
+13.
+Raphael, B.; Jadhav, K.S. Sensor placement for structural monitoring of transmission line tower. Front. Built Environ. 2015, 1, 24.
+[CrossRef]
+14.
+Sun, Z.; Mahmoodian, M.; Sidiq, A.; Jayasinghe, S.; Shahrivar, F.; Setunge, S. Optimal Sensor Placement for Structural Health
+Monitoring: A Comprehensive Review. J. Sens. Actuator Netw. 2025, 14, 22. [CrossRef]
+15.
+Salama, M.; Rose, T.; Garba, J. Optimal placement of excitations and sensors for verification of large dynamical systems. In
+Proceedings of the 28th Structures, Structural Dynamics and Materials Conference, Monterey, CA, USA, 6–8 April 1987.
+16.
+Carne, T.G.; Dohrmann, C.R. A modal test design strategy for model correlation. In Proceedings of the 13th International Modal
+Analysis Conference, Vols 1 and 2; The International Society for Optical Engineering: Bellingham, WA, USA, 1995; Volume 2460,
+pp. 927–933.
+17.
+Penny, J.E.T.; Friswell, M.I.; Garvey, S.D. Automatic choice of measurement locations for dynamic testing. AIAA J. 1994, 32,
+407–414. [CrossRef] [PubMed]
+18.
+Chow, H.M.; Lam, H.F.; Yin, T.; Au, S.K. Optimal sensor configuration of a typical transmission tower for the purpose of structural
+model updating. Struct. Control Health Monit. 2011, 18, 305–320. [CrossRef]
+19.
+Hu, J.; Yang, T.; Liang, X.; Liang, G. Optimal sensor placement of transmission tower based on improved particle swarm
+optimization algorithm. In Proceedings of the 2023 6th International Conference on Energy, Electrical and Power Engineering, CEEPE
+2023, Guangzhou, China, 12–14 May 2023; Institute of Electrical and Electronics Engineers Inc.: New York, NY, USA, 2023.
+20.
+Dong, S.; Liu, Z.; Zhang, G.; Bian, J.; Xu, T.; Li, S.; Lan, Z. Optimization of acceleration sensor layout for transmission towers
+based on the dung beetle optimizer (DBO) algorithm. In Proceedings of the 2024 6th International Conference on Intelligent Control,
+Measurement and Signal Processing, ICMSP 2024, Xi’an, China, November 29–December 1 2024; Institute of Electrical and Electronics
+Engineers Inc.: New York, NY, USA, 2024.
+21.
+Feng, S.; Jia, J.Q.; Zhang, J.C. Sensor configuration optimizing in modal identification by siege ant colony algorithm. J. Mech. 2017,
+33, 269–277. [CrossRef]
+22.
+Faramarzi, A.; Heidarinejad, M.; Mirjalili, S.; Gandomi, A.H. Marine predators algorithm: A nature-inspired metaheuristic. Expert
+Syst. Appl. 2020, 152, 113377. [CrossRef]
+23.
+Al-Betar, M.A.; Awadallah, M.; Makhadmeh, S.N.; Alyasseri, Z.A.A.; AI-Naymat, G.; Mirjalili, S. Marine predators algorithm:
+A review. Arch. Comput. Methods Eng. 2023, 30, 3405–3435. [CrossRef]
+24.
+Qin, C.; Han, B. Multi-stage improvement of marine predators algorithm and its application. CMES-Comput. Model. Eng. Sci.
+2023, 136, 3097–3119. [CrossRef]
+25.
+Chun, Y.; Hua, X.; Qi, C.; Yao, Y. Improved marine predators algorithm for engineering design optimization problems. Sci. Rep.
+2024, 14, 13000. [CrossRef]
+26.
+Baskar, R.; Mohanraj, E. Hybrid multi objective marine predators algorithm based clustering for lightweight resource scheduling
+and application placement in fog. Sci. Rep. 2025, 15, 15953. [CrossRef]
+27.
+Kourehli, S.S.; Alvari, A.D. Damage detection in structures under the effect of temperature variations based on modal data using
+the marine predators algorithm. Structures 2025, 79, 109551. [CrossRef]
+28.
+Mondal, B.; Biswas, S.; Dutta, S.; Bhattacharya, A.; Kumar, S.; Dutta, S. Probabilistic optimal power flow analysis for optimal
+deployment of Unified power flow controller in renewable integrated hydro power systems using marine predators algorithm.
+Energy Rep. 2026, 15, 108899. [CrossRef]
+29.
+Mugemanyi, S.; Qu, Z.; Rugema, F.X.; Dong, Y.; Wang, L.; Bananeza, C.; Nshimiyimana, A.; Mutabazi, E. Marine predators
+algorithm: A comprehensive review. Mach. Learn. Appl. 2023, 12, 100471. [CrossRef]
+30.
+Milenkovi´c, B.N.; Krsti´c, M.T. Marine predators’ algorithm: Application in applied mechanics. Tehnika 2021, 76, 613–620.
+[CrossRef]
+31.
+Yousir, D.; Elaziz, M.A.; Oliva, D.; Abraham, J.; Alotaibi, M.A.; Hossain, M.A. Fractional-order comprehensive learning marine
+predators algorithm for global optimization and feature selection. Knowl.-Based Syst. 2022, 235, 107603. [CrossRef]
+32.
+Ewees, A.A.; Ismail, F.H.; Ghoniem, R.M.; Gaheen, M.A. Enhanced marine predators algorithm for solving global optimization
+and feature selection problems. Mathematics 2022, 10, 4154. [CrossRef]
+33.
+Dai, G.; Ji, G. Impacts of the weight coefficient and modal assurance criterion of large structures on observation station selection
+and optimization. J. Vibroengineering 2018, 20, 503–518. [CrossRef]
+34.
+Zhang, X.; Xie, Q. Cumulative damage risk assessment for transmission tower-line system considering copula-based joint
+distribution of wind speed and direction. Reliab. Eng. Syst. Saf. 2026, 265, 111595. [CrossRef]
+35.
+Nie, P.; Liu, H.; Wang, Y.; Han, S. Seismic response and collapse analysis of a transmission tower structure: Assessing the impact
+of the damage accumulation effect. Buildings 2024, 14, 2243. [CrossRef]
+36.
+Zhang, J.; Xie, Q. Failure analysis of transmission tower subjected to strong wind load. J. Constr. Steel Res. 2019, 160, 271–279.
+[CrossRef]
+37.
+Ditommaso, R.; Iacovino, C.; Auletta, G.; Parolai, S.; Ponzo, F.C. Damage detection and localization on real structures subjected to
+strong motion earthquakes using the curvature evolution method: The Navelli (Italy) case Study. Appl. Sci. 2021, 11, 6496. [CrossRef]
+https://doi.org/10.3390/buildings16102018
+
+Buildings 2026, 16, 2018
+16 of 16
+38.
+Ditommaso, R.; Ponzo, F.C.; Auletta, G. Damage detection on framed structures: Modal curvature evaluation using Stockwell
+Transform under seismic excitation. Earthq. Eng. Eng. Vib. 2015, 14, 265–274. [CrossRef]
+39.
+He, H.; Xu, H.; Wang, X.; Zhang, X.; Fan, S. Optimal sensor placement for spatial structure based on importance coefficient and
+randomness. Shock Vib. 2018, 2018, 7540129. [CrossRef]
+40.
+Mendler, A.; Döhler, M.; Ventura, C.E. Sensor placement with optimal damage detectability for statistical damage detection. Mech.
+Syst. Signal Process. 2022, 170, 108767. [CrossRef]
+41.
+Ouyang, H.; Wang, H.; Duan, S.; Shi, Z.; Han, X. Optimal sensor placement method for structural parameter identification
+considering nonlinear correlations under dynamic loadings. Mech. Syst. Signal Process. 2025, 224, 112049. [CrossRef]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+https://doi.org/10.3390/buildings16102018

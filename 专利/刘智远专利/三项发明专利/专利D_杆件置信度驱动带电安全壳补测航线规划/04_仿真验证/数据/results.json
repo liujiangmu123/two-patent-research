@@ -1,0 +1,1239 @@
+{
+ "standard": {
+  "none": {
+   "coverage": 0.8724226804123711,
+   "n_low": 99,
+   "n_low_main": 6,
+   "node_rmse": 0.06573429233772987,
+   "node_rmse_observed": 0.060147834240234586,
+   "tip_err_pct": 6.706244022060405,
+   "f_err_pct": [
+    3.6323141281449525,
+    2.9893914514493436,
+    0.3290455985232555
+   ],
+   "weighted_deficit": 0.37927571954784545,
+   "path_m": 0.0,
+   "time_s": 0.0,
+   "n_views": 0,
+   "violations": 0,
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 756,
+    "冲突": 8,
+    "不可判": 12
+   }
+  },
+  "uniform": {
+   "coverage": 0.9072164948453608,
+   "n_low": 72,
+   "n_low_main": 4,
+   "node_rmse": 0.06401670076032666,
+   "node_rmse_observed": 0.059549741008733434,
+   "tip_err_pct": 2.0854684236129373,
+   "f_err_pct": [
+    1.9152525634071285,
+    1.117339482959689,
+    0.07381964504319247
+   ],
+   "weighted_deficit": 0.1761482955411034,
+   "path_m": 552.0077734985805,
+   "time_s": 138.00194337464512,
+   "n_views": 5,
+   "violations": 0,
+   "violations_naive_full_height": 17,
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 743,
+    "冲突": 24,
+    "不可判": 9
+   }
+  },
+  "geo_nbv": {
+   "coverage": 1.0,
+   "n_low": 0,
+   "n_low_main": 0,
+   "node_rmse": 0.04152014165423712,
+   "node_rmse_observed": 0.04013735114865181,
+   "tip_err_pct": 3.0359582677244092,
+   "f_err_pct": [
+    1.1925880390505013,
+    1.464432117278415,
+    0.13262807518191128
+   ],
+   "weighted_deficit": 0.02801626344819767,
+   "path_m": 203.70963942019358,
+   "time_s": 82.92740985504841,
+   "n_views": 8,
+   "rounds": 1,
+   "violations": 0,
+   "stop_reason": "缺口达标",
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 776,
+    "冲突": 0,
+    "不可判": 0
+   },
+   "min_live_dist": 6.136442729938941
+  },
+  "proposed": {
+   "coverage": 0.9961340206185567,
+   "n_low": 3,
+   "n_low_main": 0,
+   "node_rmse": 0.04318198972844508,
+   "node_rmse_observed": 0.04164183180145663,
+   "tip_err_pct": 2.506967798767486,
+   "f_err_pct": [
+    1.2737035106102972,
+    1.2737779489883687,
+    0.12625804020397993
+   ],
+   "weighted_deficit": 0.016470372080118634,
+   "path_m": 216.106337791823,
+   "time_s": 86.02658444795574,
+   "n_views": 8,
+   "rounds": 1,
+   "violations": 0,
+   "stop_reason": "缺口达标",
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 776,
+    "冲突": 0,
+    "不可判": 0
+   },
+   "min_live_dist": 6.136007858818691
+  },
+  "proposed_fixed4": {
+   "coverage": 1.0,
+   "n_low": 0,
+   "n_low_main": 0,
+   "node_rmse": 0.039721487777960605,
+   "node_rmse_observed": 0.039003922714035084,
+   "tip_err_pct": 3.197191079396749,
+   "f_err_pct": [
+    1.352104958795592,
+    1.5098032081115886,
+    0.6167945381119507
+   ],
+   "weighted_deficit": 0.0020440061080911854,
+   "path_m": 482.38194371447855,
+   "time_s": 208.59548592861967,
+   "n_views": 22,
+   "rounds": 4,
+   "violations": 0,
+   "stop_reason": "固定轮次",
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 764,
+    "冲突": 12,
+    "不可判": 0
+   },
+   "min_live_dist": 6.106055821525507
+  },
+  "history_proposed": [
+   {
+    "round": 0,
+    "deficit": 0.37927571954784545,
+    "best_rate": 0.004269398654611701,
+    "t": 0.0,
+    "path": 0.0,
+    "n_low": 99,
+    "realized": 0.0,
+    "predicted": 0.0
+   },
+   {
+    "round": 1,
+    "deficit": 0.016470372080118634,
+    "best_rate": 0.000153613675314768,
+    "t": 69.8969652345392,
+    "path": 151.58786093815678,
+    "n_low": 3,
+    "realized": 64.57356162346052,
+    "predicted": 52.642164002682016
+   }
+  ],
+  "history_fixed4": [
+   {
+    "round": 0,
+    "deficit": 0.37927571954784545,
+    "best_rate": 0.004269398654611701,
+    "t": 0.0,
+    "path": 0.0,
+    "n_low": 99,
+    "realized": 0.0,
+    "predicted": 0.0
+   },
+   {
+    "round": 1,
+    "deficit": 0.016470372080118634,
+    "best_rate": 0.000153613675314768,
+    "t": 69.8969652345392,
+    "path": 151.58786093815678,
+    "n_low": 3,
+    "realized": 64.57356162346052,
+    "predicted": 52.642164002682016
+   },
+   {
+    "round": 2,
+    "deficit": 0.0030049928607154748,
+    "best_rate": 4.337555462960651e-06,
+    "t": 148.06130641469832,
+    "path": 336.24522565879323,
+    "n_low": 3,
+    "realized": 2.7080711552057655,
+    "predicted": 1.9833321753027426
+   },
+   {
+    "round": 3,
+    "deficit": 0.0018959143983458132,
+    "best_rate": 3.682282996325312e-10,
+    "t": 182.8760678051774,
+    "path": 411.5042712207095,
+    "n_low": 0,
+    "realized": 0.22086368722776595,
+    "predicted": 0.023524944656457825
+   },
+   {
+    "round": 4,
+    "deficit": 0.0020440061080911854,
+    "best_rate": 3.6057603062297438e-06,
+    "t": 193.21118412546463,
+    "path": 420.8447365018584,
+    "n_low": 0,
+    "realized": 0.023080380734326313,
+    "predicted": 6.773465762721642e-07
+   }
+  ],
+  "shell_radius": 6.1,
+  "n_candidates": 1060,
+  "n_rejected": 482
+ },
+ "highlow": {
+  "none": {
+   "coverage": 0.8556701030927835,
+   "n_low": 112,
+   "n_low_main": 10,
+   "node_rmse": 0.06468102840985183,
+   "node_rmse_observed": 0.060139254313958036,
+   "tip_err_pct": 4.549988644773805,
+   "f_err_pct": [
+    2.8509310366656675,
+    2.4496310137456474,
+    0.2425313501722062
+   ],
+   "weighted_deficit": 0.3770265700636388,
+   "path_m": 0.0,
+   "time_s": 0.0,
+   "n_views": 0,
+   "violations": 0,
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 749,
+    "冲突": 20,
+    "不可判": 7
+   }
+  },
+  "uniform": {
+   "coverage": 0.9059278350515464,
+   "n_low": 73,
+   "n_low_main": 1,
+   "node_rmse": 0.06156890106327975,
+   "node_rmse_observed": 0.05679205354267582,
+   "tip_err_pct": 2.1612911839696864,
+   "f_err_pct": [
+    1.539043383854468,
+    1.3180785241421829,
+    0.1878165159173602
+   ],
+   "weighted_deficit": 0.1726440934573696,
+   "path_m": 552.0077734985805,
+   "time_s": 138.00194337464512,
+   "n_views": 5,
+   "violations": 0,
+   "violations_naive_full_height": 17,
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 745,
+    "冲突": 24,
+    "不可判": 7
+   }
+  },
+  "geo_nbv": {
+   "coverage": 0.990979381443299,
+   "n_low": 7,
+   "n_low_main": 2,
+   "node_rmse": 0.04422977001893273,
+   "node_rmse_observed": 0.042963846216665574,
+   "tip_err_pct": 3.134541556608865,
+   "f_err_pct": [
+    1.267716864966864,
+    1.3995083661557035,
+    0.25827301250082035
+   ],
+   "weighted_deficit": 0.03043169705993902,
+   "path_m": 203.70963942019358,
+   "time_s": 82.92740985504841,
+   "n_views": 8,
+   "rounds": 1,
+   "violations": 0,
+   "stop_reason": "缺口达标",
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 764,
+    "冲突": 12,
+    "不可判": 0
+   },
+   "min_live_dist": 6.136442729938941
+  },
+  "proposed": {
+   "coverage": 0.9922680412371134,
+   "n_low": 6,
+   "n_low_main": 0,
+   "node_rmse": 0.04492158527709625,
+   "node_rmse_observed": 0.04281784451719848,
+   "tip_err_pct": 2.8075751261565443,
+   "f_err_pct": [
+    1.4153583331538653,
+    1.3884707592809091,
+    0.3221001665050126
+   ],
+   "weighted_deficit": 0.021273276117612313,
+   "path_m": 222.2197971809162,
+   "time_s": 87.55494929522905,
+   "n_views": 8,
+   "rounds": 1,
+   "violations": 0,
+   "stop_reason": "缺口达标",
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 763,
+    "冲突": 12,
+    "不可判": 1
+   },
+   "min_live_dist": 6.148401623620994
+  },
+  "proposed_fixed4": {
+   "coverage": 1.0,
+   "n_low": 0,
+   "n_low_main": 0,
+   "node_rmse": 0.04160733968893281,
+   "node_rmse_observed": 0.04160733968893281,
+   "tip_err_pct": 3.5140453417576816,
+   "f_err_pct": [
+    1.3742161808849964,
+    1.3980140091391777,
+    0.4695618767279375
+   ],
+   "weighted_deficit": 0.0055218622764518725,
+   "path_m": 420.68055510257204,
+   "time_s": 189.17013877564304,
+   "n_views": 21,
+   "rounds": 4,
+   "violations": 0,
+   "stop_reason": "固定轮次",
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 752,
+    "冲突": 24,
+    "不可判": 0
+   },
+   "min_live_dist": 6.1001415893615025
+  },
+  "history_proposed": [
+   {
+    "round": 0,
+    "deficit": 0.3770265700636388,
+    "best_rate": 0.004255397147330501,
+    "t": 0.0,
+    "path": 0.0,
+    "n_low": 112,
+    "realized": 0.0,
+    "predicted": 0.0
+   },
+   {
+    "round": 1,
+    "deficit": 0.021273276117612313,
+    "best_rate": 0.00011782204163337575,
+    "t": 70.11517150827136,
+    "path": 152.46068603308544,
+    "n_low": 6,
+    "realized": 63.343158533288545,
+    "predicted": 51.954945285928844
+   }
+  ],
+  "history_fixed4": [
+   {
+    "round": 0,
+    "deficit": 0.3770265700636388,
+    "best_rate": 0.004255397147330501,
+    "t": 0.0,
+    "path": 0.0,
+    "n_low": 112,
+    "realized": 0.0,
+    "predicted": 0.0
+   },
+   {
+    "round": 1,
+    "deficit": 0.021273276117612313,
+    "best_rate": 0.00011782204163337575,
+    "t": 70.11517150827136,
+    "path": 152.46068603308544,
+    "n_low": 6,
+    "realized": 63.343158533288545,
+    "predicted": 51.954945285928844
+   },
+   {
+    "round": 2,
+    "deficit": 0.00629154535136845,
+    "best_rate": 2.346146493267283e-06,
+    "t": 134.93078515689228,
+    "path": 283.72314062756914,
+    "n_low": 0,
+    "realized": 2.943654785418848,
+    "predicted": 1.3683974552049656
+   },
+   {
+    "round": 3,
+    "deficit": 0.005654157404121496,
+    "best_rate": 1.686672708048181e-12,
+    "t": 166.30367988730092,
+    "path": 345.2147195492036,
+    "n_low": 0,
+    "realized": 0.16049384148159399,
+    "predicted": 0.01348445576663404
+   },
+   {
+    "round": 4,
+    "deficit": 0.0055218622764518725,
+    "best_rate": 1.204786388527437e-05,
+    "t": 174.17708558703637,
+    "path": 360.7083423481454,
+    "n_low": 0,
+    "realized": 0.023550600249974355,
+    "predicted": 2.363588436082864e-09
+   }
+  ],
+  "shell_radius": 6.1,
+  "n_candidates": 1060,
+  "n_rejected": 482
+ },
+ "missing": {
+  "none": {
+   "coverage": 0.8685567010309279,
+   "n_low": 101,
+   "n_low_main": 2,
+   "node_rmse": 0.06564584042432355,
+   "node_rmse_observed": 0.060591814755364265,
+   "tip_err_pct": 7.902627782566447,
+   "f_err_pct": [
+    3.2880488598476547,
+    2.2547222675769816,
+    33.51140943902587
+   ],
+   "weighted_deficit": 0.3763773122570791,
+   "path_m": 0.0,
+   "time_s": 0.0,
+   "n_views": 0,
+   "violations": 0,
+   "missing_detected": 4,
+   "missing_total": 8,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 744,
+    "冲突": 20,
+    "不可判": 12
+   }
+  },
+  "uniform": {
+   "coverage": 0.9059278350515464,
+   "n_low": 66,
+   "n_low_main": 0,
+   "node_rmse": 0.060827326282215946,
+   "node_rmse_observed": 0.055095703500835806,
+   "tip_err_pct": 3.867283228256773,
+   "f_err_pct": [
+    1.2680718077789352,
+    0.3982821961387134,
+    39.330848229482086
+   ],
+   "weighted_deficit": 0.16536854652732388,
+   "path_m": 552.0077734985805,
+   "time_s": 138.00194337464512,
+   "n_views": 5,
+   "violations": 0,
+   "violations_naive_full_height": 17,
+   "missing_detected": 1,
+   "missing_total": 8,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 754,
+    "冲突": 12,
+    "不可判": 10
+   }
+  },
+  "geo_nbv": {
+   "coverage": 0.9884020618556701,
+   "n_low": 4,
+   "n_low_main": 0,
+   "node_rmse": 0.04576993315340304,
+   "node_rmse_observed": 0.044357697424685504,
+   "tip_err_pct": 3.1888537028698565,
+   "f_err_pct": [
+    1.0308121531027168,
+    1.323942194101254,
+    6.0037610685396805
+   ],
+   "weighted_deficit": 0.03907236856961947,
+   "path_m": 188.49919710238316,
+   "time_s": 79.12479927559579,
+   "n_views": 8,
+   "rounds": 1,
+   "violations": 0,
+   "stop_reason": "缺口达标",
+   "missing_detected": 3,
+   "missing_total": 8,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 768,
+    "冲突": 8,
+    "不可判": 0
+   },
+   "min_live_dist": 6.147664599268994
+  },
+  "proposed": {
+   "coverage": 0.9961340206185567,
+   "n_low": 1,
+   "n_low_main": 0,
+   "node_rmse": 0.04234582347993428,
+   "node_rmse_observed": 0.04112561424215333,
+   "tip_err_pct": 3.120366064385856,
+   "f_err_pct": [
+    1.466923296982034,
+    1.4495821619964833,
+    0.2255473349618987
+   ],
+   "weighted_deficit": 0.017890330776281573,
+   "path_m": 222.1580655958591,
+   "time_s": 87.53951639896479,
+   "n_views": 8,
+   "rounds": 1,
+   "violations": 0,
+   "stop_reason": "缺口达标",
+   "missing_detected": 6,
+   "missing_total": 8,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 756,
+    "冲突": 20,
+    "不可判": 0
+   },
+   "min_live_dist": 6.13617611427069
+  },
+  "proposed_fixed4": {
+   "coverage": 0.9922680412371134,
+   "n_low": 0,
+   "n_low_main": 0,
+   "node_rmse": 0.0402779855447127,
+   "node_rmse_observed": 0.0402779855447127,
+   "tip_err_pct": 3.6906077202314402,
+   "f_err_pct": [
+    1.1420843095079074,
+    0.16444750956043383,
+    38.47321975836503
+   ],
+   "weighted_deficit": 0.00240731454276863,
+   "path_m": 432.9757491722734,
+   "time_s": 216.24393729306837,
+   "n_views": 27,
+   "rounds": 4,
+   "violations": 0,
+   "stop_reason": "固定轮次",
+   "missing_detected": 2,
+   "missing_total": 8,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 756,
+    "冲突": 20,
+    "不可判": 0
+   },
+   "min_live_dist": 6.14788614773267
+  },
+  "history_proposed": [
+   {
+    "round": 0,
+    "deficit": 0.3763773122570791,
+    "best_rate": 0.004099022526243491,
+    "t": 0.0,
+    "path": 0.0,
+    "n_low": 101,
+    "realized": 0.0,
+    "predicted": 0.0
+   },
+   {
+    "round": 1,
+    "deficit": 0.017890330776281573,
+    "best_rate": 0.00014927253348840516,
+    "t": 71.40989718554823,
+    "path": 157.6395887421929,
+    "n_low": 1,
+    "realized": 63.81960930795264,
+    "predicted": 51.64517602686044
+   }
+  ],
+  "history_fixed4": [
+   {
+    "round": 0,
+    "deficit": 0.3763773122570791,
+    "best_rate": 0.004099022526243491,
+    "t": 0.0,
+    "path": 0.0,
+    "n_low": 101,
+    "realized": 0.0,
+    "predicted": 0.0
+   },
+   {
+    "round": 1,
+    "deficit": 0.017890330776281573,
+    "best_rate": 0.00014927253348840516,
+    "t": 71.40989718554823,
+    "path": 157.6395887421929,
+    "n_low": 1,
+    "realized": 63.81960930795264,
+    "predicted": 51.64517602686044
+   },
+   {
+    "round": 2,
+    "deficit": 0.0042580448200969425,
+    "best_rate": 2.5723799837830385e-05,
+    "t": 140.95606116422556,
+    "path": 307.82424465690224,
+    "n_low": 0,
+    "realized": 2.8827057513279883,
+    "predicted": 1.7576299420632726
+   },
+   {
+    "round": 3,
+    "deficit": 0.002131944496796939,
+    "best_rate": 7.113766929077095e-06,
+    "t": 181.05492550167236,
+    "path": 356.2197020066894,
+    "n_low": 0,
+    "realized": 0.4533784579516101,
+    "predicted": 0.19267890402293353
+   },
+   {
+    "round": 4,
+    "deficit": 0.00240731454276863,
+    "best_rate": 1.5876798446098896e-06,
+    "t": 207.21525327865473,
+    "path": 396.86101311461886,
+    "n_low": 0,
+    "realized": 0.07356414815028808,
+    "predicted": 0.03190992470508763
+   }
+  ],
+  "shell_radius": 6.1,
+  "n_candidates": 1060,
+  "n_rejected": 482
+ },
+ "occluded": {
+  "none": {
+   "coverage": 0.8621134020618557,
+   "n_low": 107,
+   "n_low_main": 6,
+   "node_rmse": 0.07503226384268859,
+   "node_rmse_observed": 0.07249385715842685,
+   "tip_err_pct": 3.842219972456265,
+   "f_err_pct": [
+    3.1385557501685013,
+    1.9691313516292077,
+    0.29883118869141
+   ],
+   "weighted_deficit": 0.3726356181486001,
+   "path_m": 0.0,
+   "time_s": 0.0,
+   "n_views": 0,
+   "violations": 0,
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 737,
+    "冲突": 32,
+    "不可判": 7
+   }
+  },
+  "uniform": {
+   "coverage": 0.9059278350515464,
+   "n_low": 73,
+   "n_low_main": 1,
+   "node_rmse": 0.08309045512950093,
+   "node_rmse_observed": 0.08151661052444358,
+   "tip_err_pct": 3.377432169918932,
+   "f_err_pct": [
+    3.134387530820452,
+    1.5740428199107006,
+    0.5079896093164658
+   ],
+   "weighted_deficit": 0.17453164916996053,
+   "path_m": 552.0077734985805,
+   "time_s": 138.00194337464512,
+   "n_views": 5,
+   "violations": 0,
+   "violations_naive_full_height": 17,
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 727,
+    "冲突": 44,
+    "不可判": 5
+   }
+  },
+  "geo_nbv": {
+   "coverage": 0.9974226804123711,
+   "n_low": 2,
+   "n_low_main": 0,
+   "node_rmse": 0.05660686382243864,
+   "node_rmse_observed": 0.05574559898719853,
+   "tip_err_pct": 3.217676171276772,
+   "f_err_pct": [
+    1.3629416132835537,
+    1.6032663455315628,
+    0.27498615269443505
+   ],
+   "weighted_deficit": 0.03656179090569976,
+   "path_m": 186.58555620685743,
+   "time_s": 78.64638905171435,
+   "n_views": 8,
+   "rounds": 1,
+   "violations": 0,
+   "stop_reason": "缺口达标",
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 746,
+    "冲突": 30,
+    "不可判": 0
+   },
+   "min_live_dist": 6.14889923512269
+  },
+  "proposed": {
+   "coverage": 0.9987113402061856,
+   "n_low": 1,
+   "n_low_main": 0,
+   "node_rmse": 0.06250690538804825,
+   "node_rmse_observed": 0.06129545078568324,
+   "tip_err_pct": 3.5963051623551583,
+   "f_err_pct": [
+    1.4224930772548037,
+    1.8485109425280581,
+    0.31969207545037936
+   ],
+   "weighted_deficit": 0.01887636085773823,
+   "path_m": 222.2552796728528,
+   "time_s": 87.5638199182132,
+   "n_views": 8,
+   "rounds": 1,
+   "violations": 0,
+   "stop_reason": "缺口达标",
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 731,
+    "冲突": 45,
+    "不可判": 0
+   },
+   "min_live_dist": 6.148276772969512
+  },
+  "proposed_fixed4": {
+   "coverage": 1.0,
+   "n_low": 0,
+   "n_low_main": 0,
+   "node_rmse": 0.05322418758687286,
+   "node_rmse_observed": 0.05322418758687286,
+   "tip_err_pct": 3.4410400976355353,
+   "f_err_pct": [
+    1.7739925070957265,
+    1.6478977925861635,
+    0.6075521381962592
+   ],
+   "weighted_deficit": 0.007702155544401763,
+   "path_m": 469.75424434425514,
+   "time_s": 197.4385610860638,
+   "n_views": 20,
+   "rounds": 4,
+   "violations": 0,
+   "stop_reason": "固定轮次",
+   "missing_detected": 0,
+   "missing_total": 0,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 722,
+    "冲突": 54,
+    "不可判": 0
+   },
+   "min_live_dist": 6.102364826086901
+  },
+  "history_proposed": [
+   {
+    "round": 0,
+    "deficit": 0.3726356181486001,
+    "best_rate": 0.0041151547456774315,
+    "t": 0.0,
+    "path": 0.0,
+    "n_low": 107,
+    "realized": 0.0,
+    "predicted": 0.0
+   },
+   {
+    "round": 1,
+    "deficit": 0.01887636085773823,
+    "best_rate": 0.00010041741118092715,
+    "t": 73.49221472269522,
+    "path": 165.96885889078087,
+    "n_low": 1,
+    "realized": 62.96311733016711,
+    "predicted": 52.2373662797962
+   }
+  ],
+  "history_fixed4": [
+   {
+    "round": 0,
+    "deficit": 0.3726356181486001,
+    "best_rate": 0.0041151547456774315,
+    "t": 0.0,
+    "path": 0.0,
+    "n_low": 107,
+    "realized": 0.0,
+    "predicted": 0.0
+   },
+   {
+    "round": 1,
+    "deficit": 0.01887636085773823,
+    "best_rate": 0.00010041741118092715,
+    "t": 73.49221472269522,
+    "path": 165.96885889078087,
+    "n_low": 1,
+    "realized": 62.96311733016711,
+    "predicted": 52.2373662797962
+   },
+   {
+    "round": 2,
+    "deficit": 0.009900674456475465,
+    "best_rate": 9.999151088876226e-06,
+    "t": 145.2468622003571,
+    "path": 324.98744880142834,
+    "n_low": 1,
+    "realized": 1.9216386490146737,
+    "predicted": 1.1769788464130175
+   },
+   {
+    "round": 3,
+    "deficit": 0.007913241856757102,
+    "best_rate": 1.2341182790757193e-05,
+    "t": 181.14270492851807,
+    "path": 420.5708197140722,
+    "n_low": 0,
+    "realized": 0.36571459318917493,
+    "predicted": 0.07113218629382656
+   },
+   {
+    "round": 4,
+    "deficit": 0.007702155544401763,
+    "best_rate": 2.18231365918374e-12,
+    "t": 186.6004836848484,
+    "path": 426.40193473939354,
+    "n_low": 0,
+    "realized": 0.061422817840524925,
+    "predicted": 0.0119881210612518
+   }
+  ],
+  "shell_radius": 6.1,
+  "n_candidates": 1060,
+  "n_rejected": 482
+ },
+ "combined": {
+  "none": {
+   "coverage": 0.854381443298969,
+   "n_low": 113,
+   "n_low_main": 7,
+   "node_rmse": 0.07563445105126182,
+   "node_rmse_observed": 0.07276455678930496,
+   "tip_err_pct": 6.964462405616488,
+   "f_err_pct": [
+    2.4928352766328024,
+    2.118245472559668,
+    34.01053168126416
+   ],
+   "weighted_deficit": 0.3753823362807653,
+   "path_m": 0.0,
+   "time_s": 0.0,
+   "n_views": 0,
+   "violations": 0,
+   "missing_detected": 5,
+   "missing_total": 8,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 705,
+    "冲突": 62,
+    "不可判": 9
+   }
+  },
+  "uniform": {
+   "coverage": 0.8981958762886598,
+   "n_low": 73,
+   "n_low_main": 1,
+   "node_rmse": 0.08453500196092742,
+   "node_rmse_observed": 0.08287033281159098,
+   "tip_err_pct": 5.427399787093936,
+   "f_err_pct": [
+    1.7898273396952786,
+    1.5254166308936516,
+    39.09623199544908
+   ],
+   "weighted_deficit": 0.17233140925777388,
+   "path_m": 552.0077734985805,
+   "time_s": 138.00194337464512,
+   "n_views": 5,
+   "violations": 0,
+   "violations_naive_full_height": 17,
+   "missing_detected": 2,
+   "missing_total": 8,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 711,
+    "冲突": 58,
+    "不可判": 7
+   }
+  },
+  "geo_nbv": {
+   "coverage": 0.9884020618556701,
+   "n_low": 5,
+   "n_low_main": 1,
+   "node_rmse": 0.05503363586555157,
+   "node_rmse_observed": 0.05436128276953579,
+   "tip_err_pct": 3.273156727282122,
+   "f_err_pct": [
+    1.055784947989771,
+    1.4092241024872099,
+    2.1299985286478385
+   ],
+   "weighted_deficit": 0.030021851789472823,
+   "path_m": 202.99730863881976,
+   "time_s": 82.74932715970493,
+   "n_views": 8,
+   "rounds": 1,
+   "violations": 0,
+   "stop_reason": "缺口达标",
+   "missing_detected": 4,
+   "missing_total": 8,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 716,
+    "冲突": 60,
+    "不可判": 0
+   },
+   "min_live_dist": 6.137970846800063
+  },
+  "proposed": {
+   "coverage": 0.9896907216494846,
+   "n_low": 6,
+   "n_low_main": 0,
+   "node_rmse": 0.0614150609773803,
+   "node_rmse_observed": 0.06045222453963304,
+   "tip_err_pct": 3.5883951547481474,
+   "f_err_pct": [
+    1.3545538845229783,
+    1.4827057401686632,
+    1.0548694972791846
+   ],
+   "weighted_deficit": 0.021417116784108518,
+   "path_m": 220.65640857539398,
+   "time_s": 87.1641021438485,
+   "n_views": 8,
+   "rounds": 1,
+   "violations": 0,
+   "stop_reason": "缺口达标",
+   "missing_detected": 6,
+   "missing_total": 8,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 711,
+    "冲突": 65,
+    "不可判": 0
+   },
+   "min_live_dist": 6.148648732364913
+  },
+  "proposed_fixed4": {
+   "coverage": 0.9948453608247423,
+   "n_low": 0,
+   "n_low_main": 0,
+   "node_rmse": 0.05415782154622724,
+   "node_rmse_observed": 0.05415782154622724,
+   "tip_err_pct": 5.4903977910260044,
+   "f_err_pct": [
+    1.1719765784424934,
+    1.2793592613722935,
+    33.88703291612064
+   ],
+   "weighted_deficit": 0.008641763347822585,
+   "path_m": 428.477854543512,
+   "time_s": 211.119463635878,
+   "n_views": 26,
+   "rounds": 4,
+   "violations": 0,
+   "stop_reason": "固定轮次",
+   "missing_detected": 4,
+   "missing_total": 8,
+   "false_missing": 0,
+   "sym_counts": {
+    "一致": 716,
+    "冲突": 60,
+    "不可判": 0
+   },
+   "min_live_dist": 6.148301933239905
+  },
+  "history_proposed": [
+   {
+    "round": 0,
+    "deficit": 0.3753823362807653,
+    "best_rate": 0.004209228437007699,
+    "t": 0.0,
+    "path": 0.0,
+    "n_low": 113,
+    "realized": 0.0,
+    "predicted": 0.0
+   },
+   {
+    "round": 1,
+    "deficit": 0.021417116784108518,
+    "best_rate": 0.0001160789695108885,
+    "t": 72.37791269309395,
+    "path": 161.5116507723758,
+    "n_low": 6,
+    "realized": 62.999778727106644,
+    "predicted": 52.78553836454337
+   }
+  ],
+  "history_fixed4": [
+   {
+    "round": 0,
+    "deficit": 0.3753823362807653,
+    "best_rate": 0.004209228437007699,
+    "t": 0.0,
+    "path": 0.0,
+    "n_low": 113,
+    "realized": 0.0,
+    "predicted": 0.0
+   },
+   {
+    "round": 1,
+    "deficit": 0.021417116784108518,
+    "best_rate": 0.0001160789695108885,
+    "t": 72.37791269309395,
+    "path": 161.5116507723758,
+    "n_low": 6,
+    "realized": 62.999778727106644,
+    "predicted": 52.78553836454337
+   },
+   {
+    "round": 2,
+    "deficit": 0.009601307909406276,
+    "best_rate": 1.0945160914792617e-05,
+    "t": 133.58661936435078,
+    "path": 278.3464774574032,
+    "n_low": 0,
+    "realized": 2.1904633924500976,
+    "predicted": 1.2105856254664977
+   },
+   {
+    "round": 3,
+    "deficit": 0.00823295597973274,
+    "best_rate": 1.4667225590996472e-05,
+    "t": 171.6971591708188,
+    "path": 350.78863668327523,
+    "n_low": 1,
+    "realized": 0.5766382324412137,
+    "predicted": 0.07522993646866438
+   },
+   {
+    "round": 4,
+    "deficit": 0.008641763347822585,
+    "best_rate": 7.591495121744982e-06,
+    "t": 205.2298300000295,
+    "path": 404.91932000011803,
+    "n_low": 0,
+    "realized": 0.3256042376275818,
+    "predicted": 0.08744269669040317
+   }
+  ],
+  "shell_radius": 6.1,
+  "n_candidates": 1060,
+  "n_rejected": 482
+ },
+ "shell_table": [
+  {
+   "kv": 110,
+   "sigma": 0.05,
+   "d_min": 1.5,
+   "radius": 3.25
+  },
+  {
+   "kv": 110,
+   "sigma": 0.5,
+   "d_min": 1.5,
+   "radius": 4.6
+  },
+  {
+   "kv": 110,
+   "sigma": 1.5,
+   "d_min": 1.5,
+   "radius": 7.6
+  },
+  {
+   "kv": 220,
+   "sigma": 0.05,
+   "d_min": 3.0,
+   "radius": 4.75
+  },
+  {
+   "kv": 220,
+   "sigma": 0.5,
+   "d_min": 3.0,
+   "radius": 6.1
+  },
+  {
+   "kv": 220,
+   "sigma": 1.5,
+   "d_min": 3.0,
+   "radius": 9.1
+  },
+  {
+   "kv": 330,
+   "sigma": 0.05,
+   "d_min": 4.0,
+   "radius": 5.75
+  },
+  {
+   "kv": 330,
+   "sigma": 0.5,
+   "d_min": 4.0,
+   "radius": 7.1
+  },
+  {
+   "kv": 330,
+   "sigma": 1.5,
+   "d_min": 4.0,
+   "radius": 10.1
+  },
+  {
+   "kv": 500,
+   "sigma": 0.05,
+   "d_min": 5.0,
+   "radius": 6.75
+  },
+  {
+   "kv": 500,
+   "sigma": 0.5,
+   "d_min": 5.0,
+   "radius": 8.1
+  },
+  {
+   "kv": 500,
+   "sigma": 1.5,
+   "d_min": 5.0,
+   "radius": 11.1
+  },
+  {
+   "kv": 750,
+   "sigma": 0.05,
+   "d_min": 8.0,
+   "radius": 9.75
+  },
+  {
+   "kv": 750,
+   "sigma": 0.5,
+   "d_min": 8.0,
+   "radius": 11.1
+  },
+  {
+   "kv": 750,
+   "sigma": 1.5,
+   "d_min": 8.0,
+   "radius": 14.1
+  },
+  {
+   "kv": 1000,
+   "sigma": 0.05,
+   "d_min": 9.5,
+   "radius": 11.25
+  },
+  {
+   "kv": 1000,
+   "sigma": 0.5,
+   "d_min": 9.5,
+   "radius": 12.6
+  },
+  {
+   "kv": 1000,
+   "sigma": 1.5,
+   "d_min": 9.5,
+   "radius": 15.6
+  }
+ ],
+ "combined_500kV_sigma1.5": {
+  "coverage": 0.9922680412371134,
+  "n_low": 2,
+  "n_low_main": 0,
+  "node_rmse": 0.06635317262265607,
+  "node_rmse_observed": 0.06576534812709506,
+  "tip_err_pct": 6.449659626130715,
+  "f_err_pct": [
+   0.9171275774566938,
+   2.049652835761723,
+   35.05663688110328
+  ],
+  "weighted_deficit": 0.009993229830949716,
+  "path_m": 314.98245719127783,
+  "time_s": 142.74561429781946,
+  "n_views": 16,
+  "rounds": 2,
+  "violations": 0,
+  "stop_reason": "缺口达标",
+  "missing_detected": 4,
+  "missing_total": 8,
+  "false_missing": 0,
+  "sym_counts": {
+   "一致": 716,
+   "冲突": 60,
+   "不可判": 0
+  },
+  "min_live_dist": 11.904665493275441,
+  "shell_radius": 11.1,
+  "n_candidates": 756
+ },
+ "runtime_s": 294.32412791252136
+}

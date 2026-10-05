@@ -1,0 +1,113 @@
+{
+  "checked_at": "2026-10-03T12:24:35.932239+08:00",
+  "author_repository": "https://github.com/ahujasid/mcp-for-blender",
+  "blender_foundation_official": false,
+  "package": {
+    "name": "mcp-for-blender",
+    "version": "2.1.3",
+    "python": "H:\\Axinjihua\\02动画项目\\05动画Harness工作台\\专利文档资料\\.venv\\Scripts\\python.exe",
+    "entry_point": "H:\\Axinjihua\\02动画项目\\05动画Harness工作台\\专利文档资料\\.venv\\Scripts\\mcp-for-blender.exe",
+    "mcp_sdk_version": "1.30.0",
+    "httpx_version": "0.28.1"
+  },
+  "wheel": {
+    "path": "H:\\Axinjihua\\02动画项目\\05动画Harness工作台\\专利文档资料\\车老师专利\\00_工具\\MCP\\Blender\\mcp_for_blender-2.1.3-py3-none-any.whl",
+    "sha256": "ca4bd001b317019ff888820317c10e8c533f9a31532f980310f82af30c450b20",
+    "verified_against_pypi": true
+  },
+  "bundled_addon": {
+    "path": "H:\\Axinjihua\\02动画项目\\05动画Harness工作台\\专利文档资料\\车老师专利\\00_工具\\MCP\\Blender\\blender_mcp.py",
+    "version": "1.8",
+    "protocol_version": 13,
+    "sha256": "eb0facf69781a30e69792532087d8d41c6a14fcd323353250abe7988ee297fa5",
+    "installed_in_blender": true,
+    "enabled_in_blender": true
+  },
+  "launch": {
+    "command": "H:\\Axinjihua\\02动画项目\\05动画Harness工作台\\专利文档资料\\.venv\\Scripts\\python.exe",
+    "args": [
+      "-m",
+      "blender_mcp.server",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "9877"
+    ],
+    "env": {
+      "BLENDER_MCP_DISABLE_TELEMETRY": "1",
+      "DISABLE_TELEMETRY": "1",
+      "BLENDER_MCP_SAFE_MODE": "1",
+      "BLENDER_HOST": "127.0.0.1",
+      "BLENDER_PORT": "9877"
+    }
+  },
+  "allowed_local_tools": [
+    "get_addon_status",
+    "disable_telemetry",
+    "get_scene_info",
+    "get_object_info",
+    "get_viewport_screenshot",
+    "execute_blender_code",
+    "describe_node_type",
+    "bpy_api_lookup",
+    "export_scene",
+    "search_mentions"
+  ],
+  "checks": {
+    "pip_check": "No broken requirements found.",
+    "stdio_initialize": "passed",
+    "stdio_protocol": "2024-11-05",
+    "stdio_tools_list_count": 36,
+    "addon_connection": "verified_via_project_venv_stdio_mcp",
+    "addon_connection_result": "Protocol 13, Blender 5.1.1, scene read successful, telemetry false"
+  },
+  "blender_executable": {
+    "found": true,
+    "checked_locations": [
+      "PATH",
+      "C:/Program Files/Blender Foundation",
+      "C:/Program Files/Blender",
+      "C:/Users/Administrator/AppData/Local/Programs/Blender Foundation",
+      "C:/SoftAPP",
+      "App Paths and uninstall registry",
+      "Start Menu and Desktop Blender shortcuts",
+      "Microsoft Store installed packages",
+      "E:\\migrate\\01所有项目\\blender-5.1.1-windows-x64"
+    ],
+    "existing_config": "C:/Users/Administrator/AppData/Roaming/Blender Foundation/Blender/4.0",
+    "path": "E:\\migrate\\01所有项目\\blender-5.1.1-windows-x64\\blender-5.1.1-windows-x64\\blender.exe",
+    "signature": "Valid — Blender Foundation",
+    "version": "5.1.1"
+  },
+  "not_executed": [
+    "cloud generation/asset tools",
+    "Blender patent scene edits"
+  ],
+  "notes": [
+    "Addon defaults to localhost and all cloud integration toggles default false.",
+    "Server telemetry defaults on upstream; launcher env disables it.",
+    "Bundled addon checks GitHub for updates when enabled; source audit found no model upload in this check.",
+    "Actual Blender plugin enablement and scene access remain unverified until Blender.exe is located.",
+    "2026-10-03: Blender MCP port changed to9877 to avoid live FreeCAD9876 socket. Client restart/reload required for saved config to apply.",
+    "Correction: earlier outer-folder-only conclusion was incomplete. Nested executable exists. Both BLENDER_HOST and BLENDER_PORT env are required because package import creates a second server module; CLI flags alone do not propagate to all tool callbacks."
+  ],
+  "user_supplied_directory_check": {
+    "checked_at": "2026-10-03T15:48:48.229014+08:00",
+    "folder": "E:\\migrate\\01所有项目\\blender-5.1.1-windows-x64",
+    "files": [
+      {
+        "name": "addon_blendermcp.py",
+        "bytes": 122557,
+        "sha256": "ca6955bb584d78e229f020a8b9d7011440adc6e94dab0ac8e01ab2794db19dc0"
+      }
+    ],
+    "blender_exe_in_folder": false,
+    "addon_version_read_from_bl_info": "1.2",
+    "conclusion": "addon-only directory; no Blender executable or complete installation in supplied directory",
+    "migration_search": "bounded filename search interrupted after no matches; not proof that entire E drive has no executable",
+    "reserved_addon_port": 9877,
+    "reason": "FreeCAD Robust MCP socket listener already uses 9876",
+    "scene_access": "not connected; no Blender scene accessed or modified"
+  },
+  "live_verification_file": "live_connection_verified.json"
+}

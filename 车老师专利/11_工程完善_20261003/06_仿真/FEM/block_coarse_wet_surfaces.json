@@ -1,0 +1,907 @@
+{
+  "wet_surfaces": [
+    6,
+    8,
+    9,
+    10,
+    11,
+    13,
+    15,
+    16,
+    18,
+    19,
+    20,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    43,
+    44,
+    46,
+    47,
+    48,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186
+  ],
+  "votes": {
+    "1": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "2": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "3": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "4": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "5": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "6": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "7": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "8": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "9": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "10": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "11": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "12": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "13": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "14": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "15": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "16": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "17": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "18": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "19": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "20": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "21": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "22": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "23": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "24": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "25": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "26": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "27": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "28": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "29": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "30": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "31": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "32": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "33": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "34": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "35": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "36": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "37": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "38": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "39": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "40": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "41": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "42": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "43": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "44": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "45": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "46": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "47": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "48": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "49": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "50": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "51": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "52": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "53": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "54": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "55": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "56": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "57": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "58": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "59": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "60": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "61": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "62": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "63": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "64": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "65": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "66": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "67": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "68": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "69": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "70": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "71": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "72": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "73": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "74": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "75": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "76": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "77": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "78": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "79": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "80": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "81": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "82": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "83": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "84": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "85": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "86": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "87": {
+      "inside": 0,
+      "sampled": 8
+    },
+    "88": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "89": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "90": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "91": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "92": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "93": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "94": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "95": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "96": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "97": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "98": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "99": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "100": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "101": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "102": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "103": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "104": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "105": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "106": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "107": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "108": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "109": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "110": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "111": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "112": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "113": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "114": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "115": {
+      "inside": 3,
+      "sampled": 3
+    },
+    "116": {
+      "inside": 2,
+      "sampled": 2
+    },
+    "117": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "118": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "119": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "120": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "121": {
+      "inside": 6,
+      "sampled": 8
+    },
+    "122": {
+      "inside": 2,
+      "sampled": 2
+    },
+    "123": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "124": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "125": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "126": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "127": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "128": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "129": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "130": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "131": {
+      "inside": 4,
+      "sampled": 4
+    },
+    "132": {
+      "inside": 4,
+      "sampled": 4
+    },
+    "133": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "134": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "135": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "136": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "137": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "138": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "139": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "140": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "141": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "142": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "143": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "144": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "145": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "146": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "147": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "148": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "149": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "150": {
+      "inside": 2,
+      "sampled": 2
+    },
+    "151": {
+      "inside": 2,
+      "sampled": 2
+    },
+    "152": {
+      "inside": 2,
+      "sampled": 2
+    },
+    "153": {
+      "inside": 2,
+      "sampled": 2
+    },
+    "154": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "155": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "156": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "157": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "158": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "159": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "160": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "161": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "162": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "163": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "164": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "165": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "166": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "167": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "168": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "169": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "170": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "171": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "172": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "173": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "174": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "175": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "176": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "177": {
+      "inside": 2,
+      "sampled": 2
+    },
+    "178": {
+      "inside": 1,
+      "sampled": 1
+    },
+    "179": {
+      "inside": 2,
+      "sampled": 2
+    },
+    "180": {
+      "inside": 2,
+      "sampled": 2
+    },
+    "181": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "182": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "183": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "184": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "185": {
+      "inside": 8,
+      "sampled": 8
+    },
+    "186": {
+      "inside": 8,
+      "sampled": 8
+    }
+  },
+  "assumption": "uniform pressure on nominal hydraulic-hole surfaces; commercial valve internals excluded"
+}

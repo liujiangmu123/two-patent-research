@@ -1,0 +1,1449 @@
+sensors
+Article
+Vibration Anatomy and Damage Detection in Power
+Transmission Towers with Limited Sensors
+R. Karami-Mohammadi 1
+, M. Mirtaheri 1, M. Salkhordeh 1 and M. A. Hariri-Ardebili 2,3,*
+1
+Hybrid Simulation Laboratory, Faculty of Civil Engineering, K. N. Toosi University of Technology,
+Tehran 19967-15433, Iran; rkarami@kntu.ac.ir (R.K.-M.); mmirtaheri@kntu.ac.ir (M.M.);
+m-salkhordeh@email.kntu.ac.ir (M.S.)
+2
+University of Maryland, College Park, MD 20742, USA
+3
+Department of Civil Environmental and Architectural Engineering, University of Colorado, Boulder,
+CO 80303, USA
+*
+Correspondence: mohammad.haririardebili@colorado.edu; Tel.: +1-303-990-2451
+Received: 6 February 2020 ; Accepted: 17 March 2020; Published: 20 March 2020
+
+
+Abstract:
+This study presents a technique to identify the vibration characteristics in power
+transmission towers and to detect the potential structural damages. This method is based on
+the curvature of the mode shapes coupled with a continuous wavelet transform. The elaborated
+numerical method is based on signal processing of the output that resulted from ambient vibration.
+This technique beneﬁts from a limited number of sensors, which makes it a cost-effective approach
+compared to others. The optimal spatial location for these sensors is obtained by the minimization
+of the non-diagonal entries in the modal assurance criterion (MAC) matrix. The Hilbert–Huang
+transform was also used to identify the dynamic anatomy of the structure. In order to simulate
+the realistic condition of the measured structural response in the ﬁeld condition, a 10% noise is
+added to the response of the numerical model. Four damage scenarios were considered, and
+the potential damages were identiﬁed using wavelet transform on the difference of mode shapes
+curvature in the intact and damaged towers. Results show a promising accuracy considering the
+small number of applied sensors. This study proposes a low-cost and feasible technique for structural
+health monitoring.
+Keywords: power transmission tower; signal processing; wavelet transform; damage detection;
+optimal sensor location
+1. Introduction
+Continuous health monitoring of transmission networks is a vital task to prevent sudden failure
+in power transmission lines. The substations and transmission lines transmit the electricity production
+of the power plants through various physical, atmospheric, and geographical conditions to the
+consumption centers. Performance of the transmission lines is sometimes affected negatively by some
+factors, which may disrupt the power distribution network. Such incidents may cause irreparable
+damages. The cost of repairing the power transmission lines is very high, at about one million dollars
+per kilometer [1]. Such towers are not only damageable against the wind loads, the world-wide
+experiences show their vulnerability subjected to earthquake ground motions and storm events,
+as well. Figure 1 illustrates the potential failures under wind and earthquake loading [2,3].
+Sensors 2020, 20, 1731; doi:10.3390/s20061731
+www.mdpi.com/journal/sensors
+
+Sensors 2020, 20, 1731
+2 of 19
+(a)
+(b)
+Figure 1. Potential failures in power transmission towers [2,3]. (a) Wind-induced failure; (b) Earthquake-
+induced failure .
+Despite several studies that have studied the vibration characteristics of towers under earthquake
+and wind loads [4], the health monitoring of these structures has received limited attention, especially
+from industrial practices. Indeed, structural health monitoring (SHM) techniques are key methods in
+the risk-based safety assessment of such tower-line systems. In recent years, SHM techniques have
+been extended both from theoretical and applied aspects [5].
+Objectives and Contributions
+In the present study, a vibration-based technique is presented to identify the spatial location of
+existing damage in the power transmission towers. An important advantage of this method is that
+it is a cost-effective method using limited number of sensors compared to other damage detection
+techniques. This method is based on post-processing the structural responses under ambient vibration
+(as opposed to expensive, dangerous, and more complex forced vibration techniques).
+An existing tower was used as case study. First, it was analyzed using a ﬁnite element model
+developed in the SAP2000 software, and the vibration information (i.e., fundamental frequencies
+and mode shapes) were extracted. Next, they were veriﬁed through conducting a ﬁeld measurement
+test. Finally, in order to simulate a more realistic ﬁeld condition, a 10% noise was added to the
+structural responses. To optimize the number of required sensors, a method based on minimizing the
+non-diagonal entries of modal assurance criterion (MAC) matrix was used. Free vibration response
+of the structure for all the sensors was obtained using the natural excitation technique (NexT) [6].
+Subsequently, the Hilbert–Huang transform and continuous wavelet transform (CWT) were used to
+extract the modal parameters. Last but not least, the structural damage was identiﬁed by implementing
+the CWT on the difference of the mode shape curvatures of the intact and damaged structure.
+The structure of the paper is as follows: Section 2 provides a comprehensive overview on
+the current literature. Section 3 presents the proposed methodology and corresponding theoretical
+background. Section 4 describes the case study tower, the modeling procedure, validation of numerical
+model, and the parametric study. Section 5 proposes an optimization algorithm to ﬁnd the minimum
+number of required sensors to be located in a tower. Section 6 describes the procedure implemented
+to identify the dynamic characteristics of the tower. Moreover, the noise effect on the results is
+investigated in this section. The proposed damage detection method is clariﬁed in Section 7. Finally,
+the major outcomes are summarized in Section 8.
+2. A State-of-the-Art Literature Review
+The ﬁrst section of literature review, Section 2.1, provides a general overview on the recent
+advances in structural damage detection and SHM. It is followed by a series of detailed literature
+reviews on damage detection in power transmission towers, which is in Section 2.2.
+
+Sensors 2020, 20, 1731
+3 of 19
+2.1. Structural Damage Detection
+Montejo [7] compared different vibration-based damage detection techniques to identify the
+damage occurrence in the structures subjected to random excitation. The authors reported that the
+continuous wavelet transform (CWT)-based technique is more effective compared to the uncovering
+of spikes in the high frequency component of the structural response obtained via discrete wavelet
+transforms (DWT), Hilbert–Huang transforms, or high pass ﬁltering. Liu et al. [8] presented a novel
+method based on stationary wavelet transform (SWT) to identify the length and the location of cracks
+occurred in a cantilever beam. Garcia-Palencia et al. [9] presented a method based on the frequency
+response functions (FRFs) and model updating algorithm. This method was validated using data
+obtained from the University of Central Florida’s benchmark structure.
+Ditommaso et al. [10] proposed a methodology for the damage localization of framed structures
+that were subject to strong motion earthquakes based on monitoring the modal curvature variation
+in the natural frequencies. They have veriﬁed the proposed method using ﬁnite element modeling,
+as well as multiple experimental tests. Zhang et al. [11] proposed some damage indices based on the
+macro-strain modal shapes to identify the potential damage in steel stringer bridges. Yazdanpanah1a
+and Seyedpoor [12] proposed a novel indicator based on mode shape data for damage detection in
+beam-like structures. The method is based on three factors: the mode shape, the slope of the mode
+shape, and the curvature of the mode shape.
+Ghiasi et al. [13] presented a novel damage detection approach based on least square support
+vector machine (LS-SVM). They proposed a new kernel function based on thin plate spline
+Littlewood–Paley wavelet kernel function. Lv et al. [14] proposed a combined method based on
+both variational mode decomposition (VMD) and multi-kernel support vector machine (MK-SVM)
+optimized by an immune genetic algorithm (IGA) for damage detection in mechanical systems.
+Cha et al. [15] proposed a method based on image processing to detect the damages in civil
+infrastructures. They employed features obtained from image processing along with the convolutional
+neural networks, to perform damage detection in the structures.
+Zhao et al. [16] conducted a
+comparative study based on wavelet multi-resolution, wavelet packet energy, and fuzzy sets to
+identify the existing damage in beam-like structures.
+Karami-Mohammadi et al. [17] proposed a combined method based on FRFs and principal
+component analysis (PCA) to identify the damage occurrence in the capacitive voltage transformer
+(CVT), an equipment of power transmission posts. Vahidi et al. [18] presented a model-updating-based
+method for damage detection in structures. They have minimized the difference between the modal
+response of the ﬁnite element model and the experimental one by updating the numerical model
+in several iterations. To achieve this goal, they have utilized particle swarm optimization (PSO),
+genetic algorithm (GA), and artiﬁcial bee colony (ABC) techniques. Chang et al. [19] proposed an
+artiﬁcial neural network (ANN)-based hybrid method by tracking the changes in natural frequencies
+and structural mode shape variations (as two indicators). They applied this method to multi-story
+buildings. Ghannadi and Kourehli [20] investigated the application of the moth ﬂame optimization
+algorithm to detect the structural damage. They used the natural frequencies and MAC ﬂexibility as
+damage indicators. Nguyen et al. [21] proposed a method based on both the transmissibility function
+and ANNs to identify the structural damage in bridges. They validated their method on an existing
+bridge in Taiwan.
+2.2. Damage Detection of Power Transmission Equipment
+On the other hand, there are only a few studies on the application of damage detection techniques
+in power transmission equipment. According to Qu et al. [22], power transmission towers are
+susceptible to sudden damages and instabilities which may lead to total collapse of the structure.
+Huang et al. [23] investigated the effect of foundation settlement on the variations in natural frequencies
+of the tower. Lam and Yang [24] proposed a method based on the Bayesian probabilistic approach
+and ﬁnite element model updating for damage detection in power transmission towers. Variations
+
+Sensors 2020, 20, 1731
+4 of 19
+in modal parameters of towers were used as damage indicator. Yin et al. [25] utilized the dynamic
+reduction technique to identify the structural damage in the power transmission towers. In order to
+simulate the actual ﬁeld condition, they added some noise to the acceleration response obtained from
+their numerical model.
+Qu et al. [22] presented a two-stage method to identify the damage in the vertical elements of the
+power transmission towers. In this method, wavelet packet energy and modal strain energy of the
+structure were used as a damage indicator. Xu et al. [2] proposed a multi-stage procedure based on the
+covariance matrix of the dynamic response of the structure for damage detection in the connections of
+the power transmission towers. The main drawback of this procedure was the large number of applied
+sensors, which makes it expensive and impractical in a majority of cases.
+3. Proposed Methodology and Underpinning Theories
+3.1. Summary of the Proposed Method
+This study aims to implement a cost-effective procedure to identify the location of damage in the
+power transmission towers. The optimum number of sensors, as well as their location is determined
+by minimizing the non-diagonal entries of the MAC matrix. Subsequently, the modal parameters
+of the structure will be determined by processing the output signal of the tower under ambient
+vibration. As a result of structural damage, the vibration anatomy of the towers changes. The proposed
+method computes the differences between curvature of the mode shapes in the intact and damaged
+structures. Finally, by implementing the continuous Wavelet transform on residual of the curvature
+of the mode shapes, the damage location is determined. Figure 2 presents the main algorithm of the
+proposed method.
+Response of the intact tower 
+under ambient vibration 
+Identifying the modal 
+parameters of the intact tower
+Calculating the mode shape’s 
+curvature
+Response of the damaged 
+tower under ambient 
+vibration 
+Identifying the modal 
+parameters of the damaged 
+tower
+Calculating the mode shape’s 
+curvature
+Continuous Wavelet Transform 
+(CWT) on the difference of the 
+mode shape’s curvature
+Damage location
+Determining the optimum 
+location of sensors 
+Figure 2. Main algorithm of the proposed method.
+3.2. Theoretical Background of Continuous Wavelet Transform
+Since the essence of the proposed procedure is founded on the concept of CWT, a brief theoretical
+background is presented in this section for those readers less familiar with this topic. The underpinning
+theory of wavelets is connected to continuous wavelet decomposition of L2 functions [26,27].
+
+Sensors 2020, 20, 1731
+5 of 19
+If ψa,b, a ∈R \ {0}, b ∈R is are functions deﬁned as the translations and re-scales of a single
+function ψ(x) ∈L2(R):
+ψa,b(t) = |a|−0.5 ψ
+t −b
+a
+
+(1)
+where a is the scale parameter, b is the time location, and |a|−0.5 is used to ensure that
+ψa,b
+ is
+independent of a and b. Also, ψ is called the wavelet function or the mother wavelet, and must satisfy
+the admissibility condition:
+Cψ =
+Z ∞
+−∞
+ ˆψ(ω)
+2
+|ω|
+dω < ∞
+(2)
+where ω is the frequency, and ˆψ(ω) = R
+R ψ(x) exp (−ixω)dx is the Fourier transform of ψ.
+The CWT of the signal x(t) is deﬁned as the inner product of the Hilbert space of L2 norms as
+shown below.
+Wb(a) =< ψa,b(t), x(t) >= |a|−0.5
+Z
+x(t)ψ∗
+a,bdt.
+(3)
+where the asterisk stands for complex conjugate, and the scale factors a and b vary continuously.
+Wavelet functions are divided into two groups: orthogonal and non-orthogonal ones. In dyadic
+Discrete Wavelet Transform (DWT), as well as the wavelet packet transform, one should select the
+orthogonal wavelet function. On the other hand, using CWT, one can select either orthogonal or
+non-orthogonal wavelet functions. Some of the most well-known orthogonal wavelets are: Haar,
+Daubechies, Coiﬂets, Meyer, etc [28]. Further, Morlet, Mexican hat, and Difference of Gaussian (DOG)
+wavelets are some of the non-orthogonal functions. Applying a CWT to a signal, if the variations of
+the wavelet are similar to the variation of the mentioned signal, the corresponding wavelet coefﬁcients
+become larger [29]. The following is a summary of several well-known wavelets [30]:
+•
+Gaussian, Morlet, Mexican Hat, and Shannon wavelets are models in which the wavelet function,
+ψ, has an explicit expression. The scaling function does not exist for these wavelets, and thus,
+DWT, fast wavelet transform (FWT), and discrete reconstruction are unavailable. Analysis with
+these wavelets is limited to CWT.
+•
+Meyer wavelet is an inﬁnity regular wavelet. It does not have an explicit expression form, but the
+scaling function does exist, and using DWT is possible (FWT is still unavailable).
+•
+Daubechies wavelets of order N, Symlet wavelets of order N, Coiﬂet wavelet of order N, and Haar
+wavelet are examples of orthogonal wavelets. They do not have an explicit expression for the
+wavelet function ψ (except for Daubechies wavelet of order one which is similar to Haar wavelet).
+According to this classiﬁcation, the mother wavelet to be operated in CWT may or may not take
+the orthogonal wavelet form. Any signal that satisﬁes the admissibility condition can be used as a
+mother wavelet. In this study, two different mother wavelets were adapted, i.e., Morlet and Dibucci.
+The former one was used to identify the modal parameters of a tower with the following form:
+ψ(t) = exp
+
+−1
+2 β2t2
+
+· cos(πt)
+(4)
+where t is time and β controls the shape of the basic wavelet.
+By introducing two new variables: a as dilation and b as translation, a son wavelet can be
+written as:
+ψa,b(t) = exp
+
+−β2(t −b)2
+a2
+
+· cos
+π(t −b)
+a
+
+(5)
+Clearly, it is a cosine signal that decays on both sides by the exponential term. For a digital signal,
+the sampling rate follows the Nyquist sampling theory; generally the sampling rate can be considered
+high enough. Then, it will have enough time resolution if the translation unit is equal to the sampling
+period. It is notable that in Morlet wavelet, parameter β balances the time and frequency resolution.
+Frequency resolution will increase by decreasing β value. Conversely, time resolution will increase by
+
+Sensors 2020, 20, 1731
+6 of 19
+increasing β. When β yields to zero, the Morlet wavelet becomes a cosine function which has the best
+frequency resolution. Furthermore, when β tends to inﬁnity, the Morlet wavelet converts to a Dirac
+function, which has the best time resolution. Figure 3a shows the shape of a Morlet wavelet [31,32].
+-5
+0
+5
+-0.5
+0
+0.5
+Amplitude
+Wavelet
+(a)
+0
+1
+2
+3
+-1
+-0.5
+0
+0.5
+1
+1.5
+Amplitude
+Scaling Function
+Wavelet
+(b)
+Figure 3. Visualization of wavelet functions. (a) Morlet wavelet; (b) Daubechies wavelet.
+Daubechies wavelets are deﬁned by calculating the running averages and differences via scalar
+products with scaling signals and wavelets. Since the Daubechies wavelets use overlapping windows,
+the high frequency coefﬁcient spectrum reﬂects all high frequency changes. It can be used as a proper
+wavelet to detect the high frequency jumps that occur because of damage in a response signal [33].
+Therefore, the Daubechies mother wavelet was used to identify the structural damage occurred in
+the tower. Figure 3b shows Daubechies wavelet with two vanishing moments and the corresponding
+scaling function.
+3.3. Theoretical Background of Cubic Spline
+The cubic spline interpolation was introduced as an engineering tool used to draw smooth curves
+through a number of points. The cubic spline contains a series of weights attached to a ﬂat surface at
+the points to be connected. A ﬂexible strip is then bent across each of these weights, approaching a
+delicately smooth curve. The basic idea of the cubic spline was based on ﬁtting a piece-wise function
+in the following form:
+S(x) =
+
+
+
+
+
+
+
+
+
+
+
+
+
+s1(x)
+if x1 ≤x < x2
+s2(x)
+if x2 ≤x < x3
+...
+sn−1(x)
+if xn−1 ≤x < xn
+(6)
+where si is a 3rd-degree polynomial function.
+A cubic spline needs to satisfy the following stipulations: (1) The piece-wise function S(x)
+interpolates all data points, and (2) S(x), S′(x) and S′′(x) should be continuous in [x1, xn]. The cubic
+spline operation can be used to determine the rate of changes or cumulative change over an interval.
+In this study, since a small number of sensors are used for damage detection, the cubic spline operation
+generates a smooth curve of mode shape [34]. Consequently, it helps to derive the curvature of the
+mode shapes.
+4. Case Study Tower
+4.1. Tower Properties and Type of Conductors
+The case study structure was a representative tower out of many, which is installed in the 400 kV
+line of Bandar Abbas-Sirjan route. This tower was known as S1KL in the power industry. The height
+of the tower was 46.32 m, see Figure 4. The distance between two adjacent legs was 15 m, and the
+dimension of its maximum cross section was 20.5 m (as mentioned in Section 1), this structure was
+marked as a middle-line tower which had a 400 m distance from adjacent towers. It is noteworthy that
+
+Sensors 2020, 20, 1731
+7 of 19
+two adjacent towers were connected by conductors, which had a maximum sag about 17 m. Figure 4
+shows the geometry of the tower. Furthermore, the conductors used for power transmission were pf a
+three-wire Curlew Bundle type.
+Figure 4. Geometry and dimensions of the case study tower.
+4.2. Numerical Modeling
+The tower was modeled in the SAP2000 ﬁnite element software, see Figure 5a. According to the
+technical manual of the tower, the legs and the body of the tower were both made of frame elements.
+The rest of the tower including Trunk, K-frame, bridge, and cross-arms were made of truss elements.
+It should be mentioned that all elements were made of St37 steel. These elements were in the form of
+L45 × 3 and L120 × 10. Moreover, the tower contained a total of 1978 members and 852 connecting
+points. The total weight of the cables through effective length of the span (i.e., 400 m) was applied
+to a single tower through six points representing the location of the porcelains at which the cables
+were connected. Subsequently, the numerical modal analysis of the structure was carried out, and the
+fundamental frequencies of the tower in both perpendicular directions were extracted. Figure 5b,c
+shows the ﬁrst mode shape of the tower in latitudinal and longitudinal directions, respectively.
+(a)
+(b)
+(c)
+Figure 5. Numerical model and anatomy of vibration. (a) Finite element model; (b) First mode in
+latitudinal direction; (c) First mode in longitudinal direction.
+
+Sensors 2020, 20, 1731
+8 of 19
+4.3. Veriﬁcation
+The results of the numerical model were further veriﬁed by an ambient vibration test of the real
+tower. The accelerometers used in this experiment were Novinpardaz sensors with a sensitivity of
+0.01 g. These sensors were ﬁrst calibrated by measuring the natural frequency of the benchmark frame
+as shown in Figure 6a. The actual natural frequency of the benchmark frame was already reported in
+several studies to be 4.12 Hz [35]. The corresponding results of the accelerometer used in this study
+show a frequency of 4.07 Hz (i.e., only 1% error). Followed by this veriﬁcation, the research team
+carefully prepared the test locations, as well as other equipment. Figure 6b,c shows the actual tower and
+the location of sensors. The results of the ﬁrst two fundamental natural frequencies in each direction
+along with those obtained from the numerical model are shown in Table 1. Although there was an
+acceptable consistency between numerical natural frequencies and the corresponding experimental
+measurement, any differences can be attributed to the uncertainties in the properties of the modeled
+tower, such as mass and material uncertainty. Another source of uncertainty did exist in the modeling
+of interface between matching parts of the tower [36]. Moreover, there was a natural noise on the
+recorded response by sensors, which may affect the identiﬁed results. The veriﬁed numerical model
+was used as a base model for all subsequent damage detection analyses.
+(a)
+(b)
+(c)
+Figure 6. Veriﬁcation of numerical modeling with experimental test. (a) Sensor calibration; (b) Sensor
+placement; (c) Sensors in tower.
+Table 1. Tower’s mode veriﬁcation results.
+Mode
+Numerical Model
+Experimental Test
+Error [%]
+First mode (longitudinal direction)
+1.04 Hz
+1.16 Hz
+−10.3
+First mode (latitudinal direction)
+3.93 Hz
+4.08 Hz
+−3.7
+First ﬂexural mode
+5.9 Hz
+-
+-
+Second mode (longitudinal direction)
+5.83 Hz
+6.01 Hz
+−3.0
+Second mode (in latitudinal direction)
+7.81 Hz
+7.98 Hz
+−2.1
+4.4. Parametric Study
+A parametric study was conducted to investigate the effect of the interaction among multiple
+towers in-line. For this purpose, the fundamental frequency of a single tower was compared with
+a series of towers (i.e., three, ﬁve, and seven towers), see Figure 7. The fundamental frequency of a
+single tower, tower-line with three, ﬁve, and seven towers are 3.25, 3.35, 3.33, and 3.32 Hz, respectively.
+As can be seen, the fundamental frequency of a single tower, when it is modeled considering the
+mass of conductors instead of modeling adjacent towers, is so close to the real state. Furthermore,
+by increasing the number of towers, the natural frequency of the tower-line approaches the frequency
+of the single tower.
+
+Sensors 2020, 20, 1731
+9 of 19
+(a)
+(b)
+Figure 7. Interaction among towers. (a) Tower-line with three towers; (b) Tower-line with seven towers.
+5. Sensors Location Optimization
+Since the main objective of this paper was to minimize the number of sensors, the optimal
+placement of those instruments was very important to obtain the mode shapes of the tower. The team
+decided to use only ﬁve sensors in this research. The small number of sensors was selected based on
+two objectives: (1) economical constraints and (2) efﬁcient coverage of the entire tower body in case of
+potential damage. The following steps were followed to ﬁnd the optimal location:
+•
+First, all the possible locations at which the sensors could be placed were identiﬁed (i.e., 35 nodes
+along the tower).
+•
+Second, the modal analysis was conducted, and the mode shapes of the structure were obtained
+for the identiﬁed nodes. Figure 6a,b shows the mode shapes of the tower according to the 35 nodes
+for both in-plane directions.
+•
+Next, ﬁve intended sensors were placed in locations where the mode shapes have maximum
+linear in-dependency. In other words, the sensors were placed in such a way that the non-diagonal
+entries of the MAC matrix approach a minimum value [37]. For this purpose, the ﬁrst sensor was
+located at the apex of the tower. The next sensor was located at one of the 34 remaining locations
+to minimize the non-diagonal entries of MAC matrix.
+•
+This procedure was repeated iteratively for the remaining sensors until the best arrangement was
+found. Eventually, the optimal location for the sensors was obtained as shown in Figure 8c.
+0
+0.02
+0.04
+Value
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+50
+Height [m]
+Mode 1
+Mode 2
+(a)
+0
+5
+10
+Value
+×10-3
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+50
+Height [m]
+Mode 1
+Mode 2
+(b)
+(c)
+Figure 8. Mode shapes of the tower in 35 nodes along the height and optimal locations. (a) 1st and 2nd
+mode shapes; latitudinal direction; (b) 1st and 2nd mode shapes; longitudinal direction; (c) Optimal
+sensor combination.
+6. Dynamic Anatomy Identiﬁcation
+6.1. Input Excitation
+A Gaussian white noise signal was used as an input excitation for the tower. It was a random
+signal with equal intensity at different frequencies, giving it a constant power spectral density. In other
+
+Sensors 2020, 20, 1731
+10 of 19
+words, a white noise signal had an equal energy at different frequencies [38]. In order to create a white
+noise signal, the randn function of MATLAB [39] was used. The time step for the input excitation was
+0.01 s, and the total time of input signal was 1200 s. It is notable that the input signal was applied to
+the base of the tower in three perpendicular directions. The main reason for such a long signal was
+to achieve a stationary condition, which was needed for proper ambient vibration analysis. Figure 9
+shows the input signal excitation.
+0
+200
+400
+600
+800
+1000
+1200
+t [s]
+-5
+0
+5
+¨u [m/s2]
+×10-3
+Figure 9. Input excitation signal.
+6.2. Free Vibration
+Using the random decrement technique (RDT) [40] and establishing the reference degree
+of freedom (DOF), the correlation between all the DOFs and the reference point was computed.
+By averaging the generated signal in various time frames, the free vibration of the intended DOF
+can be identiﬁed. It should be noted that the reference DOF represents the most inclusive frequency
+contents. For instance, Figure 10a,b illustrates the free vibration of sensor #5 in time frames of [0–4]s
+and [0–16]s, respectively. According to RDT [40], using a larger time window captures more natural
+frequencies. Here, the sixteen-second time frame represents the ﬁrst natural mode shape followed by a
+four-second time frame for the second fundamental natural frequency.
+0
+1
+2
+3
+4
+t [s]
+0.02
+0.04
+0.06
+0.08
+0.1
+0.12
+¨u [m/s2]
+(a)
+0
+5
+10
+15
+t [s]
+-0.4
+-0.2
+0
+0.2
+0.4
+¨u [m/s2]
+(b)
+Figure 10. Free vibration response obtained for sensor #5. (a) 0–4 s time frame; (b) 0–16 s time frame.
+6.3. Mode Decomposition
+Execution of CWT on the free vibration obtained in the previous section provides the wavelet
+coefﬁcient contours in terms of time and scales coefﬁcients. In this section, we detail how a complex
+Morlet wavelet was utilized with a central frequency of 4.57 Hz. For instance, Figure 11 shows typical
+diagrams of wavelet coefﬁcients computed for sensors #1 and #5. In order to obtain a free-vibration
+corresponding to each mode, the 2D plot of summation of wavelet coefﬁcients at their maximum level
+(peak of the contours) led to the free-vibration of each mode [41].
+
+Sensors 2020, 20, 1731
+11 of 19
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+500
+1000 1500 2000 2500 3000 3500 4000 4500 5000
+Time (ms)
+Scale
+(a)
+400
+600
+800
+Time (ms)
+Scale
+1000
+1200
+1400
+1600
+1000
+2000 3000
+4000 5000 6000
+7000
+8000
+(b)
+Figure 11. Wavelet coefﬁcient contours. (a) Sensor #5; Scale:1,1000; (b) Sensor #1; Scale:1,1800.
+6.4. Natural Frequency and Modal Damping
+Next, the natural frequency and the corresponding modal damping ratio was computed using the
+Hilbert transform on the free vibration response of each mode. Figure 12 illustrates an algorithm in
+order to compute the modal parameters.
+1.
+First, the Hilbert transform of the free vibration corresponding to each mode was calculated.
+2.
+Second, the amplitude and phase of the envelope signal (from previous step) was obtained.
+3.
+Third, the slope of amplitude signal was calculated which leads to −ξiωi. Moreover, the slope of
+the phase signal was obtained which leads to ωDi.
+4.
+Finally, the fundamental of structural dynamics was applied to ﬁnd ωi and ξi.
+Hilbert Transform on free-
+vibration of each mode
+𝑥1𝑖= ℎ𝑖𝑙𝑏𝑒𝑟𝑡(𝑓𝑟𝑒𝑒𝑖)
+Calculating the Ln of 𝑥1𝑖
+𝐿1𝑖= 𝐿𝑛( 𝑥1𝑖)
+Calculating the Phase of 𝑥1𝑖
+𝐿2𝑖= 𝑢𝑛𝑤𝑎𝑟𝑝(𝑎𝑛𝑔𝑙𝑒(𝑥1𝑖)
+Slope of 𝐿1𝑖in linear 
+area equals to −𝛏𝑖𝜔𝑖
+Slope of 𝐿2𝑖in linear 
+area equals to 𝜔𝐷𝑖
+𝜔𝑖=
+𝜔𝐷𝑖
+1 −(−𝛏𝑖𝜔𝑖
+𝜔𝑖
+)2
+𝛏𝑖= −(𝛏𝑖𝜔𝑖
+𝜔𝑖
+)
+Figure 12. Algorithm to determine ξi and ωi.
+For instance, in order to determine the ﬁrst and second natural frequencies and the corresponding
+modal damping ratios (in the lateral direction), one should utilize the scaling of 1400 in wavelet
+coefﬁcient of sixteen-seconds signal for the ﬁrst mode, and the scaling of 750 in wavelet coefﬁcient of
+four-seconds signal for the second mode as shown in Figure 11.
+As it is stated in Figure 12, the slope of L21 in the linear region is ωD1. Therefore, according to
+Figure 13a, ωD1 = 24.93 rad. The slope of L11 in the linear region is −ξ1ω1, and according to Figure 13b,
+the natural frequency and corresponding damping ratio of the ﬁrst mode (for the case study tower) is
+obtained with the following simple calculations:
+−ξ1ω1 = −0.51
+1
+→ξ1 = 0.51
+ω1
+→ω1 =
+s
+1 −( 0.51
+ω1
+)2 = 24.93rad →f1 = ω1
+2π = 3.968Hz, ξ1 = 0.51
+ω1
+= 0.0204
+The same procedure can be implemented to obtain the second mode properties. According to
+Figure 12, the slope of L21 in the linear region is ωD2. Therefore, according to Figure 13c, ωD2 =
+49.76 rad. Furthermore, the slope of L11 in the linear region is −ξ2ω2, and according to Figure 13d,
+the natural frequency and corresponding damping ratio of the second mode is obtained with the
+following simple calculations:
+
+Sensors 2020, 20, 1731
+12 of 19
+−ξ2ω2 = −0.9883
+1
+→ξ2 = 0.983
+ω2
+→ω2 =
+s
+1 −( 0.983
+ω2
+)2 = 49.76rad →f2 = ω2
+2π = 7.92Hz, ξ2 = 0.9883
+ω2
+= 0.0196
+In order to obtain other modal parameters of tower (for other direction), a similar approach
+should be taken. Table 2 presents the ﬁrst ﬁve natural frequencies and modal damping of the tower.
+0
+5
+10
+15
+t [s]
+100
+200
+300
+400
+L21
+(a)
+0
+5
+10
+15
+t [s]
+-6
+-4
+-2
+0
+L11
+(b)
+0
+1
+2
+3
+4
+t [s]
+0
+50
+100
+150
+200
+L22
+(c)
+0
+1
+2
+3
+4
+t [s]
+-5
+-4
+-3
+-2
+-1
+L12
+(d)
+Figure 13. Curve ﬁtting to obtain the modal parameters of ﬁrst mode, i = 1 (ﬁrst row), and second
+mode, i = 2 (second row). (a) L21; linear ﬁt: L21 = 24.93t + 2.089; (b) L11; linear ﬁt: L11 = −0.5t + 1.4;
+(c) L22; linear ﬁt: L22 = 49.76t −0.5955; (d) L12; linear ﬁt: L12 = −0.988t −0.1084.
+Table 2. Comparison of identiﬁed modal parameters with corresponding Finite Element (FE) results.
+Mode
+Finite Element Model (FEM)
+Identiﬁed Value
+Frequency [Hz]
+Damping Ratio [%]
+Frequency [Hz]
+Damping Ratio [%]
+1
+1.04
+2.0
+1.07
+2.02
+2
+3.93
+2.0
+3.97
+2.04
+3
+5.83
+2.0
+5.91
+1.93
+5
+7.81
+2.0
+7.92
+1.96
+6.5. Noise Effect
+The information recorded by sensors (i.e., accelerometers) usually contains some level of noise.
+Signal-to-noise ratio (SNR) is deﬁned as the ratio of signal power to the noise power, and is often
+expressed in decibels (dB). A ratio higher than 1 (more than 0 dB) indicates more signal than noise [42]:
+SNR = 20 log
+RMSsignal
+RMSnoise
+(7)
+where RMS stands for root-mean-square of a signal.
+To simulate a real-world environmental condition, an artiﬁcial noise signal should be added to the
+structural response. In this study, a 10% noise was added to the structural response of tower. This value
+was at the upper bound value usually used in the literature [43]. Table 3 shows the effect of noise on
+the structural modal response, and proves that the results are in a desirable range. It should be noted
+that the fourth mode is the ﬂexural one, which was not identiﬁed by the signal processing method.
+
+Sensors 2020, 20, 1731
+13 of 19
+Table 3. The effect of noise on the identiﬁed parameters.
+Mode
+Without noise
+With noise
+Frequency [Hz]
+Damping ratio [%]
+Frequency [Hz]
+Damping ratio [%]
+1
+3.97
+2.04
+4.02
+2.02
+2
+7.92
+1.96
+7.98
+1.95
+6.6. Mode Shape Identiﬁcation
+In this section, a method proposed by Yang et al. [44] is adapted to identify the structural mode
+shapes. It can be inferred from previous sections that only one measurement is needed to determine
+all natural frequencies and the damping ratios. However, to identify mode shapes, the response time
+histories at all DOFs should be measured. The absolute values of modal element can be determined
+from the following equation:
+φpi
+
+φqi
+ = exp
+h
+A′
+pi(t0) −A′
+qi(t0)
+i
+(8)
+where φpi is the value of ith mode shape of the structure at the pth degree of freedom. Similar
+interpretation for φqi can be sought. The parameters A′
+pi(t0) and A′
+qi(t0) are the values obtained from
+curve ﬁtting to L2i for pth and qth degrees of freedom at time t0, respectively. It should be noted that
+the value of t0 is the time of average value of L2i.
+The authors of Yang et al. [44] proposed the following relationship to obtain the sign of the mode
+shape value:
+φpi,q = θ′
+pi(t0) −θ′
+qi(t0)
+(9)
+where φpi,q is the difference between the phase value of two signals under evaluation in pth and qth
+DOF and ith mode. θ′
+pi(t0) and θ′
+qi are also the values obtained from curve ﬁtting to L1i for pth and qth
+degree of freedom at time t0, respectively. Similarly, the value of t0 is the time of average value of L1i.
+So far, the previous equation determines only the absolute value of mode shapes. In order to
+obtain the sign of the mode shape entries the following relations are suggested:
+if φpi,q = ±2mπ →φpi
+φqi
+> 0
+(10)
+if φpi,q = ±(2m + 1)π →φpi
+φqi
+< 0
+Using the above relations, one can determine the mode shape matrix entries based on free
+vibration response of those modes with signiﬁcant participating modal mass. Figure 14 shows the
+comparison between mode shapes obtained from the ﬁnite element analysis and corresponding values
+from signal processing (SP). It reveals the fact that mode shapes are identiﬁed with similar trend.
+0
+5
+10
+Mode shape value
+0
+10
+20
+30
+40
+50
+Height [m]
+Mode 1 (SP)
+Mode 1 (FE)
+Mode 2 (SP)
+Mode 2 (FE)
+(a)
+0
+2
+4
+6
+Mode shape value
+0
+10
+20
+30
+40
+50
+Height [m]
+Mode 1 (SP)
+Mode 1 (FE)
+Mode 2 (SP)
+Mode 2 (FE)
+(b)
+Figure 14. Comparison of the mode shapes obtained from Finite Element (FE) analysis and signal
+processing. (a) Lateral direction; (b) Longitudinal direction.
+
+Sensors 2020, 20, 1731
+14 of 19
+7. Structural Damage Detection
+7.1. Proposed Damage Detection Procedure
+The proposed damage detection procedure is founded on the curvature of mode shapes and
+the CWT method. First, the curvature of the mode shapes in the intact and damaged structures is
+calculated using the following relation [45]:
+φ
+′′
+i = φi+1 −2φi + φi−1
+dh
+(11)
+where φi is the value of the mode shape in the ith height step, and dh is the corresponding height step
+(as oppose to time step).
+Normally, a large number of data are required to obtain the curvature of mode shapes. However,
+this study aims to use only ﬁve data points associated with the sensor’s output, and subsequently
+only ﬁve mode shape values were available. To overcome this problem, cubic spline function was
+used in MATLAB [39] to generate sufﬁcient amount of data between these ﬁve values. Thereafter,
+the difference between the curvature of the interpolated mode shapes was computed. Moreover, using
+CWT on the residual values of the curvature in intact and damaged structure, the location of damage
+was detected. As it was mentioned in Section 3, Daubechies wavelet was used to monitor the changes
+occurred in curvature of mode shapes due to the damage.
+7.2. Damage Scenarios
+In order to verify the proposed procedure, four damage scenarios are deﬁned as follows:
+Scenario #1; Leg: Stiffness of 12 members of the leg is reduced (in X direction). In order to perception
+the severity of damage, one can compute the ratio of the damaged element to the total number of
+elements of the tower. For instance, in this scenario: 12/1978 = 0.61% of the tower’s elements
+have been damaged,
+Scenario #2; Trunk: Stiffness of the top members of the trunk is reduced (in X direction),
+Scenario #3; Body: Stiffness of the main elements of the body (at the lower 40% of total height) is
+reduced (in Y direction), and
+Scenario #4; Bridge: Stiffness of the diagonal members of the bridge is reduced (in X direction).
+For all damage scenarios, Figure 15 shows the summation of wavelet coefﬁcients vs. the different
+scales along the tower height. Results are shown for both 1st and 2nd modes. Moreover, depending on
+the pre-deﬁned damage elements, the Wavelet coefﬁcients are shown in X or Y directions. The following
+major conclusions can be drawn:
+•
+Scenario #1: According to Figure 15a,b, at about 10% of tower’s total height, a jump in the
+summation of wavelet coefﬁcients was observed. This indeed shows the presence of damage.
+It is notable that the dynamic properties of the upper modes are more sensitive to occurrence
+of damage. Therefore, as it can be seen in Figure 15a, a variation of the wavelet coefﬁcients of
+the ﬁrst mode is not purely vertical, and it is inclined along the height of the structure. Besides,
+as shown in Figure 15b, variation of the wavelet coefﬁcients of the second mode shape is purely
+vertical.
+•
+Scenario #2: According to Figure 15c,d, at about 60% of tower’s total height, a jump in the
+summation of wavelet coefﬁcients was observed due to pre-deﬁned damage. As for the previous
+scenario, unlike the ﬁrst mode, a jump in the wavelet coefﬁcients of the second mode is located
+exactly at the damage location.
+•
+Scenario #3: According to Figure 15e,f, at about 40% of tower’s total height, a jump in the
+summation of wavelet coefﬁcients was observed due to pre-deﬁned damage.
+•
+Scenario #4: According to Figure15g, at about 75% of tower’s total height, a jump in the summation
+of wavelet coefﬁcients was observed due to pre-deﬁned damage. It should be noted that in this
+
+Sensors 2020, 20, 1731
+15 of 19
+scenario, the ﬁrst mode shape does not contribute to the damage detection process. It is evident
+that once the upper elements of the tower experience damage, they have a minimal effect on the
+mode shapes variations.
+2000
+2101
+2202
+2303
+2404
+2505
+2606
+2707
+2808
+2909
+3010
+3111
+3212
+3313
+3414
+3515
+3616
+3717
+3818
+3919
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+Absolute Values of Ca,b Coefficients for a  = 2000 2001 2002 2003, …
+Time (or Space) b
+Scales a
+(a)
+2000
+2401
+2802
+3203
+3604
+4005
+4406
+4807
+5208
+5609
+6010
+6411
+6812
+7213
+7614
+8015
+8416
+8817
+9218
+9619
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+Absolute Values of Ca,b Coefficients for a  = 2000 2001 2002 2003, …
+Time (or Space) b
+Scales a
+(b)
+1000
+1201
+1402
+1603
+1804
+2005
+2206
+2407
+2608
+2809
+3010
+3211
+3412
+3613
+3814
+4015
+4216
+4417
+4618
+4819
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+Absolute Values of Ca,b Coefficients for a  = 2000 2001 2002 2003, …
+Time (or Space) b
+Scales a
+(c)
+1000
+1201
+1402
+1603
+1804
+2005
+2206
+2407
+2608
+2809
+3010
+3211
+3412
+3613
+3814
+4015
+4216
+4417
+4618
+4819
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+Absolute Values of Ca,b Coefficients for a  = 2000 2001 2002 2003, …
+Time (or Space) b
+Scales a
+(d)
+1000
+1201
+1402
+1603
+1804
+2005
+2206
+2407
+2608
+2809
+3010
+3211
+3412
+3613
+3814
+4015
+4216
+4417
+4618
+4819
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+Absolute Values of Ca,b Coefficients for a  = 2000 2001 2002 2003, …
+Time (or Space) b
+Scales a
+(e)
+1000
+1201
+1402
+1603
+1804
+2005
+2206
+2407
+2608
+2809
+3010
+3211
+3412
+3613
+3814
+4015
+4216
+4417
+4618
+4819
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+Absolute Values of Ca,b Coefficients for a  = 2000 2001 2002 2003, …
+Time (or Space) b
+Scales a
+(f)
+1000
+1201
+1402
+1603
+1804
+2005
+2206
+2407
+2608
+2809
+3010
+3211
+3412
+3613
+3814
+4015
+4216
+4417
+4618
+4819
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+Absolute Values of Ca,b Coefficients for a  = 2000 2001 2002 2003, …
+Time (or Space) b
+Scales a
+(g)
+Figure 15. Summation of the wavelet coefﬁcients for different scenarios. (a) Scenario #1; 1st mode;
+X direction; (b) Scenario #1; 2nd mode; X direction; (c) Scenario #2; 1st mode; X direction; (d) Scenario
+#2; 2nd mode; X direction; (e) Scenario #3; 1st mode; Y direction; (f) Scenario #3; 2nd mode; Y direction;
+(g) Scenario #4; 2nd mode; X direction.
+7.3. Comparison with Other Studies
+In the method proposed by Xu et al. [2], a total of 22 instruments (including 15 accelerometers
+and 7 strain gauges) were used for tower damage detection. This method used a discrete damage
+index for each sensor location. The results of their research showed a good agreement between the
+actual damage location and the estimated one. A disadvantage of their method is that it relies on
+a large number of applied instruments. Seyedpoor [46] proposed a two-stage method based on the
+modal strain energy (MSE) and particle swarm optimization (PSO) to identify the structural damage.
+This method also had a potential to identify the location and severity of the damage in truss-like
+structures. Stipulating ideal conditions for obtaining modal parameters and the large number of
+required sensors are disadvantages of this detection procedure. The method presented by Qu et al. [22]
+effectively detected the damage that occurred in the major element of the tower. Their method is
+
+Sensors 2020, 20, 1731
+16 of 19
+applicable for the identiﬁcation of the instability damage only in the major element of the tower.
+Therefore, the procedure is not suitable for damage detection in a diagonal member of the tower.
+As it can be inferred from the results of the present study, the proposed method efﬁciently detects
+the damage (both in bottom and top elements). However, it is recommended that in order to make
+a more reliable decision, this method should be implemented in conjunction with an expert visual
+inspection. It aims to verify the results obtained through the proposed method by comparing them
+with physical changes occurred in the structure.
+8. Conclusions
+In this study, a unique technique based on the curvature of the mode shapes along with continuous
+wavelet transform is presented to detect the potential damage location in the power transmission
+tower structures. The developed numerical model in this study is based on information provided
+by the electrical company responsible for the construction of the tower. This numerical model was
+veriﬁed through modal testing of the actual tower. In order to minimize the number of sensors,
+which eventually leads to a lower cost of the ﬁeld measurements, a method based on minimizing the
+non-diagonal entries of the MAC matrix was used. This method led to the usage of only ﬁve sensors
+through out the height of the tower.
+The proposed method in this study is based on signal processing of the structure under ambient
+vibration. In order to simulate the realistic condition of the measured structural response in the ﬁeld
+condition, a 10% noise was added to the response of the numerical model. Utilizing the Hilbert–Huang
+based method, the dynamic characteristics of the tower was identiﬁed. The mode shapes were
+computed based on the method developed by Yang et al. [44]. Four damage scenarios through the
+tower were deﬁned followed by identifying mode shapes for both the intact and damaged structures.
+Finally, by applying CWT to the residual curvature of the intact and damaged structures,
+the summation of the wavelet coefﬁcient in terms of the scale parameter was determined along
+the height of the tower. This study showed that the damage scenario #1 to #3 were easily identiﬁable
+utilizing the ﬁrst two mode shapes. However, this was not the case in the scenario #4, which shows
+the damage using only the second mode shape.
+The authors suggest performing further experimental and numerical simulations for towers with
+different sizes and element conﬁgurations. The experimental model could be in the form of small-scale
+laboratory model to identify the damage location. A sensitivity analysis is also required to understand
+the accuracy of the damage detection method as a function of number of sensors. This further can be
+coupled with costs associated with damaged sensors to provide the resiliency of the system.
+Author Contributions: Conceptualization, R.K.-M. and M.M.; methodology, M.S.; software, R.K.-M., and M.S.;
+validation, M.S., M.M.; formal analysis, M.S.; investigation, M.M. and R.K.-M.; resources, M.S.; data curation,
+M.S.; writing—original draft preparation, M.S. and M.M.; writing—review and editing, M.A.H.-A.; visualization,
+M.A.H.-A. and M.S.; supervision, M.A.H.-A.; project administration, R.K.M and M.M. All authors have read and
+agreed to the published version of the manuscript.
+Funding: This research received no external funding.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+Abbreviations
+ABC
+Artiﬁcial Bee Colony
+ANN
+Artiﬁcial Neural Network
+CVT
+Capacitive Voltage Transformer
+CWT
+Continuous Wavelet Transform
+DOF
+Degree Of Freedom
+DOG
+Difference of Gaussian
+
+Sensors 2020, 20, 1731
+17 of 19
+DWT
+Discrete Wavelet Transform
+FE
+Finite Element
+FWT
+Fast Wavelet Transform
+FRF
+Frequency Response Function
+GA
+Genetic Algorithm
+IGA
+Immune Genetic Algorithm
+LS-SVM
+Least Square Support Vector Machine
+MAC
+Modal Assurance Criteria
+MK-SVM
+Multi-Kernel Support Vector Machine
+MSE
+Modal Strain Energy
+NExT
+Natural Excitation Technique
+PCA
+Principal Component Analysis
+PSO
+Particle Swarm Optimization
+RDT
+Random Decrement Technique
+RMS
+Root Mean Square
+SHM
+Structural Health Monitoring
+SNR
+Signal to Noise Ratio
+SP
+Signal Processing
+SWT
+Stationary Wavelet Transform
+VMD
+Variational Mode Decomposition
+References
+1.
+Albermani, F.; Kitipornchai, S.; Chan, R.W. Failure analysis of transmission towers. Eng. Fail. Anal. 2009,
+16, 1922–1928. [CrossRef]
+2.
+Xu, Y.L.; Lin, J.F.; Zhan, S.; Wang, F.Y. Multistage damage detection of a transmission tower: Numerical
+investigation and experimental validation. Struct. Control Health Monit. 2019, 26, e2366. [CrossRef]
+3.
+Tian, L.; Yu, Q.; Ma, R. Study on seismic control of power transmission tower-line coupled system under
+multicomponent excitations. Math. Probl. Eng. 2013, doi:10.1155/2013/829415. [CrossRef]
+4.
+Zhang, P.; Song, G.; Li, H.N.; Lin, Y.X. Seismic control of power transmission tower using pounding TMD.
+J. Eng. Mech. 2012, 139, 1395–1406. [CrossRef]
+5.
+Gomes, G.F.; Mendez, Y.A.D.; Alexandrino, P.d.S.L.; da Cunha, S.S.; Ancelotti, A.C. A review of vibration
+based inverse methods for damage detection and identiﬁcation in mechanical structures using optimization
+algorithms and ANN. Arch. Comput. Methods Eng. 2019, 26, 883–897. [CrossRef]
+6.
+Caicedo, J.M. Practical guidelines for the natural excitation technique (NExT) and the eigensystem realization
+algorithm (ERA) for modal identiﬁcation using ambient vibration. Exp. Tech. 2011, 35, 52–58. [CrossRef]
+7.
+Montejo, L.A. Signal processing based damage detection in structures subjected to random excitations.
+Struct. Eng. Mech. 2011, 40, 745–762. [CrossRef]
+8.
+Liu, J.; Zhu, W.; Charalambides, P.; Shao, Y.; Xu, Y.; Fang, X. A dynamic model of a cantilever beam with a
+closed, embedded horizontal crack including local ﬂexibilities at crack tips. J. Sound Vib. 2016, 382, 274–290.
+[CrossRef]
+9.
+Garcia-Palencia, A.; Santini-Bell, E.; Gul, M.; Catbas, N. A FRF-based algorithm for damage detection using
+experimentally collected data. Struct. Monit. Maint. 2015, 2, 399–418. [CrossRef]
+10.
+Ditommaso, R.; Ponzo, F.; Auletta, G. Damage detection on framed structures: Modal curvature evaluation
+using Stockwell Transform under seismic excitation. Earthq. Eng. Eng. Vib. 2015, 14, 265–274. [CrossRef]
+11.
+Zhang, J.; Guo, S.; Wu, Z.; Zhang, Q. Structural identiﬁcation and damage detection through long-gauge
+strain measurements. Eng. Struct. 2015, 99, 173–183. [CrossRef]
+12.
+Yazdanpanah, O.; Seyedpoor, S. A new damage detection indicator for beams based on mode shape data.
+Struct. Eng. Mech. 2015, 53, 725–744. [CrossRef]
+13.
+Ghiasi, R.; Torkzadeh, P.; Noori, M. A machine-learning approach for structural damage detection using
+least square support vector machine based on a new combinational kernel function. Struct. Health Monit.
+2016, 15, 302–316. [CrossRef]
+
+Sensors 2020, 20, 1731
+18 of 19
+14.
+Lv, Z.; Tang, B.; Zhou, Y.; Zhou, C. A novel method for mechanical fault diagnosis based on variational
+mode decomposition and multikernel support vector machine. Shock Vib. 2016, doi:10.1155/2016/3196465.
+[CrossRef]
+15.
+Cha, Y.J.; Choi, W.; Büyüköztürk, O. Deep learning-based crack damage detection using convolutional
+neural networks. Comput.-Aided Civ. Infrastruct. Eng. 2017, 32, 361–378. [CrossRef]
+16.
+Zhao, Y.; Noori, M.; Altabey, W.A. Damage detection for a beam under transient excitation via three different
+algorithms. Struct. Eng. Mech. 2017, 64, 803–817.
+17.
+Karami-Mohammadi, R.; Mirtaheri, M.; Salkhordeh, M.; Hariri-Ardebili, M.A. A cost-effective neural
+network–based damage detection procedure for cylindrical equipment.
+Adv. Mech. Eng. 2019, 11,
+doi:10.1177/1687814019866942. [CrossRef]
+18.
+Vahidi, M.; Vahdani, S.; Rahimian, M.; Jamshidi, N.; Kanee, A.T. Evolutionary-base ﬁnite element model
+updating and damage detection using modal testing results. Struct. Eng. Mech. 2019, 70, 339–350.
+19.
+Chang, M.; Kim, J.K.; Lee, J. Hierarchical neural network for damage detection using modal parameters.
+Struct. Eng. Mech. 2019, 70, 457–466.
+20.
+Ghannadi, P.; Kourehli, S.S. Structural damage detection based on MAC ﬂexibility and frequency using
+moth-ﬂame algorithm. Struct. Eng. Mech. 2019, 70, 649–659.
+21.
+Nguyen, D.H.; Bui, T.T.; De Roeck, G.; Wahab, M.A.
+Damage detection in Ca-Non Bridge using
+transmissibility and artiﬁcial neural networks. Struct. Eng. Mech. 2019, 71, 175–183.
+22.
+Qu, W.; Song, W.; Xia, Y.; Xu, Y.; Qin, W.; Jiang, Z. Two-step method for instability damage detection in
+tower body of transmission structures. Adv. Struct. Eng. 2013, 16, 219–232. [CrossRef]
+23.
+Huang, X.; Zhao, Y.; Zhao, L. A Vibration-based Monitoring System for Transmission Tower Settlement.
+In Proceedings of the 2018 Condition Monitoring and Diagnosis (CMD), Perth, Australia, 23–26 September
+2018; pp. 1–4.
+24.
+Lam, H.F.; Yang, J. Bayesian structural damage detection of steel towers using measured modal parameters.
+Earthq. Struct. 2015, 8, 935–956. [CrossRef]
+25.
+Yin, T.; Lam, H.F.; Chow, H.M.; Zhu, H.
+Dynamic reduction-based structural damage detection of
+transmission tower utilizing ambient vibration data. Eng. Struct. 2009, 31, 2009–2019. [CrossRef]
+26.
+Morlet, J.; Arens, G.; Fourgeau, E.; Glard, D. Wave propagation and sampling theory—Part I: Complex
+signal and scattering in multilayered media. Geophysics 1982, 47, 203–221. [CrossRef]
+27.
+Grossmann, A.; Morlet, J.; Paul, T. Transforms associated to square integrable group representations.
+I. General results. J. Math. Phys. 1985, 26, 2473–2479. [CrossRef]
+28.
+Young, R.K. Wavelet Theory and Its Applications; Springer Science & Business Media: New York, NY, USA,
+2012; Volume 189.
+29.
+Antoniadis, A.; Oppenheim, G. Wavelets and Statistics; Springer Science & Business Media: New York, NY,
+USA, 2012; Volume 103.
+30.
+Ovanesova, A.; Suarez, L.E. Applications of wavelet transforms to damage detection in frame structures.
+Eng. Struct. 2004, 26, 39–49. [CrossRef]
+31.
+Lin, J.; Qu, L. Feature extraction based on Morlet wavelet and its application for mechanical fault diagnosis.
+J. Sound Vib. 2000, 234, 135–148. [CrossRef]
+32.
+Brito, N.; Souza, B.; Pires, F. Daubechies wavelets in quality of electrical power. In Proceedings of the 8th
+International Conference on Harmonics and Quality of Power, Proceedings (Cat. No. 98EX227), Athens,
+Greece, 14–16 October 1998; IEEE, New York, NY, USA, 1998; Volume 1, pp. 511–515.
+33.
+Popov, D.; Gapochkin, A.; Nekrasov, A. An Algorithm of Daubechies Wavelet Transform in the Final Field
+When Processing Speech Signals. Electronics 2018, 7, 120. [CrossRef]
+34.
+McKinley, S.; Levine, M. Cubic spline interpolation. Coll. Redwoods 1998, 45, 1049–1060.
+35.
+Mirtaheri, M.; Salehi, F. Ambient vibration testing of existing buildings: Experimental, numerical and code
+provisions. Adv. Mech. Eng. 2018, 10, doi:10.1177/1687814018772718. [CrossRef]
+36.
+Liu, J. A dynamic modelling method of a rotor-roller bearing-housing system with a localized fault including
+the additional excitation zone. J. Sound Vib. 2020, 469, 115144. [CrossRef]
+37.
+Chang, M.; Pakzad, S.N. Optimal sensor placement for modal identiﬁcation of bridge systems considering
+number of sensing nodes. J. Bridge Eng. 2014, 19, 04014019. [CrossRef]
+38.
+Murray-Smith, R.; Girard, A. Gaussian Process priors with ARMA noise models. In Proceedings of the Irish
+Signals and Systems Conference, Maynooth, Ireland, 25–27 June 2001; pp. 147–152.
+
+Sensors 2020, 20, 1731
+19 of 19
+39.
+MATLAB. MATLAB Version 9.1 (R2016b); The MathWorks Inc.: Natick, MA, USA, 2016.
+40.
+Morsy, R.; Marzouk, H.; Gu, X.; Elshafey, A. Use of the random decrement technique for nondestructive
+detection of damage to beams. Mater. Struct. 2016, 49, 4719–4727. [CrossRef]
+41.
+Wijesundara, K.; Negulescu, C.; Monfort, D.; Foerster, E. Identiﬁcation of Modal Parameters of Ambient Excitation
+Structures Using Continuous Wavelet Transform; CCSD: Villeurbanne, France, 2012.
+42.
+De Boer, J.F.; Cense, B.; Park, B.H.; Pierce, M.C.; Tearney, G.J.; Bouma, B.E. Improved signal-to-noise ratio in
+spectral-domain compared with time-domain optical coherence tomography. Opt. Lett. 2003, 28, 2067–2069.
+[CrossRef] [PubMed]
+43.
+Lin, Y.Z.; Nie, Z.H.; Ma, H.W. Structural damage detection with automatic feature-extraction through deep
+learning. Comput.-Aided Civ. Infrastruct. Eng. 2017, 32, 1025–1046. [CrossRef]
+44.
+Yang, J.N.; Lei, Y.; Pan, S.; Huang, N. System identiﬁcation of linear structures based on Hilbert–Huang
+spectral analysis. Part 1: Normal modes. Earthq. Eng. Struct. Dyn. 2003, 32, 1443–1467. [CrossRef]
+45.
+Sazonov, E.; Klinkhachorn, P. Optimal spatial sampling interval for damage detection by curvature or strain
+energy mode shapes. J. Sound Vib. 2005, 285, 783–801. [CrossRef]
+46.
+Seyedpoor, S. A two stage method for structural damage detection using a modal strain energy based index
+and particle swarm optimization. Int. J. Non-Linear Mech. 2012, 47, 1–8. [CrossRef]
+c⃝2020 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access
+article distributed under the terms and conditions of the Creative Commons Attribution
+(CC BY) license (http://creativecommons.org/licenses/by/4.0/).

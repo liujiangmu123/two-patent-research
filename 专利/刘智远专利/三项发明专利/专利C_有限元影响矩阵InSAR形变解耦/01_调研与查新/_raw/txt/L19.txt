@@ -1,0 +1,419 @@
+EWSHM 2024 
+11th European Workshop on Structural Health Monitoring 
+ 
+ 
+ 
+This work is licensed under CC BY 4.0 
+ 
+ 
+ 
+1 
+Media and Publishing Partner 
+Bayesian Data Fusion for Enhanced Monitoring of 
+Bridge Displacements Using Satellite InSAR and 
+Topographic Techniques 
+Daniel TONELLI1, Mattia ZINI1, Lucia SIMEONI1, Stefano ZORZI1, Alfredo ROCCA2, 
+Daniele PERISSIN2, Carlo COSTA3, David QUATTROCIOCCHI3, Daniele ZONTA1 
+1 University of Trento, Trento, Italy, daniel.tonelli@unitn.it  
+2 EO59 LLC, Virginia Beach, VA, USA 
+2 Autobrennero SpA, Trento, Italy 
+ 
+Abstract. This paper introduces a Bayesian data fusion methodology for monitoring 
+bridge displacements, using a synergistic combination of satellite Interferometric 
+Synthetic Aperture Radar (InSAR) and topographic measurements. Focused on the 
+Belprato 2 Viaduct affected by a slow-moving landslide, this research highlights the 
+advantages of integrating multiple data sources to surpass the limitations of individual 
+monitoring techniques. The results demonstrate substantial improvements in the 
+accuracy and temporal resolution of displacement measurements, highlighting the 
+utility of data fusion in structural health monitoring of aging infrastructures. 
+Keywords: Bayesian Data Fusion, Structural Health Monitoring, InSAR, Topographic 
+Monitoring, Bridge Displacement Analysis, Landslide Impact Assessment, 
+Infrastructure Safety, Remote Sensing 
+Introduction  
+Civil infrastructure health, particularly of bridges, is a critical component in maintaining 
+economic stability and public safety across the globe. As these structures age and traffic 
+volumes increase, the risks associated with potential structural failures escalate, necessitating 
+robust and reliable monitoring techniques [1]. Traditionally, structural health monitoring 
+(SHM) has relied heavily on periodic visual inspections and on-site measurement techniques. 
+While these methods provide essential information, they are often labor-intensive, costly, 
+and can subject to human error, limiting their effectiveness and scalability [2, 3]. 
+The advent of Interferometric Synthetic Aperture Radar (InSAR) technology is 
+pushing toward a transition in the SHM practice. InSAR offers a remote, non-invasive, cost-
+effective means to detect and monitor displacements and deformations across extensive areas 
+More info about this article: https://www.ndt.net/?id=29688
+e-Journal of Nondestructive Testing - ISSN 1435-4934 - www.ndt.net
+https://doi.org/10.58286/29688
+
+2 
+with millimeter-level precision [4-6]. This technology has proven particularly valuable in 
+inaccessible or hazardous locations, providing continuous monitoring without the need for 
+physical presence of people or devices on the site [7]. 
+However, despite its advantages, InSAR is not without limitations. Its effectiveness 
+can be significantly diminished in complex terrain settings, such as mountainous regions, 
+where satellite visibility and angle of incidence can restrict the accuracy and 
+comprehensiveness of the data collected. Moreover, InSAR data is typically confined to the 
+line-of-sight (LOS) measurements, which does not always provide a complete picture of 
+three-dimensional structural movements. This limitation is particularly critical in areas like 
+the Alps in Europe, where the topography can alter the satellite signal paths, leading to 
+potential data inaccuracies [8]. 
+To address these challenges, this paper introduces a novel methodology that 
+integrates InSAR technology with traditional topographic monitoring techniques through a 
+Bayesian data fusion approach. This integration leverages the extensive coverage of InSAR 
+and the high accuracy of ground-based topographic measurements, creating a synergistic 
+monitoring system that enhances the capabilities of each method. The Bayesian framework 
+employed allows for the optimal fusion of these heterogeneous data sources, accounting for 
+their respective uncertainties and sampling frequency, and providing a more robust and 
+accurate assessment of structural health. 
+Our study is set against the backdrop of increasing environmental challenges and 
+aging infrastructure, which collectively push the boundaries of traditional monitoring 
+techniques. By adopting this innovative data fusion approach, we aim to demonstrate its 
+effectiveness in providing detailed, accurate, and timely assessments of structural health, 
+which are crucial for the proactive management and maintenance of critical infrastructure. 
+The methodology is validated through the case study of the Belprato 2 Viaduct in Italy, a 
+structure situated in a geologically sensitive area and affected by an extremely slow-moving 
+landslide, making it an ideal candidate for demonstrating the benefits of our approach. 
+1. Methodology  
+This section outlines the methodology employed in integrating Interferometric Synthetic 
+Aperture Radar (InSAR) data with traditional topographic measurements using a Bayesian 
+data fusion approach. This method exploits the unique strengths of both monitoring 
+technologies, enhancing the precision and reliability of structural displacement assessments. 
+The satellite data utilized in this study were acquired from the COSMO-SkyMed 
+mission. These images are capable of capturing millimeter-level displacements across 
+extensive areas, providing a comprehensive overview of structural changes over time. The 
+InSAR data were processed using the Multi Temporal InSAR (MT-InSAR) method, which 
+enabled us to identify and track Persistent Scatterers (PS) along the viaduct. These Persistent 
+Scatterers provide measurement points that are highly and persistently visible by the SAR 
+sensors carried by satellites. MT-InSAR calculates the displacements of PSs along the 
+satellite's Line-of-Sight (LoS) from stacks of SAR images. Complementary to the InSAR 
+data, high-resolution topographic measurements were obtained using a total station in a free 
+configuration, which allows for a setup reusable for different bridges and precise 
+measurement of three-dimensional displacement vectors. These measurements were 
+conducted at specific points on the structure, equipped with optical prisms to facilitate 
+accurate data collection. This method provides localized, high-accuracy displacement data, 
+essential for detailed assessments of structural behavior. 
+To integrate the diverse datasets from InSAR and topographic monitoring, a Bayesian 
+data fusion model was developed, incorporating the components described as follows. The 
+
+3 
+displacement model is linear with respect to its parameters (y0, m, 𝛼), where y0 represents the 
+model offset, m the displacement velocity, and 𝛼 the apparent thermal coefficient. These 
+parameters are treated as Gaussian-distributed random variables, allowing for the 
+incorporation of data uncertainties and the application of the Bayesian updating process. The 
+model reads as: 
+ 
+ 
+𝑦= 𝑦! + 𝑚∙𝑡+ 𝛼⋅𝑇 
+(1) 
+ 
+Prior distributions of parameters are based on previous studies and expert judgments 
+regarding the expected behavior of the structure under observation and the geological 
+context. These priors serve as the baseline for the Bayesian analysis, aiding in the 
+interpretation and integration of the new data. 
+The likelihood function is designed to evaluate the compatibility of the observed data 
+with the model predictions. Specifically, topographical measurements are represented in a 
+Cartesian coordinate system (s, q, z), where s and z are the horizontal and vertical axis of the 
+LoS vertical plane. Satellite InSAR measurements are unidirectional displacements along the 
+LoS, l, which are included in the model through a decomposed into s and z components as 
+per Equation 4, where θ is the incidence angle between the LoS and the vertical direction z 
+of the investigated area. 
+ 
+ 
+𝑙= −𝑠⋅sin(𝜃) + 𝑧⋅cos(𝜃) 
+(4) 
+ 
+Figure 1 shows the topographic coordinate system (s, q, z) and the satellite coordinate 
+system (v, q, l), which rotate the first into the second around the common axis q according to 
+the angle θ. 
+ 
+ 
+Fig. 1. The rotation of the topographic coordinate system (s, q, z) into the 
+satellite coordinate system (v, q, l) according to the rotation angle θ. 
+The likelihood function accommodates the different measurement uncertainties and 
+sampling frequencies of these datasets. Given the linear-Gaussian nature of the model, the 
+Bayesian updating process can be implemented through a closed-form solution, as detailed 
+in Equations 2 and 3 [10]: 
+ 
+ 
+𝚺𝛟|𝐲= 7𝐃% ⋅𝚺𝐲|𝛟
+&' ⋅𝐃+ 𝚺𝛟
+&'9
+&' 
+(2) 
+ 
+𝛍𝛟|𝐲= 𝛍𝛟+ 𝚺𝛟|𝐲⋅𝐃% ⋅𝚺𝐲|𝛟
+&' ⋅(𝐲(𝛟) −𝐲=(𝛟)) 
+(3) 
+Here, ϕ denotes the parameter vector, with μϕ and Σϕ being the prior mean vector and 
+covariance matrix of parameters, respectively. μϕ|y and Σϕ|y represent the posterior mean 
+
+4 
+vector and covariance matrix, respectively. D is the model's sensitivity matrix, and Σy|ϕ is the 
+likelihood covariance matrix, reflecting the measurement uncertainties. y is the measurement 
+vector, including all the acquired measurements from both topographic and satellite systems. 
+This approach utilizes the analytical expression derived from the Gaussian 
+distribution properties, allowing for efficient and precise estimation of the posterior 
+distributions of the model parameters. The analytical nature of our approach avoids the 
+computational complexity and convergence issues often associated with iterative sampling 
+methods like MCMC, making it highly efficient for real-time monitoring applications. 
+2. Case Study: Belprato 2 Viaduct 
+The Belprato 2 Viaduct, situated in the Isarco Valley along the A22 highway in Italy, serves 
+as the focal point for validating the Bayesian data fusion methodology developed in this 
+study. This viaduct is an exemplary candidate due to its exposure to an extremely slow-
+moving landslide, making it susceptible to gradual yet significant structural displacements. 
+The Belprato 2 Viaduct, situated in Italy's Isarco Valley and part of the A22 highway, 
+is the case study for validating our proposed Bayesian data fusion method. This viaduct, 
+affected by a slow-moving landslide, provides a complex yet ideal scenario for applying and 
+testing our approach. It consists of one deck with two carriageways divided in nine spans on 
+the northbound lane and twelve on the southbound, each with a length of about 35 meters, 
+and constructed from prestressed reinforced concrete beams. Those spans are supported by 
+full piers and half-piers, the latter directly contacting the moving slope, making it susceptible 
+to displacement. Optical prisms installed on these piers have facilitated movement tracking 
+through topographic monitoring, revealing different displacement rates among the piers, 
+ranging from less than 1 mm/year to up to 11 mm/year. 
+A detailed geotechnical model of the landslide affecting the viaduct was developed 
+by the University of Trento, incorporating surface, depth measurements, and on-site surveys. 
+The landslide spans approximately 170,000 m², with a volume of about 5.5 million m³ and 
+involves complex movement mechanisms that interact with the viaduct's foundation. Figure 
+1a shows the lateral view of the Berlprato 2 Viaduct and the extension of the landslide [9]. 
+ 
+ 
+ 
+Fig. 2. (a) Belprato 2 Viaduct and landslide profile, (b) Pier 9 and optical prism. 
+The monitoring setup consists of a combination of topographic and InSAR 
+monitoring. Optical prisms were installed on specific piers of the viaduct to facilitate precise 
+topographic measurements. These prisms enabled the tracking of displacements through a 
+total station, which was set up in a free configuration allowing for flexible and accurate data 
+collection. Measurements were taken periodically, capturing the incremental movements of 
+the viaduct's structure over time. As far as InSAR Monitoring is concerned, a series of 73 
+SAR images were acquired from January 2016 to December 2020 under the COSMO-
+SkyMed mission. These images, processed using the SarProZ software, helped identify PSs 
+Landslide 
+Optical prism 
+(a) 
+(b) 
+
+5 
+along the structure, providing consistent and reliable data points for monitoring 
+displacements. The images covered the area only from the descending orbit to avoid the 
+foreshortening error, which is significant in this mountainous region. 
+ 
+ 
+Fig. 3. Map of the area of interest, with the number of piers, optical prisms and PSs highlighted. 
+Notably, InSAR monitoring cannot provide information on the orthogonal direction 
+to the vertical plane of the LoS, in this case, the direction q. Therefore, our analysis omits 
+this axis and focuses only on displacements along directions s and z. Topographical data 
+solely provide displacement information in direction q; however, given the landslide 
+movement's fortunate alignment with the LoS vertical plane in this particular case, 
+displacements in s and z directions are enough for monitoring the landslide's effect on the 
+bridge. 
+Measurement uncertainties are estimated at 5 mm for topographical and 10 mm for 
+satellite measurements, realistic for such a study, with topographical data collected in a free 
+station setup. Prior parameter distributions, independent of measurements and based on 
+geological and geotechnical previous studies, incorporate considerations like landslide 
+movement direction, slow landslide velocity (max 16 mm/year), average slope inclination 
+(27°), and the absence of seasonal periodicity due to temperature and groundwater variations. 
+Table 1 shows the model parameters' mean values and standard deviations a priori, assumed 
+to be uncorrelated. 
+Table 1. Mean values and standard deviations of parameters a priori. 
+ 
+s0 
+z0 
+ms 
+mz 
+as 
+az 
+[mm] 
+[mm] 
+[mm/year] 
+[mm/year] 
+[mm/°C] 
+[mm/°C] 
+µ 
+0.00 
+0.00 
+-7.60 
+-1.86 
+0.050 
+0.16 
+s 
+100 
+100 
+3.80 
+0.93 
+0.025 
+0.032 
+Total station 
+Optical prism 
+PS 
+
+6 
+3. Results and discussion 
+The integration of InSAR and topographic data using the Bayesian data fusion model 
+yielded significant insights into the displacement experienced by the Belprato 2 Viaduct. This 
+section presents the key findings from the fused data and highlight the differences when 
+compared to the use of either dataset, satellite or topographic measurements alone. 
+ 
+ 
+ 
+ 
+Fig. 4. Displacements along the s and z directions obtained by applying the proposed method to the three 
+different datasets of this case study: (a) and (b) datasets from satellite monitoring, (c) and (d) datasets from 
+topographic monitoring, (f) and (g) data fusion between satellite and topographic monitoring datasets. 
+Figure 4 displays the prior and posterior results achieved by applying the method 
+outlined in the preceding section to the three distinct datasets of this case study: Figures 4a 
+and 4b show results using only the dataset of displacements obtained through satellite 
+monitoring; Figures 4c and 4d show outcomes utilizing solely the dataset of displacements 
+acquired via topographic monitoring; Figures 4e and 4f show results from the data fusion 
+(a) 
+(b) 
+(d) 
+(c) 
+(e) 
+(f) 
+
+7 
+method presented above, incorporating both satellite and topographic monitoring datasets. 
+Figures in the first column illustrate displacements in the horizontal direction (s-axis), while 
+those in the second column illustrate displacements in the vertical direction (z-axis). 
+One of the primary results from this study is the enhanced frequency and accuracy of 
+displacement measurements obtained from combining the two datasets. The Bayesian data 
+fusion model effectively combined the higher sampling frequency of InSAR data with the 
+highly accurate local measurements from the topographic surveys. This integration allowed 
+for a more detailed visualization of displacement along time and a higher accuracy in 
+displacement trends, ms and mz, as highlighted by Table 2. 
+Table 2. Mean values and standard deviations of parameters a posteriori 
+ 
+s0 
+z0 
+ms 
+mz 
+as 
+az 
+[mm] 
+[mm] 
+[mm/year] 
+[mm/year] 
+[mm/°C] 
+[mm/°C] 
+Posterior with satellite measurements 
+µ 
+0.93 
+-4.02 
+-8.24 
+-1.93 
+0.05 
+0.16 
+s 
+8.84 
+7.17 
+1.67 
+0.88 
+0.025 
+0.032 
+Posterior with topographic measurements 
+µ 
+-4.37 
+2.35 
+-9.64 
+-1.75 
+0.048 
+0.16 
+s 
+6.76 
+5.05 
+0.85 
+0.63 
+0.025 
+0.032 
+Posterior with data-fusion method 
+µ 
+-6.34 
+1.43 
+-9.29 
+-1.46 
+0.046 
+0.16 
+s 
+6.11 
+4.45 
+0.77 
+0.55 
+0.025 
+0.031 
+ 
+The quantitative analysis of displacements revealed several key trends. The fused data 
+indicated that certain sections of the viaduct experienced displacements at a higher rate; this 
+finding is crucial for understanding the impact of the landslide on the viaduct and prioritizing 
+maintenance and intervention efforts. The consistency between InSAR and topographic 
+measurements increased confidence in the reliability of the observed displacement patterns. 
+Discrepancies that were initially observed in standalone datasets were resolved after applying 
+the Bayesian fusion approach. 
+4. Conclusion 
+This study has demonstrated the significant advantages of employing Bayesian data 
+fusion for the integration of InSAR and topographic monitoring data in assessing the 
+structural health of civil infrastructures. The fusion of these distinct data types provided a 
+more detailed and comprehensive analysis of the viaduct’s displacements, overcoming the 
+limitations inherent in each method when used independently. 
+The Bayesian data fusion approach effectively harnessed the strengths of both 
+methods, yielding a richer, multidimensional understanding of structural displacements. This 
+integrated approach enhanced the accuracy and temporal resolution of the displacement data 
+and provided a continuous monitoring framework, which is crucial for the nature of structural 
+health monitoring. This approach can significantly improve decision-making processes in 
+infrastructure management, allowing for more informed and timely interventions. The benefit 
+increase when including in the analysis archive SAR images, then sometimes go back in time 
+since 2014, providing years of information of bridge displacements already measured. 
+The case study of the Belprato 2 Viaduct illustrates the practical benefits of data 
+fusion approaches in real-world applications, particularly in complex structural systems like 
+those affected by slow-moving landslides. Future studies will focus on extending this 
+methodology to other infrastructures and exploring the integration of additional data types. 
+
+8 
+Acknowledgements 
+The studies presented here were carried out as part of the activities envisaged by a research agreement 
+between the University of Trento and Autostrada del Brennero SpA and supported by Fondazione 
+CARITRO Cassa di Risparmio di Trento e Rovereto (grant number 2021.0224), the European Union under 
+NextGenerationEU, the Agreement between the High Council of Public Works (CSLLPP) and the ReLUIS 
+Consortium implementing Ministerial Decree 578/2020 and Ministerial Decree 240/2022, and the 
+Agreement between the Italian Department of Civil Protection (DPC) and the ReLUIS Consortium. Views 
+and opinions expressed are, however, those of the authors only and do not necessarily reflect those of the 
+European Union or The European Research Executive Agency; neither the European Union nor the 
+granting authority can be held responsible for them. The contents of this paper represent the authors’ ideas 
+and do not necessarily correspond to the official opinions and policies of CSLLPP and DPC. COSMO-
+SkyMed products have been provided free of charge for research purposes by the Italian Space Agency, 
+Project Card ID: 630 “SAR SHM of bridges”. 
+References 
+[1] Di Prisco, M. (2019). Critical infrastructures in Italy: State of the art, case studies, rational approaches 
+to select the intervention priorities. Fib Symposium. 
+[2] Iannacone, L., Giordano, P. F., Gardoni, P., & Pina Limongelli, M. (2022). Quantifying the value of 
+information from inspecting and monitoring engineering systems subject to gradual and shock 
+deterioration. Structural Health Monitoring, 21(1). https://doi.org/10.1177/1475921720981869 
+[3] Giordano, P. F., Quqa, S., & Limongelli, M. P. (2023). The value of monitoring a structural health 
+monitoring system. Structural Safety, 100. https://doi.org/10.1016/j.strusafe.2022.102280 
+[4] Macchiarulo, V., Milillo, P., Blenkinsopp, C., Reale, C., & Giardina, G. (2021). Multi-temporal InSAR 
+for transport infrastructure monitoring: recent trends and challenges. Proceedings of the Institution of Civil 
+Engineers: Bridge Engineering, 176(2).  
+[5] Perissin, D. (2016). Interferometric SAR multitemporal processing: Techniques and applications. In 
+Remote Sensing and Digital Image Processing (Vol. 20). https://doi.org/10.1007/978-3-319-47037-5_8 
+[6] Selvakumaran, S., Sadeghi, Z., Collings, M., Rossi, C., Wright, T., & Hooper, A. (2022). Comparison 
+of in situ and interferometric synthetic aperture radar monitoring to assess bridge thermal expansion. 
+Proceedings of the Institution of Civil Engineers: Smart Infrastructure and Construction, 175(2). 
+https://doi.org/10.1680/jsmic.21.00008 
+[7] Tonelli D., Caspani V.F., Valentini A., Rocca A., Torboli R., Vitti A., Perissin D., Zonta, D. (2024) 
+.Interpretation of Bridge Health Monitoring Data from Satellite InSAR Technology. Remote Sensing, 15, 
+5242. DOI: 10.3390/rs15215242. 
+[8] Hendrix, R., & Ooi, P. S. K. (2023). Interferometric Synthetic Aperture Radar versus Inclinometer 
+Ground Surface Deformations at Active Landslide. Transportation Research Record, 2677(8). 
+https://doi.org/10.1177/03611981231158319 
+[9] Simeoni, L., Ronchetti, F., Costa, C., Joris, P., & Corsini, A. (2020). Redundancy and coherence of 
+multi-method displacement monitoring data as key issues for the analysis of extremely slow landslides 
+(Isarco 
+valley, 
+Eastern 
+Alps, 
+Italy). 
+Engineering 
+Geology, 
+267. 
+https://doi.org/10.1016/j.enggeo.2020.105504 
+[10] Murphy, K. P. (2022). Probabilistic Machine Learning. In Gaussian processes for machine learning. 
+ 

@@ -1,0 +1,2063 @@
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 60, 2022
+4708518
+Novel Corner-Reﬂector Array Application in
+Essential Infrastructure Monitoring
+Krisztina Kelevitz
+, Tim J Wright
+, Andrew J Hooper , Senior Member, IEEE,
+and Sivasakthy Selvakumaran
+, Member, IEEE
+Abstract—High-precision monitoring of infrastructure using
+1
+artiﬁcial reﬂectors is possible with freely available Sentinel-
+2
+1 data, but large reﬂectors are needed. We ﬁnd that a triangular
+3
+trihedral corner reﬂector should typically have at least 1-m inner
+4
+leg length. As such large reﬂectors are often not feasible for use in
+5
+urban areas for essential infrastructure monitoring, we designed
+6
+a multiple corner-reﬂector array to replace a single corner
+7
+reﬂector with an inner leg length of 1 m. In this case, we use
+8
+four reﬂectors where each of them is a truncated triangular
+9
+trihedral with an inner leg length of 0.33 m. We measured inter-
+10
+ferometric synthetic aperture radar (InSAR) amplitude, phase,
+11
+and coherence of this reﬂector array with various conﬁgurations
+12
+of alignments of the array. We ﬁnd that as long as great care
+13
+is taken in the relative positioning of the four corner reﬂectors,
+14
+so that they constructively interfere, each horizontal or vertical
+15
+conﬁguration provides the expected amplitude, coherence, and
+16
+phase stability. Applications of multiple small corner reﬂectors
+17
+in urban areas range from essential infrastructure monitoring
+18
+(e.g., bridges, overpasses, and tunnel constructions), through
+19
+assessment of structural health of buildings, to monitoring
+20
+highway and railway embankments. We show that the multiple
+21
+corner array works when placed in a single InSAR resolution
+22
+cell, but depending on the application, the number and projection
+23
+of corner reﬂectors can be varied, as long as sufﬁcient signal-to-
+24
+clutter ratio is achieved in the area of interest.
+25
+Index Terms—Corner reﬂectors, infrastructure monitoring,
+26
+interferometric synthetic aperture radar (InSAR).
+27
+I. INTRODUCTION
+28
+O
+UR ever-expanding structural infrastructure is in con-
+29
+stant need of monitoring and maintenance due to damage
+30
+from regular use and exposure to natural processes. It is
+31
+near-impossible to manually inspect all the bridges, railways,
+32
+highways, and other essential infrastructure to predict and
+33
+avoid failures that might result in loss of life and great
+34
+economic losses. Recent advances in various remote sensing
+35
+Manuscript received 27 August 2021; revised 22 January 2022, 3 March
+2022, and 25 April 2022; accepted 24 June 2022. Date of publication
+5 August 2022; date of current version 12 September 2022. This work
+was supported in part by the Natural Environment Research Council
+(NERC) Center for the Observation and Modeling of Earthquakes, Vol-
+canoes and Tectonics (COMET) which is a partnership between U.K.
+universities and the British Geological Survey and in part by the Isaac
+Newton Trust and Newnham College, Cambridge. (Corresponding author:
+Krisztina Kelevitz.)
+Krisztina Kelevitz is with the COMET Institute, University of Leeds,
+Leeds LS2 9JT, U.K., and also with the Center for Digital Built Britain
+(CDBB), University of Cambridge, Cambridge CB2 1TN, U.K. (e-mail:
+k.kelevitz@leeds.ac.uk).
+Tim J Wright and Andrew J Hooper are with the COMET Institute,
+University of Leeds, Leeds LS2 9JT, U.K.
+Sivasakthy Selvakumaran is with the Engineering Department, University
+of Cambridge, Cambridge CB2 1TN, U.K.
+Digital Object Identiﬁer 10.1109/TGRS.2022.3196699
+methods have improved our capabilities to monitor large
+36
+areas with various techniques of different temporal and spatial
+37
+resolutions.
+38
+In
+particular,
+interferometric
+synthetic
+aperture
+radar
+39
+(InSAR) is being widely used for ground motion detec-
+40
+tion for various applications ranging from worldwide natural
+41
+hazard monitoring (e.g., [1]) and early warning (e.g., [2],
+42
+[3]) through nationwide infrastructure and land observation
+43
+(e.g., [4], [5]) to small-scale studies of local deformations
+44
+(e.g., [6], [7]). The Sentinel-1 mission, part of the European
+45
+Commision’s Copernicus program operated by the European
+46
+Space Agency (ESA), was launched in 2014 and has been
+47
+providing freely available SAR acquisitions globally ever since
+48
+(https://www.copernicus.eu/en, accessed on 4 Jun 2021). The
+49
+Sentinel 1A and 1B satellite pair provides an ascending and a
+50
+descending coverage at least once every six days over Europe.
+51
+This mission has furthered applications of InSAR remote
+52
+sensing due to its reliability, repeatability, and all-reaching
+53
+coverage. Sentinel-1 is a C-band mission (∼6 cm wavelength)
+54
+which provides moderate resolution InSAR data compared
+55
+with the commercial, high-resolution X-band satellite missions
+56
+(e.g., TerraSAR-X, COSMO-SkyMed). The C-band missions
+57
+are typically used for global mapping and monitoring and
+58
+detecting changes in areas with low to moderate penetration.
+59
+The X-band missions, on the other hand, are traditionally used
+60
+for urban monitoring and in areas with low vegetation levels.
+61
+At the C-band, Sentinel-1 InSAR acquisitions are often not
+62
+coherent enough over rural, vegetated areas to interpret ground
+63
+motions in these places. To enhance the InSAR amplitudes
+64
+and measurement accuracy, corner reﬂectors can be used in
+65
+these settings. Among the applications of corner reﬂectors are
+66
+landslide monitoring [8], [9], land management [10], ground
+67
+instability observations [11], or calibration of InSAR and other
+68
+geophysical observations [12]. Based on a literature and corner
+69
+reﬂector database review, the size of these corner reﬂectors can
+70
+range from a 0.35-m up to 3-m inner leg length depending on
+71
+the area of interest and the InSAR mission that it is targeted
+72
+toward. [Red line of Fig. 8(b) shows the measurement of the
+73
+inner leg length on a triangular trihedral corner reﬂector.] To
+74
+use a corner reﬂector with the Sentinel-1 InSAR mission, the
+75
+reﬂector needs to be quite large; Bozsó et al. [13] showed that
+76
+a triangular trihedral of 1-m inner leg length provides a robust
+77
+signal for Sentinel-1 [13].
+78
+Large corner reﬂectors may not be suitable for urban
+79
+applications, as there are often limits on the size of objects
+80
+that can be attached to buildings or infrastructure such as
+81
+bridges. In particular, the projection of the reﬂector can
+82
+This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/
+
+4708518
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 60, 2022
+be a limiting factor. In this article, we show the results
+83
+of an experiment using a novel corner reﬂector array that
+84
+has a reduced projection, but retains the ability to reﬂect a
+85
+strong enough SAR signal so that it can be used with data
+86
+from the moderate resolution Sentinel-1 InSAR application.
+87
+The array consists of four reﬂectors arranged closely in a
+88
+row, so that they remain in a single resolution cell of an
+89
+SAR image. We tested various conﬁgurations in terms of
+90
+aligning the reﬂectors in different directions horizontally,
+91
+vertically, and arbitrarily and found that in each conﬁgura-
+92
+tion we can measure a stable amplitude and phase signal.
+93
+Our setup consists of four reﬂectors and a frame on which
+94
+they can be placed in various conﬁgurations to allow for
+95
+various experiments.
+96
+We present the design, manufacturing considerations, and
+97
+InSAR measurement results as well as the practical consider-
+98
+ations that should be taken into account when installing such
+99
+a reﬂector array. Based on the theoretical calculations and the
+100
+results from this experiment, we show that any number of
+101
+corner reﬂectors can be placed within a single pixel, with the
+102
+conclusion that the more the reﬂectors, the smaller their overall
+103
+projections, as long as the size is not much smaller than the
+104
+radar wavelength. This opens a new area of applications of
+105
+the corner reﬂectors and the use of the C-band SAR missions,
+106
+especially into the urban areas for infrastructure monitoring.
+107
+In Section II, we review the amplitude and phase the-
+108
+ory of corner reﬂectors and show the results of Sentinel-
+109
+1 SAR data processing of various corner reﬂectors around
+110
+the world. In Section III, we show the design and setup of
+111
+the four-corner array and the results of InSAR and global
+112
+navigation satellite systems (GNSS) data processing of various
+113
+setups. We also discuss the practical considerations that one
+114
+should take into account when deploying a corner reﬂector
+115
+array. In Section IV, we discuss the practical considerations
+116
+concerning the installation and setup of the four-corner array.
+117
+In Section V, we present our conclusions.
+118
+II. SINGLE CORNER REFLECTORS
+119
+A. Review of Amplitude and Phase of a Single Corner
+120
+Reﬂector
+121
+The measurement of the size of the target as seen by the
+122
+imaging radar is the radar cross section (RCS) [14]. The
+123
+brightness of a target or backscattering coefﬁcient “sigma
+124
+nought” (σ0) is conventionally measured as the RCS (in dBm2)
+125
+normalized by the area of the illuminated resolution cell [15]
+126
+σ0 = RCS
+A
+(1)
+127
+where the illuminated area on the ground is
+128
+A = pr pa
+sin θ
+(2)
+129
+where pa and pr are the azimuth and slant range pixel
+130
+resolutions, respectively, and θ is the local incidence angle.
+131
+The theoretical RCS, often denoted as σT , of a triangular
+132
+trihedral corner reﬂector that is signiﬁcantly larger than the
+133
+SAR wavelength is a function of its size [16]
+134
+σT = 4πa4
+3λ2
+(3)
+135
+Fig. 1.
+SCR and the corresponding error in phase (blue solid line) and
+displacement (blue dashed line). The orange line shows the size of a trihedral
+corner reﬂector compared with the SCR it produces, assuming a 15.8-dB
+background clutter amplitude. The black arrows show the following example:
+to achieve mm-level precision in the displacement measurement, the SCR
+needs to be at least 10 dB, which corresponds to a trihedral corner reﬂector
+with a 1.2-m-long inner leg with the deﬁned background clutter level.
+where a is the inner leg of the trihedral corner reﬂector, and
+136
+λ is the wavelength of the acquisition.
+137
+The expected amplitude is calculated from the RCS as
+138
+amp = √σT .
+(4)
+139
+The ratio of the RCS of a corner reﬂector and the power
+140
+of its background clutter, the signal-to-clutter ratio (SCR),
+141
+is used to assess the InSAR phase variance [17] and absolute
+142
+positioning accuracy [18] of point targets, such as corner
+143
+reﬂectors [19]. This determines whether a corner reﬂector’s
+144
+size is sufﬁcient to be used in a certain setting with a particular
+145
+clutter level.
+146
+The phase and displacement errors can be theoretically
+147
+estimated using the SCR as [20], [21], [22]
+148
+ϕerr =
+1
+√
+2SCR
+(5)
+149
+derr = ϕerrλ
+4π .
+(6)
+150
+Fig. 1 shows the displacement precision that can be achieved
+151
+with a certain size of corner reﬂector as a function of SCR
+152
+assuming a 15.8-dB background clutter level. This ﬁgure and
+153
+its calculations are based on the Sentinel-1 wavelength of
+154
+5.55 cm and is representative of the C-band SAR acquisitions;
+155
+the ﬁgure would look different for the X-band or L-band.
+156
+When designing an experiment with a corner reﬂector, it is
+157
+useful to know about the clutter level in the area of installation
+158
+ahead of planning. To have a large enough reﬂector to be
+159
+“visible” in the desired setting, one should achieve a certain
+160
+level of SCR, which will then give phase and displacement
+161
+precisions for the intended application.
+162
+B. Corner Reﬂectors Installed Globally
+163
+We collected information about corner reﬂectors that
+164
+have been placed in various locations around the world and
+165
+categorized them in terms of their shape, size, and orientation.
+166
+Most are triangular trihedrals or truncated triangular trihedrals,
+167
+
+KELEVITZ et al.: NOVEL CORNER-REFLECTOR ARRAY APPLICATION
+4708518
+with the exception of the bar-pattern reﬂector in China. The
+168
+size of the triangular trihedrals varies between an inner
+169
+leg length of 0.35 and 3 m. When discussing the size of
+170
+a truncated triangular trihedral corner reﬂector, we use the
+171
+inner leg length without truncation, as that is representative
+172
+of its reﬂecting abilities. We processed the Sentinel-1 SAR
+173
+data over their locations. The SAR data were acquired in the
+174
+Interferometric Wide swath mode using Terrain Observation
+175
+with Progressive Scans (IW TOPSAR) mode with a nominal
+176
+resolution of approximately 5 m by 20 m. Some reﬂectors
+177
+were installed before the launch of the Sentinel-1 satellites; in
+178
+these cases, we processed the earliest available data. Others
+179
+were installed after 2015; in these cases, we aimed to process
+180
+the SAR data before and after the installation of the corner
+181
+reﬂectors and compared the change in amplitude and phase
+182
+at their locations. Table I shows the locations, sizes, shape
+183
+speciﬁcations, and references to these corner reﬂectors. For
+184
+this section, we relied on other studies that provided us the
+185
+lat/lon coordinates of the reﬂectors, and we assume they used
+186
+GNSS instruments to get the precise position of each reﬂector.
+187
+References to each of the study areas are shown in Table I.
+188
+We obtained the coordinates either from these publications,
+189
+through
+personal
+communication
+with
+the
+authors,
+190
+or from the “Point & Distributed Targets DB” database
+191
+(https://calvalportal.ceos.org/point-distributed-targets-
+192
+db;jsessionid=574D708265484DA9A87C50BA6E548FF0).
+193
+We used the GAMMA-based [29] LiCSAR [30] batch
+194
+processing software package, at full resolution, for assessing
+195
+amplitudes and phases of individual pixels. After coregistering
+196
+single-look complex (SLC) images, we extracted the amplitude
+197
+at, and around, the location of the corner reﬂectors and com-
+198
+pared them before (where possible) and after the installation
+199
+of the corner reﬂectors. We then formed interferograms with
+200
+a common primary image, selecting the primary to be the ﬁrst
+201
+available image after the installation of the corner reﬂectors.
+202
+C. Sentinel-1 InSAR Results
+203
+Fig. 2 shows photographs of the selected corner reﬂectors.
+204
+We analyzed their amplitude and phase signal on coregistered
+205
+SLC images. We used Gamma’s geocoding procedure to ﬁnd
+206
+the location of the corner reﬂectors in the radar coordinates
+207
+and then conﬁrmed these locations against known features
+208
+nearby.
+209
+The amplitude images are shown with the location of the
+210
+reﬂectors marked (Figs. 3–5). These ﬁgures show the average
+211
+amplitude values that are obtained by calculating the mean
+212
+amplitude values over multiple acquisitions from the coreg-
+213
+istered stacks. For a complete collection of the amplitude
+214
+ﬁgures, refer to the Appendix.
+215
+From the interferograms, we extract the phase information
+216
+of various pixels: 1) the pixel corresponding to the corner
+217
+reﬂector; 2) a “stable” pixel nearby, typically corresponding
+218
+to a building; and 3) a “noisy” pixel nearby, typically cor-
+219
+responding to the vegetated area. These pixels were selected
+220
+manually based on their consistently high (stable) or varying
+221
+(noisy) amplitudes. To assess the phase stability of the corner
+222
+reﬂector, we plot the differences between the phase signals of
+223
+Fig. 2.
+(Top Left) Photograph of a reﬂector at Capo Colonna; source: Google
+Street View. (Top Right) Photograph of a 1.5-m reﬂector in Australia; source:
+Garthwaite et al. [12]. (Bottom) Photograph of the twin reﬂectors in Kulcs,
+Hungary; source: Bozsó et al. [25].
+Fig. 3.
+Average amplitudes of corner reﬂectors at the archeological site of
+Capo Colonna. (Left) 146A ascending track. (Right) 051D descending track.
+These reﬂectors are too small to stand out from the background with Sentinel-1
+with a trihedral inner leg measure of 0.4 m. Red dots mark pixels with one
+reﬂector, and blue dots mark pixels with two reﬂectors placed there.
+1) the “stable” and “noisy” pixels and of and 2) the “stable”
+224
+and corner reﬂector pixels (Fig. 6. For a complete collection of
+225
+the phase ﬁgures, refer to the Appendix. We expect the latter
+226
+differential phase signal to be less noisy (i.e., smaller standard
+227
+deviation from the mean of the series) than that of the former.
+228
+In cases where corner reﬂectors were installed after the launch
+229
+of Sentinel-1, and their size is sufﬁciently large to be visibly
+230
+differentiable from the background on the amplitude analysis,
+231
+we can also observe the stabilization of the phase after the
+232
+reﬂector was installed (Fig. 6).
+233
+We ﬁnd that a trihedral corner reﬂector with an inner leg
+234
+of at least 1 m is sufﬁciently large to give a stable phase
+235
+response, and one with an inner leg of up to 0.6 m appears to
+236
+be too small for the C-band Sentinel-1 acquisitions. We cannot
+237
+conclude a clear cut-off in size, as we do not have any InSAR
+238
+data processed for a corner reﬂector that is between 0.6 and
+239
+1 m. One example where smaller reﬂectors (0.35-m inner
+240
+leg triangular trihedrals) were installed after the launch of
+241
+the Sentinel-1 mission is a study on the Waterloo Bridge in
+242
+
+4708518
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 60, 2022
+TABLE I
+LIST OF CORNER REFLECTORS. IN THE CASE OF TRUNCATED TRIHEDRAL CORNER REFLECTORS, THE SIZE IS GIVEN AS THE INNER LEG OF THE
+TRIHEDRAL WITHOUT THE TRUNCATION TO MAKE FAIR COMPARISONS. THE FIGURE COLUMN SHOWS WHICH FIGURES CORRESPOND TO
+WHICH LOCATION IN THIS ARTICLE
+Fig. 4.
+Amplitudes of one of the four corner reﬂectors installed near the town of Kulcs in Hungary recorded with the 051D descending track of Sentinel-1.
+(Left) Before placement of the reﬂector. (Middle) After placement of the reﬂector. (Right) Difference.
+Fig. 5.
+Amplitudes of corner reﬂectors of different sizes installed in the Surat basin in Australia recorded with the 111A ascending track of Sentinel-1. (Left)
+1.5-m inner leg trihedral. (Middle) 2-m inner leg trihedral. (Right) 2.5-m inner leg trihedral.
+London [23]. These corner reﬂectors were originally designed
+243
+to be used with the X-band SAR missions, rather than the
+244
+C-band Sentinel-1 one, and are therefore not optimally ori-
+245
+ented. We compared the amplitude and phase signal before and
+246
+after the installation and we ﬁnd that even though the smaller
+247
+reﬂectors do not appear on the amplitude maps, it seems they
+248
+still contribute to a small stabilization of the phase signal
+249
+(Fig. 7). Analysis of coherence of the example corner reﬂectors
+250
+presented here and the corner reﬂectors listed in Table I is
+251
+shown in the Appendix Fig. 32.
+252
+III. MULTIREFLECTOR EXPERIMENT
+253
+A. Design and Setup
+254
+In Section II-A, we show the calculations for the precision
+255
+that can be achieved with a certain size of corner reﬂector as
+256
+a function of SCR. Assuming the signals’ sum constructively,
+257
+we can calculate how many small reﬂectors one would need to
+258
+place in the same pixel to replace a large reﬂector with an inner
+259
+leg length of 1 m [Fig. 8(a)]. Based on this distribution, and
+260
+the analysis in Section II-C which showed that a 1-m corner
+261
+reﬂector is sufﬁciently large to be seen with the Sentinel-1
+262
+data, we manufactured a frame with four small trihedral corner
+263
+reﬂectors with a 0.- m inner leg [Fig. 8(b)]. With the truncated
+264
+design that we chose [Fig. 8(b) and also seen in the middle
+265
+panel of Fig. 2], the actual inner leg length of each reﬂector is
+266
+0.33 m. Based on the calculations shown in Fig. 1, this should
+267
+give close to mm-level precision in displacement. Fig. 8(c)
+268
+shows the calculations of the expected amplitudes in decibel
+269
+(dB) depending on the size and number of triangular trihedral
+270
+corner reﬂectors placed in the same pixel. Again, we stress
+271
+
+KELEVITZ et al.: NOVEL CORNER-REFLECTOR ARRAY APPLICATION
+4708518
+Fig. 6.
+Phases differences between the four corner reﬂectors installed around
+the town of Kulcs in Hungary and a nearby reference point recorded with
+the 051D descending track of Sentinel-1 (blue, red, yellow, and purple time
+series). Green dots show the phase difference between a randomly selected
+(“noisy”) point in the area and the same reference point. Vertical dashed line
+shows the time of the installation of the reﬂectors.
+Fig. 7.
+Results of Sentinel-1 ascending data processing over the Waterloo
+Bridge in London. Top left and top right panels show the InSAR amplitudes
+before and after installation of the 0.35-m corner reﬂectors, respectively.
+Red dots mark the locations of the corner reﬂectors and yellow dots the
+locations of the selected reference points. The bottom panel shows the phase
+differences before and after the installation of the corner reﬂectors compared
+with the nearby reference point south of the bridge. Horizontal lines mark
++/−standard deviation from the mean phase difference.
+that these calculations assume the signals’ sum constructively.
+272
+As we discuss later, this depends strongly on the various
+273
+aspects of the installation.
+274
+Following studies on the shape of a corner reﬂector [31],
+275
+[32], we choose to use triangular trihedral corners, as it proves
+276
+to be both efﬁcient and not as sensitive to errors in the
+277
+installation as other shapes. To keep the corner reﬂector setup
+278
+as compact in projection as possible, we also truncated the
+279
+outer corners of the reﬂectors, as this is shown to not have a
+280
+measurable effect on the reﬂectivity of the triangular trihedral
+281
+shape [13].
+282
+Fig. 8.
+(a) Distribution of the size and number of corner reﬂectors needed
+to achieve the same SCR with a reference of a trihedral corner reﬂector with
+a 1-m-long inner leg. (b) Design plan of the four corner reﬂector arrays. Red
+line shows the corner reﬂector inner leg measure. (c) Expected amplitude in
+dB depending on the size and number of triangular trihedral reﬂectors. The
+black star shows the dB value (31.3) corresponding to four reﬂectors with
+50-cm inner leg length.
+To carry out various experiments with the four small reﬂec-
+283
+tors, we attached them to a frame, where they can be placed
+284
+in a straight line, with an adjustable distance in between them.
+285
+Each reﬂector can be rotated and tilted in any direction. A pole
+286
+is attached to the frame, to which we attached a GNSS antenna
+287
+for monitoring any movement of the ground below the frame.
+288
+We took hour-long GNSS measurements during the morning
+289
+of each day when the Sentinel 1A or 1B satellites acquired
+290
+data over the area.
+291
+We also manufactured a large corner reﬂector with 1.5-m
+292
+inner leg which was placed on the same ﬁeld for reference.
+293
+This was also a truncated trihedral with an actual inner leg
+294
+length of 1 m. This corner reﬂector was set up in an “ideal”
+295
+position facing the line of sight of the ascending satellite acqui-
+296
+sition (a direction of 259◦from north and a tilt of 17.3◦from
+297
+horizontal). We also acquired hour-long GNSS measurements
+298
+at this reference reﬂector at the same time as at the frame
+299
+of the small reﬂector. We set up the reﬂectors on the 9th of
+300
+November 2020, at University of Leeds Farm, located between
+301
+Leeds and York in the U.K. (Fig. 9). The exact coordinates of
+302
+the reference reﬂector are 53.8658 N, 1.3337 W, and of the
+303
+four-corner array are 53.8658 N, 1.3322 W. Fig. 10 shows the
+304
+photographs of the installation of the corner reﬂectors.
+305
+The area of the farm is covered by two ascending Sentinel-
+306
+1 tracks; we aimed the reﬂectors toward track 132. Using
+307
+
+4708518
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 60, 2022
+Fig. 9.
+(Top) Location of the test site between Leeds and York. (Bottom)
+Positioning of the corner reﬂectors on the farm test site. Source: Google Map
+and Google Satellite.
+Fig. 10.
+Photographs of the installation of the various conﬁgurations. (Top
+Left) Alignment in range horizontal. (Top Right) Alignment in azimuthal
+horizontal. (Bottom Left) Alignment in azimuth vertical. (Bottom Middle)
+Same vertical alignment with shadowing (where the vertical separation is too
+small to have a clear view of the satellite for the lower three reﬂectors).
+(Bottom Right) Large reﬂector intended as a reference reﬂector in the ﬁeld.
+both the Sentinel-1A and 1B InSAR acquisitions, we obtained
+308
+measurements every six days at around 17:50 local time.
+309
+B. InSAR Results
+310
+We installed the reﬂector array in various conﬁgurations,
+311
+aligning them in range, azimuth, and an arbitrary direction in
+312
+horizontal setups, as well as aligning them vertically (Fig. 10).
+313
+We also experimented with a “shadowed” setup where within
+314
+a vertical setup we moved the four corner reﬂectors closer
+315
+to each other. In this case, the lower three reﬂectors do
+316
+not have a clear line-of-sight vision of the satellite for the
+317
+whole area of the reﬂector. A full list of the various setups
+318
+and the corresponding dates are shown in Table IV in the
+319
+Appendix. The alignments in azimuth and range of the frame
+320
+were obtained using both a compass and a GNSS reference
+321
+line. The individual corner reﬂector tilts were measured with
+322
+a digital inclinometer. During the time of the experiment, the
+323
+local magnetic declination according to the World Magnetic
+324
+Model [33] was between 0.35◦and 0.45◦(±0.4◦) and was not
+325
+taken into account when orienting the corner reﬂector array.
+326
+Alignment requirements are further discussed in Section IV-A.
+327
+We processed the Sentinel-1 data using the GAMMA-based
+328
+LiCSAR package as described in Section II-C between July
+329
+2020 and May 2021. We did not apply any multilooking
+330
+to preserve the natural resolution of the acquisition. The
+331
+amplitudes of coregistered SLC images over the area of the
+332
+farm are shown in Fig. 11. The amplitude values are averaged
+333
+over the four months before the installation of the corner
+334
+reﬂectors (1st July 2020 to 5th November 2020) and during
+335
+the azimuthal alignment setup (29th November 2020 to 4th
+336
+January 2021).
+337
+We extracted the amplitude values for the duration of the
+338
+experiment from the coregistered SLC images corresponding
+339
+to the pixels where the reﬂector array and the reference
+340
+corner reﬂector were placed. To ﬁnd the exact phase and
+341
+amplitude center of the experimental setup and of the ref-
+342
+erence corner reﬂector, we oversampled a subset of the SLC
+343
+images 16 times. Oversampling gives better point density,
+344
+and therefore we could more accurately pinpoint the phase
+345
+center of the reﬂectors [34], [35]. For the reﬂector array, the
+346
+oversampled pixel position changes between different setups,
+347
+but stays the same within each individual setup. We also
+348
+selected a further two pixels for amplitude and phase analysis:
+349
+a reference pixel corresponding to a nearby cluster of buildings
+350
+and a background “ﬁeld” pixel corresponding to the grassy
+351
+ﬁeld between the location of the large corner and the reﬂector
+352
+array. Fig. 12 shows the amplitude time series before and
+353
+during the experiment for the selected four pixels: Reference
+354
+reﬂector (blue), four-corner reﬂector array (red), reference
+355
+building (yellow), and background ﬁeld (purple).
+356
+The vertical lines on Fig. 12 separate the various setups
+357
+of the four-corner reﬂector array, while horizontal lines show
+358
+the expected amplitudes for different cases. We calculated the
+359
+large reference reﬂector to have a nominal RCS of 38.38 dB,
+360
+and the array of four corners 31.34 dB without any shadowing
+361
+and 28.8 dB with the setup where there is shadowing in
+362
+the vertical direction 3. We ﬁnd that the large reﬂector has
+363
+an amplitude as expected, except for a dip on 22nd May
+364
+2021. This was due to water accumulation in the reﬂector;
+365
+we manufactured the reﬂector with a small hole in the middle
+366
+for drainage, but on this occasion the hole was ﬁlled with
+367
+debris and had to be manually removed. The amplitude of
+368
+the four-corner array exceeded our expectations both with and
+369
+without shadowing, perhaps due to the contributions from the
+370
+frame.
+371
+We processed the hour-long GNSS measurements with the
+372
+GAMIT/GLOBK GNSS processing package, using the closest
+373
+
+KELEVITZ et al.: NOVEL CORNER-REFLECTOR ARRAY APPLICATION
+4708518
+Fig. 11.
+Amplitudes of coregistered SLC images over the area of the farm. (Left) Before installation (average over 1st July 2020 to 5th November 2020).
+(Middle) During the range horizontal alignment setup (average over 29th November 2020 to 4th January 2021). (Right) Difference between the left and middle
+panels. Blue dot marks the location of the large reference reﬂector, and red dot marks the location of the four-corner reﬂector array.
+Fig. 12.
+Amplitudes of individual pixels extracted from the coregistered SLC images: reference reﬂector (blue), four-corner reﬂector array (red), reference
+building (yellow), and background ﬁeld (purple). Vertical lines separate the various setups of the four-corner reﬂector array, while horizontal lines show the
+expected amplitudes for different cases. Letter codes of each setup are explained in detail in the Appendix (Table IV).
+TABLE II
+COHERENCE VALUES AND STANDARD DEVIATIONS OF THE PHASE SIGNAL CONVERTED INTO DISPLACEMENT OF THE VARIOUS SETUPS OF THE CORNER
+REFLECTOR ARRAY. NOTE THAT THE “REFERENCE-LARGE CORNER” AND “REFERENCE-FIELD” SETUPS DO NOT CHANGE OVER TIME. THE
+LETTERS REFER TO THE CORRESPONDING SETUPS ON FIGS. 12 AND 13. FOR THE FULL LIST OF SETUPS, SEE TABLE IV IN THE APPENDIX
+permanent GNSS station as a reference point [36]. This station
+374
+(LEED) is managed by the NERC British Isles continuous
+375
+GNSS Facility (BIGF). There was no movement of the ground
+376
+during the time of the experiment that would measure above
+377
+the noise level of the acquired GNSS data (∼1–2 mm). We also
+378
+did not measure any settlement of the corner reﬂectors during
+379
+the experiment and within the various setups. Detailed GNSS
+380
+results are shown in Appendix C.
+381
+We carried out the phase analysis using the same four
+382
+pixels selected (reference corner, four-corner array, reference
+383
+building, and background ﬁeld). Fig. 13 shows the phase
+384
+differences between these pixels before and during the time
+385
+of the experiment.
+386
+To quantify the phase noise, we analyzed the coherence
+387
+of each setup using the following equation (7) from (16) in
+388
+Pepe and Lanari [37]:
+389
+γ =
+M−1
+p=0 exp
+
+j
+
+ϕp −¯ϕp
+
+M
+,
+0 ≤γ ≤1
+(7)
+390
+
+4708518
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 60, 2022
+Fig. 13.
+Phase differences between the four selected pixels: reference corner, four-corner array, reference building, and background ﬁeld. Vertical lines
+separate the various setups of the four-corner reﬂector array. Letter codes of each setup are explained in detail in the Appendix (Table IV).
+Fig. 14.
+Distance between corner reﬂectors to achieve constructive inter-
+ference. Blue lines mark a horizontal plane, and orange lines mark a plane
+tilted by α. Reﬂectors placed at positions E, A’, B, or C will constructively
+interfere with a reﬂector in position O. Calculation of distances is based on
+the Sentinel-1 half wavelength (λ/2), incidence angle (θ), tilt from horizontal
+(α), and angle from azimuth in the horizontal plane (δ).
+calculating the γ coherence for each setup using the M
+391
+number of measurements and j(ϕp −¯ϕp) phase difference
+392
+between the reference epoch and all other measurement epochs
+393
+corresponding to each setup. Table II shows the results of these
+394
+calculations for each setup between different locations.
+395
+Based on the phase and coherence analysis, we ﬁnd that the
+396
+phase signal of the four-corner array is stable in the horizontal
+397
+range alignment and each vertical alignment. In the horizontal
+398
+azimuth aligned conﬁguration, the phase appears less stable,
+399
+and the coherence values are lower, but we do not have enough
+400
+data points to draw this conclusion.
+401
+C. Controlled Movement
+402
+During the last setup of the four-corner experiment we kept
+403
+the shadowed vertical setup and moved each of the corner
+404
+reﬂectors approximately 5 mm upward along the vertical rail.
+405
+We measured the phase difference between the four-corner
+406
+Fig. 15.
+Examples of importance of small adjustments: Orange and blue
+points show a frame aligned in the horizontal range direction, with and
+without a 2.3◦tilt from optimal, respectively. Yellow and purple points show a
+frame aligned in the azimuthal direction, where distances are irrelevant, with
+a correctly tilted frame and a 2◦over-tilted frame, respectively. Green and
+blue points show a frame rotated 46.3◦from azimuth, with distances adjusted
+for a 45◦and a 46.3◦rotation, respectively.
+array and the reference reﬂector during the six acquisitions
+407
+before this movement and during the six acquisitions after
+408
+the movement (K and L setups in Figs. 12 and 13). The
+409
+mean phase difference of 1.24 rad in the line-of-sight direction
+410
+corresponds to a 6.9-mm movement in the vertical direction,
+411
+which we consider within the error of our movement accuracy.
+412
+IV. PRACTICAL CONSIDERATIONS
+413
+A. Constructive Interference
+414
+Achieving constructive interference between the reﬂectors
+415
+is essential. One of the most important factors is spacing
+416
+between the reﬂectors, which matters when they are aligned
+417
+in the range direction, while it can be anything when aligned
+418
+in the azimuthal direction. Fig. 14 shows how distances can
+419
+be calculated depending on which conﬁguration the reﬂectors
+420
+are placed. It is important to keep in mind that a small error in
+421
+tilt or orientation can signiﬁcantly affect the optimal distance
+422
+between the reﬂectors. The distance between corner reﬂectors
+423
+
+KELEVITZ et al.: NOVEL CORNER-REFLECTOR ARRAY APPLICATION
+4708518
+refers to the distance between the reﬂecting centers rather
+424
+than the distance between the physical center of the reﬂectors.
+425
+We used sub-mm precision when setting the distance during
+426
+our experiments with the four-corner array.
+427
+Fig. 15 demonstrates two examples of the importance of
+428
+small deviations of the ideal orientations and the effect on
+429
+the amplitude if the distance between the corner reﬂectors
+430
+is not adjusted. The ideal tilt of each reﬂector was 17.3◦at
+431
+the location of the farm where the experiment was set up.
+432
+Destructive interference due to tilting is demonstrated by a
+433
+setup where we tilted the frame 2.3◦to which the reﬂectors
+434
+are attached (α in Fig. 14). However, in the ﬁrst instance the
+435
+distance between the reﬂectors was kept as if the frame was
+436
+horizontal (OA’ in Fig. 14, orange datapoints in Fig. 15). In the
+437
+next setup, we adjusted the distance between the reﬂectors so
+438
+that the 2.3◦tilt of the frame is taken into account (OB in
+439
+Fig. 14, dark blue datapoints in Fig. 15).
+440
+The second example relates to a setup where we rotated
+441
+the frame 46.3 ◦from the azimuth direction in the horizontal
+442
+plane (δ in Fig. 14). As in the previous case, the frame was
+443
+tilted 2.3◦from horizontal so that the individual reﬂectors
+444
+have a 17.3◦tilt from horizontal (OC in Fig. 14). At ﬁrst,
+445
+the distance between the reﬂectors was set to account for a
+446
+45◦rotation and the 2.3◦tilt of the frame (green datapoint in
+447
+Fig. 15). In the following setup, we adjusted the distance to
+448
+account for a 46.3◦rotation rather than a 45◦one. As shown
+449
+in Fig. 15 with the light blue datapoint, a miscalculation
+450
+in the distance relating to a 1.3◦rotation causes destructive
+451
+interference.
+452
+These two examples show that a 2◦tilt of the frame and
+453
+a 1.3◦rotation of the frame can cause signiﬁcant destructive
+454
+interference between the reﬂectors, if the distances between
+455
+them are not carefully adjusted. This leads to great loss of
+456
+amplitude. Some parameters are less sensitive than others, for
+457
+example, if the reﬂectors are aligned in the azimuthal direction,
+458
+the distance between them is irrelevant (BC in Fig. 14, yellow
+459
+datapoint in Fig. 15). As an experiment, we tilted the frame
+460
+another 2◦, setting up a 19.3◦tilt, and ﬁnd that the amplitude
+461
+of the measurement did not signiﬁcantly decrease (purple
+462
+datapoint in Fig. 15).
+463
+During the experiments with the vertical setup, we moved
+464
+the reﬂectors closer to each other so that they shadow
+465
+each other to see the effect on the amplitude, phase, and
+466
+coherence. We found that while the amplitude decreases as
+467
+the overall area of reﬂecting surfaces decreases, the phase
+468
+and coherence remain stable. While shadowing between the
+469
+reﬂectors is not ideal, if the overall projection of the array
+470
+needs to be reduced, it
+can be done at the cost of minimal
+471
+amplitude reduction. The size of the reﬂector can also be
+472
+optimized to take advantage of the resonance maxima. The
+473
+RCS equations shown in this article work in the optical
+474
+region, but not in the Rayleigh region. Using the RCS equa-
+475
+tions that apply in the Mie region in between these two,
+476
+it is theoretically possible to achieve higher than expected
+477
+RCS [38].
+478
+In the course of six months of the experiment, and during
+479
+the various seasons, we observed that snow, debris, rain,
+480
+or bird droppings can accumulate in the corner reﬂectors and
+481
+can cause a loss of amplitude when not removed on time.
+482
+We found that the hole in the corner that we cut for drainage
+483
+is too small when debris accumulates and can cause rainwater
+484
+to accumulate. A larger hole could solve this problem, or a
+485
+cover on the corner reﬂector that would protect it from rain
+486
+and larger leaves and other debris falling in. This cover
+487
+would have to let the SAR waves through not to lose the
+488
+signal.
+489
+B. Optimal Arrangement
+490
+The horizontal alignment in azimuth is ideal in that the
+491
+spacing between reﬂectors does not matter, and an array can
+492
+therefore be produced with a ﬁxed spacing that is suitable for
+493
+multiple applications. However, the spacing can also be ﬁxed
+494
+with an alignment in range, with the spacing set for an average
+495
+incidence angle. The whole array can then be tilted to account
+496
+for the actual incidence angle at the installation location.
+497
+This will result in a nonideal orientation for each individual
+498
+reﬂector, but a tilt of a few degrees does not signiﬁcantly affect
+499
+the RCS.
+500
+On the side of structures, such as bridges or tall buildings,
+501
+a vertical setup would be ideal, while on the top of structures
+502
+or along embankments a horizontal setup is more desirable.
+503
+Bespoke arrays can be designed for the sides of nonvertical
+504
+structures.
+505
+V. CONCLUSION
+506
+In this article, we present a novel corner reﬂector array
+507
+of four small reﬂectors that can replace a large one and
+508
+provide equivalent amplitude, phase, and coherence in InSAR
+509
+applications. It is especially useful in urban areas to monitor
+510
+essential infrastructure remotely.
+511
+We analyzed the Sentinel-1 InSAR data acquisitions over
+512
+corner reﬂectors of various sizes. We found that to observe a
+513
+distinct amplitude signal with the C-band Sentinel-1 InSAR
+514
+measurements, an inner leg of a triangular trihedral reﬂector
+515
+needs to be at least 1 m long. We observed that an inner leg
+516
+of 0.6 m is too small to give a consistently large amplitude
+517
+to stand out from the background and stable phase signal; but
+518
+have not established a clear cut-off in between, as we did not
+519
+process any data over corner reﬂectors that have an inner leg
+520
+length between 0.6 and 1 m. The theoretical considerations
+521
+discussed in Section II-A show that the sufﬁcient size of the
+522
+corner reﬂector depends both on the wavelength of the SAR
+523
+acquisition and the background clutter level of the area of
+524
+interest. The corner reﬂector can be truncated as shown by [13]
+525
+and the 1-m inner leg can be reduced to 0.67 m while still
+526
+achieving similar amplitudes.
+527
+Due to its size, a corner reﬂector projecting 0.67 m may
+528
+still be too large to be routinely used in urban areas for
+529
+essential infrastructure monitoring. In some places, there are
+530
+restrictions on the projection and size of external ﬁxtures (e.g.,
+531
+30 cm on Waterloo Bridge in London), while in other places it
+532
+would just not be feasible to place such an object, or it would
+533
+attract too much unwanted attention. We propose to replace
+534
+
+4708518
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 60, 2022
+one corner reﬂector with an array of smaller ones within the
+535
+same SAR resolution cell. We designed and manufactured an
+536
+array of four corner reﬂectors, each of them with a truncated
+537
+inner leg of 0.33 m, equivalent to a 0.5-m triangular trihedral
+538
+corner reﬂector. When placed in the same pixel, their signals
+539
+combine as if they were a single 0.67-m truncated or equiv-
+540
+alent 1-m triangular trihedral corner reﬂector. With various
+541
+setups in the azimuthal, range direction, vertical, and arbitrary
+542
+alignments, we show that the four-corner array meets the
+543
+expectations of predicted amplitude signal and gives a stable
+544
+and coherent phase signal over multiple acquisitions. Through
+545
+the various setups of the experiment, we demonstrated that
+546
+it is essential that the distance between the corner reﬂectors
+547
+is adjusted carefully (to the mm) in the range horizontal and
+548
+vertical planes to achieve constructive interference between the
+549
+reﬂectors.
+550
+We used the array of four corner reﬂectors as an example,
+551
+but depending on the exact application and location of place-
+552
+ment, in theory any number of reﬂectors can be used in any
+553
+2-D or 3-D conﬁguration, as long as the distance between them
+554
+is set up to achieve constructive interference, and shadowing
+555
+of one reﬂector by another is avoided.
+556
+There are numerous potential applications of corner reﬂector
+557
+arrays in urban areas. Monitoring essential infrastructures,
+558
+such as bridges, ﬂyovers, and transport systems, is becoming
+559
+ever more difﬁcult with the rapid expansion of urban areas.
+560
+It is also important to survey short- and long-term effects of
+561
+newly built tunnels and railway embankments, and observe
+562
+subsidence and other ground-motion related changes in critical
+563
+buildings in urban areas. Often the object or infrastructure of
+564
+interest does not give sufﬁcient amplitude in SAR images or
+565
+lack distinct points in space that can be associated with the
+566
+SAR signal. In these cases, a corner reﬂector array that is
+567
+installed as an external ﬁxture or already contained as features
+568
+in newly built structures can provide an important tool in
+569
+remote monitoring of these structures. The Sentinel mission
+570
+is providing reliable and free SAR data with revisit times of
+571
+6–12 days in either ascending or descending conﬁguration.
+572
+Therefore, long-term accurate motion can be established using
+573
+a reﬂector array that can highlight seasonal variations and alert
+574
+to changes in ground stability.
+575
+APPENDIX A
+576
+AMPLITUDE AND PHASE IMAGES OF THE VARIOUS
+577
+CORNER REFLECTORS
+578
+See Figures 16–31.
+579
+APPENDIX B
+580
+COHERENCE OF THE VARIOUS CORNER REFLECTORS
+581
+In this section, we refer to the corner reﬂectors in Table I.
+582
+We analyzed the coherence of the corner reﬂectors at various
+583
+locations using (7) from (16) in Pepe and Lanari [37].
+584
+calculating the γ coherence for each setup using the M
+585
+number of measurements and j(ϕp −¯ϕp) phase difference
+586
+between the reference epoch and all other measurement epochs
+587
+corresponding to each setup (Fig. 32).
+588
+For each corner reﬂector, we used ten acquisitions, as close
+589
+to the installation date as possible with the varying availability
+590
+of the Sentinel-1 measurements. In some cases when the
+591
+corner reﬂectors were installed years before the start of the
+592
+Sentinel mission and their size is not larger than an inner
+593
+leg length of 0.6 m, it is not possible to say whether we
+594
+chose the right pixel for the coherence analysis. This clearly
+595
+shows in the large spread of coherence values and no clear
+596
+increase with size that we see with the corner reﬂectors with
+597
+sizes between 0.3 and 0.6 m. The corner reﬂectors with a 1-
+598
+m inner leg length (both trihedrals and truncated trihedrals)
+599
+show a coherence close to 1, with some outliers down to a
+600
+coherence of 0.6. We do not know whether there was any real
+601
+movement of the corner reﬂectors recorded during this time,
+602
+and therefore cannot subtract any such movement during the
+603
+coherence analysis. In conclusion, the coherence of the corner
+604
+reﬂectors with a 1-m inner leg length seems satisfactory for
+605
+further analysis.
+606
+Table III shows the standard deviation values for the phase
+607
+differences where acquisitions were available both before and
+608
+after the installation of corner reﬂectors.
+609
+APPENDIX C
+610
+RESULTS OF THE GNSS MEASUREMENTS
+611
+In this section, we show the results from the GNSS measure-
+612
+ments that we carried out every six days. These hour-long mea-
+613
+surements took place on the days when the Sentinel-1 track
+614
+132 acquisitions were made. We
+processed the GNSS data
+615
+with the GAMIT/GLOBK GNSS processing package, using
+616
+the closest permanent GNSS station (LEED) as a reference
+617
+point [36].
+618
+Between the different setups, we occasionally repositioned
+619
+the antenna, to ensure it was not in the SAR line of sight.
+620
+Large movements on the antenna between setups are due to
+621
+this manual repositioning.
+622
+Within each setup (described in Table IV), we calculated the
+623
+difference between the position of the reference corner reﬂec-
+624
+tor and the four-corner array. Between the setups, we moved
+625
+the array and adjusted the position of the GNSS antenna
+626
+depending on the horizontal or vertical setup; this can be
+627
+observed in the GNSS results shown in Fig. 33. However,
+628
+within a single setup we ﬁnd that there was no movement
+629
+of the ground that would measure above the noise level of
+630
+the acquired GNSS data (∼1–2 mm), with the exception of
+631
+the north component within setup C. This seems to be an
+632
+outlier as we do not expect any ground motion occurring on
+633
+the farm, and it is probably due to an atmosphere related
+634
+error. We also did not measure any settlement of the cor-
+635
+ner reﬂectors during the experiment and within the various
+636
+setups.
+637
+APPENDIX D
+638
+SUMMARY OF THE VARIOUS SETUPS AND THE
+639
+CORRESPONDING DATES
+640
+See Tables III and IV.
+641
+
+KELEVITZ et al.: NOVEL CORNER-REFLECTOR ARRAY APPLICATION
+4708518
+Fig. 16.
+Average amplitudes of corner reﬂectors at the Pisciotta area 1, Italy, recorded by the 044A ascending track. Red dots mark pixels with a reﬂector
+placed there. Corner reﬂectors are 0.6-m trihedrals.
+Fig. 17.
+Average amplitudes of corner reﬂectors at the Pisciotta area 1, Italy, recorded by the 124D descending track. Red dots mark pixels with a reﬂector
+placed there. Corner reﬂectors are 0.6-m trihedrals.
+Fig. 18.
+Average amplitudes of corner reﬂectors at the Pisciotta area 2, Italy, recorded by the 044A ascending track. Red dots mark pixels with a reﬂector
+placed there. Corner reﬂectors are 0.6-m trihedrals.
+Fig. 19.
+Average amplitudes of corner reﬂectors at the Pisciotta area 2, Italy, recorded by the 124D descending track. Red dots mark pixels with a reﬂector
+placed there. Corner reﬂectors are 0.6-m trihedrals.
+
+4708518
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 60, 2022
+Fig. 20.
+Average amplitudes of corner reﬂectors at the Hollin Hill landslide recorded by the 132A ascending track. Red dots mark pixels with a reﬂector
+placed there. Corner reﬂectors are 1-m truncated trihedrals.
+Fig. 21.
+Phase differences of corner reﬂectors and a nearby reference point at the Hollin Hill landslide.
+Fig. 22.
+Average amplitudes of the corner reﬂector at the Herstmonceux site, U.K., recorded by the 081D descending track. Corner reﬂectors are 1-m
+truncated trihedrals.
+Fig. 23.
+Average amplitudes of the corner reﬂector at the Herstmonceux site, U.K., recorded by the 132A ascending track. Corner reﬂectors are 1-m truncated
+trihedrals.
+
+KELEVITZ et al.: NOVEL CORNER-REFLECTOR ARRAY APPLICATION
+4708518
+Fig. 24.
+Phase differences of the 081D descending (left) and 132A ascending (right) facing reﬂectors and a nearby reference point at the Herstmonceux site,
+U.K.
+Fig. 25.
+(Left) Average amplitudes of corner reﬂectors at the Dunaszekcso area in Hungary landslide recorded by the 051D descending track. Red dots mark
+pixels with a reﬂector placed there. Corner reﬂectors are 1-m truncated trihedrals. (Right) Phase differences of corner reﬂectors and a nearby reference point
+at the Dunaszekcso area in Hungary.
+Fig. 26.
+Average amplitudes of one of the corner reﬂectors at the Fonyod area in Hungary recorded by the 073D descending track. Red dots mark pixels
+with a reﬂector placed there. Corner reﬂectors are 1-m truncated trihedrals.
+
+4708518
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 60, 2022
+Fig. 27.
+Phase differences of corner reﬂectors and a nearby reference point at the Fonyod area in Hungary.
+Fig. 28.
+Average amplitudes of the Calitri area in Italy recorded by the 044A ascending and 124D descending tracks. Red dots mark pixels with a reﬂector
+placed there. These reﬂectors have been installed in 2008 and their status is unknown at the time of start of the Sentinel-1 mission in 2014. Corner reﬂectors
+are 1-m trihedrals.
+Fig. 29.
+Average amplitudes of the Agnone area in Italy recorded by the 022D descending and 044A ascending tracks. Red dots mark pixels with a reﬂector
+placed there. These reﬂectors have been installed in 2009 and their status is unknown at the time of start of the Sentinel-1 mission in 2014. While some
+bright spots appear on the 044A image, it is unclear whether they do not correspond to the location of the red dots because of a geocoding error, or whether
+they are not in fact corner reﬂectors but other built structures with a bright SAR signal. Corner reﬂectors are 1.4-m trihedrals.
+
+KELEVITZ et al.: NOVEL CORNER-REFLECTOR ARRAY APPLICATION
+4708518
+Fig. 30.
+(Left) Aerial photograph of the bar pattern installed for testing various X and C band InSAR satellite acquisitions. (Right) Average amplitudes of
+the bar pattern area in China recorded by the 011A ascending track. Red rectangles show the areas corresponding to the bar pattern.
+Fig. 31.
+Phase differences of bright points among the bar pattern (marked as CR1-4) and a nearby reference point.
+TABLE III
+STANDARD DEVIATION VALUES OF PHASE DIFFERENCES BETWEEN THE PIXEL CONTAINING A CORNER REFLECTOR AND A REFERENCE PIXEL BEFORE
+AND AFTER THE INSTALLATION OF THE REFLECTORS. WHEN A LOCATION HAS MULTIPLE CORNER REFLECTORS, THE MEAN VALUE IS SHOWN
+IN THIS TABLE
+TABLE IV
+EXPERIMENTS CARRIED OUT WITH THE FOUR CORNER REFLECTORS. BOLD LINES SHOW THE FAVORABLE SETUPS OF WHICH WE SHOW RESULTS IN
+SECTION III-B. RESULTS OF ALL SETUPS ARE SHOWN IN THE APPENDIX
+
+4708518
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 60, 2022
+Fig. 32.
+Statistics of the coherence values corresponding to the various
+sizes of corner reﬂectors. Each boxplot shows the median value (red line),
+values within the 25th and 75th percentiles (blue box), and the minimum and
+maximum values (extent of dashed lines).
+Fig. 33. Differences between the reference reﬂector and the four-corner array
+in north, east, and height.
+ACKNOWLEDGMENT
+642
+This research forms part of the Centre for Digital Built
+643
+Britain’s (CDBB) work at the University of Cambridge within
+644
+the Construction Innovation Hub (CIH). The Construction
+645
+Innovation Hub is funded by U.K. Research and Innovation
+646
+through the Industrial Strategy Fund.
+647
+The authors would like to thank the NERC BIGF for
+648
+providing the GNSS data of the LEED permanent GNSS
+649
+station. The authors would also like to thank colleagues at
+650
+the British Geological Survey (BGS) and at the University of
+651
+Naples for providing detailed information about the installa-
+652
+tion locations and times of the various corner reﬂectors used
+653
+in this study, in
+particular Dr. Alessandro Novellino and
+654
+Dr. Diego DiMartire. The authors are grateful for the col-
+655
+laboration at the Farm of the University of Leeds, which
+656
+allowed the placement and continuous monitoring of the corner
+657
+reﬂector experiment.
+658
+REFERENCES
+659
+[1] J. Biggs and T. J. Wright, “How satellite InSAR has grown from
+660
+opportunistic science to routine monitoring over the last decade,” Nature
+661
+Commun., vol. 11, no. 1, pp. 1–4, Dec. 2020.
+662
+[2] N. Anantrasirichai, J. Biggs, F. Albino, and D. Bull, “A deep learn-
+663
+ing approach to detecting volcano deformation from satellite imagery
+664
+using synthetic datasets,” Remote Sens. Environ., vol. 230, Sep. 2019,
+665
+Art. no. 111179.
+666
+[3] T. Carlà et al., “Perspectives on the prediction of catastrophic slope fail-
+667
+ures from satellite InSAR,” Sci. Rep., vol. 9, no. 1, pp. 1–9, Dec. 2019.
+668
+[4] J. F. Dehls, Y. Larsen, P. Marinkovic, T. R. Lauknes, D. Stødle, and
+669
+D. A. Moldestad, “INSAR. No: A national InSAR deformation map-
+670
+ping/monitoring service in norway–from concept to operations,” in Proc.
+671
+IEEE Int. Geosci. Remote Sens. Symp., Jul./Aug. 2019, pp. 5461–5464.
+672
+[5] Y. Morishita, “Nationwide urban ground deformation monitoring in
+673
+Japan using Sentinel-1 LiCSAR products and LiCSBAS,” Prog. Earth
+674
+Planet. Sci., vol. 8, no. 1, pp. 1–23, Dec. 2021.
+675
+[6] G. J. Funning and A. Garcia, “A systematic study of earthquake
+676
+detectability using Sentinel-1 interferometric wide-swath data,” Geo-
+677
+phys. J. Int., vol. 216, no. 1, pp. 332–349, Oct. 2018.
+678
+[7] M. Bakon et al., “RemotIO: A Sentinel-1 multi-temporal InSAR
+679
+infrastructure monitoring service with automatic updates and data min-
+680
+ing capabilities,” Remote Sens., vol. 12, no. 11, p. 1892, Jun. 2020.
+681
+[8] F. Bovenga, G. Pasquariello, R. Pellicani, A. Reﬁce, and G. Spilotro,
+682
+“Landslide monitoring for risk mitigation by using corner reﬂector and
+683
+satellite SAR interferometry: The large landslide of carlantino (Italy),”
+684
+CATENA, vol. 151, pp. 49–62, Apr. 2017.
+685
+[9] R. Czikhardt, J. Papco, P. Ondrejka, P. Ondrus, and P. Liscak, “Corner
+686
+reﬂector network as a geodetic reference for landslide monitoring via
+687
+InSAR time series: Case study from Slovakia,” in Proc. EGU Gen.
+688
+Assem. Conf. Abstr., Vienna, Austria, 2021, Paper EGU21-12373.
+689
+[10] D. Infante, D. Di Martire, D. Calcaterra, and M. Ramondini, “The contri-
+690
+bution of satellite radar interferometry for land management activities,”
+691
+in Proc. Int. Conf. Crit. Thinking Sustain. Rehabil. Risk Manage. Built
+692
+Environ. Springer, 2019, pp. 156–164.
+693
+[11] F. Cigna et al., “25 years of satellite InSAR monitoring of ground
+694
+instability and coastal geohazards in the archaeological site of Capo
+695
+Colonna, Italy,” Proc. SPIE, vol. 10003, Oct. 2016, p. 100030Q.
+696
+[12] M. Garthwaite, S. Nancarrow, A. Hislop, M. Thankappan, J. Dawson,
+697
+and S. Lawrie, “The design of radar corner reﬂectors for the Australian
+698
+geophysical observing system: A single design suitable for InSAR
+699
+deformation monitoring and SAR calibration at multiple microwave
+700
+frequency bands,” Geosci. Australia, Australia, QLD, Canberra, Rec.
+701
+Tech. Rep. 2015/03, 2015.
+702
+[13] I. Bozsó, E. Sz˝ucs, L. Bányai, and V. Wesztergom, “Benchmark of
+703
+C-band radar corner reﬂectors based on Sentinel-1 SAR images. First
+704
+results in the monitoring of the Dunaszekcs˝o landslide (Hungary) using
+705
+corner reﬂectors,” in Proc. EGUGA, 2018, p. 714.
+706
+[14] M. Garthwaite, “On the design of radar corner reﬂectors for deformation
+707
+monitoring in multi-frequency InSAR,” Remote Sens., vol. 9, no. 7,
+708
+p. 648, Jun. 2017.
+709
+[15] J. C. Curlander and R. N. McDonough, Synthetic Aperture Radar:
+710
+Systems and Signal Processing. New York, NY, USA: Wiley, 1991.
+711
+[16] M. C. Garthwaite, S. Lawrie, J. Dawson, and M. Thankappan, “Corner
+712
+reﬂectors as the tie between InSAR and GNSS measurements: Case
+713
+study of resource extraction in Australia,” in Proc. FRINGE, vol. 731,
+714
+2015, pp. 1–5.
+715
+
+KELEVITZ et al.: NOVEL CORNER-REFLECTOR ARRAY APPLICATION
+4708518
+[17] P. Dheenathayalan, M. C. Cuenca, P. Hoogeboom, and R. F. Hanssen,
+716
+“Small reﬂectors for ground motion monitoring with InSAR,” IEEE
+717
+Trans.
+Geosci.
+Remote
+Sens.,
+vol.
+55,
+no.
+12,
+pp. 6703–6712,
+718
+Dec. 2017.
+719
+[18] R. Bamler and M. Eineder, “Accuracy of differential shift estimation
+720
+by correlation and split-bandwidth interferometry for wideband and
+721
+delta-K SAR systems,” IEEE Geosci. Remote Sens. Lett., vol. 2, no. 2,
+722
+pp. 151–155, Apr. 2005.
+723
+[19] R. Czikhardt, H. van der Marel, F. J. van Leijen, and R. F. Hanssen,
+724
+“Estimating signal-to-clutter ratio of InSAR corner reﬂectors from
+725
+SAR time series,” IEEE Geosci. Remote Sens. Lett., vol. 19, pp. 1–5,
+726
+2022.
+727
+[20] V. G. Ketelaar, Satellite Radar Interferometry: Subsidence Monitoring
+728
+Techniques, vol. 14. Springer, 2009.
+729
+[21] G. Ketelaar, P. Marinkovic, and R. Hanssen, “Validation of point
+730
+scatterer phase statistics in multi-pass InSAR,” in Proc. ENVISAT &
+731
+ERS Symp., vol. 572, 2005.
+732
+[22] N.
+Adam,
+B.
+Kampes,
+and
+M.
+Eineder,
+“Development
+of
+a
+733
+scientiﬁc
+permanent
+scatterer
+system:
+Modiﬁcations
+for
+mixed
+734
+ERS/ENVISAT time series,” in Proc. ENVISAT & ERS Symp., vol. 572,
+735
+2005.
+736
+[23] S. Selvakumaran et al., “Combined InSAR and terrestrial structural
+737
+monitoring of bridges,” IEEE Trans. Geosci. Remote Sens., vol. 58,
+738
+no. 10, pp. 7141–7153, Oct. 2020.
+739
+[24] D. Di Martire, A. Iodice, M. Ramondini, G. Ruello, and D. Calcaterra,
+740
+“Combined observations of surface displacements using differential
+741
+interferometry SAR (DInSAR) and traditional monitoring techniques,”
+742
+in Proc. 8th Intern. Symp. Field Meas. Geomech., Berlin, Germany,
+743
+2011.
+744
+[25] I. Bozsó, L. Banyai, A. Hooper, E. Szucs, and V. Wesztergom, “Integra-
+745
+tion of Sentinel-1 interferometry and GNSS networks for derivation of
+746
+3-D surface changes,” IEEE Geosci. Remote Sens. Lett., vol. 18, no. 4,
+747
+pp. 692–696, Apr. 2021.
+748
+[26] C. Li et al., “Comprehensive calibration and validation site for informa-
+749
+tion remote sensing,” Int. Arch. Photogramm., Remote Sens. Spatial Inf.
+750
+Sci., vol. 40, no. 7, p. 1233, 2015.
+751
+[27] M. Del Soldato et al., “Multisource data integration to investigate one
+752
+century of evolution for the Agnone landslide (Molise, southern Italy),”
+753
+Landslides, vol. 15, no. 11, pp. 2113–2128, 2018.
+754
+[28] M. C. Garthwaite, M. Hazelwood, S. Nancarrow, A. Hislop, and
+755
+J. H. Dawson, “A regional geodetic network to monitor ground sur-
+756
+face response to resource extraction in the northern surat basin,
+757
+Queensland,” Austral. J. Earth Sci., vol. 62, no. 4, pp. 469–477,
+758
+May 2015.
+759
+[29] C. Werner, U. Wegmüller, T. Strozzi, and A. Wiesmann, “Gamma SAR
+760
+and interferometric processing software,” in Proc. ERS-ENVISAT Symp.,
+761
+Gothenburg, Sweden, vol. 1620, 2000, p. 1620.
+762
+[30] M. Lazecký et al., “LiCSAR: An automatic InSAR tool for measuring
+763
+and monitoring tectonic and volcanic activity,” Remote Sens., vol. 12,
+764
+no. 15, p. 2430, Jul. 2020.
+765
+[31] A. W. Doerry and B. C. Brock, “Radar cross section of triangular
+766
+trihedral reﬂector with extended bottom plate,” Sandia Nat. Laboratories,
+767
+Albuquerque, NM, USA, Sandia Rep., 2009.
+768
+[32] Y. Qin, D. Perissin, and L. Lei, “The design and experiments on corner
+769
+reﬂectors for urban ground deformation monitoring in Hong Kong,” Int.
+770
+J. Antennas Propag., vol. 2013, pp. 1–8, 2013.
+771
+[33] A. Chulliat et al., “Out-of-cycle update of the US/UK world mag-
+772
+netic model for 2015–2020,” Nat. Centers Environ. Inf., NOAA,
+773
+2019.
+774
+[34] J. J. Sousa, A. J. Hooper, R. F. Hanssen, and L. C. Bastos, “Comparative
+775
+study of two different PS-InSAR approaches: DePSI vs. StaMPS,” in
+776
+Proc. ESA Fringe Workshop, 2009, pp. 1–8.
+777
+[35] A. Ferretti, C. Monti-Guarnieri, C. Rrati, and F. Rossa “InSAR princi-
+778
+ples: Guidelines for SAR interferometry processing and interpretation,”
+779
+ESA Publication, 2007.
+780
+[36] T. A. Herring, R. W. King, and S. M. McClusky, “Introduction to
+781
+gamit/globk release 10.6,” Massachusetts Inst. Technol., Cambridge,
+782
+MA, USA, Tech. Rep., 2015.
+783
+[37] A. Pepe and R. Lanari, “On the extension of the minimum cost ﬂow
+784
+algorithm for phase unwrapping of multitemporal differential SAR
+785
+interferograms,” IEEE Trans. Geosci. Remote Sens., vol. 44, no. 9,
+786
+pp. 2374–2383, Sep. 2006.
+787
+[38] H.-J. Li, Y.-W. Kiang, and W. Chen, “Radar and inverse scattering,” in
+788
+The Electrical Engineering Handbook. Academic, 2005, pp. 671–690.
+789
+Krisztina Kelevitz received the Ph.D. degree in
+790
+geophysics from ETH Zürich, Zürich, Switzerland,
+791
+in 2017, for her research in using GNSS data in rapid
+792
+earthquake moment tensor characterization.
+793
+She worked as a Post-Doctoral Researcher with
+794
+the University of Colorado, Boulder, CO, USA,
+795
+from 2017 to 2019, working on setting up an early
+796
+warning system for the Yellowstone volcanic area
+797
+using remote sensing InSAR data. She then became
+798
+a Centre for the Observation and Modelling of
+799
+Earthquakes, Volcanoes and Tectonics (COMET)
+800
+Research Fellow at the University of Leeds, Leeds, U.K., where she continued
+801
+to work on InSAR data applications, including natural hazard monitoring in
+802
+the U.K. and a design and experiments of a novel corner reﬂector array for
+803
+infrastructure monitoring.
+804
+Tim J Wright is a Professor of satellite geodesy
+805
+with the University of Leeds, Leeds, U.K., the
+806
+Director of COMET, Leeds, the NERC Centre for
+807
+the Observation and Modelling of Earthquakes, Vol-
+808
+canoes and Tectonics, and the Co-Founder and the
+809
+Director of SATSENSE Ltd. His work has been at
+810
+the forefront of developing the use of satellite radar
+811
+interferometry (InSAR) for measuring tectonic and
+812
+volcanic deformation. Major achievements include
+813
+the ﬁrst demonstration that interseismic strain can
+814
+be measured using InSAR, in this case for the
+815
+North Anatolian Fault; the investigation of a series of major earthquakes
+816
+using geodesy, seismology, and geomorphology, including Bam (Iran, 2003),
+817
+Denali (Alaska, 2002), and Izmit (Turkey, 1999); mapping and modeling
+818
+of precursory inﬂation at a volcanic center (Dabbahu, Ethiopia), and the
+819
+subsequent discovery of a major rifting episode in Afar, Ethiopia. He has
+820
+published more than 120 articles in major international journals, and his
+821
+work is highly cited. He led the NERC-funded Afar Rift Consortium, a £3M
+822
+project that is using a wide range of geophysical, geochemical, and geologic
+823
+techniques to investigate how the crust grows at divergent plate boundaries,
+824
+and co-led LICS, an NERC large grant to “Look Inside the Continents from
+825
+Space,” which is producing open-access InSAR data over global volcanic and
+826
+tectonic areas from Sentinel-1.
+827
+Dr. Wright received the William Smith Fund of the Geological Society,
+828
+in 2006, the Philip Leverhulme Prize, in
+2014, the American Geoscience
+829
+Union (AGU) Geodesy Section Award, he was the British Geophysical
+830
+Association’s Bullerwell Lecturer in 2015, and the Rosenstiel Award from the
+831
+University of Miami. He was the Royal Astronomical Society’s 2017 Harold
+832
+Jeffreys Lecturer.
+833
+Andrew J Hooper (Senior Member, IEEE) received
+834
+the M.S. and Ph.D. degrees in geophysics from Stan-
+835
+ford University, Stanford, CA, USA, in 2002 and
+836
+2006, respectively, for his development of SAR per-
+837
+sistent scatterer interferometry algorithms for geo-
+838
+physical applications.
+839
+From 2002 to 2003, he worked with the Ger-
+840
+man Space Center (DLR) on algorithms for the
+841
+TerraSAR-X satellite. Since 2006, he has been with
+842
+the University of Iceland, Reykjavik, Iceland, before
+843
+moving to the Delft University of Technology, Delft,
+844
+Netherlands, in 2008. Since 2013, he has been a Professor of geophysics and
+845
+geodesy with the University of Leeds, Leeds, U.K. His research interests
+846
+include measuring and modeling deformation due to volcanic and tectonic
+847
+processes and application of machine learning techniques to deformation data.
+848
+Dr. Hooper received the James B. Macelwane Medal by the American
+849
+Geophysical Union, in 2016, given to outstanding early career scientists who
+850
+have shown depth, breadth, impact, creativity, and novelty in their research,
+851
+and is the Co-Founder and the Director of University spin-out SatSense, Leeds.
+852
+
+4708518
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 60, 2022
+Sivasakthy
+Selvakumaran
+(Member,
+IEEE)
+853
+received
+the
+B.A.
+and
+M.Eng.
+degrees
+in
+854
+engineering
+and
+the
+Ph.D.
+degree
+in
+applied
+855
+remote sensing from the Engineering Department,
+856
+University
+of Cambridge, Cambridge,
+U.K., in
+857
+2010 and 2019, respectively, and the C.Eng. degree
+858
+with MICE professional engineering chartership
+859
+qualiﬁcations from the Institution of Civil Engineers
+860
+(ICE), London, U.K., in 2015.
+861
+She worked in design, construction, and research
+862
+and development roles within industry in Spain,
+863
+Peru, and U.K. Her roles in industry included designing new structures on
+864
+mega-projects like the Crossrail trainline in London, assessment to upgrade
+865
+U.K. infrastructure assets, and working on sites to reconstruct housing
+866
+destroyed by earthquakes. She has also worked in industry research and
+867
+development roles for developing new solutions and technologies to change
+868
+the way infrastructure is designed, constructed, and maintained. She spent part
+869
+of her doctoral training as a Visiting Researcher with the German Aerospace
+870
+Center (DLR), Oberpfaffenhofen, Germany, in 2019. She is the Isaac Newton
+871
+Trust Fellow of engineering with the University of Cambridge. Her research
+872
+interests include integration of remote sensing with structural monitoring to
+873
+contribute toward sustainable and resilient cities.
+874

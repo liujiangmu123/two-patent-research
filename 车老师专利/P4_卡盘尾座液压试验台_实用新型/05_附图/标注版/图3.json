@@ -1,0 +1,125 @@
+{
+ "fig": 9,
+ "title": "微位移加载单元放大图",
+ "scale": 0.23573,
+ "size_mm": [
+  154.1,
+  115.6
+ ],
+ "size_clean_mm": [
+  138.0,
+  115.6
+ ],
+ "labels": [
+  "47",
+  "62",
+  "63",
+  "64",
+  "48",
+  "50",
+  "49",
+  "51",
+  "52",
+  "56",
+  "43"
+ ],
+ "missing": [],
+ "crossings": 0,
+ "min_leader_pass_mm": 2.1,
+ "all_anchors_ok": true,
+ "anchors": [
+  {
+   "num": "47",
+   "name": "伺服电机",
+   "side": "L",
+   "anchor_part": "P_47",
+   "ok": true,
+   "inside_mm": 3.54
+  },
+  {
+   "num": "62",
+   "name": "滚珠丝杠",
+   "side": "L",
+   "anchor_part": "P_62",
+   "ok": true,
+   "inside_mm": 0.57
+  },
+  {
+   "num": "63",
+   "name": "楔块",
+   "side": "L",
+   "anchor_part": "P_63",
+   "ok": true,
+   "inside_mm": 2.6
+  },
+  {
+   "num": "64",
+   "name": "从动楔座",
+   "side": "L",
+   "anchor_part": "P_64",
+   "ok": true,
+   "inside_mm": 4.8
+  },
+  {
+   "num": "48",
+   "name": "丝杠—楔块加载座",
+   "side": "L",
+   "anchor_part": "P_48",
+   "ok": true,
+   "inside_mm": 2.39
+  },
+  {
+   "num": "50",
+   "name": "直线导轨",
+   "side": "R",
+   "anchor_part": "P_50",
+   "ok": true,
+   "inside_mm": 1.49
+  },
+  {
+   "num": "49",
+   "name": "推力传感器",
+   "side": "L",
+   "anchor_part": "P_49",
+   "ok": true,
+   "inside_mm": 1.5
+  },
+  {
+   "num": "51",
+   "name": "工件模拟滑块",
+   "side": "R",
+   "anchor_part": "P_51",
+   "ok": true,
+   "inside_mm": 6.82
+  },
+  {
+   "num": "52",
+   "name": "顶尖",
+   "side": "R",
+   "anchor_part": "P_52",
+   "ok": true,
+   "inside_mm": 2.57
+  },
+  {
+   "num": "56",
+   "name": "位移传感器（LVDT）",
+   "side": "R",
+   "anchor_part": "P_56",
+   "ok": true,
+   "inside_mm": 1.12
+  },
+  {
+   "num": "43",
+   "name": "模拟床身",
+   "side": "L",
+   "anchor_part": "P_43",
+   "ok": true,
+   "inside_mm": 4.11
+  }
+ ],
+ "n_items": 17,
+ "dropped_small": 0,
+ "n_lines": 189,
+ "n_hatch": 0,
+ "t_s": 2.5
+}

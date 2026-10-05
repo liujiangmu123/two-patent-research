@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="850" viewBox="0 0 1280 850" role="img" aria-labelledby="title desc">
+  <title id="title">图2：共享节点及有限厚度角钢实体参数关系</title>
+  <desc id="desc">相邻杆件引用共享连接节点，角钢截面有有限厚度、内外表面、厚度边面及端面。它是参数关系示意而非制造图。</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z"/></marker></defs>
+  <rect width="1280" height="850" fill="white"/>
+  <g font-family="Microsoft YaHei, SimHei, sans-serif" fill="black">
+    <text x="640" y="42" font-size="26" font-weight="bold" text-anchor="middle">图2  共享连接节点与有限厚度 L 截面生成</text>
+    <text x="640" y="72" font-size="16" text-anchor="middle">参数关系示意，非比例、非制造尺寸；图形厚度用于清楚展示实体</text>
+    <rect x="40" y="105" width="590" height="570" fill="none" stroke="black"/>
+    <rect x="670" y="105" width="570" height="570" fill="none" stroke="black"/>
+    <text x="65" y="143" font-size="21" font-weight="bold">(a) 同一连接节点引用</text>
+    <text x="695" y="143" font-size="21" font-weight="bold">(b) 局部截面实体及有限表面</text>
+    <g stroke="black" fill="none" stroke-width="2">
+      <path d="M243 421 L515 237 L527 256 L255 440 Z"/>
+      <path d="M244 442 L515 615 L527 596 L256 423 Z"/>
+      <path d="M250 431 L523 245" stroke-dasharray="7 6"/>
+      <path d="M250 431 L523 605" stroke-dasharray="7 6"/>
+      <circle cx="230" cy="431" r="9" fill="black"/>
+      <circle cx="523" cy="245" r="7" fill="black"/>
+      <circle cx="523" cy="605" r="7" fill="black"/>
+      <path d="M239 431 H260" marker-end="url(#a)"/>
+      <path d="M335 395 L405 346" marker-end="url(#a)"/>
+      <path d="M800 230 H1150 V300 H870 V580 H800 Z" fill="#eeeeee" stroke-width="3"/>
+      <path d="M800 190 H1150" marker-start="url(#a)" marker-end="url(#a)"/>
+      <path d="M765 230 V580" marker-start="url(#a)" marker-end="url(#a)"/>
+      <path d="M1190 230 V300" marker-start="url(#a)" marker-end="url(#a)"/>
+      <path d="M800 617 H870" marker-start="url(#a)" marker-end="url(#a)"/>
+      <path d="M980 343 L980 302" marker-end="url(#a)"/>
+      <path d="M1040 215 L1040 229" marker-end="url(#a)"/>
+      <path d="M900 512 L872 512" marker-end="url(#a)"/>
+      <path d="M927 578 L872 578" marker-end="url(#a)"/>
+    </g>
+    <g font-size="20">
+      <text x="145" y="420">共享 vᵢ</text>
+      <text x="537" y="250">vⱼ</text><text x="537" y="610">vₖ</text>
+      <text x="392" y="314">杆件 m₁</text><text x="390" y="564">杆件 m₂</text>
+      <text x="285" y="466">连接偏心 d</text><text x="351" y="370">轴向 e</text>
+      <text x="66" y="639">两杆端部通过偏心连接引用同一 vᵢ</text>
+      <text x="966" y="181">肢宽 b</text>
+      <text x="730" y="414">b</text><text x="1197" y="272">t</text>
+      <text x="823" y="646">肢厚 t</text>
+      <text x="924" y="370">内表面</text><text x="942" y="208">外表面</text>
+      <text x="914" y="516">内表面</text><text x="937" y="584">厚度边面</text>
+      <text x="699" y="662" font-size="16">截面沿杆轴扫掠；端面在轴向两端生成</text>
+    </g>
+    <rect x="40" y="710" width="1200" height="100" fill="none" stroke="black"/>
+    <text x="65" y="741" font-size="20">Ω(b,t) = ([0,b] × [0,t]) ∪ ([0,t] × [0,b])，0 &lt; t &lt; b</text>
+    <text x="65" y="772" font-size="18">节点 / b / t / 朝向 / 偏心 / 存在状态 → 实体表面 → 影像与激光观测</text>
+    <text x="65" y="797" font-size="16">采用高斯面元时，几何由上述参数唯一生成；不允许自由高斯变形吸收错误厚度</text>
+    <g fill="black" stroke="none">
+      <path d="M250 426 L250 436 L260 431 Z M395 349 L401 356 L405 346 Z"/>
+      <path d="M810 185 L810 195 L800 190 Z M1140 185 L1140 195 L1150 190 Z M760 240 L770 240 L765 230 Z M760 570 L770 570 L765 580 Z"/>
+      <path d="M1185 240 L1195 240 L1190 230 Z M1185 290 L1195 290 L1190 300 Z M810 612 L810 622 L800 617 Z M860 612 L860 622 L870 617 Z"/>
+      <path d="M975 312 L985 312 L980 302 Z M1035 219 L1045 219 L1040 229 Z M882 507 L882 517 L872 512 Z M882 573 L882 583 L872 578 Z"/>
+    </g>
+  </g>
+</svg>

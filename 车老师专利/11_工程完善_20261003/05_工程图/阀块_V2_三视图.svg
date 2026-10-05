@@ -1,0 +1,685 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<svg baseProfile="tiny" height="297mm" version="1.2" viewBox="0 0 4200 2970" width="420mm" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:freecad="https://www.freecad.org/wiki/index.php?title=Svg_Namespace" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>FreeCAD SVG Export</title>
+ <desc>Drawing page: Page exported from FreeCAD document: CheBlockDrawingV2</desc>
+ <defs/>
+ <g id="Page" inkscape:groupmode="layer" inkscape:label="TechDraw">
+  <g fill="none" fill-rule="evenodd" id="DrawingContent" stroke="black" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="1">
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-875,217 L875,217 L875,-217 L-875,-217 L-875,217" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M70,49 C70,99.2579 29.2579,140 -21,140 C-71.2579,140 -112,99.2579 -112,49 C-112,-1.25791 -71.2579,-42 -21,-42 C29.2579,-42 70,-1.25791 70,49 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M784,84 C784,134.258 743.258,175 693,175 C642.742,175 602,134.258 602,84 C602,33.7421 642.742,-7 693,-7 C743.258,-7 784,33.7421 784,84 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M444.5,119 C444.5,167.325 405.325,206.5 357,206.5 C308.675,206.5 269.5,167.325 269.5,119 C269.5,70.6751 308.675,31.5 357,31.5 C405.325,31.5 444.5,70.6751 444.5,119 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-126,119 C-126,149.928 -151.072,175 -182,175 C-212.928,175 -238,149.928 -238,119 C-238,88.0721 -212.928,63 -182,63 C-151.072,63 -126,88.0721 -126,119 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M749,84 C749,114.928 723.928,140 693,140 C662.072,140 637,114.928 637,84 C637,53.0721 662.072,28 693,28 C723.928,28 749,53.0721 749,84 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M35,49 C35,79.9279 9.92795,105 -21,105 C-51.9279,105 -77,79.9279 -77,49 C-77,18.0721 -51.9279,-7 -21,-7 C9.92795,-7 35,18.0721 35,49 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M403.049,119 C403.049,144.432 382.432,165.049 357,165.049 C331.568,165.049 310.95,144.432 310.95,119 C310.95,93.5676 331.568,72.9505 357,72.9505 C382.432,72.9505 403.049,93.5676 403.049,119 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-147,119 C-147,138.33 -162.67,154 -182,154 C-201.33,154 -217,138.33 -217,119 C-217,99.67 -201.33,84 -182,84 C-162.67,84 -147,99.67 -147,119 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-182.002,101.5 C-182.001,101.5 -182.001,101.5 -182,101.5 L-164.5,119 C-164.5,128.665 -172.335,136.5 -182,136.5 C-191.665,136.5 -199.5,128.665 -199.5,119 C-199.5,109.335 -191.665,101.5 -182,101.5 C-172.335,101.5 -164.5,109.335 -164.5,119 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-182.002,101.5 L-182,101.5 L-164.5,119 C-164.5,128.665 -172.335,136.5 -182,136.5 C-191.665,136.5 -199.5,128.665 -199.5,119 C-199.5,109.335 -191.665,101.5 -182,101.5 C-172.335,101.5 -164.5,109.335 -164.5,119 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M366.899,109.101 C372.367,114.568 372.367,123.432 366.899,128.899 C363.289,132.51 357.999,133.869 353.095,132.444 C348.191,131.02 344.452,127.039 343.338,122.056 C342.223,117.072 343.91,111.878 347.74,108.5 C350.297,106.245 353.59,105 357,105 C360.41,105 363.703,106.245 366.26,108.5 C366.479,108.693 366.693,108.894 366.899,109.101 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M693,70 C696.41,70 699.703,71.2445 702.26,73.5 C706.238,77.0082 707.892,82.4632 706.532,87.5899 C705.172,92.7165 701.032,96.6343 695.838,97.7094 C690.644,98.7845 685.288,96.8321 682.005,92.6666 C677.998,87.5835 677.998,80.4165 682.005,75.3334 C682.527,74.6713 683.108,74.0576 683.74,73.5 C686.297,71.2445 689.59,70 693,70 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-7,49 C-7,56.732 -13.268,63 -21,63 C-28.732,63 -35,56.732 -35,49 C-35,41.268 -28.732,35 -21,35 C-13.268,35 -7,41.268 -7,49 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M702.26,73.5 L683.74,73.5 C683.108,74.0576 682.527,74.6713 682.005,75.3334 L682.005,92.6666 C685.288,96.8321 690.644,98.7845 695.838,97.7094 C701.032,96.6343 705.172,92.7165 706.532,87.5899 C707.892,82.4632 706.238,77.0082 702.26,73.5 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M366.26,108.5 C366.479,108.693 366.693,108.894 366.899,109.101 L357,119 L366.899,128.899 C363.289,132.51 357.999,133.869 353.095,132.444 C348.191,131.02 344.452,127.039 343.338,122.056 C342.223,117.072 343.91,111.878 347.74,108.5 L366.26,108.5" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M366.899,109.101 C372.367,114.568 372.367,123.432 366.899,128.899 L357,119 L366.899,109.101" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M357,105 C360.41,105 363.703,106.245 366.26,108.5 L347.74,108.5 C350.297,106.245 353.59,105 357,105 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M693,70 C696.41,70 699.703,71.2445 702.26,73.5 L702.26,73.5 L683.74,73.5 C686.297,71.2445 689.59,70 693,70 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M682.005,92.6666 C677.998,87.5835 677.998,80.4165 682.005,75.3334 L682.005,92.6666" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-182.002,101.5 C-182.001,101.5 -182.001,101.5 -182,101.5 L-182.002,101.5" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-875,217 L-875,-217" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-875,217 L875,217" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M875,217 L875,-217" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-875,-217 L875,-217" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-126,119 C-126,149.928 -151.072,175 -182,175 C-212.928,175 -238,149.928 -238,119 C-238,88.0721 -212.928,63 -182,63 C-151.072,63 -126,88.0721 -126,119 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M70,49 C70,99.2579 29.2579,140 -21,140 C-71.2579,140 -112,99.2579 -112,49 C-112,-1.25791 -71.2579,-42 -21,-42 C29.2579,-42 70,-1.25791 70,49 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M444.5,119 C444.5,167.325 405.325,206.5 357,206.5 C308.675,206.5 269.5,167.325 269.5,119 C269.5,70.6751 308.675,31.5 357,31.5 C405.325,31.5 444.5,70.6751 444.5,119 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M784,84 C784,134.258 743.258,175 693,175 C642.742,175 602,134.258 602,84 C602,33.7421 642.742,-7 693,-7 C743.258,-7 784,33.7421 784,84 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-147,119 C-147,138.33 -162.67,154 -182,154 C-201.33,154 -217,138.33 -217,119 C-217,99.67 -201.33,84 -182,84 C-162.67,84 -147,99.67 -147,119 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M35,49 C35,79.9279 9.92795,105 -21,105 C-51.9279,105 -77,79.9279 -77,49 C-77,18.0721 -51.9279,-7 -21,-7 C9.92795,-7 35,18.0721 35,49 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M403.049,119 C403.049,144.432 382.432,165.049 357,165.049 C331.568,165.049 310.95,144.432 310.95,119 C310.95,93.5676 331.568,72.9505 357,72.9505 C382.432,72.9505 403.049,93.5676 403.049,119 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M749,84 C749,114.928 723.928,140 693,140 C662.072,140 637,114.928 637,84 C637,53.0721 662.072,28 693,28 C723.928,28 749,53.0721 749,84 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-164.5,119 C-164.5,128.665 -172.335,136.5 -182,136.5 C-191.665,136.5 -199.5,128.665 -199.5,119 C-199.5,109.335 -191.665,101.5 -182,101.5 C-172.335,101.5 -164.5,109.335 -164.5,119 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-7,49 C-7,56.732 -13.268,63 -21,63 C-28.732,63 -35,56.732 -35,49 C-35,41.268 -28.732,35 -21,35 C-13.268,35 -7,41.268 -7,49 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M371,119 C371,126.732 364.732,133 357,133 C349.268,133 343,126.732 343,119 C343,111.268 349.268,105 357,105 C364.732,105 371,111.268 371,119 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M707,84 C707,91.732 700.732,98 693,98 C685.268,98 679,91.732 679,84 C679,76.268 685.268,70 693,70 C700.732,70 707,76.268 707,84 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-182.002,101.5 L-182,101.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M702.26,73.5 L683.74,73.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M682.005,92.6666 L682.005,75.3334" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M357,119 L366.899,109.101" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M366.899,128.899 L357,119" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M366.26,108.5 L347.74,108.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1048.07,2213.44)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="67" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="92.2344">250</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-875,458.938 L875,458.938 M875,217 L875,486.938 M-875,217 L-875,486.938" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="#212529" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1975,2328.94)">
+    <path d="M0,0 L-35,-5.83333 L-35,5.83333 L0,0" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="#212529" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,225,2328.94)">
+    <path d="M0,0 L35,5.83333 L35,-5.83333 L0,0" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(0,-1,1,0,73.4375,1906.18)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="67" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="92.2344">62</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,1870)">
+    <path d="M-911.063,217 L-911.063,-217 M875,-217 L-939.063,-217 M875,217 L-939.063,217" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="#212529" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,188.938,1653)">
+    <path d="M0,0 L-5.83333,35 L5.83333,35 L0,0" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="#212529" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,188.938,2087)">
+    <path d="M0,0 L5.83333,-35 L-5.83333,-35 L0,0" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-875,315 L875,315 L875,-315 L-875,-315 L-875,315" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-756,140 C-756,126.301 -761.735,113.227 -771.813,103.949 C-734.045,127.498 -686.476,128.709 -647.558,107.112 C-608.641,85.5147 -584.5,44.5083 -584.5,4.08007e-14 C-584.5,-44.5083 -608.641,-85.5147 -647.558,-107.112 C-686.476,-128.709 -734.045,-127.498 -771.813,-103.949 C-761.735,-113.227 -756,-126.301 -756,-140 C-756,-161.967 -770.62,-181.25 -791.772,-187.181 C-812.924,-193.111 -835.438,-184.239 -846.858,-165.474 C-858.278,-146.708 -855.814,-122.635 -840.828,-106.573 C-825.842,-90.5108 -801.998,-86.3851 -782.486,-96.4784 C-812.161,-73.2605 -829.5,-37.6783 -829.5,1.31152e-12 C-829.5,37.6783 -812.161,73.2605 -782.486,96.4784 C-801.998,86.3851 -825.842,90.5108 -840.828,106.573 C-855.814,122.635 -858.278,146.708 -846.858,165.474 C-835.438,184.239 -812.924,193.111 -791.772,187.181 C-770.62,181.25 -756,161.967 -756,140 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M112,0 C112,73.4539 52.4539,133 -21,133 C-94.4539,133 -154,73.4539 -154,0 C-154,-73.4539 -94.4539,-133 -21,-133 C52.4539,-133 112,-73.4539 112,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-234.5,0 C-234.5,67.6549 -289.345,122.5 -357,122.5 C-424.655,122.5 -479.5,67.6549 -479.5,0 C-479.5,-67.6549 -424.655,-122.5 -357,-122.5 C-289.345,-122.5 -234.5,-67.6549 -234.5,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M829.5,0 C829.5,67.6549 774.655,122.5 707,122.5 C639.345,122.5 584.5,67.6549 584.5,0 C584.5,-67.6549 639.345,-122.5 707,-122.5 C774.655,-122.5 829.5,-67.6549 829.5,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M479.5,0 C479.5,67.6549 424.655,122.5 357,122.5 C289.345,122.5 234.5,67.6549 234.5,0 C234.5,-67.6549 289.345,-122.5 357,-122.5 C424.655,-122.5 479.5,-67.6549 479.5,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-771.813,103.949 C-734.045,127.498 -686.476,128.709 -647.558,107.112 C-608.641,85.5147 -584.5,44.5083 -584.5,4.08007e-14 C-584.5,-44.5083 -608.641,-85.5147 -647.558,-107.112 C-686.476,-128.709 -734.045,-127.498 -771.813,-103.949 C-775.023,-100.995 -778.612,-98.4826 -782.486,-96.4784 C-812.161,-73.2605 -829.5,-37.6783 -829.5,1.31152e-12 C-829.5,37.6783 -812.161,73.2605 -782.486,96.4784 C-778.612,98.4826 -775.023,100.995 -771.813,103.949 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-624.878,0 C-624.878,45.3548 -661.645,82.1221 -707,82.1221 C-752.355,82.1221 -789.122,45.3548 -789.122,0 C-789.122,-45.3548 -752.355,-82.1221 -707,-82.1221 C-661.645,-82.1221 -624.878,-45.3548 -624.878,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M789.122,0 C789.122,45.3548 752.355,82.1221 707,82.1221 C661.645,82.1221 624.878,45.3548 624.878,0 C624.878,-45.3548 661.645,-82.1221 707,-82.1221 C752.355,-82.1221 789.122,-45.3548 789.122,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-274.878,0 C-274.878,45.3548 -311.645,82.1221 -357,82.1221 C-402.355,82.1221 -439.122,45.3548 -439.122,0 C-439.122,-45.3548 -402.355,-82.1221 -357,-82.1221 C-311.645,-82.1221 -274.878,-45.3548 -274.878,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M439.122,0 C439.122,45.3548 402.355,82.1221 357,82.1221 C311.645,82.1221 274.878,45.3548 274.878,0 C274.878,-45.3548 311.645,-82.1221 357,-82.1221 C402.355,-82.1221 439.122,-45.3548 439.122,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M778.75,0 C778.75,39.6264 746.626,71.75 707,71.75 C667.374,71.75 635.25,39.6264 635.25,0 C635.25,-39.6264 667.374,-71.75 707,-71.75 C746.626,-71.75 778.75,-39.6264 778.75,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-635.25,0 C-635.25,39.6264 -667.374,71.75 -707,71.75 C-746.626,71.75 -778.75,39.6264 -778.75,0 C-778.75,-39.6264 -746.626,-71.75 -707,-71.75 C-667.374,-71.75 -635.25,-39.6264 -635.25,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-285.25,0 C-285.25,39.6264 -317.374,71.75 -357,71.75 C-396.626,71.75 -428.75,39.6264 -428.75,0 C-428.75,-39.6264 -396.626,-71.75 -357,-71.75 C-317.374,-71.75 -285.25,-39.6264 -285.25,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M428.75,0 C428.75,39.6264 396.626,71.75 357,71.75 C317.374,71.75 285.25,39.6264 285.25,0 C285.25,-39.6264 317.374,-71.75 357,-71.75 C396.626,-71.75 428.75,-39.6264 428.75,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M49,0 C49,38.6599 17.6599,70 -21,70 C-59.6599,70 -91,38.6599 -91,0 C-91,-38.6599 -59.6599,-70 -21,-70 C17.6599,-70 49,-38.6599 49,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M588,-175 C588,-136.34 556.66,-105 518,-105 C479.34,-105 448,-136.34 448,-175 C448,-213.66 479.34,-245 518,-245 C556.66,-245 588,-213.66 588,-175 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M702.26,64.9272 C720.301,66.2443 738.077,59.9955 751.325,47.679 C764.574,35.3625 772.1,18.0891 772.1,2.16827e-14 C772.1,-32.8951 747.56,-60.6213 714.909,-64.6178 C682.258,-68.6142 651.755,-47.6249 643.822,-15.7009 C635.888,16.2231 653.016,49.0494 683.74,60.8028 C689.679,63.0747 695.918,64.4643 702.26,64.9272 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-641.9,0 C-641.9,35.9537 -671.046,65.1 -707,65.1 C-742.954,65.1 -772.1,35.9537 -772.1,0 C-772.1,-35.9537 -742.954,-65.1 -707,-65.1 C-671.046,-65.1 -641.9,-35.9537 -641.9,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-291.9,0 C-291.9,35.9537 -321.046,65.1 -357,65.1 C-392.954,65.1 -422.1,35.9537 -422.1,0 C-422.1,-35.9537 -392.954,-65.1 -357,-65.1 C-321.046,-65.1 -291.9,-35.9537 -291.9,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M422.1,0 C422.1,35.9537 392.954,65.1 357,65.1 C321.046,65.1 291.9,35.9537 291.9,0 C291.9,-35.9537 321.046,-65.1 357,-65.1 C392.954,-65.1 422.1,-35.9537 422.1,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M43.4,0 C43.4,35.5671 14.5671,64.4 -21,64.4 C-56.5671,64.4 -85.4,35.5671 -85.4,0 C-85.4,-35.5671 -56.5671,-64.4 -21,-64.4 C14.5671,-64.4 43.4,-35.5671 43.4,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-771.813,-103.949 C-761.735,-113.227 -756,-126.301 -756,-140 C-756,-161.967 -770.62,-181.25 -791.772,-187.181 C-812.924,-193.111 -835.438,-184.239 -846.858,-165.474 C-858.278,-146.708 -855.814,-122.635 -840.828,-106.573 C-825.842,-90.5108 -801.998,-86.3851 -782.486,-96.4784 C-778.612,-98.4826 -775.023,-100.995 -771.813,-103.949 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-756,140 C-756,126.301 -761.735,113.227 -771.813,103.949 C-775.023,100.995 -778.612,98.4826 -782.486,96.4784 C-801.998,86.3851 -825.842,90.5108 -840.828,106.573 C-855.814,122.635 -858.278,146.708 -846.858,165.474 C-835.438,184.239 -812.924,193.111 -791.772,187.181 C-770.62,181.25 -756,161.967 -756,140 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M868,-140 C868,-112.938 846.062,-91 819,-91 C791.938,-91 770,-112.938 770,-140 C770,-167.062 791.938,-189 819,-189 C846.062,-189 868,-167.062 868,-140 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M868,140 C868,167.062 846.062,189 819,189 C791.938,189 770,167.062 770,140 C770,112.938 791.938,91 819,91 C846.062,91 868,112.938 868,140 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M702.26,64.9272 L702.26,34.6776 L702.26,34.6776 C702.328,34.6868 702.395,34.6959 702.463,34.7047 L702.463,34.7047 C704.655,34.9841 706.013,34.9848 706.623,34.998 L706.623,34.998 C706.748,34.9993 706.874,35 707,35 C707,35.0005 706.875,34.9999 706.623,34.998 C706.875,34.9999 707,35.0005 707,35 C726.33,35 742,19.33 742,7.77156e-15 C742,-16.0952 731.023,-30.1156 715.398,-33.9775 C699.773,-37.8395 683.528,-30.5473 676.03,-16.3054 C668.532,-2.06351 671.713,15.4563 683.74,26.1528 L683.74,26.1528 C688.931,30.7693 695.378,33.7368 702.26,34.6776 C702.328,34.6868 702.395,34.6959 702.463,34.7047 C704.655,34.9841 706.013,34.9848 706.623,34.998 L706.623,34.998 C706.748,34.9993 706.874,35 707,35 C726.33,35 742,19.33 742,7.77156e-15 C742,-16.0952 731.023,-30.1156 715.398,-33.9775 C699.773,-37.8395 683.528,-30.5473 676.03,-16.3054 C668.532,-2.06351 671.713,15.4563 683.74,26.1528 L683.74,26.1528 L683.74,60.8028 C653.016,49.0494 635.888,16.2231 643.822,-15.7009 C651.755,-47.6249 682.258,-68.6142 714.909,-64.6178 C747.56,-60.6213 772.1,-32.8951 772.1,-4.84689e-14 L772.1,1.59449e-14 C772.1,18.0891 764.574,35.3625 751.325,47.679 C738.077,59.9955 720.301,66.2443 702.26,64.9272 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-672,0 C-672,19.33 -687.67,35 -707,35 C-726.33,35 -742,19.33 -742,0 C-742,-19.33 -726.33,-35 -707,-35 C-687.67,-35 -672,-19.33 -672,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M552.048,-175 C552.048,-156.196 536.804,-140.952 518,-140.952 C499.196,-140.952 483.952,-156.196 483.952,-175 C483.952,-193.804 499.196,-209.048 518,-209.048 C536.804,-209.048 552.048,-193.804 552.048,-175 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M850.5,-140 C850.5,-122.603 836.397,-108.5 819,-108.5 C801.603,-108.5 787.5,-122.603 787.5,-140 C787.5,-157.397 801.603,-171.5 819,-171.5 C836.397,-171.5 850.5,-157.397 850.5,-140 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-773.5,-140 C-773.5,-122.603 -787.603,-108.5 -805,-108.5 C-822.397,-108.5 -836.5,-122.603 -836.5,-140 C-836.5,-157.397 -822.397,-171.5 -805,-171.5 C-787.603,-171.5 -773.5,-157.397 -773.5,-140 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M850.5,140 C850.5,157.397 836.397,171.5 819,171.5 C801.603,171.5 787.5,157.397 787.5,140 C787.5,122.603 801.603,108.5 819,108.5 C836.397,108.5 850.5,122.603 850.5,140 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-773.5,140 C-773.5,157.397 -787.603,171.5 -805,171.5 C-822.397,171.5 -836.5,157.397 -836.5,140 C-836.5,122.603 -822.397,108.5 -805,108.5 C-787.603,108.5 -773.5,122.603 -773.5,140 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M378.29,18.1865 C382.621,13.1167 385,6.66779 385,6.21725e-15 C385,-6.66779 382.621,-13.1167 378.29,-18.1865 C370.637,-27.1449 358.195,-30.3544 347.164,-26.2155 C336.133,-22.0766 328.873,-11.475 329.002,0.306325 C329.131,12.0877 336.621,22.5279 347.74,26.4244 C353.735,28.5252 360.265,28.5252 366.26,26.4244 C370.927,24.7889 375.078,21.9466 378.29,18.1865 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M366.26,18.8481 C366.681,18.6415 367.094,18.4208 367.5,18.1865 C373.997,14.4352 378,7.50258 378,1.16573e-15 C378,-7.50258 373.997,-14.4352 367.5,-18.1865 C360.857,-22.0216 352.652,-21.9301 346.097,-17.9478 C339.541,-13.9654 335.679,-6.72584 336.021,0.936743 C336.363,8.59933 340.856,15.4658 347.74,18.8481 L347.74,18.8481 C353.58,21.7173 360.42,21.7173 366.26,18.8481 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-336,0 C-336,11.598 -345.402,21 -357,21 C-368.598,21 -378,11.598 -378,0 C-378,-11.598 -368.598,-21 -357,-21 C-345.402,-21 -336,-11.598 -336,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-9.23706e-14,0 C-9.23706e-14,11.598 -9.40202,21 -21,21 C-32.598,21 -42,11.598 -42,0 C-42,-11.598 -32.598,-21 -21,-21 C-9.40202,-21 -9.23706e-14,-11.598 -9.23706e-14,0 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M534.039,-168 C535.003,-170.208 535.5,-172.591 535.5,-175 C535.5,-182.118 531.189,-188.527 524.595,-191.21 C518.002,-193.892 510.441,-192.314 505.471,-187.218 C500.502,-182.122 499.114,-174.524 501.961,-168 C504.744,-161.623 511.042,-157.5 518,-157.5 C524.958,-157.5 531.256,-161.623 534.039,-168 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M534.039,-168 C535.003,-170.208 535.5,-172.591 535.5,-175 C535.5,-182.118 531.189,-188.527 524.595,-191.21 C518.002,-193.892 510.441,-192.314 505.471,-187.218 C500.502,-182.122 499.114,-174.524 501.961,-168 L534.039,-168" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M367.5,-18.1865 L378.29,-18.1865 C370.637,-27.1449 358.195,-30.3544 347.164,-26.2155 C336.133,-22.0766 328.873,-11.475 329.002,0.306325 C329.131,12.0877 336.621,22.5279 347.74,26.4244 L347.74,18.8481 C340.856,15.4658 336.363,8.59933 336.021,0.936743 C335.679,-6.72584 339.541,-13.9654 346.097,-17.9478 C352.652,-21.9301 360.857,-22.0216 367.5,-18.1865 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M683.74,60.8028 C689.679,63.0747 695.918,64.4643 702.26,64.9272 L702.26,34.6776 L702.26,34.6776 C695.378,33.7368 688.931,30.7693 683.74,26.1528 L683.74,26.1528 L683.74,60.8028" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M367.5,18.1865 L378.29,18.1865 C382.621,13.1167 385,6.66779 385,6.21725e-15 C385,-6.66779 382.621,-13.1167 378.29,-18.1865 L367.5,-18.1865 C373.997,-14.4352 378,-7.50258 378,-1.16573e-15 L378,3.33067e-15 C378,7.50258 373.997,14.4352 367.5,18.1865 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M534.039,-168 L501.961,-168 C504.744,-161.623 511.042,-157.5 518,-157.5 C524.958,-157.5 531.256,-161.623 534.039,-168 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M347.74,26.4244 C353.735,28.5252 360.265,28.5252 366.26,26.4244 L366.26,18.8481 L366.26,18.8481 C360.42,21.7173 353.58,21.7173 347.74,18.8481 L347.74,18.8481 L347.74,26.4244" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M366.26,26.4244 L366.26,18.8481 C366.681,18.6415 367.094,18.4208 367.5,18.1865 L378.29,18.1865 C375.078,21.9466 370.927,24.7889 366.26,26.4244 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M702.463,34.7047 C702.395,34.6959 702.328,34.6868 702.26,34.6776 L702.26,34.6776 C702.328,34.6868 702.395,34.6959 702.463,34.7047 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M773.5,-8.1439e-15 C773.5,36.7269 743.727,66.5 707,66.5 C670.273,66.5 640.5,36.7269 640.5,1.22159e-14 L640.5,1.62878e-14 C640.5,36.7269 670.273,66.5 707,66.5 C743.727,66.5 773.5,36.7269 773.5,4.07195e-15 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M423.5,-8.1439e-15 C423.5,36.7269 393.727,66.5 357,66.5 C320.273,66.5 290.5,36.7269 290.5,1.22159e-14 L290.5,1.62878e-14 C290.5,36.7269 320.273,66.5 357,66.5 C393.727,66.5 423.5,36.7269 423.5,4.07195e-15 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M33.25,-6.64371e-15 C33.25,29.9614 8.96145,54.25 -21,54.25 C-50.9614,54.25 -75.25,29.9614 -75.25,9.96556e-15 L-75.25,1.32874e-14 C-75.25,29.9614 -50.9614,54.25 -21,54.25 C8.96145,54.25 33.25,29.9614 33.25,3.32185e-15 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-290.5,-8.1439e-15 C-290.5,36.7269 -320.273,66.5 -357,66.5 C-393.727,66.5 -423.5,36.7269 -423.5,1.22159e-14 L-423.5,1.62878e-14 C-423.5,36.7269 -393.727,66.5 -357,66.5 C-320.273,66.5 -290.5,36.7269 -290.5,4.07195e-15 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-640.5,-8.1439e-15 C-640.5,36.7269 -670.273,66.5 -707,66.5 C-743.727,66.5 -773.5,36.7269 -773.5,1.22159e-14 L-773.5,1.62878e-14 C-773.5,36.7269 -743.727,66.5 -707,66.5 C-670.273,66.5 -640.5,36.7269 -640.5,4.07195e-15 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-875,315 L-875,-315" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-875,315 L875,315" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-875,-315 L875,-315" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M875,315 L875,-315" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-584.5,0 C-584.5,-44.5083 -608.641,-85.5147 -647.558,-107.112 C-686.476,-128.709 -734.045,-127.498 -771.813,-103.949 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-771.813,-103.949 C-761.735,-113.227 -756,-126.301 -756,-140 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-756,-140 C-756,-161.967 -770.62,-181.25 -791.772,-187.181 C-812.924,-193.111 -835.438,-184.239 -846.858,-165.474 C-858.278,-146.708 -855.814,-122.635 -840.828,-106.573 C-825.842,-90.5108 -801.998,-86.3851 -782.486,-96.4784 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-782.486,-96.4784 C-812.161,-73.2605 -829.5,-37.6783 -829.5,1.31152e-12 C-829.5,37.6783 -812.161,73.2605 -782.486,96.4784 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-782.486,96.4784 C-801.998,86.3851 -825.842,90.5108 -840.828,106.573 C-855.814,122.635 -858.278,146.708 -846.858,165.474 C-835.438,184.239 -812.924,193.111 -791.772,187.181 C-770.62,181.25 -756,161.967 -756,140 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-756,140 C-756,126.301 -761.735,113.227 -771.813,103.949 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-771.813,103.949 C-734.045,127.498 -686.476,128.709 -647.558,107.112 C-608.641,85.5147 -584.5,44.5083 -584.5,4.08007e-14 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-234.5,0 C-234.5,67.6549 -289.345,122.5 -357,122.5 C-424.655,122.5 -479.5,67.6549 -479.5,0 C-479.5,-67.6549 -424.655,-122.5 -357,-122.5 C-289.345,-122.5 -234.5,-67.6549 -234.5,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M112,0 C112,73.4539 52.4539,133 -21,133 C-94.4539,133 -154,73.4539 -154,0 C-154,-73.4539 -94.4539,-133 -21,-133 C52.4539,-133 112,-73.4539 112,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M868,140 C868,167.062 846.062,189 819,189 C791.938,189 770,167.062 770,140 C770,112.938 791.938,91 819,91 C846.062,91 868,112.938 868,140 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M479.5,0 C479.5,67.6549 424.655,122.5 357,122.5 C289.345,122.5 234.5,67.6549 234.5,0 C234.5,-67.6549 289.345,-122.5 357,-122.5 C424.655,-122.5 479.5,-67.6549 479.5,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M829.5,0 C829.5,67.6549 774.655,122.5 707,122.5 C639.345,122.5 584.5,67.6549 584.5,0 C584.5,-67.6549 639.345,-122.5 707,-122.5 C774.655,-122.5 829.5,-67.6549 829.5,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M588,-175 C588,-136.34 556.66,-105 518,-105 C479.34,-105 448,-136.34 448,-175 C448,-213.66 479.34,-245 518,-245 C556.66,-245 588,-213.66 588,-175 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M868,-140 C868,-112.938 846.062,-91 819,-91 C791.938,-91 770,-112.938 770,-140 C770,-167.062 791.938,-189 819,-189 C846.062,-189 868,-167.062 868,-140 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-782.486,-96.4784 C-778.612,-98.4826 -775.023,-100.995 -771.813,-103.949 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-771.813,103.949 C-775.023,100.995 -778.612,98.4826 -782.486,96.4784 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-773.5,140 C-773.5,157.397 -787.603,171.5 -805,171.5 C-822.397,171.5 -836.5,157.397 -836.5,140 C-836.5,122.603 -822.397,108.5 -805,108.5 C-787.603,108.5 -773.5,122.603 -773.5,140 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M850.5,140 C850.5,157.397 836.397,171.5 819,171.5 C801.603,171.5 787.5,157.397 787.5,140 C787.5,122.603 801.603,108.5 819,108.5 C836.397,108.5 850.5,122.603 850.5,140 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-773.5,-140 C-773.5,-122.603 -787.603,-108.5 -805,-108.5 C-822.397,-108.5 -836.5,-122.603 -836.5,-140 C-836.5,-157.397 -822.397,-171.5 -805,-171.5 C-787.603,-171.5 -773.5,-157.397 -773.5,-140 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M850.5,-140 C850.5,-122.603 836.397,-108.5 819,-108.5 C801.603,-108.5 787.5,-122.603 787.5,-140 C787.5,-157.397 801.603,-171.5 819,-171.5 C836.397,-171.5 850.5,-157.397 850.5,-140 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-624.878,0 C-624.878,45.3548 -661.645,82.1221 -707,82.1221 C-752.355,82.1221 -789.122,45.3548 -789.122,0 C-789.122,-45.3548 -752.355,-82.1221 -707,-82.1221 C-661.645,-82.1221 -624.878,-45.3548 -624.878,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-274.878,0 C-274.878,45.3548 -311.645,82.1221 -357,82.1221 C-402.355,82.1221 -439.122,45.3548 -439.122,0 C-439.122,-45.3548 -402.355,-82.1221 -357,-82.1221 C-311.645,-82.1221 -274.878,-45.3548 -274.878,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M49,0 C49,38.6599 17.6599,70 -21,70 C-59.6599,70 -91,38.6599 -91,0 C-91,-38.6599 -59.6599,-70 -21,-70 C17.6599,-70 49,-38.6599 49,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M439.122,0 C439.122,45.3548 402.355,82.1221 357,82.1221 C311.645,82.1221 274.878,45.3548 274.878,0 C274.878,-45.3548 311.645,-82.1221 357,-82.1221 C402.355,-82.1221 439.122,-45.3548 439.122,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M789.122,0 C789.122,45.3548 752.355,82.1221 707,82.1221 C661.645,82.1221 624.878,45.3548 624.878,0 C624.878,-45.3548 661.645,-82.1221 707,-82.1221 C752.355,-82.1221 789.122,-45.3548 789.122,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M552.048,-175 C552.048,-156.196 536.804,-140.952 518,-140.952 C499.196,-140.952 483.952,-156.196 483.952,-175 C483.952,-193.804 499.196,-209.048 518,-209.048 C536.804,-209.048 552.048,-193.804 552.048,-175 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-635.25,0 C-635.25,39.6264 -667.374,71.75 -707,71.75 C-746.626,71.75 -778.75,39.6264 -778.75,0 C-778.75,-39.6264 -746.626,-71.75 -707,-71.75 C-667.374,-71.75 -635.25,-39.6264 -635.25,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-285.25,0 C-285.25,39.6264 -317.374,71.75 -357,71.75 C-396.626,71.75 -428.75,39.6264 -428.75,0 C-428.75,-39.6264 -396.626,-71.75 -357,-71.75 C-317.374,-71.75 -285.25,-39.6264 -285.25,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M428.75,0 C428.75,39.6264 396.626,71.75 357,71.75 C317.374,71.75 285.25,39.6264 285.25,0 C285.25,-39.6264 317.374,-71.75 357,-71.75 C396.626,-71.75 428.75,-39.6264 428.75,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M778.75,0 C778.75,39.6264 746.626,71.75 707,71.75 C667.374,71.75 635.25,39.6264 635.25,0 C635.25,-39.6264 667.374,-71.75 707,-71.75 C746.626,-71.75 778.75,-39.6264 778.75,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M43.4,0 C43.4,35.5671 14.5671,64.4 -21,64.4 C-56.5671,64.4 -85.4,35.5671 -85.4,0 C-85.4,-35.5671 -56.5671,-64.4 -21,-64.4 C14.5671,-64.4 43.4,-35.5671 43.4,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M535.5,-175 C535.5,-165.335 527.665,-157.5 518,-157.5 C508.335,-157.5 500.5,-165.335 500.5,-175 C500.5,-184.665 508.335,-192.5 518,-192.5 C527.665,-192.5 535.5,-184.665 535.5,-175 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M366.26,26.4244 L366.26,18.8481" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M366.26,18.8481 C360.42,21.7173 353.58,21.7173 347.74,18.8481 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M347.74,26.4244 L347.74,18.8481" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M702.26,64.9272 L702.26,34.6776" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M683.74,60.8028 L683.74,26.1528" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-672,0 C-672,19.33 -687.67,35 -707,35 C-726.33,35 -742,19.33 -742,0 C-742,-19.33 -726.33,-35 -707,-35 C-687.67,-35 -672,-19.33 -672,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M742,0 C742,-16.0952 731.023,-30.1156 715.398,-33.9775 C699.773,-37.8395 683.528,-30.5473 676.03,-16.3054 C668.532,-2.06351 671.713,15.4563 683.74,26.1528 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M702.26,34.6776 C712.276,36.0466 722.395,33.018 730.012,26.3713 C737.629,19.7247 742,10.1092 742,7.77156e-15 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M534.039,-168 L501.961,-168" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-9.23706e-14,0 C-9.23706e-14,11.598 -9.40202,21 -21,21 C-32.598,21 -42,11.598 -42,0 C-42,-11.598 -32.598,-21 -21,-21 C-9.40202,-21 -9.23706e-14,-11.598 -9.23706e-14,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M385,0 C385,15.464 372.464,28 357,28 C341.536,28 329,15.464 329,0 C329,-15.464 341.536,-28 357,-28 C372.464,-28 385,-15.464 385,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M366.26,18.8481 C366.681,18.6415 367.094,18.4208 367.5,18.1865 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M367.5,18.1865 L378.29,18.1865" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M367.5,-18.1865 L378.29,-18.1865" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M378,0 C378,-7.50258 373.997,-14.4352 367.5,-18.1865 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M367.5,18.1865 C373.997,14.4352 378,7.50258 378,1.16573e-15 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M378,0 C378,-7.50258 373.997,-14.4352 367.5,-18.1865 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M367.5,-18.1865 C360.857,-22.0216 352.652,-21.9301 346.097,-17.9478 C339.541,-13.9654 335.679,-6.72584 336.021,0.936743 C336.363,8.59933 340.856,15.4658 347.74,18.8481 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M772.1,0 C772.1,35.9537 742.954,65.1 707,65.1 C671.046,65.1 641.9,35.9537 641.9,0 C641.9,-35.9537 671.046,-65.1 707,-65.1 C742.954,-65.1 772.1,-35.9537 772.1,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-75.25,0 C-75.25,-29.9614 -50.9614,-54.25 -21,-54.25 C8.96145,-54.25 33.25,-29.9614 33.25,-1.66093e-14 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M33.25,-6.64371e-15 C33.25,29.9614 8.96145,54.25 -21,54.25 C-50.9614,54.25 -75.25,29.9614 -75.25,9.96556e-15 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-336,0 C-336,11.598 -345.402,21 -357,21 C-368.598,21 -378,11.598 -378,0 C-378,-11.598 -368.598,-21 -357,-21 C-345.402,-21 -336,-11.598 -336,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-641.9,0 C-641.9,35.9537 -671.046,65.1 -707,65.1 C-742.954,65.1 -772.1,35.9537 -772.1,0 C-772.1,-35.9537 -742.954,-65.1 -707,-65.1 C-671.046,-65.1 -641.9,-35.9537 -641.9,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-773.5,0 C-773.5,-36.7269 -743.727,-66.5 -707,-66.5 C-670.273,-66.5 -640.5,-36.7269 -640.5,-2.03598e-14 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-640.5,-8.1439e-15 C-640.5,36.7269 -670.273,66.5 -707,66.5 C-743.727,66.5 -773.5,36.7269 -773.5,1.22159e-14 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-423.5,0 C-423.5,-36.7269 -393.727,-66.5 -357,-66.5 C-320.273,-66.5 -290.5,-36.7269 -290.5,-4.07195e-15 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-290.5,-8.1439e-15 C-290.5,36.7269 -320.273,66.5 -357,66.5 C-393.727,66.5 -423.5,36.7269 -423.5,1.22159e-14 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M290.5,0 C290.5,-36.7269 320.273,-66.5 357,-66.5 C393.727,-66.5 423.5,-36.7269 423.5,-2.03598e-14 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M423.5,-8.1439e-15 C423.5,36.7269 393.727,66.5 357,66.5 C320.273,66.5 290.5,36.7269 290.5,1.22159e-14 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M640.5,0 C640.5,-36.7269 670.273,-66.5 707,-66.5 C743.727,-66.5 773.5,-36.7269 773.5,-2.03598e-14 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M773.5,-8.1439e-15 C773.5,36.7269 743.727,66.5 707,66.5 C670.273,66.5 640.5,36.7269 640.5,1.22159e-14 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M422.1,0 C422.1,35.9537 392.954,65.1 357,65.1 C321.046,65.1 291.9,35.9537 291.9,0 C291.9,-35.9537 321.046,-65.1 357,-65.1 C392.954,-65.1 422.1,-35.9537 422.1,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-291.9,0 C-291.9,35.9537 -321.046,65.1 -357,65.1 C-392.954,65.1 -422.1,35.9537 -422.1,0 C-422.1,-35.9537 -392.954,-65.1 -357,-65.1 C-321.046,-65.1 -291.9,-35.9537 -291.9,0 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M702.463,34.7047 C704.655,34.9841 706.013,34.9848 706.623,34.998 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M706.623,34.998 C706.875,34.9999 707,35.0005 707,35 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M702.463,34.7047 C695.506,33.7952 688.983,30.8157 683.74,26.1528 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(0,-1,1,0,73.4375,1056.51)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="67" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="92.2344">90</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,1100,1020)">
+    <path d="M-911.063,315 L-911.063,-315 M875,-315 L-939.063,-315 M875,315 L-939.063,315" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="#212529" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,188.937,705)">
+    <path d="M0,0 L-5.83333,35 L5.83333,35 L0,0" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="#212529" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="3.5" transform="matrix(1,0,0,1,188.937,1335)">
+    <path d="M0,0 L5.83333,-35 L-5.83333,-35 L0,0" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-315,217 L315,217 L315,-217 L-315,-217 L-315,217" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M77,119 C77,161.526 42.5259,196 0,196 C-42.5259,196 -77,161.526 -77,119 C-77,76.4741 -42.5259,42 0,42 C42.5259,42 77,76.4741 77,119 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M49,119 C49,146.062 27.062,168 0,168 C-27.062,168 -49,146.062 -49,119 C-49,91.938 -27.062,70 0,70 C27.062,70 49,91.938 49,119 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M28,140 C37.3333,127.556 37.3333,110.444 28,98 C21.3901,89.1868 11.0165,84 1.18576e-14,84 C-11.0165,84 -21.3901,89.1868 -28,98 C-37.3333,110.444 -37.3333,127.556 -28,140 C-21.3901,148.813 -11.0165,154 4.08602e-15,154 C11.0165,154 21.3901,148.813 28,140 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-28,140 C-21.3901,148.813 -11.0165,154 4.08602e-15,154 C11.0165,154 21.3901,148.813 28,140 L28,98 C21.3901,89.1868 11.0165,84 1.18576e-14,84 C-11.0165,84 -21.3901,89.1868 -28,98 L-28,140" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-28,140 L-28,98 C-37.3333,110.444 -37.3333,127.556 -28,140 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M28,140 L28,98 C37.3333,110.444 37.3333,127.556 28,140 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M21,119 C21,115.314 20.0297,111.692 18.1865,108.5 L18.1865,108.5 L-18.1865,108.5 L18.1865,108.5 L18.1865,108.5 C20.0297,111.692 21,115.314 21,119 C21,119.023 21,119.047 20.9999,119.07 C20.9613,130.641 11.5707,140 1.20145e-16,140 L0,140 C11.5707,140 20.9613,130.641 20.9999,119.07 L20.9999,119.07 C20.9613,130.641 11.5707,140 1.20145e-16,140 L-1.11478e-15,140 C-7.74858,140 -14.8675,135.733 -18.5203,128.899 C-19.846,126.419 -20.6601,123.698 -20.9141,120.897 C-20.9265,120.761 -20.9375,120.624 -20.9472,120.488 C-20.9627,120.27 -20.9748,120.051 -20.9835,119.833 C-20.9885,119.707 -20.9923,119.581 -20.9951,119.455 C-20.9984,119.303 -21,119.152 -21,119 C-21,115.546 -20.1483,112.146 -18.5203,109.101 C-18.4123,108.899 -18.301,108.698 -18.1865,108.5 C-14.4352,102.003 -7.50258,98 1.20145e-16,98 L-1.97215e-30,98 C-7.50258,98 -14.4352,102.003 -18.1865,108.5 L-18.1865,108.5 C-14.4352,102.003 -7.50258,98 1.20145e-16,98 L-1.59536e-15,98 C7.50258,98 14.4352,102.003 18.1865,108.5 L18.1865,108.5 C14.4352,102.003 7.50258,98 1.20145e-16,98 L-1.97215e-30,98 C-7.50258,98 -14.4352,102.003 -18.1865,108.5 C-18.301,108.698 -18.4123,108.899 -18.5203,109.101 C-14.6965,115.146 -14.6965,122.854 -18.5203,128.899 L-18.5203,128.899 C-14.8675,135.733 -7.74858,140 1.20145e-16,140 L0,140 C11.5707,140 20.9613,130.641 20.9999,119.07 L20.9999,119.07 C21,119.047 21,119.023 21,119 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-18.5203,128.899 C-14.6965,122.854 -14.6965,115.146 -18.5203,109.101 C-20.1483,112.146 -21,115.546 -21,119 L-21,119 C-21,119.152 -20.9984,119.303 -20.9951,119.455 L-20.9951,119.455 L-20.9835,119.833 L-20.9835,119.833 L-20.9472,120.488 L-20.9141,120.897 L-20.9141,120.897 C-20.6601,123.698 -19.846,126.419 -18.5203,128.899 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M18.1865,108.5 C14.4352,102.003 7.50258,98 1.20145e-16,98 L-1.59536e-15,98 C7.50258,98 14.4352,102.003 18.1865,108.5 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-21,119 C-21,115.546 -20.1483,112.146 -18.5203,109.101 L-18.5203,109.101 C-20.1483,112.146 -21,115.546 -21,119 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-20.9472,120.488 C-20.9627,120.27 -20.9748,120.051 -20.9835,119.833 L-20.9835,119.833 L-20.9472,120.488" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M21,119 C21,115.314 20.0297,111.692 18.1865,108.5 L18.1865,108.5 C20.0297,111.692 21,115.314 21,119 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-20.9141,120.897 C-20.9265,120.761 -20.9375,120.624 -20.9472,120.488 L-20.9472,120.488 L-20.9141,120.897" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-20.9835,119.833 C-20.9885,119.707 -20.9923,119.581 -20.9951,119.455 L-20.9951,119.455 L-20.9835,119.833" fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="#f1f3f5" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-18.5203,109.101 C-18.4123,108.899 -18.301,108.698 -18.1865,108.5 L-18.1865,108.5 C-18.301,108.698 -18.4123,108.899 -18.5203,109.101 " fill-rule="evenodd" vector-effect="non-scaling-stroke"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-315,217 L-315,-217" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-315,-217 L315,-217" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-315,217 L315,217" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M315,217 L315,-217" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M77,119 C77,161.526 42.5259,196 0,196 C-42.5259,196 -77,161.526 -77,119 C-77,76.4741 -42.5259,42 0,42 C42.5259,42 77,76.4741 77,119 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M49,119 C49,146.062 27.062,168 0,168 C-27.062,168 -49,146.062 -49,119 C-49,91.938 -27.062,70 0,70 C27.062,70 49,91.938 49,119 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M35,119 C35,138.33 19.33,154 0,154 C-19.33,154 -35,138.33 -35,119 C-35,99.67 -19.33,84 0,84 C19.33,84 35,99.67 35,119 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-18.5203,128.899 C-14.6965,122.854 -14.6965,115.146 -18.5203,109.101 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-28,140 L-28,98" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M28,140 L28,98" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M21,119 C21,130.598 11.598,140 -2.28212e-08,140 C-11.598,140 -21,130.598 -21,119 C-21,107.402 -11.598,98 -2.28212e-08,98 C11.598,98 21,107.402 21,119 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M0,140 C11.5707,140 20.9613,130.641 20.9999,119.07 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-1.97215e-30,98 C-11.598,98 -21,107.402 -21,119 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M21,119 C21,107.402 11.598,98 1.28588e-15,98 " fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M18.1865,108.5 L-18.1865,108.5" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-20.9835,119.833 L-20.9472,120.488" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-20.9472,120.488 L-20.9141,120.897" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="round" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="7" transform="matrix(1,0,0,1,2670,1870)">
+    <path d="M-20.9951,119.455 L-20.9835,119.833" fill-rule="evenodd" vector-effect="none"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,2415.71,448)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="43" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="60.625">BL-01 / CHE-V2-20261003 / nominal custom design</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,2415.71,448)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="43" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="132.625">250 x 90 x 62 mm; 45 steel, heat treatment pending</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,2415.71,448)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="43" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="204.625">4 x M22x1.5: Wandfluh 3-395.4 / sheet 2.13-1008</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,2415.71,448)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="43" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="276.625">2 x nominal M20 thermal relief interfaces; procurement pending</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,2415.71,448)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="43" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="348.625">4 x M8 mounting: (10,25),(10,65),(242,25),(242,65)</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,2415.71,448)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="43" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="420.625">Dowel: (28,20),(222,70); actual orifice diameter 0.1 mm</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,2415.71,448)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="43" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="492.625">C and R thermowells are independent, closed tip</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,2415.71,448)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="43" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="564.625">Threads are envelopes. Not a released manufacturing drawing.</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,2415.71,448)">
+    <text fill="#000000" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" x="1166.09" xml:space="preserve" y="564.625"/>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1574.59,2481)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="54" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="75.1094">TAILSTOCK LOCKING BLOCK / V2</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1574.59,2481)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="54" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="165.109">Native FreeCAD TechDraw orthographic views</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#212529" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1574.59,2481)">
+    <text fill="#212529" fill-opacity="1" font-family="osifont" font-size="54" font-style="normal" font-weight="400" stroke="none" x="4" xml:space="preserve" y="255.109">Dimensions mm / source: live FreeCAD MCP</text>
+   </g>
+   <g fill="none" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,1574.59,2481)">
+    <text fill="#000000" fill-opacity="1" font-family="Microsoft YaHei UI" font-size="31.75" font-style="normal" font-weight="400" stroke="none" x="1012.7" xml:space="preserve" y="255.109"/>
+   </g>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="850" viewBox="0 0 1260 850" role="img" aria-labelledby="title desc">
+  <title id="title">图3：观测等价候选的承载分歧及测量方式切换</title>
+  <desc id="desc">假设同肢宽8毫米和10毫米厚候选能解释当前观测，但验算类别不同。预测允许遥测均不能区分时安排局部测厚并回灌。</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z"/></marker></defs>
+  <rect width="1260" height="850" fill="white"/>
+  <g font-family="Microsoft YaHei, SimHei, sans-serif" fill="black" text-anchor="middle">
+    <text text-anchor="middle" x="630" y="43" font-size="26" font-weight="bold">图3  判定分歧候选对驱动测量方式切换</text>
+    <text text-anchor="middle" x="630" y="72" font-size="17">8 / 10 mm 为假设示例，不是实测数据；验算输入与噪声须有来源</text>
+    <g fill="white" stroke="black" stroke-width="2">
+      <rect x="55" y="110" width="495" height="140" rx="5"/>
+      <rect x="710" y="110" width="495" height="140" rx="5"/>
+      <rect x="245" y="315" width="770" height="115" rx="5"/>
+      <path d="M630 475 L865 550 L630 625 L395 550 Z"/>
+      <rect x="60" y="650" width="485" height="110" rx="5"/>
+      <rect x="715" y="650" width="485" height="110" rx="5"/>
+    </g>
+    <g font-size="21">
+      <text text-anchor="middle" x="302" y="143">当前观测支持多个规格</text>
+      <text text-anchor="middle" x="302" y="177">h₁：同宽，t = 8 mm</text>
+      <text text-anchor="middle" x="302" y="207">h₂：同宽，t = 10 mm</text>
+      <text text-anchor="middle" x="302" y="236" font-size="17">厚度边面受遮挡 / 分辨率不足 → 保留</text>
+      <text text-anchor="middle" x="958" y="143">指定材料 / 荷载 / 连接条件</text>
+      <text text-anchor="middle" x="958" y="177">h₁ 与 h₂ 的验算类别不同</text>
+      <text text-anchor="middle" x="958" y="207">形成承载分歧候选对</text>
+      <text text-anchor="middle" x="958" y="236" font-size="17">类别可为通过 / 不通过 / 未决</text>
+      <text text-anchor="middle" x="630" y="348">同一参数模型预测每个允许动作 q 的观测</text>
+      <text text-anchor="middle" x="630" y="380">D² = Δμᵀ R⁺ Δμ；R 含噪声、参数、干扰和模型误差</text>
+      <text text-anchor="middle" x="630" y="412" font-size="18">混合回波/距离分布采用密度分离度；相关观测不得虚增信息</text>
+      <text text-anchor="middle" x="630" y="542" font-size="19">允许遥测动作中</text>
+      <text text-anchor="middle" x="630" y="570" font-size="19">是否存在 D ≥ Dₘᵢₙ？</text>
+      <text text-anchor="middle" x="302" y="683">是：选择有效遥测动作</text>
+      <text text-anchor="middle" x="302" y="714">视点 / 扫描方向 / 分辨率</text>
+      <text text-anchor="middle" x="302" y="744" font-size="18">采集后更新候选；重算分离度</text>
+      <text text-anchor="middle" x="958" y="683">否且关键差别为厚度：局部测厚</text>
+      <text text-anchor="middle" x="958" y="714">杆件 ID / 两肢测点 / 校准 / 误差</text>
+      <text text-anchor="middle" x="958" y="744" font-size="18">不可达或无有效读数 → 未决</text>
+    </g>
+    <g stroke="black" stroke-width="2" fill="none" marker-end="url(#a)">
+      <path d="M550 180 H710"/>
+      <path d="M958 250 V285 H630 V315"/>
+      <path d="M630 430 V475"/>
+      <path d="M395 550 H302 V650"/>
+      <path d="M865 550 H958 V650"/>
+      <path d="M302 760 V782 H600"/>
+      <path d="M958 760 V782 H660"/>
+    </g>
+    <text text-anchor="middle" x="631" y="824" font-size="19">有效观测回灌同一模型 → 判定一致停止；冲突扩库复核</text>
+    <g fill="black" stroke="none">
+      <path d="M700 174 L700 186 L710 180 Z M624 305 L636 305 L630 315 Z M624 465 L636 465 L630 475 Z"/>
+      <path d="M296 640 L308 640 L302 650 Z M952 640 L964 640 L958 650 Z M590 776 L590 788 L600 782 Z M670 776 L670 788 L660 782 Z"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,1606 @@
+Citation: Xu, J.; He, S.; Huang, X.;
+Han, D.; Liu, X.; Sun, J.; Wang, J.; Yao,
+L.; Zhang, S. Design Approach on
+Bearing Capacity of the Cross-Bracing
+with Different Types of Joint
+Connection in Steel Lattice
+Transmission Towers. Buildings 2024,
+14, 1784. https://doi.org/10.3390/
+buildings14061784
+Academic Editors: Oldrich Sucharda
+and Mizan Ahmed
+Received: 9 May 2024
+Revised: 6 June 2024
+Accepted: 11 June 2024
+Published: 13 June 2024
+Copyright: © 2024 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+buildings
+Article
+Design Approach on Bearing Capacity of the Cross-Bracing with
+Different Types of Joint Connection in Steel Lattice
+Transmission Towers
+Jiajing Xu 1, Songyang He 2,*, Xing Huang 2, Dagang Han 2, Xiangyun Liu 2, Jiubin Sun 1, Jing Wang 1, Lu Yao 1
+and Shaofeng Zhang 1,*
+1
+School of Transportation and Civil Engineering, Nantong University, Nantong 226019, China
+2
+Southwest Electrical Power Design Institute Co., Ltd. of China Power Engineering Consulting Group,
+Chengdu 610056, China
+*
+Correspondence: hsy@swepdi.com (S.H.); zsfgh@ntu.edu.cn (S.Z.)
+Abstract: This paper presents an evaluation of the bearing capacity of cross-bracing in steel trans-
+mission tower structures. Design guidelines (ASCE 10-15, BS EN 50341-1, GB 50017-2017, and DL/T
+5486-2020) related to the buckling capacity of the cross-bracing are summarized and compared with
+the experimental results. The current design provisions obtained the bearing capacity from the
+equivalent slenderness ratio, and then the stability coefficient and buckling capacity were derived.
+The calculated bearing capacity based on the design code tends to be overly progressive for smaller
+slenderness ratios (particularly those below 100), except for EN 50341-1-2012. Conversely, for larger
+slenderness ratios, ASCE 10-15 and DL/T 5486-2020 Class A design codes lean towards being overly
+progressive, while GB 50017-2017 and EN 50341-1-2012 codes tend to be more conservative. The
+design standard appears to exhibit unsafe predictions for Class A and B connections with low slen-
+derness ratios and Class C connections. It needs to be noted that the effects of torsional stiffness
+and joint connection type are not considered in the current design codes, which are proved to be
+nonnegligible by the test results. In this paper, the bearing capacity calculation formula is proposed
+by introducing a modified effective length coefficient (K), and both the torsional stiffness and joint
+connection type are taken into account. The modified bearing capacity is verified with the test results;
+the correlation coefficient is 0.997, and the coefficient of variation is 0.04. It can provide a reference
+for the engineering design of steel lattice transmission tower structures.
+Keywords: steel lattice transmission towers; cross bracing; slenderness ratio; torsional stiffness;
+design codes
+1. Introduction
+Steel lattice transmission towers are vital lifeline projects to provide telecommunica-
+tion or power transmission, as shown in Figure 1a. Consequently, their safety and reliability
+dominate the design [1–3]. In transmission tower structural engineering applications,
+angle steel components are predominantly interconnected using single-limb bolted con-
+nections, thereby constituting compression-bending elements [4,5]. Although this form of
+straightforward connection facilitates ease of construction and installation, the load-bearing
+conditions of the members are complex, primarily manifesting in two aspects. On one
+aspect, the load-bearing axis does not coincide with the principal centroidal axis of the
+cross-section, resulting in bidirectional eccentricity. This phenomenon, in turn, renders
+the determination of the bending axis direction during angle steel instability a nontrivial
+task [6]. On another aspect, the determination of end-constraint conditions poses challenges.
+As such, the single-angle steel compression strut, being the most frequently employed
+element within transmission towers, substantiates a pivotal control condition during angle
+Buildings 2024, 14, 1784. https://doi.org/10.3390/buildings14061784
+https://www.mdpi.com/journal/buildings
+
+Buildings 2024, 14, 1784
+2 of 13
+steel design, aiming to forestall instability under compressive loading. Axially loaded ele-
+ments, when characterized by low slenderness ratios, are susceptible to flexural–torsional
+instability failure. Conversely, elements characterized by high slenderness ratios are prone
+to buckling-induced flexural instability failure. In transmission tower structures, diagonal
+members and leg members are typically connected with single-sided angle steel, with their
+load-carrying capacity being significantly influenced by eccentricity and constraint effects.
+Investigations into the ramifications of eccentricity have been undertaken extensively.
+ 
+ 
+(a) Photo of lattice transmission towers 
+(b) In-site tower assembly 
+Figure 1. Schematic diagram of the members in lattice transmission towers.
+Angle steel members tend to be in the eccentric compression state due to the single-
+side connection in engineering practice. With the increase in transmission capacity of the
+high-voltage grid, the joint connections have become more complex. Therefore, determin-
+ing the stability capacity of the tower members is difficult [7]. The boundary conditions
+exhibited effects on the buckling behavior of the steel column. Fixed-ended and pin-ended
+equal-leg angle steel columns showed significantly different ultimate capacities [8,9]. They
+exhibited similar buckling performance: the critical load decreased with the length of the
+steel column, and a single half-wave mode was observed in terms of the critical buckling.
+For post-buckling behavior, both of them displayed the phenomenon that torsional ro-
+tations and corner displacement occurred simultaneously. Popovic et al. [10] performed
+cold-formed compression tests with boundary conditions fixed-ended and pin-ended, re-
+spectively. It was found that the experimental stub column strengths are 15% to 40% higher
+than the calculated results by the specifications. Moreover, Popovic et al. [11] conducted
+compression tests on cold-formed equal angles and concluded that the compression behav-
+ior is sensitive to the loading position; flexural–torsional buckling mode or flexural mode
+dominates the failure mode according to the loading position. Temple and Sakla [12,13]
+performed an investigation on the behavior of single-angle compression members welded
+by one leg to a gusset plate and concluded that the gusset plate thickness and the gusset
+plate width are the two most important parameters that affect the load-carrying capacity.
+Xu et al. [14] investigated the buckling behavior of aluminum alloy single-angle sections
+connected by one leg. Trahair [15] developed an approach to calculate the moment capaci-
+ties of angle sections under combined bearing, shear, and torsion. The existing design codes
+(GB 50017-2017 [16], EN 1993-3-1 [17], and EN 50341-1 [18]) overestimated the buckling
+resistance of single-angle members with a small slenderness ratio, while the prediction by
+ASCE 10-15 [19] varies according to the different grades of the aluminum alloys. Figure 2
+presents the schematic diagram of different typical buckling modes.
+
+Buildings 2024, 14, 1784
+3 of 13
+ 
+ 
+ 
+ 
+(a) 
+(b) 
+(c) 
+(d) 
+u
+v
+u
+v
+u
+u
+v
+v
+u
+u
+v
+v
+u
+v
+v
+u
+Figure 2. Schematic diagram of buckling modes [20]. (a) Flexural buckling along axis-uu; (b) flexural
+buckling along axis-vv; (c) torsional buckling; (d) flexural–torsional buckling.
+The cross bracing is one of the primary load-bearing members of steel lattice transmis-
+sion towers, constituting approximately 40% to 50% of the total tower weight, as shown
+in Figure 1b. Presently, there is a lack of established theoretical calculation formulas and
+a dearth of experimental data. Design standards for such members vary among different
+countries, with maximum calculated deviations reaching up to 43%. GB 50017-2017 [16]
+takes into consideration the effect of eccentricity while neglecting the favorable influence of
+constraints. ASCE 10-15 [19] provides modified formulas for the slenderness ratio, consid-
+ering eccentricity and constraint effects separately. However, the boundary conditions only
+involve the number of bolts, with no explicit specification of nodal construction require-
+ments. Europe identifies individual design guidelines and recommendations in various
+parts of Eurocode 3. More specifically, EN 1993-1-1 [21] defines the classification of four
+classes of cross-sections, and the resistance and rotation capacity are limited by their local
+buckling resistance. EN 50341-1-2012 [18] provides design rules for lattice transmission
+towers used in the field of overhead electrical lines. It introduces corrections through
+regularization of the slenderness ratio, which incorporates the constraint effect based on the
+number of bolts yet similarly lacks specific construction requirements. Due to the absence
+of experimental verification currently in engineering design, even for extra-high voltage
+towers such as 800 kV and 1000 kV, the number of bolts at the end of diagonal members can
+range from 4 to 6. The Chinese power industry standard (DL/T 5480-2020) [22] accounts
+for the constraint effects of two bolts. However, in many practical design scenarios, due to
+the consideration of differences in load-bearing methods for diagonal bracing and the lack
+of calculation theories, the influence of constraints has not been taken into account. The
+end restraints have a vital influence on the bearing capacity of angle steel members [23,24].
+In current extra-high-voltage transmission tower projects, the end constraints for diagonal
+bracing generally involve five or more bolts and, in some cases, even up to ten bolts. The
+constraint effects of end bolts on members will be more pronounced. The substantial dispar-
+ity in diagonal bracing calculation methods has led to conservative design results. Given
+the relatively high proportion of tower weight attributed to diagonal bracing, achieving
+optimization of diagonal bracing weight and reduction in tower weight through theoretical
+and experimental investigation is indeed a feasible endeavor. It should be noted that
+the literature focuses on the superstructure, and considering the foundation design, the
+corrosion of groundwater cannot be ignored [25,26].
+Currently, in order to simplify the calculation of torsional buckling and flexural–
+torsional buckling of steel angle sections, standards mostly rely on determining the stability
+factors by calculating the equivalent slenderness ratio, thereby obtaining the stability
+bearing capacity of various types of steel angle sections. However, when equal-leg angle
+sections are subjected to axial compression, failure occurs due to bending along the weaker
+principal axis, while unequal-leg angle sections exhibit flexural–torsional buckling as
+their failure mode. In such cases, an equivalent slenderness ratio calculation approach
+
+Buildings 2024, 14, 1784
+4 of 13
+is employed. For the issue of local buckling, standards mostly consider local stability
+reduction factors, primarily related to the width-thickness ratio of the plate.
+In this study, the recommended calculated methods of buckling capacity of a member
+in lattice transmission towers in different design codes are first detailed and summarized.
+Subsequently, a comparison between the experimental and theoretical results based on
+the design codes is discussed. The proposed correction factor of the slenderness ratio (K)
+considers the effects of torsional stiffness and joint construction type, which could guide
+the design of cross-bracing in steel transmission tower structures.
+2. Existing Design Provisions
+2.1. ASCE 10-15 Design of Latticed Steel Transmission Structures
+The design compressive stress Fa on the gross cross-sectional area of axially loaded
+compression members is presented by Equations (1) and (2). The yielding stress of the steel
+fy in Equation (1) is replaced by fcr according to the value of w
+t , where w = flat width and
+t = thickness of leg, as shown in Equation (3).
+Fa =
+
+
+
+h
+1 −1
+2( KL/r
+Cc )
+2i
+fy
+KL/r ≤Cc
+π2E
+(KL/r)2
+KL/r > Cc
+(1)
+Cc = π
+q
+2E/ fy
+(2)
+fcr =
+
+
+
+
+
+
+1.677 −0.677
+w/t
+80ψ/√
+fy
+
+fy
+80ψ
+√
+fy ≤w
+t ≤144ψ
+√
+fy
+0.0332π2E
+(w/t)2
+w
+t > 144ψ
+√
+fy
+(3)
+where ψ = 1 and 2.62 for fy in ksi and MPa, respectively. E = modulus of elasticity;
+L = unbraced length; r = radius of gyration; and K = effective length coefficient.
+2.2. BS EN 50341-1:2012 Overhead Electrical Lines Exceeding AC 1 kV-Part 1: General
+Requirements–Common Specifications
+The compression angle should be verified against buckling, as in Equation (4). The
+design value of the compression force (NEd) should not exceed the design buckling resis-
+tance of the compression member (Nb,Rd). Nb,Rd is presented in Equation (5), and χ is the
+non-dimensional buckling reduction factor. A is the gross area of the cross-section for Class
+1, 2, and 3 sections, and A is the effective area of the cross-section for Class 4 section [21].
+NEd/Nb,Rd ≤1
+(4)
+Nb,Rd = χA fy/γM1
+(5)
+χ =
+1
+Φ +
+q
+Φ2 −λ
+2
+e f f
+(6)
+Φ = 0.5 × [1 + α × (λe f f −0.2) + λ
+2
+e f f ]
+(7)
+where λe f f is the effective non-dimensional slenderness, α is the imperfection factor and
+should be taken as equal to 0.13, and γM1 is the partial resistance factor for the member.
+λ1 = π
+s
+E
+fy
+(8)
+λ =
+
+
+
+λ
+λ1
+for Class 3 cross-section
+λ
+λ1 ×
+q
+Ae f f
+A
+for Class 4 cross-section
+(9)
+
+Buildings 2024, 14, 1784
+5 of 13
+λe f f is determined by λ and the types of members (leg members or bracing members).
+2.3. GB 50017-2017 Chinese National Standard for Design of Steel Structures
+According to GB 50017-2017, the stability of axial compression members satisfies
+Equation (10).
+N
+φA fy
+≤1.0
+(10)
+where φ is the stability coefficient of the axial compression members, which can be referred
+to in the appendix to the design code. The stability coefficient is determined by the
+slenderness ratio, yield strength of the steel, and shape of the cross-section. A is the gross
+cross-sectional area of the member, and fy is the designed tensile strength of the steel.
+For singly connected single-angle steel columns, the stability of the specimen should be
+calculated by Equation (11). η is the reduction factor that considers the connection method
+and slenderness ratio, which can be calculated with Equation (12) for an equal-angle
+steel column.
+N
+ηφA fy
+≤1.0
+(11)
+η = 0.6 + 0.0015λ
+(12)
+2.4. DL/T 5486-2020 Chinese Power Industry Standard
+The bearing capacity of angle steel satisfies Equation (13), where φ is the stability
+coefficient of axial compression members, mN is the strength reduction factor of the com-
+pressive column and can be calculated with Equation (14), ω is the outstanding width of
+flange, t is the thickness of the flange, and ηc is the maximum ratio of flat width to the
+thickness and can be calculated with Equation (15). The effective length coefficient K is
+introduced to modify the slenderness ratio, which is the same as the definition in Table 1 in
+ASCE 10-15.
+N
+mNφA fy
+≤1.0
+(13)
+mN =
+(
+1.0
+( ω
+t ≤ηc)
+1.677 −0.677 ω
+tηc
+( ω
+t > ηc)
+(14)
+ηc = 13
+s
+235
+φ fy
+(15)
+Table 1. Correction factor of slenderness ratio for compression members.
+Loading Conditions
+Slenderness Ratio
+Effective Length Coefficient K
+Axial compression at both ends
+0 < L/r < 120
+1
+Axial compression at one end and
+eccentric compression at the
+other end
+0 < L/r < 120
+0.75 + 30/(L/r)
+Eccentric compression at both ends
+0 < L/r < 120
+0.5 + 60/(L/r)
+No boundary at either end
+120 ≤L/r ≤200
+1
+Boundary at one end
+120 ≤L/r ≤225
+0.762 + 28.6/(L/r)
+Boundary at both ends
+120 ≤L/r ≤250
+0.615 + 46.2/(L/r)
+3. Comparison between the Experimental and Calculated Results
+Experimental results in the literature [27] are used to make comparisons between the
+test and calculated results from design standards. Three types of connections are used to
+simulate different boundary conditions, as shown in Figure 3. For Class A connection, the
+test specimen is directly connected to the leg member with two bolts, resulting in good
+restraint effects. For Class B connections, the test specimen is connected to the leg member
+via a gusset plate. One bolt is directly connected to the leg member, resulting in a larger
+
+Buildings 2024, 14, 1784
+6 of 13
+eccentricity but allowing for a reduction in gusset plate dimensions. Class C connections
+also employed a gusset plate to link the test specimen to the leg member, with the smallest
+eccentricity but with a larger gusset plate. The test parameters of three types of specimens
+are presented in Table 2. The Class A connection is suitable for larger leg member joints,
+while the Class B and Class C connections are suitable for joints with smaller leg member
+specifications. The experimental results are shown in Table 3.
+Class A
+Class B
+Class C
+Figure 3. Schematic of end restraints.
+Table 2. Test parameters for specimens. Data from [27].
+Type
+Angle Size
+Thickness of
+Gusset Plate
+Material of
+Column
+Material of
+Plate
+Yield Strength
+(MPa)
+Class A
+L80 × 7
+-
+Q355
+Q355
+373.23
+Class B
+L80 × 7
+10
+Q355
+Q355
+368.55
+Class C
+L80 × 7
+10
+Q355
+Q355
+367.64
+3.1. Buckling Bearing Capacity
+The geometrical properties, geometrical axis, and principal axis are shown in Figure 4,
+and the axis is defined as follows:
+v
+v
+y
+y
+z
+z
+u
+u
+Figure 4. Notations of the steel angle section. yy/zz: geometric axis of the cross-section parallel to
+the leg; uu: major/strong principal axis (associated with weak axis displacement); vv: minor/weak
+principal axis (associated with strong axis displacement).
+
+Buildings 2024, 14, 1784
+7 of 13
+Table 3. The comparison between experimental and calculated results.
+Notation
+Torsional
+Stiffness
+(kN·m/rad)
+Buckling
+Axis
+Slenderness
+Ratio
+Bearing Capacity (kN)
+Comparison
+Test
+Results
+ASCE
+10-15
+EN 50341-
+2012
+GB 50017-
+2017
+DL/T
+5486-2020
+Class a
+DL/T
+5486-2020
+Class b
+ASCE/Test
+EN/Test
+GB/Test
+DL-
+a/Test
+DL-
+b/Test
+AK2-60
+50
+vv
+60
+163.2
+251.2
+193.8
+224.9
+214.5
+188.7
+1.54
+1.19
+1.38
+1.31
+1.16
+AK2-80
+50
+vv
+80
+147.7
+215.1
+153.5
+181.7
+181.8
+161.9
+1.46
+1.04
+1.23
+1.23
+1.10
+AK2-100
+50
+vv
+100
+134.4
+178.4
+123.7
+136.3
+154.7
+139.4
+1.33
+0.92
+1.01
+1.15
+1.04
+AK2-130
+50
+vv
+130
+104.9
+135.7
+92.4
+91.3
+121.3
+110.9
+1.29
+0.88
+0.87
+1.16
+1.06
+AK2-160
+50
+vv
+160
+76.6
+103.3
+71.5
+65.5
+94.3
+87.4
+1.35
+0.93
+0.85
+1.23
+1.14
+AK1-80
+0
+yy/zz
+80
+106.3
+213.9
+152.2
+180.9
+180.7
+160.8
+2.01
+1.43
+1.70
+1.70
+1.51
+AK1-100
+0
+yy/zz
+100
+89.4
+177.6
+122.7
+136.0
+153.9
+138.6
+1.99
+1.37
+1.52
+1.72
+1.55
+AK1-120
+0
+yy/zz
+120
+66.9
+149.2
+100.7
+103.4
+132.0
+120.1
+2.23
+1.50
+1.54
+1.97
+1.79
+AK1-150
+0
+yy/zz
+150
+58.4
+112.1
+77.0
+72.6
+101.7
+93.9
+1.92
+1.32
+1.24
+1.74
+1.61
+AK1-180
+0
+yy/zz
+180
+44.8
+87.3
+60.7
+54.1
+80.5
+75.1
+1.95
+1.35
+1.21
+1.79
+1.67
+AK2-80
+50
+yy/zz
+80
+148.0
+213.9
+152.2
+180.9
+180.7
+160.8
+1.45
+1.03
+1.22
+1.22
+1.09
+AK2-100
+50
+yy/zz
+100
+122.3
+177.6
+122.7
+136.0
+153.9
+138.6
+1.45
+1.00
+1.11
+1.26
+1.13
+AK2-120
+50
+yy/zz
+120
+114.5
+149.2
+100.7
+103.4
+132.0
+120.1
+1.30
+0.88
+0.90
+1.15
+1.05
+AK2-150
+50
+yy/zz
+150
+78.0
+112.1
+77.0
+72.6
+101.7
+93.9
+1.44
+0.99
+0.93
+1.30
+1.20
+AK2-180
+50
+yy/zz
+180
+68.9
+87.3
+60.7
+54.1
+80.5
+75.1
+1.27
+0.88
+0.79
+1.17
+1.09
+AK3-80
+100
+yy/zz
+80
+147.7
+213.9
+152.2
+180.9
+180.7
+160.8
+1.45
+1.03
+1.22
+1.22
+1.09
+AK3-100
+100
+yy/zz
+100
+130.6
+177.6
+122.7
+136.0
+153.9
+138.6
+1.36
+0.94
+1.04
+1.18
+1.06
+AK3-120
+100
+yy/zz
+120
+113.4
+149.2
+100.7
+103.4
+132.0
+120.1
+1.32
+0.89
+0.91
+1.16
+1.06
+AK3-150
+100
+yy/zz
+150
+96.7
+112.1
+83.1
+72.6
+101.7
+93.9
+1.16
+0.86
+0.75
+1.05
+0.97
+AK3-180
+100
+yy/zz
+180
+79.3
+87.3
+65.4
+54.1
+80.5
+75.1
+1.10
+0.82
+0.68
+1.01
+0.95
+BK2-80
+50
+yy/zz
+80
+129.7
+209.8
+150.5
+180.7
+177.5
+158.2
+1.62
+1.16
+1.39
+1.37
+1.22
+BK2-100
+50
+yy/zz
+100
+109.8
+173.9
+121.2
+136.0
+151.0
+136.1
+1.58
+1.10
+1.24
+1.37
+1.24
+BK2-120
+50
+yy/zz
+120
+85.6
+146.1
+99.3
+103.4
+129.5
+117.9
+1.71
+1.16
+1.21
+1.51
+1.38
+BK2-150
+50
+yy/zz
+150
+63.4
+109.8
+76.0
+72.5
+99.7
+92.1
+1.73
+1.20
+1.14
+1.57
+1.45
+BK2-180
+50
+yy/zz
+180
+48.9
+85.5
+59.8
+54.1
+78.8
+73.6
+1.75
+1.22
+1.11
+1.61
+1.51
+BK3-80
+100
+yy/zz
+80
+152.2
+209.8
+150.5
+180.7
+177.5
+158.2
+1.38
+0.94
+1.19
+1.17
+1.04
+BK3-100
+100
+yy/zz
+100
+120.2
+173.9
+121.2
+136.0
+151.0
+136.1
+1.45
+0.96
+1.13
+1.26
+1.13
+BK3-120
+100
+yy/zz
+120
+94.6
+146.1
+99.3
+103.4
+129.5
+117.9
+1.54
+1.00
+1.09
+1.37
+1.25
+BK3-150
+100
+yy/zz
+150
+74.1
+109.8
+76.0
+72.5
+99.7
+92.1
+1.48
+0.97
+0.98
+1.34
+1.24
+BK3-180
+100
+yy/zz
+180
+54.8
+85.5
+59.8
+54.1
+78.8
+73.6
+1.56
+1.04
+0.99
+1.44
+1.34
+CK2-80
+50
+yy/zz
+80
+205.8
+209.8
+150.5
+180.7
+177.5
+158.2
+1.02
+0.73
+0.88
+0.86
+0.77
+CK2-100
+50
+yy/zz
+100
+148.3
+173.9
+121.2
+136.0
+151.0
+136.1
+1.17
+0.82
+0.92
+1.02
+0.92
+CK2-120
+50
+yy/zz
+120
+114.7
+146.1
+99.3
+103.4
+129.5
+117.9
+1.27
+0.87
+0.90
+1.13
+1.03
+CK2-150
+50
+yy/zz
+150
+70.2
+109.8
+76.0
+72.5
+99.7
+92.1
+1.56
+1.08
+1.03
+1.42
+1.31
+CK2-180
+50
+yy/zz
+180
+50.0
+85.5
+59.8
+54.1
+78.8
+73.6
+1.71
+1.20
+1.08
+1.58
+1.47
+CK3-80
+100
+yy/zz
+80
+180.3
+209.8
+150.5
+180.7
+177.5
+158.2
+1.16
+0.83
+1.00
+0.98
+0.88
+CK3-100
+100
+yy/zz
+100
+135.3
+173.9
+121.2
+136.0
+151.0
+136.1
+1.29
+0.90
+1.01
+1.12
+1.01
+CK3-120
+100
+yy/zz
+120
+100.4
+146.1
+99.3
+103.4
+129.5
+117.9
+1.45
+0.99
+1.03
+1.29
+1.17
+CK3-150
+100
+yy/zz
+150
+81.0
+109.8
+76.0
+72.5
+99.7
+92.1
+1.35
+0.94
+0.90
+1.23
+1.14
+CK3-180
+100
+yy/zz
+180
+50.6
+85.5
+59.8
+54.1
+78.8
+73.6
+1.69
+1.18
+1.07
+1.56
+1.45
+
+Buildings 2024, 14, 1784
+8 of 13
+Figure 5a presents a comprehensive comparison between experimental and design
+codes for members buckling along the minor axis-vv. It is observed that both GB 50017-2017
+and DL/T 5486 Class b consistently yield values lower than the corresponding experimental
+results. Specifically, GB 50017-2017 demonstrates a range of 4% to 44% lower than the
+test results. This significant deviation from the test values can be attributed to the lack of
+consideration for the contribution of end constraints in members with large slenderness
+ratios. Furthermore, GB 50017-2017 exhibits a higher level of conservation regarding the
+impact of eccentricity on bearing capacity reduction compared to other design codes. On
+the other hand, calculated results by DL/T 5486 Class b are consistently 6% to 18% lower
+than the experimental values. In terms of DL/T 5486 Class a and EN 50341-1-2012, it is
+observed that for slenderness ratios below 120, their respective calculated results exceed
+the experimental results by approximately 4% to 10%. However, for slenderness ratios
+exceeding 120, the calculated results are lower than the test values by 7% to 23%. It is
+worth noting that the deviation between DL/T 5486 Class a and experimental results is
+relatively smaller compared to EN 50341-1-2012. For ASCE 10-15, it is found that when
+the slenderness ratio is below 160, it surpasses the test values by 2% to 21%. However, for
+slenderness ratios greater than 160, ASCE 10-15 falls below the test values by approximately
+6%. For smaller slenderness ratios, DL/T 5486-2020 Class a, EN 50341-1-2012, and ASCE
+10-15 tend to be overly progressive, with test results consistently lower than the calculated
+results. As the slenderness ratio increases, the test results gradually exceed the calculated
+results. During the design process, the DL/T 5486-2020 Class b is recommended, as it is
+relatively conservative and may require certain corrections. GB 50017-2017 yields overly
+conservative results because only eccentricity is considered and the effect of constraints
+is neglected.
+ 
+ 
+(a) Buckling axis-vv 
+(b) Buckling axis-yy/zz–Class A connection 
+ 
+ 
+(c) Buckling axis-yy/zz–Class B connection 
+(d) Buckling axis-yy/zz–Class C connection 
+60
+80
+100
+120
+140
+160
+180
+20
+40
+60
+80
+100
+120
+140
+160
+180
+200
+Bearing capacity (kN)
+Slenderness ratio
+ Experimental
+ GB 50017-2017
+ DL/T 5486-2020 Class a
+ DL/T 5486-2020 Class b
+ ASCE 10-15
+ EN 50341-1-2012
+80
+100
+120
+140
+160
+180
+40
+60
+80
+100
+120
+140
+160
+180
+200
+220
+Bearing capacity (kN)
+Slenderness ratio
+ Experimental
+ GB 50017-2017
+ DL/T 5486-2020 Class a
+ DL/T 5486-2020 Class b
+ ASCE 10-15
+ EN 50341-1-2012
+80
+100
+120
+140
+160
+180
+40
+60
+80
+100
+120
+140
+160
+180
+200
+220
+Bearing capacity (kN)
+Slenderness ratio
+ Experimental
+ GB 50017-2017
+ DL/T 5486-2020 Class a
+ DL/T 5486-2020 Class b
+ ASCE 10-15
+ EN 50341-1-2012
+80
+100
+120
+140
+160
+180
+40
+60
+80
+100
+120
+140
+160
+180
+200
+220
+Bearing capacity (kN)
+Slenderness ratio
+ Experimental
+ GB 50017-2017
+ DL/T 5486-2020 Class a
+ DL/T 5486-2020 Class b
+ ASCE 10-15
+ EN 50341-1-2012
+Figure 5. Comparison between experimental and calculated results with different end restraints.
+Figure 5b presents the bearing capacity curve for the buckling axis-yy/zz with a Class
+A connection. Calculated results by DL/T 5486-2020 Class a and ASCE 10-15 consistently
+
+Buildings 2024, 14, 1784
+9 of 13
+surpass the experimental results, with DL/T 5486-2020 Class a exceeding the test results by
+1% to 22% and ASCE 10-15 surpassing them by 10% to 45%. For a slenderness ratio below
+100, GB 50017-2017 yields values higher than the experimental results, ranging from 4% to
+22%, whereas for slenderness ratios higher than 100, it falls below the test results by 9% to
+32%. When the slenderness ratio surpasses 80, EN 50341-1-2012 produces values lower than
+the experimental results, ranging from 6% to 18%. Regarding the DL/T 5486-2020 Class b,
+when the slenderness ratio is below 120, it exhibits values higher than the experimental
+results by 6% to 9%, while for slenderness ratios exceeding 120, it falls below the test
+results by 3% to 5%. Except for EN 50341-1-2012, the calculated results tend to be overly
+progressive for smaller slenderness ratios, particularly those below 100. Conversely, for
+larger slenderness ratios, the ASCE 10-15 and DL/T 5486-2020 Class a design codes lean
+towards being overly progressive, while the GB 50017-2017 and EN 50341-1-2012 codes
+tend to be more conservative. Therefore, during the design process, adopting the DL/T
+5486-2020 Class b guidelines is recommended. It tends to be overly progressive for smaller
+slenderness ratios but can be appropriately adjusted, aligning closely with experimental
+results for larger slenderness ratios.
+Figure 5c illustrates the bearing capacity curve for the buckling axis-yy/zz with a
+Class B connection. Apart from the GB 50017-2017 design code, which falls below the test
+results by less than 4% for slenderness ratios higher than 120, all other results by design
+codes are higher than experimental results. When DL/T 5486-2020 Class b code is used
+in the design process, it is observed that calculated results are higher than experimental
+results by 4% to 34%, and certain corrections are necessary, particularly for members with
+larger slenderness ratios.
+Figure 5d presents the bearing capacity curve for the buckling axis-yy/zz with a
+Class C connection. Calculated results by the DL/T 5486-2020 Class a and ASCE 10-15
+codes surpass the test results, with DL/T 5486-2020 Class a exceeding them by 12% to
+56% and ASCE 10-15 exceeding them by 16% to 69%. EN 50341-1-2012 and GB 50017-2017
+exhibit closer agreement with the test results, with an approximate 10% deviation. When
+employing DL/T 5486-2020 Class b during the design process, it is found that calculated
+results are 10% lower than the test results for slenderness ratios below 100, while for
+slenderness ratios exceeding 100, calculated results exceed the test results by 14% to 45%,
+indicating the need for appropriate adjustments.
+3.2. Column Curve
+Figure 6 presents a comparison between experimental results and column curves in
+the design standard. Column curves “a,” “b,” “c,” and “d” represent various types of
+cross-sections [16]. The buckling axis of member AK2-vv is weak principal axis-vv, and
+λn denotes the normalized slenderness ratio. It can be observed that when λn is less than
+or equal to 1.5, the experimental results closely align with the column curve “c”. As the
+slenderness ratio increases, there is a gradual transition from curve “c” to curve “a.” When
+λn exceeds 1.75, it surpasses curve “a.” In the case of the buckling axis-yy/zz for the Class
+A connection, experimental results transition from the curve “d” to the curve “a” when the
+slenderness ratio is in the range of 1.0 to 2.0. When λn is greater than or equal to 2.0, the
+experimental data surpass the curve “a.” The Class B connection primarily approximates
+the curve “c” and gradually approaches the curve “d” as the slenderness ratio increases.
+The stability coefficient for members with Class C connections moves from curve “b” to
+curves “c” and “d” as the slenderness ratio increases. It can be seen that angle steel sections
+with different types of joint connections and slenderness ratios show different variation
+trends. Notably, the design standard appears to exhibit unsafe predictions for Class A and
+B connections with low slenderness ratios and Class C connections. As a consequence, a
+refined formula is proposed to modify the slenderness ratio.
+
+Buildings 2024, 14, 1784
+10 of 13
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+d
+c
+b
+Stability coefficient ϕ
+λn
+ a
+ b
+ c
+ d
+ AK2-vv
+ AK3-yy/zz
+ BK3-yy/zz
+ CK3-yy/zz
+a
+Normalized slenderness ratio
+Figure 6. The comparison between test results and the column curve in the design code.
+4. Recommended Design Guidelines
+Currently, when it comes to torsional buckling and flexural–torsional buckling of the
+angle steel column, the standards calculate the stability bearing capacity by determining
+the equivalent slenderness ratio and corresponding stability factors. For local buckling
+issues, standards usually incorporate the local stability reduction factor, which is primarily
+related to the width-to-thickness ratio of the angle steel plate. The experimental and
+calculated results are compared by the design standards, and fitting of the slenderness
+ratio is conducted on three different types of joint connections and buckling modes by
+the least squares method. The recommended calculation formulas for the effective length
+coefficient (K) are presented in Equations (16)–(19). The joint connection, buckling modes,
+and torsional stiffness are taken into account in the formula. The definition of L/r is the
+same as that in Equation (1). K0 is the torsional stiffness of the joint. It can be concluded
+from the previous study [27] that eccentricity is the dominant factor that affects the bearing
+capacity when L/r is less than 120, while end restraints have a more significant effect on
+the capacity when L/r is greater than 120. Therefore, a piecewise formula is proposed,
+considering the value of L/r.
+-
+Buckling axis: weak principal axis-vv
+K =
+
+
+
+0.5 + 60
+L/r · ( K0
+L/r)
+0.1
+0 < L/r ≤120
+0.615 + 46.2
+L/r · ( K0
+L/r)
+0.16
+L/r > 120
+(16)
+-
+Buckling axis: geometric axis of the cross-section parallel to the leg-yy/zz
+Class A Connection
+K =
+
+
+
+0.5 + 60
+L/r · ( K0
+L/r)
+0.1
+0 < L/r ≤120
+0.615 + 46.2
+L/r · ( K0
+L/r)
+0.16
+L/r > 120
+(17)
+Class B Connection
+K =
+
+
+
+0.5 + 60
+L/r · ( L/r
+K0 )
+0.1 · 1.07
+0 < L/r ≤120
+0.615 + 46.2
+L/r · ( L/r
+K0 )
+0.1
+L/r > 120
+(18)
+
+Buildings 2024, 14, 1784
+11 of 13
+Class C Connection
+K =
+
+
+
+0.5 + 60
+L/r · ( L/r
+K0 )
+0.1 · 1.05
+0 < L/r ≤120
+0.615 + 46.2
+L/r · ( K0
+L/r)
+0.1
+L/r > 120
+(19)
+GB 50017-2017 considers the reduction factor η when calculating the stability-bearing
+capacity. DL/T 5486-2020 takes a different approach from GB 50017-2017 and adjusts the
+slenderness ratio to account for eccentricity and confinement effects. The comparison
+between the experimental and calculated bearing capacity by the proposed effective length
+coefficient (K) is shown in Table 4 and Figure 7. It can be seen that the modified calculated
+results match the experimental results well. The correlation coefficient is 0.997, and the
+coefficient of variation is 0.04.
+Table 4. Bearing capacity of test results and calculated results.
+Bearing Capacity (kN)
+Class A Connection
+Class B Connection
+Class C Connection
+Slenderness
+Ratio
+Test
+DL/T
+5486-2020
+Class b
+DL/T 5486-2020
+Class b-Modified
+Test
+DL/T
+5486-2020
+Class b
+DL/T 5486-2020
+Class
+b-Modified
+Test
+DL/T
+5486-2020
+Class b
+DL/T 5486-2020
+Class b-Modified
+80
+147.7
+160.8
+144.2
+152.2
+158.2
+142.5
+180.3
+158.2
+172.5
+100
+130.6
+138.6
+120.1
+120.2
+136.1
+110.1
+135.3
+136.1
+120.1
+120
+113.4
+120.1
+104.9
+94.6
+117.9
+88.4
+100.4
+117.9
+88.4
+150
+96.7
+93.9
+88.4
+74.1
+92.1
+64.8
+81.0
+92.1
+64.8
+180
+79.3
+75.1
+73.0
+54.8
+73.6
+49.6
+50.6
+73.6
+49.7
+80
+100
+120
+140
+160
+180
+40
+60
+80
+100
+120
+140
+160
+180
+200
+Bearing capacity (kN)
+Slenderness ratio
+ Experimental – Class A Connection
+ Experimental – Class B Connection
+ Experimental – Class C Connection
+ DL/T 5486-2020 Class b – Class A Connection
+ DL/T 5486-2020 Class b – Class B Connection
+ DL/T 5486-2020 Class b – Class C Connection
+ DL/T 5486-2020 Class b Modified – Class A Connection
+ DL/T 5486-2020 Class b Modified – Class B Connection
+ DL/T 5486-2020 Class b Modified – Class C Connection
+Figure 7. The comparison between experimental and modified results.
+5. Conclusions
+The current design codes simplify the cross bracing as an axial compression member
+for stability capacity calculation. The effects of eccentricity and rotational constraint are
+considered when determining the effective slenderness ratio. However, the influence of
+torsional stiffness and joint connection type is neglected in the current design codes. As
+a result, a comparative study reveals that the design code values exhibit discrepancies
+when compared to experimental results. Except for EN 50341-1-2012, the bearing capacity
+calculated by design codes tends to be overly progressive for smaller slenderness ratios,
+particularly those below 100. Conversely, for larger slenderness ratios, ASCE 10-15 and
+DL/T 5486-2020 Class a design codes lean towards being overly progressive, while GB
+
+Buildings 2024, 14, 1784
+12 of 13
+50017-2017 and EN 50341-1-2012 codes tend to be more conservative. Usually, in prac-
+tical design, three types of joint connections exist. All four design standards appear to
+exhibit unsafe predictions for Class A and B connections with low slenderness ratios. The
+discrepancy is primarily manifested in eccentricity for small slenderness ratio columns
+and inadequate restraint corrections for large slenderness ratio columns, indicating certain
+limitations in the current approach. The proposed modified effective length coefficient (K)
+considers the effect of joint connection (Class A, B, and C) and torsional stiffness and fits
+well with the experimental results. The correlation coefficient is 0.997, and the coefficient of
+variation is 0.04.
+Author Contributions: Methodology, S.H.; Validation, X.H.; Investigation, D.H.; Resources, X.L.;
+Data curation, J.S. and J.W.; Writing—original draft, J.X.; Writing—review & editing, S.Z.; Funding
+acquisition, L.Y. All authors have read and agreed to the published version of the manuscript.
+Funding: This study was supported by the Southwest Electric Power Design Institute of China Power
+Engineering Consulting Group (GSKJ2-T08-2019), the Science and Technology Project of Nantong
+City (JC2022058, MS22022103), and the Natural Science Foundation of the Jiangsu Higher Education
+Institutions of China (23KJB560021).
+Data Availability Statement: The original contributions presented in the study are included in the
+article, further inquiries can be directed to the corresponding authors.
+Conflicts of Interest: Authors Songyang He, Xing Huang, Dagang Han and Xiangyun Liu were
+employed by the company Southwest Electrical Power Design Institute Co., Ltd. of China Power
+Engineering Consulting Group. The remaining authors declare that the research was conducted in
+the absence of any commercial or financial relationships that could be construed as a potential conflict
+of interest.
+References
+1.
+de Souza, R.R.; Miguel, L.F.F.; McClure, G.; Alminhana, F.; Kaminski, J., Jr. Reliability Assessment of Existing Transmission Line
+Towers Considering Mechanical Model Uncertainties. Eng. Struct. 2021, 237, 112016. [CrossRef]
+2.
+Chatterjee, A.; Bosco, E.; Rajagopalan, S.; Varghese, I.M.; Ramalingam, R. A Review of Research on Supported Transmission Line
+Tower Failure Studies: Analysis, Tower Testing and Retrofitting. Int. J. Steel Struct. 2024, 24, 264–279. [CrossRef]
+3.
+Xie, Q.; Zhang, J. Experimental Study on Failure Modes and Retrofitting Method of Latticed Transmission Tower. Eng. Struct.
+2021, 226, 111365. [CrossRef]
+4.
+An, L.; Wu, J.; Jiang, W. Experimental and Numerical Study of the Axial Stiffness of Bolted Joints in Steel Lattice Transmission
+Tower Legs. Eng. Struct. 2019, 187, 490–503. [CrossRef]
+5.
+Bezas, M.-Z.; Antonodimitraki, S.; Beyer, A.; Van Wittenberghe, J.; Anwaar, M.-O.; Maesschalck, J.; Jaspart, J.-P.; Demonceau, J.-F.
+Buckling Resistance of Star-Battened Angle Members Made of High-Strength Steel. Structures 2023, 58, 105274. [CrossRef]
+6.
+Xu, J.; He, S.; Cao, X.; Yao, L.; Liu, X.; Yan, X. Analytical and Numerical Analysis of Angle Steel Joints for Conductors in Lattice
+Transmission Towers. Case Stud. Constr. Mater. 2022, 17, e01592. [CrossRef]
+7.
+Li, Y.; Yan, Z.; Zhou, D.; Ren, Q.; Hua, C.; Zhong, Y. Analysis of the Stability Behavior of Cross Bracings in Transmission Towers
+Based on Experiments and Numerical Simulations. Thin-Walled Struct. 2023, 185, 110554. [CrossRef]
+8.
+Dinis, P.B.; Camotim, D. A Novel DSM-Based Approach for the Rational Design of Fixed-Ended and Pin-Ended Short-to-
+Intermediate Thin-Walled Angle Columns. Thin-Walled Struct. 2015, 87, 158–182. [CrossRef]
+9.
+Silvestre, N.; Dinis, P.B.; Camotim, D. Developments on the Design of Cold-Formed Steel Angles. J. Struct. Eng. 2013, 139, 680–694.
+[CrossRef]
+10.
+Popovic, D.; Hancock, G.J.; Rasmussen, K.J.R. Axial Compression Tests of Cold-Formed Angles. J. Struct. Eng. 1999, 125, 515–523.
+[CrossRef]
+11.
+Popovic, D.; Hancock, G.J.; Rasmussen, K.J.R. Compression Tests on Cold-Formed Angles Loaded Parallel with a Leg. J. Struct.
+Eng. 2001, 127, 600–607. [CrossRef]
+12.
+Temple, M.C.; Sakla, S.S. Single-Angle Compression Members Welded by One Leg to a Gusset Plate. I. Experimental Study. Can.
+J. Civ. Eng. 1998, 25, 569–584. [CrossRef]
+13.
+Temple, M.C.; Sakla, S.S. Single-Angle Compression Members Welded by One Leg to a Gusset Plate. II. A Parametric Study and
+Design Equation. Can. J. Civ. Eng. 1998, 25, 585–594. [CrossRef]
+14.
+Xu, Z.; Tong, G.; Zhang, L.; Guo, Y. Testing, Modelling and Design of Aluminium Alloy Single-Angle Members Connected by
+One Leg under Eccentric Compression. Thin-Walled Struct. 2023, 184, 110474. [CrossRef]
+15.
+Trahair, N.S. Bearing, Shear, and Torsion Capacities of Steel Angle Sections. J. Struct. Eng. 2002, 128, 1394–1398. [CrossRef]
+16.
+GB 50017-2017; Standard for Design of Steel Structures. China Architecture & Building Press: Beijing, China, 2018.
+
+Buildings 2024, 14, 1784
+13 of 13
+17.
+EN 1993-3-1; Eurocode 3—Design of Steel Structures—Part 3-1: Towers, Masts and Chimneys—Towers and Masts. European
+Committee for Standardisation: Brussels, Belgium, 2006.
+18.
+BS EN 50341-1:2012; Overhead Electrical Lines Exceeding AC 1kV-Part 1: General Requirements—Common Specifications.
+European Committee for Standardisation: Brussels, Belgium, 2012.
+19.
+ASCE 10-15; Design of Latticed Steel Transmission Structures. American Society of Civil Engineers: Reston, VA, USA, 2015.
+20.
+Bezas, M.-Z. Design of Lattice Towers from Hot-Rolled Equal Leg Steel Angles; National Technical University of Athens: Athens,
+Greece, 2021.
+21.
+BS EN 1993-1-1:2005; Eurocode 3-Design of Steel Structures:Part 1-1: General Rules and Rules for Buildings. European Committee
+for Standardisation: Brussels, Belgium, 2005.
+22.
+DL/T 5486-2020; Technical Specification for the Design of Steel Supporting Structures of Overhead Transmission Line. China
+Planning Press: Beijing, China, 2020.
+23.
+Jiang, W.Q.; Wang, Z.Q.; McClure, G.; Wang, G.L.; Geng, J.D. Accurate Modeling of Joint Effects in Lattice Transmission Towers.
+Eng. Struct. 2011, 33, 1817–1827. [CrossRef]
+24.
+Jiang, W.-Q.; Liu, Y.-P.; Chan, S.-L.; Wang, Z.-Q. Direct Analysis of an Ultrahigh-Voltage Lattice Transmission Tower Considering
+Joint Effects. J. Struct. Eng. 2017, 143, 04017009. [CrossRef]
+25.
+Xiao, J.; Huang, L.; He, Z.; Qu, W.; Li, L.; Jiang, H.; Zhong, Z.; Long, X. Probabilistic Models Applied to Concrete Corrosion Depth
+Prediction under Sulfuric Acid Environment. Measurement 2024, 234, 114807. [CrossRef]
+26.
+Xiao, J.; Zeng, H.; Huang, H.; Liu, L.; Li, L.; Yuan, B.; Zhong, Z. Experimental Investigation on the Influence of Strength Grade on
+the Surface Fractal Dimension of Concrete under Sulfuric Acid Attack. Buildings 2024, 14, 713. [CrossRef]
+27.
+Liu, H.; Xu, X.; Huang, Z.; Zhang, Y.; Huang, X.; Li, Z.; Guo, Y. Stability of Equal-Leg Angle Section Braces with Torsional
+Restraints. J. Constr. Steel Res. 2023, 201, 107717. [CrossRef]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.

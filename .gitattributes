@@ -1,0 +1,31 @@
+* -text
+*.pdf -text
+*.docx -text
+*.png -text
+*.FCStd -text
+*.step -text
+"专利/刘智远专利/A_Novel_Power_Pylon_Truss_Modeler_for_LoD3_Reconstruction_From_ULS_Data_Bridging_the_Gap_Between_Visualization_and_Simulation.pdf" filter=lfs diff=lfs merge=lfs -text
+"专利/刘智远专利/三项发明专利/00_共享/调研/文献_3DGS/2409.12899_LI-GS_LiDAR融合2DGS大场景.pdf" filter=lfs diff=lfs merge=lfs -text
+"专利/刘智远专利/三项发明专利/00_共享/调研/文献_3DGS/2411.16816_SplatAD_LiDAR与相机联合渲染_CVPR2025.pdf" filter=lfs diff=lfs merge=lfs -text
+"专利/刘智远专利/三项发明专利/00_共享/调研/文献_3DGS/2503.14786_SketchSplat_参数化边可微泼溅.pdf" filter=lfs diff=lfs merge=lfs -text
+"专利/刘智远专利/三项发明专利/00_共享/调研/文献_3DGS/2507.04004_Gaussian-LIC2_LiDAR惯性相机GS-SLAM.pdf" filter=lfs diff=lfs merge=lfs -text
+"专利/刘智远专利/三项发明专利/专利A_角钢高斯泼溅与激光雷达联合反演/01_调研与查新/文献/R08_FU-MPC2026_电机旋转激光雷达无人机探索.pdf" filter=lfs diff=lfs merge=lfs -text
+"专利/刘智远专利/三项发明专利/专利A_角钢高斯泼溅与激光雷达联合反演/01_调研与查新/文献/R09_FC-Planner2023_骨架引导覆盖规划.pdf" filter=lfs diff=lfs merge=lfs -text
+"专利/刘智远专利/三项发明专利/专利B_规范逆向设计与振动贝叶斯标定/01_调研与查新/文献/L22_Sensors2026_QMEMS_Accelerometer_SHM_Evaluation.pdf" filter=lfs diff=lfs merge=lfs -text
+"专利/刘智远专利/三项发明专利/专利B_规范逆向设计与振动贝叶斯标定/01_调研与查新/文献/L26_Polimi2025_FEModelUpdating_DigitalTwin_OMA_Thesis.pdf" filter=lfs diff=lfs merge=lfs -text
+"专利/刘智远专利/三项发明专利/专利C_有限元影响矩阵InSAR形变解耦/01_调研与查新/文献/WhiteRose_角反射器阵列_关键基础设施.pdf" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/03_模型/精细液压试验台_V2.step" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/03_模型/精细液压试验台_V3.step" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/06_仿真/FEM/00_增加T2之前/block_coarse.frd" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/06_仿真/FEM/00_增加T2之前/block_coarse.inp" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/06_仿真/FEM/00_增加T2之前/block_coarse.msh" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/06_仿真/FEM/block_coarse.frd" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/06_仿真/FEM/block_coarse.inp" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/06_仿真/FEM/block_coarse.msh" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/06_仿真/FEM/block_fine.inp" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/06_仿真/FEM/block_fine.msh" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/06_仿真/FEM/block_medium.frd" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/06_仿真/FEM/block_medium.inp" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/11_工程完善_20261003/06_仿真/FEM/block_medium.msh" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/新建文件夹/shukongchechuangyeyaxitong33333gangdu.ame" filter=lfs diff=lfs merge=lfs -text
+"车老师专利/新建文件夹/shukongchechuangyeyaxitongnenghao33333.ame" filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,955 @@
+Quality-Adaptive Multi-UAV 3D Reconstruction
+with Sparse Workload Redistribution
+Benjamin Sportich¹, Kenza Boubakri¹, Olivier Simonin¹, Alessandro Renzaglia¹
+Abstract— 3D reconstruction of unknown environments is
+a key application in robotics but is severely limited by the
+computational and energy capabilities of current aerial plat-
+forms. Deploying multiple UAVs and providing efficient and
+scalable path planning strategies are common approaches, but
+effective online coordination among UAVs remains a significant
+challenge. To address this problem, we propose a quality-
+adaptive decentralized decision-making strategy to build a
+3D map with user-defined degrees of fidelity. The approach
+integrates a quality-oriented criterion based on TSDF confi-
+dence into view generation and information gain estimation to
+produce viewpoints consistent with the desired fidelity target.
+Additionally, we employ two levels of coordination: a penalty
+factor in the viewpoint evaluation to encourage local dispersion
+among the UAVs and a global imbalance correction mechanism.
+The latter, based on regularized clustering and optimal task
+assignment, is only triggered when an unbalanced configuration
+relative to high-information regions is detected. Simulation
+results demonstrate that the proposed method improves path
+efficiency compared to state-of-the-art multi-UAV exploration
+approaches, while also achieving higher-fidelity reconstructions
+in terms of coverage and accuracy. We make our code publicly
+available to the community2.
+I. INTRODUCTION
+Autonomous Unmanned Aerial Vehicles (UAVs) are in-
+creasingly used to provide high-fidelity 3D models of com-
+plex and initially unknown environments for applications
+such as inspection, monitoring, and search-and-rescue [1],
+[2]. Producing 3D reconstructions with multiple UAVs re-
+quires balancing two often-conflicting objectives: cover the
+scene quickly to minimize mission time and energy con-
+sumption, and achieve quality requirements via viewpoints
+associated with accurate and complete surface estimates.
+Both single and multi-robot reconstruction planning for
+exploration have made strong progress, but they typically op-
+timize one objective at the expense of the other: exploration
+methods prioritize coverage and travel efficiency at the cost
+of map precision, while reconstruction methods prioritize
+viewpoint quality and geometric accuracy at the cost of
+mission time. Additionally, at the fleet level, these strategies
+also need to be translated into efficient coordination solutions
+to deal with redundant observations and unbalanced work-
+loads, while keeping computational costs and communication
+burdens at acceptable levels.
+In this paper, we tackle these two objectives simultane-
+ously by proposing a novel quality-adapted Next-Best-View
+1Inria,
+INSA
+Lyon,
+CITI,
+69621
+Villeurbanne,
+France.
+Email:
+fistname.lastname@inria.fr
+This work has been funded by the Agence Nationale de la Recherche
+(ANR), AVENUE project, grant ANR-22-CE33-0004.
+2https://github.com/Chroma-CITI/QUARTZ
+(NBV) formulation for a fleet of cooperative UAVs. Our
+approach treats reconstruction fidelity as an explicit, tunable
+objective derived from voxel confidence in a Truncated
+Signed Distance Field (TSDF) map, which allows the user
+to weigh speed and accuracy and even specify spatially
+varying fidelity requirements. At the decision level, we
+combine a decentralized NBV selector, driven by information
+gain, navigation, and coordination terms, with a sparse,
+fleet-aware workload redistribution mechanism that corrects
+spatial imbalances only when necessary. This results in an
+efficient coordinated exploration process where additional
+observations are taken whenever the confidence levels on the
+online built map do not reach predefined objectives to ensure
+a complete and quality-aware final surface reconstruction.
+The main contributions can be summarized as follows:
+• A quality-adaptive next-best view planning problem
+formulation, linking exploration and reconstruction
+through a continuous control parameter based on TSDF
+confidence. In this model, region-specific priorities
+within the same map can also be defined.
+• A decentralized fleet-aware decision-making framework
+requiring no prior or preliminary survey, with a sparse
+dynamic workload redistribution mechanism triggered
+by spatial imbalance detection.
+• An extensive performance evaluation demonstrating im-
+proved path efficiency against competitive exploration
+methods while maintaining high reconstruction fidelity.
+II. RELATED WORK
+Optimizing coverage for exploration is often insufficient
+to obtain a high-confidence surface reconstruction, which
+benefits from diverse viewing angles aligned with the surface
+normals at appropriate viewing distances [1], [3]. However,
+exploration strategies also benefit from incorporating quality
+constraints, as they can improve path efficiency or prevent
+repeated traversal, as done in [4], which constrains observa-
+tion angles and discriminates between sufficiently and poorly
+observed areas. Reconstruction strategies, despite their focus
+on accuracy, are bound by the same computational and
+energy limits as exploration methods. Thus, they also have
+to minimize flight time, even if they cannot traverse the envi-
+ronment as aggressively. These overlapping constraints have
+led the field to adopt similar tools for viewpoint generation
+[3], path selection [5], and environment representation [6],
+[7] but most approaches predominantly optimize either the
+coverage or the reconstruction accuracy objective. In our
+previous work [8], we proposed a first solution for a single
+UAV that simultaneously takes into account both criteria.
+arXiv:2607.24233v1  [cs.RO]  27 Jul 2026
+
+Within this context, numerous exploration and reconstruc-
+tion solutions that exploit multi-robot cooperation have been
+proposed, but efficient coordination to minimize redundancy
+remains a challenge. Some recent exploration strategies rely
+on topological maps to distribute the workload. For instance,
+[9] divides the space using hgrid cells that are allocated
+through a VRP calculation to balance the paths locally
+between robot pairs without fleet-wide optimization. [10]
+creates map subdivisions through Voronoi graph partitioning
+to avoid UAVs covering the same area, but without control
+over travel distance balance. In [11], UAVs can dynamically
+switch between explore and coverage modes depending on
+their surroundings. Areas of attraction are assigned, but again
+only between robot pairs through dedicated communication.
+Some reconstruction methods tend to employ the explore
+then exploit strategy, which consists of first obtaining a
+coarse map of the environment before generating globally
+optimized viewpoints that can be traversed all at once.
+Already popular in single-robot applications [1], it was
+adapted to multi-robot deployment in [12] and [13]. The
+former generates and distributes large sweeps around poorly
+covered areas using a VRP model after a first single-drone
+high-altitude lawnmower pattern provides a rough map. The
+latter requires a heterogeneous fleet with specific sensor
+capabilities for task decomposition: a LiDAR-equipped UAV
+dubbed the explorer UAV and camera-equipped UAVs named
+photographers. The explorer is launched first, and incremen-
+tal viewpoints are then distributed to the photographers via
+a Consistent-MDTSP method. Both allow for efficient task
+repartition but require a central server to compute the plan
+distribution. [2] proceeds in one sweep but uses a VRP model
+on a partially known map that has to be recomputed multiple
+times, potentially leading to high computational costs. In
+contrast, our decentralized decision-making accounts for the
+whole team through a dispersion strategy while spatially
+rebalancing the UAVs when necessary.
+III. PROBLEM FORMULATION
+We consider a team of N cooperative aerial robots
+equipped with a depth sensor with a limited Field-of-View
+(FoV) characterized by a maximum and minimum range rmax
+and rmin, respectively. At all times, we assume access to a
+perfect localization system in a common reference frame and
+perfect communication. The robots’ goal is to reconstruct the
+3D surface of an unknown environment in the minimum time
+possible while achieving predefined quality objectives. We
+call Z the quality measure of the 3D reconstruction, based
+on the built map M, which will be later formally defined.
+Let qr ∈SE(3) be the pose of the robot r, with r ∈[1,N],
+and qr
+0 its initial configuration. qr is defined by a position
+sr
+q ∈R3 and orientation φ r
+q ∈R3.
+The map M is a volumetric map of the environment based
+on a discretized voxel grid of the 3D space. A voxel, of size
+ds, can refer to free, occupied, or unknown space. We follow
+the general definition of surface frontiers given in [2]:
+Definition 1 (Incomplete Surface Element): An Incom-
+plete Surface Element (ISE), is a voxel i ∈M lying on the
+surface at a frontier, near both the unknown and empty space.
+More formally, a voxel i ∈ISE if and only if:
+• i is empty,
+• ∃i′ ∈N 6
+i s.t. i′ is unknown,
+• ∃i′′ ∈N 18
+i
+s.t. i′′ is occupied,
+where N 6
+i
+and N 18
+i
+denote the 6- and 18-connected voxel
+neighborhoods of i, respectively. The definition of an empty,
+unknown, occupied voxel is dependent on the map represen-
+tation and we will detail this further below.
+Definition 2 (Remaining Incomplete Surface): Let Q be
+the set of all collision-free configurations of an agent, and let
+QISE ⊆Q be the set of all configurations from which an ISE
+i ∈ISE can be scanned. The remaining incomplete surface
+is then defined as:
+ISErem =
+[
+i∈ISE
+{i | QISE = /0}.
+(1)
+A. Quality of the reconstruction
+To represent the voxel maps, we choose to use Truncated
+Signed Distance Fields (TSDF), where each voxel i ∈M is
+represented by an aggregated projected distance di to the
+closest obstacle, and a weight wi acting as a measure of
+confidence of this distance.
+Within a TSDF representation, a voxel i is considered:
+• empty, if wi > 0 and di > ds (voxel size),
+• occupied, if wi > 0 and di < ds,
+• unknown, if wi = 0.
+The seminal works [14] and [15] have extensively studied
+the impact of sensor uncertainty on reconstruction problems
+and how to incorporate it into the weight update phase to
+reflect map confidence. These results are now commonly
+used by state-of-the-art TSDF libraries, such as [7] and [16].
+Therefore, although TSDF weights are not a direct geometric
+error metric, they can be considered a reliable proxy for
+evaluating the accuracy of the built map. In this work, the
+weights of the TSDF representation, wi, are exploited to
+define a function Z(M):
+Z(M) = ξ(M) ¯Z = ξ(M) ∑
+i∈MS
+wi
+|MS|
+(2)
+where MS is the set of observed surface voxels in M and
+ξ(M) = 0 if ∃i such that i ∈ISE and i /∈ISErem, and
+ξ(M) = 1 in all other cases. As a result, ξ(M) evaluates the
+completeness of the surface reconstruction and ¯Z represents
+the average confidence in the obtained map. It is worth
+noticing that the TSDF representation has been proved to
+be equivalent to the least squares minimization of squared
+distances between points on the range surfaces and points
+on the desired reconstruction under the specific conditions
+of an orthographic sensor and a range error independently
+distributed along the line of sight of the sensors [17]. Hence,
+our function Z can be considered as an efficient proxy for a
+quality measure of the reconstructed isosurface.
+Using the quality function in eq. (2) can however lead
+to overestimating the overall accuracy of a map, where
+some parts of unnecessarily high confidence compensate for
+
+lower-accuracy areas. We thus define the following objective
+function Zsat(M;w∗):
+Zsat(M;w∗) = ξ(M) ¯Zsat = ξ(M) ∑
+i∈MS
+min(wi,w∗)
+|MS|
+(3)
+where w∗is a predefined confidence goal. Using this formu-
+lation, we can formulate our problem as follows.
+Multi-Robot
+Quality-Aware
+Mapping
+(MR-QAM)
+problem: Considering a team of N UAVs with initial con-
+figurations qr
+0 ∈Q,r ∈{1,2,...,N}, the MR-QAM asks to
+identify S = ( ˆQ, ˆPˆQ) a set of poses and the corresponding
+collision-free paths which allow the robots to reach a quality
+of reconstruction Z∗:= max(Zsat) on the fused map in a
+minimum time.
+Note that, based on eq. (3), Z∗:= max(Zsat) = w∗. In this
+formulation, fast exploration and high-quality reconstruction
+can be interpreted as special cases of the MR-QAM problem
+where Z∗tends to 0 and 1, respectively. Following this
+formalism, we then propose a new definition to identify
+surface voxels that do not meet the confidence objective.
+Definition 3 (Low Quality Surface Element): an LQSE,
+is a voxel i ∈M lying on the surface such as wi < w∗.
+Based on Definitions 2 and 3, we finally define the set of
+Active Surface Elements ASE in M as the union of LQSEs
+and ISEs. This formulation also allows easily checking
+whether the completeness and confidence requirements have
+been met because:
+Zsat(M;w∗) = Z∗⇐⇒ASE = /0.
+(4)
+The corresponding minimum threshold Z∗= w∗can be
+tailored depending on the application and can even be set to
+different values in different predefined subregions of the map.
+Although the MR-QAM optimization problem cannot be
+solved directly, the following section presents an online NBV
+planning approach that aims to achieve the same objective.
+IV. PROPOSED METHODOLOGY
+Our approach follows the NBV framework of iteratively
+creating informed viewpoints based on a partial volumetric
+map and then selecting the best configuration under a varied
+set of constraints. However, the approach we present in this
+paper is twofold. First, we explicitly incorporate a user-
+defined quality objective in the determination of locally
+optimal viewpoints. Additionally, we use a fleet-aware de-
+centralized decision-making strategy that operates on two
+complementary levels. The first layer encourages spatial
+separation of the UAVs in the environment using a repulsion
+term based on the overlap of influence spheres. However,
+simple repulsive terms can still lead to poor dispersion de-
+pending on the initial positions and the topology of the envi-
+ronment. To prevent this, it is coupled with a global workload
+correction step when an imbalance or an unfavourable spatial
+configuration of the UAVs in the environment is detected.
+Triggered by a fleet member, this process is implemented
+via a combination of balanced clustering of active surface
+elements and MRTA assignment.
+Fig. 1: Proposed pipeline architecture.
+An overview of our architecture is shown in Figure 1. The
+point clouds perceived by the onboard sensor are integrated
+with the Voxblox library [7] to build a TSDF and an ESDF
+simultaneously. The map fusion is performed on a base
+station and aggregating the UAVs’ individual point clouds.
+At regular intervals, the fused map is transmitted back to the
+UAVs using the Voxblox compressed SDF representation.
+The NBV planner system then uses these representations
+to determine informative viewpoints. The low-level planner
+generates collision-free trajectories accordingly. Each UAV
+broadcasts its current pose, its committed next target pose,
+and a binary flag indicating availability for fleet-level re-
+planning. The current pose is used for low-level collision
+avoidance, whereas the target and binary flag enable the
+decentralized decision process, within the dispersion com-
+ponent and for UAV synchronization, respectively.
+A. Quality-oriented Viewpoint Generation
+The first step of our approach is to identify an aimed ob-
+servation distance from the surface to reconstruct, which will
+then be used to generate and evaluate viewpoint candidates.
+Our objective function Zsat, defined in eq. (3), is built on the
+TSDF representation and exploits the associated confidence
+estimates encoded in the weights wi. Leveraging the results
+presented in [15], the confidence of a given measurement is
+typically set to 1/d2, where d is the measurement depth. For
+example, this is the case for the TSDF library Voxblox [7]
+that we adopt in our work. Based on this model, to obtain a
+confidence w∗for a given surface voxel would be sufficient
+to observe it from a distance d∗equal to:
+d∗= min(
+p
+1/w∗,rmax).
+(5)
+On the map level, this relation implies that, if all surface
+voxels are observed at a distance of d∗or less at least once,
+then Z ≥Z∗. When Z∗is close to 0, d∗would correspond
+to the maximum range of the sensor, meaning voxels can
+
+be observed from any distance and still satisfy the quality
+requirements. On the other hand, if Z∗is close to 1, then d∗
+will be close to the sensor’s minimum range. It is important
+to note that a given confidence level could also be achieved
+with multiple observations obtained from distances greater
+than d∗(see [7] for more details on the weight update
+rule). Based on these considerations, we use d∗as our
+reference observation distance to guide both view generation
+and evaluation. In practice, we define a viewing distance
+interval [d∗−η;d∗+ η] with η > 0, and our strategy aims
+for a complete exploration via the generation and selection
+of views within this viewing distance interval.
+When the robot starts its exploration or is about to reach
+the current goal position and orientation, the UAV examines
+its map, and all the ASEs voxels are identified. A view
+candidate ve ∈SE(3), defined by a position sv ∈R3 and an
+orientation φv ∈R3, is generated for each of these voxels
+e ∈ASE. Three points are sampled along the normal of
+the active surface element1 at different viewing distances
+d: in a close range d < d∗−η, in an optimal range (d ∈
+[d∗−η;d∗+ η]), and at long range (d > d∗+ η). Points
+around the optimal distance, then close-range, and long-range
+are checked for safety in this order, which is in accordance
+with the satisfaction of the aimed quality threshold. Once a
+valid position is found, the process is stopped and moves
+to the next element. The final set of generated candidate
+viewpoints for the UAV r is called Vr. The view generation
+process can only start once the ASE spatial distribution is
+balanced (see subsection IV-C for more details).
+B. First Coordination Layer: View Evaluation Function
+Each UAV evaluates the view candidates generated in Vr
+according to an information gain component JI, a naviga-
+tion component JN, and a coordination component JC. The
+selected view v∗for the robot r is the view that maximizes
+the function Jr that combines these three terms, i.e.:
+v∗= argmax
+v∈Vr
+Jr(v) = argmax
+v∈Vr
+α JI(v)+β JN(v)+γ JC(r,v)
+(6)
+Once v∗is identified, the UAV plans a trajectory using
+the low-level path planner and navigates towards that pose.
+This process repeats iteratively and the UAV moves from a
+locally optimal viewpoint to the next until no new views are
+identified. All JI, JN and JC have normalized values in [0,1].
+We set γ as the dominant weight to prioritize minimizing
+redundancy over individual coverage performance. Consid-
+ering that the size of ASE can grow exponentially with the
+size of the map, our evaluation function was designed to both
+discriminate efficiently and be computationally tractable.
+1) Information Gain Component: Our information gain
+component is guided by the objective quality Z∗and con-
+siders viewing distance and visibility probabilities due to
+occlusions to differentiate views. A voxel i is generally called
+occluded from a view candidate v if along the ray from v to
+1Normal vectors are obtained via the method presented in [2], which
+exploits all 26 neighboring voxels and incorporates uncertainty.
+i there is at least one occupied voxel. We define ASEv ⊂ASE
+the set of non-occluded active surface elements from the
+pose of the view candidate v, and δv,e a binary variable that
+equals 1 if e ∈ASEv and 0 otherwise. However, this definition
+does not take into account the possible occlusion of unknown
+voxels along the ray that could be occupied. We thus define
+the function vis(v,e) estimating the visibility of the target
+surface element e from the view candidate v, considering
+the potential occlusions due to unknown voxels, as follows:
+vis(v,e) = δv,e exp(−u)
+(7)
+with u being the number of unknown voxels along the ray
+from the sensor pose v to the target surface element e. We
+thus define the information gain function JI(v) as:
+JI(v) =
+1
+max
+v∈Vr |ASEv| ∑
+e∈ASE
+hv(e)vis(v,e)
+(8)
+where
+hv(e) =
+
+
+
+
+
+
+
+1
+if |d(e,sv)−d∗| < η
+0.5
+if d(e,sv) < d∗−η
+0.5
+
+1−d(e,sv)
+rmax
+
+if d(e,sv) > d∗+η
+(9)
+The function h prioritizes view candidates that observe active
+surface elements from a distance close to the preferred one
+d∗. Views at farther distances are penalized, as they do not
+satisfy the quality criteria. While closer viewing distances do,
+they have fewer voxels in the field of view and are therefore
+also penalized, though less significantly.
+2) Navigation component: During the exploration, a ma-
+jor fallback is to return to previously visited areas to observe
+a missed portion of the surface, generating additional and
+unnecessary travel. Furthermore, the position sv of the view
+candidate v can be close in distance to the actual robot
+position sq ∈R3 but facing the opposite direction. Moving
+to that view would incur a costly change in direction with a
+trajectory that cannot be a straight line. To generate efficient
+trajectories, we include both of these aspects in the design
+of our navigation component JN:
+JN(q,v) = ψ(q,v)
+min
+v∈Vr ||sv −sq||
+||sv −sq||
+(10)
+where
+ψ(q,v) = 1−1
+π arccos
+ velT
+||vel|| ·
+sv −sq
+||sv −sq||
+
+(11)
+with vel being the velocity vector of the robot.
+3) Coordination component: The coordination component
+is designed as a repulsion force aiming to disperse the robot
+in the 3D space, allowing for an efficient task division,
+diminishing redundancy and collision probabilities. The dis-
+persion function, for each robot, penalizes views that are
+too close to other robots’ next goal, in accordance with
+each robot’s quality-informed viewing distance range. Thus,
+selected views outside of the other robots’ sensors’ reach are
+prioritized, effectively preventing spatial overlap.
+
+We use a formulation based on the intersection of two
+spheres centered in the robots’ present or future position:
+JC(r,v) = 1−
+1
+|N −1|
+N
+∑
+i=1,i̸=r
+|Sphere(v,d∗)∩Sphere(gi,d∗)|
+|Sphere(sr,d∗)|
+(12)
+where Sphere(a,b) is a sphere centered in a and of radius b,
+d∗is the optimal viewing distance for the robot r, gi is the
+next goal of robot i, and sr the current position of robot r.
+C. Second Coordination Layer: Imbalance Correction
+Despite being widespread and proven strategies, dispersion
+functions for multi-robot systems are prone to get stuck in
+local minima in environments with complex geometry or
+when one robot reaches a dead end during the exploration.
+To prevent this common fallback, we implemented a recon-
+figuration process that triggers when the spatial distribution
+of active surface elements among robots appears too uneven
+(see Fig. 3). These elements are divided into approximately
+equal sets and each robot is then assigned a corresponding
+subregion of the map to select its next viewpoints from, re-
+calibrating the robot team in a more balanced configuration.
+Our core assumption is that a uniform distribution of active
+surface elements across the robot fleet during the mission
+allows for greater adaptability in unknown environments than
+standard strategies, while also improving exploration speed
+by balancing the workload. If the spatial distribution, which
+is computed right after the detection of active surface ele-
+ments, is judged uneven, the UAV will trigger the correction.
+Otherwise, it will proceed to generating and selecting views
+using eq. (6).
+1) Imbalance Evaluation: The robot r detects a spatial
+imbalance by computing the following function fr:
+fr(x1,...,xN) = 1
+2
+N
+∑
+i=1
+|ASE|
+N
+−|Vor
+ASE(xi)|
+2
+(13)
+where xi = gi if i̸ = r and xr = sr
+q, and Vor
+ASE(xi) is the set of
+ASEs in the Voronoi region generated by xi, i ∈[1,N], i.e.:
+e ∈Vor
+ASE(xi) ⇐⇒∥e−xi∥≤∥e−xj∥∀j ∈[1,N]\{i}. (14)
+If the current value of fr is higher than a certain threshold
+fmin, the reconfiguration process is launched. It consists of
+three different steps: a balanced clustering of the elements
+of the ASE set, the assignment of a part of the map, and the
+corrected selection. The balanced clustering and the sub-map
+assignment are performed by the robot detecting an unequal
+distribution of ASEs, whereas all the robots are involved in
+the solution deployment, which consists of selecting views
+in their assigned area for a predetermined number of steps.
+To identify a suitable threshold fmin, we consider the sce-
+nario where one single UAV has a deviation of ∆compared
+to the optimal allocation |ASE|/N. In this case, and using
+eq. (13), it can be shown that
+fr(xi;∆) ≥¯fr(∆) =
+∆2N
+2(N −1) .
+(15)
+Defining fmin = ¯fr(∆) makes it easier to set the threshold
+since it has a more physically interpretable meaning related
+to the deviation ∆. In particular, in our solution, we set ∆=
+|ASE|
+N(N+1), meaning any configuration with an UAV that has
+allocated |ASE|
+N+1 or worse, would trigger the replanning.
+2) Balanced Clustering: To cluster the active surface
+elements, we use the regularized k-means algorithm [18],
+a multi-objective variant of a standard k-means that adds
+a secondary constraint to force the creation of same-size
+clusters from the ASE set. We create a number of clusters
+equal to the number of robots N in the team.
+3) Cluster Assignment: Instead of assigning the clusters
+themselves, we assign their centroids that encode all the
+necessary spatial information. We note the centroid assigned
+to the robot r Centroid(r). The assignment is done using the
+optimal Kuhn–Munkres algorithm on a cost matrix filled with
+the distances between xi,i ∈[1,N] and the centroids. These
+distances are approximated using a path searching algorithm
+on a topological grid map of cell sizes equal to 4 times
+the voxel size, updated at the same time as the ASE. Once
+performed, the UAV can transmit the assignment to the fleet
+using a compact message of N 3D points.
+4) Corrected Selection: After the centroid assignment
+phase, each robot r can resume its view generation and
+selection process. However, the computation of JC from (6)
+is changed for k iterations and we have for the robot r:
+Jr,C(ve) = 0
+∀e /∈Vor
+ASE(Centroid(r))
+(16)
+with ve the view candidate generated from the active sur-
+face element e. In practice, views generated from inside
+Vor(Centroid(r)) are advantaged while others are penalized.
+This corrected selection process, repeated for k iterations
+(see section V for more details), guides robots toward more
+balanced regions and prevents unbalanced workloads, which
+would lead to longer mission times. Once the k iterations
+elapsed, the partition will refine naturally as ASE evolves
+and the dispersion component takes over.
+5) Synchronization: To avoid planning conflicts, a syn-
+chronization process ensures that the correction scheme is
+not launched by multiple robots at the same time. Once a
+UAV detects an imbalance, it updates its status to replanning,
+which is shared with the fleet. When the other receives that
+status, they can no longer launch an imbalance correction
+until the one launched by the first robot is resolved.
+D. Implementing Multiple Quality Requirements
+It is important to note that our approach supports the
+implementation of multiple quality requirements. Different
+Z∗
+i can be indeed defined over distinct subregions Mi ⊂M,
+where Mi form a partition of M, i.e., Mi ∩Mj = /0 for i̸ = j,
+and S
+i Mi = M. In this scenario, the system operates as
+previously described, with minor adaptations. During view
+generation, an active surface element generates a view candi-
+date with a d∗
+i corresponding to the subregion Mi in which it
+lies. Similarly, the information gain is computed voxel-wise:
+for each voxel contributing to the gain, the corresponding
+
+Fig. 2: Final mesh of ”Structure” obtained with
+our method (left), RACER [9] (right-up), and
+FAME [11] (right-down).
+Fig. 3: Decision process for viewpoint selection without imbalance
+correction (left) and with imbalance correction (right).
+regional distance d∗
+i associated with the subregion Mi to
+which the voxel belongs is used in the evaluation. Finally,
+the coordination term JC considers the appropriate d∗
+i in the
+computation of the volume of each sphere, depending on
+which subregion Mi of the general map M each sphere is
+centered in. As this can lead to overlapping spheres based in
+different subregions, the denominator is Sphere(sr,maxi d∗
+i ).
+E. Local Planning
+To represent the 3D space as a 3D map, we use ETHZ
+ASL’s Voxblox representation [7], which builds a TSDF
+and an ESDF concomitantly. The TSDF is used for the
+reconstruction reasoning and the ESDF by the navigation
+component to determine the freespace. We use the local plan-
+ner from [19] to generate dynamically feasible trajectories
+and replan in real-time to avoid obstacles. The local planner
+has two main components: first, the local trajectory optimizer
+that computes the best path between two waypoints without
+collisions. If found, this trajectory is then smoothed out to
+respect the velocity and acceleration constraints [19]. Then,
+the intermediate goal selector creates sub-sections of the path
+between the current pose of the UAV and the goal and sends
+them one by one to the UAV’s controller.
+To improve the UAV’s navigation and obstacle avoidance,
+a freespace point cloud is computed negatively from the
+UAV sensor’s original point cloud. This helps to detect the
+navigable environment and is also used within Voxblox to
+enhance the quality of the ESDF and TSDF. Finally, a col-
+lision checker runs at 20 Hz to prevent collisions with other
+UAVs and obstacles. To this end, we use a bounding box in
+the direction of travel, whose size adapts proportionally to
+the velocity vector for collision detection.
+V. NUMERICAL EXPERIMENTS
+In this section, we test our method in different simulated
+environments with varying characteristics. To assess the effi-
+ciency of our approach, we compare its performance against
+two state-of-the-art methods: RACER [9], and FAME [11].
+Both are multi-robot exploration strategies implementing
+decentralized decision making. RACER and FAME were
+primarily designed for efficient exploration rather than re-
+construction fidelity, but they represent strong decentralized
+baselines and are widely used to produce volumetric maps.
+Parameter
+Value
+Robot Radius
+1.0 m
+Voxel Size ds
+0.25 m
+Lidar Min/Max Range rmin,rmax
+0.42m / 10m
+Vertical Min/Max Angle
+-35° / 30°
+Maximum velocity velmax
+4.5 m/s
+Maximum absolute acceleration accmax
+4.8 m/s²
+TABLE I: Simulation parameters
+A. Simulation Setup
+Performance evaluations were performed in ROS1-Gazebo
+simulations. All methods use a quadrotor UAV equipped with
+a 3D LIDAR providing a full 360-degree horizontal field of
+view (FOV) and a vertical FOV ranging from -35 to +30
+degrees. The UAV model is based on an Intelaero UAV, using
+identical motor placement and dimensions. To approximate
+sensor imperfections, we add to depth measurements a zero-
+mean Gaussian noise with a standard deviation increasing
+quadratically with distance (≈1.5 cm at 10 m). We assume
+perfect localization as in all the major works of the field
+from the literature [13], [2], [12], [9], [11].
+The experimental results presented in this paper took place
+in the following simulated worlds:
+• House: a 45x40x20m outdoor open field urban environ-
+ment composed of a house, two cars, and a complex
+playground structure. All elements are dispersed within
+the map and disconnected, except for the ground sur-
+face. Object shapes are quite complex.
+• Structure: a 26x26x15m multi-level structured urban
+terrain composed of a combination of boxes and stepped
+platforms (see Fig. 2).
+We selected these environments for their challenging and
+complementary characteristics that can easily generate back-
+and-forth motions. In ”House”, the scattered objects of
+interest, and in ”Structure”, the multiple levels with hidden
+ceiling surfaces, narrow gaps, and concave corners create
+complex topologies where the robot must efficiently priori-
+tize the views to select. For both environments, we imposed
+a mission time limit of 15 minutes.
+All of our experiments are run with N = 3 UAVs. Across
+all scenes, we keep the same values of α = β = 1 and γ = 2.
+The spatial reconfiguration of the fleet computed within the
+global centroid-based replanning scheme (detailed in IV-C)
+
+House
+Structure
+Method
+Makespan Av. Path Cov. (%) Prec. (%) F-Score Makespan Av. Path Cov. (%) Prec. (%) F-Score
+Ours (d∗= 4.5m)
+258.2
+200.9
+80.73
+69.06
+74.44
+289.4
+236.6
+95.48
+87.03
+91.06
+Ours w/o imbalance corr. (d∗= 4.5m)
+329
+260
+81.6
+69.13
+74.84
+336
+279
+96.03
+87.01
+91.29
+FAME [11]
+457
+274
+43.63
+37.25
+40.18
+586
+371
+78.23
+70.69
+74.26
+RACER [9]
+430
+262
+41.66
+37.35
+39.38
+544
+434
+74.94
+73.83
+74.38
+TABLE II: Quantitative results in the House and Structure environments with 3 UAVs.
+Fig. 4: Comparison of the paths with a team of 3 robots for
+FAME (up) and ours (down) in both environments. In FAME
+images, the built map is in pink and the ground truth in grey.
+is only valid until the next map update, which may alter the
+active surface element set and shift the centroids. For this
+reason, we want the UAVs to move toward their assigned
+subregion immediately after receiving the solution, but not to
+be unnecessarily limited to this portion of the map for several
+subsequent steps. Thus, we enforce the corrected selection
+based on the centroids only for k = 2 steps, which we found
+to be the most efficient value for enabling fast reconfiguration
+without negatively impacting exploration speed. We report
+ours with d∗= 4.5m, which corresponds to half the maximum
+range of the sensor rmax, and showcased the best trade-off
+between speed and accuracy in our experiments (see Fig.5).
+Other simulation parameters are detailed in Table I and we
+use these values in all methods.
+B. Metrics
+The performance of the approaches is evaluated on dif-
+ferent criteria. First, we use the average distance traveled
+and particularly the makespan of path lengths as a proxy
+for mission time. Secondly, we extract the meshes from
+the maps at the end of the mission, using the Marching
+Cubes algorithm, and compare them to the ground-truth
+meshes of the simulated environments. To this end, we
+implemented the metrics defined in the 3D reconstruction
+benchmark [20]: recall (or coverage), precision, and F-score,
+measuring completeness, accuracy, and a combination of
+both, respectively. We consider a point of the original mesh
+to be covered if its closest point from the obtained map is
+at a distance of less than a voxel diagonal
+p
+3/2 ds. Since
+the methods are not deterministic, all reported values are
+averages over 10 runs.
+Fig. 5: Number of voxels reaching the confidence objective
+w∗with corresponding values of d∗for a team of 3 robots
+in the Structure environment.
+C. Benchmark and Comparison Analysis
+The first conclusion that can be drawn from the set
+of comparative results presented in Table II is that our
+proposed approach outperforms the other two methods in
+all map fidelity metrics for both environments while main-
+taining significantly smaller path lengths. In ”House”, in our
+reconstruction-oriented setting, RACER and FAME remain
+below 45% of total coverage while we cover more than
+80%, i.e., an 82% increase with a makespan 40% smaller. In
+”Structure”, the gap is less pronounced but still significant:
+despite a makespan at least 47% shorter, our coverage and
+precision are respectively 21% and 22% higher. However,
+the averaged results of RACER and FAME hide a greater
+variability than ours, which can be attributed to the similar
+view generation strategy that both methods share. When
+generating a new viewpoint, they sample randomly within
+a cylinder around the target frontiers, which can lead to
+very different paths each run. This method can also produce
+poor observation angles for surface observation. Because
+RACER and FAME are exploration approaches that also
+tend to focus on volume coverage more than the surface
+when planning paths and determining views, holes in the
+final mesh and sparse surfaces were to be expected. This
+difference in terms of mesh quality can, for instance, be
+observed in the illustrative example shown in Fig. 2. How-
+ever, it is interesting to note that we obtain better results
+also in terms of path efficiency and exploration speed. An
+analysis of RACER’s and FAME’s paths shows a difficulty
+in dispersing efficiently in space with significant overlap
+and redundancy, which leads to longer paths and repeated
+
+traversal (see Fig. 4). In contrast, our method allows dividing
+the environment online, resulting in improved coordination.
+Visible in both environments, this is especially noticeable
+in ”House”, where the overlap between paths is minimal.
+Additionally, we evaluated the impact of Z∗on reconstruction
+speed: we report in Fig. 5 the number of voxels reaching the
+aimed confidence value w∗over time. Different values were
+selected to force d∗at the upper, lower, and in between the
+limits of our depth sensor range. As expected, a low w∗value
+leads to aggressive exploration and a high value to a more
+careful one. We can notice that, while reducing Z∗improves
+exploration speed, this gain plateaus when Z∗becomes very
+small. This effect can be attributed to both the structure of
+the environment and the size of the robot team. A similar
+analysis for a single UAV can also be found in our previous
+work [8].
+D. Ablation Studies
+To validate the relevance of the different modules of our
+system, we studied their impact on the performance in the
+reconstruction task. We ran experiments with and without the
+imbalance correction module to assess its efficiency, and the
+results are reported in Table II. The two solutions provided
+an almost identical coverage and accuracy, but the method
+implementing the balance correction showed an average path
+length 23% smaller in the House environment and 15% in
+the Structure environment. Regarding the makespan, the gap
+is also significant: 21% on House and 13% on Structure.
+We noticed that the imbalance correction is activated mostly
+in two cases: when UAVs are close and thus are competing
+for local active surface elements, and when a UAV finishes
+exploring a subregion of the map and has no active surface
+elements in the vicinity. The former occurs essentially at
+launch, while the latter toward the end of the mission.
+VI. CONCLUSION
+This paper presented a quality-adaptive 3D reconstruction
+planning framework for cooperative UAV teams operating
+in unknown environments. By explicitly incorporating a
+TSDF-based confidence measure into a multi-robot next-
+best-view planning, the proposed approach allows the on-
+line generation of viewpoints that are consistent with user-
+defined reconstruction fidelity requirements, while maintain-
+ing efficient path execution. In order to further improve the
+coordination among the fleet, we presented an additional
+clustering-based area repartition mechanism that is sparsely
+triggered by unbalanced UAVs’ configurations with respect
+to highly informative regions. Resulting in a global workload
+redistribution, the proposed solution allows the fleet to better
+adapt to evolving map structures. To evaluate the perfor-
+mance of our approach, we provided comparative results in
+complex simulated environments. These results demonstrated
+a higher reconstruction quality and shorter paths compared
+to state-of-the-art multi-UAV exploration methods, while
+reducing redundant observations. Furthermore, an ablation
+study proved the significant improvement produced by the
+sparse redistribution of areas to explore.
+In the future, we intend to adapt our quality criterion to
+different 3D representations, such as Gaussian Splatting or
+NeRF. We also plan to evaluate the impact of dynamic adap-
+tive quality requirements during reconstruction planning, for
+instance, when triggered by a semantic mapping module.
+REFERENCES
+[1] C. Peng and V. Isler, “Adaptive view planning for aerial 3D reconstruc-
+tion,” in IEEE Int. Conf. Rob. & Autom. (ICRA), 2019, pp. 2981–87.
+[2] G. Hardouin, J. Moras, F. Morbidi, J. Marzat, and E. M. Mouaddib,
+“A multirobot system for 3-d surface reconstruction with centralized
+and distributed architectures,” IEEE Transactions on Robotics, vol. 39,
+no. 4, pp. 2623–2638, 2023.
+[3] L. Schmid et al., “An efficient sampling-based method for online
+informative path planning in unknown environments,” IEEE Robotics
+and Automation Letters, vol. 5, no. 2, pp. 1500–1507, 2020.
+[4] S. Geng, Z. Ning, F. Zhang, and B. Zhou, “EPIC: A Lightweight
+LiDAR-Based AAV Exploration Framework for Large-Scale Scenar-
+ios,” IEEE Robotics and Automation Letters, vol. 10, no. 5, 2025.
+[5] B. Zhou, Y. Zhang, X. Chen, and S. Shen, “FUEL: Fast UAV explo-
+ration using incremental frontier structure and hierarchical planning,”
+IEEE Robotics and Autom. Letters, vol. 6, no. 2, pp. 779–786, 2021.
+[6] L. Han, F. Gao, B. Zhou, and S. Shen, “Fiesta: Fast incremental
+euclidean distance fields for online motion planning of aerial robots,”
+in IEEE/RSJ International Conference on Intelligent Robots and
+Systems (IROS), 2019, pp. 4423–4430.
+[7] H. Oleynikova, Z. Taylor, M. Fehr, J. Nieto, and R. Siegwart,
+“Voxblox: Incremental 3d euclidean signed distance fields for on-board
+mav planning,” in IEEE/RSJ International Conference on Intelligent
+Robots and Systems (IROS), 2017, pp. 1366–1373.
+[8] B. Sportich, K. Boubakri, O. Simonin, and A. Renzaglia, “Quality-
+guided UAV Surface Exploration for 3D Reconstruction,” in Interna-
+tional Conference on Unmanned Aircraft Systems (ICUAS), 2026.
+[9] B. Zhou, H. Xu, and S. Shen, “RACER: Rapid collaborative explo-
+ration with a decentralized multi-uav system,” IEEE Transactions on
+Robotics, vol. 39, no. 3, pp. 1816–1835, 2023.
+[10] Q. Dong, H. Xi, S. Zhang, Q. Bi, T. Li, Z. Wang, and X. Zhang,
+“Fast and communication-efficient multi-uav exploration via voronoi
+partition on dynamic topological graph,” in IEEE/RSJ International
+Conference on Intelligent Robots and Systems (IROS), 2024.
+[11] L. Bartolomei, L. Teixeira, and M. Chli, “Fast multi-uav decentralized
+exploration of forests,” IEEE Robotics and Automation Letters, vol. 8,
+no. 9, pp. 5576–5583, 2023.
+[12] D. Morilla-Cabello, L. Bartolomei, L. Teixeira, E. Montijano, and
+M. Chli, “Sweep-your-map: Efficient coverage planning for aerial
+teams in large-scale environments,” IEEE Robotics and Automation
+Letters, vol. 7, no. 4, pp. 10 810–10 817, 2022.
+[13] M. Zhang et al., “SOAR: Simultaneous Exploration and Photographing
+with Heterogeneous UAVs for Fast Autonomous Reconstruction,” in
+IEEE/RSJ Intern. Conference on Intelligent Robots and Systems, 2024.
+[14] R. Newcombe et al., “Kinectfusion: Real-time dense surface mapping
+and tracking,” in 10th IEEE international symposium on mixed and
+augmented reality, 2011, pp. 127–136.
+[15] C. V. Nguyen, S. Izadi, and D. Lovell, “Modeling kinect sensor
+noise for improved 3d reconstruction and tracking,” in International
+conference on 3D imaging, modeling, processing, visualization &
+transmission.
+IEEE, 2012, pp. 524–530.
+[16] Y. Pan, Y. Kompis, L. Bartolomei, R. Mascaro, C. Stachniss, and
+M. Chli, “Voxfield: Non-projective signed distance fields for online
+planning and 3d reconstruction,” in IEEE/RSJ International Confer-
+ence on Intelligent Robots and Systems (IROS), 2022, pp. 5331–5338.
+[17] B. Curless and M. Levoy, “A volumetric method for building complex
+models from range images,” in Conference on Computer Graphics and
+Interactive Techniques, ser. SIGGRAPH ’96, 1996, p. 303–312.
+[18] W. Lin, Z. He, and M. Xiao, “Balanced clustering: A uniform model
+and fast algorithm.” in IJCAI, 2019, pp. 2987–2993.
+[19] H. Oleynikova, Z. Taylor, R. Siegwart, and J. Nieto, “Safe local
+exploration for replanning in cluttered unknown environments for
+micro-aerial vehicles,” IEEE Robotics and Automation Letters, 2018.
+[20] A. Knapitsch, J. Park, Q.-Y. Zhou, and V. Koltun, “Tanks and temples:
+benchmarking large-scale scene reconstruction,” ACM Trans. Graph.,
+vol. 36, no. 4, 2017.

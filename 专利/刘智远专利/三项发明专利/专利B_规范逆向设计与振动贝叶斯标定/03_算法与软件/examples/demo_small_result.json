@@ -1,0 +1,94 @@
+{
+ "identified": [
+  {
+   "f": 2.6353227686289395,
+   "zeta": 0.013439390099379367
+  },
+  {
+   "f": 2.733199953708624,
+   "zeta": 0.013879397942368945
+  },
+  {
+   "f": 6.567315578624316,
+   "zeta": 0.010239161547975653
+  }
+ ],
+ "sensor_nodes": [
+  12,
+  14,
+  61,
+  113,
+  125,
+  158
+ ],
+ "posterior_map": {
+  "arm0-bc": "L75x6",
+  "arm0-br": "L75x6",
+  "arm0-sd": "L63x5",
+  "arm0-tc": "L63x5",
+  "arm0-tip": "L40x4",
+  "arm0-tr": "L40x4",
+  "arm0-vr": "L40x4",
+  "arm1-bc": "L70x5",
+  "arm1-br": "L56x4",
+  "arm1-sd": "L70x5",
+  "arm1-tc": "L63x5",
+  "arm1-tip": "L40x4",
+  "arm1-tr": "L40x4",
+  "arm1-vr": "L40x4",
+  "body-aux-l0": "L56x4",
+  "body-aux-l1": "L45x4",
+  "body-aux-l2": "L40x4",
+  "body-aux-l3": "L40x4",
+  "body-aux-l4": "L40x4",
+  "body-diag-l0": "L100x6",
+  "body-diag-l1": "L90x6",
+  "body-diag-l2": "L75x6",
+  "body-diag-l3": "L75x5",
+  "body-diag-l4": "L90x6",
+  "body-diag-u5": "L90x6",
+  "body-diag-u6": "L75x6",
+  "body-diag-u7": "L75x6",
+  "body-diag-u8": "L45x4",
+  "body-diag-u9": "L45x4",
+  "body-main-l0": "L140x10",
+  "body-main-l1": "L140x10",
+  "body-main-l2": "L125x8",
+  "body-main-l3": "L125x8",
+  "body-main-l4": "L100x7",
+  "body-main-u5": "L110x7",
+  "body-main-u6": "L100x6",
+  "body-main-u7": "L90x6",
+  "body-main-u8": "L80x6",
+  "body-main-u9": "L80x6",
+  "dia-h10": "L40x4",
+  "dia-h5": "L56x4",
+  "dia-h6": "L70x5",
+  "dia-h7": "L56x4",
+  "dia-h8": "L80x6",
+  "dia-h9": "L40x4",
+  "dia-x10": "L40x4",
+  "dia-x5": "L40x4",
+  "dia-x6": "L40x4",
+  "dia-x7": "L40x4",
+  "dia-x8": "L45x4",
+  "dia-x9": "L40x4",
+  "peak-sd": "L100x6",
+  "peak-tc": "L80x6"
+ },
+ "kappa_median": 0.8350493642287395,
+ "logkv_median": 10.08049551394499,
+ "kappa_90": [
+  0.6175257511698385,
+  1.028427681102822
+ ],
+ "logkv_90": [
+  9.098074288821309,
+  11.33806099795543
+ ],
+ "design_top_disp_m": 0.11890341107543534,
+ "max_stress_ratio": 1.0284700117210568,
+ "n_members_ratio_gt_1": 2,
+ "tmcmc_stages": 3,
+ "group_hit_rate": 0.5283018867924528
+}

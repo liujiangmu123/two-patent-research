@@ -1,0 +1,125 @@
+{
+ "fig": 2,
+ "title": "集成锁闭阀块轴测图",
+ "scale": 0.41604,
+ "size_mm": [
+  154.1,
+  79.5
+ ],
+ "size_clean_mm": [
+  138.0,
+  79.5
+ ],
+ "labels": [
+  "2",
+  "28",
+  "41",
+  "42",
+  "43",
+  "44",
+  "45",
+  "71",
+  "72",
+  "74",
+  "75"
+ ],
+ "missing": [],
+ "crossings": 0,
+ "min_leader_pass_mm": 5.0,
+ "all_anchors_ok": true,
+ "anchors": [
+  {
+   "num": "2",
+   "name": "阀块本体",
+   "side": "L",
+   "anchor_part": "P00_2",
+   "ok": true,
+   "inside_mm": 5.2
+  },
+  {
+   "num": "28",
+   "name": "连接螺栓",
+   "side": "R",
+   "anchor_part": "P31_28",
+   "ok": true,
+   "inside_mm": 1.3
+  },
+  {
+   "num": "41",
+   "name": "第一锁闭座阀",
+   "side": "R",
+   "anchor_part": "P03_41c",
+   "ok": true,
+   "inside_mm": 3.68
+  },
+  {
+   "num": "42",
+   "name": "第二锁闭座阀",
+   "side": "L",
+   "anchor_part": "P07_42c",
+   "ok": true,
+   "inside_mm": 3.8
+  },
+  {
+   "num": "43",
+   "name": "泄放座阀",
+   "side": "R",
+   "anchor_part": "P11_43c",
+   "ok": true,
+   "inside_mm": 3.8
+  },
+  {
+   "num": "44",
+   "name": "预压座阀",
+   "side": "L",
+   "anchor_part": "P15_44c",
+   "ok": true,
+   "inside_mm": 3.79
+  },
+  {
+   "num": "45",
+   "name": "安全溢流阀",
+   "side": "R",
+   "anchor_part": "P17_45",
+   "ok": true,
+   "inside_mm": 2.14
+  },
+  {
+   "num": "71",
+   "name": "第一压力传感器",
+   "side": "R",
+   "anchor_part": "P20_71",
+   "ok": true,
+   "inside_mm": 2.28
+  },
+  {
+   "num": "72",
+   "name": "第二压力传感器",
+   "side": "L",
+   "anchor_part": "P21_72",
+   "ok": true,
+   "inside_mm": 2.4
+  },
+  {
+   "num": "74",
+   "name": "油温传感器",
+   "side": "R",
+   "anchor_part": "P23_74",
+   "ok": true,
+   "inside_mm": 1.32
+  },
+  {
+   "num": "75",
+   "name": "测压排气接头",
+   "side": "R",
+   "anchor_part": "P25_75",
+   "ok": true,
+   "inside_mm": 1.9
+  }
+ ],
+ "n_items": 33,
+ "dropped_small": 0,
+ "n_lines": 328,
+ "n_hatch": 0,
+ "t_s": 4.3
+}

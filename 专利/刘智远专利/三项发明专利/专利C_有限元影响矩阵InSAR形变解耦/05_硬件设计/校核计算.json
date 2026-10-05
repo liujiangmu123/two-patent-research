@@ -1,0 +1,126 @@
+{
+ "rcs": [
+  {
+   "a_m": 0.4,
+   "C(Sentinel-1,5.405GHz)": {
+    "lambda_m": 0.05547,
+    "sigma_m2": 34.9,
+    "sigma_dBsm": 15.4
+   },
+   "X(9.65GHz)": {
+    "lambda_m": 0.03107,
+    "sigma_m2": 111.1,
+    "sigma_dBsm": 20.5
+   }
+  },
+  {
+   "a_m": 0.5,
+   "C(Sentinel-1,5.405GHz)": {
+    "lambda_m": 0.05547,
+    "sigma_m2": 85.1,
+    "sigma_dBsm": 19.3
+   },
+   "X(9.65GHz)": {
+    "lambda_m": 0.03107,
+    "sigma_m2": 271.3,
+    "sigma_dBsm": 24.3
+   }
+  },
+  {
+   "a_m": 0.6,
+   "C(Sentinel-1,5.405GHz)": {
+    "lambda_m": 0.05547,
+    "sigma_m2": 176.5,
+    "sigma_dBsm": 22.5
+   },
+   "X(9.65GHz)": {
+    "lambda_m": 0.03107,
+    "sigma_m2": 562.5,
+    "sigma_dBsm": 27.5
+   }
+  },
+  {
+   "a_m": 0.7,
+   "C(Sentinel-1,5.405GHz)": {
+    "lambda_m": 0.05547,
+    "sigma_m2": 326.9,
+    "sigma_dBsm": 25.1
+   },
+   "X(9.65GHz)": {
+    "lambda_m": 0.03107,
+    "sigma_m2": 1042.1,
+    "sigma_dBsm": 30.2
+   }
+  },
+  {
+   "a_m": 0.8,
+   "C(Sentinel-1,5.405GHz)": {
+    "lambda_m": 0.05547,
+    "sigma_m2": 557.7,
+    "sigma_dBsm": 27.5
+   },
+   "X(9.65GHz)": {
+    "lambda_m": 0.03107,
+    "sigma_m2": 1777.7,
+    "sigma_dBsm": 32.5
+   }
+  },
+  {
+   "a_m": 1.0,
+   "C(Sentinel-1,5.405GHz)": {
+    "lambda_m": 0.05547,
+    "sigma_m2": 1361.6,
+    "sigma_dBsm": 31.3
+   },
+   "X(9.65GHz)": {
+    "lambda_m": 0.03107,
+    "sigma_m2": 4340.1,
+    "sigma_dBsm": 36.4
+   }
+  }
+ ],
+ "mass": {
+  "plates_per_CR_kg": 7.94,
+  "CR_kg": 9.54,
+  "total_kg": 34.58
+ },
+ "wind": {
+  "w0_kPa": 0.766,
+  "wk_kPa": 2.819,
+  "A_m2": 0.492,
+  "F_N": 1387.0,
+  "M_Nm": 624.0
+ },
+ "ice": {
+  "t_mm": 15,
+  "m_ice_kg": 9.9
+ },
+ "clamp": {
+  "bolts": "4×M16-8.8",
+  "P_kN": 80.0,
+  "mu": 0.3,
+  "slip_cap_kN": 192.0,
+  "demand_kN": 1.454,
+  "SF_slip": 132.0,
+  "M_overturn_kNm": 0.777,
+  "bolt_tension_add_kN": 2.43,
+  "SF_bolt_tension": 32.9
+ },
+ "safety_distance_m": {
+  "110kV": 1.5,
+  "220kV": 3.0,
+  "330kV": 4.0,
+  "500kV": 5.0,
+  "750kV": 8.0,
+  "1000kV": 9.5
+ },
+ "placement_rule": {
+  "device_envelope_m": 1.2,
+  "rule": "装置任一点至带电体距离 ≥ D_safe+0.5 m风偏裕量；500kV 需 ≥5.5 m，仅布于塔身下段主材(呼高以下)及地线支架"
+ },
+ "select": {
+  "a_m": 0.7,
+  "plate": "5052-H32 铝板 4 mm，平面度≤1 mm(≤λ/16@X)",
+  "dihedral_err": "≤0.2°"
+ }
+}

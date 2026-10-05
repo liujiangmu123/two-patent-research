@@ -1,0 +1,1037 @@
+Quality-guided UAV Surface Exploration for 3D Reconstruction
+Benjamin Sportich¹, Kenza Boubakri¹, Olivier Simonin¹, Alessandro Renzaglia¹
+Abstract— Reasons for mapping an unknown environment
+with autonomous robots are wide-ranging, but in practice,
+they are often overlooked when developing planning strategies.
+Rapid information gathering and comprehensive structural as-
+sessment of buildings have different requirements and therefore
+necessitate distinct methodologies. In this paper, we propose
+a novel modular Next-Best-View (NBV) planning framework
+for aerial robots that explicitly uses an explicit reconstruction
+quality objective to guide the exploration planning. In par-
+ticular, our approach introduces new and efficient methods
+for view generation and selection of viewpoint candidates
+that are adaptive to the user-defined confidence objectives,
+exploiting the uncertainty encoded in a Truncated Signed
+Distance field (TSDF) representation of the environment. This
+results in informed and efficient exploration decisions tailored
+towards the predetermined objective. Finally, we validate our
+method via extensive simulations in realistic environments. We
+demonstrate that it successfully adjusts its behavior to the
+user goal while consistently outperforming conventional NBV
+strategies in terms of coverage, quality of the final 3D map and
+path efficiency.
+I. INTRODUCTION
+Autonomous exploration for 3D reconstruction is a funda-
+mental task in robotics, with critical real-world applications
+such as infrastructure inspection, mapping, environmental
+monitoring, and search-and-rescue missions [1]. In these
+scenarios, Unmanned Aerial Vehicles (UAVs) equipped with
+onboard visual and range sensors have proven essential
+for efficiently navigating complex environments and cap-
+turing aerial perspectives that enable comprehensive 3D
+reconstructions or a swift survey of an area. Solving this
+problem usually involves selecting efficient sequences of
+viewpoints that maximize the expected information gain
+from new observations, which is particularly challenging in
+environments with complex structures and in the absence of
+any prior knowledge of their geometry. When using small
+UAVs, this task becomes even more difficult due to the
+limited computational resources typically available on these
+platforms, which require lightweight and efficient algorithms
+capable of operating in real time even on large-scale maps.
+Despite the variety of applications, exploration and recon-
+struction strategies have often been considered as solving the
+same problem. However, while several applications require
+a balance between the two tasks, their objectives are often
+in conflict. The fast coverage needed for search and rescue
+applications is typically incompatible with the precise sensor
+measurements necessary for high-accuracy reconstruction.
+1Inria,
+INSA
+Lyon,
+CITI,
+69621
+Villeurbanne,
+France.
+Email:
+fistname.lastname@inria.fr
+This work has been funded by the Agence Nationale de la Recherche
+(ANR), AVENUE project, grant ANR-22-CE33-0004.
+Fig. 1.
+Illustration of an autonomous exploration and 3D reconstruction
+task with an aerial robot. Red points in the free space represent candidate
+viewpoints generated to select the next robot’s position, black ones are
+surface frontiers within the sensor’s range.
+Similarly, the measured pace demanded by infrastructure
+inspection is not suitable for emergency use cases. For these
+reasons, we present a novel Next-Best-View (NBV) planning
+solution that explicitly takes into account the user’s goal
+by defining a quality objective for the 3D reconstruction of
+the initially unknown and arbitrary environment to explore.
+Depending on the initial fixed purpose, our method can
+prioritize speed over accuracy, accuracy over speed, or a
+balance of the two at every step of the strategy by leveraging
+a purpose-designed function.
+The main contributions of this paper are as follows:
+• A new representation-based formalism reflecting recon-
+struction quality and completeness of the built map;
+• A novel Next-Best-View approach relying on this for-
+malism and able to adapt to the targeted quality both in
+the views generation and selection stage;
+• An extensive evaluation in both indoor and outdoor
+realistic scenarios that demonstrates the competitiveness
+of our solution in terms of coverage, speed, and map
+accuracy.
+II. RELATED WORK
+Autonomously exploring an environment and obtaining an
+accurate 3D reconstruction of an unknown space are two very
+similar yet distinct problems that have been widely studied
+in recent years. In both cases, a standard way to tackle these
+problems is to adopt an iterative structure called Next-Best-
+View (NBV) planning: based on the available partial knowl-
+edge of the environment, the most promising future positions
+arXiv:2511.20353v3  [cs.RO]  17 May 2026
+
+or portions of paths are selected using a set of criteria and
+proxies. Exploration-based solutions are typically evaluated
+on speed or volume coverage [2], while reconstruction-based
+approaches are evaluated mostly on the deviation from a
+ground-truth 3D mesh [3]. In both cases, most existing
+solutions, as [2], [3], [4], leverage the seminal concept of
+frontiers, first introduced in [5] for 2D environments, to
+guide the mission. This concept was then extended to 3D
+and specifically for surface reconstruction, by introducing
+surface frontiers, which represent the border between empty
+and unknown space around the observed geometry. Other
+solutions are directly based on sampling-based approaches
+in the 3D space. Within this line, the solution presented in
+[6] randomly samples the freespace using RRT and iteratively
+selects the most promising branch to explore. Although fast
+and probabilistically complete due to random sampling, the
+quality of views and reconstruction performance of this type
+of method are typically lower than those of solutions that
+generate views directly from the surface geometry rather than
+the free volume. [7] and [4] combine both methods, using
+RRT to explore the freespace but sampling around the surface
+frontiers to exploit the environment structure. A different
+sampling-based solution that approximates a reward function
+based on past observations is then presented in [8]. Several
+solutions also consider predefined structures, such as a demi-
+sphere, to sample views around the target, whether an object
+[9] [10] or an outdoor environment [11], assuming a domain
+with specific geometric properties. In our work, we propose
+a solution that generates views directly based on surface
+frontiers and the perceived scene geometry. Additionally, our
+experimental evaluation takes place in settings with complex
+topologies, without any hypothesis on their structure.
+A. Entropy & Heuristics
+To select the Next-Best-View among a pool of view
+candidates, many evaluation functions have been proposed.
+A common and reliable option is to leverage the concept
+of entropy by examining all the voxels in the sensor’s
+field of view and assessing their individual information gain
+based on their occupation probability. In [9], the authors
+propose and analyze eight different evaluation functions that
+combine distinct criteria and heuristic-based terms. Although
+performant, these methods are particularly expensive and
+often incompatible with the computational power embedded
+on a UAV platform. Thus, they are commonly restricted to
+object reconstruction with robot arms. These limitations have
+led to the development of different NBV evaluation strategies
+for 3D exploration based on heuristics such as occlusion
+checks and visible frontiers counts in the field of views [3].
+To increase efficiency and reduce unnecessary travels,
+some approaches, such as [2], [3], [12], try to compute
+an optimal order of visits of available views or sectors of
+the map (often relying on an asymmetric TSP model). This
+solution involves, however, heavy computational costs to
+obtain a still sub-optimal solution, since it remains based
+on partial information. A common and lighter alternative to
+optimize the robot’s navigation relies on the use of heuristics
+that incorporate distance and angular costs, as proposed
+in [13]. This approach provides competitive results for a
+fraction of the cost of the TSP model.
+B. 3D Representations
+The design of solutions is also strongly influenced by
+the adopted 3D representation, especially for high-quality
+reconstruction. Explicit representations, such as the octree-
+based occupation grid Octomap [14], can be used for surface
+reconstruction and navigation without post-processing. How-
+ever, their computational cost quickly becomes very high in
+large environments. They have also been successfully used in
+NBV approaches designed for single-object reconstruction,
+as in [9], [10], with a more tractable cost, but showing some
+limitations in terms of accuracy of the final reconstruction.
+Lately, the use of Signed Distance Fields, implicit repre-
+sentations of the environment, has been largely preferred.
+More economical, they allow a greater fidelity through a
+finer discretization [15]. Truncated Signed Distance Fields
+(TSDF) use projective distances to obstacles within a sparse
+voxel grid and model uncertainty. On the other hand, Eu-
+clidean Signed Distance Fields (ESDF) use non-projective
+distance to obstacles and are particularly efficient for path
+planning [16]. [17] and [18], building an ESDF and TSDF
+concomitantly, and [19] only creating an ESDF, are standard
+libraries for sensor input integration in the literature. Notably,
+the solution presented in [20] does not rely on any 3D
+representation and reasons directly on point clouds, but its
+definition does not allow perceiving empty space and requires
+specific processing for occlusion management. In this paper,
+we propose a representation-based framework exploiting the
+characteristics of SDF, as motivated in the next section.
+To our knowledge, our solution is the first to propose
+an NBV approach that adapts both view generation and
+selection to a required confidence level on the final map.
+III. PROBLEM FORMULATION
+We consider an aerial robot equipped with a depth sensor
+with a limited Field-of-View (FoV) characterized by a max-
+imum and minimum range rmax and rmin, respectively. We
+assume access to a perfect localization system at all times
+in a reference frame that we will call the world frame. The
+robot’s goal is to reconstruct the 3D surface of an unknown
+environment in the minimum time possible while taking into
+account predefined quality objectives. The environment is
+initially unknown and we represent the scene as a triangular
+mesh M = {T,O} built on a pointcloud with mesh vertices
+O = {o1,o2,...,o|O|} and a set of faces T = {t1,t2,...,t|T|},
+where ti ∈V ×V ×V, following the definition in [11]. We call
+Z the quality measure of the 3D reconstruction, based on the
+built map M, which will be later formally defined. Let q ∈
+SE(3) be the pose of the robot and q0 its initial configuration.
+q is defined by a position sq ∈R3 and orientation φq ∈R3.
+Reconstruction problem: Considering our UAV with
+initial configuration q0 ∈Q, the reconstruction problem asks
+to identify S = ( ˆQ, ˆPˆQ), a set of poses and the corresponding
+
+collision-free paths which allow the agent to reach a prede-
+fined quality of reconstruction Z∗in a minimum time.
+The quality measure of the reconstruction and the corre-
+sponding minimum threshold can be tailored depending on
+the exact application and constraints of the problem. In this
+section, we will detail the design of our proposed Z function.
+We consider a volumetric map M of the environment based
+on a discretized voxel grid of the 3D space. A voxel, of size
+ds, can refer to free, occupied, or unknown space. We follow
+the general definition of surface frontiers given in [3]:
+Definition 1 (Incomplete Surface Element): An Incom-
+plete Surface Element (ISE), is a voxel i ∈M lying on the
+surface at a frontier, near both the unknown and empty space.
+Let C be the set of all ISEs, a voxel i ∈C if and only if:
+• i is empty,
+• ∃i′ ∈N 6
+i s.t. i′ is unknown,
+• ∃i′′ ∈N 18
+i
+s.t. i′′ is occupied,
+where N 6
+i
+and N 18
+i
+denote the 6- and 18-connected voxel
+neighborhoods of i, respectively. The definition of an empty,
+unknown, occupied voxel is dependent on the map represen-
+tation and we will detail this further below.
+Definition 2 (Remaining Incomplete Surface): Let Q be
+the set of all collision-free configurations of an agent, and
+let Qc ⊆Q be the set of all configurations from which an
+ISE i ∈C can be scanned. The remaining incomplete surface
+is then defined as:
+Crem =
+[
+i∈C
+{i | Qc = /0}.
+(1)
+A. Reconstruction Quality in TSDF
+To represent the map, we use a Truncated Signed Distance
+Field (TSDF), where each voxel i ∈M is represented by an
+aggregated projected distance di to the closest obstacle and a
+weight wi, which serves as a measure of confidence intance.
+Within a TSDF representation, a voxel i is considered:
+• empty, if wi > 0 and di > ds (voxel size),
+• occupied, if wi > 0 and di < ds,
+• unknown, if wi = 0.
+The choice of a TSDF representation is justified by several
+reasons. First, a TSDF implicitly represents the surfaces
+but explicitly models the confidence in the progressively
+built map, which is crucial in assessing the accuracy of the
+reconstruction online. In addition, the seminal work [21] has
+extensively studied the impact of the sensors’ uncertainty in
+reconstruction problems. These results are now commonly
+used to integrate the sensor input, as done for instance
+in [17] and [18], two widely-used TSDF implementations
+for UAV exploration and reconstruction. It is important
+to note that the TSDF representation has been proved to
+be equivalent to the least squares minimization of squared
+distances between points on the range surfaces and points
+on the desired reconstruction under the specific conditions
+of an orthographic sensor and a range error independently
+distributed along the line of sight of the sensors [15]. Hence,
+although the TSDF weights wi are not a direct geometric
+error metric, we propose to use them to define a function
+Z(M) which acts as an efficient proxy for a quality measure
+of the reconstructed isosurface:
+Z(M) = ξ(M) ¯Z = ξ(M) ∑
+i∈MS
+wi
+|MS|
+(2)
+where MS is the set of observed surface voxels in M and
+ξ(M) = 0 if ∃i such that i ∈C and i /∈Crem, and ξ(M) = 1 in
+all other cases. As a result, ξ(M) evaluates the completeness
+of the surface reconstruction and ¯Z represents the average
+confidence in the obtained map. Contrary to a quality func-
+tion incorporating directly distance errors or surface normals
+that can only be known a posteriori, our proxy function can
+be used online to evaluate a partial map.
+Using the function in equation (2) can however lead to
+overestimating the overall accuracy of a map, where some
+parts of unnecessarily high confidence compensate for lower-
+accuracy areas. We thus define the following modified quality
+evaluation function Zsat(M;w∗):
+Zsat(M;w∗) = ξ(M) ¯Zsat = ξ(M) ∑
+i∈MS
+min(wi;w∗)
+|MS|
+(3)
+where w∗is a predefined confidence goal. Using this formu-
+lation, we can formulate our problem as finding the shortest
+path that maximizes the function (3) given a predefined
+confidence objective w∗. Note that Z∗:= max(Zsat) = w∗.
+Although this optimization problem cannot be solved di-
+rectly, the following section presents an online NBV planning
+approach that aims to achieve the same objective.
+IV. PROPOSED APPROACH
+To reconstruct or explore an unknown environment, Next-
+Best-Views solutions proceed iteratively: based on the partial
+map of the environment available at a given time, they
+select the viewpoint that will bring the most expected in-
+formation and thus reduce mission time. Viewpoints are
+generally constructed around frontier points, borders between
+the unknown space and the known surface, that constitute
+intuitively highly informative viewing zones. Typically, the
+process consists of successively identifying frontier points,
+generating viewpoints around them, which exploits the struc-
+ture of the known map, and finally selecting the next robot
+pose among all the potential destinations. Repeating this
+process involves moving from one locally optimal view
+candidate to another, according to considerations about the
+unknown surface and metric distance penalties to reduce
+back-and-forth motions. In this work, we introduce a novel
+way to determine locally optimal views by incorporating
+explicitly user-defined quality requirements in this procedure.
+To this end, we designed a new quality objective function to
+maximize, which is used at each step of the process to orient
+the exploration towards the chosen quality goal.
+Our objective function Zsat(M;w∗) encompasses two crite-
+ria: complete exploration and high-confidence reconstruction.
+With a limited time, these objectives are at odds, as the
+former requires fast traversal of unknown spaces and the
+latter requires careful observation of sometimes complex
+geometry. Typically, these conflicting goals may also require
+
+different viewing distances of the target. A fast exploration
+strategy favors high-distance observations, maximizing un-
+known space sensing, while a reconstruction method requires
+closer observation points in search for accuracy. These com-
+plexities are reflected in our function design. By setting a
+quality objective Z∗that informs both the generation and the
+evaluation of viewpoints, the user can calibrate the speed and
+reconstruction fidelity according to their preferences. A Z∗
+tending to 0 would orient the planning towards an aggressive
+exploration strategy, while a value closer to 1 would make
+the exploration slower, careful and progressive.
+A. Use of Z∗to Guide the Exploration
+Our objective function Zsat, defined in eq. (3), is built
+on the TSDF representation and exploits the associated
+confidence estimates encoded in the weights wi. Leveraging
+the results presented in [22], the confidence of a given mea-
+surement is typically set to 1/d2, where d is the measurement
+depth. For example, this is the case for the TSDF library
+Voxblox [17] that we adopt in our work. Based on this model,
+to obtain a confidence w∗for a given surface voxel would
+be sufficient to observe it from a distance d∗equal to:
+d∗= min(
+p
+1/w∗,rmax).
+(4)
+On the map level, this relation implies that, if all surface
+voxels are observed at a distance of d∗or less at least
+once, then Z ≥Z∗. When Z∗is close to 0, d∗would
+correspond to the maximum range of the sensor, meaning
+voxels can be observed from any distance and still satisfy
+the quality requirements. On the other hand, if Z∗is close
+to 1, then d∗will be close to the sensor’s minimum range.
+It is important to note that a given confidence level could
+also be achieved with multiple observations obtained from
+distances greater than d∗(see [17] for more details on the
+weight update rule). Although it is not possible to define a
+priori the optimal observation distance to reach a predefined
+Z∗in the shortest possible time, we will use d∗as our
+reference observation distance to guide both view generation
+and evaluation. In practice, we define a viewing distance
+interval [d∗−η;d∗+ η] with η > 0, and our strategy aims
+for a complete exploration via the generation and selection
+of views within this viewing distance interval.
+B. View Generation
+When the robot starts its exploration or is about to reach
+the current goal position and orientation, the map is exam-
+ined, and a view candidate is generated for every surface
+frontier (ISE voxel as in Definition 1) identified in the map.
+A view candidate v ∈SE(3) is defined by a position sv ∈R3
+and an orientation φv ∈R3. In contrast to sampling-based
+approaches that sample randomly in freespace, frontier-
+based views exploit the geometry of the environment to
+propose efficient and safe observation poses. Three points
+are sampled along the normal of the surface frontiers points
+at different viewing distances d: in a close range d < d∗−η,
+in an optimal range (d ∈[d∗−η;d∗+η]), and at long range
+(d > d∗+η). Points within the optimal range, then close and
+Fig. 2. Vertical and horizontal rotation for the view generation. (The red and
+green arrows indicate, respectively, a direction from the frontier to a view
+candidate whose vertical angle is incompatible with the sensor’s opening,
+and the corrected direction toward an adjusted view candidate. The green
+circle represents the sampling space of view candidates with a valid vertical
+angle and viewing distance to the frontier.
+long range, are checked for safety in this respective order.
+This order is in accordance with the satisfaction of the aimed
+quality threshold. Once a valid position is found, the process
+is stopped and moves to the next frontier.
+In signed distance fields, the normal of a surface point
+is equal to the gradient direction at the position of the
+corresponding surface voxel. Typical gradient calculation
+methods of forward and central difference, although com-
+putationally efficient, do not perform well in an exploration
+context, because of the perturbation of unknown voxels
+surrounding the surface. We chose to implement the gradient
+calculation developed in [3], which exploits all neighbors and
+incorporates uncertainty. The surface normal direction ni of
+the surface frontier i is computed as:
+ni = ∑
+j∈N 26
+i
+w(j)
+j −i
+||j −i||
+(5)
+with N 26
+i
+the set of 26-neighbors of i and w(j) = −wj if j
+is occupied and equals to wj otherwise.
+If no admissible view is found due to the close vicinity of
+obstacles within the robot’s radius or if the incidence angle
+is not aligned with the sensor FoV, the sampling direction
+ni is then rotated horizontally and/or vertically (see Fig.
+2). Notably, if the vertical angle falls outside the FoV, the
+surface normal vector is rotated by the necessary angle in
+the corresponding plane to bring it back in the center of
+the field of view before performing a collision check. In
+this way, all the generated views are compatible with the
+robot’s sensing capabilities. If for the frontier i, sv fails the
+collision check, we horizontally rotate the viewing direction
+ni around the vertical axis centered on the frontier i. Any
+new view candidate for i of position s′
+v is sampled from the
+circle obtained through this rotation. This process ensures
+that neither the vertical angle nor the distance to the frontier
+(||s′
+v −i|| = ||sv −i||) are modified. The set of generated
+candidate viewpoints is called V.
+C. View Evaluation
+The view candidates generated in V are then evaluated
+according to an information gain component JI and a navi-
+
+gation component JN. The selected view v∗is the view that
+maximizes the function J that combines these two terms, i.e.:
+v∗= argmax
+v∈V
+J(v) = argmax
+v∈V
+α JI(v)+β JN(v)
+(6)
+with α,β ∈[0;1]. Considering the significant number of view
+candidates, an evaluation function needs to both discriminate
+efficiently and be computationally tractable, as the size of V
+can grow exponentially with the size of the map.
+1) Information Gain Component: Information gain eval-
+uation functions can be sorted into two main categories:
+entropy-based and frontier-based. In Section II-A, we dis-
+cussed the prohibitive cost of entropy-dependent solutions for
+large environments in comparison to frontier-based methods.
+For this reason, our information gain model is based on
+frontiers, but does not limit itself to counting visible frontiers
+in the field of view. Our function is guided by the objective
+quality Z∗, which considers viewing distance and visibility
+probabilities due to occlusions to differentiate views.
+A voxel i is generally called occluded from a view
+candidate v if along the ray from v to i there is at least one
+occupied voxel. We define Fv ⊂F the set of non-occluded
+frontiers from the pose of the view candidate v, and δv,f the
+binary variable equals 1 if f ∈Fv and 0 otherwise. However,
+this definition of occlusion does not take into account the
+possible occlusion of unknown voxels along the ray that
+could be occupied. We thus define the function vis(v, f)
+estimating the visibility of the target frontier f from the
+view candidate v, considering the potential occlusions due
+to unknown voxels, as follows:
+vis(v, f) = δv,f e−u
+(7)
+with u being the number of unknown voxels along the ray
+from the sensor pose v to the target frontier f. Using these
+definitions, we define the information gain function JI(v) as:
+JI(v) =
+1
+max
+v∈V |Fv| ∑
+f∈F
+hv(f)vis(v, f)
+(8)
+where
+hv(f) =
+
+
+
+
+
+
+
+1
+if |d(f,sv)−d∗| < η
+0.5
+if d(f,sv) < d∗−η
+0.5
+
+1−d(f,sv)
+rmax
+
+if d(f,sv) > d∗+η
+(9)
+The function h prioritizes view candidates that observe fron-
+tiers from a distance close to d∗. Views at farther distances
+are penalized, as they do not satisfy the quality criteria.
+Closer viewing distances do satisfy the quality criteria, but
+have fewer voxels in the field of view. Hence, they are also
+penalized, although less significantly.
+2) Navigation component: During the exploration, a ma-
+jor fallback is to return to previously visited areas to observe
+a missed portion of the surface, generating additional and
+unnecessary travel. Furthermore, the position sv of the view
+candidate v can be close in distance to the actual robot
+position sq ∈R3 but facing the opposite direction. Moving
+to that view would incur a costly change in direction with a
+Fig. 3.
+Overview of the main components of the proposed approach.
+trajectory that cannot be a straight line. To generate efficient
+trajectories, we include both of these aspects in the design
+of our navigation component JN:
+JN(q,v) = ψ(q,v)
+min
+v∈V ||sv −sq||
+||sv −sq||
+(10)
+where
+ψ(q,v) = 1−1
+π arccos
+ velT
+||vel|| ·
+sv −sq
+||sv −sq||
+
+(11)
+with vel being the velocity vector of the robot.
+D. Local Planning
+To represent the 3D space as a 3D map, we adopt ETHZ
+ASL’s Voxblox representation [17], which builds a TSDF
+and an ESDF concomitantly. The TSDF is used for the
+reconstruction reasoning and the ESDF by the navigation
+component to determine the freespace. We use the local plan-
+ner from [23] to generate dynamically feasible trajectories
+and replan in real-time to avoid obstacles. The local planner
+has two main components: first, the local trajectory optimizer
+that computes the best path between two waypoints without
+collisions. This trajectory is then smoothed out using the
+loco smoother [23] to respect the velocity and acceleration
+constraints. Then, the intermediate goal selector creates sub-
+sections of the path between the current UAV pose and the
+goal and sends them one by one to the UAV’s controller.
+To improve the UAV’s navigation and obstacle avoidance,
+we have added a component that computes a freespace
+pointcloud from the UAV sensor’s original pointcloud. First,
+the maximum range of the sensor is used to recreate a ”full”
+pointcloud. Then, it is compared to the actual sensor input.
+Specifically, any point in the full pointcloud that lies in
+the same direction as a detected point from the sensor data
+but is farther away is removed. This freespace pointcloud
+gives additional information about the navigable environment
+perceived by the UAV and is passed to Voxblox to enhance
+the quality of the ESDF and TSDF. Making a difference
+between empty and unknown space is also crucial to assess
+occlusion within the information gain calculation.
+An overview of the global architecture, including the sens-
+ing, mapping, planning, and control components, is shown
+in Fig. 3.
+
+Online-IPP
+Ours
+Ours (average)
+Online-IPP (max)
+Online-IPP (min)
+Fig. 4.
+House and Tunnel environments (ground-truth mesh) with 15-minute trajectories.
+V. NUMERICAL EXPERIMENTS
+In this section, we test and analyze our method in differ-
+ent simulated environments with varying characteristics. To
+assess the efficiency of our approach, we compare its perfor-
+mance against three methods from the literature: an informa-
+tive sampling method based on RTT* [4], and two classical
+heuristic baselines. The first baseline evaluates viewpoints by
+counting the number of visible frontiers from that position
+using raycasting. Intuitive but costly, it is adopted by several
+state-of-the-art approaches, as [3] and [2]. The second one
+consists of always selecting the closest generated viewpoint
+as the next destination, which has consistently performed
+on-par with recent methods [24]. For the view generation of
+these methods, we use the state-of-the-art method detailed in
+[2], which adopts a cylindrical sampling around the frontier.
+A. Simulation setup
+Performance evaluations were performed in ROS1-Gazebo
+simulation with a quadrotor UAV equipped with a 3D LIDAR
+providing a full 360-degree horizontal field of view (FOV)
+and a vertical FOV ranging from -35 to +30 degrees. The
+UAV model is based on an Intelaero UAV, using the same
+motor placement and dimensions. To guide the UAV in
+Gazebo, we designed a controller that follows the given
+trajectory perfectly. This perfect controller is used to prevent
+navigation bias when comparing the different approaches in
+simulation. We assume perfect localization as in all the major
+works of the field from the literature [4], [3], [2].
+The experimental results presented in this paper took place
+in the following simulated worlds:
+• House: a 45x40x20m outdoor open field urban environ-
+ment composed of a house, two cars, and a complex
+playground structure. All elements are dispersed within
+the map and disconnected, except for the ground sur-
+face. Object shapes are quite complex.
+• Tunnel: a 200x200x4m indoor structured terrain with a
+large cubic room and a narrow tunnel entry point. The
+tunnel splits into 3 sections that remerge further. This
+world requires a more precise navigation and combines
+an almost open area and narrow corridors.
+These two environments have been selected for their chal-
+lenging and deeply different characteristics. The scattered
+objects of interest in ”House” and the combination of both a
+wide open room and multiple branching narrow corridors in
+”Tunnel” create complex topologies where the robot must
+efficiently prioritize the views to select. Typically, in the
+”House” environment, the empty ground surface should be
+covered quickly to focus on the more complex geometry of
+the objects within the scene. In ”Tunnel”, the variety within
+the environment requires a strategy that can efficiently handle
+both wide and tight spaces for view selection and navigation.
+Additionally, the spaced objects in ”House” and the scale
+of ”Tunnel” can easily induce unnecessary back-and-forth
+motions. The mission time has been limited to 15 minutes
+for both environments. This time limit is intentionally short
+in order to evaluate the ability of the approaches to prioritize
+regions of interest within a limited time frame.
+Across all experiments and scenes, we keep the same
+values of α = β = 0.5. Other simulation parameters are
+detailed in Table I.
+Parameter
+Value
+Robot Radius
+1.0 m
+Voxel Size ds
+0.25 m
+Lidar Min/Max Range rmin,rmax
+0.42m / 10m
+Vertical Min/Max Angle
+-35° / 30°
+Maximum velocity vmax
+4.5 m/s
+Maximum absolute acceleration amax
+4.8 m/s²
+TABLE I
+SIMULATION PARAMETERS.
+B. Metrics
+The quality of a reconstructed map is judged on its
+completeness and its fidelity. For this reason, we divide our
+evaluation into two steps. First, we compare our solution
+to the other methods with respect to coverage and speed.
+Namely, we rely on the following three metrics: coverage
+ratio, distance traveled, and mean map error. To evaluate
+coverage, we compare the TSDF map obtained at the end of
+the execution with a TSDF ground truth containing all the
+observable surfaces, obtained through a manual traversal of
+
+the environments. We extract all the surface voxels of the
+ground-truth map in the set Msur face. A voxel in Msur face
+is covered if the distance value difference between the same
+voxel in the ground-truth and the evaluated map is less than
+the voxel diagonal. The map error is the average distance
+error across all surface voxels of the ground truth map.
+The second part of our analysis focuses on map accuracy
+and is based on two metrics: the function Z(M) expressed
+in eq. (2), and the percentage distance ∆between the value
+of the objective function Zsat(M;w∗) corresponding to the
+final map, and its optimal value Z∗. In both cases, the com-
+pleteness factor is approximated to ξ(M) = |MS|/Msur face.
+Since none of the methods is deterministic, each experiment
+has been repeated five times, and the averaged values are
+reported in Tables II, III, and IV.
+C. Results
+1) Performance comparison: The first conclusion that can
+be drawn from the first set of comparative results presented in
+Table II is that our proposed approach outperforms the other
+three methods in terms of coverage for both environments
+while maintaining a similar mean error. In ”Tunnel” notably,
+our approach covers 86% more surface voxels than the
+second-best approach. The performance differences are less
+pronounced in ”House”, which is closer to a standard open
+environment, but rise drastically in ”Tunnel”. This is due
+to the fact that, in our simulations, all the other methods
+struggle transitioning from the wide room to the narrow
+tunnel shaft and lose a large amount of time (see Fig. 4).
+Random sampling methods do not manage to efficiently
+cover some hard-to-see surfaces, located at the bottom of
+the room walls, highlighting the benefits of surface-based
+view generation. It should be noted that for Online-IPP [4],
+there is significant variability between instances. In most of
+our experiments, it hardly enters the tunnel shaft and remains
+in the main room for most of the mission time (see Fig. 4).
+However, when it manages to find the tunnel entrance, its
+speed of exploration in the narrow corridor is unmatched by
+the other methods, including ours, despite significant back
+and forth. Our approach is the most consistent, as our high
+coverage ratio demonstrates, and with the best path efficiency
+overall in all environments (see Fig. 4, Table II) across all
+methods. In particular, our paths are 3 to 4 times shorter than
+Online-IPP’s and provide better coverage. We can finally note
+that a quality objective corresponding to half the field of view
+of the sensor proves to be a good balance between speed and
+accuracy, as demonstrated by the values of Z in Table II.
+2) Adaptation to the quality objective: For the second
+part of our analysis, we consider the percentage distance
+∆to different quality objectives obtained using different
+observation distance intervals dobs ± η: close-range (1.5m),
+middle-range (4.5m), and high-range (8.5m) with η always
+0.5m. We also measure the performance of two versions
+of closest frontiers and frontiers count: one with a large
+sampling range of 3 to 8 meters for view generation, and a
+version with a smaller range of 4 to 5 meters. These results
+are presented in Tables III and IV for the House and Tunnel
+environment respectively. For readability purposes, and given
+its direct relation with d∗, we use the value of
+p
+1/Z∗instead
+of Z∗to specify the considered quality objective.
+When the observation distance increases, our solution cov-
+erage increases significantly: in ”House”, the best-performing
+method in terms of coverage is ours, with a high range. In
+”Tunnel”, ours-middle-range is also the top performer (we
+did not evaluate a high-range as the narrow corridors of the
+tunnel do not allow it). However, as expected, when observ-
+ing from higher ranges, the accuracy of the observed map
+worsens. Conversely, with the smallest range of observation,
+our exploration is slower, but the map fidelity increases.
+In ”House”, ours (d∗∈[1;2]), is slower but has the best
+accuracy of all the strategies with an error 2 to 4 times
+inferior to the other methods (ours excluded). For higher
+observation ranges, our method always has a distance to the
+quality objective of 0.01% or less, but with the corresponding
+confidence value being very small, the comparison between
+strategies appears less significant. In ”Tunnel”, ours-close-
+range (dobs ∈[1;2]) has a higher distance to the quality target
+than ours-middle-range (dobs ∈[4;5]). The small value of dobs
+in the narrow corridors causes big angle changes between
+views, which generates a higher error. In general, we can
+notice that our approach is either the fastest to cover the
+environments or the one that achieves the best accuracy,
+depending on the corresponding quality target.
+VI. CONCLUSION
+In this work, we presented a novel, quality-guided frame-
+work for exploring and reconstructing unknown environ-
+ments using an aerial robot equipped with a range sen-
+sor. The proposed NBV approach enables the robot to
+adapt its selection of future observation points based on
+the perceived environment and user-specified reconstruction
+fidelity requirements, achieving a more efficient and task-
+driven exploration. We tested the proposed approach in a
+series of experiments involving diverse environments and
+quality objectives and compared it to state-of-the-art standard
+alternatives. Our extensive results showed that our method
+effectively adjusts exploration efficiency and reconstruction
+accuracy while consistently outperforming alternative meth-
+ods in both map coverage and final accuracy, demonstrating
+the value of incorporating quality criteria into the design of
+planning algorithms.
+In the future, we plan to expand our approach to guide
+multiple UAVs as a team to obtain scalable and cooperative
+solutions for exploring and reconstructing large-scale, com-
+plex environments.
+REFERENCES
+[1] A. Quattrini Li, “Exploration and mapping with groups of robots:
+Recent trends,” Current Robotics Reports, vol. 1, no. 4, 2020.
+[2] B. Zhou, Y. Zhang, X. Chen, and S. Shen, “FUEL: Fast UAV explo-
+ration using incremental frontier structure and hierarchical planning,”
+IEEE Robotics and Autom. Letters, vol. 6, no. 2, pp. 779–786, 2021.
+[3] G. Hardouin, J. Moras, F. Morbidi, J. Marzat, and E. M. Mouaddib,
+“A multirobot system for 3-d surface reconstruction with centralized
+and distributed architectures,” IEEE Transactions on Robotics, vol. 39,
+no. 4, pp. 2623–2638, 2023.
+
+Methods
+House
+Coverage
+Tunnel
+Coverage
+House
+Path length
+Tunnel
+Path length
+House
+Map Error
+Tunnel
+Map Error
+House
+Z
+Tunnel
+Z
+Ours (d∗= 4.5m)
+9507 (86.3%)
+54850 (71.5%)
+228.6
+411.8
+3,74%
+4,84%
+0.83
+0.71
+Online-IPP [4]
+8681 (78.8%)
+22865 (29.8%)
+731
+819
+3,64%
+5,11%
+0.75
+0.3
+Closest frontier (small spread)
+7881 (71.6%)
+29437 (38.4%)
+195.6
+233.8
+3,85%
+5,16%
+0.69
+0.38
+Closest frontier (large spread)
+8221 (74.7%)
+18950 (24.71%)
+242.4
+163
+3.66%
+4.01%
+0.72
+0.24
+Frontier count (small spread)
+7857 (71.4%)
+26822 (34.9%)
+230.2
+187.8
+3,63%
+4,66%
+0.68
+0.35
+Frontier count (large spread)
+9377 (85.21%)
+26266 (34.25%)
+245.8
+182.66
+3,75%
+4,78%
+0.83
+0.34
+TABLE II
+PERFORMANCE COMPARISON ACROSS DIFFERENT ENVIRONMENTS.
+Methods (House)
+∆(
+p
+1/Z∗= 1)
+∆(2)
+∆(4)
+∆(5)
+∆(8)
+Coverage
+Ours (dobs = 1.5±0.5m)
+1.33%
+0.19%
+≤0.01%
+≤0.01%
+≤0.01%
+69.37%
+Ours (dobs = 4.5±0.5m)
+3.79%
+0.79%
+0.01%
+≤0.01%
+≤0.01%
+86.39%
+Ours (dobs = 8.5±0.5m)
+13.93%
+3.76%
+0.33%
+0.07%
+≤0.01%
+99.62%
+Online-IPP [4]
+4.77%
+1.07%
+0.07%
+0.01%
+≤0.01%
+78.8%
+Frontier count (large spread)
+2.75%
+0.52%
+0.01%
+≤0.01%
+≤0.01%
+74.7%
+Frontier count (small spread)
+5.14%
+1.18%
+0.04%
+≤0.01%
+≤0.01%
+71.4%
+Closest frontier (large spread)
+4.03%
+0.67%
+0.01%
+≤0.01%
+≤0.01%
+85.21%
+Closest frontier (small spread)
+3.99%
+0.75%
+≤0.01%
+≤0.01%
+≤0.01%
+71.6%
+TABLE III
+DISTANCE TO QUALITY OBJECTIVES FOR EACH APPROACH IN THE HOUSE ENVIRONMENT.
+Methods (Tunnel)
+∆(
+p
+1/Z∗= 1)
+∆(2)
+∆(4)
+∆(5)
+∆(8)
+Coverage
+Ours (dobs = 1.5±0.5m)
+0.85%
+0.13%
+≤0.01%
+≤0.01%
+≤0.01%
+41.58%
+Ours (dobs = 4.5±0.5m)
+0.26%
+0.02%
+0.01%
+0.01%
+≤0.01%
+71.5%
+Online-IPP [4]
+0.56%
+0.04%
+≤0.01%
+≤0.01%
+≤0.01%
+29.8%
+Frontier count (large spread)
+0.71%
+0.06%
+≤0.01%
+≤0.01%
+≤0.01%
+34.25%
+Closest frontier (large spread)
+1.15%
+0.14%
+≤0.01%
+≤0.01%
+≤0.01%
+24.71%
+TABLE IV
+DISTANCE TO QUALITY OBJECTIVE FOR EACH APPROACH IN THE TUNNEL ENVIRONMENT.
+[4] L. Schmid, M. Pantic, R. Khanna, L. Ott, R. Siegwart, and J. Nieto,
+“An efficient sampling-based method for online informative path
+planning in unknown environments,” IEEE Robotics and Automation
+Letters, vol. 5, no. 2, pp. 1500–1507, 2020.
+[5] B. Yamauchi, “A frontier-based approach for autonomous exploration,”
+in IEEE International Symposium on Computational Intelligence in
+Robotics and Automation, 1997, pp. 146–151.
+[6] A. Bircher et al., “Receding horizon path planning for 3d exploration
+and surface inspection,” Autonomous Robots, 2018.
+[7] M. Selin, M. Tiger, D. Duberg, F. Heintz, and P. Jensfelt, “Efficient
+autonomous exploration planning of large-scale 3-D environments,”
+Robotics and Automation Letters, vol. 4, no. 2, pp. 1699–1706, 2019.
+[8] A. Renzaglia, J. Dibangoye, V. Le Doze, and O. Simonin, “Combining
+stochastic optimization and frontiers for aerial multi-robot exploration
+of 3D terrains,” in IEEE/RSJ International Conference on Intelligent
+Robots and Systems (IROS), 2019, pp. 4121–4126.
+[9] J. Delmerico et al., “A comparison of volumetric information gain
+metrics for active 3d object reconstruction,” Autonomous Robots, 2018.
+[10] S. Pan and H. Wei, “A global max-flow-based multi-resolution next-
+best-view method for reconstruction of 3d unknown objects,” IEEE
+Robotics and Automation Letters, vol. 7, no. 2, pp. 714–721, 2022.
+[11] C. Peng and V. Isler, “Adaptive view planning for aerial 3D reconstruc-
+tion,” in IEEE Int. Conf. Rob. & Autom. (ICRA), 2019, pp. 2981–87.
+[12] B. Tang et al., “Bubble explorer: Fast uav exploration in large-
+scale and cluttered 3D-environments using occlusion-free spheres,” in
+IEEE/RSJ Int. Conf. on Intelligent Robots and Systems (IROS), 2023.
+[13] J. Yu, H. Shen, J. Xu, and T. Zhang, “ECHO: An efficient heuristic
+viewpoint determination method on frontier-based autonomous explo-
+ration for quadrotors,” IEEE Robotics and Automation Letters, vol. 8,
+no. 8, pp. 5047–5054, 2023.
+[14] A. Hornung et al., “Octomap: an efficient probabilistic 3d mapping
+framework based on octrees,” Autonomous Robots, vol. 34, no. 3, pp.
+189–206, 2013.
+[15] B. Curless and M. Levoy, “A volumetric method for building complex
+models from range images,” in Proceedings of the 23rd Annual
+Conference on Computer Graphics and Interactive Techniques, ser.
+SIGGRAPH ’96, 1996, p. 303–312.
+[16] N. Ratliff, M. Zucker, J. A. Bagnell, and S. Srinivasa, “CHOMP:
+Gradient optimization techniques for efficient motion planning,” in
+IEEE Int. Conf. on Robotics and Automation, 2009, pp. 489–494.
+[17] H. Oleynikova, Z. Taylor, M. Fehr, J. Nieto, and R. Siegwart,
+“Voxblox: Incremental 3d euclidean signed distance fields for on-board
+mav planning,” in IEEE/RSJ International Conference on Intelligent
+Robots and Systems (IROS), 2017, pp. 1366–1373.
+[18] Y. Pan, Y. Kompis, L. Bartolomei, R. Mascaro, C. Stachniss, and
+M. Chli, “Voxfield: Non-projective signed distance fields for online
+planning and 3d reconstruction,” in IEEE/RSJ International Confer-
+ence on Intelligent Robots and Systems (IROS), 2022, pp. 5331–5338.
+[19] L. Han, F. Gao, B. Zhou, and S. Shen, “Fiesta: Fast incremental
+euclidean distance fields for online motion planning of aerial robots,”
+in IEEE/RSJ International Conference on Intelligent Robots and
+Systems (IROS), 2019, pp. 4423–4430.
+[20] R. Border and J. D. Gammell, “The surface edge explorer (SEE): A
+measurement-direct approach to next best view planning,” The Int.
+Journal of Robotics Research, vol. 43, no. 10, pp. 1506–1532, 2022.
+[21] R. Newcombe et al., “Kinectfusion: Real-time dense surface mapping
+and tracking,” in 10th IEEE international symposium on mixed and
+augmented reality, 2011, pp. 127–136.
+[22] C. V. Nguyen, S. Izadi, and D. Lovell, “Modeling kinect sensor
+noise for improved 3d reconstruction and tracking,” in International
+conference on 3D imaging, modeling, processing, visualization &
+transmission.
+IEEE, 2012, pp. 524–530.
+[23] H. Oleynikova, Z. Taylor, R. Siegwart, and J. Nieto, “Safe local
+exploration for replanning in cluttered unknown environments for
+micro-aerial vehicles,” IEEE Robotics and Automation Letters, 2018.
+[24] D. Duberg and P. Jensfelt, “Ufoexplorer: Fast and scalable sampling-
+based exploration with a graph-based planning structure,” IEEE
+Robotics and Automation Letters, vol. 7, no. 2, pp. 2487–2494, 2022.

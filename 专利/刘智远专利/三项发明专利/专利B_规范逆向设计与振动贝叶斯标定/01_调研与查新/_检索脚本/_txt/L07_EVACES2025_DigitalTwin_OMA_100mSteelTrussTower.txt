@@ -1,0 +1,489 @@
+Digital Twin for Structural Monitoring
+and Anomaly Detection of
+the JRC Atmospheric Tower
+Gabriele David Bocchino1[0009−0005−6379−1254],
+Giovanni Vaglica2󰂏[0009−0004−0162−3274], Graziano Renaldi2[0009−0002−6354−0808],
+Federico Perotti1[0000−0003−4060−2527], Luca Martinelli1[0000−0003−1848−8764],
+and Flavio Bono2[0000−0003−3670−2269]
+1 Department of Civil and Environmental Engineering,
+Politecnico di Milano, Milan, Italy
+2 European Commission, Joint Research Centre, Ispra 21027, Italy
+flavio.bono@ec.europa.eu
+Abstract. Structural Health Monitoring is essential in detecting struc-
+tural anomalies and enhancing the reliability of structures. Installation
+of sensors on existing and complex structures can be challenging, thus
+preventing the implementation of exhaustive monitoring systems. The
+development of structural digital twins, coupled with data from sensors,
+can contribute to more eﬀective solutions, providing additional insights
+on the monitored structures. This work demonstrates the potential of
+digital twins for monitoring and identifying structural anomalies, by pre-
+senting the development of an application for a 100 m-tall steel truss
+atmospheric tower and base building. Operational Modal Analysis tech-
+niques, based on continuously monitored structural vibrations, are im-
+plemented to identify the dynamic parameters of the tower. This enables
+the possible detection of structural anomalies and changes in the towers
+modal response over time. The digital twin is then developed by com-
+bining real-time data with the virtual representation of the structure.
+We outline the details of the developed system, comprising the acqui-
+sition system, the digital platform, and the solution for the integration
+of the modular analysis components in the digital twin system architec-
+ture. The importance of digital twins in detecting structural anomalies
+during the life of the structure is here highlighted, demonstrating how it
+can enable proactive maintenance and contribute in reducing the risk of
+unexpected failures.
+Keywords: Digital Twin · Dynamic Structural Response · Structural
+Health Monitoring.
+1
+Introduction
+Modern society evolved through the building of complex and interconnected
+infrastructures that, while enabling greater eﬃciency and development, also
+󰂏External consultant
+
+2
+G.D. Bocchino et al.
+present management and maintenance challenges to guarantee service reliability
+and prevent critical component failures. Concern over the structural integrity of
+high-rise structures, such as wind turbines, electricity transmission or telecom-
+munications towers, has grown because of their widespread use and crucial role in
+networked infrastructures. These types of constructions are typically lattice steel
+structures, often exposed to severe environmental loads due to extreme winds
+and temperatures. Such loads, worsened by climate change, can lead to varied de-
+ﬂection shapes and potential failure locations. Additionally, long-term dynamic
+loads are particularly dangerous for such tall and slender structures inducing
+substantial dynamic behaviour that can lead to fatigue failure due to damage
+accumulation [10]. Lattice steel structures are constructed through the bolted as-
+sembly of steel members. A key concern in the maintenance of these structures
+is associated with bolt loosening issues, which can occur under various types
+of loading during their extended service life. As the bolts loosen, joint slips can
+occur, possibly leading to changes in the dynamic response of the tower and, ulti-
+mately, to an increased risk of failure [13][2, 7]. The adoption of Structural Health
+Monitoring (SHM) strategies based on sensor measurements in combination with
+Digital Twin (DT) solutions can provide valuable insights into the behaviour of
+these complex structures, enabling early detection of potential issues and in-
+forming proactive maintenance strategies to mitigate the risk of catastrophic
+failures. The numerical analysis in a DT accurate model could compensate for
+a small number of sensor installed on the physical counterpart [1]. This work
+aims to demonstrate how the concept of a DT can enable the collection, analy-
+sis, and aggregation of various sensor-collected data types in combination with
+numerical models of physical structures towards enhanced infrastructural main-
+tenance strategies. This work presents an DT solution, based on modular analysis
+components and open-source tools, that integrates heterogeneous wireless sen-
+sors, a digital platform, and a modular Finite Element Method (FEM)-based
+architecture to enhance infrastructural maintenance strategies for a 100 m-tall
+atmospheric tower at the Joint Research Centre (JRC).
+2
+Digital Twins in Civil Infrastructures
+The concept of DTs, initially developed in the digital transformation of Industry
+4.0, is linked to up-to-date digital replica of actual physical assets [8, 11] to pro-
+vide improved insights on the functioning of the real-world components towards
+enhanced operational eﬃciency, predictive maintenance strategies and simula-
+tions. A DT can combine real-time and historical sensor data from a physical
+asset, allowing the analysis of trends, patterns, and correlations that traditional
+monitoring methods may not be able to identify.
+DTs applied to civil structures include SHM systems that are traditionally
+used for structural assessment and for the identiﬁcation of issues through sensors
+monitoring and signal processing. However, the installation of sensors on exist-
+ing complex structures like it is the case in existing bridges or tall structures
+can be challenging. When combined with numerical analysis of the digital twin
+
+Digital Twin of the JRC Atmospheric Tower
+3
+model, the ability to gain more information about the state of the structures
+from a small number of sensors can be a fundamental tool for preventing failures
+and providing guidance for maintenance interventions. Despite the promising
+beneﬁts in DT developments and the increasing number of pilot applications
+and digital platforms, several challenges still prevent wide implementation and
+adoption. One of the primary obstacles to the development of DTs is the lack
+Fig. 1: The 100 m-tall JRC Atmospheric Tower and base building at the EC JRC
+in Ispra, Italy (left) and the correspondent FEM model adopted in the digital
+twin solution (right).
+of data standards and interoperability for eﬃcient information exchange across
+various platforms and systems. Interoperability is also crucial in the adoption of
+multiple analysis tools sharing common 3D models of the structure. Moreover,
+many infrastructures are equipped with legacy monitoring systems that require
+custom integration processes or that, in the case of proprietary solutions, may
+prevent access to collected data with diﬀerent tools. Moreover, the creation of
+innovative heterogeneous sensing technologies for SHM requires innovative meth-
+ods, to integrate data from multiple sources and the diﬀerent technologies (e.g.
+satellite monitoring data), which enable sensing and data processing [11], such
+as cloud computing systems and Internet of Things (IoT) physical devices, in the
+development of DTs. Scalability and complexity present additional challenges in
+the implementation of DTs for infrastructures monitoring: the complex nature
+
+4
+G.D. Bocchino et al.
+of civil structures often leads to high computational demands and challenges
+in the scalability of such solutions, limiting the beneﬁts of enhanced real-time
+monitoring and predictive analytics [9].
+Another critical aspect is associated with the concept of a “true digital twin”,
+expressed in [12], that highlights the importance of achieving an accurate model
+and perform continuous updates to reﬂect the evolving condition of the physical
+structure over its lifetime to ensure a reliable DT representation. The integra-
+tion of model updating techniques, with mathematical and procedural aspects
+presented in [5], is also envisaged in the developed DT architecture .
+3
+Case study
+The JRC Atmospheric Tower (Fig. 1) is actually a 95 m-tall steel truss structure,
+supported by a 5 m-tall reinforced concrete building. The tower’s core consists
+of four vertical columns, arranged in a 4.75 m × 4.75 m square, made of cir-
+cular hollow sections with joints connected by 12 bolts. The core columns are
+surrounded by four outer columns, arranged in a 7.75 m × 7.75 m square. At an
+elevation of 25 m, the outer columns are angled and converge to connect with
+the inner core. The ﬂoors are formed by a grid-work of HEA140 beams, with a
+ﬂoor every 5 m, and three alternating conﬁgurations.
+Diagonal bracing tubes connect columns and ﬂoors. The stairs are made
+of inclined UPN 80 proﬁles, and the parapets consist of framed plates with a
+handrail and grilled plates.
+The tower is anchored to the top of the base building through long bolts
+embedded in concrete shoes, with two sets of 12 anchorage bolts arranged in
+a circular pattern. The base building stands on a concrete foundation plate
+supported by 91 deep piles.
+The elevator mast is a trussed column, formed by modular elements with
+a triangular plan, attached to the grid-work of beams at each ﬂoor level by a
+tube element and speciﬁc bolted plates. An elevator cabin, with a 1.2 m × 1.2 m
+ﬂoor and a height of 2 m, can travel along the whole height of the tower with a
+combined weight of 650 kg.
+4
+Structural Monitoring System
+The sensor monitoring system is designed to acquire vibration data from the
+tower continuously. The system consists of three solar-powered autonomous G-
+link 200-OEM wireless accelerometers (Fig. 2), with a detachable antenna and
+engineered enclosure, positioned at various tower levels (100 m, 80 m, 60 m).
+Additional sensors have recently been installed at the lower levels (40 m and
+20 m). These sensors acquire accelerations along three orthogonal axes, with z
+aligned with the tower’s elevation, at a sampling rate of 64 Hz and employ a
+lossless communication mode that aims at preventing data packet loss due to
+interference. The sensor nodes use wireless communication with the network-
+connected Microstrain WSDA-2000 gateway positioned at 60 m. In some cases,
+
+Digital Twin of the JRC Atmospheric Tower
+5
+the communication between the node and the base station might be diﬃcult,
+especially when the Received Signal Strength Indication (RSSI) is low. A reli-
+able communication can be reached for RSSI values between 0 and −75 dBm. A
+(a)
+(b)
+Fig. 2: Solar powered wireless accelerometer at 80 m: accelerometer sensor with
+detachable antenna (left) and solar panel (right).
+custom programme, based on the MSCL Libraries, manages the gateway and the
+acquisition of all the data from the accelerometers mounted on the tower ensur-
+ing clock synchronisation across all the sensor nodes. Data packets are compiled
+and sent to an IoT Agent that forwards them to a centralised Context Broker
+[4]. The Context Broker is in charge of storing the data in the database; in the
+implemented solution, the daily acquisitions are stored in a primary database
+and then transferred to a timeseries database. This strategy ensures high per-
+formance of the system and eﬃcient historical data visualisation. The SHM also
+integrates wind data measurements from sensors installed at 100 m and 40 m
+by the JRC.C.5 Clean Air and Climate unit, providing additional information
+of wind loads and directions.
+5
+Digital Twin System
+The IT architecture (Fig. 3) developed at the JRC for the pilot application of the
+Atmospheric Tower DT system consists in i) the sensor monitoring and the data
+acquisition platform, ii) the SHM layer for signal processing and analysis, iii) the
+DT layer and iv) the visualisation tools. The whole DT platform is designed to
+integrate the sensor data with the FEM model, and to provide web applications
+for monitoring and analysing the tower’s behaviour.
+
+6
+G.D. Bocchino et al.
+Gateway
+...
+PHYSICAL LAYER
+IoT
+Agent
+Main
+System
+Database
+Layer
+ANALYSIS LAYER
+DIGITAL TWIN LAYER
+FEM ANALYSES
+Critical
+Joints
+Thermal
+Effects
+Fatigue
+Analysis
+acc2disp
+OMA
+...
+RAW DATA
+REPOSITORY
+Digital Twin Simulations
+Analysis Results
+(Virtual Sensors)
+Vibration
+Wireless
+Sensors
+Wind
+Sensors
+VISUALIZATION LAYER
+Digital Twin
+3D Model
+Web
+Dashboard
+s
+analysis modules
+FEA modules
+100m
+80m
+60m
+STRUCTURAL MODEL
+Model
+Mesh
+Materials
+Constraints
+Fig. 3: Digital Twin system IT architecture.
+5.1
+Sensors Integration and Data Management
+The physical sensors transmit wireless data streams to the Ethernet connected
+gateway. Received data are converted to Ultralight (UL) format, a generic
+lightweight text-based protocol, designed for devices and communications with
+limited resources (e.g. device memory or bandwidth). The UL messages are en-
+capsulated in Message Queuing Telemetry Transport (MQTT) frames and for-
+warded to an IoT Agent, that serves as a bridge between the physical layer and
+the Context Broker (CB), the core hub of the platform which is used to inte-
+grate and manage the data and the measurements from the IoT sensors. We
+chose to use the open-source CB-based architecture for our application because
+it is widely used in European Smart City projects and is a component of the
+Connecting Europe Facility (CEF) building blocks. One of the goals of this work
+is also to assess such component for SHM applications and the integration with
+federated systems at larger scales. In addition, the CB is compliant with the
+NGSI-LD standard that allows to support the interoperability and the scalabil-
+ity within the same platform and across diﬀerent smart city or digital systems.
+The CB stores all the received daily data in a relational database. Older data
+are transferred to a timeseries database for improved performance in the man-
+agement and visualisation of historical data. A web application allows the access
+and visualisation of all the sensor measurements, both recent and historical with
+custom dashboards.
+5.2
+Analysis Layer for Signal Processing
+Signal processing is an essential part of SHM systems. In the implemented ar-
+chitecture, the analysis layer allows the implementation of multiple analysis
+
+Digital Twin of the JRC Atmospheric Tower
+7
+Fig. 4: Web dashboard with wind speed and vibrations (left) and wind sensors
+data (right).
+scripts developed with multiple technologies. In this implementation, we inte-
+grate Python scripts to process vibration data acquired from the JRC Atmo-
+spheric Tower. Other algorithms (diﬀerent scripting languages or compiled bi-
+nary executables) can be easily implemented provided that a server-side engine
+is capable of executing the analysis software components. Two analysis compo-
+nents have been implemented at the moment for the analysis of the recordings of
+the installed accelerometers: i) a Fast Fourier Transform (FFT) vibration anal-
+yser suitable for real-time applications and diagnostics of the modal response
+of the structure over time, and ii) a vibration to displacement signal processing
+algorithm (Fig. 5). Acceleration data from the sensor nodes at the diﬀerent levels
+Fig. 5: Web dashboard with FFT variations (left) and daily computed displace-
+ment (right).
+are ﬁltered and processed to obtain estimates of the displacements. The results
+of the analyses are considered as virtual sensors of the system, and provide addi-
+tional information of the structure through signal analysis. In adherence to the
+implemented IT architecture, virtual sensor data are sent to the IoT Agent for
+the storing in the database by the Context Broker and the visualisation in the
+web application dashboard.
+
+8
+G.D. Bocchino et al.
+5.3
+Digital Twin Integration and Numerical Analyses
+The digital twin application is developed to combine a Finite Element Analysis
+(FEA) component with real-world measurements from the installed sensors. In
+our implementation we rely on Castem FEM model [3]. For the pilot application
+we aim at applying real-world displacements, measured from the tower, to the
+FEM model in order to identify the most stressed joints. This pilot application
+analysis is representative of the processing and data ﬂow that can be used to
+feed the FEM model with other inputs. The computed displacements are then
+made available to the FEM model for the analysis. Castem is executed cyclically
+in order to process the delivered data from the main system. At each execution,
+the latest data are loaded by the FEM program and applied to the model as
+imposed displacements. These are representative of the dynamics occurring on
+the real-world structure as a consequence mainly of wind loads and thermal
+deformations. The FEM analysis computes the stresses in the model’s joints and
+exports all the transients as output. The output data from the FEM application
+is sent back to the main system via the IoT Agent to be ingested and stored in
+the main system databases, allowing quasi-immediate visualisation on the web
+application dashboard.
+5.4
+Finite Element Model Analysis Modules
+The FEM model of the building is developed using Castem software and is ﬁne-
+tuned to accurately reproduce the behaviour of the tower and its response under
+real loads and to perform simulations and in-depth analyses of structural com-
+ponents. The FEM model is crucial to compensate and complement for limited
+information from the installed sensors on the physical structure. The numerical
+model of the JRC Atmospheric Tower is composed of 5959 elements with 4884
+nodes. The two parts of the structure (i.e., the base building and the steel truss
+tower) are modelled, although the displacements measured in correspondence of
+the concrete slab supporting the base of the tower are negligible. In order to
+have maximum ﬂexibility in developing diﬀerent analyses with the FEM model,
+the main information of the model, i.e. i) the mesh and ii) the materials, models
+and constraints, are stored separately. The DT layer allows for the storing of dif-
+ferent FEA components; each module loads the general FEM structural model
+and performs speciﬁc analyses based on real-world measurements from sensors
+stored in the database layer. The main advantage of this approach is that mul-
+tiple analyses can be performed independently with regular updates based on
+the measured dynamics of the real structure. Additional measurements from the
+numerical model are therefore possible and the results of simulations and anal-
+yses are also considered, as per the analysis layer performing signal analysis, as
+virtual sensors measurements. These are therefore transmitted to the IoT Agent
+for standardised processing in the system and storage in the database layer.
+
+Digital Twin of the JRC Atmospheric Tower
+9
+Fig. 6: Ampliﬁed deformed FEM JRC Tower 3D model visualisation based on
+virtual sensor displacements.
+5.5
+Historical Data and FEM 3D Visualisation
+One fundamental aspect of the FEM analyses lays in the possibility to visualise
+the results in a 3D format with the option to display diﬀerent variables and
+the deformed shape of the structure on the basis of the real-world measured
+structural response. An interactive 3D model is therefore essential for the post-
+processing evaluation by experts. In the designed solution, FEA results are saved
+from Castem in the widely used VTK format. This format is deﬁned by Visual-
+isation Toolkit, an open-source software software for processing and displaying
+scientiﬁc data, volume rendering, 3D graphics, and image processing.
+The advantage of using open standards for the FEA is that results can be
+managed and visualised with multiple graphical applications. In the present DT
+architecture, a web application based on Trame [6], a Python framework for web-
+based interactive scientiﬁc visualisation of large data and 3D models oﬀering
+possible integration with external Python libraries, VTK and ParaView back-
+end, is integrated in the system. FEA output VTK ﬁles are saved by the multiple
+DT modules and then transferred to the open-source data management system
+(DMS). The DT 3D web application allows the listing and the selection of the
+desired output results and the online interactive visualisation or the raw data
+download for working with other compatible analysis and visualisation software.
+An example application, developed for the JRC Atmospheric Tower DT, con-
+sists in the analysis of the deformations occurred over time. From the measured
+vibrations, the acc2disp module in the analysis layer calculates the displace-
+ments; the results are then sent back to the IoT Agent for the subsequent Con-
+text Broker processing and and storing into the data repositories to be available
+
+10
+G.D. Bocchino et al.
+for and made available to FEM analyses. The FEM module wind load deforma-
+tions loads the computed displacements at 100 m, 80 m and 60 m and applies
+the real-world measurements as imposed displacements. The results are saved as
+VTK ﬁle and the visualisation of the deformed shape with gradient colours cor-
+respondent to the displacement of each structural component can be displayed
+in the web application.
+6
+Conclusions
+The development and implementation of a DT solution for the JRC Atmospheric
+Tower demonstrates the potential of this technology to provide ﬂexible and scal-
+able solutions in the ﬁeld of SHM for complex infrastructures. By integrating
+real-time sensor data with numerical models and advanced analysis techniques,
+DT can provide in-depth insights into the behaviour of critical structures towards
+more eﬀective strategies for maintenance, thus reducing the risk of unexpected
+failures. The proposed digital platform architecture demonstrates that DTs can
+be eﬀectively implemented by integrating various open-source tools to monitor
+the structural response of tall structures, such as the JRC Atmospheric Tower.
+This approach enables the early detection of potential issues before they be-
+come critical through the integration of modular signal processing and FEM
+analysis components. Furthermore, the DT solution in this study addresses key
+challenges related to interoperability, data standardisation, and scalability in the
+development of DTs for infrastructure. Future research will focus on addressing
+challenges associated with the complete structured execution of all DT solu-
+tion processes to develop a fully standardised framework and on the continuous
+validation and updating of DTs to ensure accurate and up-to-date numerical
+models, ultimately enhancing the safety, eﬃciency, and sustainability of critical
+infrastructure.
+Acknowledgments
+The authors acknowledge the valuable contributions of Alejandro Massaro Lat-
+tuada and David Dardenne (JRC.R.I.4) for their support on the JRC Atmo-
+spheric Tower structure, Anthoine Armelle and Pierre Pgon for their assistance
+with Castem, and Giovanni Manca (JRC.C.5) for his contribution in integrating
+wind sensors into the digital twin system.
+References
+1. Alexander
+Krall,
+D.F.,
+Yang,
+H.:
+Virtual
+sensing
+network
+for
+statis-
+tical
+process
+monitoring.
+IISE
+Transactions
+55(11),
+1103–1117
+(2023).
+https://doi.org/10.1080/24725854.2022.2148779
+2. An, L., Wu, J., Jiang, W.: Experimental and numerical study of the axial stiﬀness
+of bolted joints in steel lattice transmission tower legs. Engineering Structures 187,
+490–503 (2019). https://doi.org/10.1016/j.engstruct.2019.02.070
+
+Digital Twin of the JRC Atmospheric Tower
+11
+3. Castem: Castem. http://www-cast3m.cea.fr
+4. Fiware: Fiware. https://www.ﬁware.org/
+5. Haseeb, A., Bocchino, G.D., Bono, F., Perotti, F., Martinelli, L.: Finite element
+model updating for digital twin development using operational modal analysis:
+the jrc atmospheric observatory tower case study. In: EVACES 2025. EVACES
+2025, 11th international Conference on Experimental Vibration Analysis of Civil
+Engineering Structures, EVACES 2025 (2025)
+6. Kitware:
+Trame.
+https://www.kitware.com/trame-revolutionizing-visual-
+analytics-with-python/
+7. Lao, W., Cui, C., Zhang, D., hua Zhang, Q., Bao, Y.: Computer vision-based
+autonomous method for quantitative detection of loose bolts in bolted con-
+nections of steel structures. Structural Control and Health Monitoring (2023),
+https://api.semanticscholar.org/CorpusID:258926545
+8. Mihai, S., Yaqoob, M., Hung, D.V., Davis, W., Towakel, P., Raza, M., Kara-
+manoglu, M., Barn, B., Shetve, D., Prasad, R.V., Venkataraman, H., Trestian,
+R., Nguyen, H.X.: Digital twins: A survey on enabling technologies, challenges,
+trends and future prospects. IEEE Communications Surveys & Tutorials 24(4),
+2255–2291 (2022). https://doi.org/10.1109/COMST.2022.3208773
+9. Parida, L., Moharana, S.: Current status and future challenges of digital twins
+for structural health monitoring in civil infrastructures. Engineering Research
+Express 6(2), 022102 (may 2024). https://doi.org/10.1088/2631-8695/ad4aea,
+https://dx.doi.org/10.1088/2631-8695/ad4aea
+10. Repetto,
+M.P.,
+Solari,
+G.:
+Wind-induced
+fatigue
+collapse
+of
+real
+slen-
+der
+structures.
+Engineering
+Structures
+32(12),
+3888–3898
+(Dec
+2010).
+https://doi.org/10.1016/j.engstruct.2010.09.002
+11. Shahzad, M., Shaﬁq, M.T., Douglas, D., Kassem, M.: Digital twins in built en-
+vironments: An investigation of the characteristics, applications, and challenges.
+Buildings 12(2) (2022). https://doi.org/10.3390/buildings12020120
+12. Tygesen, U.T., Jepsen, M.S., Vestermark, J., Dollerup, N., Pedersen, A.: The True
+Digital Twin Concept for Fatigue Re-Assessment of Marine Structures. In: Vol-
+ume 1: Oﬀshore Technology. p. V001T01A021. American Society of Mechanical
+Engineers, Madrid, Spain (Jun 2018). https://doi.org/10.1115/OMAE2018-77915
+13. Zhao,
+Y.,
+Xiao,
+Y.,
+Wang,
+H.,
+Wang,
+T.,
+Wu,
+C.,
+Zhang,
+B.:
+Eﬀect
+of bolt tightening force on the transmission tower modal parameters and
+a method for looseness identiﬁcation. Energy Reports 7, 842–849 (2021).
+https://doi.org/10.1016/j.egyr.2021.09.190

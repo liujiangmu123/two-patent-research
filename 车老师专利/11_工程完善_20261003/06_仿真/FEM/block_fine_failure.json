@@ -1,0 +1,11 @@
+{
+  "case": "block_fine",
+  "status": "failed",
+  "solver": "CalculiX2.22 supplied with FreeCAD1.1.3",
+  "exit_code": 3221225477,
+  "windows_exception": "0xC0000005 access violation",
+  "frd_bytes": 80,
+  "valid_result": false,
+  "interpretation": "No displacement/stress fields; do not use as convergence evidence",
+  "next": "intermediate mesh to limit native factorization size"
+}
